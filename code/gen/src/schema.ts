@@ -30,13 +30,15 @@ export type IOvhScopes = `support/all` | `dedicated/${string}` | `account/${stri
 export interface Operation {
     apiStatus:         APIStatus;
     httpMethod:        "DELETE" | "GET" | "POST" | "PUT";
-    iamActions?:       string[];
+    // iamActions?:       string[];
+    iamActions?:       Array<{name: string, required: boolean}> | string[];
     parameters:        Parameter[];
     resellerOnly?:     boolean;
     responseType:      string;
     scopes?:           IOvhScopes[];
     responseFullType?: string;
     noAuthentication:  boolean;
+    longDescription?: string; // added 7 jun 2024
     /**
      * operation name
      */
@@ -65,7 +67,7 @@ export type Description = "Alpha version" | "Beta version" | "Deprecated, will b
 export type Value = "ALPHA" | "BETA" | "DEPRECATED" | "PRODUCTION";
 
 export interface Parameter {
-    fullType:    string;
+    fullType?:    string;
     description: null | string;
     name?:       null | string;
     paramType:   "body" | "path" | "query";

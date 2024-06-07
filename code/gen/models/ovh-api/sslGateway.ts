@@ -13,13 +13,24 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "List available services",
+          "description": "List of your SSL Gateways",
           "httpMethod": "GET",
           "iamActions": [
-            "sslGateway:apiovh:get"
+            {
+              "name": "sslGateway:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
-          "parameters": [],
+          "parameters": [
+            {
+              "dataType": "map[string][]iam.resource.TagFilter",
+              "description": "Filter resources on IAM tags",
+              "name": "iamTags",
+              "paramType": "query",
+              "required": false
+            }
+          ],
           "responseType": "string[]"
         }
       ],
@@ -36,7 +47,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "sslGateway:apiovh:get"
+            {
+              "name": "sslGateway:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -49,7 +63,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sslGateway.SslGateway"
+          "responseType": "sslGateway.SslGatewayWithIAM"
         },
         {
           "apiStatus": {
@@ -59,7 +73,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "sslGateway:apiovh:put"
+            {
+              "name": "sslGateway:apiovh:put",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -95,7 +112,10 @@ export const schema: Schema = {
           "description": "Launch a contact change procedure",
           "httpMethod": "POST",
           "iamActions": [
-            "sslGateway:apiovh:changeContact"
+            {
+              "name": "sslGateway:apiovh:changeContact",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -138,17 +158,20 @@ export const schema: Schema = {
       "path": "/sslGateway/{serviceName}/changeContact"
     },
     {
-      "description": "Confirm termination of your service",
+      "description": "Confirm service termination",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Confirm termination of your service",
+          "description": "Confirm service termination",
           "httpMethod": "POST",
           "iamActions": [
-            "sslGateway:apiovh:confirmTermination"
+            {
+              "name": "sslGateway:apiovh:confirmTermination",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -178,7 +201,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The termination token sent by mail to the admin contact",
+              "description": "The termination token sent by email to the admin contact",
               "fullType": "string",
               "name": "token",
               "paramType": "body",
@@ -209,7 +232,10 @@ export const schema: Schema = {
           "description": "Domains attached to your SSL Gateway",
           "httpMethod": "GET",
           "iamActions": [
-            "sslGateway:apiovh:domain/get"
+            {
+              "name": "sslGateway:apiovh:domain/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -232,7 +258,10 @@ export const schema: Schema = {
           "description": "Attach a new domain to your SSL Gateway",
           "httpMethod": "POST",
           "iamActions": [
-            "sslGateway:apiovh:domain/create"
+            {
+              "name": "sslGateway:apiovh:domain/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -269,7 +298,10 @@ export const schema: Schema = {
           "description": "Detach a domain from your SSL Gateway",
           "httpMethod": "DELETE",
           "iamActions": [
-            "sslGateway:apiovh:domain/delete"
+            {
+              "name": "sslGateway:apiovh:domain/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -300,7 +332,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "sslGateway:apiovh:domain/get"
+            {
+              "name": "sslGateway:apiovh:domain/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -337,7 +372,10 @@ export const schema: Schema = {
           "description": "Ip subnet used by OVH to nat requests to your SSL Gateway backends.",
           "httpMethod": "GET",
           "iamActions": [
-            "sslGateway:apiovh:natIp/get"
+            {
+              "name": "sslGateway:apiovh:natIp/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -366,7 +404,10 @@ export const schema: Schema = {
           "description": "Renew your SSL certificates",
           "httpMethod": "POST",
           "iamActions": [
-            "sslGateway:apiovh:renewCertificate"
+            {
+              "name": "sslGateway:apiovh:renewCertificate",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -403,7 +444,10 @@ export const schema: Schema = {
           "description": "Servers attached to your SSL Gateway",
           "httpMethod": "GET",
           "iamActions": [
-            "sslGateway:apiovh:server/get"
+            {
+              "name": "sslGateway:apiovh:server/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -426,7 +470,10 @@ export const schema: Schema = {
           "description": "Add a new server to your SSL Gateway",
           "httpMethod": "POST",
           "iamActions": [
-            "sslGateway:apiovh:server/create"
+            {
+              "name": "sslGateway:apiovh:server/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -471,7 +518,10 @@ export const schema: Schema = {
           "description": "Remove a server",
           "httpMethod": "DELETE",
           "iamActions": [
-            "sslGateway:apiovh:server/delete"
+            {
+              "name": "sslGateway:apiovh:server/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -502,7 +552,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "sslGateway:apiovh:server/get"
+            {
+              "name": "sslGateway:apiovh:server/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -533,7 +586,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "sslGateway:apiovh:server/edit"
+            {
+              "name": "sslGateway:apiovh:server/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -574,10 +630,13 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Get this object properties",
+          "description": "Get service information",
           "httpMethod": "GET",
           "iamActions": [
-            "sslGateway:apiovh:serviceInfos/get"
+            {
+              "name": "sslGateway:apiovh:serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -597,10 +656,13 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Alter this object properties",
+          "description": "Update service information",
           "httpMethod": "PUT",
           "iamActions": [
-            "sslGateway:apiovh:serviceInfos/edit"
+            {
+              "name": "sslGateway:apiovh:serviceInfos/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -636,7 +698,10 @@ export const schema: Schema = {
           "description": "Task for this SSL Gateway",
           "httpMethod": "GET",
           "iamActions": [
-            "sslGateway:apiovh:task/get"
+            {
+              "name": "sslGateway:apiovh:task/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -665,7 +730,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "sslGateway:apiovh:task/get"
+            {
+              "name": "sslGateway:apiovh:task/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -692,18 +760,22 @@ export const schema: Schema = {
       "path": "/sslGateway/{serviceName}/task/{id}"
     },
     {
-      "description": "Terminate your service",
+      "description": "Ask for the termination of your service. Admin contact of this service will receive a termination token in order to confirm its termination with /confirmTermination endpoint.",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Terminate your service",
+          "description": "Ask for the termination of your service",
           "httpMethod": "POST",
           "iamActions": [
-            "sslGateway:apiovh:terminate"
+            {
+              "name": "sslGateway:apiovh:terminate",
+              "required": true
+            }
           ],
+          "longDescription": "Ask for the termination of your service. Admin contact of this service will receive a termination token by email in order to confirm its termination with /confirmTermination endpoint.",
           "noAuthentication": false,
           "parameters": [
             {
@@ -766,6 +838,77 @@ export const schema: Schema = {
   ],
   "basePath": "https://eu.api.ovh.com/1.0",
   "models": {
+    "iam.ResourceMetadata": {
+      "description": "IAM resource metadata embedded in services models",
+      "id": "ResourceMetadata",
+      "namespace": "iam",
+      "properties": {
+        "displayName": {
+          "canBeNull": true,
+          "description": "Resource display name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Unique identifier of the resource",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "tags": {
+          "canBeNull": true,
+          "description": "Resource tags. Tags that were internally computed are prefixed with ovh:",
+          "fullType": "map[string]string",
+          "readOnly": true,
+          "required": false,
+          "type": "map[string]string"
+        },
+        "urn": {
+          "canBeNull": false,
+          "description": "Unique resource name used in policies",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter": {
+      "description": "Resource tag filter",
+      "id": "TagFilter",
+      "namespace": "iam.resource",
+      "properties": {
+        "operator": {
+          "canBeNull": true,
+          "description": "Operator to use in order to filter on the value (defaults to 'EQ')",
+          "fullType": "iam.resource.TagFilter.OperatorEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.resource.TagFilter.OperatorEnum"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value to use in order to filter tags",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter.OperatorEnum": {
+      "description": "Operator that can be used in order to filter resources tags",
+      "enum": [
+        "EQ"
+      ],
+      "enumType": "string",
+      "id": "OperatorEnum",
+      "namespace": "iam.resource.TagFilter"
+    },
     "service.RenewType": {
       "description": "Map a possible renew for a specific service",
       "id": "RenewType",
@@ -1182,6 +1325,132 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "boolean"
+        },
+        "ipv4": {
+          "canBeNull": false,
+          "description": "The IPv4 you need to put in the A field of your domain name",
+          "fullType": "ipv4",
+          "readOnly": true,
+          "required": false,
+          "type": "ipv4"
+        },
+        "ipv6": {
+          "canBeNull": true,
+          "description": "The IPv6 you need to put in the AAAA field of your domain name",
+          "fullType": "ipv6",
+          "readOnly": true,
+          "required": false,
+          "type": "ipv6"
+        },
+        "metricsToken": {
+          "canBeNull": true,
+          "description": "The metrics token associated with your SSL Gateway",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "offer": {
+          "canBeNull": false,
+          "description": "Current offer for your SSL Gateway",
+          "fullType": "sslGateway.OfferEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "sslGateway.OfferEnum"
+        },
+        "reverse": {
+          "canBeNull": true,
+          "description": "Custom reverse for your SSL Gateway",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "serverHttps": {
+          "canBeNull": false,
+          "description": "Set to true to contact backend servers over HTTPS",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "serviceName": {
+          "canBeNull": false,
+          "description": "The internal name of your SSL Gateway",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "sslConfiguration": {
+          "canBeNull": true,
+          "description": "Modern oldest compatible clients : Firefox 27, Chrome 30, IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and Java 8. Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5, Safari 1, Windows XP IE8, Android 2.3, Java 7. Intermediate if null.",
+          "fullType": "sslGateway.SslConfigurationEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "sslGateway.SslConfigurationEnum"
+        },
+        "state": {
+          "canBeNull": false,
+          "description": "Current state of your SSL Gateway",
+          "fullType": "sslGateway.StateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "sslGateway.StateEnum"
+        },
+        "zones": {
+          "canBeNull": false,
+          "description": "Zones of your SSL Gateway",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        }
+      }
+    },
+    "sslGateway.SslGatewayWithIAM": {
+      "description": "Your SSL Gateway",
+      "id": "SslGateway",
+      "namespace": "sslGateway",
+      "properties": {
+        "allowedSource": {
+          "canBeNull": true,
+          "description": "Restrict SSL Gateway access to these ip block. No restriction if null",
+          "fullType": "ipBlock[]",
+          "readOnly": false,
+          "required": false,
+          "type": "ipBlock[]"
+        },
+        "displayName": {
+          "canBeNull": true,
+          "description": "Custom name of your SSL Gateway",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "hsts": {
+          "canBeNull": false,
+          "description": "Set to true to enable Strict-Transport-Security HTTP header",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "httpsRedirect": {
+          "canBeNull": false,
+          "description": "Set to true to enable https redirect",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "iam": {
+          "canBeNull": true,
+          "description": "IAM resource metadata",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.ResourceMetadata"
         },
         "ipv4": {
           "canBeNull": false,

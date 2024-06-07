@@ -13,10 +13,13 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "List available services",
+          "description": "Services",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:service/get"
+            {
+              "name": "account:apiovh:service/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -36,7 +39,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:service/get"
+            {
+              "name": "account:apiovh:service/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -59,7 +65,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "account:apiovh:service/edit"
+            {
+              "name": "account:apiovh:service/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -95,7 +104,10 @@ export const schema: Schema = {
           "description": "List possible renews for this service",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:service/renew/get"
+            {
+              "name": "account:apiovh:service/renew/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -126,7 +138,10 @@ export const schema: Schema = {
           "description": "Create a renew order",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:service/renew/create"
+            {
+              "name": "account:apiovh:service/renew/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -179,7 +194,10 @@ export const schema: Schema = {
           "description": "Reopen a suspended service",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:service/reopen"
+            {
+              "name": "account:apiovh:service/reopen",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -208,7 +226,10 @@ export const schema: Schema = {
           "description": "Suspend the service. The service won't be accessible, but you will still be charged for it",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:service/suspend"
+            {
+              "name": "account:apiovh:service/suspend",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -237,7 +258,10 @@ export const schema: Schema = {
           "description": "Terminates a suspended service",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:service/terminate"
+            {
+              "name": "account:apiovh:service/terminate",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -259,6 +283,28 @@ export const schema: Schema = {
   "basePath": "https://eu.api.ovh.com/1.0",
   "models": {
     "complexType.SafeKeyValue<T>": {
+      "description": "Key and value, with proper key strings",
+      "generics": [
+        "T"
+      ],
+      "id": "SafeKeyValue",
+      "namespace": "complexType",
+      "properties": {
+        "key": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "T"
+        }
+      }
+    },
+    "complexType.SafeKeyValue<string>": {
       "description": "Key and value, with proper key strings",
       "generics": [
         "T"
@@ -472,139 +518,6 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "complexType.SafeKeyValue<string>[]"
-        }
-      }
-    },
-    "service.consumption.Transaction": {
-      "description": "List of consumptions recorded in a range",
-      "id": "Transaction",
-      "namespace": "service.consumption",
-      "properties": {
-        "beginDate": {
-          "canBeNull": false,
-          "description": "Begin date",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        },
-        "creationDate": {
-          "canBeNull": true,
-          "description": "Creation date",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        },
-        "elements": {
-          "canBeNull": false,
-          "description": "List of product plan code consumption",
-          "fullType": "service.consumption.transaction.Element[]",
-          "readOnly": true,
-          "required": false,
-          "type": "service.consumption.transaction.Element[]"
-        },
-        "endDate": {
-          "canBeNull": true,
-          "description": "End date",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        },
-        "id": {
-          "canBeNull": true,
-          "description": "Transaction ID",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "lastUpdate": {
-          "canBeNull": true,
-          "description": "Last update",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        },
-        "price": {
-          "canBeNull": false,
-          "description": "Consumption amount price",
-          "fullType": "order.Price",
-          "readOnly": true,
-          "required": false,
-          "type": "order.Price"
-        },
-        "serviceId": {
-          "canBeNull": false,
-          "description": "Service ID",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        }
-      }
-    },
-    "service.consumption.transaction.Element": {
-      "description": "Element of consumption for resource",
-      "id": "Element",
-      "namespace": "service.consumption.transaction",
-      "properties": {
-        "details": {
-          "canBeNull": false,
-          "description": "List of consumption details for this planCode",
-          "fullType": "service.consumption.transaction.element.Detail[]",
-          "readOnly": true,
-          "required": false,
-          "type": "service.consumption.transaction.element.Detail[]"
-        },
-        "planCode": {
-          "canBeNull": false,
-          "description": "Identifier of the offer",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "price": {
-          "canBeNull": false,
-          "description": "Consumption amount price",
-          "fullType": "order.Price",
-          "readOnly": true,
-          "required": false,
-          "type": "order.Price"
-        },
-        "quantity": {
-          "canBeNull": false,
-          "description": "Consumption quantity",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        }
-      }
-    },
-    "service.consumption.transaction.element.Detail": {
-      "description": "Element of consumption for resource",
-      "id": "Detail",
-      "namespace": "service.consumption.transaction.Element",
-      "properties": {
-        "quantity": {
-          "canBeNull": false,
-          "description": "Consumption quantity",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "unique_id": {
-          "canBeNull": true,
-          "description": "Unique ID associated to one service element",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
         }
       }
     },

@@ -14830,8 +14830,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2014-04-18 10:00:00 +0100 +0100",
-            "deprecatedDate": "2014-03-18 10:00:00 +0100 +0100",
+            "deletionDate": "2014-04-18T10:00:00+01:00",
+            "deprecatedDate": "2014-03-18T10:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/price/vps/2013v1/classic/model/{modelName}",
             "value": "DEPRECATED"
@@ -14859,8 +14859,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2014-04-18 10:00:00 +0100 +0100",
-            "deprecatedDate": "2014-03-18 10:00:00 +0100 +0100",
+            "deletionDate": "2014-04-18T10:00:00+01:00",
+            "deprecatedDate": "2014-03-18T10:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/price/vps/2013v1/cloud/model/{modelName}",
             "value": "DEPRECATED"
@@ -14888,8 +14888,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2014-04-18 10:00:00 +0100 +0100",
-            "deprecatedDate": "2014-03-18 10:00:00 +0100 +0100",
+            "deletionDate": "2014-04-18T10:00:00+01:00",
+            "deprecatedDate": "2014-03-18T10:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/price/vps/2013v1/cloud/option/{optionName}",
             "value": "DEPRECATED"
@@ -14917,8 +14917,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2014-04-18 10:00:00 +0100 +0100",
-            "deprecatedDate": "2014-03-18 10:00:00 +0100 +0100",
+            "deletionDate": "2014-04-18T10:00:00+01:00",
+            "deprecatedDate": "2014-03-18T10:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/price/vps/2013v1/lowlat/model/{modelName}",
             "value": "DEPRECATED"

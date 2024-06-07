@@ -16,7 +16,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseVirtuozzo:apiovh:get"
+            {
+              "name": "licenseVirtuozzo:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -36,7 +39,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseVirtuozzo:apiovh:get"
+            {
+              "name": "licenseVirtuozzo:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -59,7 +65,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "licenseVirtuozzo:apiovh:put"
+            {
+              "name": "licenseVirtuozzo:apiovh:put",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -95,7 +104,10 @@ export const schema: Schema = {
           "description": "Returns an array of ips where the license can be moved to",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseVirtuozzo:apiovh:allowedDestinationIp/get"
+            {
+              "name": "licenseVirtuozzo:apiovh:allowedDestinationIp/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -124,7 +136,10 @@ export const schema: Schema = {
           "description": "Will tell if the ip can accept the license",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseVirtuozzo:apiovh:canLicenseBeMovedTo/get"
+            {
+              "name": "licenseVirtuozzo:apiovh:canLicenseBeMovedTo/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -161,7 +176,10 @@ export const schema: Schema = {
           "description": "Move this license to another Ip",
           "httpMethod": "POST",
           "iamActions": [
-            "licenseVirtuozzo:apiovh:changeIp"
+            {
+              "name": "licenseVirtuozzo:apiovh:changeIp",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -188,17 +206,20 @@ export const schema: Schema = {
       "path": "/license/virtuozzo/{serviceName}/changeIp"
     },
     {
-      "description": "Confirm termination of your service",
+      "description": "Confirm service termination",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Confirm termination of your service",
+          "description": "Confirm service termination",
           "httpMethod": "POST",
           "iamActions": [
-            "licenseVirtuozzo:apiovh:confirmTermination"
+            {
+              "name": "licenseVirtuozzo:apiovh:confirmTermination",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -228,7 +249,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The termination token sent by mail to the admin contact",
+              "description": "The termination token sent by email to the admin contact",
               "fullType": "string",
               "name": "token",
               "paramType": "body",
@@ -259,7 +280,10 @@ export const schema: Schema = {
           "description": "Options linked to this license",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseVirtuozzo:apiovh:option/get"
+            {
+              "name": "licenseVirtuozzo:apiovh:option/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -296,7 +320,10 @@ export const schema: Schema = {
           "description": "release this Option",
           "httpMethod": "DELETE",
           "iamActions": [
-            "licenseVirtuozzo:apiovh:option/delete"
+            {
+              "name": "licenseVirtuozzo:apiovh:option/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -327,7 +354,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseVirtuozzo:apiovh:option/get"
+            {
+              "name": "licenseVirtuozzo:apiovh:option/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -361,10 +391,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get service information",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseVirtuozzo:apiovh:serviceInfos/get"
+            {
+              "name": "licenseVirtuozzo:apiovh:serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -384,10 +417,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Update service information",
           "httpMethod": "PUT",
           "iamActions": [
-            "licenseVirtuozzo:apiovh:serviceInfos/edit"
+            {
+              "name": "licenseVirtuozzo:apiovh:serviceInfos/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -423,7 +459,10 @@ export const schema: Schema = {
           "description": "tasks linked to this license",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseVirtuozzo:apiovh:tasks/get"
+            {
+              "name": "licenseVirtuozzo:apiovh:tasks/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -468,7 +507,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseVirtuozzo:apiovh:tasks/get"
+            {
+              "name": "licenseVirtuozzo:apiovh:tasks/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -495,18 +537,22 @@ export const schema: Schema = {
       "path": "/license/virtuozzo/{serviceName}/tasks/{taskId}"
     },
     {
-      "description": "Terminate your service",
+      "description": "Ask for the termination of your service. Admin contact of this service will receive a termination token in order to confirm its termination with /confirmTermination endpoint.",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Terminate your service",
+          "description": "Ask for the termination of your service",
           "httpMethod": "POST",
           "iamActions": [
-            "licenseVirtuozzo:apiovh:terminate"
+            {
+              "name": "licenseVirtuozzo:apiovh:terminate",
+              "required": true
+            }
           ],
+          "longDescription": "Ask for the termination of your service. Admin contact of this service will receive a termination token by email in order to confirm its termination with /confirmTermination endpoint.",
           "noAuthentication": false,
           "parameters": [
             {
@@ -534,7 +580,10 @@ export const schema: Schema = {
           "description": "Get the orderable Virtuozzo versions",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:licenseVirtuozzo/orderableVersions/get"
+            {
+              "name": "account:apiovh:licenseVirtuozzo/orderableVersions/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [

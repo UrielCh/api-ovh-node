@@ -13,13 +13,24 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "List available services",
+          "description": "manage your Office service",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseOfficePrepaid:apiovh:get"
+            {
+              "name": "licenseOfficePrepaid:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
-          "parameters": [],
+          "parameters": [
+            {
+              "dataType": "map[string][]iam.resource.TagFilter",
+              "description": "Filter resources on IAM tags",
+              "name": "iamTags",
+              "paramType": "query",
+              "required": false
+            }
+          ],
           "responseType": "string[]"
         }
       ],
@@ -36,7 +47,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseOfficePrepaid:apiovh:get"
+            {
+              "name": "licenseOfficePrepaid:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -49,7 +63,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.officePrepaid.OfficeUser"
+          "responseType": "license.officePrepaid.OfficeUserWithIAM"
         },
         {
           "apiStatus": {
@@ -59,7 +73,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "licenseOfficePrepaid:apiovh:put"
+            {
+              "name": "licenseOfficePrepaid:apiovh:put",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -95,7 +112,10 @@ export const schema: Schema = {
           "description": "Change or reset  user's password",
           "httpMethod": "POST",
           "iamActions": [
-            "licenseOfficePrepaid:apiovh:changePassword"
+            {
+              "name": "licenseOfficePrepaid:apiovh:changePassword",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -138,17 +158,20 @@ export const schema: Schema = {
       "path": "/license/officePrepaid/{serviceName}/changePassword"
     },
     {
-      "description": "Confirm termination of your service",
+      "description": "Confirm service termination",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Confirm termination of your service",
+          "description": "Confirm service termination",
           "httpMethod": "POST",
           "iamActions": [
-            "licenseOfficePrepaid:apiovh:confirmTermination"
+            {
+              "name": "licenseOfficePrepaid:apiovh:confirmTermination",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -178,7 +201,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The termination token sent by mail to the admin contact",
+              "description": "The termination token sent by email to the admin contact",
               "fullType": "string",
               "name": "token",
               "paramType": "body",
@@ -209,7 +232,10 @@ export const schema: Schema = {
           "description": "Retrieve the parent tenant of this office user",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseOfficePrepaid:apiovh:parentTenant/get"
+            {
+              "name": "licenseOfficePrepaid:apiovh:parentTenant/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -232,7 +258,10 @@ export const schema: Schema = {
           "description": "Modify the parent tenant of this office user",
           "httpMethod": "PUT",
           "iamActions": [
-            "licenseOfficePrepaid:apiovh:parentTenant/edit"
+            {
+              "name": "licenseOfficePrepaid:apiovh:parentTenant/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -266,10 +295,13 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Get this object properties",
+          "description": "Get service information",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseOfficePrepaid:apiovh:serviceInfos/get"
+            {
+              "name": "licenseOfficePrepaid:apiovh:serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -289,10 +321,13 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Alter this object properties",
+          "description": "Update service information",
           "httpMethod": "PUT",
           "iamActions": [
-            "licenseOfficePrepaid:apiovh:serviceInfos/edit"
+            {
+              "name": "licenseOfficePrepaid:apiovh:serviceInfos/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -328,7 +363,10 @@ export const schema: Schema = {
           "description": "Tasks associated to this user's tenant",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseOfficePrepaid:apiovh:tenantPendingTask/get"
+            {
+              "name": "licenseOfficePrepaid:apiovh:tenantPendingTask/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -357,7 +395,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseOfficePrepaid:apiovh:tenantPendingTask/get"
+            {
+              "name": "licenseOfficePrepaid:apiovh:tenantPendingTask/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -394,7 +435,10 @@ export const schema: Schema = {
           "description": "Shows the subscriptions' usage statistics for the given time period",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseOfficePrepaid:apiovh:tenantUsageStatistics/get"
+            {
+              "name": "licenseOfficePrepaid:apiovh:tenantUsageStatistics/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -429,18 +473,22 @@ export const schema: Schema = {
       "path": "/license/officePrepaid/{serviceName}/tenantUsageStatistics"
     },
     {
-      "description": "Terminate your service",
+      "description": "Ask for the termination of your service. Admin contact of this service will receive a termination token in order to confirm its termination with /confirmTermination endpoint.",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Terminate your service",
+          "description": "Ask for the termination of your service",
           "httpMethod": "POST",
           "iamActions": [
-            "licenseOfficePrepaid:apiovh:terminate"
+            {
+              "name": "licenseOfficePrepaid:apiovh:terminate",
+              "required": true
+            }
           ],
+          "longDescription": "Ask for the termination of your service. Admin contact of this service will receive a termination token by email in order to confirm its termination with /confirmTermination endpoint.",
           "noAuthentication": false,
           "parameters": [
             {
@@ -468,7 +516,10 @@ export const schema: Schema = {
           "description": "Unconfigure the office user",
           "httpMethod": "POST",
           "iamActions": [
-            "licenseOfficePrepaid:apiovh:unconfigure"
+            {
+              "name": "licenseOfficePrepaid:apiovh:unconfigure",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -757,6 +808,77 @@ export const schema: Schema = {
       "id": "CountryEnum",
       "namespace": "coreTypes"
     },
+    "iam.ResourceMetadata": {
+      "description": "IAM resource metadata embedded in services models",
+      "id": "ResourceMetadata",
+      "namespace": "iam",
+      "properties": {
+        "displayName": {
+          "canBeNull": true,
+          "description": "Resource display name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Unique identifier of the resource",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "tags": {
+          "canBeNull": true,
+          "description": "Resource tags. Tags that were internally computed are prefixed with ovh:",
+          "fullType": "map[string]string",
+          "readOnly": true,
+          "required": false,
+          "type": "map[string]string"
+        },
+        "urn": {
+          "canBeNull": false,
+          "description": "Unique resource name used in policies",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter": {
+      "description": "Resource tag filter",
+      "id": "TagFilter",
+      "namespace": "iam.resource",
+      "properties": {
+        "operator": {
+          "canBeNull": true,
+          "description": "Operator to use in order to filter on the value (defaults to 'EQ')",
+          "fullType": "iam.resource.TagFilter.OperatorEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.resource.TagFilter.OperatorEnum"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value to use in order to filter tags",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter.OperatorEnum": {
+      "description": "Operator that can be used in order to filter resources tags",
+      "enum": [
+        "EQ"
+      ],
+      "enumType": "string",
+      "id": "OperatorEnum",
+      "namespace": "iam.resource.TagFilter"
+    },
     "license.office.LicenceEnum": {
       "description": "Office Licence",
       "enum": [
@@ -1023,6 +1145,100 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string"
+        },
+        "isVirtual": {
+          "canBeNull": false,
+          "description": "Specify if the user is actually a user slot (configureme) or a real user",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "lastName": {
+          "canBeNull": false,
+          "description": "User's last name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "licences": {
+          "canBeNull": false,
+          "description": "Licenses attributed to the user",
+          "fullType": "license.office.LicenceEnum[]",
+          "readOnly": true,
+          "required": false,
+          "type": "license.office.LicenceEnum[]"
+        },
+        "serviceName": {
+          "canBeNull": false,
+          "description": "User service name, used in invoices",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "User state",
+          "fullType": "license.office.UserStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "license.office.UserStateEnum"
+        },
+        "taskPendingId": {
+          "canBeNull": false,
+          "description": "Pending task id",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "tenantServiceName": {
+          "canBeNull": false,
+          "description": "User's tenant service name, used in invoices",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "usageLocation": {
+          "canBeNull": false,
+          "description": "ISO 3166-1 alpha-2 country code where the user is using Office365 services",
+          "fullType": "coreTypes.CountryEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "coreTypes.CountryEnum"
+        }
+      }
+    },
+    "license.officePrepaid.OfficeUserWithIAM": {
+      "description": "Office user",
+      "id": "OfficeUser",
+      "namespace": "license.officePrepaid",
+      "properties": {
+        "activationEmail": {
+          "canBeNull": false,
+          "description": "Email used to activate Microsoft Office",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "firstName": {
+          "canBeNull": false,
+          "description": "User's first name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "iam": {
+          "canBeNull": true,
+          "description": "IAM resource metadata",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.ResourceMetadata"
         },
         "isVirtual": {
           "canBeNull": false,

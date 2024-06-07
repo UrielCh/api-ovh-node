@@ -16,11 +16,22 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "storageNetApp:apiovh:get"
+            {
+              "name": "storageNetApp:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
-          "parameters": [],
-          "responseType": "storage.NetAppService[]"
+          "parameters": [
+            {
+              "dataType": "map[string][]iam.resource.TagFilter",
+              "description": "Filter resources on IAM tags",
+              "name": "iamTags",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "storage.NetAppServiceWithIAM[]"
         }
       ],
       "path": "/storage/netapp"
@@ -36,7 +47,10 @@ export const schema: Schema = {
           "description": "Get service details",
           "httpMethod": "GET",
           "iamActions": [
-            "storageNetApp:apiovh:get"
+            {
+              "name": "storageNetApp:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -49,7 +63,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "storage.NetAppService"
+          "responseType": "storage.NetAppServiceWithIAM"
         },
         {
           "apiStatus": {
@@ -59,7 +73,10 @@ export const schema: Schema = {
           "description": "Update service",
           "httpMethod": "PUT",
           "iamActions": [
-            "storageNetApp:apiovh:edit"
+            {
+              "name": "storageNetApp:apiovh:edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -95,7 +112,10 @@ export const schema: Schema = {
           "description": "Launch a contact change procedure",
           "httpMethod": "POST",
           "iamActions": [
-            "storageNetApp:apiovh:changeContact"
+            {
+              "name": "storageNetApp:apiovh:changeContact",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -138,17 +158,20 @@ export const schema: Schema = {
       "path": "/storage/netapp/{serviceName}/changeContact"
     },
     {
-      "description": "Confirm termination of your service",
+      "description": "Confirm service termination",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Confirm termination of your service",
+          "description": "Confirm service termination",
           "httpMethod": "POST",
           "iamActions": [
-            "storageNetApp:apiovh:confirmTermination"
+            {
+              "name": "storageNetApp:apiovh:confirmTermination",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -178,7 +201,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The termination token sent by mail to the admin contact",
+              "description": "The termination token sent by email to the admin contact",
               "fullType": "string",
               "name": "token",
               "paramType": "body",
@@ -199,6 +222,86 @@ export const schema: Schema = {
       "path": "/storage/netapp/{serviceName}/confirmTermination"
     },
     {
+      "description": "Network",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List networks",
+          "httpMethod": "GET",
+          "iamActions": [
+            {
+              "name": "storageNetApp:apiovh:network/get",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Service name",
+              "fullType": "uuid",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "Get detailed information about each network",
+              "fullType": "boolean",
+              "name": "detail",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "storage.NetAppNetwork[]"
+        }
+      ],
+      "path": "/storage/netapp/{serviceName}/network"
+    },
+    {
+      "description": "Network",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get network details",
+          "httpMethod": "GET",
+          "iamActions": [
+            {
+              "name": "storageNetApp:apiovh:network/get",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Network ID",
+              "fullType": "uuid",
+              "name": "networkId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Service name",
+              "fullType": "uuid",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "storage.NetAppNetwork"
+        }
+      ],
+      "path": "/storage/netapp/{serviceName}/network/{networkId}"
+    },
+    {
       "description": "Details about a Service",
       "operations": [
         {
@@ -206,10 +309,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get service information",
           "httpMethod": "GET",
           "iamActions": [
-            "storageNetApp:apiovh:serviceInfos/get"
+            {
+              "name": "storageNetApp:apiovh:serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -229,10 +335,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Update service information",
           "httpMethod": "PUT",
           "iamActions": [
-            "storageNetApp:apiovh:serviceInfos/edit"
+            {
+              "name": "storageNetApp:apiovh:serviceInfos/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -268,7 +377,10 @@ export const schema: Schema = {
           "description": "List available shares",
           "httpMethod": "GET",
           "iamActions": [
-            "storageNetApp:apiovh:share/get"
+            {
+              "name": "storageNetApp:apiovh:share/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -299,7 +411,10 @@ export const schema: Schema = {
           "description": "Create a share",
           "httpMethod": "POST",
           "iamActions": [
-            "storageNetApp:apiovh:share/create"
+            {
+              "name": "storageNetApp:apiovh:share/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -335,7 +450,10 @@ export const schema: Schema = {
           "description": "Delete a share",
           "httpMethod": "DELETE",
           "iamActions": [
-            "storageNetApp:apiovh:share/delete"
+            {
+              "name": "storageNetApp:apiovh:share/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -366,7 +484,10 @@ export const schema: Schema = {
           "description": "Get share details",
           "httpMethod": "GET",
           "iamActions": [
-            "storageNetApp:apiovh:share/get"
+            {
+              "name": "storageNetApp:apiovh:share/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -397,7 +518,10 @@ export const schema: Schema = {
           "description": "Update a share",
           "httpMethod": "PUT",
           "iamActions": [
-            "storageNetApp:apiovh:share/edit"
+            {
+              "name": "storageNetApp:apiovh:share/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -441,7 +565,10 @@ export const schema: Schema = {
           "description": "List available access paths",
           "httpMethod": "GET",
           "iamActions": [
-            "storageNetApp:apiovh:share/accessPath/get"
+            {
+              "name": "storageNetApp:apiovh:share/accessPath/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -478,7 +605,10 @@ export const schema: Schema = {
           "description": "Get access path details",
           "httpMethod": "GET",
           "iamActions": [
-            "storageNetApp:apiovh:share/accessPath/get"
+            {
+              "name": "storageNetApp:apiovh:share/accessPath/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -523,7 +653,10 @@ export const schema: Schema = {
           "description": "List available ACLs",
           "httpMethod": "GET",
           "iamActions": [
-            "storageNetApp:apiovh:share/acl/get"
+            {
+              "name": "storageNetApp:apiovh:share/acl/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -554,7 +687,10 @@ export const schema: Schema = {
           "description": "Create an ACL",
           "httpMethod": "POST",
           "iamActions": [
-            "storageNetApp:apiovh:share/acl/create"
+            {
+              "name": "storageNetApp:apiovh:share/acl/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -598,7 +734,10 @@ export const schema: Schema = {
           "description": "Delete an ACL",
           "httpMethod": "DELETE",
           "iamActions": [
-            "storageNetApp:apiovh:share/acl/delete"
+            {
+              "name": "storageNetApp:apiovh:share/acl/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -637,7 +776,10 @@ export const schema: Schema = {
           "description": "Get ACL details",
           "httpMethod": "GET",
           "iamActions": [
-            "storageNetApp:apiovh:share/acl/get"
+            {
+              "name": "storageNetApp:apiovh:share/acl/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -682,7 +824,10 @@ export const schema: Schema = {
           "description": "Extend share size",
           "httpMethod": "POST",
           "iamActions": [
-            "storageNetApp:apiovh:share/extend"
+            {
+              "name": "storageNetApp:apiovh:share/extend",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -716,6 +861,53 @@ export const schema: Schema = {
       "path": "/storage/netapp/{serviceName}/share/{shareId}/extend"
     },
     {
+      "description": "Revert a share to it's latest snapshot",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Revert a share to it's latest snapshot",
+          "httpMethod": "POST",
+          "iamActions": [
+            {
+              "name": "storageNetApp:apiovh:share/revertToSnapshot",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "storage.NetAppShareRevertToSnapshot",
+              "description": "Request Body",
+              "fullType": "storage.NetAppShareRevertToSnapshot",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Service name",
+              "fullType": "uuid",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Share ID",
+              "fullType": "uuid",
+              "name": "shareId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/storage/netapp/{serviceName}/share/{shareId}/revert"
+    },
+    {
       "description": "Share Shrink",
       "operations": [
         {
@@ -726,7 +918,10 @@ export const schema: Schema = {
           "description": "Shrink share size",
           "httpMethod": "POST",
           "iamActions": [
-            "storageNetApp:apiovh:share/shrink"
+            {
+              "name": "storageNetApp:apiovh:share/shrink",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -770,7 +965,10 @@ export const schema: Schema = {
           "description": "List available snapshots",
           "httpMethod": "GET",
           "iamActions": [
-            "storageNetApp:apiovh:share/snapshot/get"
+            {
+              "name": "storageNetApp:apiovh:share/snapshot/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -809,7 +1007,10 @@ export const schema: Schema = {
           "description": "Create a snapshot",
           "httpMethod": "POST",
           "iamActions": [
-            "storageNetApp:apiovh:share/snapshot/create"
+            {
+              "name": "storageNetApp:apiovh:share/snapshot/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -853,7 +1054,10 @@ export const schema: Schema = {
           "description": "Delete a snapshot",
           "httpMethod": "DELETE",
           "iamActions": [
-            "storageNetApp:apiovh:share/snapshot/delete"
+            {
+              "name": "storageNetApp:apiovh:share/snapshot/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -892,7 +1096,10 @@ export const schema: Schema = {
           "description": "Get snapshot details",
           "httpMethod": "GET",
           "iamActions": [
-            "storageNetApp:apiovh:share/snapshot/get"
+            {
+              "name": "storageNetApp:apiovh:share/snapshot/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -931,7 +1138,10 @@ export const schema: Schema = {
           "description": "Update a snapshot",
           "httpMethod": "PUT",
           "iamActions": [
-            "storageNetApp:apiovh:share/snapshot/edit"
+            {
+              "name": "storageNetApp:apiovh:share/snapshot/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -983,7 +1193,10 @@ export const schema: Schema = {
           "description": "Hold an automatic share snapshot",
           "httpMethod": "POST",
           "iamActions": [
-            "storageNetApp:apiovh:share/snapshot/hold"
+            {
+              "name": "storageNetApp:apiovh:share/snapshot/hold",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1028,7 +1241,10 @@ export const schema: Schema = {
           "description": "Get snapshot policy used by a share",
           "httpMethod": "GET",
           "iamActions": [
-            "storageNetApp:apiovh:share/snapshotPolicy/get"
+            {
+              "name": "storageNetApp:apiovh:share/snapshotPolicy/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1059,7 +1275,10 @@ export const schema: Schema = {
           "description": "Update snapshot policy used by a share",
           "httpMethod": "PUT",
           "iamActions": [
-            "storageNetApp:apiovh:share/snapshotPolicy/edit"
+            {
+              "name": "storageNetApp:apiovh:share/snapshotPolicy/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1103,7 +1322,10 @@ export const schema: Schema = {
           "description": "Get snapshot reserve properties of a share",
           "httpMethod": "GET",
           "iamActions": [
-            "storageNetApp:apiovh:share/snapshotReserve/get"
+            {
+              "name": "storageNetApp:apiovh:share/snapshotReserve/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1134,7 +1356,10 @@ export const schema: Schema = {
           "description": "Update snapshot reserve properties of a share",
           "httpMethod": "PUT",
           "iamActions": [
-            "storageNetApp:apiovh:share/snapshotReserve/edit"
+            {
+              "name": "storageNetApp:apiovh:share/snapshotReserve/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1178,7 +1403,10 @@ export const schema: Schema = {
           "description": "Get a list of snapshot policies",
           "httpMethod": "GET",
           "iamActions": [
-            "storageNetApp:apiovh:snapshotPolicy/get"
+            {
+              "name": "storageNetApp:apiovh:snapshotPolicy/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1201,7 +1429,10 @@ export const schema: Schema = {
           "description": "Create a snapshot policy",
           "httpMethod": "POST",
           "iamActions": [
-            "storageNetApp:apiovh:snapshotPolicy/create"
+            {
+              "name": "storageNetApp:apiovh:snapshotPolicy/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1237,7 +1468,10 @@ export const schema: Schema = {
           "description": "Delete a snapshot policy",
           "httpMethod": "DELETE",
           "iamActions": [
-            "storageNetApp:apiovh:snapshotPolicy/delete"
+            {
+              "name": "storageNetApp:apiovh:snapshotPolicy/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1268,7 +1502,10 @@ export const schema: Schema = {
           "description": "Get snapshot policy details",
           "httpMethod": "GET",
           "iamActions": [
-            "storageNetApp:apiovh:snapshotPolicy/get"
+            {
+              "name": "storageNetApp:apiovh:snapshotPolicy/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1299,7 +1536,10 @@ export const schema: Schema = {
           "description": "Update a snapshot policy",
           "httpMethod": "PUT",
           "iamActions": [
-            "storageNetApp:apiovh:snapshotPolicy/edit"
+            {
+              "name": "storageNetApp:apiovh:snapshotPolicy/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1333,18 +1573,22 @@ export const schema: Schema = {
       "path": "/storage/netapp/{serviceName}/snapshotPolicy/{snapshotPolicyId}"
     },
     {
-      "description": "Terminate your service",
+      "description": "Ask for the termination of your service. Admin contact of this service will receive a termination token in order to confirm its termination with /confirmTermination endpoint.",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Terminate your service",
+          "description": "Ask for the termination of your service",
           "httpMethod": "POST",
           "iamActions": [
-            "storageNetApp:apiovh:terminate"
+            {
+              "name": "storageNetApp:apiovh:terminate",
+              "required": true
+            }
           ],
+          "longDescription": "Ask for the termination of your service. Admin contact of this service will receive a termination token by email in order to confirm its termination with /confirmTermination endpoint.",
           "noAuthentication": false,
           "parameters": [
             {
@@ -1364,6 +1608,77 @@ export const schema: Schema = {
   ],
   "basePath": "https://eu.api.ovh.com/1.0",
   "models": {
+    "iam.ResourceMetadata": {
+      "description": "IAM resource metadata embedded in services models",
+      "id": "ResourceMetadata",
+      "namespace": "iam",
+      "properties": {
+        "displayName": {
+          "canBeNull": true,
+          "description": "Resource display name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Unique identifier of the resource",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "tags": {
+          "canBeNull": true,
+          "description": "Resource tags. Tags that were internally computed are prefixed with ovh:",
+          "fullType": "map[string]string",
+          "readOnly": true,
+          "required": false,
+          "type": "map[string]string"
+        },
+        "urn": {
+          "canBeNull": false,
+          "description": "Unique resource name used in policies",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter": {
+      "description": "Resource tag filter",
+      "id": "TagFilter",
+      "namespace": "iam.resource",
+      "properties": {
+        "operator": {
+          "canBeNull": true,
+          "description": "Operator to use in order to filter on the value (defaults to 'EQ')",
+          "fullType": "iam.resource.TagFilter.OperatorEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.resource.TagFilter.OperatorEnum"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value to use in order to filter tags",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter.OperatorEnum": {
+      "description": "Operator that can be used in order to filter resources tags",
+      "enum": [
+        "EQ"
+      ],
+      "enumType": "string",
+      "id": "OperatorEnum",
+      "namespace": "iam.resource.TagFilter"
+    },
     "service.RenewType": {
       "description": "Map a possible renew for a specific service",
       "id": "RenewType",
@@ -1569,6 +1884,49 @@ export const schema: Schema = {
         }
       }
     },
+    "storage.NetAppNetwork": {
+      "description": "A network",
+      "id": "NetAppNetwork",
+      "namespace": "storage",
+      "properties": {
+        "id": {
+          "canBeNull": false,
+          "description": "Network ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "status": {
+          "canBeNull": true,
+          "description": "Network status",
+          "fullType": "storage.NetAppNetworkStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "storage.NetAppNetworkStatusEnum"
+        },
+        "vRackServicesURN": {
+          "canBeNull": true,
+          "description": "vRack Services URN the network is attached to",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "storage.NetAppNetworkStatusEnum": {
+      "description": "Network status",
+      "enum": [
+        "associated",
+        "associating",
+        "dissociating",
+        "to_configure"
+      ],
+      "enumType": "string",
+      "id": "NetAppNetworkStatusEnum",
+      "namespace": "storage"
+    },
     "storage.NetAppService": {
       "description": "A service",
       "id": "NetAppService",
@@ -1676,6 +2034,84 @@ export const schema: Schema = {
           "readOnly": false,
           "required": true,
           "type": "string"
+        }
+      }
+    },
+    "storage.NetAppServiceWithIAM": {
+      "description": "A service",
+      "id": "NetAppService",
+      "namespace": "storage",
+      "properties": {
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Service creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "iam": {
+          "canBeNull": true,
+          "description": "IAM resource metadata",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.ResourceMetadata"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Service ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Service name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "performanceLevel": {
+          "canBeNull": false,
+          "description": "Service performance level",
+          "fullType": "storage.NetAppServicePerformanceLevelEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "storage.NetAppServicePerformanceLevelEnum"
+        },
+        "product": {
+          "canBeNull": false,
+          "description": "Product name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "quota": {
+          "canBeNull": false,
+          "description": "Service quota",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Service region",
+          "fullType": "storage.RegionEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "storage.RegionEnum"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Service status",
+          "fullType": "storage.NetAppServiceStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "storage.NetAppServiceStatusEnum"
         }
       }
     },
@@ -1866,14 +2302,6 @@ export const schema: Schema = {
       "id": "NetAppShareExtendOrShrink",
       "namespace": "storage",
       "properties": {
-        "id": {
-          "canBeNull": false,
-          "description": "Share ID",
-          "fullType": "uuid",
-          "readOnly": true,
-          "required": false,
-          "type": "uuid"
-        },
         "size": {
           "canBeNull": true,
           "description": "Share size in Gigabytes",
@@ -1881,6 +2309,21 @@ export const schema: Schema = {
           "readOnly": false,
           "required": true,
           "type": "long"
+        }
+      }
+    },
+    "storage.NetAppShareRevertToSnapshot": {
+      "description": "A share",
+      "id": "NetAppShareRevertToSnapshot",
+      "namespace": "storage",
+      "properties": {
+        "snapshotID": {
+          "canBeNull": false,
+          "description": "Latest share snapshot",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": true,
+          "type": "uuid"
         }
       }
     },
@@ -2341,6 +2784,7 @@ export const schema: Schema = {
       "description": "Region of customer's service",
       "enum": [
         "BHS",
+        "GRA",
         "LIM",
         "RBX",
         "SBG"

@@ -16,7 +16,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseSqlServer:apiovh:get"
+            {
+              "name": "licenseSqlServer:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -36,7 +39,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseSqlServer:apiovh:get"
+            {
+              "name": "licenseSqlServer:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -55,17 +61,20 @@ export const schema: Schema = {
       "path": "/license/sqlserver/{serviceName}"
     },
     {
-      "description": "Confirm termination of your service",
+      "description": "Confirm service termination",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Confirm termination of your service",
+          "description": "Confirm service termination",
           "httpMethod": "POST",
           "iamActions": [
-            "licenseSqlServer:apiovh:confirmTermination"
+            {
+              "name": "licenseSqlServer:apiovh:confirmTermination",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -95,7 +104,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The termination token sent by mail to the admin contact",
+              "description": "The termination token sent by email to the admin contact",
               "fullType": "string",
               "name": "token",
               "paramType": "body",
@@ -123,10 +132,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get service information",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseSqlServer:apiovh:serviceInfos/get"
+            {
+              "name": "licenseSqlServer:apiovh:serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -146,10 +158,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Update service information",
           "httpMethod": "PUT",
           "iamActions": [
-            "licenseSqlServer:apiovh:serviceInfos/edit"
+            {
+              "name": "licenseSqlServer:apiovh:serviceInfos/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -185,7 +200,10 @@ export const schema: Schema = {
           "description": "Tasks linked to this license",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseSqlServer:apiovh:tasks/get"
+            {
+              "name": "licenseSqlServer:apiovh:tasks/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -230,7 +248,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseSqlServer:apiovh:tasks/get"
+            {
+              "name": "licenseSqlServer:apiovh:tasks/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -257,18 +278,22 @@ export const schema: Schema = {
       "path": "/license/sqlserver/{serviceName}/tasks/{taskId}"
     },
     {
-      "description": "Terminate your service",
+      "description": "Ask for the termination of your service. Admin contact of this service will receive a termination token in order to confirm its termination with /confirmTermination endpoint.",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Terminate your service",
+          "description": "Ask for the termination of your service",
           "httpMethod": "POST",
           "iamActions": [
-            "licenseSqlServer:apiovh:terminate"
+            {
+              "name": "licenseSqlServer:apiovh:terminate",
+              "required": true
+            }
           ],
+          "longDescription": "Ask for the termination of your service. Admin contact of this service will receive a termination token by email in order to confirm its termination with /confirmTermination endpoint.",
           "noAuthentication": false,
           "parameters": [
             {
@@ -296,7 +321,10 @@ export const schema: Schema = {
           "description": "Get the orderable Sql Server versions",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:licenseSqlServer/orderableVersions/get"
+            {
+              "name": "account:apiovh:licenseSqlServer/orderableVersions/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -474,6 +502,7 @@ export const schema: Schema = {
         "SQL_SERVER_2017_WEB_EDITION_6_CORES",
         "SQL_SERVER_2017_WEB_EDITION_8_CORES",
         "SQL_SERVER_2019_ENTERPRISE_EDITION_10_CORES",
+        "SQL_SERVER_2019_ENTERPRISE_EDITION_128_CORES",
         "SQL_SERVER_2019_ENTERPRISE_EDITION_12_CORES",
         "SQL_SERVER_2019_ENTERPRISE_EDITION_14_CORES",
         "SQL_SERVER_2019_ENTERPRISE_EDITION_16_CORES",
@@ -504,7 +533,9 @@ export const schema: Schema = {
         "SQL_SERVER_2019_ENTERPRISE_EDITION_64_CORES",
         "SQL_SERVER_2019_ENTERPRISE_EDITION_6_CORES",
         "SQL_SERVER_2019_ENTERPRISE_EDITION_8_CORES",
+        "SQL_SERVER_2019_ENTERPRISE_EDITION_96_CORES",
         "SQL_SERVER_2019_STANDARD_EDITION_10_CORES",
+        "SQL_SERVER_2019_STANDARD_EDITION_128_CORES",
         "SQL_SERVER_2019_STANDARD_EDITION_12_CORES",
         "SQL_SERVER_2019_STANDARD_EDITION_14_CORES",
         "SQL_SERVER_2019_STANDARD_EDITION_16_CORES",
@@ -535,7 +566,9 @@ export const schema: Schema = {
         "SQL_SERVER_2019_STANDARD_EDITION_64_CORES",
         "SQL_SERVER_2019_STANDARD_EDITION_6_CORES",
         "SQL_SERVER_2019_STANDARD_EDITION_8_CORES",
+        "SQL_SERVER_2019_STANDARD_EDITION_96_CORES",
         "SQL_SERVER_2019_WEB_EDITION_10_CORES",
+        "SQL_SERVER_2019_WEB_EDITION_128_CORES",
         "SQL_SERVER_2019_WEB_EDITION_12_CORES",
         "SQL_SERVER_2019_WEB_EDITION_14_CORES",
         "SQL_SERVER_2019_WEB_EDITION_16_CORES",
@@ -566,6 +599,106 @@ export const schema: Schema = {
         "SQL_SERVER_2019_WEB_EDITION_64_CORES",
         "SQL_SERVER_2019_WEB_EDITION_6_CORES",
         "SQL_SERVER_2019_WEB_EDITION_8_CORES",
+        "SQL_SERVER_2019_WEB_EDITION_96_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_10_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_128_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_12_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_14_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_16_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_18_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_20_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_22_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_24_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_26_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_28_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_30_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_32_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_34_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_36_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_38_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_40_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_42_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_44_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_46_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_48_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_4_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_50_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_52_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_54_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_56_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_58_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_60_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_62_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_64_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_6_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_8_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_96_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_10_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_128_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_12_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_14_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_16_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_18_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_20_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_22_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_24_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_26_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_28_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_30_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_32_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_34_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_36_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_38_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_40_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_42_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_44_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_46_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_48_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_4_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_50_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_52_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_54_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_56_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_58_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_60_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_62_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_64_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_6_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_8_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_96_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_10_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_128_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_12_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_14_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_16_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_18_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_20_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_22_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_24_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_26_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_28_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_30_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_32_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_34_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_36_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_38_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_40_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_42_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_44_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_46_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_48_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_4_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_50_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_52_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_54_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_56_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_58_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_60_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_62_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_64_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_6_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_8_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_96_CORES",
         "sql-server-2008-license-standard-edition-2-cpu",
         "sql-server-2008-license-standard-edition-4-cpu",
         "sql-server-2008-license-web-edition-2-cpu",
@@ -655,6 +788,7 @@ export const schema: Schema = {
         "sql-server-2017-license-web-edition-8-cores",
         "sql-server-2019-license-enterprise-edition-10-cores",
         "sql-server-2019-license-enterprise-edition-12-cores",
+        "sql-server-2019-license-enterprise-edition-128-cores",
         "sql-server-2019-license-enterprise-edition-14-cores",
         "sql-server-2019-license-enterprise-edition-16-cores",
         "sql-server-2019-license-enterprise-edition-18-cores",
@@ -684,8 +818,10 @@ export const schema: Schema = {
         "sql-server-2019-license-enterprise-edition-62-cores",
         "sql-server-2019-license-enterprise-edition-64-cores",
         "sql-server-2019-license-enterprise-edition-8-cores",
+        "sql-server-2019-license-enterprise-edition-96-cores",
         "sql-server-2019-license-standard-edition-10-cores",
         "sql-server-2019-license-standard-edition-12-cores",
+        "sql-server-2019-license-standard-edition-128-cores",
         "sql-server-2019-license-standard-edition-14-cores",
         "sql-server-2019-license-standard-edition-16-cores",
         "sql-server-2019-license-standard-edition-18-cores",
@@ -715,8 +851,10 @@ export const schema: Schema = {
         "sql-server-2019-license-standard-edition-62-cores",
         "sql-server-2019-license-standard-edition-64-cores",
         "sql-server-2019-license-standard-edition-8-cores",
+        "sql-server-2019-license-standard-edition-96-cores",
         "sql-server-2019-license-web-edition-10-cores",
         "sql-server-2019-license-web-edition-12-cores",
+        "sql-server-2019-license-web-edition-128-cores",
         "sql-server-2019-license-web-edition-14-cores",
         "sql-server-2019-license-web-edition-16-cores",
         "sql-server-2019-license-web-edition-18-cores",
@@ -745,7 +883,107 @@ export const schema: Schema = {
         "sql-server-2019-license-web-edition-60-cores",
         "sql-server-2019-license-web-edition-62-cores",
         "sql-server-2019-license-web-edition-64-cores",
-        "sql-server-2019-license-web-edition-8-cores"
+        "sql-server-2019-license-web-edition-8-cores",
+        "sql-server-2019-license-web-edition-96-cores",
+        "sql-server-2022-license-enterprise-edition-10-cores",
+        "sql-server-2022-license-enterprise-edition-12-cores",
+        "sql-server-2022-license-enterprise-edition-128-cores",
+        "sql-server-2022-license-enterprise-edition-14-cores",
+        "sql-server-2022-license-enterprise-edition-16-cores",
+        "sql-server-2022-license-enterprise-edition-18-cores",
+        "sql-server-2022-license-enterprise-edition-20-cores",
+        "sql-server-2022-license-enterprise-edition-22-cores",
+        "sql-server-2022-license-enterprise-edition-24-cores",
+        "sql-server-2022-license-enterprise-edition-26-cores",
+        "sql-server-2022-license-enterprise-edition-28-cores",
+        "sql-server-2022-license-enterprise-edition-30-cores",
+        "sql-server-2022-license-enterprise-edition-32-cores",
+        "sql-server-2022-license-enterprise-edition-34-cores",
+        "sql-server-2022-license-enterprise-edition-36-cores",
+        "sql-server-2022-license-enterprise-edition-38-cores",
+        "sql-server-2022-license-enterprise-edition-4-cores",
+        "sql-server-2022-license-enterprise-edition-40-cores",
+        "sql-server-2022-license-enterprise-edition-42-cores",
+        "sql-server-2022-license-enterprise-edition-44-cores",
+        "sql-server-2022-license-enterprise-edition-46-cores",
+        "sql-server-2022-license-enterprise-edition-48-cores",
+        "sql-server-2022-license-enterprise-edition-50-cores",
+        "sql-server-2022-license-enterprise-edition-52-cores",
+        "sql-server-2022-license-enterprise-edition-54-cores",
+        "sql-server-2022-license-enterprise-edition-56-cores",
+        "sql-server-2022-license-enterprise-edition-58-cores",
+        "sql-server-2022-license-enterprise-edition-6-cores",
+        "sql-server-2022-license-enterprise-edition-60-cores",
+        "sql-server-2022-license-enterprise-edition-62-cores",
+        "sql-server-2022-license-enterprise-edition-64-cores",
+        "sql-server-2022-license-enterprise-edition-8-cores",
+        "sql-server-2022-license-enterprise-edition-96-cores",
+        "sql-server-2022-license-standard-edition-10-cores",
+        "sql-server-2022-license-standard-edition-12-cores",
+        "sql-server-2022-license-standard-edition-128-cores",
+        "sql-server-2022-license-standard-edition-14-cores",
+        "sql-server-2022-license-standard-edition-16-cores",
+        "sql-server-2022-license-standard-edition-18-cores",
+        "sql-server-2022-license-standard-edition-20-cores",
+        "sql-server-2022-license-standard-edition-22-cores",
+        "sql-server-2022-license-standard-edition-24-cores",
+        "sql-server-2022-license-standard-edition-26-cores",
+        "sql-server-2022-license-standard-edition-28-cores",
+        "sql-server-2022-license-standard-edition-30-cores",
+        "sql-server-2022-license-standard-edition-32-cores",
+        "sql-server-2022-license-standard-edition-34-cores",
+        "sql-server-2022-license-standard-edition-36-cores",
+        "sql-server-2022-license-standard-edition-38-cores",
+        "sql-server-2022-license-standard-edition-4-cores",
+        "sql-server-2022-license-standard-edition-40-cores",
+        "sql-server-2022-license-standard-edition-42-cores",
+        "sql-server-2022-license-standard-edition-44-cores",
+        "sql-server-2022-license-standard-edition-46-cores",
+        "sql-server-2022-license-standard-edition-48-cores",
+        "sql-server-2022-license-standard-edition-50-cores",
+        "sql-server-2022-license-standard-edition-52-cores",
+        "sql-server-2022-license-standard-edition-54-cores",
+        "sql-server-2022-license-standard-edition-56-cores",
+        "sql-server-2022-license-standard-edition-58-cores",
+        "sql-server-2022-license-standard-edition-6-cores",
+        "sql-server-2022-license-standard-edition-60-cores",
+        "sql-server-2022-license-standard-edition-62-cores",
+        "sql-server-2022-license-standard-edition-64-cores",
+        "sql-server-2022-license-standard-edition-8-cores",
+        "sql-server-2022-license-standard-edition-96-cores",
+        "sql-server-2022-license-web-edition-10-cores",
+        "sql-server-2022-license-web-edition-12-cores",
+        "sql-server-2022-license-web-edition-128-cores",
+        "sql-server-2022-license-web-edition-14-cores",
+        "sql-server-2022-license-web-edition-16-cores",
+        "sql-server-2022-license-web-edition-18-cores",
+        "sql-server-2022-license-web-edition-20-cores",
+        "sql-server-2022-license-web-edition-22-cores",
+        "sql-server-2022-license-web-edition-24-cores",
+        "sql-server-2022-license-web-edition-26-cores",
+        "sql-server-2022-license-web-edition-28-cores",
+        "sql-server-2022-license-web-edition-30-cores",
+        "sql-server-2022-license-web-edition-32-cores",
+        "sql-server-2022-license-web-edition-34-cores",
+        "sql-server-2022-license-web-edition-36-cores",
+        "sql-server-2022-license-web-edition-38-cores",
+        "sql-server-2022-license-web-edition-4-cores",
+        "sql-server-2022-license-web-edition-40-cores",
+        "sql-server-2022-license-web-edition-42-cores",
+        "sql-server-2022-license-web-edition-44-cores",
+        "sql-server-2022-license-web-edition-46-cores",
+        "sql-server-2022-license-web-edition-48-cores",
+        "sql-server-2022-license-web-edition-50-cores",
+        "sql-server-2022-license-web-edition-52-cores",
+        "sql-server-2022-license-web-edition-54-cores",
+        "sql-server-2022-license-web-edition-56-cores",
+        "sql-server-2022-license-web-edition-58-cores",
+        "sql-server-2022-license-web-edition-6-cores",
+        "sql-server-2022-license-web-edition-60-cores",
+        "sql-server-2022-license-web-edition-62-cores",
+        "sql-server-2022-license-web-edition-64-cores",
+        "sql-server-2022-license-web-edition-8-cores",
+        "sql-server-2022-license-web-edition-96-cores"
       ],
       "enumType": "string",
       "id": "SqlServerVersionEnum",

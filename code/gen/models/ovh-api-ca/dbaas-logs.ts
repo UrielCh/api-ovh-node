@@ -16,10 +16,21 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:get"
+            {
+              "name": "ldp:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
-          "parameters": [],
+          "parameters": [
+            {
+              "dataType": "map[string][]iam.resource.TagFilter",
+              "description": "Filter resources on IAM tags",
+              "name": "iamTags",
+              "paramType": "query",
+              "required": false
+            }
+          ],
           "responseType": "string[]"
         }
       ],
@@ -39,7 +50,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:get"
+            {
+              "name": "ldp:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -52,7 +66,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Service"
+          "responseType": "dbaas.logs.ServiceWithIAM"
         },
         {
           "apiStatus": {
@@ -69,7 +83,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "PUT",
           "iamActions": [
-            "ldp:apiovh:edit"
+            {
+              "name": "ldp:apiovh:edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -105,7 +122,10 @@ export const schema: Schema = {
           "description": "Launch a contact change procedure",
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:changeContact"
+            {
+              "name": "ldp:apiovh:changeContact",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -161,7 +181,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:cluster/get"
+            {
+              "name": "ldp:apiovh:cluster/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -172,6 +195,14 @@ export const schema: Schema = {
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter by name (like)",
+              "fullType": "string",
+              "name": "namePattern",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "uuid[]"
@@ -195,7 +226,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:cluster/get"
+            {
+              "name": "ldp:apiovh:cluster/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -240,7 +274,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "PUT",
           "iamActions": [
-            "ldp:apiovh:cluster/edit"
+            {
+              "name": "ldp:apiovh:cluster/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -290,7 +327,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:cluster/retention/get"
+            {
+              "name": "ldp:apiovh:cluster/retention/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -334,7 +374,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:cluster/retention/get"
+            {
+              "name": "ldp:apiovh:cluster/retention/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -373,8 +416,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Return the list of registred encryption keys",
           "errors": [
@@ -382,7 +425,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:encryptionKey/get"
+            {
+              "name": "ldp:apiovh:encryptionKey/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -393,14 +439,22 @@ export const schema: Schema = {
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter by title (like)",
+              "fullType": "string",
+              "name": "titlePattern",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "uuid[]"
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Add a new encryption key",
           "errors": [
@@ -417,7 +471,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:encryptionKey/create"
+            {
+              "name": "ldp:apiovh:encryptionKey/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -447,8 +504,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Delete the specified encryption key",
           "errors": [
@@ -462,7 +519,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "DELETE",
           "iamActions": [
-            "ldp:apiovh:encryptionKey/delete"
+            {
+              "name": "ldp:apiovh:encryptionKey/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -487,8 +547,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Return details of an encryption key",
           "errors": [
@@ -499,7 +559,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:encryptionKey/get"
+            {
+              "name": "ldp:apiovh:encryptionKey/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -539,7 +602,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:input/get"
+            {
+              "name": "ldp:apiovh:input/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -550,6 +616,14 @@ export const schema: Schema = {
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter by title (like)",
+              "fullType": "string",
+              "name": "titlePattern",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "uuid[]"
@@ -588,7 +662,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:input/create"
+            {
+              "name": "ldp:apiovh:input/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -633,7 +710,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "DELETE",
           "iamActions": [
-            "ldp:apiovh:input/delete"
+            {
+              "name": "ldp:apiovh:input/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -669,7 +749,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:input/get"
+            {
+              "name": "ldp:apiovh:input/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -726,7 +809,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "PUT",
           "iamActions": [
-            "ldp:apiovh:input/edit"
+            {
+              "name": "ldp:apiovh:input/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -775,7 +861,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:input/action/get"
+            {
+              "name": "ldp:apiovh:input/action/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -821,7 +910,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:input/configtest/validate"
+            {
+              "name": "ldp:apiovh:input/configtest/validate",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -863,7 +955,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:input/configtest/result/get"
+            {
+              "name": "ldp:apiovh:input/configtest/result/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -906,7 +1001,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:input/configuration/flowgger/get"
+            {
+              "name": "ldp:apiovh:input/configuration/flowgger/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -947,7 +1045,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "PUT",
           "iamActions": [
-            "ldp:apiovh:input/configuration/flowgger/edit"
+            {
+              "name": "ldp:apiovh:input/configuration/flowgger/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -996,7 +1097,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:input/configuration/logstash/get"
+            {
+              "name": "ldp:apiovh:input/configuration/logstash/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1038,7 +1142,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "PUT",
           "iamActions": [
-            "ldp:apiovh:input/configuration/logstash/edit"
+            {
+              "name": "ldp:apiovh:input/configuration/logstash/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1091,7 +1198,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:input/end"
+            {
+              "name": "ldp:apiovh:input/end",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1135,7 +1245,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:input/logs/url/generate"
+            {
+              "name": "ldp:apiovh:input/logs/url/generate",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1181,7 +1294,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:input/restart"
+            {
+              "name": "ldp:apiovh:input/restart",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1227,7 +1343,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:input/start"
+            {
+              "name": "ldp:apiovh:input/start",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1269,7 +1388,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:input/url/get"
+            {
+              "name": "ldp:apiovh:input/url/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1306,7 +1428,10 @@ export const schema: Schema = {
           "description": "Returns the list of available input engines",
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:input/engine/get"
+            {
+              "name": "ldp:apiovh:input/engine/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1339,7 +1464,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:input/engine/get"
+            {
+              "name": "ldp:apiovh:input/engine/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1379,7 +1507,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:input/engine/helper/get"
+            {
+              "name": "ldp:apiovh:input/engine/helper/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1420,7 +1551,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:input/engine/helper/get"
+            {
+              "name": "ldp:apiovh:input/engine/helper/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1468,7 +1602,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:metrics/get"
+            {
+              "name": "ldp:apiovh:metrics/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1500,7 +1637,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:operation/get"
+            {
+              "name": "ldp:apiovh:operation/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1534,7 +1674,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:operation/get"
+            {
+              "name": "ldp:apiovh:operation/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1561,1103 +1704,6 @@ export const schema: Schema = {
       "path": "/dbaas/logs/{serviceName}/operation/{operationId}"
     },
     {
-      "description": "Aliases",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
-            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
-            "description": "Deprecated, will be removed",
-            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/alias",
-            "value": "DEPRECATED"
-          },
-          "description": "Returns the list of alias for connected user",
-          "errors": [
-            "Client::NotFound::ServiceDoesNotExists"
-          ],
-          "httpMethod": "GET",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/alias/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "uuid[]"
-        },
-        {
-          "apiStatus": {
-            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
-            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
-            "description": "Deprecated, will be removed",
-            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/alias",
-            "value": "DEPRECATED"
-          },
-          "description": "Register a new elasticsearch alias",
-          "errors": [
-            "Client::ValidationError::InvalidNameContain",
-            "Client::ValidationError::InvalidNameLenght",
-            "Client::ValidationError::InvalidNameLowercase",
-            "Client::ValidationError::InvalidNameMatch",
-            "Client::ValidationError::InvalidNameStart",
-            "Client::ValidationError::InvalidNameWhitespace",
-            "Client::ValidationError::RequiredField",
-            "Client::Forbidden::Busy",
-            "Client::Forbidden::ItemQuotaReached",
-            "Client::NotFound::ClusterDoesNotExists",
-            "Client::NotFound::ServiceDoesNotExists",
-            "Client::Conflict::AlreadyExists"
-          ],
-          "httpMethod": "POST",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/alias/create"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "dbaas.logs.OutputElasticsearchAliasCreation",
-              "description": "Request Body",
-              "fullType": "dbaas.logs.OutputElasticsearchAliasCreation",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Operation"
-        }
-      ],
-      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/alias"
-    },
-    {
-      "description": "Aliases",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
-            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
-            "description": "Deprecated, will be removed",
-            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/alias",
-            "value": "DEPRECATED"
-          },
-          "description": "Remove specified elasticsearch alias",
-          "errors": [
-            "Client::ValidationError::AliasHasLinkedStreams",
-            "Client::ValidationError::InvalidUUID",
-            "Client::Forbidden::Busy",
-            "Client::Forbidden::OnlyOwnerCanPerformAction",
-            "Client::NotFound::ServiceDoesNotExists"
-          ],
-          "httpMethod": "DELETE",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/alias/delete"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Alias ID",
-              "fullType": "uuid",
-              "name": "aliasId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Operation"
-        },
-        {
-          "apiStatus": {
-            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
-            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
-            "description": "Deprecated, will be removed",
-            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/alias",
-            "value": "DEPRECATED"
-          },
-          "description": "Returns specified elasticsearch alias",
-          "errors": [
-            "Client::ValidationError::InvalidUUID",
-            "Client::NotFound::AliasDoesNotExists",
-            "Client::NotFound::ServiceDoesNotExists"
-          ],
-          "httpMethod": "GET",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/alias/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Alias ID",
-              "fullType": "uuid",
-              "name": "aliasId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Alias"
-        },
-        {
-          "apiStatus": {
-            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
-            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
-            "description": "Deprecated, will be removed",
-            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/alias",
-            "value": "DEPRECATED"
-          },
-          "description": "Update specified elasticsearch alias",
-          "errors": [
-            "Client::ValidationError::InvalidUUID",
-            "Client::ValidationError::RequiredField",
-            "Client::PaymentRequired::QuotaReached",
-            "Client::Forbidden::Busy",
-            "Client::Forbidden::ItemQuotaReached",
-            "Client::Forbidden::OnlyOwnerCanPerformAction",
-            "Client::NotFound::ServiceDoesNotExists"
-          ],
-          "httpMethod": "PUT",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/alias/edit"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "dbaas.logs.OutputElasticsearchAliasUpdate",
-              "description": "Request Body",
-              "fullType": "dbaas.logs.OutputElasticsearchAliasUpdate",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "uuid",
-              "description": "Alias ID",
-              "fullType": "uuid",
-              "name": "aliasId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Operation"
-        }
-      ],
-      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}"
-    },
-    {
-      "description": "AliasStreams",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
-            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
-            "description": "Deprecated, will be removed",
-            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/alias/{aliasId}/index",
-            "value": "DEPRECATED"
-          },
-          "description": "Returns the list of Elasticsearch indexes attached to specified Elasticsearch alias",
-          "errors": [
-            "Client::ValidationError::InvalidUUID",
-            "Client::NotFound::AliasDoesNotExists",
-            "Client::NotFound::ServiceDoesNotExists"
-          ],
-          "httpMethod": "GET",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/alias/index/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Alias ID",
-              "fullType": "uuid",
-              "name": "aliasId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "uuid[]"
-        },
-        {
-          "apiStatus": {
-            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
-            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
-            "description": "Deprecated, will be removed",
-            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/alias/{aliasId}/index",
-            "value": "DEPRECATED"
-          },
-          "description": "Attach a elasticsearch index to specified elasticsearch alias",
-          "errors": [
-            "Client::ValidationError::CannotMixStreamAndIndex",
-            "Client::ValidationError::InvalidUUID",
-            "Client::ValidationError::RequiredField",
-            "Client::Forbidden::Busy",
-            "Client::Forbidden::IndexAlreadyLinked",
-            "Client::Forbidden::NotOnSameCluster",
-            "Client::Forbidden::OnlyOwnerCanPerformAction",
-            "Client::NotFound::AliasDoesNotExists",
-            "Client::NotFound::ServiceDoesNotExists"
-          ],
-          "httpMethod": "POST",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/alias/index/attach"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "dbaas.logs.OutputElasticsearchAliasIndexCreation",
-              "description": "Request Body",
-              "fullType": "dbaas.logs.OutputElasticsearchAliasIndexCreation",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "uuid",
-              "description": "Alias ID",
-              "fullType": "uuid",
-              "name": "aliasId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Operation"
-        }
-      ],
-      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index"
-    },
-    {
-      "description": "AliasStreams",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
-            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
-            "description": "Deprecated, will be removed",
-            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/alias/{aliasId}/index",
-            "value": "DEPRECATED"
-          },
-          "description": "Detach a elasticsearch index from specified elasticsearch alias",
-          "errors": [
-            "Client::ValidationError::IndexNotLinked",
-            "Client::ValidationError::InvalidUUID",
-            "Client::Forbidden::Busy",
-            "Client::Forbidden::OnlyOwnerCanPerformAction",
-            "Client::NotFound::AliasDoesNotExists",
-            "Client::NotFound::IndexDoesNotExists",
-            "Client::NotFound::ServiceDoesNotExists"
-          ],
-          "httpMethod": "DELETE",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/alias/index/detach"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Alias ID",
-              "fullType": "uuid",
-              "name": "aliasId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "uuid",
-              "description": "Index ID",
-              "fullType": "uuid",
-              "name": "indexId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Operation"
-        }
-      ],
-      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index/{indexId}"
-    },
-    {
-      "description": "AliasStreams",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
-            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
-            "description": "Deprecated, will be removed",
-            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/alias/{aliasId}/stream",
-            "value": "DEPRECATED"
-          },
-          "description": "Returns the list of Graylog streams attached to specified Elasticsearch alias",
-          "errors": [
-            "Client::ValidationError::InvalidUUID",
-            "Client::NotFound::AliasDoesNotExists",
-            "Client::NotFound::ServiceDoesNotExists"
-          ],
-          "httpMethod": "GET",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/alias/stream/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Alias ID",
-              "fullType": "uuid",
-              "name": "aliasId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "uuid[]"
-        },
-        {
-          "apiStatus": {
-            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
-            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
-            "description": "Deprecated, will be removed",
-            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/alias/{aliasId}/stream",
-            "value": "DEPRECATED"
-          },
-          "description": "Attach a graylog stream to specified elasticsearch alias",
-          "errors": [
-            "Client::ValidationError::CannotMixStreamAndIndex",
-            "Client::ValidationError::InvalidUUID",
-            "Client::ValidationError::NotStreamOwner",
-            "Client::ValidationError::RequiredField",
-            "Client::Forbidden::Busy",
-            "Client::Forbidden::NotOnSameCluster",
-            "Client::Forbidden::OnlyOwnerCanPerformAction",
-            "Client::Forbidden::StreamAlreadyLinked",
-            "Client::NotFound::AliasDoesNotExists",
-            "Client::NotFound::ServiceDoesNotExists"
-          ],
-          "httpMethod": "POST",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/alias/stream/attach"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "dbaas.logs.OutputElasticsearchAliasStreamCreation",
-              "description": "Request Body",
-              "fullType": "dbaas.logs.OutputElasticsearchAliasStreamCreation",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "uuid",
-              "description": "Alias ID",
-              "fullType": "uuid",
-              "name": "aliasId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Operation"
-        }
-      ],
-      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream"
-    },
-    {
-      "description": "AliasStreams",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
-            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
-            "description": "Deprecated, will be removed",
-            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/alias/{aliasId}/stream",
-            "value": "DEPRECATED"
-          },
-          "description": "Detach a graylog stream from specified elasticsearch alias",
-          "errors": [
-            "Client::ValidationError::InvalidUUID",
-            "Client::ValidationError::StreamNotLinked",
-            "Client::Forbidden::Busy",
-            "Client::Forbidden::OnlyOwnerCanPerformAction",
-            "Client::NotFound::AliasDoesNotExists",
-            "Client::NotFound::ServiceDoesNotExists",
-            "Client::NotFound::StreamDoesNotExists"
-          ],
-          "httpMethod": "DELETE",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/alias/stream/detach"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Alias ID",
-              "fullType": "uuid",
-              "name": "aliasId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "uuid",
-              "description": "Stream ID",
-              "fullType": "uuid",
-              "name": "streamId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Operation"
-        }
-      ],
-      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream/{streamId}"
-    },
-    {
-      "description": "AliasUrls",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
-            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
-            "description": "Deprecated, will be removed",
-            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/alias/{aliasId}/url",
-            "value": "DEPRECATED"
-          },
-          "description": "Returns the list of urls of specified alias",
-          "errors": [
-            "Client::ValidationError::InvalidUUID",
-            "Client::NotFound::AliasDoesNotExists",
-            "Client::NotFound::ServiceDoesNotExists"
-          ],
-          "httpMethod": "GET",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/alias/url/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Alias ID",
-              "fullType": "uuid",
-              "name": "aliasId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Url[]"
-        }
-      ],
-      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/url"
-    },
-    {
-      "description": "Indexes",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
-            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
-            "description": "Deprecated, will be removed",
-            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/index",
-            "value": "DEPRECATED"
-          },
-          "description": "Returns the list of elasticsearch indexes",
-          "errors": [
-            "Client::NotFound::ServiceDoesNotExists"
-          ],
-          "httpMethod": "GET",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/index/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "uuid[]"
-        },
-        {
-          "apiStatus": {
-            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
-            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
-            "description": "Deprecated, will be removed",
-            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/index",
-            "value": "DEPRECATED"
-          },
-          "description": "Register a new elasticsearch index",
-          "errors": [
-            "Client::ValidationError::InvalidNameContain",
-            "Client::ValidationError::InvalidNameLenght",
-            "Client::ValidationError::InvalidNameLowercase",
-            "Client::ValidationError::InvalidNameMatch",
-            "Client::ValidationError::InvalidNameStart",
-            "Client::ValidationError::InvalidNameWhitespace",
-            "Client::ValidationError::InvalidUUID",
-            "Client::ValidationError::RequiredField",
-            "Client::ValidationError::ValueNotInRange",
-            "Client::Forbidden::Busy",
-            "Client::Forbidden::ItemQuotaReached",
-            "Client::NotFound::ServiceDoesNotExists",
-            "Client::Conflict::AlreadyExists"
-          ],
-          "httpMethod": "POST",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/index/create"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "dbaas.logs.OutputElasticsearchIndexCreation",
-              "description": "Request Body",
-              "fullType": "dbaas.logs.OutputElasticsearchIndexCreation",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Operation"
-        }
-      ],
-      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/index"
-    },
-    {
-      "description": "Indexes",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
-            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
-            "description": "Deprecated, will be removed",
-            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/index",
-            "value": "DEPRECATED"
-          },
-          "description": "Remove specified elasticsearch index",
-          "errors": [
-            "Client::ValidationError::InvalidUUID",
-            "Client::ValidationError::NotOwner",
-            "Client::Forbidden::Busy",
-            "Client::Forbidden::OnlyOwnerCanPerformAction",
-            "Client::NotFound::IndexDoesNotExists",
-            "Client::NotFound::ServiceDoesNotExists"
-          ],
-          "httpMethod": "DELETE",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/index/delete"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Index ID",
-              "fullType": "uuid",
-              "name": "indexId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Operation"
-        },
-        {
-          "apiStatus": {
-            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
-            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
-            "description": "Deprecated, will be removed",
-            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/index",
-            "value": "DEPRECATED"
-          },
-          "description": "Returns specified elasticsearch index",
-          "errors": [
-            "Client::ValidationError::InvalidUUID",
-            "Client::NotFound::IndexDoesNotExists",
-            "Client::NotFound::ServiceDoesNotExists"
-          ],
-          "httpMethod": "GET",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/index/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Index ID",
-              "fullType": "uuid",
-              "name": "indexId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Index"
-        },
-        {
-          "apiStatus": {
-            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
-            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
-            "description": "Deprecated, will be removed",
-            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/index",
-            "value": "DEPRECATED"
-          },
-          "description": "Update specified elasticsearch index",
-          "errors": [
-            "Client::ValidationError::InvalidUUID",
-            "Client::ValidationError::RequiredField",
-            "Client::ValidationError::ValueNotInRange",
-            "Client::Forbidden::Busy",
-            "Client::Forbidden::OnlyOwnerCanPerformAction",
-            "Client::NotFound::IndexDoesNotExists",
-            "Client::NotFound::ServiceDoesNotExists"
-          ],
-          "httpMethod": "PUT",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/index/edit"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "dbaas.logs.OutputElasticsearchIndexUpdate",
-              "description": "Request Body",
-              "fullType": "dbaas.logs.OutputElasticsearchIndexUpdate",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "uuid",
-              "description": "Index ID",
-              "fullType": "uuid",
-              "name": "indexId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Operation"
-        }
-      ],
-      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/index/{indexId}"
-    },
-    {
-      "description": "IndexUrls",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
-            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
-            "description": "Deprecated, will be removed",
-            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/index/{indexId}/url",
-            "value": "DEPRECATED"
-          },
-          "description": "Returns the list of urls of specified index",
-          "errors": [
-            "Client::ValidationError::InvalidUUID",
-            "Client::ValidationError::NotOwner",
-            "Client::NotFound::IndexDoesNotExists",
-            "Client::NotFound::ServiceDoesNotExists"
-          ],
-          "httpMethod": "GET",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/index/url/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Index ID",
-              "fullType": "uuid",
-              "name": "indexId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Url[]"
-        }
-      ],
-      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/index/{indexId}/url"
-    },
-    {
-      "description": "Kibana instances",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
-            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
-            "description": "Deprecated, will be removed",
-            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/osd",
-            "value": "DEPRECATED"
-          },
-          "description": "Returns the list of Kibana instances",
-          "errors": [
-            "Client::NotFound::ServiceDoesNotExists"
-          ],
-          "httpMethod": "GET",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/kibana/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "uuid[]"
-        },
-        {
-          "apiStatus": {
-            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
-            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
-            "description": "Deprecated, will be removed",
-            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/osd",
-            "value": "DEPRECATED"
-          },
-          "description": "Register a new Kibana instance",
-          "errors": [
-            "Client::ValidationError::ClusterWithoutFrontend",
-            "Client::ValidationError::RequiredField",
-            "Client::Forbidden::ItemQuotaReached",
-            "Client::Forbidden::KibanaStillInDelivery",
-            "Client::Forbidden::PCIDSSInputDeny",
-            "Client::Forbidden::ServiceUnavailable",
-            "Client::NotFound::ServiceDoesNotExists"
-          ],
-          "httpMethod": "POST",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/kibana/create"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "dbaas.logs.KibanaCreation",
-              "description": "Request Body",
-              "fullType": "dbaas.logs.KibanaCreation",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Operation"
-        }
-      ],
-      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/kibana"
-    },
-    {
-      "description": "Kibana instances",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
-            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
-            "description": "Deprecated, will be removed",
-            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/osd",
-            "value": "DEPRECATED"
-          },
-          "description": "Remove specified Kibana instance",
-          "errors": [
-            "Client::ValidationError::InvalidDeliveryStatus",
-            "Client::ValidationError::InvalidUUID",
-            "Client::Forbidden::OnlyOwnerCanPerformAction",
-            "Client::Forbidden::ServiceUnavailable",
-            "Client::NotFound::KibanaDoesNotExists",
-            "Client::NotFound::ServiceDoesNotExists"
-          ],
-          "httpMethod": "DELETE",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/kibana/delete"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Kibana ID",
-              "fullType": "uuid",
-              "name": "kibanaId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Operation"
-        },
-        {
-          "apiStatus": {
-            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
-            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
-            "description": "Deprecated, will be removed",
-            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/osd",
-            "value": "DEPRECATED"
-          },
-          "description": "Returns specified Kibana instance",
-          "errors": [
-            "Client::ValidationError::InvalidUUID",
-            "Client::ValidationError::RequiredField",
-            "Client::NotFound::KibanaDoesNotExists",
-            "Client::NotFound::ServiceDoesNotExists"
-          ],
-          "httpMethod": "GET",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/kibana/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Kibana ID",
-              "fullType": "uuid",
-              "name": "kibanaId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Kibana"
-        },
-        {
-          "apiStatus": {
-            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
-            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
-            "description": "Deprecated, will be removed",
-            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/osd",
-            "value": "DEPRECATED"
-          },
-          "description": "Update specified Kibana instance",
-          "errors": [
-            "Client::ValidationError::InvalidDeliveryStatus",
-            "Client::ValidationError::InvalidUUID",
-            "Client::Forbidden::OnlyOwnerCanPerformAction",
-            "Client::Forbidden::ServiceUnavailable",
-            "Client::NotFound::KibanaDoesNotExists",
-            "Client::NotFound::ServiceDoesNotExists"
-          ],
-          "httpMethod": "PUT",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/kibana/edit"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "dbaas.logs.KibanaUpdate",
-              "description": "Request Body",
-              "fullType": "dbaas.logs.KibanaUpdate",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "uuid",
-              "description": "Kibana ID",
-              "fullType": "uuid",
-              "name": "kibanaId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Operation"
-        }
-      ],
-      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/kibana/{kibanaId}"
-    },
-    {
-      "description": "KibanaUrls",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
-            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
-            "description": "Deprecated, will be removed",
-            "replacement": "/dbaas/logs/{serviceName}/output/opensearch/osd/{osdId}/url",
-            "value": "DEPRECATED"
-          },
-          "description": "Returns the list of urls of specified Kibana",
-          "errors": [
-            "Client::ValidationError::InvalidUUID",
-            "Client::NotFound::KibanaDoesNotExists",
-            "Client::NotFound::ServiceDoesNotExists"
-          ],
-          "httpMethod": "GET",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/kibana/url/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Kibana ID",
-              "fullType": "uuid",
-              "name": "kibanaId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Url[]"
-        }
-      ],
-      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/kibana/{kibanaId}/url"
-    },
-    {
       "description": "Dashboards",
       "operations": [
         {
@@ -2671,7 +1717,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/graylog/dashboard/get"
+            {
+              "name": "ldp:apiovh:output/graylog/dashboard/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2682,6 +1731,14 @@ export const schema: Schema = {
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter by title (like)",
+              "fullType": "string",
+              "name": "titlePattern",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "uuid[]"
@@ -2702,7 +1759,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:output/graylog/dashboard/create"
+            {
+              "name": "ldp:apiovh:output/graylog/dashboard/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2745,7 +1805,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "DELETE",
           "iamActions": [
-            "ldp:apiovh:output/graylog/dashboard/delete"
+            {
+              "name": "ldp:apiovh:output/graylog/dashboard/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2781,7 +1844,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/graylog/dashboard/get"
+            {
+              "name": "ldp:apiovh:output/graylog/dashboard/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2823,7 +1889,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "PUT",
           "iamActions": [
-            "ldp:apiovh:output/graylog/dashboard/edit"
+            {
+              "name": "ldp:apiovh:output/graylog/dashboard/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2882,7 +1951,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:output/graylog/dashboard/duplicate"
+            {
+              "name": "ldp:apiovh:output/graylog/dashboard/duplicate",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2930,7 +2002,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/graylog/dashboard/url/get"
+            {
+              "name": "ldp:apiovh:output/graylog/dashboard/url/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2970,7 +2045,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/graylog/stream/get"
+            {
+              "name": "ldp:apiovh:output/graylog/stream/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2981,6 +2059,14 @@ export const schema: Schema = {
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter by title (like)",
+              "fullType": "string",
+              "name": "titlePattern",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "uuid[]"
@@ -3017,7 +2103,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:output/graylog/stream/create"
+            {
+              "name": "ldp:apiovh:output/graylog/stream/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3064,7 +2153,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "DELETE",
           "iamActions": [
-            "ldp:apiovh:output/graylog/stream/delete"
+            {
+              "name": "ldp:apiovh:output/graylog/stream/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3100,7 +2192,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/graylog/stream/get"
+            {
+              "name": "ldp:apiovh:output/graylog/stream/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3152,7 +2247,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "PUT",
           "iamActions": [
-            "ldp:apiovh:output/graylog/stream/edit"
+            {
+              "name": "ldp:apiovh:output/graylog/stream/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3201,7 +2299,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/graylog/stream/alert/get"
+            {
+              "name": "ldp:apiovh:output/graylog/stream/alert/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3247,7 +2348,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:output/graylog/stream/alert/create"
+            {
+              "name": "ldp:apiovh:output/graylog/stream/alert/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3299,7 +2403,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "DELETE",
           "iamActions": [
-            "ldp:apiovh:output/graylog/stream/alert/delete"
+            {
+              "name": "ldp:apiovh:output/graylog/stream/alert/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3344,7 +2451,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/graylog/stream/alert/get"
+            {
+              "name": "ldp:apiovh:output/graylog/stream/alert/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3397,7 +2507,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "PUT",
           "iamActions": [
-            "ldp:apiovh:output/graylog/stream/alert/edit"
+            {
+              "name": "ldp:apiovh:output/graylog/stream/alert/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3454,7 +2567,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/graylog/stream/archive/get"
+            {
+              "name": "ldp:apiovh:output/graylog/stream/archive/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3497,7 +2613,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/graylog/stream/archive/get"
+            {
+              "name": "ldp:apiovh:output/graylog/stream/archive/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3536,8 +2655,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get the list of encryption keys used to encrypt the archive",
           "errors": [
@@ -3548,7 +2667,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/graylog/stream/archive/encryptionKey/get"
+            {
+              "name": "ldp:apiovh:output/graylog/stream/archive/encryptionKey/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3600,7 +2722,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:output/graylog/stream/archive/url/generate"
+            {
+              "name": "ldp:apiovh:output/graylog/stream/archive/url/generate",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3650,7 +2775,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/graylog/stream/rule/get"
+            {
+              "name": "ldp:apiovh:output/graylog/stream/rule/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3696,7 +2824,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:output/graylog/stream/rule/create"
+            {
+              "name": "ldp:apiovh:output/graylog/stream/rule/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3749,7 +2880,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "DELETE",
           "iamActions": [
-            "ldp:apiovh:output/graylog/stream/rule/delete"
+            {
+              "name": "ldp:apiovh:output/graylog/stream/rule/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3794,7 +2928,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/graylog/stream/rule/get"
+            {
+              "name": "ldp:apiovh:output/graylog/stream/rule/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3829,6 +2966,169 @@ export const schema: Schema = {
       "path": "/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule/{ruleId}"
     },
     {
+      "description": "StreamSubscriptions",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Returns the list of subscriptions targeting a specified graylog stream",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists"
+          ],
+          "httpMethod": "GET",
+          "iamActions": [
+            {
+              "name": "ldp:apiovh:output/graylog/stream/subscription/get",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Stream ID",
+              "fullType": "uuid",
+              "name": "streamId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter by resource name (like)",
+              "fullType": "string",
+              "name": "resourceName",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Filter by resource type (like)",
+              "fullType": "string",
+              "name": "resourceType",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "uuid[]"
+        }
+      ],
+      "path": "/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/subscription"
+    },
+    {
+      "description": "StreamSubscriptions",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Delete a specified subscription targeting a specified graylog stream",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists",
+            "Client::NotFound::SubscriptionDoesNotExist"
+          ],
+          "httpMethod": "DELETE",
+          "iamActions": [
+            {
+              "name": "ldp:apiovh:output/graylog/stream/subscription/delete",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Stream ID",
+              "fullType": "uuid",
+              "name": "streamId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Subscription ID",
+              "fullType": "uuid",
+              "name": "subscriptionId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dbaas.logs.Operation"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Returns details of specified graylog stream subscription",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists",
+            "Client::NotFound::SubscriptionDoesNotExist"
+          ],
+          "httpMethod": "GET",
+          "iamActions": [
+            {
+              "name": "ldp:apiovh:output/graylog/stream/subscription/get",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Stream ID",
+              "fullType": "uuid",
+              "name": "streamId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Subscription ID",
+              "fullType": "uuid",
+              "name": "subscriptionId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dbaas.logs.LogSubscription"
+        }
+      ],
+      "path": "/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/subscription/{subscriptionId}"
+    },
+    {
       "description": "StreamUrls",
       "operations": [
         {
@@ -3844,7 +3144,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/graylog/stream/url/get"
+            {
+              "name": "ldp:apiovh:output/graylog/stream/url/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3884,7 +3187,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/alias/get"
+            {
+              "name": "ldp:apiovh:output/opensearch/alias/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3895,6 +3201,14 @@ export const schema: Schema = {
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter by name (like)",
+              "fullType": "string",
+              "name": "namePattern",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "uuid[]"
@@ -3921,7 +3235,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/alias/create"
+            {
+              "name": "ldp:apiovh:output/opensearch/alias/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3964,7 +3281,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "DELETE",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/alias/delete"
+            {
+              "name": "ldp:apiovh:output/opensearch/alias/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4000,7 +3320,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/alias/get"
+            {
+              "name": "ldp:apiovh:output/opensearch/alias/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4040,7 +3363,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "PUT",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/alias/edit"
+            {
+              "name": "ldp:apiovh:output/opensearch/alias/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4089,7 +3415,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/alias/index/get"
+            {
+              "name": "ldp:apiovh:output/opensearch/alias/index/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4131,7 +3460,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/alias/index/attach"
+            {
+              "name": "ldp:apiovh:output/opensearch/alias/index/attach",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4184,7 +3516,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "DELETE",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/alias/index/detach"
+            {
+              "name": "ldp:apiovh:output/opensearch/alias/index/detach",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4234,7 +3569,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/alias/stream/get"
+            {
+              "name": "ldp:apiovh:output/opensearch/alias/stream/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4277,7 +3615,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/alias/stream/attach"
+            {
+              "name": "ldp:apiovh:output/opensearch/alias/stream/attach",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4330,7 +3671,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "DELETE",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/alias/stream/detach"
+            {
+              "name": "ldp:apiovh:output/opensearch/alias/stream/detach",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4380,7 +3724,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/alias/url/get"
+            {
+              "name": "ldp:apiovh:output/opensearch/alias/url/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4420,7 +3767,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/index/get"
+            {
+              "name": "ldp:apiovh:output/opensearch/index/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4431,6 +3781,14 @@ export const schema: Schema = {
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter by name (like)",
+              "fullType": "string",
+              "name": "namePattern",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "uuid[]"
@@ -4458,7 +3816,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/index/create"
+            {
+              "name": "ldp:apiovh:output/opensearch/index/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4502,7 +3863,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "DELETE",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/index/delete"
+            {
+              "name": "ldp:apiovh:output/opensearch/index/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4538,7 +3902,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/index/get"
+            {
+              "name": "ldp:apiovh:output/opensearch/index/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4578,7 +3945,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "PUT",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/index/edit"
+            {
+              "name": "ldp:apiovh:output/opensearch/index/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4628,7 +3998,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/index/url/get"
+            {
+              "name": "ldp:apiovh:output/opensearch/index/url/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4668,7 +4041,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/osd/get"
+            {
+              "name": "ldp:apiovh:output/opensearch/osd/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4700,7 +4076,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/osd/create"
+            {
+              "name": "ldp:apiovh:output/opensearch/osd/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4744,7 +4123,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "DELETE",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/osd/delete"
+            {
+              "name": "ldp:apiovh:output/opensearch/osd/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4781,7 +4163,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/osd/get"
+            {
+              "name": "ldp:apiovh:output/opensearch/osd/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4820,7 +4205,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "PUT",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/osd/edit"
+            {
+              "name": "ldp:apiovh:output/opensearch/osd/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4869,7 +4257,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/osd/url/get"
+            {
+              "name": "ldp:apiovh:output/opensearch/osd/url/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4909,7 +4300,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:role/get"
+            {
+              "name": "ldp:apiovh:role/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4920,6 +4314,14 @@ export const schema: Schema = {
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter by name (like)",
+              "fullType": "string",
+              "name": "namePattern",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "uuid[]"
@@ -4941,7 +4343,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:role/create"
+            {
+              "name": "ldp:apiovh:role/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4984,7 +4389,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "DELETE",
           "iamActions": [
-            "ldp:apiovh:role/delete"
+            {
+              "name": "ldp:apiovh:role/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5020,7 +4428,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:role/get"
+            {
+              "name": "ldp:apiovh:role/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5061,7 +4472,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "PUT",
           "iamActions": [
-            "ldp:apiovh:role/edit"
+            {
+              "name": "ldp:apiovh:role/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5110,7 +4524,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:role/member/get"
+            {
+              "name": "ldp:apiovh:role/member/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5151,7 +4568,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:role/member/create"
+            {
+              "name": "ldp:apiovh:role/member/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5204,7 +4624,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "DELETE",
           "iamActions": [
-            "ldp:apiovh:role/member/delete"
+            {
+              "name": "ldp:apiovh:role/member/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5249,7 +4672,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:role/member/get"
+            {
+              "name": "ldp:apiovh:role/member/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5299,7 +4725,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "PUT",
           "iamActions": [
-            "ldp:apiovh:role/member/edit"
+            {
+              "name": "ldp:apiovh:role/member/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5356,7 +4785,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:role/permission/get"
+            {
+              "name": "ldp:apiovh:role/permission/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5401,7 +4833,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "DELETE",
           "iamActions": [
-            "ldp:apiovh:role/permission/delete"
+            {
+              "name": "ldp:apiovh:role/permission/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5446,7 +4881,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:role/permission/get"
+            {
+              "name": "ldp:apiovh:role/permission/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5501,7 +4939,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:role/permission/alias/create"
+            {
+              "name": "ldp:apiovh:role/permission/alias/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5555,7 +4996,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:role/permission/dashboard/create"
+            {
+              "name": "ldp:apiovh:role/permission/dashboard/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5609,7 +5053,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:role/permission/index/create"
+            {
+              "name": "ldp:apiovh:role/permission/index/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5643,63 +5090,6 @@ export const schema: Schema = {
       "path": "/dbaas/logs/{serviceName}/role/{roleId}/permission/index"
     },
     {
-      "description": "RolePermissionKibana",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2022-09-30 00:00:00 +0000 UTC",
-            "deprecatedDate": "2022-04-21 00:00:00 +0000 UTC",
-            "description": "Deprecated, will be removed",
-            "replacement": "/dbaas/logs/{serviceName}/role/{roleId}/permission/osd",
-            "value": "DEPRECATED"
-          },
-          "description": "Append a kibana permission to role",
-          "errors": [
-            "Client::ValidationError::InvalidUUID",
-            "Client::Forbidden::Busy",
-            "Client::Forbidden::OnlyOwnerCanPerformAction",
-            "Client::Forbidden::ServiceUnavailable",
-            "Client::NotFound::KibanaDoesNotExists",
-            "Client::NotFound::RoleDoesNotExists",
-            "Client::NotFound::ServiceDoesNotExists",
-            "Client::Conflict::PermissionAlreadySet"
-          ],
-          "httpMethod": "POST",
-          "iamActions": [
-            "ldp:apiovh:role/permission/kibana/create"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "dbaas.logs.RolePermissionKibanaCreation",
-              "description": "Request Body",
-              "fullType": "dbaas.logs.RolePermissionKibanaCreation",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "uuid",
-              "description": "Role ID",
-              "fullType": "uuid",
-              "name": "roleId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Operation"
-        }
-      ],
-      "path": "/dbaas/logs/{serviceName}/role/{roleId}/permission/kibana"
-    },
-    {
       "description": "RolePermissionOsd",
       "operations": [
         {
@@ -5720,7 +5110,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:role/permission/osd/create"
+            {
+              "name": "ldp:apiovh:role/permission/osd/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5774,7 +5167,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:role/permission/stream/create"
+            {
+              "name": "ldp:apiovh:role/permission/stream/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5815,10 +5211,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get service information",
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:serviceInfos/get"
+            {
+              "name": "ldp:apiovh:serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5838,10 +5237,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Update service information",
           "httpMethod": "PUT",
           "iamActions": [
-            "ldp:apiovh:serviceInfos/edit"
+            {
+              "name": "ldp:apiovh:serviceInfos/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5880,7 +5282,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:token/get"
+            {
+              "name": "ldp:apiovh:token/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5891,6 +5296,14 @@ export const schema: Schema = {
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter by name (like)",
+              "fullType": "string",
+              "name": "namePattern",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "uuid[]"
@@ -5914,7 +5327,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:token/create"
+            {
+              "name": "ldp:apiovh:token/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5958,7 +5374,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "DELETE",
           "iamActions": [
-            "ldp:apiovh:token/delete"
+            {
+              "name": "ldp:apiovh:token/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5994,7 +5413,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:token/get"
+            {
+              "name": "ldp:apiovh:token/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6034,7 +5456,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:url/get"
+            {
+              "name": "ldp:apiovh:url/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6069,7 +5494,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:user/changePassword"
+            {
+              "name": "ldp:apiovh:user/changePassword",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6380,8 +5808,9 @@ export const schema: Schema = {
       "description": "Possible values for ClusterClusterTypeEnum",
       "enum": [
         "DEDICATED",
+        "PCI_DSS",
         "PRO",
-        "TRIAL"
+        "TRUSTED_ZONE"
       ],
       "enumType": "string",
       "id": "ClusterClusterTypeEnum",
@@ -7334,46 +6763,38 @@ export const schema: Schema = {
         }
       }
     },
-    "dbaas.logs.Kibana": {
-      "description": "Kibana instance",
-      "id": "Kibana",
+    "dbaas.logs.LogKind": {
+      "description": "Log kind",
+      "id": "LogKind",
       "namespace": "dbaas.logs",
       "properties": {
+        "additionalReturnedFields": {
+          "canBeNull": false,
+          "description": "List of additional log fields managed in this log kind",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
         "createdAt": {
           "canBeNull": false,
-          "description": "Kibana creation",
+          "description": "Creation date of the log kind",
           "fullType": "datetime",
           "readOnly": true,
           "required": false,
           "type": "datetime"
         },
-        "deliveryStatus": {
+        "displayName": {
           "canBeNull": false,
-          "description": "Status of the delivering process",
-          "fullType": "dbaas.logs.DeliveryStatusEnum",
-          "readOnly": true,
-          "required": false,
-          "type": "dbaas.logs.DeliveryStatusEnum"
-        },
-        "description": {
-          "canBeNull": false,
-          "description": "Kibana description",
+          "description": "Log kind display name",
           "fullType": "string",
           "readOnly": true,
           "required": false,
           "type": "string"
         },
-        "isEditable": {
+        "kindId": {
           "canBeNull": false,
-          "description": "Indicates if you are allowed to edit entry",
-          "fullType": "boolean",
-          "readOnly": true,
-          "required": false,
-          "type": "boolean"
-        },
-        "kibanaId": {
-          "canBeNull": false,
-          "description": "Kibana ID",
+          "description": "Log kind ID",
           "fullType": "uuid",
           "readOnly": true,
           "required": false,
@@ -7381,15 +6802,15 @@ export const schema: Schema = {
         },
         "name": {
           "canBeNull": false,
-          "description": "Kibana name",
+          "description": "Log kind name",
           "fullType": "string",
           "readOnly": true,
           "required": false,
           "type": "string"
         },
         "updatedAt": {
-          "canBeNull": true,
-          "description": "Kibana last update",
+          "canBeNull": false,
+          "description": "Last update date of the log kind",
           "fullType": "datetime",
           "readOnly": true,
           "required": false,
@@ -7397,29 +6818,146 @@ export const schema: Schema = {
         }
       }
     },
-    "dbaas.logs.KibanaCreation": {
-      "description": "New Kibana instance",
-      "id": "KibanaCreation",
+    "dbaas.logs.LogSubscription": {
+      "description": "Log subscription",
+      "id": "LogSubscription",
       "namespace": "dbaas.logs",
       "properties": {
-        "description": {
+        "createdAt": {
           "canBeNull": false,
-          "description": "Description",
+          "description": "Creation date of the subscription",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "kind": {
+          "canBeNull": false,
+          "description": "Log kind name of this subscription",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "resource": {
+          "canBeNull": false,
+          "description": "Subscribed resource, where the logs come from",
+          "fullType": "dbaas.logs.LogSubscriptionResource",
+          "readOnly": true,
+          "required": false,
+          "type": "dbaas.logs.LogSubscriptionResource"
+        },
+        "serviceName": {
+          "canBeNull": false,
+          "description": "Name of the destination log service",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "streamId": {
+          "canBeNull": false,
+          "description": "Id of the destination log stream",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "subscriptionId": {
+          "canBeNull": false,
+          "description": "Subscription ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "updatedAt": {
+          "canBeNull": false,
+          "description": "Last update date of the subscription",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        }
+      }
+    },
+    "dbaas.logs.LogSubscriptionCreation": {
+      "description": "Log subscription creation payload",
+      "id": "LogSubscriptionCreation",
+      "namespace": "dbaas.logs",
+      "properties": {
+        "kind": {
+          "canBeNull": false,
+          "description": "Log kind name to subscribe to",
           "fullType": "string",
           "readOnly": false,
           "required": true,
           "type": "string"
+        },
+        "streamId": {
+          "canBeNull": false,
+          "description": "Customer log stream ID",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": true,
+          "type": "uuid"
         }
       }
     },
-    "dbaas.logs.KibanaUpdate": {
-      "description": "Kibana update",
-      "id": "KibanaUpdate",
+    "dbaas.logs.LogSubscriptionResource": {
+      "description": "Log subscription resource",
+      "id": "LogSubscriptionResource",
       "namespace": "dbaas.logs",
       "properties": {
-        "description": {
+        "name": {
           "canBeNull": false,
-          "description": "Description",
+          "description": "Name of subscribed resource",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Type of subscribed resource",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "dbaas.logs.LogSubscriptionResponse": {
+      "description": "Asynchronous operation after subscribing or unsubscribing to a resource logs",
+      "id": "LogSubscriptionResponse",
+      "namespace": "dbaas.logs",
+      "properties": {
+        "operationId": {
+          "canBeNull": false,
+          "description": "Identifier of the operation",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "serviceName": {
+          "canBeNull": false,
+          "description": "Operation owner's service name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "dbaas.logs.LogUrlCreation": {
+      "description": "Log temporary URL creation payload",
+      "id": "LogUrlCreation",
+      "namespace": "dbaas.logs",
+      "properties": {
+        "kind": {
+          "canBeNull": false,
+          "description": "Log kind name",
           "fullType": "string",
           "readOnly": false,
           "required": true,
@@ -7518,6 +7056,14 @@ export const schema: Schema = {
           "required": false,
           "type": "uuid"
         },
+        "encryptionKeyId": {
+          "canBeNull": true,
+          "description": "Encryption key used",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
         "indexId": {
           "canBeNull": true,
           "description": "Index used",
@@ -7529,14 +7075,6 @@ export const schema: Schema = {
         "inputId": {
           "canBeNull": true,
           "description": "Input used",
-          "fullType": "uuid",
-          "readOnly": true,
-          "required": false,
-          "type": "uuid"
-        },
-        "kibanaId": {
-          "canBeNull": true,
-          "description": "Kibana used (DEPRECATED: use osdId)",
           "fullType": "uuid",
           "readOnly": true,
           "required": false,
@@ -7566,6 +7104,14 @@ export const schema: Schema = {
           "required": false,
           "type": "uuid"
         },
+        "serviceName": {
+          "canBeNull": false,
+          "description": "Service name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
         "state": {
           "canBeNull": false,
           "description": "Operation status",
@@ -7577,6 +7123,14 @@ export const schema: Schema = {
         "streamId": {
           "canBeNull": true,
           "description": "Stream used",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "subscriptionId": {
+          "canBeNull": true,
+          "description": "Subscription used",
           "fullType": "uuid",
           "readOnly": true,
           "required": false,
@@ -7699,136 +7253,6 @@ export const schema: Schema = {
       "id": "OsdUpdate",
       "namespace": "dbaas.logs",
       "properties": {
-        "description": {
-          "canBeNull": false,
-          "description": "Description",
-          "fullType": "string",
-          "readOnly": false,
-          "required": true,
-          "type": "string"
-        }
-      }
-    },
-    "dbaas.logs.OutputElasticsearchAliasCreation": {
-      "description": "New Elasticsearch alias",
-      "id": "OutputElasticsearchAliasCreation",
-      "namespace": "dbaas.logs",
-      "properties": {
-        "description": {
-          "canBeNull": false,
-          "description": "Description",
-          "fullType": "string",
-          "readOnly": false,
-          "required": true,
-          "type": "string"
-        },
-        "suffix": {
-          "canBeNull": false,
-          "description": "Suffix",
-          "fullType": "string",
-          "readOnly": false,
-          "required": true,
-          "type": "string"
-        }
-      }
-    },
-    "dbaas.logs.OutputElasticsearchAliasIndexCreation": {
-      "description": "Link given Elasticsearch index to alias",
-      "id": "OutputElasticsearchAliasIndexCreation",
-      "namespace": "dbaas.logs",
-      "properties": {
-        "indexId": {
-          "canBeNull": false,
-          "description": "Index ID",
-          "fullType": "uuid",
-          "readOnly": false,
-          "required": true,
-          "type": "uuid"
-        }
-      }
-    },
-    "dbaas.logs.OutputElasticsearchAliasStreamCreation": {
-      "description": "Link given Graylog stream to Elasticsearch alias",
-      "id": "OutputElasticsearchAliasStreamCreation",
-      "namespace": "dbaas.logs",
-      "properties": {
-        "streamId": {
-          "canBeNull": false,
-          "description": "Stream ID",
-          "fullType": "uuid",
-          "readOnly": false,
-          "required": true,
-          "type": "uuid"
-        }
-      }
-    },
-    "dbaas.logs.OutputElasticsearchAliasUpdate": {
-      "description": "Elasticsearch alias update",
-      "id": "OutputElasticsearchAliasUpdate",
-      "namespace": "dbaas.logs",
-      "properties": {
-        "description": {
-          "canBeNull": false,
-          "description": "Description",
-          "fullType": "string",
-          "readOnly": false,
-          "required": true,
-          "type": "string"
-        }
-      }
-    },
-    "dbaas.logs.OutputElasticsearchIndexCreation": {
-      "description": "New Elasticsearch index",
-      "id": "OutputElasticsearchIndexCreation",
-      "namespace": "dbaas.logs",
-      "properties": {
-        "alertNotifyEnabled": {
-          "canBeNull": true,
-          "description": "If set, notify when size is near 80, 90 or 100 % of its maximum capacity",
-          "fullType": "boolean",
-          "readOnly": false,
-          "required": false,
-          "type": "boolean"
-        },
-        "description": {
-          "canBeNull": false,
-          "description": "Description",
-          "fullType": "string",
-          "readOnly": false,
-          "required": true,
-          "type": "string"
-        },
-        "nbShard": {
-          "canBeNull": true,
-          "description": "Number of shard",
-          "fullType": "long",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "suffix": {
-          "canBeNull": false,
-          "description": "Suffix",
-          "fullType": "string",
-          "readOnly": false,
-          "required": true,
-          "type": "string"
-        }
-      }
-    },
-    "dbaas.logs.OutputElasticsearchIndexUpdate": {
-      "description": "Elasticsearch index update",
-      "id": "OutputElasticsearchIndexUpdate",
-      "namespace": "dbaas.logs",
-      "properties": {
-        "alertNotifyEnabled": {
-          "canBeNull": true,
-          "description": "If set, notify when size is near 80, 90 or 100 % of its maximum capacity",
-          "fullType": "boolean",
-          "readOnly": false,
-          "required": false,
-          "type": "boolean"
-        },
         "description": {
           "canBeNull": false,
           "description": "Description",
@@ -8574,14 +7998,6 @@ export const schema: Schema = {
           "required": false,
           "type": "uuid"
         },
-        "kibanaId": {
-          "canBeNull": true,
-          "description": "Associated Kibana instance (DEPRECATED: use osdId)",
-          "fullType": "uuid",
-          "readOnly": true,
-          "required": false,
-          "type": "uuid"
-        },
         "osdId": {
           "canBeNull": true,
           "description": "Associated OpenSearch Dashboards instance",
@@ -8811,29 +8227,6 @@ export const schema: Schema = {
         }
       }
     },
-    "dbaas.logs.RolePermissionKibanaCreation": {
-      "description": "Attach given Kibana instance to role",
-      "id": "RolePermissionKibanaCreation",
-      "namespace": "dbaas.logs",
-      "properties": {
-        "kibanaId": {
-          "canBeNull": false,
-          "description": "Kibana ID",
-          "fullType": "uuid",
-          "readOnly": false,
-          "required": true,
-          "type": "uuid"
-        },
-        "permissionType": {
-          "canBeNull": true,
-          "description": "Permission type",
-          "fullType": "dbaas.logs.PermissionTypeEnum",
-          "readOnly": false,
-          "required": false,
-          "type": "dbaas.logs.PermissionTypeEnum"
-        }
-      }
-    },
     "dbaas.logs.RolePermissionOsdCreation": {
       "description": "Attach given OpenSearch Dashboards to role",
       "id": "RolePermissionOsdCreation",
@@ -9011,6 +8404,84 @@ export const schema: Schema = {
       "id": "ServiceStateEnum",
       "namespace": "dbaas.logs"
     },
+    "dbaas.logs.ServiceWithIAM": {
+      "description": "Service",
+      "id": "Service",
+      "namespace": "dbaas.logs",
+      "properties": {
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Service creation",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "displayName": {
+          "canBeNull": true,
+          "description": "Service custom name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "iam": {
+          "canBeNull": true,
+          "description": "IAM resource metadata",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.ResourceMetadata"
+        },
+        "isClusterOwner": {
+          "canBeNull": false,
+          "description": "If set, can perform extra action on cluster",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "plan": {
+          "canBeNull": false,
+          "description": "Service plan",
+          "fullType": "dbaas.logs.ServicePlanEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dbaas.logs.ServicePlanEnum"
+        },
+        "serviceName": {
+          "canBeNull": false,
+          "description": "Service name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "state": {
+          "canBeNull": false,
+          "description": "Service state",
+          "fullType": "dbaas.logs.ServiceStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dbaas.logs.ServiceStateEnum"
+        },
+        "updatedAt": {
+          "canBeNull": true,
+          "description": "Service last update",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "username": {
+          "canBeNull": false,
+          "description": "Username on DBaaS Logs",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
     "dbaas.logs.Stream": {
       "description": "Graylog stream",
       "id": "Stream",
@@ -9023,6 +8494,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "boolean"
+        },
+        "clusterId": {
+          "canBeNull": false,
+          "description": "Cluster ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
         },
         "coldStorageCompression": {
           "canBeNull": true,
@@ -9147,6 +8626,14 @@ export const schema: Schema = {
         "nbArchive": {
           "canBeNull": false,
           "description": "Number of coldstored archives",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "nbSubscription": {
+          "canBeNull": false,
+          "description": "Number of subscriptions targeting this stream",
           "fullType": "long",
           "readOnly": true,
           "required": false,
@@ -9452,7 +8939,7 @@ export const schema: Schema = {
       "namespace": "dbaas.logs"
     },
     "dbaas.logs.TemporaryLogsLink": {
-      "description": "Temporary url informations",
+      "description": "Temporary url information",
       "id": "TemporaryLogsLink",
       "namespace": "dbaas.logs",
       "properties": {
@@ -9479,6 +8966,14 @@ export const schema: Schema = {
       "id": "TestResult",
       "namespace": "dbaas.logs",
       "properties": {
+        "isValid": {
+          "canBeNull": false,
+          "description": "Whether the given configuration pass the syntax test",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
         "stderr": {
           "canBeNull": true,
           "description": "Standard error",
@@ -9671,6 +9166,77 @@ export const schema: Schema = {
           "type": "password"
         }
       }
+    },
+    "iam.ResourceMetadata": {
+      "description": "IAM resource metadata embedded in services models",
+      "id": "ResourceMetadata",
+      "namespace": "iam",
+      "properties": {
+        "displayName": {
+          "canBeNull": true,
+          "description": "Resource display name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Unique identifier of the resource",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "tags": {
+          "canBeNull": true,
+          "description": "Resource tags. Tags that were internally computed are prefixed with ovh:",
+          "fullType": "map[string]string",
+          "readOnly": true,
+          "required": false,
+          "type": "map[string]string"
+        },
+        "urn": {
+          "canBeNull": false,
+          "description": "Unique resource name used in policies",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter": {
+      "description": "Resource tag filter",
+      "id": "TagFilter",
+      "namespace": "iam.resource",
+      "properties": {
+        "operator": {
+          "canBeNull": true,
+          "description": "Operator to use in order to filter on the value (defaults to 'EQ')",
+          "fullType": "iam.resource.TagFilter.OperatorEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.resource.TagFilter.OperatorEnum"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value to use in order to filter tags",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter.OperatorEnum": {
+      "description": "Operator that can be used in order to filter resources tags",
+      "enum": [
+        "EQ"
+      ],
+      "enumType": "string",
+      "id": "OperatorEnum",
+      "namespace": "iam.resource.TagFilter"
     },
     "service.RenewType": {
       "description": "Map a possible renew for a specific service",

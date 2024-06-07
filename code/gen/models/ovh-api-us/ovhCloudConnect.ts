@@ -16,7 +16,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "ovhCloudConnect:apiovh:get"
+            {
+              "name": "ovhCloudConnect:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -36,7 +39,10 @@ export const schema: Schema = {
           "description": "Get service",
           "httpMethod": "GET",
           "iamActions": [
-            "ovhCloudConnect:apiovh:get"
+            {
+              "name": "ovhCloudConnect:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -59,7 +65,10 @@ export const schema: Schema = {
           "description": "Modify service",
           "httpMethod": "PUT",
           "iamActions": [
-            "ovhCloudConnect:apiovh:edit"
+            {
+              "name": "ovhCloudConnect:apiovh:edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -95,7 +104,10 @@ export const schema: Schema = {
           "description": "Get Pop Configuration linked to of a OVHcloud Connect Service",
           "httpMethod": "GET",
           "iamActions": [
-            "ovhCloudConnect:apiovh:config/pop/get"
+            {
+              "name": "ovhCloudConnect:apiovh:config/pop/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -118,7 +130,10 @@ export const schema: Schema = {
           "description": "Create a Pop Configuration",
           "httpMethod": "POST",
           "iamActions": [
-            "ovhCloudConnect:apiovh:config/pop/create"
+            {
+              "name": "ovhCloudConnect:apiovh:config/pop/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -154,7 +169,10 @@ export const schema: Schema = {
           "description": "Delete a Pop Configuration",
           "httpMethod": "DELETE",
           "iamActions": [
-            "ovhCloudConnect:apiovh:config/pop/delete"
+            {
+              "name": "ovhCloudConnect:apiovh:config/pop/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -185,7 +203,10 @@ export const schema: Schema = {
           "description": "Get Pop Configuration of a OVHcloud Connect Service",
           "httpMethod": "GET",
           "iamActions": [
-            "ovhCloudConnect:apiovh:config/pop/get"
+            {
+              "name": "ovhCloudConnect:apiovh:config/pop/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -222,7 +243,10 @@ export const schema: Schema = {
           "description": "Get Datacenter Configuration linked to of a OVHcloud Connect Service",
           "httpMethod": "GET",
           "iamActions": [
-            "ovhCloudConnect:apiovh:config/pop/datacenter/get"
+            {
+              "name": "ovhCloudConnect:apiovh:config/pop/datacenter/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -253,7 +277,10 @@ export const schema: Schema = {
           "description": "Create a Datacenter Configuration",
           "httpMethod": "POST",
           "iamActions": [
-            "ovhCloudConnect:apiovh:config/pop/datacenter/create"
+            {
+              "name": "ovhCloudConnect:apiovh:config/pop/datacenter/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -297,7 +324,10 @@ export const schema: Schema = {
           "description": "Delete a Datacenter Configuration",
           "httpMethod": "DELETE",
           "iamActions": [
-            "ovhCloudConnect:apiovh:config/pop/datacenter/delete"
+            {
+              "name": "ovhCloudConnect:apiovh:config/pop/datacenter/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -336,7 +366,10 @@ export const schema: Schema = {
           "description": "Get Datacenter Configuration of a OVHcloud Connect Service",
           "httpMethod": "GET",
           "iamActions": [
-            "ovhCloudConnect:apiovh:config/pop/datacenter/get"
+            {
+              "name": "ovhCloudConnect:apiovh:config/pop/datacenter/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -381,7 +414,10 @@ export const schema: Schema = {
           "description": "Get Datacenter Extra Configuration linked to of a OVHcloud Connect Service",
           "httpMethod": "GET",
           "iamActions": [
-            "ovhCloudConnect:apiovh:config/pop/datacenter/extra/get"
+            {
+              "name": "ovhCloudConnect:apiovh:config/pop/datacenter/extra/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -420,7 +456,10 @@ export const schema: Schema = {
           "description": "Create a Datacenter Extra Configuration",
           "httpMethod": "POST",
           "iamActions": [
-            "ovhCloudConnect:apiovh:config/pop/datacenter/extra/create"
+            {
+              "name": "ovhCloudConnect:apiovh:config/pop/datacenter/extra/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -472,7 +511,10 @@ export const schema: Schema = {
           "description": "Delete a Datacenter Extra Configuration",
           "httpMethod": "DELETE",
           "iamActions": [
-            "ovhCloudConnect:apiovh:config/pop/datacenter/extra/delete"
+            {
+              "name": "ovhCloudConnect:apiovh:config/pop/datacenter/extra/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -519,7 +561,10 @@ export const schema: Schema = {
           "description": "Get Datacenter Extra Configuration of a OVHcloud Connect Service",
           "httpMethod": "GET",
           "iamActions": [
-            "ovhCloudConnect:apiovh:config/pop/datacenter/extra/get"
+            {
+              "name": "ovhCloudConnect:apiovh:config/pop/datacenter/extra/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -562,17 +607,20 @@ export const schema: Schema = {
       "path": "/ovhCloudConnect/{serviceName}/config/pop/{popId}/datacenter/{datacenterId}/extra/{extraId}"
     },
     {
-      "description": "Confirm termination of your service",
+      "description": "Confirm service termination",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Confirm termination of your service",
+          "description": "Confirm service termination",
           "httpMethod": "POST",
           "iamActions": [
-            "ovhCloudConnect:apiovh:confirmTermination"
+            {
+              "name": "ovhCloudConnect:apiovh:confirmTermination",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -602,7 +650,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The termination token sent by mail to the admin contact",
+              "description": "The termination token sent by email to the admin contact",
               "fullType": "string",
               "name": "token",
               "paramType": "body",
@@ -633,7 +681,10 @@ export const schema: Schema = {
           "description": "List available Datacenter",
           "httpMethod": "GET",
           "iamActions": [
-            "ovhCloudConnect:apiovh:datacenter/get"
+            {
+              "name": "ovhCloudConnect:apiovh:datacenter/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -662,7 +713,10 @@ export const schema: Schema = {
           "description": "Get Datacenter",
           "httpMethod": "GET",
           "iamActions": [
-            "ovhCloudConnect:apiovh:datacenter/get"
+            {
+              "name": "ovhCloudConnect:apiovh:datacenter/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -699,7 +753,10 @@ export const schema: Schema = {
           "description": "Get Diagnostics linked to a OVHcloud Connect Service",
           "httpMethod": "GET",
           "iamActions": [
-            "ovhCloudConnect:apiovh:diagnostic/get"
+            {
+              "name": "ovhCloudConnect:apiovh:diagnostic/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -722,7 +779,10 @@ export const schema: Schema = {
           "description": "Create a Diagnostic linked to a OVHcloud Connect Service",
           "httpMethod": "POST",
           "iamActions": [
-            "ovhCloudConnect:apiovh:diagnostic/create"
+            {
+              "name": "ovhCloudConnect:apiovh:diagnostic/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -758,7 +818,10 @@ export const schema: Schema = {
           "description": "Get Diagnostic linked to a OVHcloud Connect Service",
           "httpMethod": "GET",
           "iamActions": [
-            "ovhCloudConnect:apiovh:diagnostic/get"
+            {
+              "name": "ovhCloudConnect:apiovh:diagnostic/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -795,7 +858,10 @@ export const schema: Schema = {
           "description": "List incidents linked to the Service",
           "httpMethod": "GET",
           "iamActions": [
-            "ovhCloudConnect:apiovh:incident/get"
+            {
+              "name": "ovhCloudConnect:apiovh:incident/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -824,7 +890,10 @@ export const schema: Schema = {
           "description": "Get the incident information",
           "httpMethod": "GET",
           "iamActions": [
-            "ovhCloudConnect:apiovh:incident/get"
+            {
+              "name": "ovhCloudConnect:apiovh:incident/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -861,7 +930,10 @@ export const schema: Schema = {
           "description": "List interfaces linked to the Service",
           "httpMethod": "GET",
           "iamActions": [
-            "ovhCloudConnect:apiovh:interface/get"
+            {
+              "name": "ovhCloudConnect:apiovh:interface/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -890,7 +962,10 @@ export const schema: Schema = {
           "description": "Get the Interface information",
           "httpMethod": "GET",
           "iamActions": [
-            "ovhCloudConnect:apiovh:interface/get"
+            {
+              "name": "ovhCloudConnect:apiovh:interface/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -927,7 +1002,10 @@ export const schema: Schema = {
           "description": "Lock the port",
           "httpMethod": "POST",
           "iamActions": [
-            "ovhCloudConnect:apiovh:interface/lock"
+            {
+              "name": "ovhCloudConnect:apiovh:interface/lock",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -964,7 +1042,10 @@ export const schema: Schema = {
           "description": "Statistics for an OCC interface for a given type",
           "httpMethod": "GET",
           "iamActions": [
-            "ovhCloudConnect:apiovh:interface/statistics/get"
+            {
+              "name": "ovhCloudConnect:apiovh:interface/statistics/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1017,7 +1098,10 @@ export const schema: Schema = {
           "description": "Unlock the port",
           "httpMethod": "POST",
           "iamActions": [
-            "ovhCloudConnect:apiovh:interface/unlock"
+            {
+              "name": "ovhCloudConnect:apiovh:interface/unlock",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1054,7 +1138,10 @@ export const schema: Schema = {
           "description": "Generate a loa for a service",
           "httpMethod": "POST",
           "iamActions": [
-            "ovhCloudConnect:apiovh:loa/create"
+            {
+              "name": "ovhCloudConnect:apiovh:loa/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1073,6 +1160,97 @@ export const schema: Schema = {
       "path": "/ovhCloudConnect/{serviceName}/loa"
     },
     {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete monitoring",
+          "httpMethod": "DELETE",
+          "iamActions": [
+            {
+              "name": "ovhCloudConnect:apiovh:monitoring/delete",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Service name",
+              "fullType": "uuid",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List monitoring alerts",
+          "httpMethod": "GET",
+          "iamActions": [
+            {
+              "name": "ovhCloudConnect:apiovh:monitoring/get",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Service name",
+              "fullType": "uuid",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ovhcloudconnect.Monitoring[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Monitor the Service",
+          "httpMethod": "POST",
+          "iamActions": [
+            {
+              "name": "ovhCloudConnect:apiovh:monitoring/create",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ovhcloudconnect.Subscriptions",
+              "description": "Request Body",
+              "fullType": "ovhcloudconnect.Subscriptions",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Service name",
+              "fullType": "uuid",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/ovhCloudConnect/{serviceName}/monitoring"
+    },
+    {
       "description": "Details about a Service",
       "operations": [
         {
@@ -1080,10 +1258,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get service information",
           "httpMethod": "GET",
           "iamActions": [
-            "ovhCloudConnect:apiovh:serviceInfos/get"
+            {
+              "name": "ovhCloudConnect:apiovh:serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1103,10 +1284,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Update service information",
           "httpMethod": "PUT",
           "iamActions": [
-            "ovhCloudConnect:apiovh:serviceInfos/edit"
+            {
+              "name": "ovhCloudConnect:apiovh:serviceInfos/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1142,7 +1326,10 @@ export const schema: Schema = {
           "description": "Get Keys linked to a OVHcloud Connect Service",
           "httpMethod": "GET",
           "iamActions": [
-            "ovhCloudConnect:apiovh:serviceKey/get"
+            {
+              "name": "ovhCloudConnect:apiovh:serviceKey/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1171,7 +1358,10 @@ export const schema: Schema = {
           "description": "Get Key linked to a OVHcloud Connect Service",
           "httpMethod": "GET",
           "iamActions": [
-            "ovhCloudConnect:apiovh:serviceKey/get"
+            {
+              "name": "ovhCloudConnect:apiovh:serviceKey/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1208,7 +1398,10 @@ export const schema: Schema = {
           "description": "Regenerate Service Key linked to a OVHcloud Connect Service",
           "httpMethod": "POST",
           "iamActions": [
-            "ovhCloudConnect:apiovh:serviceKey/regenerate"
+            {
+              "name": "ovhCloudConnect:apiovh:serviceKey/regenerate",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1245,7 +1438,10 @@ export const schema: Schema = {
           "description": "Send key value to customer",
           "httpMethod": "POST",
           "iamActions": [
-            "ovhCloudConnect:apiovh:serviceKey/send"
+            {
+              "name": "ovhCloudConnect:apiovh:serviceKey/send",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1289,7 +1485,10 @@ export const schema: Schema = {
           "description": "Get Task linked to a OVHcloud Connect Service",
           "httpMethod": "GET",
           "iamActions": [
-            "ovhCloudConnect:apiovh:task/get"
+            {
+              "name": "ovhCloudConnect:apiovh:task/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1318,7 +1517,10 @@ export const schema: Schema = {
           "description": "Get Tasks linked to a OVHcloud Connect Service",
           "httpMethod": "GET",
           "iamActions": [
-            "ovhCloudConnect:apiovh:task/get"
+            {
+              "name": "ovhCloudConnect:apiovh:task/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1345,18 +1547,22 @@ export const schema: Schema = {
       "path": "/ovhCloudConnect/{serviceName}/task/{id}"
     },
     {
-      "description": "Terminate your service",
+      "description": "Ask for the termination of your service. Admin contact of this service will receive a termination token in order to confirm its termination with /confirmTermination endpoint.",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Terminate your service",
+          "description": "Ask for the termination of your service",
           "httpMethod": "POST",
           "iamActions": [
-            "ovhCloudConnect:apiovh:terminate"
+            {
+              "name": "ovhCloudConnect:apiovh:terminate",
+              "required": true
+            }
           ],
+          "longDescription": "Ask for the termination of your service. Admin contact of this service will receive a termination token by email in order to confirm its termination with /confirmTermination endpoint.",
           "noAuthentication": false,
           "parameters": [
             {
@@ -1429,7 +1635,7 @@ export const schema: Schema = {
           "type": "long"
         },
         "ovhBgpArea": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "OVH Private AS",
           "fullType": "long",
           "readOnly": false,
@@ -1915,13 +2121,44 @@ export const schema: Schema = {
         }
       }
     },
+    "ovhcloudconnect.Monitoring": {
+      "description": "OVHcloud Connect Monitoring",
+      "id": "Monitoring",
+      "namespace": "ovhcloudconnect",
+      "properties": {
+        "activated": {
+          "canBeNull": false,
+          "description": "Whether alert is activated",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "Description of the monitoring alert",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the monitoring alert",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
     "ovhcloudconnect.PopConfig": {
       "description": "OVHcloud Connect Service Pop Configuration",
       "id": "PopConfig",
       "namespace": "ovhcloudconnect",
       "properties": {
         "customerBgpArea": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Customer Private AS",
           "fullType": "long",
           "readOnly": false,
@@ -1945,7 +2182,7 @@ export const schema: Schema = {
           "type": "long"
         },
         "ovhBgpArea": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "OVH Private AS",
           "fullType": "long",
           "readOnly": false,
@@ -2077,6 +2314,21 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        }
+      }
+    },
+    "ovhcloudconnect.Subscriptions": {
+      "description": "OVHcloud Connect Subscriptions",
+      "id": "Subscriptions",
+      "namespace": "ovhcloudconnect",
+      "properties": {
+        "subscriptions": {
+          "canBeNull": false,
+          "description": "List of subscriptions alerts.",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
         }
       }
     },
@@ -2334,14 +2586,14 @@ export const schema: Schema = {
       "enum": [
         "OVHcloud",
         "RISQ",
+        "consoleconnect",
         "equinix",
         "fibrenoire",
         "intercloud",
         "internal",
         "interxion",
         "megaport",
-        "orange",
-        "pccw"
+        "orange"
       ],
       "enumType": "string",
       "id": "ProviderEnum",

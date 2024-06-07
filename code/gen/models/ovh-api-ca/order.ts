@@ -16,7 +16,10 @@ export const schema: Schema = {
           "description": "List of your OVH order carts",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:order/cart/get"
+            {
+              "name": "account:apiovh:order/cart/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -64,7 +67,10 @@ export const schema: Schema = {
           "description": "Delete a cart",
           "httpMethod": "DELETE",
           "iamActions": [
-            "account:apiovh:order/cart/delete"
+            {
+              "name": "account:apiovh:order/cart/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -137,124 +143,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Anthos offers",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Cart ID",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.cart.GenericProductDefinition[]"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Post a new Anthos item in your cart",
-          "httpMethod": "POST",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "order.cart.GenericProductCreation",
-              "description": "Request Body",
-              "fullType": "order.cart.GenericProductCreation",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart ID",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.cart.Item"
-        }
-      ],
-      "path": "/order/cart/{cartId}/anthos"
-    },
-    {
-      "description": "Anthos option",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get informations about Anthos options",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Cart ID",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Identifier of the Anthos you want to consult options",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "order.cart.GenericOptionDefinition[]"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Post a new Anthos option in your cart",
-          "httpMethod": "POST",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "order.cart.GenericOptionCreation",
-              "description": "Request Body",
-              "fullType": "order.cart.GenericOptionCreation",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart ID",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.cart.Item"
-        }
-      ],
-      "path": "/order/cart/{cartId}/anthos/options"
-    },
-    {
-      "description": "Missing description",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
           "description": "Assign a shopping cart to an loggedin client",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:order/cart/assign"
+            {
+              "name": "account:apiovh:order/cart/assign",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -280,7 +175,7 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Get informations about a baremetal server",
+          "description": "Get information about a baremetal server",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -333,7 +228,7 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Get informations about baremetal server options",
+          "description": "Get information about baremetal server options",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -447,7 +342,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Ceph as a Service offers",
+          "description": "Get information about Ceph as a Service offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -500,7 +395,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Ceph as a Service options",
+          "description": "Get information about Ceph as a Service options",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -564,7 +459,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information for your cart",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:order/cart/checkout/get"
+            {
+              "name": "account:apiovh:order/cart/checkout/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -587,7 +485,10 @@ export const schema: Schema = {
           "description": "Validate your shopping and create order",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:order/cart/checkout/create"
+            {
+              "name": "account:apiovh:order/cart/checkout/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -620,7 +521,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Public Cloud offers",
+          "description": "Get information about Public Cloud offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -673,7 +574,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Public Cloud options",
+          "description": "Get information about Public Cloud options",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -868,7 +769,7 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Get informations about a dedicated server",
+          "description": "Get information about a dedicated server",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -909,9 +810,9 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "order.cart.GenericDedicatedCreation",
+              "dataType": "order.cart.GenericProductCreation",
               "description": "Request Body",
-              "fullType": "order.cart.GenericDedicatedCreation",
+              "fullType": "order.cart.GenericProductCreation",
               "paramType": "body",
               "required": true
             },
@@ -937,7 +838,7 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Get informations about dedicated server options",
+          "description": "Get information about dedicated server options",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -978,9 +879,9 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "order.cart.GenericDedicatedOptionsCreation",
+              "dataType": "order.cart.GenericOptionCreation",
               "description": "Request Body",
-              "fullType": "order.cart.GenericDedicatedOptionsCreation",
+              "fullType": "order.cart.GenericOptionCreation",
               "paramType": "body",
               "required": true
             },
@@ -1006,7 +907,7 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Get informations about a dedicated server",
+          "description": "Get information about a dedicated server",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -1047,9 +948,9 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "order.cart.GenericDedicatedCreation",
+              "dataType": "order.cart.GenericProductCreation",
               "description": "Request Body",
-              "fullType": "order.cart.GenericDedicatedCreation",
+              "fullType": "order.cart.GenericProductCreation",
               "paramType": "body",
               "required": true
             },
@@ -1075,7 +976,7 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Get informations about dedicated server options",
+          "description": "Get information about dedicated server options",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -1116,9 +1017,9 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "order.cart.GenericDedicatedOptionsCreation",
+              "dataType": "order.cart.GenericOptionCreation",
               "description": "Request Body",
-              "fullType": "order.cart.GenericDedicatedOptionsCreation",
+              "fullType": "order.cart.GenericOptionCreation",
               "paramType": "body",
               "required": true
             },
@@ -1137,20 +1038,20 @@ export const schema: Schema = {
       "path": "/order/cart/{cartId}/dedicatedCloud/options"
     },
     {
-      "description": "Missing description",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about a dedicated Direct Sales server",
+          "description": "Get information about a dedicated Direct Sales server",
           "httpMethod": "GET",
-          "noAuthentication": true,
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -1166,43 +1067,18 @@ export const schema: Schema = {
           },
           "description": "Post a new dedicated Direct Sales server item in your cart",
           "httpMethod": "POST",
-          "noAuthentication": true,
+          "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
+              "dataType": "order.cart.GenericProductCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericProductCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of a dedicated Direct Sales server offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the purchase of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -1215,20 +1091,20 @@ export const schema: Schema = {
       "path": "/order/cart/{cartId}/dedicatedDirectSales"
     },
     {
-      "description": "Missing description",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about dedicated Direct Sales server options",
+          "description": "Get information about dedicated Direct Sales server options",
           "httpMethod": "GET",
-          "noAuthentication": true,
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -1244,51 +1120,18 @@ export const schema: Schema = {
           },
           "description": "Post a new dedicated Direct Sales server option in your cart",
           "httpMethod": "POST",
-          "noAuthentication": true,
+          "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Cart item to be linked",
-              "fullType": "long",
-              "name": "itemId",
+              "dataType": "order.cart.GenericOptionCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericOptionCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of a dedicated Direct Sales server offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the purchase of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -1308,7 +1151,7 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Get informations about a dedicated labs server",
+          "description": "Get information about a dedicated labs server",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -1369,7 +1212,7 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Get informations about dedicated labs server options",
+          "description": "Get information about dedicated labs server options",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -1544,7 +1387,7 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Get informations about a dedicated server",
+          "description": "Get information about a dedicated server",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -1585,9 +1428,9 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "order.cart.GenericDedicatedCreation",
+              "dataType": "order.cart.GenericProductCreation",
               "description": "Request Body",
-              "fullType": "order.cart.GenericDedicatedCreation",
+              "fullType": "order.cart.GenericProductCreation",
               "paramType": "body",
               "required": true
             },
@@ -1613,7 +1456,7 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Get informations about dedicated server options",
+          "description": "Get information about dedicated server options",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -1654,9 +1497,9 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "order.cart.GenericDedicatedOptionsCreation",
+              "dataType": "order.cart.GenericOptionCreation",
               "description": "Request Body",
-              "fullType": "order.cart.GenericDedicatedOptionsCreation",
+              "fullType": "order.cart.GenericOptionCreation",
               "paramType": "body",
               "required": true
             },
@@ -1682,13 +1525,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about a dedicated server for US Reseller",
+          "description": "Get information about a dedicated server for US Reseller",
           "httpMethod": "GET",
-          "noAuthentication": true,
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -1720,43 +1563,18 @@ export const schema: Schema = {
           },
           "description": "Post a new dedicated server item in your cart",
           "httpMethod": "POST",
-          "noAuthentication": true,
+          "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
+              "dataType": "order.cart.GenericProductCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericProductCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of a dedicated server offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the purchase of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -1776,13 +1594,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about dedicated server options",
+          "description": "Get information about dedicated server options",
           "httpMethod": "GET",
-          "noAuthentication": true,
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -1814,51 +1632,18 @@ export const schema: Schema = {
           },
           "description": "Post a new dedicated server option in your cart",
           "httpMethod": "POST",
-          "noAuthentication": true,
+          "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Cart item to be linked",
-              "fullType": "long",
-              "name": "itemId",
+              "dataType": "order.cart.GenericOptionCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericOptionCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of a dedicated server offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the purchase of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -1878,7 +1663,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Desk As A Service offers",
+          "description": "Get information about Desk As A Service offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -1931,7 +1716,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Dedicated Discover server offers",
+          "description": "Get information about Dedicated Discover server offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -1984,7 +1769,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Dedicated Discover server options",
+          "description": "Get information about Dedicated Discover server options",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -2045,7 +1830,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about DNS zone offer",
+          "description": "Get information about DNS zone offer",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -2098,7 +1883,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about DNS options",
+          "description": "Get information about DNS options",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -2156,12 +1941,12 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
-          "description": "Get informations about a domain name",
+          "description": "Get information about a domain name",
           "httpMethod": "GET",
-          "noAuthentication": true,
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
@@ -2184,12 +1969,12 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
-          "description": "Post a new domain in your cart",
+          "description": "Post a new domain name in your cart",
           "httpMethod": "POST",
-          "noAuthentication": true,
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "order.cart.GenericDomainCreation",
@@ -2217,10 +2002,10 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
-          "description": "Get informations about domain names options",
+          "description": "Get information about domain names options",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -2245,8 +2030,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Post a new domain name option in your cart",
           "httpMethod": "POST",
@@ -2395,7 +2180,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Exchange offers",
+          "description": "Get information about Exchange offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -2448,7 +2233,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Exchange options",
+          "description": "Get information about Exchange options",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -2509,7 +2294,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about IP addresses offers",
+          "description": "Get information about IP addresses offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -2562,7 +2347,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about IP addresses options",
+          "description": "Get information about IP addresses options",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -2623,7 +2408,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about IP Load-Balancing offers",
+          "description": "Get information about IP Load-Balancing offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -2676,7 +2461,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about IP Load-Balancing options",
+          "description": "Get information about IP Load-Balancing options",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -2740,7 +2525,10 @@ export const schema: Schema = {
           "description": "Get information about IP addresses reseller offers",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:order/cart/ipReseller/get"
+            {
+              "name": "account:apiovh:order/cart/ipReseller/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2763,7 +2551,10 @@ export const schema: Schema = {
           "description": "Post a new IP address reseller item in your cart",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:order/cart/ipReseller/create"
+            {
+              "name": "account:apiovh:order/cart/ipReseller/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3130,12 +2921,12 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-23 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-23 10:00:00 +0100 +0100",
+            "deletionDate": "2023-02-23T00:00:00Z",
+            "deprecatedDate": "2023-01-23T10:00:00Z",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
-          "description": "Get informations about CloudLinux licenses offers",
+          "description": "Get information about CloudLinux licenses offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -3152,8 +2943,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-02-23 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-23 10:00:00 +0100 +0100",
+            "deletionDate": "2023-02-23T00:00:00Z",
+            "deprecatedDate": "2023-01-23T10:00:00Z",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -3190,7 +2981,7 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Get informations about cPanel licenses offers",
+          "description": "Get information about cPanel licenses offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -3240,12 +3031,12 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-23 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-23 10:00:00 +0100 +0100",
+            "deletionDate": "2023-02-23T00:00:00Z",
+            "deprecatedDate": "2023-01-23T10:00:00Z",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
-          "description": "Get informations about Directadmin licenses offers",
+          "description": "Get information about Directadmin licenses offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -3262,8 +3053,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-02-23 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-23 10:00:00 +0100 +0100",
+            "deletionDate": "2023-02-23T00:00:00Z",
+            "deprecatedDate": "2023-01-23T10:00:00Z",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -3300,7 +3091,7 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Get informations about Plesk licenses offers",
+          "description": "Get information about Plesk licenses offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -3353,7 +3144,7 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Get informations about Plesk license options",
+          "description": "Get information about Plesk license options",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -3414,7 +3205,7 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Get informations about SqlServer licenses offers",
+          "description": "Get information about SqlServer licenses offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -3464,12 +3255,12 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-23 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-23 10:00:00 +0100 +0100",
+            "deletionDate": "2023-02-23T00:00:00Z",
+            "deprecatedDate": "2023-01-23T10:00:00Z",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
-          "description": "Get informations about Virtuozzo licenses offers",
+          "description": "Get information about Virtuozzo licenses offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -3486,8 +3277,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-02-23 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-23 10:00:00 +0100 +0100",
+            "deletionDate": "2023-02-23T00:00:00Z",
+            "deprecatedDate": "2023-01-23T10:00:00Z",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -3524,7 +3315,7 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Get informations about Windows licenses offers",
+          "description": "Get information about Windows licenses offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -3574,12 +3365,12 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-23 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-23 10:00:00 +0100 +0100",
+            "deletionDate": "2023-02-23T00:00:00Z",
+            "deprecatedDate": "2023-01-23T10:00:00Z",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
-          "description": "Get informations about Worklight licenses offers",
+          "description": "Get information about Worklight licenses offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -3596,8 +3387,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-02-23 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-23 10:00:00 +0100 +0100",
+            "deletionDate": "2023-02-23T00:00:00Z",
+            "deprecatedDate": "2023-01-23T10:00:00Z",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -3634,7 +3425,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Logs offers",
+          "description": "Get information about Logs offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -3687,7 +3478,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Logs options",
+          "description": "Get information about Logs options",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -3748,7 +3539,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about NAS HA offers",
+          "description": "Get information about NAS HA offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -3801,7 +3592,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about NAS HA options",
+          "description": "Get information about NAS HA options",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -3862,7 +3653,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about NetApp offers",
+          "description": "Get information about NetApp offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -3915,7 +3706,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about NetApp options",
+          "description": "Get information about NetApp options",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -4090,7 +3881,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Office 365 licenses",
+          "description": "Get information about Office 365 licenses",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -4143,7 +3934,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Office 365 options",
+          "description": "Get information about Office 365 options",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -4204,7 +3995,7 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Get informations about a officePrepaid",
+          "description": "Get information about a officePrepaid",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -4257,7 +4048,7 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Get informations about officePrepaid options",
+          "description": "Get information about officePrepaid options",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -4318,7 +4109,7 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Get informations about OVHcloud Connect offers",
+          "description": "Get information about OVHcloud Connect offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -4371,7 +4162,7 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Get informations about a packs professional services",
+          "description": "Get information about a packs professional services",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -4424,7 +4215,7 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Get informations about packs professional services options",
+          "description": "Get information about packs professional services options",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -4485,7 +4276,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Hosted Private Cloud offers",
+          "description": "Get information about Hosted Private Cloud offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -4538,7 +4329,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Hosted Private Cloud options",
+          "description": "Get information about Hosted Private Cloud options",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -4599,7 +4390,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Private Cloud CDI offers",
+          "description": "Get information about Private Cloud CDI offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -4652,7 +4443,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Private Cloud CDI options",
+          "description": "Get information about Private Cloud CDI options",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -4713,7 +4504,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Private Cloud Dedicated Cloud offers",
+          "description": "Get information about Private Cloud Dedicated Cloud offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -4766,7 +4557,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Private Cloud Dedicated Cloud options",
+          "description": "Get information about Private Cloud Dedicated Cloud options",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -4827,7 +4618,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Hosted Private Cloud offers",
+          "description": "Get information about Hosted Private Cloud offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -4880,7 +4671,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Hosted Private Cloud options",
+          "description": "Get information about Hosted Private Cloud options",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -4941,13 +4732,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Dedicated Cloud Reseller offers",
+          "description": "Get information about Private Cloud Reseller offers",
           "httpMethod": "GET",
-          "noAuthentication": true,
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -4961,45 +4752,20 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Post a new Dedicated Cloud Reseller item in your cart",
+          "description": "Post a new Private Cloud Reseller item in your cart",
           "httpMethod": "POST",
-          "noAuthentication": true,
+          "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
+              "dataType": "order.cart.GenericProductCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericProductCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of the Dedicated Cloud Reseller offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the purchase of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -5019,13 +4785,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Dedicated Cloud Reseller options",
+          "description": "Get information about Private Cloud Reseller options",
           "httpMethod": "GET",
-          "noAuthentication": true,
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -5033,7 +4799,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Identifier of the Dedicated Cloud Reseller you want to consult options",
+              "description": "Identifier of the Private Cloud Reseller you want to consult options",
               "fullType": "string",
               "name": "planCode",
               "paramType": "query",
@@ -5047,53 +4813,20 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Post a new Dedicated Cloud Reseller option in your cart",
+          "description": "Post a new Private Cloud Reseller option in your cart",
           "httpMethod": "POST",
-          "noAuthentication": true,
+          "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Cart item to be linked",
-              "fullType": "long",
-              "name": "itemId",
+              "dataType": "order.cart.GenericOptionCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericOptionCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of a Dedicated Cloud Reseller option offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the purchase of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -5113,13 +4846,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Dedicated Cloud Reseller Enterprise offers",
+          "description": "Get information about Private Cloud Reseller Enterprise offers",
           "httpMethod": "GET",
-          "noAuthentication": true,
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -5133,45 +4866,20 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Post a new Dedicated Cloud Reseller Enterprise item in your cart",
+          "description": "Post a new Private Cloud Reseller Enterprise item in your cart",
           "httpMethod": "POST",
-          "noAuthentication": true,
+          "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
+              "dataType": "order.cart.GenericProductCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericProductCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of the Dedicated Cloud Reseller Enterprise offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the purchase of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -5191,13 +4899,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Dedicated Cloud Reseller Enterprise options",
+          "description": "Get information about Private Cloud Reseller Enterprise options",
           "httpMethod": "GET",
-          "noAuthentication": true,
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -5205,7 +4913,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Identifier of the Dedicated Cloud Reseller Enterprise you want to consult options",
+              "description": "Identifier of the Private Cloud Reseller Enterprise you want to consult options",
               "fullType": "string",
               "name": "planCode",
               "paramType": "query",
@@ -5219,53 +4927,20 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Post a new Dedicated Cloud Reseller Enterprise option in your cart",
+          "description": "Post a new Private Cloud Reseller Enterprise option in your cart",
           "httpMethod": "POST",
-          "noAuthentication": true,
+          "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Cart item to be linked",
-              "fullType": "long",
-              "name": "itemId",
+              "dataType": "order.cart.GenericOptionCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericOptionCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of a Dedicated Cloud Reseller Enterprise option offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the purchase of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -5285,7 +4960,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Private Cloud SDDC offers",
+          "description": "Get information about Private Cloud SDDC offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -5338,7 +5013,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Private Cloud SDDC options",
+          "description": "Get information about Private Cloud SDDC options",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -5452,13 +5127,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about SSL Comodo offers",
+          "description": "Get information about SSL Comodo offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -5477,40 +5152,15 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
+              "dataType": "order.cart.GenericProductCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericProductCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of the SSL Comodo offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the purchase of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -5530,13 +5180,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about SSL Comodo options",
+          "description": "Get information about SSL Comodo options",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -5563,48 +5213,15 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Cart item to be linked",
-              "fullType": "long",
-              "name": "itemId",
+              "dataType": "order.cart.GenericOptionCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericOptionCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of a SSL Comodo option offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the purchase of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -5624,7 +5241,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about SSL Gateway offers",
+          "description": "Get information about SSL Gateway offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -5677,7 +5294,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about SSL Gateway options",
+          "description": "Get information about SSL Gateway options",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -5817,7 +5434,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Veeam Cloud Connect offers",
+          "description": "Get information about Veeam Cloud Connect offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -5870,7 +5487,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Veeam Enterprise offers",
+          "description": "Get information about Veeam Enterprise offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -5923,7 +5540,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Veeam Enterprise options",
+          "description": "Get information about Veeam Enterprise options",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -5984,7 +5601,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about VPS offers",
+          "description": "Get information about VPS offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -6037,7 +5654,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about VPS options",
+          "description": "Get information about VPS options",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -6098,7 +5715,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about vRack offers",
+          "description": "Get information about vRack offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -6151,13 +5768,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about vRack offers",
+          "description": "Get information about vRack offers",
           "httpMethod": "GET",
-          "noAuthentication": true,
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -6173,43 +5790,18 @@ export const schema: Schema = {
           },
           "description": "Post a new vRack item in your cart",
           "httpMethod": "POST",
-          "noAuthentication": true,
+          "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
+              "dataType": "order.cart.GenericProductCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericProductCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of the vRack offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the purchase of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -6229,7 +5821,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about webHosting offers",
+          "description": "Get information about webHosting offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -6282,7 +5874,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about webHosting options",
+          "description": "Get information about webHosting options",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -6336,118 +5928,6 @@ export const schema: Schema = {
       "path": "/order/cart/{cartId}/webHosting/options"
     },
     {
-      "description": "Operations about the ANTHOS service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List available services",
-          "httpMethod": "GET",
-          "iamActions": [
-            "order:apiovh:cartServiceOption/anthos/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/cartServiceOption/anthos"
-    },
-    {
-      "description": "Listing offers /order/cartServiceOptions/anthos/#serviceName#",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get informations about additional anthos offer for your service",
-          "httpMethod": "GET",
-          "iamActions": [
-            "order:apiovh:cartServiceOption/anthos/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The Anthos Tenant subscription Id",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.cart.GenericOptionDefinition[]"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Post an additional anthos option in your cart",
-          "httpMethod": "POST",
-          "iamActions": [
-            "order:apiovh:cartServiceOption/anthos/create"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Identifier of the additional anthos offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the purchase of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The Anthos Tenant subscription Id",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.cart.Item"
-        }
-      ],
-      "path": "/order/cartServiceOption/anthos/{serviceName}"
-    },
-    {
       "description": "Operations about the DEDICATED service",
       "operations": [
         {
@@ -6458,7 +5938,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/baremetalServers/get"
+            {
+              "name": "order:apiovh:cartServiceOption/baremetalServers/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -6478,7 +5961,10 @@ export const schema: Schema = {
           "description": "Get informations about additional baremetal servers offer for your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/baremetalServers/get"
+            {
+              "name": "order:apiovh:cartServiceOption/baremetalServers/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6501,7 +5987,10 @@ export const schema: Schema = {
           "description": "Post an additional baremetal servers option in your cart",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:cartServiceOption/baremetalServers/create"
+            {
+              "name": "order:apiovh:cartServiceOption/baremetalServers/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6570,7 +6059,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/cloud/get"
+            {
+              "name": "order:apiovh:cartServiceOption/cloud/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -6590,7 +6082,10 @@ export const schema: Schema = {
           "description": "Get informations about additional Cloud offer for your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/cloud/get"
+            {
+              "name": "order:apiovh:cartServiceOption/cloud/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6613,7 +6108,10 @@ export const schema: Schema = {
           "description": "Post an additional Cloud option in your cart",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:cartServiceOption/cloud/create"
+            {
+              "name": "order:apiovh:cartServiceOption/cloud/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6682,7 +6180,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/dedicated/get"
+            {
+              "name": "order:apiovh:cartServiceOption/dedicated/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -6702,7 +6203,10 @@ export const schema: Schema = {
           "description": "Get informations about additional dedicated offer for your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/dedicated/get"
+            {
+              "name": "order:apiovh:cartServiceOption/dedicated/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6725,7 +6229,10 @@ export const schema: Schema = {
           "description": "Post an additional dedicated option in your cart",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:cartServiceOption/dedicated/create"
+            {
+              "name": "order:apiovh:cartServiceOption/dedicated/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6794,7 +6301,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/dns/get"
+            {
+              "name": "order:apiovh:cartServiceOption/dns/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -6814,7 +6324,10 @@ export const schema: Schema = {
           "description": "Get informations about additional Domain offer for your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/dns/get"
+            {
+              "name": "order:apiovh:cartServiceOption/dns/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6837,7 +6350,10 @@ export const schema: Schema = {
           "description": "Post an additional Domain option in your cart",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:cartServiceOption/dns/create"
+            {
+              "name": "order:apiovh:cartServiceOption/dns/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6906,7 +6422,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/domain/get"
+            {
+              "name": "order:apiovh:cartServiceOption/domain/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6935,7 +6454,10 @@ export const schema: Schema = {
           "description": "Get informations about additional Domain offer for your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/domain/get"
+            {
+              "name": "order:apiovh:cartServiceOption/domain/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6958,7 +6480,10 @@ export const schema: Schema = {
           "description": "Post an additional Domain option in your cart",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:cartServiceOption/domain/create"
+            {
+              "name": "order:apiovh:cartServiceOption/domain/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7027,7 +6552,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/ipLoadbalancing/get"
+            {
+              "name": "order:apiovh:cartServiceOption/ipLoadbalancing/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -7047,7 +6575,10 @@ export const schema: Schema = {
           "description": "Get informations about additional IP Load-Balancing offer for your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/ipLoadbalancing/get"
+            {
+              "name": "order:apiovh:cartServiceOption/ipLoadbalancing/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7070,7 +6601,10 @@ export const schema: Schema = {
           "description": "Post an additional IP Load-Balancing option in your cart",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:cartServiceOption/ipLoadbalancing/create"
+            {
+              "name": "order:apiovh:cartServiceOption/ipLoadbalancing/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7139,7 +6673,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/logs/get"
+            {
+              "name": "order:apiovh:cartServiceOption/logs/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -7159,7 +6696,10 @@ export const schema: Schema = {
           "description": "Get informations about additional Logs offer for your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/logs/get"
+            {
+              "name": "order:apiovh:cartServiceOption/logs/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7182,7 +6722,10 @@ export const schema: Schema = {
           "description": "Post an additional Logs option in your cart",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:cartServiceOption/logs/create"
+            {
+              "name": "order:apiovh:cartServiceOption/logs/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7241,6 +6784,127 @@ export const schema: Schema = {
       "path": "/order/cartServiceOption/logs/{serviceName}"
     },
     {
+      "description": "Operations about the CLUSTER service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List available services",
+          "httpMethod": "GET",
+          "iamActions": [
+            {
+              "name": "order:apiovh:cartServiceOption/nutanix/get",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/cartServiceOption/nutanix"
+    },
+    {
+      "description": "Listing offers /order/cartServiceOptions/nutanix/#serviceName#",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get informations about additional Nutanix offer for your service",
+          "httpMethod": "GET",
+          "iamActions": [
+            {
+              "name": "order:apiovh:cartServiceOption/nutanix/get",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal ID of nutanix service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericOptionDefinition[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Post an additional nutanix option in your cart",
+          "httpMethod": "POST",
+          "iamActions": [
+            {
+              "name": "order:apiovh:cartServiceOption/nutanix/create",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Identifier of the additional nutanix offer",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Pricing mode selected for the purchase of the product",
+              "fullType": "string",
+              "name": "pricingMode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity of product desired",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal ID of nutanix service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.Item"
+        }
+      ],
+      "path": "/order/cartServiceOption/nutanix/{serviceName}"
+    },
+    {
       "description": "Operations about the PCC service",
       "operations": [
         {
@@ -7251,7 +6915,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/privateCloud/get"
+            {
+              "name": "order:apiovh:cartServiceOption/privateCloud/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -7271,7 +6938,10 @@ export const schema: Schema = {
           "description": "Get informations about additional Dedicated Cloud offer for your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/privateCloud/get"
+            {
+              "name": "order:apiovh:cartServiceOption/privateCloud/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7294,7 +6964,10 @@ export const schema: Schema = {
           "description": "Post an additional Dedicated Cloud option in your cart",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:cartServiceOption/privateCloud/create"
+            {
+              "name": "order:apiovh:cartServiceOption/privateCloud/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7363,7 +7036,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/privateCloudEnterprise/get"
+            {
+              "name": "order:apiovh:cartServiceOption/privateCloudEnterprise/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -7383,7 +7059,10 @@ export const schema: Schema = {
           "description": "Get informations about additional Dedicated Cloud offer for your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/privateCloudEnterprise/get"
+            {
+              "name": "order:apiovh:cartServiceOption/privateCloudEnterprise/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7406,7 +7085,10 @@ export const schema: Schema = {
           "description": "Post an additional Dedicated Cloud option in your cart",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:cartServiceOption/privateCloudEnterprise/create"
+            {
+              "name": "order:apiovh:cartServiceOption/privateCloudEnterprise/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7475,7 +7157,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/privateCloudReseller/get"
+            {
+              "name": "order:apiovh:cartServiceOption/privateCloudReseller/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -7495,7 +7180,10 @@ export const schema: Schema = {
           "description": "Get informations about additional Dedicated Cloud offer for your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/privateCloudReseller/get"
+            {
+              "name": "order:apiovh:cartServiceOption/privateCloudReseller/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7518,7 +7206,10 @@ export const schema: Schema = {
           "description": "Post an additional Dedicated Cloud option in your cart",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:cartServiceOption/privateCloudReseller/create"
+            {
+              "name": "order:apiovh:cartServiceOption/privateCloudReseller/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7587,7 +7278,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/privateCloudResellerEnterprise/get"
+            {
+              "name": "order:apiovh:cartServiceOption/privateCloudResellerEnterprise/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -7607,7 +7301,10 @@ export const schema: Schema = {
           "description": "Get informations about additional Dedicated Cloud Enterprise offer for your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/privateCloudResellerEnterprise/get"
+            {
+              "name": "order:apiovh:cartServiceOption/privateCloudResellerEnterprise/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7630,7 +7327,10 @@ export const schema: Schema = {
           "description": "Post an additional Dedicated Cloud Enterprise option in your cart",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:cartServiceOption/privateCloudResellerEnterprise/create"
+            {
+              "name": "order:apiovh:cartServiceOption/privateCloudResellerEnterprise/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7699,7 +7399,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/sharepoint/get"
+            {
+              "name": "order:apiovh:cartServiceOption/sharepoint/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -7719,7 +7422,10 @@ export const schema: Schema = {
           "description": "Get informations about additional Sharepoint offer for your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/sharepoint/get"
+            {
+              "name": "order:apiovh:cartServiceOption/sharepoint/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7742,7 +7448,10 @@ export const schema: Schema = {
           "description": "Post an additional Sharepoint option in your cart",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:cartServiceOption/sharepoint/create"
+            {
+              "name": "order:apiovh:cartServiceOption/sharepoint/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7811,7 +7520,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/sslGateway/get"
+            {
+              "name": "order:apiovh:cartServiceOption/sslGateway/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -7831,7 +7543,10 @@ export const schema: Schema = {
           "description": "Get informations about additional SSL Gateway offer for your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/sslGateway/get"
+            {
+              "name": "order:apiovh:cartServiceOption/sslGateway/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7854,7 +7569,10 @@ export const schema: Schema = {
           "description": "Post an additional SSL Gateway option in your cart",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:cartServiceOption/sslGateway/create"
+            {
+              "name": "order:apiovh:cartServiceOption/sslGateway/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7923,7 +7641,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/vps/get"
+            {
+              "name": "order:apiovh:cartServiceOption/vps/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -7943,7 +7664,10 @@ export const schema: Schema = {
           "description": "Get informations about additional VPS offer for your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/vps/get"
+            {
+              "name": "order:apiovh:cartServiceOption/vps/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7966,7 +7690,10 @@ export const schema: Schema = {
           "description": "Post an additional VPS option in your cart",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:cartServiceOption/vps/create"
+            {
+              "name": "order:apiovh:cartServiceOption/vps/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8035,7 +7762,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/webHosting/get"
+            {
+              "name": "order:apiovh:cartServiceOption/webHosting/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -8055,7 +7785,10 @@ export const schema: Schema = {
           "description": "Get informations about additional Web Hosting offer for your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/webHosting/get"
+            {
+              "name": "order:apiovh:cartServiceOption/webHosting/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8078,7 +7811,10 @@ export const schema: Schema = {
           "description": "Post an additional Web Hosting option in your cart",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:cartServiceOption/webHosting/create"
+            {
+              "name": "order:apiovh:cartServiceOption/webHosting/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8147,7 +7883,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/webPaaS/get"
+            {
+              "name": "order:apiovh:cartServiceOption/webPaaS/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -8167,7 +7906,10 @@ export const schema: Schema = {
           "description": "Get informations about additional Web PaaS offer for your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/webPaaS/get"
+            {
+              "name": "order:apiovh:cartServiceOption/webPaaS/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8190,7 +7932,10 @@ export const schema: Schema = {
           "description": "Post an additional Web PaaS option in your cart",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:cartServiceOption/webPaaS/create"
+            {
+              "name": "order:apiovh:cartServiceOption/webPaaS/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8253,8 +7998,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2018-05-01 00:00:00 +0100 +0100",
-            "deprecatedDate": "2018-03-26 00:00:00 +0100 +0100",
+            "deletionDate": "2018-05-01T00:00:00+01:00",
+            "deprecatedDate": "2018-03-26T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -8350,32 +8095,6 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Retrieve information of Desk as a service catalog",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "nichandle.OvhSubsidiaryEnum",
-              "description": "Subsidiary of the country you want to consult catalog",
-              "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "ovhSubsidiary",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "order.catalog.Catalog"
-        }
-      ],
-      "path": "/order/catalog/formatted/deskaas"
-    },
-    {
-      "description": "Missing description",
-      "operations": [
-        {
-          "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
@@ -8428,8 +8147,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-23 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-23 10:00:00 +0100 +0100",
+            "deletionDate": "2023-02-23T00:00:00Z",
+            "deprecatedDate": "2023-01-23T10:00:00Z",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -8482,8 +8201,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-23 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-23 10:00:00 +0100 +0100",
+            "deletionDate": "2023-02-23T00:00:00Z",
+            "deprecatedDate": "2023-01-23T10:00:00Z",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -8562,8 +8281,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-23 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-23 10:00:00 +0100 +0100",
+            "deletionDate": "2023-02-23T00:00:00Z",
+            "deprecatedDate": "2023-01-23T10:00:00Z",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -8616,8 +8335,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-23 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-23 10:00:00 +0100 +0100",
+            "deletionDate": "2023-02-23T00:00:00Z",
+            "deprecatedDate": "2023-01-23T10:00:00Z",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -8696,8 +8415,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2019-09-28 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-08-28 00:00:00 +0100 +0100",
+            "deletionDate": "2019-09-28T00:00:00+01:00",
+            "deprecatedDate": "2019-08-28T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -8724,8 +8443,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2019-09-28 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-08-28 00:00:00 +0100 +0100",
+            "deletionDate": "2019-09-28T00:00:00+01:00",
+            "deprecatedDate": "2019-08-28T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -8784,7 +8503,10 @@ export const schema: Schema = {
           "description": "Retrieve information of Dedicated Cloud Reseller catalog",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:order/catalog/formatted/privateCloudReseller/get"
+            {
+              "name": "account:apiovh:order/catalog/formatted/privateCloudReseller/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8813,7 +8535,10 @@ export const schema: Schema = {
           "description": "Retrieve information of Dedicated Cloud Reseller Enterprise catalog",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:order/catalog/formatted/privateCloudResellerEnterprise/get"
+            {
+              "name": "account:apiovh:order/catalog/formatted/privateCloudResellerEnterprise/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8836,8 +8561,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2019-09-28 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-08-28 00:00:00 +0100 +0100",
+            "deletionDate": "2019-09-28T00:00:00+01:00",
+            "deprecatedDate": "2019-08-28T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -8912,7 +8637,7 @@ export const schema: Schema = {
       "path": "/order/catalog/formatted/vps"
     },
     {
-      "description": "Missing description",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -8922,13 +8647,16 @@ export const schema: Schema = {
           "description": "Retrieve information of catalog",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:order/catalog/private/privateCloud/get"
+            {
+              "name": "account:apiovh:order/catalog/private/privateCloud/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Name of the private catalog you want to consult.",
+              "description": "Name of the private catalog you want to consult",
               "fullType": "string",
               "name": "catalogName",
               "paramType": "query",
@@ -8936,7 +8664,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "nichandle.OvhSubsidiaryEnum",
-              "description": "Subsidiary of the country you want to consult private catalog.",
+              "description": "Subsidiary of the country you want to consult private catalog",
               "fullType": "nichandle.OvhSubsidiaryEnum",
               "name": "ovhSubsidiary",
               "paramType": "query",
@@ -8947,32 +8675,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/order/catalog/private/privateCloud"
-    },
-    {
-      "description": "Missing description",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Retrieve Anthos catalog",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "nichandle.OvhSubsidiaryEnum",
-              "description": "Subsidiary of the country you want to consult catalog",
-              "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "ovhSubsidiary",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "order.catalog.public.Catalog"
-        }
-      ],
-      "path": "/order/catalog/public/anthos"
     },
     {
       "description": "Missing description",
@@ -9079,12 +8781,12 @@ export const schema: Schema = {
       "path": "/order/catalog/public/dns"
     },
     {
-      "description": "Missing description",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Retrieve domain catalog",
           "httpMethod": "GET",
@@ -9105,7 +8807,7 @@ export const schema: Schema = {
       "path": "/order/catalog/public/domain"
     },
     {
-      "description": "Missing description",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -9157,12 +8859,12 @@ export const schema: Schema = {
       "path": "/order/catalog/public/emailDomain"
     },
     {
-      "description": "Missing description",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Retrieve emailpro catalog",
           "httpMethod": "GET",
@@ -9183,12 +8885,12 @@ export const schema: Schema = {
       "path": "/order/catalog/public/emailpro"
     },
     {
-      "description": "Missing description",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Retrieve exchange catalog",
           "httpMethod": "GET",
@@ -9239,32 +8941,6 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Retrieve KMS catalog",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "nichandle.OvhSubsidiaryEnum",
-              "description": "Subsidiary of the country you want to consult catalog",
-              "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "ovhSubsidiary",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "order.catalog.public.Catalog"
-        }
-      ],
-      "path": "/order/catalog/public/kms"
-    },
-    {
-      "description": "Missing description",
-      "operations": [
-        {
-          "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
@@ -9291,8 +8967,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Retrieve Logs catalog",
           "httpMethod": "GET",
@@ -9313,12 +8989,12 @@ export const schema: Schema = {
       "path": "/order/catalog/public/logs"
     },
     {
-      "description": "Missing description",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Retrieve nasha catalog",
           "httpMethod": "GET",
@@ -9339,7 +9015,7 @@ export const schema: Schema = {
       "path": "/order/catalog/public/nasha"
     },
     {
-      "description": "Missing description",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -9365,7 +9041,7 @@ export const schema: Schema = {
       "path": "/order/catalog/public/netapp"
     },
     {
-      "description": "Missing description",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -9495,7 +9171,7 @@ export const schema: Schema = {
       "path": "/order/catalog/public/packsProfessionalServices"
     },
     {
-      "description": "Missing description",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -9521,7 +9197,7 @@ export const schema: Schema = {
       "path": "/order/catalog/public/privateCloud"
     },
     {
-      "description": "Missing description",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -9687,7 +9363,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cdn/dedicated/get"
+            {
+              "name": "order:apiovh:cdn/dedicated/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -9707,7 +9386,10 @@ export const schema: Schema = {
           "description": "Get allowed options",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cdn/dedicated/get"
+            {
+              "name": "order:apiovh:cdn/dedicated/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9736,7 +9418,10 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'backend' option",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cdn/dedicated/backend/get"
+            {
+              "name": "order:apiovh:cdn/dedicated/backend/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9773,7 +9458,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cdn/dedicated/backend/get"
+            {
+              "name": "order:apiovh:cdn/dedicated/backend/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9812,7 +9500,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:cdn/dedicated/backend/create"
+            {
+              "name": "order:apiovh:cdn/dedicated/backend/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9857,7 +9548,10 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'cacheRule' option",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cdn/dedicated/cacheRule/get"
+            {
+              "name": "order:apiovh:cdn/dedicated/cacheRule/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9894,7 +9588,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cdn/dedicated/cacheRule/get"
+            {
+              "name": "order:apiovh:cdn/dedicated/cacheRule/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9933,7 +9630,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:cdn/dedicated/cacheRule/create"
+            {
+              "name": "order:apiovh:cdn/dedicated/cacheRule/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9978,7 +9678,10 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'quota' option",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cdn/dedicated/quota/get"
+            {
+              "name": "order:apiovh:cdn/dedicated/quota/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10015,7 +9718,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cdn/dedicated/quota/get"
+            {
+              "name": "order:apiovh:cdn/dedicated/quota/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10054,7 +9760,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:cdn/dedicated/quota/create"
+            {
+              "name": "order:apiovh:cdn/dedicated/quota/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10099,7 +9808,10 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'new' option",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:order/cdn/dedicated/new/get"
+            {
+              "name": "account:apiovh:order/cdn/dedicated/new/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -10119,7 +9831,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:order/cdn/dedicated/new/get"
+            {
+              "name": "account:apiovh:order/cdn/dedicated/new/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10142,7 +9857,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:order/cdn/dedicated/new/create"
+            {
+              "name": "account:apiovh:order/cdn/dedicated/new/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10171,7 +9889,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cloud/project/get"
+            {
+              "name": "order:apiovh:cloud/project/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -10191,7 +9912,10 @@ export const schema: Schema = {
           "description": "Get allowed options",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cloud/project/get"
+            {
+              "name": "order:apiovh:cloud/project/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10220,7 +9944,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cloud/project/credit/get"
+            {
+              "name": "order:apiovh:cloud/project/credit/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10251,7 +9978,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:cloud/project/credit/create"
+            {
+              "name": "order:apiovh:cloud/project/credit/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10288,7 +10018,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:dedicated/housing/get"
+            {
+              "name": "order:apiovh:dedicated/housing/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -10308,7 +10041,10 @@ export const schema: Schema = {
           "description": "Get allowed options",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:dedicated/housing/get"
+            {
+              "name": "order:apiovh:dedicated/housing/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10337,7 +10073,10 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'APC' option",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:dedicated/housing/APC/get"
+            {
+              "name": "order:apiovh:dedicated/housing/APC/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10366,7 +10105,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:dedicated/housing/APC/get"
+            {
+              "name": "order:apiovh:dedicated/housing/APC/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10397,7 +10139,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:dedicated/housing/APC/create"
+            {
+              "name": "order:apiovh:dedicated/housing/APC/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10434,7 +10179,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:dedicated/server/get"
+            {
+              "name": "order:apiovh:dedicated/server/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -10454,7 +10202,10 @@ export const schema: Schema = {
           "description": "Get allowed options",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:dedicated/server/get"
+            {
+              "name": "order:apiovh:dedicated/server/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10483,7 +10234,10 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'backupStorage' option",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:dedicated/server/backupStorage/get"
+            {
+              "name": "order:apiovh:dedicated/server/backupStorage/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10520,7 +10274,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:dedicated/server/backupStorage/get"
+            {
+              "name": "order:apiovh:dedicated/server/backupStorage/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10559,7 +10316,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:dedicated/server/backupStorage/create"
+            {
+              "name": "order:apiovh:dedicated/server/backupStorage/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10604,7 +10364,10 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'bandwidth' option",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:dedicated/server/bandwidth/get"
+            {
+              "name": "order:apiovh:dedicated/server/bandwidth/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10649,7 +10412,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:dedicated/server/bandwidth/get"
+            {
+              "name": "order:apiovh:dedicated/server/bandwidth/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10696,7 +10462,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:dedicated/server/bandwidth/create"
+            {
+              "name": "order:apiovh:dedicated/server/bandwidth/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10749,7 +10518,10 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'bandwidthvRack' option",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:dedicated/server/bandwidthvRack/get"
+            {
+              "name": "order:apiovh:dedicated/server/bandwidthvRack/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10786,7 +10558,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:dedicated/server/bandwidthvRack/get"
+            {
+              "name": "order:apiovh:dedicated/server/bandwidthvRack/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10825,7 +10600,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:dedicated/server/bandwidthvRack/create"
+            {
+              "name": "order:apiovh:dedicated/server/bandwidthvRack/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10870,7 +10648,10 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'feature' option",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:dedicated/server/feature/get"
+            {
+              "name": "order:apiovh:dedicated/server/feature/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10907,7 +10688,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:dedicated/server/feature/get"
+            {
+              "name": "order:apiovh:dedicated/server/feature/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10946,7 +10730,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:dedicated/server/feature/create"
+            {
+              "name": "order:apiovh:dedicated/server/feature/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10991,7 +10778,10 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'firewall' option",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:dedicated/server/firewall/get"
+            {
+              "name": "order:apiovh:dedicated/server/firewall/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11028,7 +10818,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:dedicated/server/firewall/get"
+            {
+              "name": "order:apiovh:dedicated/server/firewall/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11067,7 +10860,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:dedicated/server/firewall/create"
+            {
+              "name": "order:apiovh:dedicated/server/firewall/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11112,7 +10908,10 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'ipMigration' option",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:dedicated/server/ipMigration/get"
+            {
+              "name": "order:apiovh:dedicated/server/ipMigration/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11157,7 +10956,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:dedicated/server/ipMigration/get"
+            {
+              "name": "order:apiovh:dedicated/server/ipMigration/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11204,7 +11006,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:dedicated/server/ipMigration/create"
+            {
+              "name": "order:apiovh:dedicated/server/ipMigration/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11257,7 +11062,10 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'kvm' option",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:dedicated/server/kvm/get"
+            {
+              "name": "order:apiovh:dedicated/server/kvm/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11286,7 +11094,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:dedicated/server/kvm/get"
+            {
+              "name": "order:apiovh:dedicated/server/kvm/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11317,7 +11128,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:dedicated/server/kvm/create"
+            {
+              "name": "order:apiovh:dedicated/server/kvm/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11354,7 +11168,10 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'kvmExpress' option",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:dedicated/server/kvmExpress/get"
+            {
+              "name": "order:apiovh:dedicated/server/kvmExpress/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11383,7 +11200,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:dedicated/server/kvmExpress/get"
+            {
+              "name": "order:apiovh:dedicated/server/kvmExpress/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11414,7 +11234,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:dedicated/server/kvmExpress/create"
+            {
+              "name": "order:apiovh:dedicated/server/kvmExpress/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11451,7 +11274,10 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'professionalUse' option",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:dedicated/server/professionalUse/get"
+            {
+              "name": "order:apiovh:dedicated/server/professionalUse/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11480,7 +11306,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:dedicated/server/professionalUse/get"
+            {
+              "name": "order:apiovh:dedicated/server/professionalUse/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11511,7 +11340,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:dedicated/server/professionalUse/create"
+            {
+              "name": "order:apiovh:dedicated/server/professionalUse/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11548,7 +11380,10 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'traffic' option",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:dedicated/server/traffic/get"
+            {
+              "name": "order:apiovh:dedicated/server/traffic/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11585,7 +11420,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:dedicated/server/traffic/get"
+            {
+              "name": "order:apiovh:dedicated/server/traffic/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11624,7 +11462,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:dedicated/server/traffic/create"
+            {
+              "name": "order:apiovh:dedicated/server/traffic/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11669,7 +11510,10 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'usbKey' option",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:dedicated/server/usbKey/get"
+            {
+              "name": "order:apiovh:dedicated/server/usbKey/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11706,7 +11550,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:dedicated/server/usbKey/get"
+            {
+              "name": "order:apiovh:dedicated/server/usbKey/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11745,7 +11592,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:dedicated/server/usbKey/create"
+            {
+              "name": "order:apiovh:dedicated/server/usbKey/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11784,16 +11634,19 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2019-07-01 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-06-01 00:00:00 +0100 +0100",
+            "deletionDate": "2019-07-01T00:00:00+01:00",
+            "deprecatedDate": "2019-06-01T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/privateCloud",
             "value": "DEPRECATED"
           },
-          "description": "List available services",
+          "description": "List VMware on OVHcloud service options",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:pccVMware/get"
+            {
+              "name": "order:apiovh:pccVMware/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -11807,8 +11660,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2019-07-01 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-06-01 00:00:00 +0100 +0100",
+            "deletionDate": "2019-07-01T00:00:00+01:00",
+            "deprecatedDate": "2019-06-01T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/privateCloud",
             "value": "DEPRECATED"
@@ -11816,7 +11669,10 @@ export const schema: Schema = {
           "description": "Get allowed options",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:pccVMware/get"
+            {
+              "name": "order:apiovh:pccVMware/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11835,12 +11691,12 @@ export const schema: Schema = {
       "path": "/order/dedicatedCloud/{serviceName}"
     },
     {
-      "description": "Order additional bandwidth for your Dedicated Cloud",
+      "description": "Order additional bandwidth for your VMware on OVHcloud",
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2019-07-01 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-06-01 00:00:00 +0100 +0100",
+            "deletionDate": "2019-07-01T00:00:00+01:00",
+            "deprecatedDate": "2019-06-01T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/privateCloud",
             "value": "DEPRECATED"
@@ -11848,7 +11704,10 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'additionalBandwidth' option",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:pccVMware/additionalBandwidth/get"
+            {
+              "name": "order:apiovh:pccVMware/additionalBandwidth/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11875,12 +11734,12 @@ export const schema: Schema = {
       "path": "/order/dedicatedCloud/{serviceName}/additionalBandwidth"
     },
     {
-      "description": "Order additional bandwidth for your Dedicated Cloud",
+      "description": "Order additional bandwidth for your VMware on OVHcloud",
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2019-07-01 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-06-01 00:00:00 +0100 +0100",
+            "deletionDate": "2019-07-01T00:00:00+01:00",
+            "deprecatedDate": "2019-06-01T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/privateCloud",
             "value": "DEPRECATED"
@@ -11888,7 +11747,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:pccVMware/additionalBandwidth/get"
+            {
+              "name": "order:apiovh:pccVMware/additionalBandwidth/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11921,8 +11783,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2019-07-01 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-06-01 00:00:00 +0100 +0100",
+            "deletionDate": "2019-07-01T00:00:00+01:00",
+            "deprecatedDate": "2019-06-01T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/privateCloud",
             "value": "DEPRECATED"
@@ -11930,7 +11792,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:pccVMware/additionalBandwidth/create"
+            {
+              "name": "order:apiovh:pccVMware/additionalBandwidth/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11969,8 +11834,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2019-07-01 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-06-01 00:00:00 +0100 +0100",
+            "deletionDate": "2019-07-01T00:00:00+01:00",
+            "deprecatedDate": "2019-06-01T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/privateCloud",
             "value": "DEPRECATED"
@@ -11978,7 +11843,10 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'filer' option",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:pccVMware/filer/get"
+            {
+              "name": "order:apiovh:pccVMware/filer/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11992,7 +11860,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Datacenter where the filer will be mounted (if not precised, will be mounted in each Datacenter of this Dedicated Cloud)",
+              "description": "Datacenter where the filer will be mounted (if not specified, will be mounted in each Datacenter of this VMware on OVHcloud)",
               "fullType": "long",
               "name": "datacenterId",
               "paramType": "query",
@@ -12025,8 +11893,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2019-07-01 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-06-01 00:00:00 +0100 +0100",
+            "deletionDate": "2019-07-01T00:00:00+01:00",
+            "deprecatedDate": "2019-06-01T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/privateCloud",
             "value": "DEPRECATED"
@@ -12034,7 +11902,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:pccVMware/filer/get"
+            {
+              "name": "order:apiovh:pccVMware/filer/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -12056,7 +11927,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Datacenter where the filer will be mounted (if not precised, will be mounted in each Datacenter of this Dedicated Cloud)",
+              "description": "Datacenter where the filer will be mounted (if not specified, will be mounted in each Datacenter of this VMware on OVHcloud)",
               "fullType": "long",
               "name": "datacenterId",
               "paramType": "query",
@@ -12083,8 +11954,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2019-07-01 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-06-01 00:00:00 +0100 +0100",
+            "deletionDate": "2019-07-01T00:00:00+01:00",
+            "deprecatedDate": "2019-06-01T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/privateCloud",
             "value": "DEPRECATED"
@@ -12092,13 +11963,16 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:pccVMware/filer/create"
+            {
+              "name": "order:apiovh:pccVMware/filer/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "Datacenter where the filer will be mounted (if not precised, will be mounted in each Datacenter of this Dedicated Cloud)",
+              "description": "Datacenter where the filer will be mounted (if not specified, will be mounted in each Datacenter of this VMware on OVHcloud)",
               "fullType": "long",
               "name": "datacenterId",
               "paramType": "body",
@@ -12147,8 +12021,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2019-07-01 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-06-01 00:00:00 +0100 +0100",
+            "deletionDate": "2019-07-01T00:00:00+01:00",
+            "deprecatedDate": "2019-06-01T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/privateCloud",
             "value": "DEPRECATED"
@@ -12156,7 +12030,10 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'host' option",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:pccVMware/host/get"
+            {
+              "name": "order:apiovh:pccVMware/host/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -12203,8 +12080,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2019-07-01 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-06-01 00:00:00 +0100 +0100",
+            "deletionDate": "2019-07-01T00:00:00+01:00",
+            "deprecatedDate": "2019-06-01T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/privateCloud",
             "value": "DEPRECATED"
@@ -12212,7 +12089,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:pccVMware/host/get"
+            {
+              "name": "order:apiovh:pccVMware/host/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -12261,8 +12141,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2019-07-01 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-06-01 00:00:00 +0100 +0100",
+            "deletionDate": "2019-07-01T00:00:00+01:00",
+            "deprecatedDate": "2019-06-01T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/privateCloud",
             "value": "DEPRECATED"
@@ -12270,7 +12150,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:pccVMware/host/create"
+            {
+              "name": "order:apiovh:pccVMware/host/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -12321,12 +12204,12 @@ export const schema: Schema = {
       "path": "/order/dedicatedCloud/{serviceName}/host/{duration}"
     },
     {
-      "description": "Order an IP block for your Dedicated Cloud",
+      "description": "Order an IP block for your VMware on OVHcloud",
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2019-07-01 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-06-01 00:00:00 +0100 +0100",
+            "deletionDate": "2019-07-01T00:00:00+01:00",
+            "deprecatedDate": "2019-06-01T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/privateCloud",
             "value": "DEPRECATED"
@@ -12334,7 +12217,10 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'ip' option",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:pccVMware/ip/get"
+            {
+              "name": "order:apiovh:pccVMware/ip/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -12401,12 +12287,12 @@ export const schema: Schema = {
       "path": "/order/dedicatedCloud/{serviceName}/ip"
     },
     {
-      "description": "Order an IP block for your Dedicated Cloud",
+      "description": "Order an IP block for your VMware on OVHcloud",
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2019-07-01 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-06-01 00:00:00 +0100 +0100",
+            "deletionDate": "2019-07-01T00:00:00+01:00",
+            "deprecatedDate": "2019-06-01T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/privateCloud",
             "value": "DEPRECATED"
@@ -12414,7 +12300,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:pccVMware/ip/get"
+            {
+              "name": "order:apiovh:pccVMware/ip/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -12487,8 +12376,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2019-07-01 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-06-01 00:00:00 +0100 +0100",
+            "deletionDate": "2019-07-01T00:00:00+01:00",
+            "deprecatedDate": "2019-06-01T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/privateCloud",
             "value": "DEPRECATED"
@@ -12496,7 +12385,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:pccVMware/ip/create"
+            {
+              "name": "order:apiovh:pccVMware/ip/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -12571,12 +12463,12 @@ export const schema: Schema = {
       "path": "/order/dedicatedCloud/{serviceName}/ip/{duration}"
     },
     {
-      "description": "Enable windows templates (SPLA) in your Dedicated Cloud",
+      "description": "Enable windows templates (SPLA) in your VMware on OVHcloud",
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2019-07-01 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-06-01 00:00:00 +0100 +0100",
+            "deletionDate": "2019-07-01T00:00:00+01:00",
+            "deprecatedDate": "2019-06-01T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/privateCloud",
             "value": "DEPRECATED"
@@ -12584,7 +12476,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:pccVMware/spla/get"
+            {
+              "name": "order:apiovh:pccVMware/spla/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -12601,8 +12496,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2019-07-01 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-06-01 00:00:00 +0100 +0100",
+            "deletionDate": "2019-07-01T00:00:00+01:00",
+            "deprecatedDate": "2019-06-01T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/privateCloud",
             "value": "DEPRECATED"
@@ -12610,7 +12505,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:pccVMware/spla/create"
+            {
+              "name": "order:apiovh:pccVMware/spla/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -12633,8 +12531,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2019-07-01 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-06-01 00:00:00 +0100 +0100",
+            "deletionDate": "2019-07-01T00:00:00+01:00",
+            "deprecatedDate": "2019-06-01T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/privateCloud",
             "value": "DEPRECATED"
@@ -12642,7 +12540,10 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'upgradeRessource' option",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:pccVMware/upgradeRessource/get"
+            {
+              "name": "order:apiovh:pccVMware/upgradeRessource/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -12656,7 +12557,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "The id of a particular ressource you want to upgrade in your Dedicated Cloud (useless for \"all\" UpgradeRessourceTypeEnum)",
+              "description": "The id of a particular ressource you want to upgrade in your VMware on OVHcloud (useless for \"all\" UpgradeRessourceTypeEnum)",
               "fullType": "long",
               "name": "upgradedRessourceId",
               "paramType": "query",
@@ -12689,8 +12590,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2019-07-01 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-06-01 00:00:00 +0100 +0100",
+            "deletionDate": "2019-07-01T00:00:00+01:00",
+            "deprecatedDate": "2019-06-01T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/privateCloud",
             "value": "DEPRECATED"
@@ -12698,7 +12599,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:pccVMware/upgradeRessource/get"
+            {
+              "name": "order:apiovh:pccVMware/upgradeRessource/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -12720,7 +12624,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "The id of a particular ressource you want to upgrade in your Dedicated Cloud (useless for \"all\" UpgradeRessourceTypeEnum)",
+              "description": "The id of a particular ressource you want to upgrade in your VMware on OVHcloud (useless for \"all\" UpgradeRessourceTypeEnum)",
               "fullType": "long",
               "name": "upgradedRessourceId",
               "paramType": "query",
@@ -12747,8 +12651,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2019-07-01 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-06-01 00:00:00 +0100 +0100",
+            "deletionDate": "2019-07-01T00:00:00+01:00",
+            "deprecatedDate": "2019-06-01T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/privateCloud",
             "value": "DEPRECATED"
@@ -12756,13 +12660,16 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:pccVMware/upgradeRessource/create"
+            {
+              "name": "order:apiovh:pccVMware/upgradeRessource/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "The id of a particular ressource you want to upgrade in your Dedicated Cloud (useless for \"all\" UpgradeRessourceTypeEnum)",
+              "description": "The id of a particular ressource you want to upgrade in your VMware on OVHcloud (useless for \"all\" UpgradeRessourceTypeEnum)",
               "fullType": "long",
               "name": "upgradedRessourceId",
               "paramType": "body",
@@ -12811,8 +12718,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2019-07-01 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-06-01 00:00:00 +0100 +0100",
+            "deletionDate": "2019-07-01T00:00:00+01:00",
+            "deprecatedDate": "2019-06-01T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/privateCloud",
             "value": "DEPRECATED"
@@ -12820,7 +12727,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:pccVMware/vdi/get"
+            {
+              "name": "order:apiovh:pccVMware/vdi/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -12842,7 +12752,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "ip",
-              "description": "An avaiable ip from one of your Dedicated Cloud public IP blocks",
+              "description": "An available ip from one of your VMware on OVHcloud public IP blocks",
               "fullType": "ip",
               "name": "firstPublicIpAddress",
               "paramType": "query",
@@ -12850,7 +12760,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "ip",
-              "description": "Another avaiable ip from one of your Dedicated Cloud public IP blocks",
+              "description": "Another available ip from one of your VMware on OVHcloud public IP blocks",
               "fullType": "ip",
               "name": "secondPublicIpAddress",
               "paramType": "query",
@@ -12861,8 +12771,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2019-07-01 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-06-01 00:00:00 +0100 +0100",
+            "deletionDate": "2019-07-01T00:00:00+01:00",
+            "deprecatedDate": "2019-06-01T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/privateCloud",
             "value": "DEPRECATED"
@@ -12870,7 +12780,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:pccVMware/vdi/create"
+            {
+              "name": "order:apiovh:pccVMware/vdi/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -12884,7 +12797,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "ip",
-              "description": "An avaiable ip from one of your Dedicated Cloud public IP blocks",
+              "description": "An available ip from one of your VMware on OVHcloud public IP blocks",
               "fullType": "ip",
               "name": "firstPublicIpAddress",
               "paramType": "body",
@@ -12892,7 +12805,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "ip",
-              "description": "Another avaiable ip from one of your Dedicated Cloud public IP blocks",
+              "description": "Another available ip from one of your VMware on OVHcloud public IP blocks",
               "fullType": "ip",
               "name": "secondPublicIpAddress",
               "paramType": "body",
@@ -12917,8 +12830,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2019-12-15 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-12-01 00:00:00 +0100 +0100",
+            "deletionDate": "2019-12-15T00:00:00+01:00",
+            "deprecatedDate": "2019-12-01T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/dns",
             "value": "DEPRECATED"
@@ -12926,7 +12839,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:domain/zone/get"
+            {
+              "name": "order:apiovh:domain/zone/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -12940,8 +12856,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2019-12-15 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-12-01 00:00:00 +0100 +0100",
+            "deletionDate": "2019-12-15T00:00:00+01:00",
+            "deprecatedDate": "2019-12-01T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cartServiceOption/dns/{serviceName}",
             "value": "DEPRECATED"
@@ -12949,7 +12865,10 @@ export const schema: Schema = {
           "description": "Get allowed options",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:domain/zone/get"
+            {
+              "name": "order:apiovh:domain/zone/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -12972,8 +12891,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2019-12-15 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-12-01 00:00:00 +0100 +0100",
+            "deletionDate": "2019-12-15T00:00:00+01:00",
+            "deprecatedDate": "2019-12-01T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "POST /order/cartServiceOption/dns/{serviceName}",
             "value": "DEPRECATED"
@@ -12981,7 +12900,10 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'dnsAnycast' option",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:domain/zone/dnsAnycast/get"
+            {
+              "name": "order:apiovh:domain/zone/dnsAnycast/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -13004,8 +12926,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2019-12-15 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-12-01 00:00:00 +0100 +0100",
+            "deletionDate": "2019-12-15T00:00:00+01:00",
+            "deprecatedDate": "2019-12-01T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "POST /order/cartServiceOption/dns/{serviceName}",
             "value": "DEPRECATED"
@@ -13013,7 +12935,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:domain/zone/dnsAnycast/get"
+            {
+              "name": "order:apiovh:domain/zone/dnsAnycast/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -13038,8 +12963,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2019-12-15 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-12-01 00:00:00 +0100 +0100",
+            "deletionDate": "2019-12-15T00:00:00+01:00",
+            "deprecatedDate": "2019-12-01T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "POST /order/cartServiceOption/dns/{serviceName}",
             "value": "DEPRECATED"
@@ -13047,7 +12972,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:domain/zone/dnsAnycast/create"
+            {
+              "name": "order:apiovh:domain/zone/dnsAnycast/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -13078,8 +13006,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2019-12-15 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-12-01 00:00:00 +0100 +0100",
+            "deletionDate": "2019-12-15T00:00:00+01:00",
+            "deprecatedDate": "2019-12-01T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/dns",
             "value": "DEPRECATED"
@@ -13087,7 +13015,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:domain/zone/new/get"
+            {
+              "name": "order:apiovh:domain/zone/new/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -13112,8 +13043,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2019-12-15 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-12-01 00:00:00 +0100 +0100",
+            "deletionDate": "2019-12-15T00:00:00+01:00",
+            "deprecatedDate": "2019-12-01T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/dns",
             "value": "DEPRECATED"
@@ -13121,7 +13052,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:domain/zone/new/create"
+            {
+              "name": "order:apiovh:domain/zone/new/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -13158,7 +13092,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:email/exchange/get"
+            {
+              "name": "order:apiovh:email/exchange/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -13178,7 +13115,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:email/exchange/service/get"
+            {
+              "name": "order:apiovh:email/exchange/service/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -13207,7 +13147,10 @@ export const schema: Schema = {
           "description": "Get allowed options",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:email/exchange/service/get"
+            {
+              "name": "order:apiovh:email/exchange/service/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -13244,7 +13187,10 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'account' option",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:email/exchange/service/account/get"
+            {
+              "name": "order:apiovh:email/exchange/service/account/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -13305,7 +13251,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:email/exchange/service/account/get"
+            {
+              "name": "order:apiovh:email/exchange/service/account/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -13368,7 +13317,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:email/exchange/service/account/create"
+            {
+              "name": "order:apiovh:email/exchange/service/account/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -13437,7 +13389,10 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'accountUpgrade' option",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:email/exchange/service/accountUpgrade/get"
+            {
+              "name": "order:apiovh:email/exchange/service/accountUpgrade/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -13490,7 +13445,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:email/exchange/service/accountUpgrade/get"
+            {
+              "name": "order:apiovh:email/exchange/service/accountUpgrade/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -13545,7 +13503,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:email/exchange/service/accountUpgrade/create"
+            {
+              "name": "order:apiovh:email/exchange/service/accountUpgrade/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -13606,7 +13567,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:email/exchange/service/diskSpace/get"
+            {
+              "name": "order:apiovh:email/exchange/service/diskSpace/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -13637,7 +13601,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:email/exchange/service/diskSpace/create"
+            {
+              "name": "order:apiovh:email/exchange/service/diskSpace/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -13674,7 +13641,10 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'outlook' option",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:email/exchange/service/outlook/get"
+            {
+              "name": "order:apiovh:email/exchange/service/outlook/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -13727,7 +13697,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:email/exchange/service/outlook/get"
+            {
+              "name": "order:apiovh:email/exchange/service/outlook/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -13782,7 +13755,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:email/exchange/service/outlook/create"
+            {
+              "name": "order:apiovh:email/exchange/service/outlook/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -13843,7 +13819,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:email/exchange/service/upgrade/get"
+            {
+              "name": "order:apiovh:email/exchange/service/upgrade/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -13874,7 +13853,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:email/exchange/service/upgrade/create"
+            {
+              "name": "order:apiovh:email/exchange/service/upgrade/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -13901,375 +13883,12 @@ export const schema: Schema = {
       "path": "/order/email/exchange/{organizationName}/service/{exchangeService}/upgrade"
     },
     {
-      "description": "Operations about the SQLPRIVE service",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2019-12-15 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-12-01 00:00:00 +0100 +0100",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/privateSQL",
-            "value": "DEPRECATED"
-          },
-          "description": "List available services",
-          "httpMethod": "GET",
-          "iamActions": [
-            "order:apiovh:hosting/privateDatabase/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/hosting/privateDatabase"
-    },
-    {
-      "description": "List available options for this service",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2019-12-15 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-12-01 00:00:00 +0100 +0100",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/privateSQL",
-            "value": "DEPRECATED"
-          },
-          "description": "Get allowed options",
-          "httpMethod": "GET",
-          "iamActions": [
-            "order:apiovh:hosting/privateDatabase/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your private database",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/hosting/privateDatabase/{serviceName}"
-    },
-    {
-      "description": "Create an order for change ram size on your private database",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2019-12-15 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-12-01 00:00:00 +0100 +0100",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/privateSQL",
-            "value": "DEPRECATED"
-          },
-          "description": "Get allowed durations for 'ram' option",
-          "httpMethod": "GET",
-          "iamActions": [
-            "order:apiovh:hosting/privateDatabase/ram/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your private database",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "hosting.PrivateDatabase.AvailableRamSizeEnum",
-              "description": "Private database ram size",
-              "fullType": "hosting.PrivateDatabase.AvailableRamSizeEnum",
-              "name": "ram",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/hosting/privateDatabase/{serviceName}/ram"
-    },
-    {
-      "description": "Create an order for change ram size on your private database",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2019-12-15 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-12-01 00:00:00 +0100 +0100",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/privateSQL",
-            "value": "DEPRECATED"
-          },
-          "description": "Get prices and contracts information",
-          "httpMethod": "GET",
-          "iamActions": [
-            "order:apiovh:hosting/privateDatabase/ram/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your private database",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "hosting.PrivateDatabase.AvailableRamSizeEnum",
-              "description": "Private database ram size",
-              "fullType": "hosting.PrivateDatabase.AvailableRamSizeEnum",
-              "name": "ram",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        },
-        {
-          "apiStatus": {
-            "deletionDate": "2019-12-15 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-12-01 00:00:00 +0100 +0100",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/privateSQL",
-            "value": "DEPRECATED"
-          },
-          "description": "Create order",
-          "httpMethod": "POST",
-          "iamActions": [
-            "order:apiovh:hosting/privateDatabase/ram/create"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "hosting.PrivateDatabase.AvailableRamSizeEnum",
-              "description": "Private database ram size",
-              "fullType": "hosting.PrivateDatabase.AvailableRamSizeEnum",
-              "name": "ram",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your private database",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        }
-      ],
-      "path": "/order/hosting/privateDatabase/{serviceName}/ram/{duration}"
-    },
-    {
-      "description": "Order new private database",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2019-12-15 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-12-01 00:00:00 +0100 +0100",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/privateSQL",
-            "value": "DEPRECATED"
-          },
-          "description": "Get allowed durations for 'new' option",
-          "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:order/hosting/privateDatabase/new/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "hosting.PrivateDatabase.DatacenterEnum",
-              "description": "Datacenter to deploy this new private database",
-              "fullType": "hosting.PrivateDatabase.DatacenterEnum",
-              "name": "datacenter",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "hosting.PrivateDatabase.OfferEnum",
-              "description": "Type of offer to deploy this new private database",
-              "fullType": "hosting.PrivateDatabase.OfferEnum",
-              "name": "offer",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "hosting.PrivateDatabase.AvailableRamSizeEnum",
-              "description": "Private database ram size",
-              "fullType": "hosting.PrivateDatabase.AvailableRamSizeEnum",
-              "name": "ram",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "hosting.PrivateDatabase.OrderableVersionEnum",
-              "description": "Private database available versions",
-              "fullType": "hosting.PrivateDatabase.OrderableVersionEnum",
-              "name": "version",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/hosting/privateDatabase/new"
-    },
-    {
-      "description": "Order new private database",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2019-12-15 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-12-01 00:00:00 +0100 +0100",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/privateSQL",
-            "value": "DEPRECATED"
-          },
-          "description": "Get prices and contracts information",
-          "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:order/hosting/privateDatabase/new/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "hosting.PrivateDatabase.DatacenterEnum",
-              "description": "Datacenter to deploy this new private database",
-              "fullType": "hosting.PrivateDatabase.DatacenterEnum",
-              "name": "datacenter",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "hosting.PrivateDatabase.OfferEnum",
-              "description": "Type of offer to deploy this new private database",
-              "fullType": "hosting.PrivateDatabase.OfferEnum",
-              "name": "offer",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "hosting.PrivateDatabase.AvailableRamSizeEnum",
-              "description": "Private database ram size",
-              "fullType": "hosting.PrivateDatabase.AvailableRamSizeEnum",
-              "name": "ram",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "hosting.PrivateDatabase.OrderableVersionEnum",
-              "description": "Private database available versions",
-              "fullType": "hosting.PrivateDatabase.OrderableVersionEnum",
-              "name": "version",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        },
-        {
-          "apiStatus": {
-            "deletionDate": "2019-12-15 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-12-01 00:00:00 +0100 +0100",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/privateSQL",
-            "value": "DEPRECATED"
-          },
-          "description": "Create order",
-          "httpMethod": "POST",
-          "iamActions": [
-            "account:apiovh:order/hosting/privateDatabase/new/create"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "hosting.PrivateDatabase.DatacenterEnum",
-              "description": "Datacenter to deploy this new private database",
-              "fullType": "hosting.PrivateDatabase.DatacenterEnum",
-              "name": "datacenter",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "hosting.PrivateDatabase.OfferEnum",
-              "description": "Type of offer to deploy this new private database",
-              "fullType": "hosting.PrivateDatabase.OfferEnum",
-              "name": "offer",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "hosting.PrivateDatabase.AvailableRamSizeEnum",
-              "description": "Private database ram size",
-              "fullType": "hosting.PrivateDatabase.AvailableRamSizeEnum",
-              "name": "ram",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "hosting.PrivateDatabase.OrderableVersionEnum",
-              "description": "Private database available versions",
-              "fullType": "hosting.PrivateDatabase.OrderableVersionEnum",
-              "name": "version",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        }
-      ],
-      "path": "/order/hosting/privateDatabase/new/{duration}"
-    },
-    {
       "description": "Operations about the HOSTING service",
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2019-12-15 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-12-01 00:00:00 +0100 +0100",
+            "deletionDate": "2019-12-15T00:00:00+01:00",
+            "deprecatedDate": "2019-12-01T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/webHosting",
             "value": "DEPRECATED"
@@ -14277,7 +13896,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:hosting/web/get"
+            {
+              "name": "order:apiovh:hosting/web/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -14291,8 +13913,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2019-12-15 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-12-01 00:00:00 +0100 +0100",
+            "deletionDate": "2019-12-15T00:00:00+01:00",
+            "deprecatedDate": "2019-12-01T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/webHosting",
             "value": "DEPRECATED"
@@ -14300,7 +13922,10 @@ export const schema: Schema = {
           "description": "Get allowed options",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:hosting/web/get"
+            {
+              "name": "order:apiovh:hosting/web/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -14319,662 +13944,12 @@ export const schema: Schema = {
       "path": "/order/hosting/web/{serviceName}"
     },
     {
-      "description": "Order additional bandwidth",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2019-12-15 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-12-01 00:00:00 +0100 +0100",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/webHosting",
-            "value": "DEPRECATED"
-          },
-          "description": "Get allowed durations for 'bandwidth' option",
-          "httpMethod": "GET",
-          "iamActions": [
-            "order:apiovh:hosting/web/bandwidth/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your hosting",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "hosting.web.BandwidthOfferEnum",
-              "description": "Available offers to increase bandwidth quota (unit: GB)",
-              "fullType": "hosting.web.BandwidthOfferEnum",
-              "name": "traffic",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/hosting/web/{serviceName}/bandwidth"
-    },
-    {
-      "description": "Order additional bandwidth",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2019-12-15 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-12-01 00:00:00 +0100 +0100",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/webHosting",
-            "value": "DEPRECATED"
-          },
-          "description": "Get prices and contracts information",
-          "httpMethod": "GET",
-          "iamActions": [
-            "order:apiovh:hosting/web/bandwidth/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your hosting",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "hosting.web.BandwidthOfferEnum",
-              "description": "Available offers to increase bandwidth quota (unit: GB)",
-              "fullType": "hosting.web.BandwidthOfferEnum",
-              "name": "traffic",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        },
-        {
-          "apiStatus": {
-            "deletionDate": "2019-12-15 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-12-01 00:00:00 +0100 +0100",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/webHosting",
-            "value": "DEPRECATED"
-          },
-          "description": "Create order",
-          "httpMethod": "POST",
-          "iamActions": [
-            "order:apiovh:hosting/web/bandwidth/create"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "hosting.web.BandwidthOfferEnum",
-              "description": "Available offers to increase bandwidth quota (unit: GB)",
-              "fullType": "hosting.web.BandwidthOfferEnum",
-              "name": "traffic",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your hosting",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        }
-      ],
-      "path": "/order/hosting/web/{serviceName}/bandwidth/{duration}"
-    },
-    {
-      "description": "Create an order for cdn option",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2019-12-15 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-12-01 00:00:00 +0100 +0100",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/webHosting",
-            "value": "DEPRECATED"
-          },
-          "description": "Get allowed durations for 'cdn' option",
-          "httpMethod": "GET",
-          "iamActions": [
-            "order:apiovh:hosting/web/cdn/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your hosting",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "hosting.web.CdnOfferEnum",
-              "description": "Cdn offers you can add to your hosting",
-              "fullType": "hosting.web.CdnOfferEnum",
-              "name": "offer",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/hosting/web/{serviceName}/cdn"
-    },
-    {
-      "description": "Create an order for cdn option",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2019-12-15 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-12-01 00:00:00 +0100 +0100",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/webHosting",
-            "value": "DEPRECATED"
-          },
-          "description": "Get prices and contracts information",
-          "httpMethod": "GET",
-          "iamActions": [
-            "order:apiovh:hosting/web/cdn/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your hosting",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "hosting.web.CdnOfferEnum",
-              "description": "Cdn offers you can add to your hosting",
-              "fullType": "hosting.web.CdnOfferEnum",
-              "name": "offer",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        },
-        {
-          "apiStatus": {
-            "deletionDate": "2019-12-15 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-12-01 00:00:00 +0100 +0100",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/webHosting",
-            "value": "DEPRECATED"
-          },
-          "description": "Create order",
-          "httpMethod": "POST",
-          "iamActions": [
-            "order:apiovh:hosting/web/cdn/create"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "hosting.web.CdnOfferEnum",
-              "description": "Cdn offers you can add to your hosting",
-              "fullType": "hosting.web.CdnOfferEnum",
-              "name": "offer",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your hosting",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        }
-      ],
-      "path": "/order/hosting/web/{serviceName}/cdn/{duration}"
-    },
-    {
-      "description": "Create an order for change the hosting main domain",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2019-12-15 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-12-01 00:00:00 +0100 +0100",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/webHosting",
-            "value": "DEPRECATED"
-          },
-          "description": "Get allowed durations for 'changeMainDomain' option",
-          "httpMethod": "GET",
-          "iamActions": [
-            "order:apiovh:hosting/web/changeMainDomain/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your hosting",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "New domain for change the main domain",
-              "fullType": "string",
-              "name": "domain",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "hosting.web.order.MxPlanEnum",
-              "description": "MX plan linked to the odl main domain",
-              "fullType": "hosting.web.order.MxPlanEnum",
-              "name": "mxplan",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/hosting/web/{serviceName}/changeMainDomain"
-    },
-    {
-      "description": "Create an order for change the hosting main domain",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2019-12-15 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-12-01 00:00:00 +0100 +0100",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/webHosting",
-            "value": "DEPRECATED"
-          },
-          "description": "Get prices and contracts information",
-          "httpMethod": "GET",
-          "iamActions": [
-            "order:apiovh:hosting/web/changeMainDomain/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your hosting",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "New domain for change the main domain",
-              "fullType": "string",
-              "name": "domain",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "hosting.web.order.MxPlanEnum",
-              "description": "MX plan linked to the odl main domain",
-              "fullType": "hosting.web.order.MxPlanEnum",
-              "name": "mxplan",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        },
-        {
-          "apiStatus": {
-            "deletionDate": "2019-12-15 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-12-01 00:00:00 +0100 +0100",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/webHosting",
-            "value": "DEPRECATED"
-          },
-          "description": "Create order",
-          "httpMethod": "POST",
-          "iamActions": [
-            "order:apiovh:hosting/web/changeMainDomain/create"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "New domain for change the main domain",
-              "fullType": "string",
-              "name": "domain",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "hosting.web.order.MxPlanEnum",
-              "description": "MX plan linked to the odl main domain",
-              "fullType": "hosting.web.order.MxPlanEnum",
-              "name": "mxplan",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your hosting",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        }
-      ],
-      "path": "/order/hosting/web/{serviceName}/changeMainDomain/{duration}"
-    },
-    {
-      "description": "Create an order for extra sql perso",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2019-12-15 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-12-01 00:00:00 +0100 +0100",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/webHosting",
-            "value": "DEPRECATED"
-          },
-          "description": "Get allowed durations for 'extraSqlPerso' option",
-          "httpMethod": "GET",
-          "iamActions": [
-            "order:apiovh:hosting/web/extraSqlPerso/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your hosting",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "hosting.web.database.SqlPersoOfferEnum",
-              "description": "Offers you can add to your hosting",
-              "fullType": "hosting.web.database.SqlPersoOfferEnum",
-              "name": "offer",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/hosting/web/{serviceName}/extraSqlPerso"
-    },
-    {
-      "description": "Create an order for extra sql perso",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2019-12-15 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-12-01 00:00:00 +0100 +0100",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/webHosting",
-            "value": "DEPRECATED"
-          },
-          "description": "Get prices and contracts information",
-          "httpMethod": "GET",
-          "iamActions": [
-            "order:apiovh:hosting/web/extraSqlPerso/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your hosting",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "hosting.web.database.SqlPersoOfferEnum",
-              "description": "Offers you can add to your hosting",
-              "fullType": "hosting.web.database.SqlPersoOfferEnum",
-              "name": "offer",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        },
-        {
-          "apiStatus": {
-            "deletionDate": "2019-12-15 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-12-01 00:00:00 +0100 +0100",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/webHosting",
-            "value": "DEPRECATED"
-          },
-          "description": "Create order",
-          "httpMethod": "POST",
-          "iamActions": [
-            "order:apiovh:hosting/web/extraSqlPerso/create"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "hosting.web.database.SqlPersoOfferEnum",
-              "description": "Offers you can add to your hosting",
-              "fullType": "hosting.web.database.SqlPersoOfferEnum",
-              "name": "offer",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your hosting",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        }
-      ],
-      "path": "/order/hosting/web/{serviceName}/extraSqlPerso/{duration}"
-    },
-    {
-      "description": "Create an order for hosted ssl option",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2019-12-15 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-12-01 00:00:00 +0100 +0100",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/webHosting",
-            "value": "DEPRECATED"
-          },
-          "description": "Get allowed durations for 'ssl' option",
-          "httpMethod": "GET",
-          "iamActions": [
-            "order:apiovh:hosting/web/ssl/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your hosting",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/hosting/web/{serviceName}/ssl"
-    },
-    {
-      "description": "Create an order for hosted ssl option",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2019-12-15 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-12-01 00:00:00 +0100 +0100",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/webHosting",
-            "value": "DEPRECATED"
-          },
-          "description": "Get prices and contracts information",
-          "httpMethod": "GET",
-          "iamActions": [
-            "order:apiovh:hosting/web/ssl/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your hosting",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        },
-        {
-          "apiStatus": {
-            "deletionDate": "2019-12-15 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-12-01 00:00:00 +0100 +0100",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/webHosting",
-            "value": "DEPRECATED"
-          },
-          "description": "Create order",
-          "httpMethod": "POST",
-          "iamActions": [
-            "order:apiovh:hosting/web/ssl/create"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your hosting",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        }
-      ],
-      "path": "/order/hosting/web/{serviceName}/ssl/{duration}"
-    },
-    {
       "description": "Create an order for upgrade your hosting account",
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2019-12-15 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-12-01 00:00:00 +0100 +0100",
+            "deletionDate": "2019-12-15T00:00:00+01:00",
+            "deprecatedDate": "2019-12-01T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/webHosting",
             "value": "DEPRECATED"
@@ -14982,7 +13957,10 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'upgrade' option",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:hosting/web/upgrade/get"
+            {
+              "name": "order:apiovh:hosting/web/upgrade/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -15029,8 +14007,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2019-12-15 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-12-01 00:00:00 +0100 +0100",
+            "deletionDate": "2019-12-15T00:00:00+01:00",
+            "deprecatedDate": "2019-12-01T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/webHosting",
             "value": "DEPRECATED"
@@ -15038,7 +14016,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:hosting/web/upgrade/get"
+            {
+              "name": "order:apiovh:hosting/web/upgrade/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -15087,8 +14068,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2019-12-15 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-12-01 00:00:00 +0100 +0100",
+            "deletionDate": "2019-12-15T00:00:00+01:00",
+            "deprecatedDate": "2019-12-01T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/webHosting",
             "value": "DEPRECATED"
@@ -15096,7 +14077,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:hosting/web/upgrade/create"
+            {
+              "name": "order:apiovh:hosting/web/upgrade/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -15147,221 +14131,22 @@ export const schema: Schema = {
       "path": "/order/hosting/web/{serviceName}/upgrade/{duration}"
     },
     {
-      "description": "Order a new hosting account",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2019-12-15 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-12-01 00:00:00 +0100 +0100",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/webHosting",
-            "value": "DEPRECATED"
-          },
-          "description": "Get allowed durations for 'new' option",
-          "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:order/hosting/web/new/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "hosting.web.DnsZoneEnum",
-              "description": "Dns zone modification possibilities ( by default : RESET_ALL )",
-              "fullType": "hosting.web.DnsZoneEnum",
-              "name": "dnsZone",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Domain name which will be linked to this hosting account",
-              "fullType": "string",
-              "name": "domain",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "hosting.web.module.OrderableNameEnum",
-              "description": "Module installation ready to use",
-              "fullType": "hosting.web.module.OrderableNameEnum",
-              "name": "module",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "hosting.web.OfferEnum",
-              "description": "Offer for your new hosting account",
-              "fullType": "hosting.web.OfferEnum",
-              "name": "offer",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "boolean",
-              "description": "Indicates that order will be processed with waiving retractation period",
-              "fullType": "boolean",
-              "name": "waiveRetractationPeriod",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/hosting/web/new"
-    },
-    {
-      "description": "Order a new hosting account",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2019-12-15 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-12-01 00:00:00 +0100 +0100",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/webHosting",
-            "value": "DEPRECATED"
-          },
-          "description": "Get prices and contracts information",
-          "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:order/hosting/web/new/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "hosting.web.DnsZoneEnum",
-              "description": "Dns zone modification possibilities ( by default : RESET_ALL )",
-              "fullType": "hosting.web.DnsZoneEnum",
-              "name": "dnsZone",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Domain name which will be linked to this hosting account",
-              "fullType": "string",
-              "name": "domain",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "hosting.web.module.OrderableNameEnum",
-              "description": "Module installation ready to use",
-              "fullType": "hosting.web.module.OrderableNameEnum",
-              "name": "module",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "hosting.web.OfferEnum",
-              "description": "Offer for your new hosting account",
-              "fullType": "hosting.web.OfferEnum",
-              "name": "offer",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "boolean",
-              "description": "Indicates that order will be processed with waiving retractation period",
-              "fullType": "boolean",
-              "name": "waiveRetractationPeriod",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "responseType": "order.Order"
-        },
-        {
-          "apiStatus": {
-            "deletionDate": "2019-12-15 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-12-01 00:00:00 +0100 +0100",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/webHosting",
-            "value": "DEPRECATED"
-          },
-          "description": "Create order",
-          "httpMethod": "POST",
-          "iamActions": [
-            "account:apiovh:order/hosting/web/new/create"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "hosting.web.DnsZoneEnum",
-              "description": "Dns zone modification possibilities ( by default : RESET_ALL )",
-              "fullType": "hosting.web.DnsZoneEnum",
-              "name": "dnsZone",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Domain name which will be linked to this hosting account",
-              "fullType": "string",
-              "name": "domain",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "hosting.web.module.OrderableNameEnum",
-              "description": "Module installation ready to use",
-              "fullType": "hosting.web.module.OrderableNameEnum",
-              "name": "module",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "hosting.web.OfferEnum",
-              "description": "Offer for your new hosting account",
-              "fullType": "hosting.web.OfferEnum",
-              "name": "offer",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "boolean",
-              "description": "Indicates that order will be processed with waiving retractation period",
-              "fullType": "boolean",
-              "name": "waiveRetractationPeriod",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        }
-      ],
-      "path": "/order/hosting/web/new/{duration}"
-    },
-    {
       "description": "Order a new license on a given Ip with some given options",
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
+            "deletionDate": "2023-02-16T00:00:00+01:00",
+            "deprecatedDate": "2023-01-16T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
           "description": "Get allowed durations for 'new' option",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:order/license/cloudLinux/new/get"
+            {
+              "name": "account:apiovh:order/license/cloudLinux/new/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -15392,15 +14177,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
+            "deletionDate": "2023-02-16T00:00:00+01:00",
+            "deprecatedDate": "2023-01-16T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:order/license/cloudLinux/new/get"
+            {
+              "name": "account:apiovh:order/license/cloudLinux/new/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -15433,15 +14221,18 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
+            "deletionDate": "2023-02-16T00:00:00+01:00",
+            "deprecatedDate": "2023-01-16T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:order/license/cloudLinux/new/create"
+            {
+              "name": "account:apiovh:order/license/cloudLinux/new/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -15486,7 +14277,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:license/cpanel/get"
+            {
+              "name": "order:apiovh:license/cpanel/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -15506,7 +14300,10 @@ export const schema: Schema = {
           "description": "Get allowed options",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:license/cpanel/get"
+            {
+              "name": "order:apiovh:license/cpanel/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -15535,7 +14332,10 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'upgrade' option",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:license/cpanel/upgrade/get"
+            {
+              "name": "order:apiovh:license/cpanel/upgrade/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -15572,7 +14372,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:license/cpanel/upgrade/get"
+            {
+              "name": "order:apiovh:license/cpanel/upgrade/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -15611,7 +14414,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:license/cpanel/upgrade/create"
+            {
+              "name": "order:apiovh:license/cpanel/upgrade/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -15656,7 +14462,10 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'new' option",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:order/license/cpanel/new/get"
+            {
+              "name": "account:apiovh:order/license/cpanel/new/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -15701,7 +14510,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:order/license/cpanel/new/get"
+            {
+              "name": "account:apiovh:order/license/cpanel/new/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -15748,7 +14560,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:order/license/cpanel/new/create"
+            {
+              "name": "account:apiovh:order/license/cpanel/new/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -15795,15 +14610,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
+            "deletionDate": "2023-02-16T00:00:00+01:00",
+            "deprecatedDate": "2023-01-16T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
           "description": "Get allowed durations for 'new' option",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:order/license/directadmin/new/get"
+            {
+              "name": "account:apiovh:order/license/directadmin/new/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -15842,15 +14660,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
+            "deletionDate": "2023-02-16T00:00:00+01:00",
+            "deprecatedDate": "2023-01-16T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:order/license/directadmin/new/get"
+            {
+              "name": "account:apiovh:order/license/directadmin/new/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -15891,15 +14712,18 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
+            "deletionDate": "2023-02-16T00:00:00+01:00",
+            "deprecatedDate": "2023-01-16T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:order/license/directadmin/new/create"
+            {
+              "name": "account:apiovh:order/license/directadmin/new/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -15952,7 +14776,10 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'new' option",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:order/license/office/new/get"
+            {
+              "name": "account:apiovh:order/license/office/new/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -15997,7 +14824,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:order/license/office/new/get"
+            {
+              "name": "account:apiovh:order/license/office/new/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -16044,7 +14874,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:order/license/office/new/create"
+            {
+              "name": "account:apiovh:order/license/office/new/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -16097,7 +14930,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:license/plesk/get"
+            {
+              "name": "order:apiovh:license/plesk/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -16117,7 +14953,10 @@ export const schema: Schema = {
           "description": "Get allowed options",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:license/plesk/get"
+            {
+              "name": "order:apiovh:license/plesk/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -16146,7 +14985,10 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'upgrade' option",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:license/plesk/upgrade/get"
+            {
+              "name": "order:apiovh:license/plesk/upgrade/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -16247,7 +15089,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:license/plesk/upgrade/get"
+            {
+              "name": "order:apiovh:license/plesk/upgrade/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -16350,7 +15195,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:license/plesk/upgrade/create"
+            {
+              "name": "order:apiovh:license/plesk/upgrade/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -16459,7 +15307,10 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'new' option",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:order/license/plesk/new/get"
+            {
+              "name": "account:apiovh:order/license/plesk/new/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -16560,7 +15411,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:order/license/plesk/new/get"
+            {
+              "name": "account:apiovh:order/license/plesk/new/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -16663,7 +15517,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:order/license/plesk/new/create"
+            {
+              "name": "account:apiovh:order/license/plesk/new/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -16772,7 +15629,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:license/sqlserver/get"
+            {
+              "name": "order:apiovh:license/sqlserver/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -16792,7 +15652,10 @@ export const schema: Schema = {
           "description": "Get allowed options",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:license/sqlserver/get"
+            {
+              "name": "order:apiovh:license/sqlserver/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -16821,7 +15684,10 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'upgrade' option",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:license/sqlserver/upgrade/get"
+            {
+              "name": "order:apiovh:license/sqlserver/upgrade/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -16858,7 +15724,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:license/sqlserver/upgrade/get"
+            {
+              "name": "order:apiovh:license/sqlserver/upgrade/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -16897,7 +15766,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:license/sqlserver/upgrade/create"
+            {
+              "name": "order:apiovh:license/sqlserver/upgrade/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -16942,7 +15814,10 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'new' option",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:order/license/sqlserver/new/get"
+            {
+              "name": "account:apiovh:order/license/sqlserver/new/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -16979,7 +15854,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:order/license/sqlserver/new/get"
+            {
+              "name": "account:apiovh:order/license/sqlserver/new/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -17018,7 +15896,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:order/license/sqlserver/new/create"
+            {
+              "name": "account:apiovh:order/license/sqlserver/new/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -17057,15 +15938,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
+            "deletionDate": "2023-02-16T00:00:00+01:00",
+            "deprecatedDate": "2023-01-16T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:license/virtuozzo/get"
+            {
+              "name": "order:apiovh:license/virtuozzo/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -17079,15 +15963,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
+            "deletionDate": "2023-02-16T00:00:00+01:00",
+            "deprecatedDate": "2023-01-16T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
           "description": "Get allowed options",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:license/virtuozzo/get"
+            {
+              "name": "order:apiovh:license/virtuozzo/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -17110,15 +15997,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
+            "deletionDate": "2023-02-16T00:00:00+01:00",
+            "deprecatedDate": "2023-01-16T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
           "description": "Get allowed durations for 'upgrade' option",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:license/virtuozzo/upgrade/get"
+            {
+              "name": "order:apiovh:license/virtuozzo/upgrade/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -17149,15 +16039,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
+            "deletionDate": "2023-02-16T00:00:00+01:00",
+            "deprecatedDate": "2023-01-16T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:license/virtuozzo/upgrade/get"
+            {
+              "name": "order:apiovh:license/virtuozzo/upgrade/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -17190,15 +16083,18 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
+            "deletionDate": "2023-02-16T00:00:00+01:00",
+            "deprecatedDate": "2023-01-16T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:license/virtuozzo/upgrade/create"
+            {
+              "name": "order:apiovh:license/virtuozzo/upgrade/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -17237,15 +16133,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
+            "deletionDate": "2023-02-16T00:00:00+01:00",
+            "deprecatedDate": "2023-01-16T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
           "description": "Get allowed durations for 'new' option",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:order/license/virtuozzo/new/get"
+            {
+              "name": "account:apiovh:order/license/virtuozzo/new/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -17292,15 +16191,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
+            "deletionDate": "2023-02-16T00:00:00+01:00",
+            "deprecatedDate": "2023-01-16T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:order/license/virtuozzo/new/get"
+            {
+              "name": "account:apiovh:order/license/virtuozzo/new/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -17349,15 +16251,18 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
+            "deletionDate": "2023-02-16T00:00:00+01:00",
+            "deprecatedDate": "2023-01-16T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:order/license/virtuozzo/new/create"
+            {
+              "name": "account:apiovh:order/license/virtuozzo/new/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -17418,7 +16323,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:license/windows/get"
+            {
+              "name": "order:apiovh:license/windows/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -17438,7 +16346,10 @@ export const schema: Schema = {
           "description": "Get allowed options",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:license/windows/get"
+            {
+              "name": "order:apiovh:license/windows/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -17467,7 +16378,10 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'upgrade' option",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:license/windows/upgrade/get"
+            {
+              "name": "order:apiovh:license/windows/upgrade/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -17512,7 +16426,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:license/windows/upgrade/get"
+            {
+              "name": "order:apiovh:license/windows/upgrade/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -17559,7 +16476,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:license/windows/upgrade/create"
+            {
+              "name": "order:apiovh:license/windows/upgrade/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -17612,7 +16532,10 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'new' option",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:order/license/windows/new/get"
+            {
+              "name": "account:apiovh:order/license/windows/new/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -17665,7 +16588,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:order/license/windows/new/get"
+            {
+              "name": "account:apiovh:order/license/windows/new/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -17720,7 +16646,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:order/license/windows/new/create"
+            {
+              "name": "account:apiovh:order/license/windows/new/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -17775,15 +16704,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
+            "deletionDate": "2023-02-16T00:00:00+01:00",
+            "deprecatedDate": "2023-01-16T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:license/worklight/get"
+            {
+              "name": "order:apiovh:license/worklight/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -17797,15 +16729,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
+            "deletionDate": "2023-02-16T00:00:00+01:00",
+            "deprecatedDate": "2023-01-16T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
           "description": "Get allowed options",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:license/worklight/get"
+            {
+              "name": "order:apiovh:license/worklight/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -17828,15 +16763,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
+            "deletionDate": "2023-02-16T00:00:00+01:00",
+            "deprecatedDate": "2023-01-16T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
           "description": "Get allowed durations for 'upgrade' option",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:license/worklight/upgrade/get"
+            {
+              "name": "order:apiovh:license/worklight/upgrade/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -17867,15 +16805,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
+            "deletionDate": "2023-02-16T00:00:00+01:00",
+            "deprecatedDate": "2023-01-16T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:license/worklight/upgrade/get"
+            {
+              "name": "order:apiovh:license/worklight/upgrade/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -17908,15 +16849,18 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
+            "deletionDate": "2023-02-16T00:00:00+01:00",
+            "deprecatedDate": "2023-01-16T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:license/worklight/upgrade/create"
+            {
+              "name": "order:apiovh:license/worklight/upgrade/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -17955,15 +16899,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
+            "deletionDate": "2023-02-16T00:00:00+01:00",
+            "deprecatedDate": "2023-01-16T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
           "description": "Get allowed durations for 'new' option",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:order/license/worklight/new/get"
+            {
+              "name": "account:apiovh:order/license/worklight/new/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -18002,15 +16949,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
+            "deletionDate": "2023-02-16T00:00:00+01:00",
+            "deprecatedDate": "2023-01-16T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:order/license/worklight/new/get"
+            {
+              "name": "account:apiovh:order/license/worklight/new/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -18051,15 +17001,18 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
+            "deletionDate": "2023-02-16T00:00:00+01:00",
+            "deprecatedDate": "2023-01-16T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:order/license/worklight/new/create"
+            {
+              "name": "account:apiovh:order/license/worklight/new/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -18112,7 +17065,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/baremetalPrivateBandwidth/get"
+            {
+              "name": "order:apiovh:upgrade/baremetalPrivateBandwidth/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -18132,7 +17088,10 @@ export const schema: Schema = {
           "description": "Retrieve available offers to upgrade your service to",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/baremetalPrivateBandwidth/get"
+            {
+              "name": "order:apiovh:upgrade/baremetalPrivateBandwidth/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -18161,7 +17120,10 @@ export const schema: Schema = {
           "description": "Get a provisional order for the selected upgrade of your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/baremetalPrivateBandwidth/get"
+            {
+              "name": "order:apiovh:upgrade/baremetalPrivateBandwidth/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -18200,7 +17162,10 @@ export const schema: Schema = {
           "description": "Perform the requested upgrade of your service",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:upgrade/baremetalPrivateBandwidth/create"
+            {
+              "name": "order:apiovh:upgrade/baremetalPrivateBandwidth/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -18253,7 +17218,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/baremetalPublicBandwidth/get"
+            {
+              "name": "order:apiovh:upgrade/baremetalPublicBandwidth/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -18273,7 +17241,10 @@ export const schema: Schema = {
           "description": "Retrieve available offers to upgrade your service to",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/baremetalPublicBandwidth/get"
+            {
+              "name": "order:apiovh:upgrade/baremetalPublicBandwidth/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -18302,7 +17273,10 @@ export const schema: Schema = {
           "description": "Get a provisional order for the selected upgrade of your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/baremetalPublicBandwidth/get"
+            {
+              "name": "order:apiovh:upgrade/baremetalPublicBandwidth/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -18341,7 +17315,10 @@ export const schema: Schema = {
           "description": "Perform the requested upgrade of your service",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:upgrade/baremetalPublicBandwidth/create"
+            {
+              "name": "order:apiovh:upgrade/baremetalPublicBandwidth/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -18394,7 +17371,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/cephaas/get"
+            {
+              "name": "order:apiovh:upgrade/cephaas/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -18414,7 +17394,10 @@ export const schema: Schema = {
           "description": "Retrieve available offers to upgrade your service to",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/cephaas/get"
+            {
+              "name": "order:apiovh:upgrade/cephaas/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -18443,7 +17426,10 @@ export const schema: Schema = {
           "description": "Get a provisional order for the selected upgrade of your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/cephaas/get"
+            {
+              "name": "order:apiovh:upgrade/cephaas/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -18482,7 +17468,10 @@ export const schema: Schema = {
           "description": "Perform the requested upgrade of your service",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:upgrade/cephaas/create"
+            {
+              "name": "order:apiovh:upgrade/cephaas/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -18535,7 +17524,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/cloudDB/get"
+            {
+              "name": "order:apiovh:upgrade/cloudDB/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -18555,7 +17547,10 @@ export const schema: Schema = {
           "description": "Retrieve available offers to upgrade your service to",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/cloudDB/get"
+            {
+              "name": "order:apiovh:upgrade/cloudDB/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -18584,7 +17579,10 @@ export const schema: Schema = {
           "description": "Get a provisional order for the selected upgrade of your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/cloudDB/get"
+            {
+              "name": "order:apiovh:upgrade/cloudDB/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -18623,7 +17621,10 @@ export const schema: Schema = {
           "description": "Perform the requested upgrade of your service",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:upgrade/cloudDB/create"
+            {
+              "name": "order:apiovh:upgrade/cloudDB/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -18676,7 +17677,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/ipLoadbalancing/get"
+            {
+              "name": "order:apiovh:upgrade/ipLoadbalancing/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -18696,7 +17700,10 @@ export const schema: Schema = {
           "description": "Retrieve available offers to upgrade your service to",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/ipLoadbalancing/get"
+            {
+              "name": "order:apiovh:upgrade/ipLoadbalancing/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -18725,7 +17732,10 @@ export const schema: Schema = {
           "description": "Get a provisional order for the selected upgrade of your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/ipLoadbalancing/get"
+            {
+              "name": "order:apiovh:upgrade/ipLoadbalancing/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -18764,7 +17774,10 @@ export const schema: Schema = {
           "description": "Perform the requested upgrade of your service",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:upgrade/ipLoadbalancing/create"
+            {
+              "name": "order:apiovh:upgrade/ipLoadbalancing/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -18817,7 +17830,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/licensecPanel/get"
+            {
+              "name": "order:apiovh:upgrade/licensecPanel/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -18837,7 +17853,10 @@ export const schema: Schema = {
           "description": "Retrieve available offers to upgrade your service to",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/licensecPanel/get"
+            {
+              "name": "order:apiovh:upgrade/licensecPanel/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -18866,7 +17885,10 @@ export const schema: Schema = {
           "description": "Get a provisional order for the selected upgrade of your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/licensecPanel/get"
+            {
+              "name": "order:apiovh:upgrade/licensecPanel/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -18905,7 +17927,10 @@ export const schema: Schema = {
           "description": "Perform the requested upgrade of your service",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:upgrade/licensecPanel/create"
+            {
+              "name": "order:apiovh:upgrade/licensecPanel/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -18958,7 +17983,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/licensePlesk/get"
+            {
+              "name": "order:apiovh:upgrade/licensePlesk/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -18978,7 +18006,10 @@ export const schema: Schema = {
           "description": "Retrieve available offers to upgrade your service to",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/licensePlesk/get"
+            {
+              "name": "order:apiovh:upgrade/licensePlesk/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -19007,7 +18038,10 @@ export const schema: Schema = {
           "description": "Get a provisional order for the selected upgrade of your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/licensePlesk/get"
+            {
+              "name": "order:apiovh:upgrade/licensePlesk/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -19046,7 +18080,10 @@ export const schema: Schema = {
           "description": "Perform the requested upgrade of your service",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:upgrade/licensePlesk/create"
+            {
+              "name": "order:apiovh:upgrade/licensePlesk/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -19099,7 +18136,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/logs/get"
+            {
+              "name": "order:apiovh:upgrade/logs/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -19119,7 +18159,10 @@ export const schema: Schema = {
           "description": "Retrieve available offers to upgrade your service to",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/logs/get"
+            {
+              "name": "order:apiovh:upgrade/logs/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -19148,7 +18191,10 @@ export const schema: Schema = {
           "description": "Get a provisional order for the selected upgrade of your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/logs/get"
+            {
+              "name": "order:apiovh:upgrade/logs/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -19187,7 +18233,10 @@ export const schema: Schema = {
           "description": "Perform the requested upgrade of your service",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:upgrade/logs/create"
+            {
+              "name": "order:apiovh:upgrade/logs/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -19240,7 +18289,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/privateCloud/get"
+            {
+              "name": "order:apiovh:upgrade/privateCloud/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -19260,7 +18312,10 @@ export const schema: Schema = {
           "description": "Retrieve available offers to upgrade your service to",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/privateCloud/get"
+            {
+              "name": "order:apiovh:upgrade/privateCloud/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -19289,7 +18344,10 @@ export const schema: Schema = {
           "description": "Get a provisional order for the selected upgrade of your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/privateCloud/get"
+            {
+              "name": "order:apiovh:upgrade/privateCloud/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -19328,7 +18386,10 @@ export const schema: Schema = {
           "description": "Perform the requested upgrade of your service",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:upgrade/privateCloud/create"
+            {
+              "name": "order:apiovh:upgrade/privateCloud/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -19381,7 +18442,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/privateCloudManagementFee/get"
+            {
+              "name": "order:apiovh:upgrade/privateCloudManagementFee/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -19401,7 +18465,10 @@ export const schema: Schema = {
           "description": "Retrieve available offers to upgrade your service to",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/privateCloudManagementFee/get"
+            {
+              "name": "order:apiovh:upgrade/privateCloudManagementFee/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -19430,7 +18497,10 @@ export const schema: Schema = {
           "description": "Get a provisional order for the selected upgrade of your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/privateCloudManagementFee/get"
+            {
+              "name": "order:apiovh:upgrade/privateCloudManagementFee/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -19469,7 +18539,10 @@ export const schema: Schema = {
           "description": "Perform the requested upgrade of your service",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:upgrade/privateCloudManagementFee/create"
+            {
+              "name": "order:apiovh:upgrade/privateCloudManagementFee/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -19522,7 +18595,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/privateSQL/get"
+            {
+              "name": "order:apiovh:upgrade/privateSQL/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -19542,7 +18618,10 @@ export const schema: Schema = {
           "description": "Retrieve available offers to upgrade your service to",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/privateSQL/get"
+            {
+              "name": "order:apiovh:upgrade/privateSQL/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -19571,7 +18650,10 @@ export const schema: Schema = {
           "description": "Get a provisional order for the selected upgrade of your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/privateSQL/get"
+            {
+              "name": "order:apiovh:upgrade/privateSQL/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -19610,7 +18692,10 @@ export const schema: Schema = {
           "description": "Perform the requested upgrade of your service",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:upgrade/privateSQL/create"
+            {
+              "name": "order:apiovh:upgrade/privateSQL/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -19663,7 +18748,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/vps/get"
+            {
+              "name": "order:apiovh:upgrade/vps/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -19683,7 +18771,10 @@ export const schema: Schema = {
           "description": "Retrieve available offers to upgrade your service to",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/vps/get"
+            {
+              "name": "order:apiovh:upgrade/vps/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -19712,7 +18803,10 @@ export const schema: Schema = {
           "description": "Get a provisional order for the selected upgrade of your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/vps/get"
+            {
+              "name": "order:apiovh:upgrade/vps/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -19751,7 +18845,10 @@ export const schema: Schema = {
           "description": "Perform the requested upgrade of your service",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:upgrade/vps/create"
+            {
+              "name": "order:apiovh:upgrade/vps/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -19804,7 +18901,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/vpsAdditionalDisk/get"
+            {
+              "name": "order:apiovh:upgrade/vpsAdditionalDisk/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -19824,7 +18924,10 @@ export const schema: Schema = {
           "description": "Retrieve available offers to upgrade your service to",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/vpsAdditionalDisk/get"
+            {
+              "name": "order:apiovh:upgrade/vpsAdditionalDisk/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -19853,7 +18956,10 @@ export const schema: Schema = {
           "description": "Get a provisional order for the selected upgrade of your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/vpsAdditionalDisk/get"
+            {
+              "name": "order:apiovh:upgrade/vpsAdditionalDisk/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -19892,7 +18998,10 @@ export const schema: Schema = {
           "description": "Perform the requested upgrade of your service",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:upgrade/vpsAdditionalDisk/create"
+            {
+              "name": "order:apiovh:upgrade/vpsAdditionalDisk/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -19945,7 +19054,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/webHosting/get"
+            {
+              "name": "order:apiovh:upgrade/webHosting/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -19965,7 +19077,10 @@ export const schema: Schema = {
           "description": "Retrieve available offers to upgrade your service to",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/webHosting/get"
+            {
+              "name": "order:apiovh:upgrade/webHosting/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -19994,7 +19109,10 @@ export const schema: Schema = {
           "description": "Get a provisional order for the selected upgrade of your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/webHosting/get"
+            {
+              "name": "order:apiovh:upgrade/webHosting/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20033,7 +19151,10 @@ export const schema: Schema = {
           "description": "Perform the requested upgrade of your service",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:upgrade/webHosting/create"
+            {
+              "name": "order:apiovh:upgrade/webHosting/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20083,10 +19204,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "List available services",
+          "description": "Veeam Cloud Connect order",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:veeamCloudConnect/get"
+            {
+              "name": "order:apiovh:veeamCloudConnect/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -20106,7 +19230,10 @@ export const schema: Schema = {
           "description": "Get allowed options",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:veeamCloudConnect/get"
+            {
+              "name": "order:apiovh:veeamCloudConnect/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20125,7 +19252,7 @@ export const schema: Schema = {
       "path": "/order/veeamCloudConnect/{serviceName}"
     },
     {
-      "description": "Order an upgrade upon your Veeam Cloud Connect account",
+      "description": "Upgrade Veeam Cloud Connect offer",
       "operations": [
         {
           "apiStatus": {
@@ -20135,7 +19262,10 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'upgrade' option",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:veeamCloudConnect/upgrade/get"
+            {
+              "name": "order:apiovh:veeamCloudConnect/upgrade/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20162,7 +19292,7 @@ export const schema: Schema = {
       "path": "/order/veeamCloudConnect/{serviceName}/upgrade"
     },
     {
-      "description": "Order an upgrade upon your Veeam Cloud Connect account",
+      "description": "Upgrade Veeam Cloud Connect offer",
       "operations": [
         {
           "apiStatus": {
@@ -20172,7 +19302,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:veeamCloudConnect/upgrade/get"
+            {
+              "name": "order:apiovh:veeamCloudConnect/upgrade/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20211,7 +19344,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:veeamCloudConnect/upgrade/create"
+            {
+              "name": "order:apiovh:veeamCloudConnect/upgrade/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20256,7 +19392,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:vps/get"
+            {
+              "name": "order:apiovh:vps/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -20276,7 +19415,10 @@ export const schema: Schema = {
           "description": "Get allowed options",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:vps/get"
+            {
+              "name": "order:apiovh:vps/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20305,7 +19447,10 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'additionalDisk' option",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:vps/additionalDisk/get"
+            {
+              "name": "order:apiovh:vps/additionalDisk/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20342,7 +19487,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:vps/additionalDisk/get"
+            {
+              "name": "order:apiovh:vps/additionalDisk/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20381,7 +19529,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:vps/additionalDisk/create"
+            {
+              "name": "order:apiovh:vps/additionalDisk/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20426,7 +19577,10 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'automatedBackup' option",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:vps/automatedBackup/get"
+            {
+              "name": "order:apiovh:vps/automatedBackup/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20455,7 +19609,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:vps/automatedBackup/get"
+            {
+              "name": "order:apiovh:vps/automatedBackup/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20486,7 +19643,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:vps/automatedBackup/create"
+            {
+              "name": "order:apiovh:vps/automatedBackup/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20517,8 +19677,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2014-07-06 00:00:00 +0100 +0100",
-            "deprecatedDate": "2014-05-06 16:00:00 +0100 +0100",
+            "deletionDate": "2014-07-06T00:00:00+01:00",
+            "deprecatedDate": "2014-05-06T16:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/order/license/{serviceName}/cpanel/new",
             "value": "DEPRECATED"
@@ -20526,7 +19686,10 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'cpanel' option",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:vps/cpanel/get"
+            {
+              "name": "order:apiovh:vps/cpanel/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20549,8 +19712,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2014-07-06 00:00:00 +0100 +0100",
-            "deprecatedDate": "2014-05-06 16:00:00 +0100 +0100",
+            "deletionDate": "2014-07-06T00:00:00+01:00",
+            "deprecatedDate": "2014-05-06T16:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/order/license/{serviceName}/cpanel/new",
             "value": "DEPRECATED"
@@ -20558,7 +19721,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:vps/cpanel/get"
+            {
+              "name": "order:apiovh:vps/cpanel/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20583,8 +19749,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2014-07-06 00:00:00 +0100 +0100",
-            "deprecatedDate": "2014-05-06 16:00:00 +0100 +0100",
+            "deletionDate": "2014-07-06T00:00:00+01:00",
+            "deprecatedDate": "2014-05-06T16:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/order/license/{serviceName}/cpanel/new",
             "value": "DEPRECATED"
@@ -20592,7 +19758,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:vps/cpanel/create"
+            {
+              "name": "order:apiovh:vps/cpanel/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20629,7 +19798,10 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'ftpbackup' option",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:vps/ftpbackup/get"
+            {
+              "name": "order:apiovh:vps/ftpbackup/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20658,7 +19830,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:vps/ftpbackup/get"
+            {
+              "name": "order:apiovh:vps/ftpbackup/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20689,7 +19864,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:vps/ftpbackup/create"
+            {
+              "name": "order:apiovh:vps/ftpbackup/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20720,8 +19898,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2014-07-06 00:00:00 +0100 +0100",
-            "deprecatedDate": "2014-05-06 16:00:00 +0100 +0100",
+            "deletionDate": "2014-07-06T00:00:00+01:00",
+            "deprecatedDate": "2014-05-06T16:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/order/license/{serviceName}/plesk/new",
             "value": "DEPRECATED"
@@ -20729,7 +19907,10 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'plesk' option",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:vps/plesk/get"
+            {
+              "name": "order:apiovh:vps/plesk/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20760,8 +19941,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2014-07-06 00:00:00 +0100 +0100",
-            "deprecatedDate": "2014-05-06 16:00:00 +0100 +0100",
+            "deletionDate": "2014-07-06T00:00:00+01:00",
+            "deprecatedDate": "2014-05-06T16:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/order/license/{serviceName}/plesk/new",
             "value": "DEPRECATED"
@@ -20769,7 +19950,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:vps/plesk/get"
+            {
+              "name": "order:apiovh:vps/plesk/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20802,8 +19986,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2014-07-06 00:00:00 +0100 +0100",
-            "deprecatedDate": "2014-05-06 16:00:00 +0100 +0100",
+            "deletionDate": "2014-07-06T00:00:00+01:00",
+            "deprecatedDate": "2014-05-06T16:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/order/license/{serviceName}/plesk/new",
             "value": "DEPRECATED"
@@ -20811,7 +19995,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:vps/plesk/create"
+            {
+              "name": "order:apiovh:vps/plesk/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20856,7 +20043,10 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'snapshot' option",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:vps/snapshot/get"
+            {
+              "name": "order:apiovh:vps/snapshot/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20885,7 +20075,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:vps/snapshot/get"
+            {
+              "name": "order:apiovh:vps/snapshot/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20916,7 +20109,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:vps/snapshot/create"
+            {
+              "name": "order:apiovh:vps/snapshot/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20953,7 +20149,10 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'upgrade' option",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:vps/upgrade/get"
+            {
+              "name": "order:apiovh:vps/upgrade/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20990,7 +20189,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:vps/upgrade/get"
+            {
+              "name": "order:apiovh:vps/upgrade/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -21029,7 +20231,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:vps/upgrade/create"
+            {
+              "name": "order:apiovh:vps/upgrade/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -21068,8 +20273,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2016-01-08 00:00:00 +0100 +0100",
-            "deprecatedDate": "2015-12-26 08:00:00 +0100 +0100",
+            "deletionDate": "2016-01-08T00:00:00+01:00",
+            "deprecatedDate": "2015-12-26T08:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/order/vps/{serviceName}/automatedBackup",
             "value": "DEPRECATED"
@@ -21077,7 +20282,10 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'veeam' option",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:vps/veeam/get"
+            {
+              "name": "order:apiovh:vps/veeam/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -21100,8 +20308,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2016-01-08 00:00:00 +0100 +0100",
-            "deprecatedDate": "2015-12-26 08:00:00 +0100 +0100",
+            "deletionDate": "2016-01-08T00:00:00+01:00",
+            "deprecatedDate": "2015-12-26T08:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/order/vps/{serviceName}/automatedBackup",
             "value": "DEPRECATED"
@@ -21109,7 +20317,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:vps/veeam/get"
+            {
+              "name": "order:apiovh:vps/veeam/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -21134,8 +20345,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2016-01-08 00:00:00 +0100 +0100",
-            "deprecatedDate": "2015-12-26 08:00:00 +0100 +0100",
+            "deletionDate": "2016-01-08T00:00:00+01:00",
+            "deprecatedDate": "2015-12-26T08:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/order/vps/{serviceName}/automatedBackup",
             "value": "DEPRECATED"
@@ -21143,7 +20354,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:vps/veeam/create"
+            {
+              "name": "order:apiovh:vps/veeam/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -21180,7 +20394,10 @@ export const schema: Schema = {
           "description": "Get allowed durations for 'windows' option",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:vps/windows/get"
+            {
+              "name": "order:apiovh:vps/windows/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -21209,7 +20426,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:vps/windows/get"
+            {
+              "name": "order:apiovh:vps/windows/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -21240,7 +20460,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:vps/windows/create"
+            {
+              "name": "order:apiovh:vps/windows/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -21271,8 +20494,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2017-07-27 00:00:00 +0100 +0100",
-            "deprecatedDate": "2017-06-27 00:00:00 +0100 +0100",
+            "deletionDate": "2017-07-27T00:00:00+01:00",
+            "deprecatedDate": "2017-06-27T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/vrack",
             "value": "DEPRECATED"
@@ -21280,7 +20503,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:vrack/get"
+            {
+              "name": "order:apiovh:vrack/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -21294,8 +20520,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2017-07-27 00:00:00 +0100 +0100",
-            "deprecatedDate": "2017-06-27 00:00:00 +0100 +0100",
+            "deletionDate": "2017-07-27T00:00:00+01:00",
+            "deprecatedDate": "2017-06-27T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/vrack",
             "value": "DEPRECATED"
@@ -21303,7 +20529,10 @@ export const schema: Schema = {
           "description": "Get allowed options",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:vrack/get"
+            {
+              "name": "order:apiovh:vrack/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -21326,8 +20555,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2017-07-27 00:00:00 +0100 +0100",
-            "deprecatedDate": "2017-06-27 00:00:00 +0100 +0100",
+            "deletionDate": "2017-07-27T00:00:00+01:00",
+            "deprecatedDate": "2017-06-27T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/vrack",
             "value": "DEPRECATED"
@@ -21335,7 +20564,10 @@ export const schema: Schema = {
           "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:order/vrack/new/get"
+            {
+              "name": "account:apiovh:order/vrack/new/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -21352,8 +20584,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2017-07-27 00:00:00 +0100 +0100",
-            "deprecatedDate": "2017-06-27 00:00:00 +0100 +0100",
+            "deletionDate": "2017-07-27T00:00:00+01:00",
+            "deprecatedDate": "2017-06-27T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/order/cart/{cartId}/vrack",
             "value": "DEPRECATED"
@@ -21361,7 +20593,10 @@ export const schema: Schema = {
           "description": "Create order",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:order/vrack/new/create"
+            {
+              "name": "account:apiovh:order/vrack/new/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -21428,6 +20663,30 @@ export const schema: Schema = {
         }
       }
     },
+    "complexType.SafeKeyValue<string>": {
+      "description": "Key and value, with proper key strings",
+      "generics": [
+        "T"
+      ],
+      "id": "SafeKeyValue",
+      "namespace": "complexType",
+      "properties": {
+        "key": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "fullType": "T",
+          "readOnly": true,
+          "required": false,
+          "type": "T"
+        }
+      }
+    },
     "complexType.UnitAndValue<T>": {
       "description": "A numeric value tagged with its unit",
       "generics": [
@@ -21454,273 +20713,57 @@ export const schema: Schema = {
         }
       }
     },
-    "coreTypes.CountryEnum": {
-      "description": "ISO country codes",
-      "enum": [
-        "ac",
-        "ad",
-        "ae",
-        "af",
-        "ag",
-        "ai",
-        "al",
-        "am",
-        "an",
-        "ao",
-        "aq",
-        "ar",
-        "as",
-        "at",
-        "au",
-        "aw",
-        "ax",
-        "az",
-        "ba",
-        "bb",
-        "bd",
-        "be",
-        "bf",
-        "bg",
-        "bh",
-        "bi",
-        "bj",
-        "bl",
-        "bm",
-        "bn",
-        "bo",
-        "bq",
-        "br",
-        "bs",
-        "bt",
-        "bv",
-        "bw",
-        "by",
-        "bz",
-        "ca",
-        "cc",
-        "cd",
-        "cf",
-        "cg",
-        "ch",
-        "ci",
-        "ck",
-        "cl",
-        "cm",
-        "cn",
-        "co",
-        "cr",
-        "cs",
-        "cu",
-        "cv",
-        "cw",
-        "cx",
-        "cy",
-        "cz",
-        "de",
-        "dj",
-        "dk",
-        "dm",
-        "do",
-        "dz",
-        "ec",
-        "ee",
-        "eg",
-        "eh",
-        "er",
-        "es",
-        "et",
-        "fc",
-        "fd",
-        "fi",
-        "fj",
-        "fk",
-        "fm",
-        "fo",
-        "fr",
-        "fx",
-        "ga",
-        "gb",
-        "gd",
-        "ge",
-        "gf",
-        "gg",
-        "gh",
-        "gi",
-        "gl",
-        "gm",
-        "gn",
-        "gp",
-        "gq",
-        "gr",
-        "gs",
-        "gt",
-        "gu",
-        "gw",
-        "gy",
-        "hk",
-        "hm",
-        "hn",
-        "hr",
-        "ht",
-        "hu",
-        "id",
-        "ie",
-        "il",
-        "im",
-        "in",
-        "io",
-        "iq",
-        "ir",
-        "is",
-        "it",
-        "je",
-        "jm",
-        "jo",
-        "jp",
-        "ke",
-        "kg",
-        "kh",
-        "ki",
-        "km",
-        "kn",
-        "kp",
-        "kr",
-        "kw",
-        "ky",
-        "kz",
-        "la",
-        "lb",
-        "lc",
-        "li",
-        "lk",
-        "lr",
-        "ls",
-        "lt",
-        "lu",
-        "lv",
-        "ly",
-        "ma",
-        "mc",
-        "md",
-        "me",
-        "mf",
-        "mg",
-        "mh",
-        "mk",
-        "ml",
-        "mm",
-        "mn",
-        "mo",
-        "mp",
-        "mq",
-        "mr",
-        "ms",
-        "mt",
-        "mu",
-        "mv",
-        "mw",
-        "mx",
-        "my",
-        "mz",
-        "na",
-        "nc",
-        "ne",
-        "nf",
-        "ng",
-        "ni",
-        "nl",
-        "no",
-        "np",
-        "nr",
-        "nu",
-        "nz",
-        "om",
-        "pa",
-        "pe",
-        "pf",
-        "pg",
-        "ph",
-        "pk",
-        "pl",
-        "pm",
-        "pn",
-        "pr",
-        "ps",
-        "pt",
-        "pw",
-        "py",
-        "qa",
-        "qc",
-        "re",
-        "ro",
-        "rs",
-        "ru",
-        "rw",
-        "sa",
-        "sb",
-        "sc",
-        "sd",
-        "se",
-        "sg",
-        "sh",
-        "si",
-        "sj",
-        "sk",
-        "sl",
-        "sm",
-        "sn",
-        "so",
-        "sr",
-        "ss",
-        "st",
-        "sv",
-        "sx",
-        "sy",
-        "sz",
-        "tc",
-        "td",
-        "tf",
-        "tg",
-        "th",
-        "tj",
-        "tk",
-        "tl",
-        "tm",
-        "tn",
-        "to",
-        "tp",
-        "tr",
-        "tt",
-        "tv",
-        "tw",
-        "tz",
-        "ua",
-        "ug",
-        "uk",
-        "um",
-        "us",
-        "uy",
-        "uz",
-        "va",
-        "vc",
-        "ve",
-        "vg",
-        "vi",
-        "vn",
-        "vu",
-        "we",
-        "wf",
-        "ws",
-        "ye",
-        "yt",
-        "yu",
-        "za",
-        "zm",
-        "zw"
+    "complexType.UnitAndValue<double>": {
+      "description": "A numeric value tagged with its unit",
+      "generics": [
+        "T"
       ],
-      "enumType": "string",
-      "id": "CountryEnum",
-      "namespace": "coreTypes"
+      "id": "UnitAndValue",
+      "namespace": "complexType",
+      "properties": {
+        "unit": {
+          "canBeNull": false,
+          "description": "Unit of the value",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value",
+          "fullType": "T",
+          "readOnly": true,
+          "required": false,
+          "type": "T"
+        }
+      }
+    },
+    "complexType.UnitAndValue<long>": {
+      "description": "A numeric value tagged with its unit",
+      "generics": [
+        "T"
+      ],
+      "id": "UnitAndValue",
+      "namespace": "complexType",
+      "properties": {
+        "unit": {
+          "canBeNull": false,
+          "description": "Unit of the value",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value",
+          "fullType": "T",
+          "readOnly": true,
+          "required": false,
+          "type": "T"
+        }
+      }
     },
     "dedicated.housing.HaRoutingOfferEnum": {
       "description": "Housing bay High Availablility offers",
@@ -21735,10 +20778,10 @@ export const schema: Schema = {
     "dedicated.server.BackupStorageCapacityEnum": {
       "description": "Different backup storage capacity in gigabytes",
       "enum": [
-        "1000",
-        "10000",
         "500",
-        "5000"
+        "1000",
+        "5000",
+        "10000"
       ],
       "enumType": "long",
       "id": "BackupStorageCapacityEnum",
@@ -21791,13 +20834,13 @@ export const schema: Schema = {
       "description": "IP block size",
       "enum": [
         "1",
-        "128",
-        "16",
-        "256",
-        "32",
         "4",
+        "8",
+        "16",
+        "32",
         "64",
-        "8"
+        "128",
+        "256"
       ],
       "enumType": "long",
       "id": "IpBlockSizeEnum",
@@ -21825,7 +20868,7 @@ export const schema: Schema = {
         "uk",
         "us"
       ],
-      "enumType": "coreTypes.CountryEnum",
+      "enumType": "string",
       "id": "IpCountryEnum",
       "namespace": "dedicated.server"
     },
@@ -21896,11 +20939,11 @@ export const schema: Schema = {
     "dedicated.server.UsbKeyCapacityEnum": {
       "description": " Different USB key capacity in gigabytes",
       "enum": [
-        "128",
         "16",
-        "256",
         "32",
-        "64"
+        "64",
+        "128",
+        "256"
       ],
       "enumType": "long",
       "id": "UsbKeyCapacityEnum",
@@ -21935,7 +20978,7 @@ export const schema: Schema = {
         "pt",
         "us"
       ],
-      "enumType": "coreTypes.CountryEnum",
+      "enumType": "string",
       "id": "IpCountriesEnum",
       "namespace": "dedicatedCloud"
     },
@@ -22006,109 +21049,12 @@ export const schema: Schema = {
     "email.exchange.accountQuotaEnum": {
       "description": "Storage quota options in GB",
       "enum": [
-        "300",
-        "50"
+        "50",
+        "300"
       ],
       "enumType": "long",
       "id": "accountQuotaEnum",
       "namespace": "email.exchange"
-    },
-    "hosting.PrivateDatabase.AvailableRamSizeEnum": {
-      "description": "Private database available ram sizes",
-      "enum": [
-        "1024",
-        "2048",
-        "4096",
-        "512"
-      ],
-      "enumType": "string",
-      "id": "AvailableRamSizeEnum",
-      "namespace": "hosting.PrivateDatabase"
-    },
-    "hosting.PrivateDatabase.DatacenterEnum": {
-      "description": "Available datacenters",
-      "enum": [
-        "bhs1",
-        "gra1",
-        "gra2",
-        "gra3",
-        "p19"
-      ],
-      "enumType": "string",
-      "id": "DatacenterEnum",
-      "namespace": "hosting.PrivateDatabase"
-    },
-    "hosting.PrivateDatabase.OfferEnum": {
-      "description": "Available offers",
-      "enum": [
-        "classic",
-        "public"
-      ],
-      "enumType": "string",
-      "id": "OfferEnum",
-      "namespace": "hosting.PrivateDatabase"
-    },
-    "hosting.PrivateDatabase.OrderableVersionEnum": {
-      "description": "Private database orderable versions",
-      "enum": [
-        "mariadb_10.11",
-        "mariadb_10.3",
-        "mariadb_10.4",
-        "mariadb_10.5",
-        "mariadb_10.6",
-        "mysql_5.7",
-        "mysql_8.0",
-        "postgresql_11",
-        "postgresql_12",
-        "postgresql_13",
-        "postgresql_14",
-        "postgresql_15",
-        "redis_6.0",
-        "redis_7.0"
-      ],
-      "enumType": "string",
-      "id": "OrderableVersionEnum",
-      "namespace": "hosting.PrivateDatabase"
-    },
-    "hosting.web.BandwidthOfferEnum": {
-      "description": "Available offers to increase bandwidth quota (unit in GB)",
-      "enum": [
-        "10",
-        "100",
-        "1000",
-        "10000",
-        "20",
-        "250",
-        "30",
-        "40",
-        "50",
-        "500"
-      ],
-      "enumType": "long",
-      "id": "BandwidthOfferEnum",
-      "namespace": "hosting.web"
-    },
-    "hosting.web.CdnOfferEnum": {
-      "description": "Hosting's CDN offer",
-      "enum": [
-        "CDN_BUSINESS",
-        "CDN_BUSINESS_FREE"
-      ],
-      "enumType": "string",
-      "id": "CdnOfferEnum",
-      "namespace": "hosting.web"
-    },
-    "hosting.web.DnsZoneEnum": {
-      "description": "Dns zone modification possibilities when installing a new hosting",
-      "enum": [
-        "NO_CHANGE",
-        "RESET_ALL",
-        "RESET_ONLY_A",
-        "RESET_ONLY_MX"
-      ],
-      "enumType": "string",
-      "id": "DnsZoneEnum",
-      "namespace": "hosting.web"
     },
     "hosting.web.OfferEnum": {
       "description": "Hosting's offer",
@@ -22124,56 +21070,20 @@ export const schema: Schema = {
         "PERSO",
         "POWER_BETA_1",
         "PRO",
-        "START"
+        "START",
+        "hosting-free-100m",
+        "hosting-performance-1",
+        "hosting-performance-2",
+        "hosting-performance-3",
+        "hosting-performance-4",
+        "hosting-perso",
+        "hosting-pro",
+        "hosting-starter",
+        "hosting-starter-ovh"
       ],
       "enumType": "string",
       "id": "OfferEnum",
       "namespace": "hosting.web"
-    },
-    "hosting.web.database.SqlPersoOfferEnum": {
-      "description": "Sql perso's offer enum",
-      "enum": [
-        "SQLPERSO_1_BASES_400_MB",
-        "SQLPERSO_1_BASES_800_MB",
-        "SQLPERSO_20_BASES_100_MB",
-        "SQLPERSO_20_BASES_200_MB",
-        "SQLPERSO_2_BASES_400_MB",
-        "SQLPERSO_2_BASES_800_MB",
-        "SQLPERSO_50_BASES_100_MB",
-        "SQLPERSO_50_BASES_200_MB",
-        "SQLPERSO_5_BASES_100_MB",
-        "SQLPERSO_5_BASES_200_MB",
-        "SQLPERSO_5_BASES_400_MB",
-        "SQLPERSO_5_BASES_800_MB"
-      ],
-      "enumType": "string",
-      "id": "SqlPersoOfferEnum",
-      "namespace": "hosting.web.database"
-    },
-    "hosting.web.module.OrderableNameEnum": {
-      "description": "Module's name orderable when order a new hosting",
-      "enum": [
-        "DRUPAL",
-        "JOOMLA",
-        "PRESTASHOP",
-        "WORDPRESS"
-      ],
-      "enumType": "string",
-      "id": "OrderableNameEnum",
-      "namespace": "hosting.web.module"
-    },
-    "hosting.web.order.MxPlanEnum": {
-      "description": "MX plan linked to the new main domain",
-      "enum": [
-        "005",
-        "025",
-        "100",
-        "delete",
-        "full"
-      ],
-      "enumType": "string",
-      "id": "MxPlanEnum",
-      "namespace": "hosting.web.order"
     },
     "license.CloudLinuxVersionEnum": {
       "description": "All versions for CloudLinux product",
@@ -22232,8 +21142,8 @@ export const schema: Schema = {
         "VERSION_11_FOR_LINUX",
         "VERSION_11_FOR_VIRTUOZZO",
         "VERSION_11_FOR_VPS",
-        "cpanel-license-admin-cloud-accounts",
-        "cpanel-license-plus-cloud-accounts",
+        "cpanel-license-admin-cloud",
+        "cpanel-license-plus-cloud",
         "cpanel-license-premier-cloud-100-accounts",
         "cpanel-license-premier-cloud-1000-accounts",
         "cpanel-license-premier-cloud-10000-accounts",
@@ -22438,9 +21348,9 @@ export const schema: Schema = {
         "cpanel-license-premier-metal-9700-accounts",
         "cpanel-license-premier-metal-9800-accounts",
         "cpanel-license-premier-metal-9900-accounts",
-        "cpanel-license-pro-cloud-accounts",
-        "cpanel-license-solo-cloud-accounts",
-        "cpanel-license-solo-metal-accounts",
+        "cpanel-license-pro-cloud",
+        "cpanel-license-solo-cloud",
+        "cpanel-license-solo-metal",
         "cpanel-license-version-11",
         "cpanel-license-version-11-for-virtuozzo",
         "cpanel-license-version-11-for-vps",
@@ -22687,16 +21597,22 @@ export const schema: Schema = {
       "enum": [
         "1",
         "1-extra-language-for-plesk12",
+        "1-extra-language-for-plesk12-for-vps",
         "2",
         "2-extra-languages-for-plesk12",
+        "2-extra-languages-for-plesk12-for-vps",
         "3",
         "3-extra-languages-for-plesk12",
+        "3-extra-languages-for-plesk12-for-vps",
         "4",
         "4-extra-languages-for-plesk12",
+        "4-extra-languages-for-plesk12-for-vps",
         "5",
         "5-extra-languages-for-plesk12",
+        "5-extra-languages-for-plesk12-for-vps",
         "unlimited",
-        "unlimited-extra-languages-for-plesk12"
+        "unlimited-extra-languages-for-plesk12",
+        "unlimited-extra-languages-for-plesk12-for-vps"
       ],
       "enumType": "string",
       "id": "OrderablePleskLanguagePackEnum",
@@ -22888,6 +21804,7 @@ export const schema: Schema = {
         "SQL_SERVER_2017_WEB_EDITION_6_CORES",
         "SQL_SERVER_2017_WEB_EDITION_8_CORES",
         "SQL_SERVER_2019_ENTERPRISE_EDITION_10_CORES",
+        "SQL_SERVER_2019_ENTERPRISE_EDITION_128_CORES",
         "SQL_SERVER_2019_ENTERPRISE_EDITION_12_CORES",
         "SQL_SERVER_2019_ENTERPRISE_EDITION_14_CORES",
         "SQL_SERVER_2019_ENTERPRISE_EDITION_16_CORES",
@@ -22918,7 +21835,9 @@ export const schema: Schema = {
         "SQL_SERVER_2019_ENTERPRISE_EDITION_64_CORES",
         "SQL_SERVER_2019_ENTERPRISE_EDITION_6_CORES",
         "SQL_SERVER_2019_ENTERPRISE_EDITION_8_CORES",
+        "SQL_SERVER_2019_ENTERPRISE_EDITION_96_CORES",
         "SQL_SERVER_2019_STANDARD_EDITION_10_CORES",
+        "SQL_SERVER_2019_STANDARD_EDITION_128_CORES",
         "SQL_SERVER_2019_STANDARD_EDITION_12_CORES",
         "SQL_SERVER_2019_STANDARD_EDITION_14_CORES",
         "SQL_SERVER_2019_STANDARD_EDITION_16_CORES",
@@ -22949,7 +21868,9 @@ export const schema: Schema = {
         "SQL_SERVER_2019_STANDARD_EDITION_64_CORES",
         "SQL_SERVER_2019_STANDARD_EDITION_6_CORES",
         "SQL_SERVER_2019_STANDARD_EDITION_8_CORES",
+        "SQL_SERVER_2019_STANDARD_EDITION_96_CORES",
         "SQL_SERVER_2019_WEB_EDITION_10_CORES",
+        "SQL_SERVER_2019_WEB_EDITION_128_CORES",
         "SQL_SERVER_2019_WEB_EDITION_12_CORES",
         "SQL_SERVER_2019_WEB_EDITION_14_CORES",
         "SQL_SERVER_2019_WEB_EDITION_16_CORES",
@@ -22980,6 +21901,106 @@ export const schema: Schema = {
         "SQL_SERVER_2019_WEB_EDITION_64_CORES",
         "SQL_SERVER_2019_WEB_EDITION_6_CORES",
         "SQL_SERVER_2019_WEB_EDITION_8_CORES",
+        "SQL_SERVER_2019_WEB_EDITION_96_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_10_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_128_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_12_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_14_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_16_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_18_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_20_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_22_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_24_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_26_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_28_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_30_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_32_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_34_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_36_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_38_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_40_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_42_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_44_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_46_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_48_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_4_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_50_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_52_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_54_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_56_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_58_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_60_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_62_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_64_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_6_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_8_CORES",
+        "SQL_SERVER_2022_ENTERPRISE_EDITION_96_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_10_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_128_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_12_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_14_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_16_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_18_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_20_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_22_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_24_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_26_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_28_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_30_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_32_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_34_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_36_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_38_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_40_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_42_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_44_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_46_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_48_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_4_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_50_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_52_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_54_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_56_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_58_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_60_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_62_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_64_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_6_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_8_CORES",
+        "SQL_SERVER_2022_STANDARD_EDITION_96_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_10_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_128_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_12_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_14_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_16_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_18_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_20_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_22_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_24_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_26_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_28_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_30_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_32_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_34_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_36_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_38_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_40_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_42_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_44_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_46_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_48_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_4_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_50_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_52_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_54_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_56_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_58_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_60_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_62_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_64_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_6_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_8_CORES",
+        "SQL_SERVER_2022_WEB_EDITION_96_CORES",
         "sql-server-2008-license-standard-edition-2-cpu",
         "sql-server-2008-license-standard-edition-4-cpu",
         "sql-server-2008-license-web-edition-2-cpu",
@@ -23069,6 +22090,7 @@ export const schema: Schema = {
         "sql-server-2017-license-web-edition-8-cores",
         "sql-server-2019-license-enterprise-edition-10-cores",
         "sql-server-2019-license-enterprise-edition-12-cores",
+        "sql-server-2019-license-enterprise-edition-128-cores",
         "sql-server-2019-license-enterprise-edition-14-cores",
         "sql-server-2019-license-enterprise-edition-16-cores",
         "sql-server-2019-license-enterprise-edition-18-cores",
@@ -23098,8 +22120,10 @@ export const schema: Schema = {
         "sql-server-2019-license-enterprise-edition-62-cores",
         "sql-server-2019-license-enterprise-edition-64-cores",
         "sql-server-2019-license-enterprise-edition-8-cores",
+        "sql-server-2019-license-enterprise-edition-96-cores",
         "sql-server-2019-license-standard-edition-10-cores",
         "sql-server-2019-license-standard-edition-12-cores",
+        "sql-server-2019-license-standard-edition-128-cores",
         "sql-server-2019-license-standard-edition-14-cores",
         "sql-server-2019-license-standard-edition-16-cores",
         "sql-server-2019-license-standard-edition-18-cores",
@@ -23129,8 +22153,10 @@ export const schema: Schema = {
         "sql-server-2019-license-standard-edition-62-cores",
         "sql-server-2019-license-standard-edition-64-cores",
         "sql-server-2019-license-standard-edition-8-cores",
+        "sql-server-2019-license-standard-edition-96-cores",
         "sql-server-2019-license-web-edition-10-cores",
         "sql-server-2019-license-web-edition-12-cores",
+        "sql-server-2019-license-web-edition-128-cores",
         "sql-server-2019-license-web-edition-14-cores",
         "sql-server-2019-license-web-edition-16-cores",
         "sql-server-2019-license-web-edition-18-cores",
@@ -23159,7 +22185,107 @@ export const schema: Schema = {
         "sql-server-2019-license-web-edition-60-cores",
         "sql-server-2019-license-web-edition-62-cores",
         "sql-server-2019-license-web-edition-64-cores",
-        "sql-server-2019-license-web-edition-8-cores"
+        "sql-server-2019-license-web-edition-8-cores",
+        "sql-server-2019-license-web-edition-96-cores",
+        "sql-server-2022-license-enterprise-edition-10-cores",
+        "sql-server-2022-license-enterprise-edition-12-cores",
+        "sql-server-2022-license-enterprise-edition-128-cores",
+        "sql-server-2022-license-enterprise-edition-14-cores",
+        "sql-server-2022-license-enterprise-edition-16-cores",
+        "sql-server-2022-license-enterprise-edition-18-cores",
+        "sql-server-2022-license-enterprise-edition-20-cores",
+        "sql-server-2022-license-enterprise-edition-22-cores",
+        "sql-server-2022-license-enterprise-edition-24-cores",
+        "sql-server-2022-license-enterprise-edition-26-cores",
+        "sql-server-2022-license-enterprise-edition-28-cores",
+        "sql-server-2022-license-enterprise-edition-30-cores",
+        "sql-server-2022-license-enterprise-edition-32-cores",
+        "sql-server-2022-license-enterprise-edition-34-cores",
+        "sql-server-2022-license-enterprise-edition-36-cores",
+        "sql-server-2022-license-enterprise-edition-38-cores",
+        "sql-server-2022-license-enterprise-edition-4-cores",
+        "sql-server-2022-license-enterprise-edition-40-cores",
+        "sql-server-2022-license-enterprise-edition-42-cores",
+        "sql-server-2022-license-enterprise-edition-44-cores",
+        "sql-server-2022-license-enterprise-edition-46-cores",
+        "sql-server-2022-license-enterprise-edition-48-cores",
+        "sql-server-2022-license-enterprise-edition-50-cores",
+        "sql-server-2022-license-enterprise-edition-52-cores",
+        "sql-server-2022-license-enterprise-edition-54-cores",
+        "sql-server-2022-license-enterprise-edition-56-cores",
+        "sql-server-2022-license-enterprise-edition-58-cores",
+        "sql-server-2022-license-enterprise-edition-6-cores",
+        "sql-server-2022-license-enterprise-edition-60-cores",
+        "sql-server-2022-license-enterprise-edition-62-cores",
+        "sql-server-2022-license-enterprise-edition-64-cores",
+        "sql-server-2022-license-enterprise-edition-8-cores",
+        "sql-server-2022-license-enterprise-edition-96-cores",
+        "sql-server-2022-license-standard-edition-10-cores",
+        "sql-server-2022-license-standard-edition-12-cores",
+        "sql-server-2022-license-standard-edition-128-cores",
+        "sql-server-2022-license-standard-edition-14-cores",
+        "sql-server-2022-license-standard-edition-16-cores",
+        "sql-server-2022-license-standard-edition-18-cores",
+        "sql-server-2022-license-standard-edition-20-cores",
+        "sql-server-2022-license-standard-edition-22-cores",
+        "sql-server-2022-license-standard-edition-24-cores",
+        "sql-server-2022-license-standard-edition-26-cores",
+        "sql-server-2022-license-standard-edition-28-cores",
+        "sql-server-2022-license-standard-edition-30-cores",
+        "sql-server-2022-license-standard-edition-32-cores",
+        "sql-server-2022-license-standard-edition-34-cores",
+        "sql-server-2022-license-standard-edition-36-cores",
+        "sql-server-2022-license-standard-edition-38-cores",
+        "sql-server-2022-license-standard-edition-4-cores",
+        "sql-server-2022-license-standard-edition-40-cores",
+        "sql-server-2022-license-standard-edition-42-cores",
+        "sql-server-2022-license-standard-edition-44-cores",
+        "sql-server-2022-license-standard-edition-46-cores",
+        "sql-server-2022-license-standard-edition-48-cores",
+        "sql-server-2022-license-standard-edition-50-cores",
+        "sql-server-2022-license-standard-edition-52-cores",
+        "sql-server-2022-license-standard-edition-54-cores",
+        "sql-server-2022-license-standard-edition-56-cores",
+        "sql-server-2022-license-standard-edition-58-cores",
+        "sql-server-2022-license-standard-edition-6-cores",
+        "sql-server-2022-license-standard-edition-60-cores",
+        "sql-server-2022-license-standard-edition-62-cores",
+        "sql-server-2022-license-standard-edition-64-cores",
+        "sql-server-2022-license-standard-edition-8-cores",
+        "sql-server-2022-license-standard-edition-96-cores",
+        "sql-server-2022-license-web-edition-10-cores",
+        "sql-server-2022-license-web-edition-12-cores",
+        "sql-server-2022-license-web-edition-128-cores",
+        "sql-server-2022-license-web-edition-14-cores",
+        "sql-server-2022-license-web-edition-16-cores",
+        "sql-server-2022-license-web-edition-18-cores",
+        "sql-server-2022-license-web-edition-20-cores",
+        "sql-server-2022-license-web-edition-22-cores",
+        "sql-server-2022-license-web-edition-24-cores",
+        "sql-server-2022-license-web-edition-26-cores",
+        "sql-server-2022-license-web-edition-28-cores",
+        "sql-server-2022-license-web-edition-30-cores",
+        "sql-server-2022-license-web-edition-32-cores",
+        "sql-server-2022-license-web-edition-34-cores",
+        "sql-server-2022-license-web-edition-36-cores",
+        "sql-server-2022-license-web-edition-38-cores",
+        "sql-server-2022-license-web-edition-4-cores",
+        "sql-server-2022-license-web-edition-40-cores",
+        "sql-server-2022-license-web-edition-42-cores",
+        "sql-server-2022-license-web-edition-44-cores",
+        "sql-server-2022-license-web-edition-46-cores",
+        "sql-server-2022-license-web-edition-48-cores",
+        "sql-server-2022-license-web-edition-50-cores",
+        "sql-server-2022-license-web-edition-52-cores",
+        "sql-server-2022-license-web-edition-54-cores",
+        "sql-server-2022-license-web-edition-56-cores",
+        "sql-server-2022-license-web-edition-58-cores",
+        "sql-server-2022-license-web-edition-6-cores",
+        "sql-server-2022-license-web-edition-60-cores",
+        "sql-server-2022-license-web-edition-62-cores",
+        "sql-server-2022-license-web-edition-64-cores",
+        "sql-server-2022-license-web-edition-8-cores",
+        "sql-server-2022-license-web-edition-96-cores"
       ],
       "enumType": "string",
       "id": "SqlServerVersionEnum",
@@ -23253,6 +22379,7 @@ export const schema: Schema = {
         "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_24_CORES",
         "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_8_CORES",
         "WINDOWS_SERVER_2019_DATACENTER_EDITION_10_CORES",
+        "WINDOWS_SERVER_2019_DATACENTER_EDITION_128_CORES",
         "WINDOWS_SERVER_2019_DATACENTER_EDITION_12_CORES",
         "WINDOWS_SERVER_2019_DATACENTER_EDITION_14_CORES",
         "WINDOWS_SERVER_2019_DATACENTER_EDITION_16_CORES",
@@ -23260,6 +22387,7 @@ export const schema: Schema = {
         "WINDOWS_SERVER_2019_DATACENTER_EDITION_20_CORES",
         "WINDOWS_SERVER_2019_DATACENTER_EDITION_22_CORES",
         "WINDOWS_SERVER_2019_DATACENTER_EDITION_24_CORES",
+        "WINDOWS_SERVER_2019_DATACENTER_EDITION_256_CORES",
         "WINDOWS_SERVER_2019_DATACENTER_EDITION_26_CORES",
         "WINDOWS_SERVER_2019_DATACENTER_EDITION_28_CORES",
         "WINDOWS_SERVER_2019_DATACENTER_EDITION_30_CORES",
@@ -23273,6 +22401,7 @@ export const schema: Schema = {
         "WINDOWS_SERVER_2019_DATACENTER_EDITION_46_CORES",
         "WINDOWS_SERVER_2019_DATACENTER_EDITION_48_CORES",
         "WINDOWS_SERVER_2019_DATACENTER_EDITION_50_CORES",
+        "WINDOWS_SERVER_2019_DATACENTER_EDITION_512_CORES",
         "WINDOWS_SERVER_2019_DATACENTER_EDITION_52_CORES",
         "WINDOWS_SERVER_2019_DATACENTER_EDITION_54_CORES",
         "WINDOWS_SERVER_2019_DATACENTER_EDITION_56_CORES",
@@ -23281,7 +22410,9 @@ export const schema: Schema = {
         "WINDOWS_SERVER_2019_DATACENTER_EDITION_62_CORES",
         "WINDOWS_SERVER_2019_DATACENTER_EDITION_64_CORES",
         "WINDOWS_SERVER_2019_DATACENTER_EDITION_8_CORES",
+        "WINDOWS_SERVER_2019_DATACENTER_EDITION_96_CORES",
         "WINDOWS_SERVER_2019_STANDARD_EDITION_10_CORES",
+        "WINDOWS_SERVER_2019_STANDARD_EDITION_128_CORES",
         "WINDOWS_SERVER_2019_STANDARD_EDITION_12_CORES",
         "WINDOWS_SERVER_2019_STANDARD_EDITION_14_CORES",
         "WINDOWS_SERVER_2019_STANDARD_EDITION_16_CORES",
@@ -23289,6 +22420,7 @@ export const schema: Schema = {
         "WINDOWS_SERVER_2019_STANDARD_EDITION_20_CORES",
         "WINDOWS_SERVER_2019_STANDARD_EDITION_22_CORES",
         "WINDOWS_SERVER_2019_STANDARD_EDITION_24_CORES",
+        "WINDOWS_SERVER_2019_STANDARD_EDITION_256_CORES",
         "WINDOWS_SERVER_2019_STANDARD_EDITION_26_CORES",
         "WINDOWS_SERVER_2019_STANDARD_EDITION_28_CORES",
         "WINDOWS_SERVER_2019_STANDARD_EDITION_30_CORES",
@@ -23302,6 +22434,7 @@ export const schema: Schema = {
         "WINDOWS_SERVER_2019_STANDARD_EDITION_46_CORES",
         "WINDOWS_SERVER_2019_STANDARD_EDITION_48_CORES",
         "WINDOWS_SERVER_2019_STANDARD_EDITION_50_CORES",
+        "WINDOWS_SERVER_2019_STANDARD_EDITION_512_CORES",
         "WINDOWS_SERVER_2019_STANDARD_EDITION_52_CORES",
         "WINDOWS_SERVER_2019_STANDARD_EDITION_54_CORES",
         "WINDOWS_SERVER_2019_STANDARD_EDITION_56_CORES",
@@ -23310,7 +22443,9 @@ export const schema: Schema = {
         "WINDOWS_SERVER_2019_STANDARD_EDITION_62_CORES",
         "WINDOWS_SERVER_2019_STANDARD_EDITION_64_CORES",
         "WINDOWS_SERVER_2019_STANDARD_EDITION_8_CORES",
+        "WINDOWS_SERVER_2019_STANDARD_EDITION_96_CORES",
         "WINDOWS_SERVER_2022_DATACENTER_EDITION_10_CORES",
+        "WINDOWS_SERVER_2022_DATACENTER_EDITION_128_CORES",
         "WINDOWS_SERVER_2022_DATACENTER_EDITION_12_CORES",
         "WINDOWS_SERVER_2022_DATACENTER_EDITION_14_CORES",
         "WINDOWS_SERVER_2022_DATACENTER_EDITION_16_CORES",
@@ -23318,6 +22453,7 @@ export const schema: Schema = {
         "WINDOWS_SERVER_2022_DATACENTER_EDITION_20_CORES",
         "WINDOWS_SERVER_2022_DATACENTER_EDITION_22_CORES",
         "WINDOWS_SERVER_2022_DATACENTER_EDITION_24_CORES",
+        "WINDOWS_SERVER_2022_DATACENTER_EDITION_256_CORES",
         "WINDOWS_SERVER_2022_DATACENTER_EDITION_26_CORES",
         "WINDOWS_SERVER_2022_DATACENTER_EDITION_28_CORES",
         "WINDOWS_SERVER_2022_DATACENTER_EDITION_30_CORES",
@@ -23331,6 +22467,7 @@ export const schema: Schema = {
         "WINDOWS_SERVER_2022_DATACENTER_EDITION_46_CORES",
         "WINDOWS_SERVER_2022_DATACENTER_EDITION_48_CORES",
         "WINDOWS_SERVER_2022_DATACENTER_EDITION_50_CORES",
+        "WINDOWS_SERVER_2022_DATACENTER_EDITION_512_CORES",
         "WINDOWS_SERVER_2022_DATACENTER_EDITION_52_CORES",
         "WINDOWS_SERVER_2022_DATACENTER_EDITION_54_CORES",
         "WINDOWS_SERVER_2022_DATACENTER_EDITION_56_CORES",
@@ -23339,7 +22476,9 @@ export const schema: Schema = {
         "WINDOWS_SERVER_2022_DATACENTER_EDITION_62_CORES",
         "WINDOWS_SERVER_2022_DATACENTER_EDITION_64_CORES",
         "WINDOWS_SERVER_2022_DATACENTER_EDITION_8_CORES",
+        "WINDOWS_SERVER_2022_DATACENTER_EDITION_96_CORES",
         "WINDOWS_SERVER_2022_STANDARD_EDITION_10_CORES",
+        "WINDOWS_SERVER_2022_STANDARD_EDITION_128_CORES",
         "WINDOWS_SERVER_2022_STANDARD_EDITION_12_CORES",
         "WINDOWS_SERVER_2022_STANDARD_EDITION_14_CORES",
         "WINDOWS_SERVER_2022_STANDARD_EDITION_16_CORES",
@@ -23347,6 +22486,7 @@ export const schema: Schema = {
         "WINDOWS_SERVER_2022_STANDARD_EDITION_20_CORES",
         "WINDOWS_SERVER_2022_STANDARD_EDITION_22_CORES",
         "WINDOWS_SERVER_2022_STANDARD_EDITION_24_CORES",
+        "WINDOWS_SERVER_2022_STANDARD_EDITION_256_CORES",
         "WINDOWS_SERVER_2022_STANDARD_EDITION_26_CORES",
         "WINDOWS_SERVER_2022_STANDARD_EDITION_28_CORES",
         "WINDOWS_SERVER_2022_STANDARD_EDITION_30_CORES",
@@ -23360,6 +22500,7 @@ export const schema: Schema = {
         "WINDOWS_SERVER_2022_STANDARD_EDITION_46_CORES",
         "WINDOWS_SERVER_2022_STANDARD_EDITION_48_CORES",
         "WINDOWS_SERVER_2022_STANDARD_EDITION_50_CORES",
+        "WINDOWS_SERVER_2022_STANDARD_EDITION_512_CORES",
         "WINDOWS_SERVER_2022_STANDARD_EDITION_52_CORES",
         "WINDOWS_SERVER_2022_STANDARD_EDITION_54_CORES",
         "WINDOWS_SERVER_2022_STANDARD_EDITION_56_CORES",
@@ -23368,6 +22509,7 @@ export const schema: Schema = {
         "WINDOWS_SERVER_2022_STANDARD_EDITION_62_CORES",
         "WINDOWS_SERVER_2022_STANDARD_EDITION_64_CORES",
         "WINDOWS_SERVER_2022_STANDARD_EDITION_8_CORES",
+        "WINDOWS_SERVER_2022_STANDARD_EDITION_96_CORES",
         "windows-server-2008-license-datacenter-edition-1-cpu",
         "windows-server-2008-license-datacenter-edition-2-cpu",
         "windows-server-2008-license-datacenter-edition-4-cpu",
@@ -23442,12 +22584,14 @@ export const schema: Schema = {
         "windows-server-2016-license-standard-edition-4-cpu-8-cores",
         "windows-server-2019-license-datacenter-edition-10-cores",
         "windows-server-2019-license-datacenter-edition-12-cores",
+        "windows-server-2019-license-datacenter-edition-128-cores",
         "windows-server-2019-license-datacenter-edition-14-cores",
         "windows-server-2019-license-datacenter-edition-16-cores",
         "windows-server-2019-license-datacenter-edition-18-cores",
         "windows-server-2019-license-datacenter-edition-20-cores",
         "windows-server-2019-license-datacenter-edition-22-cores",
         "windows-server-2019-license-datacenter-edition-24-cores",
+        "windows-server-2019-license-datacenter-edition-256-cores",
         "windows-server-2019-license-datacenter-edition-26-cores",
         "windows-server-2019-license-datacenter-edition-28-cores",
         "windows-server-2019-license-datacenter-edition-30-cores",
@@ -23461,6 +22605,7 @@ export const schema: Schema = {
         "windows-server-2019-license-datacenter-edition-46-cores",
         "windows-server-2019-license-datacenter-edition-48-cores",
         "windows-server-2019-license-datacenter-edition-50-cores",
+        "windows-server-2019-license-datacenter-edition-512-cores",
         "windows-server-2019-license-datacenter-edition-52-cores",
         "windows-server-2019-license-datacenter-edition-54-cores",
         "windows-server-2019-license-datacenter-edition-56-cores",
@@ -23469,14 +22614,17 @@ export const schema: Schema = {
         "windows-server-2019-license-datacenter-edition-62-cores",
         "windows-server-2019-license-datacenter-edition-64-cores",
         "windows-server-2019-license-datacenter-edition-8-cores",
+        "windows-server-2019-license-datacenter-edition-96-cores",
         "windows-server-2019-license-standard-edition-10-cores",
         "windows-server-2019-license-standard-edition-12-cores",
+        "windows-server-2019-license-standard-edition-128-cores",
         "windows-server-2019-license-standard-edition-14-cores",
         "windows-server-2019-license-standard-edition-16-cores",
         "windows-server-2019-license-standard-edition-18-cores",
         "windows-server-2019-license-standard-edition-20-cores",
         "windows-server-2019-license-standard-edition-22-cores",
         "windows-server-2019-license-standard-edition-24-cores",
+        "windows-server-2019-license-standard-edition-256-cores",
         "windows-server-2019-license-standard-edition-26-cores",
         "windows-server-2019-license-standard-edition-28-cores",
         "windows-server-2019-license-standard-edition-30-cores",
@@ -23490,6 +22638,7 @@ export const schema: Schema = {
         "windows-server-2019-license-standard-edition-46-cores",
         "windows-server-2019-license-standard-edition-48-cores",
         "windows-server-2019-license-standard-edition-50-cores",
+        "windows-server-2019-license-standard-edition-512-cores",
         "windows-server-2019-license-standard-edition-52-cores",
         "windows-server-2019-license-standard-edition-54-cores",
         "windows-server-2019-license-standard-edition-56-cores",
@@ -23498,14 +22647,17 @@ export const schema: Schema = {
         "windows-server-2019-license-standard-edition-62-cores",
         "windows-server-2019-license-standard-edition-64-cores",
         "windows-server-2019-license-standard-edition-8-cores",
+        "windows-server-2019-license-standard-edition-96-cores",
         "windows-server-2022-license-datacenter-edition-10-cores",
         "windows-server-2022-license-datacenter-edition-12-cores",
+        "windows-server-2022-license-datacenter-edition-128-cores",
         "windows-server-2022-license-datacenter-edition-14-cores",
         "windows-server-2022-license-datacenter-edition-16-cores",
         "windows-server-2022-license-datacenter-edition-18-cores",
         "windows-server-2022-license-datacenter-edition-20-cores",
         "windows-server-2022-license-datacenter-edition-22-cores",
         "windows-server-2022-license-datacenter-edition-24-cores",
+        "windows-server-2022-license-datacenter-edition-256-cores",
         "windows-server-2022-license-datacenter-edition-26-cores",
         "windows-server-2022-license-datacenter-edition-28-cores",
         "windows-server-2022-license-datacenter-edition-30-cores",
@@ -23519,6 +22671,7 @@ export const schema: Schema = {
         "windows-server-2022-license-datacenter-edition-46-cores",
         "windows-server-2022-license-datacenter-edition-48-cores",
         "windows-server-2022-license-datacenter-edition-50-cores",
+        "windows-server-2022-license-datacenter-edition-512-cores",
         "windows-server-2022-license-datacenter-edition-52-cores",
         "windows-server-2022-license-datacenter-edition-54-cores",
         "windows-server-2022-license-datacenter-edition-56-cores",
@@ -23527,14 +22680,17 @@ export const schema: Schema = {
         "windows-server-2022-license-datacenter-edition-62-cores",
         "windows-server-2022-license-datacenter-edition-64-cores",
         "windows-server-2022-license-datacenter-edition-8-cores",
+        "windows-server-2022-license-datacenter-edition-96-cores",
         "windows-server-2022-license-standard-edition-10-cores",
         "windows-server-2022-license-standard-edition-12-cores",
+        "windows-server-2022-license-standard-edition-128-cores",
         "windows-server-2022-license-standard-edition-14-cores",
         "windows-server-2022-license-standard-edition-16-cores",
         "windows-server-2022-license-standard-edition-18-cores",
         "windows-server-2022-license-standard-edition-20-cores",
         "windows-server-2022-license-standard-edition-22-cores",
         "windows-server-2022-license-standard-edition-24-cores",
+        "windows-server-2022-license-standard-edition-256-cores",
         "windows-server-2022-license-standard-edition-26-cores",
         "windows-server-2022-license-standard-edition-28-cores",
         "windows-server-2022-license-standard-edition-30-cores",
@@ -23548,6 +22704,7 @@ export const schema: Schema = {
         "windows-server-2022-license-standard-edition-46-cores",
         "windows-server-2022-license-standard-edition-48-cores",
         "windows-server-2022-license-standard-edition-50-cores",
+        "windows-server-2022-license-standard-edition-512-cores",
         "windows-server-2022-license-standard-edition-52-cores",
         "windows-server-2022-license-standard-edition-54-cores",
         "windows-server-2022-license-standard-edition-56-cores",
@@ -23555,7 +22712,8 @@ export const schema: Schema = {
         "windows-server-2022-license-standard-edition-60-cores",
         "windows-server-2022-license-standard-edition-62-cores",
         "windows-server-2022-license-standard-edition-64-cores",
-        "windows-server-2022-license-standard-edition-8-cores"
+        "windows-server-2022-license-standard-edition-8-cores",
+        "windows-server-2022-license-standard-edition-96-cores"
       ],
       "enumType": "string",
       "id": "WindowsOsVersionEnum",
@@ -23888,6 +23046,17 @@ export const schema: Schema = {
       "id": "OvhSubsidiaryEnum",
       "namespace": "nichandle"
     },
+    "order.ContextTypeEnum": {
+      "description": "Application context of a promotion",
+      "enum": [
+        "discover",
+        "standard",
+        "welcome"
+      ],
+      "enumType": "string",
+      "id": "ContextTypeEnum",
+      "namespace": "order"
+    },
     "order.Contract": {
       "description": "A contract",
       "id": "Contract",
@@ -24163,6 +23332,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "order.CurrencyCodeEnum"
+        },
+        "priceInUcents": {
+          "canBeNull": true,
+          "description": "Price in microcents",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "text": {
           "canBeNull": false,
@@ -24465,7 +23642,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Domain name requested",
           "fullType": "string",
-          "readOnly": true,
+          "readOnly": false,
           "required": false,
           "type": "string"
         }
@@ -24482,92 +23659,6 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "DurationUnitEnum",
       "namespace": "order.cart"
-    },
-    "order.cart.GenericDedicatedCreation": {
-      "description": "Missing description",
-      "id": "GenericDedicatedCreation",
-      "namespace": "order.cart",
-      "properties": {
-        "duration": {
-          "canBeNull": false,
-          "description": "Duration selected for the purchase of the product",
-          "fullType": "duration",
-          "readOnly": false,
-          "required": true,
-          "type": "duration"
-        },
-        "planCode": {
-          "canBeNull": false,
-          "description": "Identifier of a dedicated server offer",
-          "fullType": "string",
-          "readOnly": false,
-          "required": true,
-          "type": "string"
-        },
-        "pricingMode": {
-          "canBeNull": false,
-          "description": "Pricing mode selected for the purchase of the product",
-          "fullType": "string",
-          "readOnly": false,
-          "required": true,
-          "type": "string"
-        },
-        "quantity": {
-          "canBeNull": false,
-          "description": "Quantity of product desired",
-          "fullType": "long",
-          "readOnly": false,
-          "required": true,
-          "type": "long"
-        }
-      }
-    },
-    "order.cart.GenericDedicatedOptionsCreation": {
-      "description": "Missing description",
-      "id": "GenericDedicatedOptionsCreation",
-      "namespace": "order.cart",
-      "properties": {
-        "duration": {
-          "canBeNull": false,
-          "description": "Duration selected for the purchase of the product",
-          "fullType": "duration",
-          "readOnly": false,
-          "required": true,
-          "type": "duration"
-        },
-        "itemId": {
-          "canBeNull": false,
-          "description": "Cart item to be linked",
-          "fullType": "long",
-          "readOnly": false,
-          "required": true,
-          "type": "long"
-        },
-        "planCode": {
-          "canBeNull": false,
-          "description": "Identifier of a dedicated server offer",
-          "fullType": "string",
-          "readOnly": false,
-          "required": true,
-          "type": "string"
-        },
-        "pricingMode": {
-          "canBeNull": false,
-          "description": "Pricing mode selected for the purchase of the product",
-          "fullType": "string",
-          "readOnly": false,
-          "required": true,
-          "type": "string"
-        },
-        "quantity": {
-          "canBeNull": false,
-          "description": "Quantity of product desired",
-          "fullType": "long",
-          "readOnly": false,
-          "required": true,
-          "type": "long"
-        }
-      }
     },
     "order.cart.GenericDomainCreation": {
       "description": "Missing description",
@@ -25053,7 +24144,7 @@ export const schema: Schema = {
           "type": "long"
         },
         "offerId": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Offer unique identifier of the product added",
           "fullType": "string",
           "readOnly": true,
@@ -25094,11 +24185,11 @@ export const schema: Schema = {
         },
         "settings": {
           "canBeNull": false,
-          "description": "Domain related settings",
-          "fullType": "order.cart.DomainSettings",
+          "description": "Item settings",
+          "fullType": "order.cart.ItemSettings",
           "readOnly": true,
           "required": false,
-          "type": "order.cart.DomainSettings"
+          "type": "order.cart.ItemSettings"
         }
       }
     },
@@ -25122,6 +24213,37 @@ export const schema: Schema = {
           "readOnly": false,
           "required": true,
           "type": "text"
+        }
+      }
+    },
+    "order.cart.ItemSettings": {
+      "description": "Order item settings",
+      "id": "ItemSettings",
+      "namespace": "order.cart",
+      "properties": {
+        "planCode": {
+          "canBeNull": true,
+          "description": "Order plan code",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "pricingMode": {
+          "canBeNull": true,
+          "description": "Pricing mode selected for the purchase of the product",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "quantity": {
+          "canBeNull": true,
+          "description": "Quantity of product desired",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },
@@ -25149,7 +24271,7 @@ export const schema: Schema = {
       }
     },
     "order.cart.Price": {
-      "description": "Price informations with label",
+      "description": "Price information with label",
       "id": "Price",
       "namespace": "order.cart",
       "properties": {
@@ -25168,6 +24290,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "order.Price"
+        },
+        "promotions": {
+          "canBeNull": true,
+          "description": "Promotions on the product",
+          "fullType": "order.cart.Promotion[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.cart.Promotion[]"
         }
       }
     },
@@ -25199,7 +24329,7 @@ export const schema: Schema = {
         },
         "configurations": {
           "canBeNull": false,
-          "description": "Informations about the configurations required",
+          "description": "Information about the configurations required",
           "fullType": "order.cart.ConfigurationRequirements[]",
           "readOnly": true,
           "required": false,
@@ -25207,7 +24337,7 @@ export const schema: Schema = {
         },
         "deliveryTime": {
           "canBeNull": false,
-          "description": "Informations about the estimated delivery time for the product",
+          "description": "Information about the estimated delivery time for the product",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -25223,7 +24353,7 @@ export const schema: Schema = {
         },
         "offer": {
           "canBeNull": true,
-          "description": "Informations about the domain's offer (gold|diamond|platinium)",
+          "description": "Information about the domain's offer (gold|diamond|platinium)",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -25247,7 +24377,7 @@ export const schema: Schema = {
         },
         "phase": {
           "canBeNull": false,
-          "description": "Informations about the domain phase",
+          "description": "Information about the domain phase",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -25284,6 +24414,69 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "long"
+        }
+      }
+    },
+    "order.cart.Promotion": {
+      "description": "Describes a promotion of a product",
+      "id": "Promotion",
+      "namespace": "order.cart",
+      "properties": {
+        "bundleWithPlanCodes": {
+          "canBeNull": false,
+          "description": "Bundle with plan code",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "endDate": {
+          "canBeNull": true,
+          "description": "Promotion end date using rfc3339",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the promotion",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "price": {
+          "canBeNull": false,
+          "description": "Price",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "startDate": {
+          "canBeNull": false,
+          "description": "Promotion start date using rfc3339",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "tags": {
+          "canBeNull": true,
+          "description": "Promotion tags",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Promotion type",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
@@ -25709,7 +24902,7 @@ export const schema: Schema = {
       "properties": {
         "blobs": {
           "canBeNull": true,
-          "description": "Extra informations of product offer",
+          "description": "Extra information of product offer",
           "fullType": "order.catalog.cloud.Blob",
           "readOnly": true,
           "required": false,
@@ -25813,7 +25006,7 @@ export const schema: Schema = {
       }
     },
     "order.catalog.cloud.Blob": {
-      "description": "Describe extra informations of product offer",
+      "description": "Describe extra information of product offer",
       "id": "Blob",
       "namespace": "order.catalog.cloud",
       "properties": {
@@ -26581,7 +25774,7 @@ export const schema: Schema = {
           "type": "long"
         },
         "planCode": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Plan code",
           "fullType": "string",
           "readOnly": true,
@@ -26661,10 +25854,10 @@ export const schema: Schema = {
         "size": {
           "canBeNull": true,
           "description": "Memory size",
-          "fullType": "string",
+          "fullType": "long",
           "readOnly": true,
           "required": false,
-          "type": "string"
+          "type": "long"
         },
         "type": {
           "canBeNull": true,
@@ -27068,10 +26261,10 @@ export const schema: Schema = {
         "frequency": {
           "canBeNull": false,
           "description": "CPU Frequency",
-          "fullType": "complexType.UnitAndValue<long>",
+          "fullType": "complexType.UnitAndValue<double>",
           "readOnly": true,
           "required": false,
-          "type": "complexType.UnitAndValue<long>"
+          "type": "complexType.UnitAndValue<double>"
         },
         "generation": {
           "canBeNull": false,
@@ -27322,6 +26515,14 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "showInOrderFunnel": {
+          "canBeNull": true,
+          "description": "Whether to show in order funnel or not",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
         "type": {
           "canBeNull": false,
           "description": "Category of the option",
@@ -27360,6 +26561,14 @@ export const schema: Schema = {
       "id": "ServicePack",
       "namespace": "order.catalog.pcc",
       "properties": {
+        "disabledElementForOrderType": {
+          "canBeNull": true,
+          "description": "Disabled element for order type",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
         "name": {
           "canBeNull": false,
           "description": "Name of the service pack",
@@ -27383,6 +26592,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        },
+        "showInOrderFunnel": {
+          "canBeNull": true,
+          "description": "Whether to show in order funnel or not",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "upgradableTo": {
           "canBeNull": false,
@@ -27500,6 +26717,14 @@ export const schema: Schema = {
       "id": "managementFees",
       "namespace": "order.catalog.pcc",
       "properties": {
+        "disabledElementForOrderType": {
+          "canBeNull": true,
+          "description": "Disabled element for order type",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
         "planCode": {
           "canBeNull": false,
           "description": "Plan Code",
@@ -29195,7 +28420,7 @@ export const schema: Schema = {
       "properties": {
         "bandwidth": {
           "canBeNull": true,
-          "description": "Network informations",
+          "description": "Network information",
           "fullType": "order.catalog.public.ProductBlobTechnicalNetwork",
           "readOnly": true,
           "required": false,
@@ -29219,7 +28444,7 @@ export const schema: Schema = {
         },
         "cpu": {
           "canBeNull": true,
-          "description": "CPU informations",
+          "description": "CPU information",
           "fullType": "order.catalog.public.ProductBlobTechnicalCPU",
           "readOnly": true,
           "required": false,
@@ -29243,7 +28468,7 @@ export const schema: Schema = {
         },
         "gpu": {
           "canBeNull": true,
-          "description": "GPU informations",
+          "description": "GPU information",
           "fullType": "order.catalog.public.ProductBlobTechnicalGPU",
           "readOnly": true,
           "required": false,
@@ -29251,7 +28476,7 @@ export const schema: Schema = {
         },
         "license": {
           "canBeNull": true,
-          "description": "License informations",
+          "description": "License information",
           "fullType": "order.catalog.public.ProductBlobTechnicalLicense",
           "readOnly": true,
           "required": false,
@@ -29259,7 +28484,7 @@ export const schema: Schema = {
         },
         "memory": {
           "canBeNull": true,
-          "description": "Memory informations",
+          "description": "Memory information",
           "fullType": "order.catalog.public.ProductBlobTechnicalMemory",
           "readOnly": true,
           "required": false,
@@ -29297,6 +28522,14 @@ export const schema: Schema = {
           "required": false,
           "type": "order.catalog.public.ProductBlobTechnicalOS"
         },
+        "provider": {
+          "canBeNull": true,
+          "description": "Provider",
+          "fullType": "order.catalog.public.ProductBlobTechnicalProvider",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlobTechnicalProvider"
+        },
         "requestPerSeconds": {
           "canBeNull": true,
           "description": "Connection per seconds",
@@ -29307,7 +28540,7 @@ export const schema: Schema = {
         },
         "server": {
           "canBeNull": true,
-          "description": "Hardware informations",
+          "description": "Hardware information",
           "fullType": "order.catalog.public.ProductBlobTechnicalServer",
           "readOnly": true,
           "required": false,
@@ -29315,7 +28548,7 @@ export const schema: Schema = {
         },
         "storage": {
           "canBeNull": true,
-          "description": "Disks informations",
+          "description": "Disks information",
           "fullType": "order.catalog.public.ProductBlobTechnicalStorage",
           "readOnly": true,
           "required": false,
@@ -29347,7 +28580,7 @@ export const schema: Schema = {
         },
         "vrack": {
           "canBeNull": true,
-          "description": "vRack informations",
+          "description": "vRack information",
           "fullType": "order.catalog.public.ProductBlobTechnicalNetwork",
           "readOnly": true,
           "required": false,
@@ -29400,6 +28633,14 @@ export const schema: Schema = {
           "required": false,
           "type": "double"
         },
+        "maxFrequency": {
+          "canBeNull": true,
+          "description": "Maximum frequency of CPU in GHz",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
         "model": {
           "canBeNull": true,
           "description": "Displayable name",
@@ -29431,6 +28672,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "long"
+        },
+        "type": {
+          "canBeNull": true,
+          "description": "Type of CPU",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
@@ -29510,6 +28759,14 @@ export const schema: Schema = {
           "required": false,
           "type": "long"
         },
+        "maximumCapacity": {
+          "canBeNull": false,
+          "description": "Maximum disk capacity in Gb",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
         "number": {
           "canBeNull": true,
           "description": "Number of disks",
@@ -29544,7 +28801,7 @@ export const schema: Schema = {
         },
         "usage": {
           "canBeNull": true,
-          "description": "Usage informations",
+          "description": "Usage information",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -29660,7 +28917,7 @@ export const schema: Schema = {
         },
         "cores": {
           "canBeNull": true,
-          "description": "Cores informations",
+          "description": "Cores information",
           "fullType": "order.catalog.public.ProductBlobTechnicalLicenseCores",
           "readOnly": true,
           "required": false,
@@ -29676,7 +28933,7 @@ export const schema: Schema = {
         },
         "distribution": {
           "canBeNull": true,
-          "description": "Network informations",
+          "description": "Network information",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -29684,7 +28941,7 @@ export const schema: Schema = {
         },
         "edition": {
           "canBeNull": true,
-          "description": "Edition informations",
+          "description": "Edition information",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -29708,7 +28965,7 @@ export const schema: Schema = {
         },
         "flavor": {
           "canBeNull": true,
-          "description": "Flavor informations",
+          "description": "Flavor information",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -29716,7 +28973,7 @@ export const schema: Schema = {
         },
         "images": {
           "canBeNull": true,
-          "description": "Images informations",
+          "description": "Images information",
           "fullType": "string[]",
           "readOnly": true,
           "required": false,
@@ -29724,7 +28981,7 @@ export const schema: Schema = {
         },
         "nbOfAccount": {
           "canBeNull": true,
-          "description": "Number of account",
+          "description": "Number of accounts",
           "fullType": "long",
           "readOnly": true,
           "required": false,
@@ -29740,7 +28997,7 @@ export const schema: Schema = {
         },
         "version": {
           "canBeNull": true,
-          "description": "Version informations",
+          "description": "Version information",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -29882,10 +29139,10 @@ export const schema: Schema = {
         "level": {
           "canBeNull": true,
           "description": "Network level",
-          "fullType": "long",
+          "fullType": "double",
           "readOnly": true,
           "required": false,
-          "type": "long"
+          "type": "double"
         },
         "limit": {
           "canBeNull": true,
@@ -29894,6 +29151,22 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "long"
+        },
+        "max": {
+          "canBeNull": false,
+          "description": "Maximum",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "maxUnit": {
+          "canBeNull": false,
+          "description": "Unit of maximum",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "shared": {
           "canBeNull": true,
@@ -29910,6 +29183,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "long"
+        },
+        "unit": {
+          "canBeNull": false,
+          "description": "Unit",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "unlimited": {
           "canBeNull": true,
@@ -30013,6 +29294,29 @@ export const schema: Schema = {
         }
       }
     },
+    "order.catalog.public.ProductBlobTechnicalProvider": {
+      "description": "Describes a provider for a technical blob",
+      "id": "ProductBlobTechnicalProvider",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "pointsOfPresence": {
+          "canBeNull": false,
+          "description": "Number of points of presence",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "reference": {
+          "canBeNull": true,
+          "description": "Reference",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
     "order.catalog.public.ProductBlobTechnicalRaid": {
       "description": "Describes a Raid for a technical blob",
       "id": "ProductBlobTechnicalRaid",
@@ -30045,7 +29349,7 @@ export const schema: Schema = {
       }
     },
     "order.catalog.public.ProductBlobTechnicalServer": {
-      "description": "Describes some technicals informations for a technical blob",
+      "description": "Describes some technicals information for a technical blob",
       "id": "ProductBlobTechnicalServer",
       "namespace": "order.catalog.public",
       "properties": {
@@ -30092,7 +29396,7 @@ export const schema: Schema = {
       }
     },
     "order.catalog.public.ProductBlobTechnicalServices": {
-      "description": "Describes some technicals informations",
+      "description": "Describes some technicals information",
       "id": "ProductBlobTechnicalServices",
       "namespace": "order.catalog.public",
       "properties": {
@@ -30105,7 +29409,7 @@ export const schema: Schema = {
           "type": "string"
         },
         "includedBackup": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Included backup",
           "fullType": "long",
           "readOnly": true,
@@ -30206,7 +29510,7 @@ export const schema: Schema = {
         },
         "iops": {
           "canBeNull": false,
-          "description": "CPU informations",
+          "description": "CPU information",
           "fullType": "order.catalog.public.ProductBlobTechnicalVolumeIops",
           "readOnly": true,
           "required": false,
@@ -30249,6 +29553,30 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "long"
+        },
+        "max": {
+          "canBeNull": false,
+          "description": "Maximum IOPS",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "maxUnit": {
+          "canBeNull": false,
+          "description": "Unit of maximum IOPS",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "unit": {
+          "canBeNull": false,
+          "description": "Unit",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
@@ -30469,13 +29797,13 @@ export const schema: Schema = {
     "order.upgrade.OperationStatusEnum": {
       "description": "Unit that represent the status of an operation",
       "enum": [
-        "TODO",
+        "CANCELLED",
+        "DELAYED",
         "DOING",
         "DONE",
         "ERROR",
-        "DELAYED",
-        "CANCELLED",
-        "SCHEDULED"
+        "SCHEDULED",
+        "TODO"
       ],
       "enumType": "string",
       "id": "OperationStatusEnum",
@@ -30547,7 +29875,7 @@ export const schema: Schema = {
         "uk",
         "us"
       ],
-      "enumType": "coreTypes.CountryEnum",
+      "enumType": "string",
       "id": "GeolocationEnum",
       "namespace": "vps.ip"
     },
@@ -30568,7 +29896,7 @@ export const schema: Schema = {
         "pt",
         "uk"
       ],
-      "enumType": "coreTypes.CountryEnum",
+      "enumType": "string",
       "id": "BlockCountryEnum",
       "namespace": "vrack"
     },

@@ -312,7 +312,7 @@ export class CodeGenerator {
                         if (body.length == 1 && body[0].name == null) {
                             const { schema } = this;
                             if (schema && schema.models) {
-                                let modelsProp = schema.models[body[0].fullType];
+                                let modelsProp = schema.models[body[0].fullType || "any"];
                                 if (!modelsProp || !modelsProp.properties)
                                     console.error(`ERROR2 in model Body Type ${body[0].fullType} do not exists`)
                                 else {
@@ -437,9 +437,9 @@ export class CodeGenerator {
                 if (body.length == 1 && body[0].name == null) {
                     const { schema } = this;
                     if (schema && schema.models) {
-                        let modelsProp = schema.models[body[0].fullType];
+                        let modelsProp = schema.models[body[0].fullType || "any"];
                         if (!modelsProp || !modelsProp.properties) {
-                            let fullType = doRawRemapNode(body[0].fullType)
+                            let fullType = doRawRemapNode(body[0].fullType || "any")
                             if (fullType == body[0].fullType)
                                 console.error(`ERROR1 in model Body Type ${body[0].fullType} do not exists dest:${ctxt.dest} Method:${op.httpMethod} ${api._path}`)
                         } else {

@@ -16,10 +16,21 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "vrack:apiovh:get"
+            {
+              "name": "vrack:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
-          "parameters": [],
+          "parameters": [
+            {
+              "dataType": "map[string][]iam.resource.TagFilter",
+              "description": "Filter resources on IAM tags",
+              "name": "iamTags",
+              "paramType": "query",
+              "required": false
+            }
+          ],
           "responseType": "string[]"
         }
       ],
@@ -36,7 +47,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "vrack:apiovh:get"
+            {
+              "name": "vrack:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -49,7 +63,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "vrack.vrack"
+          "responseType": "vrack.vrackWithIAM"
         },
         {
           "apiStatus": {
@@ -59,7 +73,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "vrack:apiovh:put"
+            {
+              "name": "vrack:apiovh:put",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -95,7 +112,45 @@ export const schema: Schema = {
           "description": "List all services allowed in this vrack",
           "httpMethod": "GET",
           "iamActions": [
-            "vrack:apiovh:allowedServices/get"
+            {
+              "name": "vrack:apiovh:allowedServices/get",
+              "required": true
+            },
+            {
+              "description": "Needed on the Cloud Project services to be listed in the response body",
+              "name": "publicCloudProject:apiovh:vrack/attach",
+              "required": false
+            },
+            {
+              "description": "Needed on the legacy vRack services to be listed in the response body",
+              "name": "legacyVrack:apiovh:vrack/attach",
+              "required": false
+            },
+            {
+              "description": "Needed on the IP Load Balancer services to be listed in the response body",
+              "name": "ipLoadbalancing:apiovh:vrack/attach",
+              "required": false
+            },
+            {
+              "description": "Needed on the OVH Cloud Connect services to be listed in the response body",
+              "name": "ovhCloudConnect:apiovh:vrack/attach",
+              "required": false
+            },
+            {
+              "description": "Needed on the Dedicated Server services to be listed in dedicatedServer and dedicatedServerInterface body entries",
+              "name": "dedicatedServer:apiovh:vrack/attach",
+              "required": false
+            },
+            {
+              "description": "Needed on the Dedicated Cloud (VMware) services to be listed in the response body",
+              "name": "pccVMware:apiovh:vrack/attach",
+              "required": false
+            },
+            {
+              "description": "Needed on the VrackServices services to be listed in the response body",
+              "name": "vrackServices:apiovh:vrack/attach",
+              "required": false
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -132,7 +187,10 @@ export const schema: Schema = {
           "description": "vrack for publicCloud project",
           "httpMethod": "GET",
           "iamActions": [
-            "vrack:apiovh:cloudProject/get"
+            {
+              "name": "vrack:apiovh:cloudProject/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -155,7 +213,14 @@ export const schema: Schema = {
           "description": "add a publicCloud project to this vrack",
           "httpMethod": "POST",
           "iamActions": [
-            "vrack:apiovh:cloudProject/add"
+            {
+              "name": "vrack:apiovh:cloudProject/attach",
+              "required": true
+            },
+            {
+              "name": "publicCloudProject:apiovh:vrack/attach",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -192,7 +257,10 @@ export const schema: Schema = {
           "description": "remove this publicCloud project from this vrack",
           "httpMethod": "DELETE",
           "iamActions": [
-            "vrack:apiovh:cloudProject/remove"
+            {
+              "name": "vrack:apiovh:cloudProject/detach",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -223,7 +291,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "vrack:apiovh:cloudProject/get"
+            {
+              "name": "vrack:apiovh:cloudProject/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -260,7 +331,10 @@ export const schema: Schema = {
           "description": "vrack dedicated cloud (VmNetwork)",
           "httpMethod": "GET",
           "iamActions": [
-            "vrack:apiovh:dedicatedCloud/get"
+            {
+              "name": "vrack:apiovh:pccVMware/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -280,10 +354,17 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "add a dedicatedCloud (VmNetwork) to this vrack",
+          "description": "Add VMware on OVHcloud to vRack",
           "httpMethod": "POST",
           "iamActions": [
-            "vrack:apiovh:dedicatedCloud/add"
+            {
+              "name": "vrack:apiovh:pccVMware/attach",
+              "required": true
+            },
+            {
+              "name": "pccVMware:apiovh:vrack/attach",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -310,17 +391,20 @@ export const schema: Schema = {
       "path": "/vrack/{serviceName}/dedicatedCloud"
     },
     {
-      "description": "vrack dedicated cloud interface",
+      "description": "VMware on OVHcloud vRack link",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "remove this dedicatedCloud (VmNetwork) from this vrack",
+          "description": "Remove VMware on OVHcloud from vRack",
           "httpMethod": "DELETE",
           "iamActions": [
-            "vrack:apiovh:dedicatedCloud/remove"
+            {
+              "name": "vrack:apiovh:pccVMware/detach",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -348,10 +432,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get vRack",
           "httpMethod": "GET",
           "iamActions": [
-            "vrack:apiovh:dedicatedCloud/get"
+            {
+              "name": "vrack:apiovh:pccVMware/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -388,7 +475,10 @@ export const schema: Schema = {
           "description": "vrack dedicated cloud datacenter",
           "httpMethod": "GET",
           "iamActions": [
-            "vrack:apiovh:dedicatedCloudDatacenter/get"
+            {
+              "name": "vrack:apiovh:dedicatedCloudDatacenter/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -417,7 +507,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "vrack:apiovh:dedicatedCloudDatacenter/get"
+            {
+              "name": "vrack:apiovh:dedicatedCloudDatacenter/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -454,7 +547,10 @@ export const schema: Schema = {
           "description": "Vracks allowed for your dedicatedCloud datacenter",
           "httpMethod": "GET",
           "iamActions": [
-            "vrack:apiovh:dedicatedCloudDatacenter/allowedVrack/get"
+            {
+              "name": "vrack:apiovh:dedicatedCloudDatacenter/allowedVrack/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -491,7 +587,10 @@ export const schema: Schema = {
           "description": "Move your dedicatedCloud datacenter from a Vrack to another",
           "httpMethod": "POST",
           "iamActions": [
-            "vrack:apiovh:dedicatedCloudDatacenter/move"
+            {
+              "name": "vrack:apiovh:dedicatedCloudDatacenter/move",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -536,7 +635,10 @@ export const schema: Schema = {
           "description": "vrack dedicated connect",
           "httpMethod": "GET",
           "iamActions": [
-            "vrack:apiovh:dedicatedConnect/get"
+            {
+              "name": "vrack:apiovh:dedicatedConnect/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -565,7 +667,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "vrack:apiovh:dedicatedConnect/get"
+            {
+              "name": "vrack:apiovh:dedicatedConnect/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -596,7 +701,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "vrack:apiovh:dedicatedConnect/edit"
+            {
+              "name": "vrack:apiovh:dedicatedConnect/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -640,7 +748,10 @@ export const schema: Schema = {
           "description": "vrack for dedicated server",
           "httpMethod": "GET",
           "iamActions": [
-            "vrack:apiovh:dedicatedServer/get"
+            {
+              "name": "vrack:apiovh:dedicatedServer/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -663,7 +774,14 @@ export const schema: Schema = {
           "description": "add a dedicated server to this vrack (LEGACY)",
           "httpMethod": "POST",
           "iamActions": [
-            "vrack:apiovh:dedicatedServer/add"
+            {
+              "name": "vrack:apiovh:dedicatedServer/attach",
+              "required": true
+            },
+            {
+              "name": "dedicatedServer:apiovh:vrack/attach",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -700,7 +818,10 @@ export const schema: Schema = {
           "description": "remove this server from this vrack (LEGACY)",
           "httpMethod": "DELETE",
           "iamActions": [
-            "vrack:apiovh:dedicatedServer/remove"
+            {
+              "name": "vrack:apiovh:dedicatedServer/detach",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -731,7 +852,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "vrack:apiovh:dedicatedServer/get"
+            {
+              "name": "vrack:apiovh:dedicatedServer/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -762,8 +886,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2018-04-23 00:00:00 +0100 +0100",
-            "deprecatedDate": "2017-10-23 00:00:00 +0100 +0100",
+            "deletionDate": "2018-04-23T00:00:00+01:00",
+            "deprecatedDate": "2017-10-23T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/dedicated/server/{serviceName}/networkInterfaceController",
             "value": "DEPRECATED"
@@ -771,7 +895,10 @@ export const schema: Schema = {
           "description": "Retrieve vrack traffic graph values (LEGACY)",
           "httpMethod": "GET",
           "iamActions": [
-            "vrack:apiovh:dedicatedServer/mrtg/get"
+            {
+              "name": "vrack:apiovh:dedicatedServer/mrtg/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -824,7 +951,10 @@ export const schema: Schema = {
           "description": "vrack for dedicated server interface",
           "httpMethod": "GET",
           "iamActions": [
-            "vrack:apiovh:dedicatedServerInterface/get"
+            {
+              "name": "vrack:apiovh:dedicatedServerInterface/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -847,7 +977,15 @@ export const schema: Schema = {
           "description": "add a dedicated server interface to this vrack",
           "httpMethod": "POST",
           "iamActions": [
-            "vrack:apiovh:dedicatedServerInterface/add"
+            {
+              "name": "vrack:apiovh:dedicatedServerInterface/attach",
+              "required": true
+            },
+            {
+              "description": "Check the action on the Dedicated Server that bares the Dedicated Server Interface",
+              "name": "dedicatedServer:apiovh:vrack/attach",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -884,7 +1022,10 @@ export const schema: Schema = {
           "description": "remove this server interface from this vrack",
           "httpMethod": "DELETE",
           "iamActions": [
-            "vrack:apiovh:dedicatedServerInterface/remove"
+            {
+              "name": "vrack:apiovh:dedicatedServerInterface/detach",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -915,7 +1056,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "vrack:apiovh:dedicatedServerInterface/get"
+            {
+              "name": "vrack:apiovh:dedicatedServerInterface/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -952,7 +1096,10 @@ export const schema: Schema = {
           "description": "Details for all dedicated server interfaces in this vrack",
           "httpMethod": "GET",
           "iamActions": [
-            "vrack:apiovh:dedicatedServerInterfaceDetails/get"
+            {
+              "name": "vrack:apiovh:dedicatedServerInterfaceDetails/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -981,7 +1128,40 @@ export const schema: Schema = {
           "description": "List all eligible services for this vRack asynchronously",
           "httpMethod": "GET",
           "iamActions": [
-            "vrack:apiovh:eligibleServices/get"
+            {
+              "name": "vrack:apiovh:eligibleServices/get",
+              "required": true
+            },
+            {
+              "description": "Needed on the legacy vRack services to be listed in the response body",
+              "name": "legacyVrack:apiovh:vrack/attach",
+              "required": false
+            },
+            {
+              "description": "Needed on the IP Load Balancer services to be listed in the response body",
+              "name": "ipLoadbalancing:apiovh:vrack/attach",
+              "required": false
+            },
+            {
+              "description": "Needed on the OVH Cloud Connect services to be listed in the response body",
+              "name": "ovhCloudConnect:apiovh:vrack/attach",
+              "required": false
+            },
+            {
+              "description": "Needed on the Dedicated Server services to be listed in dedicatedServer and dedicatedServerInterface body entries",
+              "name": "dedicatedServer:apiovh:vrack/attach",
+              "required": false
+            },
+            {
+              "description": "Needed on the Dedicated Cloud (VMware) services to be listed in the response body",
+              "name": "pccVMware:apiovh:vrack/attach",
+              "required": false
+            },
+            {
+              "description": "Needed on the VrackServices services to be listed in the response body",
+              "name": "vrackServices:apiovh:vrack/attach",
+              "required": false
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1010,7 +1190,10 @@ export const schema: Schema = {
           "description": "vrack for IP blocks",
           "httpMethod": "GET",
           "iamActions": [
-            "vrack:apiovh:ip/get"
+            {
+              "name": "vrack:apiovh:ip/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1033,7 +1216,10 @@ export const schema: Schema = {
           "description": "add an IP block to this vrack",
           "httpMethod": "POST",
           "iamActions": [
-            "vrack:apiovh:ip/add"
+            {
+              "name": "vrack:apiovh:ip/attach",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1070,7 +1256,10 @@ export const schema: Schema = {
           "description": "remove this IP block from this vrack",
           "httpMethod": "DELETE",
           "iamActions": [
-            "vrack:apiovh:ip/remove"
+            {
+              "name": "vrack:apiovh:ip/detach",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1101,7 +1290,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "vrack:apiovh:ip/get"
+            {
+              "name": "vrack:apiovh:ip/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1138,7 +1330,10 @@ export const schema: Schema = {
           "description": "Announce IP to zone for vrack",
           "httpMethod": "POST",
           "iamActions": [
-            "vrack:apiovh:ip/announceInZone"
+            {
+              "name": "vrack:apiovh:ip/announceInZone",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1183,7 +1378,10 @@ export const schema: Schema = {
           "description": "Zone available to announce your block",
           "httpMethod": "GET",
           "iamActions": [
-            "vrack:apiovh:ip/availableZone/get"
+            {
+              "name": "vrack:apiovh:ip/availableZone/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1220,7 +1418,10 @@ export const schema: Schema = {
           "description": "vrack for ipLoadbalancing",
           "httpMethod": "GET",
           "iamActions": [
-            "vrack:apiovh:ipLoadbalancing/get"
+            {
+              "name": "vrack:apiovh:ipLoadbalancing/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1243,7 +1444,14 @@ export const schema: Schema = {
           "description": "add an ipLoadbalancing to this vrack",
           "httpMethod": "POST",
           "iamActions": [
-            "vrack:apiovh:ipLoadbalancing/add"
+            {
+              "name": "vrack:apiovh:ipLoadbalancing/attach",
+              "required": true
+            },
+            {
+              "name": "ipLoadbalancing:apiovh:vrack/attach",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1280,7 +1488,10 @@ export const schema: Schema = {
           "description": "remove this ipLoadbalancing from this vrack",
           "httpMethod": "DELETE",
           "iamActions": [
-            "vrack:apiovh:ipLoadbalancing/remove"
+            {
+              "name": "vrack:apiovh:ipLoadbalancing/detach",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1311,7 +1522,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "vrack:apiovh:ipLoadbalancing/get"
+            {
+              "name": "vrack:apiovh:ipLoadbalancing/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1338,6 +1552,463 @@ export const schema: Schema = {
       "path": "/vrack/{serviceName}/ipLoadbalancing/{ipLoadbalancing}"
     },
     {
+      "description": "List the vrack.ipv6 objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "vrack for IP v6 blocks",
+          "httpMethod": "GET",
+          "iamActions": [
+            {
+              "name": "vrack:apiovh:ipv6/get",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your vrack",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ipv6Block[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "add an IP v6 block to this vrack",
+          "httpMethod": "POST",
+          "iamActions": [
+            {
+              "name": "vrack:apiovh:ipv6/attach",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv6Block",
+              "description": "Your IP v6 block",
+              "fullType": "ipv6Block",
+              "name": "block",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your vrack",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "vrack.Task"
+        }
+      ],
+      "path": "/vrack/{serviceName}/ipv6"
+    },
+    {
+      "description": "IP v6 block in vrack",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "remove this IP v6 block from this vrack",
+          "httpMethod": "DELETE",
+          "iamActions": [
+            {
+              "name": "vrack:apiovh:ipv6/detach",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv6Block",
+              "description": "Your IP v6 block",
+              "fullType": "ipv6Block",
+              "name": "ipv6",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your vrack",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "vrack.Task"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "iamActions": [
+            {
+              "name": "vrack:apiovh:ipv6/get",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv6Block",
+              "description": "Your IP v6 block",
+              "fullType": "ipv6Block",
+              "name": "ipv6",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your vrack",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "vrack.ipv6"
+        }
+      ],
+      "path": "/vrack/{serviceName}/ipv6/{ipv6}"
+    },
+    {
+      "description": "List the vrack.bridgedSubrange objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "subrange bridged into your vrack",
+          "httpMethod": "GET",
+          "iamActions": [
+            {
+              "name": "vrack:apiovh:ipv6/bridgedSubrange/get",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv6Block",
+              "description": "Your IP v6 block",
+              "fullType": "ipv6Block",
+              "name": "ipv6",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your vrack",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ipv6Block[]"
+        }
+      ],
+      "path": "/vrack/{serviceName}/ipv6/{ipv6}/bridgedSubrange"
+    },
+    {
+      "description": "Bridged subrange within your IP v6 block",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "iamActions": [
+            {
+              "name": "vrack:apiovh:ipv6/bridgedSubrange/get",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv6Block",
+              "description": "subrange bridged into your vrack",
+              "fullType": "ipv6Block",
+              "name": "bridgedSubrange",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipv6Block",
+              "description": "Your IP v6 block",
+              "fullType": "ipv6Block",
+              "name": "ipv6",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your vrack",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "vrack.bridgedSubrange"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Update Slaac status",
+          "httpMethod": "PUT",
+          "iamActions": [
+            {
+              "name": "vrack:apiovh:ipv6/bridgedSubrange/edit",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "vrack.bridgedSubrange",
+              "description": "New object properties",
+              "fullType": "vrack.bridgedSubrange",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "ipv6Block",
+              "description": "subrange bridged into your vrack",
+              "fullType": "ipv6Block",
+              "name": "bridgedSubrange",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipv6Block",
+              "description": "Your IP v6 block",
+              "fullType": "ipv6Block",
+              "name": "ipv6",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your vrack",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "vrack.Task"
+        }
+      ],
+      "path": "/vrack/{serviceName}/ipv6/{ipv6}/bridgedSubrange/{bridgedSubrange}"
+    },
+    {
+      "description": "List the vrack.routedSubrange objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "subrange routed into your vrack",
+          "httpMethod": "GET",
+          "iamActions": [
+            {
+              "name": "vrack:apiovh:ipv6/routedSubrange/get",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv6Block",
+              "description": "Your IP v6 block",
+              "fullType": "ipv6Block",
+              "name": "ipv6",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your vrack",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ipv6Block[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "route a subrange of your IP v6 block into your vrack",
+          "httpMethod": "POST",
+          "iamActions": [
+            {
+              "name": "vrack:apiovh:ipv6/routedSubrange/create",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv6",
+              "description": "nexthop to configure for your routed subrange (must be part of bridged subrange)",
+              "fullType": "ipv6",
+              "name": "nexthop",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "ipv6Block",
+              "description": "subrange to route into your vrack",
+              "fullType": "ipv6Block",
+              "name": "routedSubrange",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "ipv6Block",
+              "description": "Your IP v6 block",
+              "fullType": "ipv6Block",
+              "name": "ipv6",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your vrack",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "vrack.Task"
+        }
+      ],
+      "path": "/vrack/{serviceName}/ipv6/{ipv6}/routedSubrange"
+    },
+    {
+      "description": "Routed subranges within your IP v6 block",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "unroute subrange from your vrack",
+          "httpMethod": "DELETE",
+          "iamActions": [
+            {
+              "name": "vrack:apiovh:ipv6/routedSubrange/delete",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv6Block",
+              "description": "Your IP v6 block",
+              "fullType": "ipv6Block",
+              "name": "ipv6",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipv6Block",
+              "description": "subrange routed into your vrack",
+              "fullType": "ipv6Block",
+              "name": "routedSubrange",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your vrack",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "vrack.Task"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "iamActions": [
+            {
+              "name": "vrack:apiovh:ipv6/routedSubrange/get",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv6Block",
+              "description": "Your IP v6 block",
+              "fullType": "ipv6Block",
+              "name": "ipv6",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipv6Block",
+              "description": "subrange routed into your vrack",
+              "fullType": "ipv6Block",
+              "name": "routedSubrange",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your vrack",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "vrack.routedSubrange"
+        }
+      ],
+      "path": "/vrack/{serviceName}/ipv6/{ipv6}/routedSubrange/{routedSubrange}"
+    },
+    {
       "description": "List the vrack.legacyVrack objects",
       "operations": [
         {
@@ -1348,7 +2019,10 @@ export const schema: Schema = {
           "description": "vrack for legacy vrack",
           "httpMethod": "GET",
           "iamActions": [
-            "vrack:apiovh:legacyVrack/get"
+            {
+              "name": "vrack:apiovh:legacyVrack/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1371,7 +2045,14 @@ export const schema: Schema = {
           "description": "add a legacy vrack (vrackXXXX) to this vrack (pn-XXXX)",
           "httpMethod": "POST",
           "iamActions": [
-            "vrack:apiovh:legacyVrack/add"
+            {
+              "name": "vrack:apiovh:legacyVrack/attach",
+              "required": true
+            },
+            {
+              "name": "legacyVrack:apiovh:vrack/attach",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1408,7 +2089,10 @@ export const schema: Schema = {
           "description": "remove this legacy vrack (vrackXXXX) from this vrack (pn-XXXX)",
           "httpMethod": "DELETE",
           "iamActions": [
-            "vrack:apiovh:legacyVrack/remove"
+            {
+              "name": "vrack:apiovh:legacyVrack/detach",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1439,7 +2123,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "vrack:apiovh:legacyVrack/get"
+            {
+              "name": "vrack:apiovh:legacyVrack/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1476,7 +2163,10 @@ export const schema: Schema = {
           "description": "vrack for ovhCloudConnect",
           "httpMethod": "GET",
           "iamActions": [
-            "vrack:apiovh:ovhCloudConnect/get"
+            {
+              "name": "vrack:apiovh:ovhCloudConnect/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1499,7 +2189,14 @@ export const schema: Schema = {
           "description": "Add an ovhCloudConnect to the vrack",
           "httpMethod": "POST",
           "iamActions": [
-            "vrack:apiovh:ovhCloudConnect/add"
+            {
+              "name": "vrack:apiovh:ovhCloudConnect/attach",
+              "required": true
+            },
+            {
+              "name": "ovhCloudConnect:apiovh:vrack/attach",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1536,7 +2233,10 @@ export const schema: Schema = {
           "description": "Remove the ovhCloudConnect from the vrack",
           "httpMethod": "DELETE",
           "iamActions": [
-            "vrack:apiovh:ovhCloudConnect/remove"
+            {
+              "name": "vrack:apiovh:ovhCloudConnect/detach",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1567,7 +2267,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "vrack:apiovh:ovhCloudConnect/get"
+            {
+              "name": "vrack:apiovh:ovhCloudConnect/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1604,7 +2307,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "vrack:apiovh:serviceInfos/get"
+            {
+              "name": "vrack:apiovh:serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1633,7 +2339,10 @@ export const schema: Schema = {
           "description": "vrack tasks",
           "httpMethod": "GET",
           "iamActions": [
-            "vrack:apiovh:task/get"
+            {
+              "name": "vrack:apiovh:task/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1662,7 +2371,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "vrack:apiovh:task/get"
+            {
+              "name": "vrack:apiovh:task/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1687,11 +2399,177 @@ export const schema: Schema = {
         }
       ],
       "path": "/vrack/{serviceName}/task/{taskId}"
+    },
+    {
+      "description": "List the vrack.vrackServices objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "vrack for vrackServices",
+          "httpMethod": "GET",
+          "iamActions": [
+            {
+              "name": "vrack:apiovh:vrackServices/get",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your vrack",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Add a vrackServices to the vrack",
+          "httpMethod": "POST",
+          "iamActions": [
+            {
+              "name": "vrack:apiovh:vrackServices/attach",
+              "required": true
+            },
+            {
+              "name": "vrackServices:apiovh:vrack/attach",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "vrackServices service name",
+              "fullType": "string",
+              "name": "vrackServices",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your vrack",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "vrack.Task"
+        }
+      ],
+      "path": "/vrack/{serviceName}/vrackServices"
+    },
+    {
+      "description": "vrackServices in vrack",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Remove the vrackServices from the vrack",
+          "httpMethod": "DELETE",
+          "iamActions": [
+            {
+              "name": "vrack:apiovh:vrackServices/detach",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your vrack",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "vrackServices service name",
+              "fullType": "string",
+              "name": "vrackServices",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "vrack.Task"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "iamActions": [
+            {
+              "name": "vrack:apiovh:vrackServices/get",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your vrack",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "vrackServices service name",
+              "fullType": "string",
+              "name": "vrackServices",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "vrack.vrackServices"
+        }
+      ],
+      "path": "/vrack/{serviceName}/vrackServices/{vrackServices}"
     }
   ],
   "basePath": "https://eu.api.ovh.com/1.0",
   "models": {
     "complexType.UnitAndValue<T>": {
+      "description": "A numeric value tagged with its unit",
+      "generics": [
+        "T"
+      ],
+      "id": "UnitAndValue",
+      "namespace": "complexType",
+      "properties": {
+        "unit": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "T"
+        }
+      }
+    },
+    "complexType.UnitAndValue<double>": {
       "description": "A numeric value tagged with its unit",
       "generics": [
         "T"
@@ -1758,6 +2636,77 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "MrtgTypeEnum",
       "namespace": "dedicated.server"
+    },
+    "iam.ResourceMetadata": {
+      "description": "IAM resource metadata embedded in services models",
+      "id": "ResourceMetadata",
+      "namespace": "iam",
+      "properties": {
+        "displayName": {
+          "canBeNull": true,
+          "description": "Resource display name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Unique identifier of the resource",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "tags": {
+          "canBeNull": true,
+          "description": "Resource tags. Tags that were internally computed are prefixed with ovh:",
+          "fullType": "map[string]string",
+          "readOnly": true,
+          "required": false,
+          "type": "map[string]string"
+        },
+        "urn": {
+          "canBeNull": false,
+          "description": "Unique resource name used in policies",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter": {
+      "description": "Resource tag filter",
+      "id": "TagFilter",
+      "namespace": "iam.resource",
+      "properties": {
+        "operator": {
+          "canBeNull": true,
+          "description": "Operator to use in order to filter on the value (defaults to 'EQ')",
+          "fullType": "iam.resource.TagFilter.OperatorEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.resource.TagFilter.OperatorEnum"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value to use in order to filter tags",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter.OperatorEnum": {
+      "description": "Operator that can be used in order to filter resources tags",
+      "enum": [
+        "EQ"
+      ],
+      "enumType": "string",
+      "id": "OperatorEnum",
+      "namespace": "iam.resource.TagFilter"
     },
     "service.StateEnum": {
       "enum": [
@@ -1866,8 +2815,10 @@ export const schema: Schema = {
         "dedicatedServerInterface",
         "ip",
         "ipLoadbalancing",
+        "ipv6",
         "legacyVrack",
-        "ovhCloudConnect"
+        "ovhCloudConnect",
+        "vrackServices"
       ],
       "enumType": "string",
       "id": "AllowedServiceEnum",
@@ -1934,6 +2885,13 @@ export const schema: Schema = {
           "required": false,
           "type": "string[]"
         },
+        "ipv6": {
+          "canBeNull": true,
+          "description": "list of ipv6 blocks allowed to be connected to vrack",
+          "readOnly": false,
+          "required": false,
+          "type": "ipv6Block[]"
+        },
         "legacyVrack": {
           "canBeNull": true,
           "description": "list of legacy vrack (1.0) allowed to be connected to vrack",
@@ -1947,6 +2905,13 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "uuid[]"
+        },
+        "vrackServices": {
+          "canBeNull": true,
+          "description": "List of the vrackServices allowed to be connected to vrack",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
         }
       }
     },
@@ -2050,6 +3015,14 @@ export const schema: Schema = {
           "required": false,
           "type": "string[]"
         },
+        "ipv6": {
+          "canBeNull": true,
+          "description": "List of ipv6 blocks allowed to be connected to this vRack",
+          "fullType": "ipv6Block[]",
+          "readOnly": true,
+          "required": false,
+          "type": "ipv6Block[]"
+        },
         "legacyVrack": {
           "canBeNull": true,
           "description": "List of legacy vRack (1.0) allowed to be connected to this vRack",
@@ -2065,6 +3038,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "uuid[]"
+        },
+        "vrackServices": {
+          "canBeNull": true,
+          "description": "List of the vrackServices allowed to be connected to this vRack",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
         }
       }
     },
@@ -2106,6 +3087,16 @@ export const schema: Schema = {
           "type": "string"
         }
       }
+    },
+    "vrack.SlaacEnum": {
+      "description": "Possible values for slaac",
+      "enum": [
+        "disabled",
+        "enabled"
+      ],
+      "enumType": "string",
+      "id": "SlaacEnum",
+      "namespace": "vrack"
     },
     "vrack.Task": {
       "description": "vrack tasks",
@@ -2204,6 +3195,37 @@ export const schema: Schema = {
       "id": "VrackZoneEnum",
       "namespace": "vrack"
     },
+    "vrack.bridgedSubrange": {
+      "description": "Bridged subrange within your IP v6 block",
+      "id": "bridgedSubrange",
+      "namespace": "vrack",
+      "properties": {
+        "bridgedSubrange": {
+          "canBeNull": false,
+          "description": "subrange bridged into your vrack",
+          "fullType": "ipv6Block",
+          "readOnly": true,
+          "required": false,
+          "type": "ipv6Block"
+        },
+        "gateway": {
+          "canBeNull": false,
+          "description": "Your gateway",
+          "fullType": "ipv6",
+          "readOnly": true,
+          "required": false,
+          "type": "ipv6"
+        },
+        "slaac": {
+          "canBeNull": false,
+          "description": "Slaac status",
+          "fullType": "vrack.SlaacEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "vrack.SlaacEnum"
+        }
+      }
+    },
     "vrack.cloudProject": {
       "description": "PublicCloud project in vrack",
       "id": "cloudProject",
@@ -2228,7 +3250,7 @@ export const schema: Schema = {
       }
     },
     "vrack.dedicatedCloud": {
-      "description": "vrack dedicated cloud interface",
+      "description": "VMware on OVHcloud vRack link",
       "id": "dedicatedCloud",
       "namespace": "vrack",
       "properties": {
@@ -2373,6 +3395,21 @@ export const schema: Schema = {
         }
       }
     },
+    "vrack.ipv6": {
+      "description": "IP v6 block in vrack",
+      "id": "ipv6",
+      "namespace": "vrack",
+      "properties": {
+        "ipv6": {
+          "canBeNull": false,
+          "description": "Your IP v6 block",
+          "fullType": "ipv6Block",
+          "readOnly": true,
+          "required": false,
+          "type": "ipv6Block"
+        }
+      }
+    },
     "vrack.legacyVrack": {
       "description": "interface between legacy vrack (vrackXXXX) and vrack (pn-XXXX)",
       "id": "legacyVrack",
@@ -2393,29 +3430,6 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "long"
-        }
-      }
-    },
-    "vrack.nasha": {
-      "description": "vrack (1.5) nasha server interfaces",
-      "id": "nasha",
-      "namespace": "vrack",
-      "properties": {
-        "serviceIp": {
-          "canBeNull": false,
-          "description": "service ip",
-          "fullType": "ipBlock",
-          "readOnly": true,
-          "required": false,
-          "type": "ipBlock"
-        },
-        "zpool": {
-          "canBeNull": false,
-          "description": "Name of Nasha zpool",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
         }
       }
     },
@@ -2487,6 +3501,29 @@ export const schema: Schema = {
         }
       }
     },
+    "vrack.routedSubrange": {
+      "description": "Routed subranges within your IP v6 block",
+      "id": "routedSubrange",
+      "namespace": "vrack",
+      "properties": {
+        "nexthop": {
+          "canBeNull": false,
+          "description": "nexthop used as a gateway for your routed subrange",
+          "fullType": "ipv6",
+          "readOnly": true,
+          "required": false,
+          "type": "ipv6"
+        },
+        "routedSubrange": {
+          "canBeNull": false,
+          "description": "subrange routed into your vrack",
+          "fullType": "ipv6Block",
+          "readOnly": true,
+          "required": false,
+          "type": "ipv6Block"
+        }
+      }
+    },
     "vrack.vrack": {
       "description": "vrack",
       "id": "vrack",
@@ -2499,6 +3536,59 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "yourvrackname",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "vrack.vrackServices": {
+      "description": "vrackServices in vrack",
+      "id": "vrackServices",
+      "namespace": "vrack",
+      "properties": {
+        "vrack": {
+          "canBeNull": false,
+          "description": "vrack name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "vrackServices": {
+          "canBeNull": false,
+          "description": "vrackServices service name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "vrack.vrackWithIAM": {
+      "description": "vrack",
+      "id": "vrack",
+      "namespace": "vrack",
+      "properties": {
+        "description": {
+          "canBeNull": false,
+          "description": "yourvrackdescription",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "iam": {
+          "canBeNull": true,
+          "description": "IAM resource metadata",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.ResourceMetadata"
         },
         "name": {
           "canBeNull": false,

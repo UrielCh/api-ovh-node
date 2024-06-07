@@ -16,10 +16,21 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:get"
+            {
+              "name": "ldp:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
-          "parameters": [],
+          "parameters": [
+            {
+              "dataType": "map[string][]iam.resource.TagFilter",
+              "description": "Filter resources on IAM tags",
+              "name": "iamTags",
+              "paramType": "query",
+              "required": false
+            }
+          ],
           "responseType": "string[]"
         }
       ],
@@ -34,9 +45,15 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the service object of connected identity.",
+          "errors": [
+            "Client::NotFound::ServiceNotFound"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:get"
+            {
+              "name": "ldp:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -49,7 +66,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dbaas.logs.Service"
+          "responseType": "dbaas.logs.ServiceWithIAM"
         },
         {
           "apiStatus": {
@@ -57,9 +74,19 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Update the service properties",
+          "errors": [
+            "Client::ValidationError::EmptyValue",
+            "Client::ValidationError::RequiredField",
+            "Client::ValidationError::ValueNotInRange",
+            "Client::Forbidden::Busy",
+            "Client::NotFound::ServiceNotFound"
+          ],
           "httpMethod": "PUT",
           "iamActions": [
-            "ldp:apiovh:put"
+            {
+              "name": "ldp:apiovh:edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -85,59 +112,6 @@ export const schema: Schema = {
       "path": "/dbaas/logs/{serviceName}"
     },
     {
-      "description": "Change the contacts of this service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Launch a contact change procedure",
-          "httpMethod": "POST",
-          "iamActions": [
-            "ldp:apiovh:changeContact"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The contact to set as admin contact",
-              "fullType": "coreTypes.AccountId:string",
-              "name": "contactAdmin",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The contact to set as billing contact",
-              "fullType": "coreTypes.AccountId:string",
-              "name": "contactBilling",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The contact to set as tech contact",
-              "fullType": "coreTypes.AccountId:string",
-              "name": "contactTech",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The internal ID of your Logs pack",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "long[]"
-        }
-      ],
-      "path": "/dbaas/logs/{serviceName}/changeContact"
-    },
-    {
       "description": "Service Clusters",
       "operations": [
         {
@@ -146,9 +120,15 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the list of allowed cluster",
+          "errors": [
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:cluster/get"
+            {
+              "name": "ldp:apiovh:cluster/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -159,6 +139,14 @@ export const schema: Schema = {
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter by name (like)",
+              "fullType": "string",
+              "name": "namePattern",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "uuid[]"
@@ -175,9 +163,17 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns details of an allowed cluster",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::ClusterDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:cluster/get"
+            {
+              "name": "ldp:apiovh:cluster/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -206,9 +202,26 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Update details of an allowed cluster",
+          "errors": [
+            "Client::ValidationError::InvalidIPAddress",
+            "Client::ValidationError::InvalidIPAddressKernel",
+            "Client::ValidationError::InvalidIPAddressLocalhost",
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::NotOwner",
+            "Client::ValidationError::NothingToDo",
+            "Client::ValidationError::RequiredField",
+            "Client::Forbidden::PCIDSSSettingOnly",
+            "Client::Forbidden::ServiceNotMigrated",
+            "Client::Forbidden::TooManyActive",
+            "Client::NotFound::ClusterDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "PUT",
           "iamActions": [
-            "ldp:apiovh:cluster/edit"
+            {
+              "name": "ldp:apiovh:cluster/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -250,9 +263,18 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "List all the retention ID available for a given cluster",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::AccessDenied",
+            "Client::NotFound::ClusterDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:cluster/retention/get"
+            {
+              "name": "ldp:apiovh:cluster/retention/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -287,9 +309,19 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns details of a retention",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::AccessDenied",
+            "Client::NotFound::ClusterDoesNotExists",
+            "Client::NotFound::ClusterRetentionNotFound",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:cluster/retention/get"
+            {
+              "name": "ldp:apiovh:cluster/retention/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -324,17 +356,23 @@ export const schema: Schema = {
       "path": "/dbaas/logs/{serviceName}/cluster/{clusterId}/retention/{retentionId}"
     },
     {
-      "description": "Inputs",
+      "description": "Encryption keys",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Returns the list of registered input attached to the logged user",
+          "description": "Return the list of registred encryption keys",
+          "errors": [
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:input/get"
+            {
+              "name": "ldp:apiovh:encryptionKey/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -345,6 +383,191 @@ export const schema: Schema = {
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter by title (like)",
+              "fullType": "string",
+              "name": "titlePattern",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "uuid[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Add a new encryption key",
+          "errors": [
+            "Client::ValidationError::EncryptionKeyFingerprintMismatch",
+            "Client::ValidationError::EncryptionKeyHasExpirationDate",
+            "Client::ValidationError::InvalidEncryptionKey",
+            "Client::ValidationError::InvalidEncryptionKeyAlgorithm",
+            "Client::ValidationError::RequiredField",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::ItemQuotaReached",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::Conflict::AlreadyExists"
+          ],
+          "httpMethod": "POST",
+          "iamActions": [
+            {
+              "name": "ldp:apiovh:encryptionKey/create",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "dbaas.logs.EncryptionKey",
+              "description": "Request Body",
+              "fullType": "dbaas.logs.EncryptionKey",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dbaas.logs.Operation"
+        }
+      ],
+      "path": "/dbaas/logs/{serviceName}/encryptionKey"
+    },
+    {
+      "description": "Encryption keys",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete the specified encryption key",
+          "errors": [
+            "Client::ValidationError::EncryptionKeyStillAssignedToCluster",
+            "Client::ValidationError::EncryptionKeyStillAssignedToStream",
+            "Client::ValidationError::EncryptionKeyStillUsedByArchive",
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::EncryptionKeyDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
+          "httpMethod": "DELETE",
+          "iamActions": [
+            {
+              "name": "ldp:apiovh:encryptionKey/delete",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Encryption key ID",
+              "fullType": "uuid",
+              "name": "encryptionKeyId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dbaas.logs.Operation"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Return details of an encryption key",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::EncryptionKeyDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
+          "httpMethod": "GET",
+          "iamActions": [
+            {
+              "name": "ldp:apiovh:encryptionKey/get",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Encryption key ID",
+              "fullType": "uuid",
+              "name": "encryptionKeyId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dbaas.logs.EncryptionKey"
+        }
+      ],
+      "path": "/dbaas/logs/{serviceName}/encryptionKey/{encryptionKeyId}"
+    },
+    {
+      "description": "Inputs",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Returns the list of registered input attached to the logged user",
+          "errors": [
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
+          "httpMethod": "GET",
+          "iamActions": [
+            {
+              "name": "ldp:apiovh:input/get",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter by title (like)",
+              "fullType": "string",
+              "name": "titlePattern",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "uuid[]"
@@ -355,9 +578,38 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Register a new input object",
+          "errors": [
+            "Client::ValidationError::EmptyValue",
+            "Client::ValidationError::EngineIsDeprecated",
+            "Client::ValidationError::InvalidFormat",
+            "Client::ValidationError::InvalidIPAddress",
+            "Client::ValidationError::InvalidIPAddressKernel",
+            "Client::ValidationError::InvalidIPAddressLocalhost",
+            "Client::ValidationError::InvalidInputAutoscalingParameter",
+            "Client::ValidationError::InvalidInstanceModeForInput",
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::MissingInputAutoscalingParameter",
+            "Client::ValidationError::NotStreamOwner",
+            "Client::ValidationError::RequiredField",
+            "Client::ValidationError::RestrictedPort",
+            "Client::ValidationError::ValueNotInRange",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::NotOnSameCluster",
+            "Client::Forbidden::PCIDSSInputDeny",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::InputEngineDoesNotExists",
+            "Client::NotFound::OptionDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists",
+            "Client::Conflict::TitleAlreadyUsed",
+            "Server::NotImplemented::MarathonAutoscaling"
+          ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:input/create"
+            {
+              "name": "ldp:apiovh:input/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -391,9 +643,21 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Remove the specified input object",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::IncompatibleStatusForInput",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::InputDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "DELETE",
           "iamActions": [
-            "ldp:apiovh:input/delete"
+            {
+              "name": "ldp:apiovh:input/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -422,9 +686,17 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns details of specified input",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::InputDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:input/get"
+            {
+              "name": "ldp:apiovh:input/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -453,9 +725,38 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Update information of specified input object",
+          "errors": [
+            "Client::ValidationError::EmptyValue",
+            "Client::ValidationError::EngineIsDeprecated",
+            "Client::ValidationError::InvalidFormat",
+            "Client::ValidationError::InvalidIPAddress",
+            "Client::ValidationError::InvalidIPAddressKernel",
+            "Client::ValidationError::InvalidIPAddressLocalhost",
+            "Client::ValidationError::InvalidInputAutoscalingParameter",
+            "Client::ValidationError::InvalidInstanceModeForInput",
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::MissingInputAutoscalingParameter",
+            "Client::ValidationError::NotStreamOwner",
+            "Client::ValidationError::RequiredField",
+            "Client::ValidationError::RestrictedPort",
+            "Client::ValidationError::ValueNotInRange",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::NotOnSameCluster",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::InputDoesNotExists",
+            "Client::NotFound::OptionDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists",
+            "Client::Conflict::TitleAlreadyUsed",
+            "Server::NotImplemented::MarathonAutoscaling"
+          ],
           "httpMethod": "PUT",
           "iamActions": [
-            "ldp:apiovh:input/edit"
+            {
+              "name": "ldp:apiovh:input/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -497,9 +798,17 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns actions of specified input",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::InputDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:input/action/get"
+            {
+              "name": "ldp:apiovh:input/action/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -534,9 +843,21 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Validate configuration of specified input",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::LogstashOnly",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::InputDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:input/configtest/create"
+            {
+              "name": "ldp:apiovh:input/configtest/validate",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -571,9 +892,17 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the config test operation result",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::InputDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:input/configtest/result/get"
+            {
+              "name": "ldp:apiovh:input/configtest/result/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -608,9 +937,18 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the flowgger configuration",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::InputDoesNotExists",
+            "Client::NotFound::InvalidInputEngine",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:input/configuration/flowgger/get"
+            {
+              "name": "ldp:apiovh:input/configuration/flowgger/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -639,9 +977,22 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Update the flowgger configuration",
+          "errors": [
+            "Client::ValidationError::FlowggerInvalidFraming",
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::RequiredField",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::InputDoesNotExists",
+            "Client::NotFound::InvalidInputEngine",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "PUT",
           "iamActions": [
-            "ldp:apiovh:input/configuration/flowgger/edit"
+            {
+              "name": "ldp:apiovh:input/configuration/flowgger/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -683,9 +1034,17 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the logstash configuration",
+          "errors": [
+            "Client::NotFound::InputDoesNotExists",
+            "Client::NotFound::InvalidInputEngine",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:input/configuration/logstash/get"
+            {
+              "name": "ldp:apiovh:input/configuration/logstash/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -714,9 +1073,23 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Update the logstash configuration",
+          "errors": [
+            "Client::ValidationError::InvalidInputConfiguration",
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::RequiredField",
+            "Client::Forbidden::InputNotAvailable",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::InputDoesNotExists",
+            "Client::NotFound::InvalidInputEngine",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "PUT",
           "iamActions": [
-            "ldp:apiovh:input/configuration/logstash/edit"
+            {
+              "name": "ldp:apiovh:input/configuration/logstash/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -758,9 +1131,21 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Schedule the end of specified input",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::IncompatibleStatusForInput",
+            "Client::Forbidden::InputNotAvailable",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::InputDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:input/end"
+            {
+              "name": "ldp:apiovh:input/end",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -795,9 +1180,19 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Generate a temporary url to retrieve input logs",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::InputDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:input/logs/url/create"
+            {
+              "name": "ldp:apiovh:input/logs/url/generate",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -832,9 +1227,21 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Schedule the restart of specified input",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::IncompatibleStatusForInput",
+            "Client::Forbidden::InputNotAvailable",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::InputDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:input/restart"
+            {
+              "name": "ldp:apiovh:input/restart",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -869,9 +1276,21 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Schedule the start of specified input",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::IncompatibleStatusForInput",
+            "Client::Forbidden::InputNotAvailable",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::InputDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:input/start"
+            {
+              "name": "ldp:apiovh:input/start",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -906,9 +1325,17 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the list of urls of specified input",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::InputDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:input/url/get"
+            {
+              "name": "ldp:apiovh:input/url/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -945,13 +1372,16 @@ export const schema: Schema = {
           "description": "Returns the list of available input engines",
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:input/engine/get"
+            {
+              "name": "ldp:apiovh:input/engine/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal ID of your Logs pack",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -972,9 +1402,16 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns details of specified input engine",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::InputEngineDoesNotExists"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:input/engine/get"
+            {
+              "name": "ldp:apiovh:input/engine/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -988,7 +1425,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal ID of your Logs pack",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1009,9 +1446,15 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Return the list of available helpers for the given input engine",
+          "errors": [
+            "Client::ValidationError::InvalidUUID"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:input/engine/helper/get"
+            {
+              "name": "ldp:apiovh:input/engine/helper/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1025,7 +1468,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal ID of your Logs pack",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1046,9 +1489,16 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns details of specified input engine helper",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::HelperDoesNotExists"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:input/engine/helper/get"
+            {
+              "name": "ldp:apiovh:input/engine/helper/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1070,7 +1520,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal ID of your Logs pack",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1091,9 +1541,15 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns Metrics credentials",
+          "errors": [
+            "Client::NotFound::ServiceNotFound"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:metrics/get"
+            {
+              "name": "ldp:apiovh:metrics/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1120,9 +1576,15 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Latest operations",
+          "errors": [
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:operation/get"
+            {
+              "name": "ldp:apiovh:operation/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1149,9 +1611,17 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns details of specified operation",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::OperationDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:operation/get"
+            {
+              "name": "ldp:apiovh:operation/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1178,852 +1648,6 @@ export const schema: Schema = {
       "path": "/dbaas/logs/{serviceName}/operation/{operationId}"
     },
     {
-      "description": "Aliases",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Returns the list of alias for connected user",
-          "httpMethod": "GET",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/alias/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "uuid[]"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Register a new elasticsearch alias",
-          "httpMethod": "POST",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/alias/create"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "dbaas.logs.OutputElasticsearchAliasCreation",
-              "description": "Request Body",
-              "fullType": "dbaas.logs.OutputElasticsearchAliasCreation",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Operation"
-        }
-      ],
-      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/alias"
-    },
-    {
-      "description": "Aliases",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Remove specified elasticsearch alias",
-          "httpMethod": "DELETE",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/alias/delete"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Alias ID",
-              "fullType": "uuid",
-              "name": "aliasId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Operation"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Returns specified elasticsearch alias",
-          "httpMethod": "GET",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/alias/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Alias ID",
-              "fullType": "uuid",
-              "name": "aliasId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Alias"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Update specified elasticsearch alias",
-          "httpMethod": "PUT",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/alias/edit"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "dbaas.logs.OutputElasticsearchAliasUpdate",
-              "description": "Request Body",
-              "fullType": "dbaas.logs.OutputElasticsearchAliasUpdate",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "uuid",
-              "description": "Alias ID",
-              "fullType": "uuid",
-              "name": "aliasId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Operation"
-        }
-      ],
-      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}"
-    },
-    {
-      "description": "AliasStreams",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Returns the list of Elasticsearch indexes attached to specified Elasticsearch alias",
-          "httpMethod": "GET",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/alias/index/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Alias ID",
-              "fullType": "uuid",
-              "name": "aliasId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "uuid[]"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Attach a elasticsearch index to specified elasticsearch alias",
-          "httpMethod": "POST",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/alias/index/create"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "dbaas.logs.OutputElasticsearchAliasIndexCreation",
-              "description": "Request Body",
-              "fullType": "dbaas.logs.OutputElasticsearchAliasIndexCreation",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "uuid",
-              "description": "Alias ID",
-              "fullType": "uuid",
-              "name": "aliasId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Operation"
-        }
-      ],
-      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index"
-    },
-    {
-      "description": "AliasStreams",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Detach a elasticsearch index from specified elasticsearch alias",
-          "httpMethod": "DELETE",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/alias/index/delete"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Alias ID",
-              "fullType": "uuid",
-              "name": "aliasId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "uuid",
-              "description": "Index ID",
-              "fullType": "uuid",
-              "name": "indexId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Operation"
-        }
-      ],
-      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index/{indexId}"
-    },
-    {
-      "description": "AliasStreams",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Returns the list of Graylog streams attached to specified Elasticsearch alias",
-          "httpMethod": "GET",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/alias/stream/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Alias ID",
-              "fullType": "uuid",
-              "name": "aliasId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "uuid[]"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Attach a graylog stream to specified elasticsearch alias",
-          "httpMethod": "POST",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/alias/stream/create"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "dbaas.logs.OutputElasticsearchAliasStreamCreation",
-              "description": "Request Body",
-              "fullType": "dbaas.logs.OutputElasticsearchAliasStreamCreation",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "uuid",
-              "description": "Alias ID",
-              "fullType": "uuid",
-              "name": "aliasId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Operation"
-        }
-      ],
-      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream"
-    },
-    {
-      "description": "AliasStreams",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Detach a graylog stream from specified elasticsearch alias",
-          "httpMethod": "DELETE",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/alias/stream/delete"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Alias ID",
-              "fullType": "uuid",
-              "name": "aliasId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "uuid",
-              "description": "Stream ID",
-              "fullType": "uuid",
-              "name": "streamId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Operation"
-        }
-      ],
-      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream/{streamId}"
-    },
-    {
-      "description": "AliasUrls",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Returns the list of urls of specified alias",
-          "httpMethod": "GET",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/alias/url/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Alias ID",
-              "fullType": "uuid",
-              "name": "aliasId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Url[]"
-        }
-      ],
-      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/url"
-    },
-    {
-      "description": "Indexes",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Returns the list of elasticsearch indexes",
-          "httpMethod": "GET",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/index/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "uuid[]"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Register a new elasticsearch index",
-          "httpMethod": "POST",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/index/create"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "dbaas.logs.OutputElasticsearchIndexCreation",
-              "description": "Request Body",
-              "fullType": "dbaas.logs.OutputElasticsearchIndexCreation",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Operation"
-        }
-      ],
-      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/index"
-    },
-    {
-      "description": "Indexes",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Remove specified elasticsearch index",
-          "httpMethod": "DELETE",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/index/delete"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Index ID",
-              "fullType": "uuid",
-              "name": "indexId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Operation"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Returns specified elasticsearch index",
-          "httpMethod": "GET",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/index/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Index ID",
-              "fullType": "uuid",
-              "name": "indexId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Index"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Update specified elasticsearch index",
-          "httpMethod": "PUT",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/index/edit"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "dbaas.logs.OutputElasticsearchIndexUpdate",
-              "description": "Request Body",
-              "fullType": "dbaas.logs.OutputElasticsearchIndexUpdate",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "uuid",
-              "description": "Index ID",
-              "fullType": "uuid",
-              "name": "indexId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Operation"
-        }
-      ],
-      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/index/{indexId}"
-    },
-    {
-      "description": "IndexUrls",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Returns the list of urls of specified index",
-          "httpMethod": "GET",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/index/url/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Index ID",
-              "fullType": "uuid",
-              "name": "indexId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Url[]"
-        }
-      ],
-      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/index/{indexId}/url"
-    },
-    {
-      "description": "Kibana instances",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Returns the list of Kibana instances",
-          "httpMethod": "GET",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/kibana/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "uuid[]"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Register a new Kibana instance",
-          "httpMethod": "POST",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/kibana/create"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "dbaas.logs.KibanaCreation",
-              "description": "Request Body",
-              "fullType": "dbaas.logs.KibanaCreation",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Operation"
-        }
-      ],
-      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/kibana"
-    },
-    {
-      "description": "Kibana instances",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Remove specified Kibana instance",
-          "httpMethod": "DELETE",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/kibana/delete"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Kibana ID",
-              "fullType": "uuid",
-              "name": "kibanaId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Operation"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Returns specified Kibana instance",
-          "httpMethod": "GET",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/kibana/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Kibana ID",
-              "fullType": "uuid",
-              "name": "kibanaId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Kibana"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Update specified Kibana instance",
-          "httpMethod": "PUT",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/kibana/edit"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "dbaas.logs.KibanaUpdate",
-              "description": "Request Body",
-              "fullType": "dbaas.logs.KibanaUpdate",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "uuid",
-              "description": "Kibana ID",
-              "fullType": "uuid",
-              "name": "kibanaId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Operation"
-        }
-      ],
-      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/kibana/{kibanaId}"
-    },
-    {
-      "description": "KibanaUrls",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Returns the list of urls of specified Kibana",
-          "httpMethod": "GET",
-          "iamActions": [
-            "ldp:apiovh:output/elasticsearch/kibana/url/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Kibana ID",
-              "fullType": "uuid",
-              "name": "kibanaId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Url[]"
-        }
-      ],
-      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/kibana/{kibanaId}/url"
-    },
-    {
       "description": "Dashboards",
       "operations": [
         {
@@ -2032,9 +1656,15 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the list of graylog dashboards",
+          "errors": [
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/graylog/dashboard/get"
+            {
+              "name": "ldp:apiovh:output/graylog/dashboard/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2045,6 +1675,14 @@ export const schema: Schema = {
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter by title (like)",
+              "fullType": "string",
+              "name": "titlePattern",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "uuid[]"
@@ -2055,9 +1693,20 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Register a new graylog dashboard",
+          "errors": [
+            "Client::ValidationError::EmptyValue",
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::RequiredField",
+            "Client::ValidationError::ValueNotInRange",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:output/graylog/dashboard/create"
+            {
+              "name": "ldp:apiovh:output/graylog/dashboard/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2091,9 +1740,19 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Remove specified graylog dashboard",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::NotFound::DashboardDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "DELETE",
           "iamActions": [
-            "ldp:apiovh:output/graylog/dashboard/delete"
+            {
+              "name": "ldp:apiovh:output/graylog/dashboard/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2122,9 +1781,17 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns details of specified graylog dashboard",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::DashboardDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/graylog/dashboard/get"
+            {
+              "name": "ldp:apiovh:output/graylog/dashboard/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2153,9 +1820,23 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Update information of specified graylog dashboard",
+          "errors": [
+            "Client::ValidationError::EmptyValue",
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::RequiredField",
+            "Client::ValidationError::ValueNotInRange",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::DashboardDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "PUT",
           "iamActions": [
-            "ldp:apiovh:output/graylog/dashboard/edit"
+            {
+              "name": "ldp:apiovh:output/graylog/dashboard/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2197,9 +1878,27 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Copy all widgets from specified dashboard to a new one",
+          "errors": [
+            "Client::ValidationError::EmptyValue",
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::NotStreamOwner",
+            "Client::ValidationError::RequiredField",
+            "Client::ValidationError::ValueNotInRange",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::ItemQuotaReached",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::DashboardDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists",
+            "Client::Conflict::TitleAlreadyUsed"
+          ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:output/graylog/dashboard/duplicate/create"
+            {
+              "name": "ldp:apiovh:output/graylog/dashboard/duplicate",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2241,9 +1940,16 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the list of urls of specified graylog dashboard",
+          "errors": [
+            "Client::NotFound::DashboardDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/graylog/dashboard/url/get"
+            {
+              "name": "ldp:apiovh:output/graylog/dashboard/url/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2278,9 +1984,15 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the list of graylog streams",
+          "errors": [
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/graylog/stream/get"
+            {
+              "name": "ldp:apiovh:output/graylog/stream/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2291,6 +2003,14 @@ export const schema: Schema = {
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter by title (like)",
+              "fullType": "string",
+              "name": "titlePattern",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "uuid[]"
@@ -2301,9 +2021,36 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Register a new graylog stream",
+          "errors": [
+            "Client::ValidationError::InvalidSubStreamParent",
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::MaxEncryptionKeysPerStreamReached",
+            "Client::ValidationError::OptionDisabled",
+            "Client::ValidationError::RequiredField",
+            "Client::ValidationError::StreamArchivesCantBeEncryptedithAdminKeyOnly",
+            "Client::ValidationError::StreamRetentionMismatch",
+            "Client::ValidationError::TrialErrorColdstorage",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::ItemQuotaReached",
+            "Client::Forbidden::PCIDSSColdStorageDeny",
+            "Client::Forbidden::PCIDSSSettingOnly",
+            "Client::Forbidden::ParentStreamLocked",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::Forbidden::SubStreamColdstorageAddRules",
+            "Client::Forbidden::SubStreamColdstorageIndexingMaxSize",
+            "Client::NotFound::EncryptionKeyDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists",
+            "Client::Conflict::TitleAlreadyUsed",
+            "Server::NotImplemented::SubStreamColdstorage",
+            "Server::NotImplemented::SubStreamColdstorageOnAccount"
+          ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:output/graylog/stream/create"
+            {
+              "name": "ldp:apiovh:output/graylog/stream/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2337,9 +2084,23 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Remove specified graylog stream",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::StreamLinked",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::Forbidden::StreamDeleteDenied",
+            "Client::Forbidden::StreamIsParent",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists"
+          ],
           "httpMethod": "DELETE",
           "iamActions": [
-            "ldp:apiovh:output/graylog/stream/delete"
+            {
+              "name": "ldp:apiovh:output/graylog/stream/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2368,9 +2129,17 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns details of specified graylog stream",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/graylog/stream/get"
+            {
+              "name": "ldp:apiovh:output/graylog/stream/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2399,9 +2168,33 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Update information of specified graylog stream",
+          "errors": [
+            "Client::ValidationError::EmptyValue",
+            "Client::ValidationError::InvalidColdStorageRetention",
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::MaxEncryptionKeysPerStreamReached",
+            "Client::ValidationError::RequiredField",
+            "Client::ValidationError::StreamArchivesCantBeEncryptedithAdminKeyOnly",
+            "Client::ValidationError::TrialErrorColdstorage",
+            "Client::ValidationError::ValueNotInList",
+            "Client::ValidationError::ValueNotInRange",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::ItemQuotaReached",
+            "Client::Forbidden::NoRuleSet",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::PCIDSSColdStorageDeny",
+            "Client::Forbidden::PCIDSSSettingOnly",
+            "Client::NotFound::EncryptionKeyDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists",
+            "Client::Conflict::TitleAlreadyUsed"
+          ],
           "httpMethod": "PUT",
           "iamActions": [
-            "ldp:apiovh:output/graylog/stream/edit"
+            {
+              "name": "ldp:apiovh:output/graylog/stream/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2443,9 +2236,17 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the list of configured alerts of specified graylog stream",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/graylog/stream/alert/get"
+            {
+              "name": "ldp:apiovh:output/graylog/stream/alert/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2474,9 +2275,27 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Register a new alert on specified graylog stream",
+          "errors": [
+            "Client::ValidationError::EmptyValue",
+            "Client::ValidationError::InvalidAlertFieldValue",
+            "Client::ValidationError::InvalidConditionType",
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::RequiredField",
+            "Client::ValidationError::ValueNotInList",
+            "Client::ValidationError::ValueNotInRange",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists",
+            "Client::Conflict::AlertAlreadyExists"
+          ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:output/graylog/stream/alert/create"
+            {
+              "name": "ldp:apiovh:output/graylog/stream/alert/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2518,9 +2337,20 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Remove alert from specified graylog stream",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::NotFound::AlertDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists"
+          ],
           "httpMethod": "DELETE",
           "iamActions": [
-            "ldp:apiovh:output/graylog/stream/alert/delete"
+            {
+              "name": "ldp:apiovh:output/graylog/stream/alert/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2557,9 +2387,18 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns details of specified graylog stream alert",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::AlertDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/graylog/stream/alert/get"
+            {
+              "name": "ldp:apiovh:output/graylog/stream/alert/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2596,9 +2435,26 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Update alert information of specified graylog stream",
+          "errors": [
+            "Client::ValidationError::EmptyValue",
+            "Client::ValidationError::InvalidConditionType",
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::RequiredField",
+            "Client::ValidationError::ValueNotInList",
+            "Client::ValidationError::ValueNotInRange",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists",
+            "Client::Conflict::AlertAlreadyExists"
+          ],
           "httpMethod": "PUT",
           "iamActions": [
-            "ldp:apiovh:output/graylog/stream/alert/edit"
+            {
+              "name": "ldp:apiovh:output/graylog/stream/alert/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2648,9 +2504,17 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the list of archives",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/graylog/stream/archive/get"
+            {
+              "name": "ldp:apiovh:output/graylog/stream/archive/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2685,9 +2549,18 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns details of specified archive",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::ArchiveDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/graylog/stream/archive/get"
+            {
+              "name": "ldp:apiovh:output/graylog/stream/archive/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2722,6 +2595,60 @@ export const schema: Schema = {
       "path": "/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive/{archiveId}"
     },
     {
+      "description": "Archive encryption keys",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get the list of encryption keys used to encrypt the archive",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::ArchiveDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists"
+          ],
+          "httpMethod": "GET",
+          "iamActions": [
+            {
+              "name": "ldp:apiovh:output/graylog/stream/archive/encryptionKey/get",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Archive ID",
+              "fullType": "uuid",
+              "name": "archiveId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Stream ID",
+              "fullType": "uuid",
+              "name": "streamId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "uuid[]"
+        }
+      ],
+      "path": "/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive/{archiveId}/encryptionKey"
+    },
+    {
       "description": "Streams",
       "operations": [
         {
@@ -2730,9 +2657,19 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Get a public temporary URL to access the archive",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::ArchiveDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists",
+            "Client::NotFound::URLDoesNotExists"
+          ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:output/graylog/stream/archive/url/create"
+            {
+              "name": "ldp:apiovh:output/graylog/stream/archive/url/generate",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2775,9 +2712,17 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the list of rules of specified graylog stream",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/graylog/stream/rule/get"
+            {
+              "name": "ldp:apiovh:output/graylog/stream/rule/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2806,9 +2751,27 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Register a new rule on specified graylog stream",
+          "errors": [
+            "Client::ValidationError::EmptyValue",
+            "Client::ValidationError::InvalidFieldValue",
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::NotASubStream",
+            "Client::ValidationError::RequiredField",
+            "Client::ValidationError::ValueNotInList",
+            "Client::ValidationError::ValueNotInRange",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::Forbidden::StreamLocked",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists",
+            "Client::Conflict::RuleAlreadyExists"
+          ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:output/graylog/stream/rule/create"
+            {
+              "name": "ldp:apiovh:output/graylog/stream/rule/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2850,9 +2813,21 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Remove specified graylog stream rule",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::NotASubStream",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists",
+            "Client::NotFound::StreamRuleDoesNotExists"
+          ],
           "httpMethod": "DELETE",
           "iamActions": [
-            "ldp:apiovh:output/graylog/stream/rule/delete"
+            {
+              "name": "ldp:apiovh:output/graylog/stream/rule/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2889,9 +2864,18 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns details of specified graylog stream rule",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists",
+            "Client::NotFound::StreamRuleDoesNotExists"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/graylog/stream/rule/get"
+            {
+              "name": "ldp:apiovh:output/graylog/stream/rule/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2926,6 +2910,169 @@ export const schema: Schema = {
       "path": "/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule/{ruleId}"
     },
     {
+      "description": "StreamSubscriptions",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Returns the list of subscriptions targeting a specified graylog stream",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists"
+          ],
+          "httpMethod": "GET",
+          "iamActions": [
+            {
+              "name": "ldp:apiovh:output/graylog/stream/subscription/get",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Stream ID",
+              "fullType": "uuid",
+              "name": "streamId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter by resource name (like)",
+              "fullType": "string",
+              "name": "resourceName",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Filter by resource type (like)",
+              "fullType": "string",
+              "name": "resourceType",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "uuid[]"
+        }
+      ],
+      "path": "/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/subscription"
+    },
+    {
+      "description": "StreamSubscriptions",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Delete a specified subscription targeting a specified graylog stream",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists",
+            "Client::NotFound::SubscriptionDoesNotExist"
+          ],
+          "httpMethod": "DELETE",
+          "iamActions": [
+            {
+              "name": "ldp:apiovh:output/graylog/stream/subscription/delete",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Stream ID",
+              "fullType": "uuid",
+              "name": "streamId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Subscription ID",
+              "fullType": "uuid",
+              "name": "subscriptionId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dbaas.logs.Operation"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Returns details of specified graylog stream subscription",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists",
+            "Client::NotFound::SubscriptionDoesNotExist"
+          ],
+          "httpMethod": "GET",
+          "iamActions": [
+            {
+              "name": "ldp:apiovh:output/graylog/stream/subscription/get",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Stream ID",
+              "fullType": "uuid",
+              "name": "streamId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Subscription ID",
+              "fullType": "uuid",
+              "name": "subscriptionId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dbaas.logs.LogSubscription"
+        }
+      ],
+      "path": "/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/subscription/{subscriptionId}"
+    },
+    {
       "description": "StreamUrls",
       "operations": [
         {
@@ -2934,9 +3081,17 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the list of urls of specified graylog stream",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/graylog/stream/url/get"
+            {
+              "name": "ldp:apiovh:output/graylog/stream/url/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2971,9 +3126,15 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the list of alias for connected user",
+          "errors": [
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/alias/get"
+            {
+              "name": "ldp:apiovh:output/opensearch/alias/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2984,6 +3145,14 @@ export const schema: Schema = {
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter by name (like)",
+              "fullType": "string",
+              "name": "namePattern",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "uuid[]"
@@ -2994,9 +3163,26 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Register a new OpenSearch alias",
+          "errors": [
+            "Client::ValidationError::InvalidNameContain",
+            "Client::ValidationError::InvalidNameLenght",
+            "Client::ValidationError::InvalidNameLowercase",
+            "Client::ValidationError::InvalidNameMatch",
+            "Client::ValidationError::InvalidNameStart",
+            "Client::ValidationError::InvalidNameWhitespace",
+            "Client::ValidationError::RequiredField",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::ItemQuotaReached",
+            "Client::NotFound::ClusterDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::Conflict::AlreadyExists"
+          ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/alias/create"
+            {
+              "name": "ldp:apiovh:output/opensearch/alias/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3030,9 +3216,19 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Remove specified OpenSearch alias",
+          "errors": [
+            "Client::ValidationError::AliasHasLinkedStreams",
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "DELETE",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/alias/delete"
+            {
+              "name": "ldp:apiovh:output/opensearch/alias/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3061,9 +3257,17 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns specified OpenSearch alias",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::AliasDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/alias/get"
+            {
+              "name": "ldp:apiovh:output/opensearch/alias/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3092,9 +3296,21 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Update specified OpenSearch alias",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::RequiredField",
+            "Client::PaymentRequired::QuotaReached",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::ItemQuotaReached",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "PUT",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/alias/edit"
+            {
+              "name": "ldp:apiovh:output/opensearch/alias/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3136,9 +3352,17 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the list of OpenSearch indexes attached to specified OpenSearch alias",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::AliasDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/alias/index/get"
+            {
+              "name": "ldp:apiovh:output/opensearch/alias/index/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3167,9 +3391,23 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Attach a OpenSearch index to specified OpenSearch alias",
+          "errors": [
+            "Client::ValidationError::CannotMixStreamAndIndex",
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::RequiredField",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::IndexAlreadyLinked",
+            "Client::Forbidden::NotOnSameCluster",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::NotFound::AliasDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/alias/index/create"
+            {
+              "name": "ldp:apiovh:output/opensearch/alias/index/attach",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3211,9 +3449,21 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Detach a OpenSearch index from specified OpenSearch alias",
+          "errors": [
+            "Client::ValidationError::IndexNotLinked",
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::NotFound::AliasDoesNotExists",
+            "Client::NotFound::IndexDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "DELETE",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/alias/index/delete"
+            {
+              "name": "ldp:apiovh:output/opensearch/alias/index/detach",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3256,9 +3506,17 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the list of Graylog streams attached to specified OpenSearch alias",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::AliasDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/alias/stream/get"
+            {
+              "name": "ldp:apiovh:output/opensearch/alias/stream/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3287,9 +3545,24 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Attach a Graylog stream to specified OpenSearch alias",
+          "errors": [
+            "Client::ValidationError::CannotMixStreamAndIndex",
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::NotStreamOwner",
+            "Client::ValidationError::RequiredField",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::NotOnSameCluster",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::StreamAlreadyLinked",
+            "Client::NotFound::AliasDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/alias/stream/create"
+            {
+              "name": "ldp:apiovh:output/opensearch/alias/stream/attach",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3331,9 +3604,21 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Detach a Graylog stream from specified OpenSearch alias",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::StreamNotLinked",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::NotFound::AliasDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists"
+          ],
           "httpMethod": "DELETE",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/alias/stream/delete"
+            {
+              "name": "ldp:apiovh:output/opensearch/alias/stream/detach",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3376,9 +3661,17 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the list of urls of specified alias",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::AliasDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/alias/url/get"
+            {
+              "name": "ldp:apiovh:output/opensearch/alias/url/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3413,9 +3706,15 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the list of OpenSearch indexes",
+          "errors": [
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/index/get"
+            {
+              "name": "ldp:apiovh:output/opensearch/index/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3426,6 +3725,14 @@ export const schema: Schema = {
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter by name (like)",
+              "fullType": "string",
+              "name": "namePattern",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "uuid[]"
@@ -3436,9 +3743,27 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Register a new OpenSearch index",
+          "errors": [
+            "Client::ValidationError::InvalidNameContain",
+            "Client::ValidationError::InvalidNameLenght",
+            "Client::ValidationError::InvalidNameLowercase",
+            "Client::ValidationError::InvalidNameMatch",
+            "Client::ValidationError::InvalidNameStart",
+            "Client::ValidationError::InvalidNameWhitespace",
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::RequiredField",
+            "Client::ValidationError::ValueNotInRange",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::ItemQuotaReached",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::Conflict::AlreadyExists"
+          ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/index/create"
+            {
+              "name": "ldp:apiovh:output/opensearch/index/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3472,9 +3797,20 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Remove specified OpenSearch index",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::NotOwner",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::NotFound::IndexDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "DELETE",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/index/delete"
+            {
+              "name": "ldp:apiovh:output/opensearch/index/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3503,9 +3839,17 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns specified OpenSearch index",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::IndexDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/index/get"
+            {
+              "name": "ldp:apiovh:output/opensearch/index/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3534,9 +3878,21 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Update specified OpenSearch index",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::RequiredField",
+            "Client::ValidationError::ValueNotInRange",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::NotFound::IndexDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "PUT",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/index/edit"
+            {
+              "name": "ldp:apiovh:output/opensearch/index/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3578,9 +3934,18 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the list of urls of specified index",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::NotOwner",
+            "Client::NotFound::IndexDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/index/url/get"
+            {
+              "name": "ldp:apiovh:output/opensearch/index/url/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3615,9 +3980,15 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the list of OpenSearch Dashboards instances",
+          "errors": [
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/osd/get"
+            {
+              "name": "ldp:apiovh:output/opensearch/osd/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3638,9 +4009,21 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Register a new OpenSearch Dashboards instance",
+          "errors": [
+            "Client::ValidationError::ClusterWithoutFrontend",
+            "Client::ValidationError::RequiredField",
+            "Client::Forbidden::ItemQuotaReached",
+            "Client::Forbidden::OsdStillInDelivery",
+            "Client::Forbidden::PCIDSSInputDeny",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/osd/create"
+            {
+              "name": "ldp:apiovh:output/opensearch/osd/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3674,9 +4057,20 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Remove specified OpenSearch Dashboards instance",
+          "errors": [
+            "Client::ValidationError::InvalidDeliveryStatus",
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::OsdDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "DELETE",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/osd/delete"
+            {
+              "name": "ldp:apiovh:output/opensearch/osd/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3705,9 +4099,18 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns specified OpenSearch Dashboards instance",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::RequiredField",
+            "Client::NotFound::OsdDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/osd/get"
+            {
+              "name": "ldp:apiovh:output/opensearch/osd/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3736,9 +4139,20 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Update specified OpenSearch Dashboards instance",
+          "errors": [
+            "Client::ValidationError::InvalidDeliveryStatus",
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::OsdDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "PUT",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/osd/edit"
+            {
+              "name": "ldp:apiovh:output/opensearch/osd/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3780,9 +4194,17 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the list of urls of specified OpenSearch Dashboards",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::OsdDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:output/opensearch/osd/url/get"
+            {
+              "name": "ldp:apiovh:output/opensearch/osd/url/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3817,9 +4239,15 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the list of roles",
+          "errors": [
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:role/get"
+            {
+              "name": "ldp:apiovh:role/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3830,6 +4258,14 @@ export const schema: Schema = {
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter by name (like)",
+              "fullType": "string",
+              "name": "namePattern",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "uuid[]"
@@ -3840,9 +4276,21 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Register a new role",
+          "errors": [
+            "Client::ValidationError::EmptyValue",
+            "Client::ValidationError::RequiredField",
+            "Client::ValidationError::ValueNotInRange",
+            "Client::PaymentRequired::QuotaReached",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::Conflict::AlreadyExists"
+          ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:role/create"
+            {
+              "name": "ldp:apiovh:role/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3876,9 +4324,19 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Remove specified role",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::RoleDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "DELETE",
           "iamActions": [
-            "ldp:apiovh:role/delete"
+            {
+              "name": "ldp:apiovh:role/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3907,9 +4365,17 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns details of specified role",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::RoleDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:role/get"
+            {
+              "name": "ldp:apiovh:role/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3938,9 +4404,22 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Update information of specified role",
+          "errors": [
+            "Client::ValidationError::EmptyValue",
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::RequiredField",
+            "Client::ValidationError::ValueNotInRange",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::RoleDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "PUT",
           "iamActions": [
-            "ldp:apiovh:role/edit"
+            {
+              "name": "ldp:apiovh:role/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3982,9 +4461,17 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the member list of specified role",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::RoleDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:role/member/get"
+            {
+              "name": "ldp:apiovh:role/member/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4013,9 +4500,22 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Append user into the member list of specified role",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::UserAlreadyInRole",
+            "Client::Forbidden::ActionDisabledOnMySelf",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::RoleDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:role/member/create"
+            {
+              "name": "ldp:apiovh:role/member/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4057,9 +4557,21 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Remove user from the member list of specified role",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::NotAMemberOfRole",
+            "Client::NotFound::RoleDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "DELETE",
           "iamActions": [
-            "ldp:apiovh:role/member/delete"
+            {
+              "name": "ldp:apiovh:role/member/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4096,9 +4608,18 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the member metadata",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::NotAMemberOfRole",
+            "Client::NotFound::RoleDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:role/member/get"
+            {
+              "name": "ldp:apiovh:role/member/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4135,9 +4656,23 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Update the member metadata",
+          "errors": [
+            "Client::ValidationError::EmptyValue",
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::ValueNotInRange",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::NotAMemberOfRole",
+            "Client::NotFound::RoleDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "PUT",
           "iamActions": [
-            "ldp:apiovh:role/member/edit"
+            {
+              "name": "ldp:apiovh:role/member/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4187,9 +4722,17 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the list of permissions of specified role",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::RoleDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:role/permission/get"
+            {
+              "name": "ldp:apiovh:role/permission/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4224,9 +4767,20 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Remove specified permission",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::NotFound::PermissionDoesNotExists",
+            "Client::NotFound::RoleDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "DELETE",
           "iamActions": [
-            "ldp:apiovh:role/permission/delete"
+            {
+              "name": "ldp:apiovh:role/permission/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4263,9 +4817,18 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns details of specified permission",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::PermissionDoesNotExists",
+            "Client::NotFound::RoleDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:role/permission/get"
+            {
+              "name": "ldp:apiovh:role/permission/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4308,9 +4871,22 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Append a elasticsearch alias permission to role",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::AliasDoesNotExists",
+            "Client::NotFound::RoleDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::Conflict::PermissionAlreadySet"
+          ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:role/permission/alias/create"
+            {
+              "name": "ldp:apiovh:role/permission/alias/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4352,9 +4928,22 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Append a graylog dashboard permission to role",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::DashboardDoesNotExists",
+            "Client::NotFound::RoleDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::Conflict::PermissionAlreadySet"
+          ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:role/permission/dashboard/create"
+            {
+              "name": "ldp:apiovh:role/permission/dashboard/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4396,9 +4985,22 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Append a elasticsearch index permission to role",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::IndexDoesNotExists",
+            "Client::NotFound::RoleDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::Conflict::PermissionAlreadySet"
+          ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:role/permission/index/create"
+            {
+              "name": "ldp:apiovh:role/permission/index/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4432,50 +5034,6 @@ export const schema: Schema = {
       "path": "/dbaas/logs/{serviceName}/role/{roleId}/permission/index"
     },
     {
-      "description": "RolePermissionKibana",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Append a kibana permission to role",
-          "httpMethod": "POST",
-          "iamActions": [
-            "ldp:apiovh:role/permission/kibana/create"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "dbaas.logs.RolePermissionKibanaCreation",
-              "description": "Request Body",
-              "fullType": "dbaas.logs.RolePermissionKibanaCreation",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "uuid",
-              "description": "Role ID",
-              "fullType": "uuid",
-              "name": "roleId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Operation"
-        }
-      ],
-      "path": "/dbaas/logs/{serviceName}/role/{roleId}/permission/kibana"
-    },
-    {
       "description": "RolePermissionOsd",
       "operations": [
         {
@@ -4484,9 +5042,22 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Append a OpenSearch Dashboards permission to role",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::OsdDoesNotExists",
+            "Client::NotFound::RoleDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::Conflict::PermissionAlreadySet"
+          ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:role/permission/osd/create"
+            {
+              "name": "ldp:apiovh:role/permission/osd/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4528,9 +5099,22 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Append a graylog stream permission to role",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::RoleDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::StreamDoesNotExists",
+            "Client::Conflict::PermissionAlreadySet"
+          ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:role/permission/stream/create"
+            {
+              "name": "ldp:apiovh:role/permission/stream/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4571,10 +5155,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get service information",
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:serviceInfos/get"
+            {
+              "name": "ldp:apiovh:serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4594,10 +5181,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Update service information",
           "httpMethod": "PUT",
           "iamActions": [
-            "ldp:apiovh:serviceInfos/edit"
+            {
+              "name": "ldp:apiovh:serviceInfos/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4631,9 +5221,15 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the list of service tokens",
+          "errors": [
+            "Client::NotFound::ServiceDoesNotExists"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:token/get"
+            {
+              "name": "ldp:apiovh:token/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4644,6 +5240,14 @@ export const schema: Schema = {
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter by name (like)",
+              "fullType": "string",
+              "name": "namePattern",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "uuid[]"
@@ -4654,9 +5258,23 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Add a new token",
+          "errors": [
+            "Client::ValidationError::InvalidTokenName",
+            "Client::ValidationError::InvalidUUID",
+            "Client::ValidationError::RequiredField",
+            "Client::Forbidden::AccessDenied",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::ClusterDoesNotExists",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::Conflict::TokenNameAlreadyUsed"
+          ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:token/create"
+            {
+              "name": "ldp:apiovh:token/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4690,9 +5308,20 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Delete the specified token",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::Forbidden::Busy",
+            "Client::Forbidden::OnlyOwnerCanPerformAction",
+            "Client::Forbidden::ServiceUnavailable",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::TokenDoesNotExists"
+          ],
           "httpMethod": "DELETE",
           "iamActions": [
-            "ldp:apiovh:token/delete"
+            {
+              "name": "ldp:apiovh:token/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4721,9 +5350,17 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns the specified token",
+          "errors": [
+            "Client::ValidationError::InvalidUUID",
+            "Client::NotFound::ServiceDoesNotExists",
+            "Client::NotFound::TokenDoesNotExists"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:token/get"
+            {
+              "name": "ldp:apiovh:token/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4758,9 +5395,15 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Returns platform useful urls",
+          "errors": [
+            "Client::NotFound::ServiceNotFound"
+          ],
           "httpMethod": "GET",
           "iamActions": [
-            "ldp:apiovh:url/get"
+            {
+              "name": "ldp:apiovh:url/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4787,9 +5430,18 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Initiate a password change procedure.",
+          "errors": [
+            "Client::ValidationError::InvalidPassword",
+            "Client::ValidationError::RequiredField",
+            "Client::Forbidden::Busy",
+            "Client::NotFound::ServiceNotFound"
+          ],
           "httpMethod": "POST",
           "iamActions": [
-            "ldp:apiovh:user/changePassword"
+            {
+              "name": "ldp:apiovh:user/changePassword",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4861,6 +5513,22 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        },
+        "nbIndex": {
+          "canBeNull": false,
+          "description": "Number of indices linked",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "nbStream": {
+          "canBeNull": false,
+          "description": "Number of streams linked",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "updatedAt": {
           "canBeNull": true,
@@ -5084,8 +5752,9 @@ export const schema: Schema = {
       "description": "Possible values for ClusterClusterTypeEnum",
       "enum": [
         "DEDICATED",
+        "PCI_DSS",
         "PRO",
-        "TRIAL"
+        "TRUSTED_ZONE"
       ],
       "enumType": "string",
       "id": "ClusterClusterTypeEnum",
@@ -5230,6 +5899,95 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "DeliveryStatusEnum",
+      "namespace": "dbaas.logs"
+    },
+    "dbaas.logs.EncryptionKey": {
+      "description": "Encryption key",
+      "id": "EncryptionKey",
+      "namespace": "dbaas.logs",
+      "properties": {
+        "algorithm": {
+          "canBeNull": false,
+          "description": "Encryption Key algorithm",
+          "fullType": "dbaas.logs.EncryptionKeyAlgorithmEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dbaas.logs.EncryptionKeyAlgorithmEnum"
+        },
+        "content": {
+          "canBeNull": false,
+          "description": "Encryption Key content",
+          "fullType": "password",
+          "readOnly": false,
+          "required": true,
+          "type": "password"
+        },
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Encryption Key creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "encryptionKeyId": {
+          "canBeNull": false,
+          "description": "Encryption Key ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "fingerprint": {
+          "canBeNull": false,
+          "description": "Encryption Key fingerprint",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "isEditable": {
+          "canBeNull": false,
+          "description": "Indicates if you are allowed to edit entry",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "nbArchive": {
+          "canBeNull": true,
+          "description": "Number of archives encrypted with this Encryption Key",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "title": {
+          "canBeNull": false,
+          "description": "Encryption Key title",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "uid": {
+          "canBeNull": false,
+          "description": "Encryption Key user ID",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "dbaas.logs.EncryptionKeyAlgorithmEnum": {
+      "description": "Possible values for EncryptionKeyAlgorithmEnum",
+      "enum": [
+        "ECC25519",
+        "RSA4096"
+      ],
+      "enumType": "string",
+      "id": "EncryptionKeyAlgorithmEnum",
       "namespace": "dbaas.logs"
     },
     "dbaas.logs.Engine": {
@@ -5431,6 +6189,14 @@ export const schema: Schema = {
           "required": false,
           "type": "datetime"
         },
+        "currentSize": {
+          "canBeNull": true,
+          "description": "Current index size (in bytes)",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
         "description": {
           "canBeNull": true,
           "description": "Index description",
@@ -5502,6 +6268,14 @@ export const schema: Schema = {
           "required": false,
           "type": "ipBlock[]"
         },
+        "autoscale": {
+          "canBeNull": true,
+          "description": "Whether the workload is auto-scaled",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
         "createdAt": {
           "canBeNull": false,
           "description": "Input creation",
@@ -5558,6 +6332,22 @@ export const schema: Schema = {
           "required": false,
           "type": "boolean"
         },
+        "maxScaleInstance": {
+          "canBeNull": true,
+          "description": "Maximum number of instances in auto-scaled mode",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "minScaleInstance": {
+          "canBeNull": true,
+          "description": "Minimum number of instances in auto-scaled mode",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
         "nbInstance": {
           "canBeNull": true,
           "description": "Number of instance running",
@@ -5573,6 +6363,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        },
+        "scalingNotifyEnabled": {
+          "canBeNull": true,
+          "description": "If set, notify when scaling happens",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "sslCertificate": {
           "canBeNull": false,
@@ -5663,7 +6461,7 @@ export const schema: Schema = {
           "description": "configuration log format",
           "fullType": "dbaas.logs.FlowggerConfigurationLogFormatEnum",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "dbaas.logs.FlowggerConfigurationLogFormatEnum"
         },
         "logFraming": {
@@ -5671,7 +6469,7 @@ export const schema: Schema = {
           "description": "Log framing",
           "fullType": "dbaas.logs.FlowggerConfigurationLogFramingEnum",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "dbaas.logs.FlowggerConfigurationLogFramingEnum"
         }
       }
@@ -5694,7 +6492,7 @@ export const schema: Schema = {
           "description": "Input section",
           "fullType": "string",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "string"
         },
         "patternSection": {
@@ -5720,12 +6518,20 @@ export const schema: Schema = {
           "required": false,
           "type": "ipBlock[]"
         },
+        "autoscale": {
+          "canBeNull": true,
+          "description": "Whether the workload is auto-scaled",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
         "description": {
           "canBeNull": false,
           "description": "Description",
           "fullType": "string",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "string"
         },
         "engineId": {
@@ -5733,7 +6539,7 @@ export const schema: Schema = {
           "description": "Engine ID",
           "fullType": "uuid",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "uuid"
         },
         "exposedPort": {
@@ -5744,6 +6550,22 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "maxScaleInstance": {
+          "canBeNull": true,
+          "description": "Maximum number of instances in auto-scaled mode",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "minScaleInstance": {
+          "canBeNull": true,
+          "description": "Minimum number of instances in auto-scaled mode",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
         "nbInstance": {
           "canBeNull": true,
           "description": "Number of instance running",
@@ -5752,12 +6574,20 @@ export const schema: Schema = {
           "required": false,
           "type": "long"
         },
+        "scalingNotifyEnabled": {
+          "canBeNull": true,
+          "description": "If set, notify when scaling happens",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
         "streamId": {
           "canBeNull": false,
           "description": "Stream ID",
           "fullType": "uuid",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "uuid"
         },
         "title": {
@@ -5765,7 +6595,7 @@ export const schema: Schema = {
           "description": "Title",
           "fullType": "string",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "string"
         }
       }
@@ -5795,12 +6625,20 @@ export const schema: Schema = {
           "required": false,
           "type": "ipBlock[]"
         },
+        "autoscale": {
+          "canBeNull": true,
+          "description": "Whether the workload is auto-scaled",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
         "description": {
           "canBeNull": false,
           "description": "Description",
           "fullType": "string",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "string"
         },
         "engineId": {
@@ -5808,7 +6646,7 @@ export const schema: Schema = {
           "description": "Engine ID",
           "fullType": "uuid",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "uuid"
         },
         "exposedPort": {
@@ -5819,6 +6657,22 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "maxScaleInstance": {
+          "canBeNull": true,
+          "description": "Maximum number of instances in auto-scaled mode",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "minScaleInstance": {
+          "canBeNull": true,
+          "description": "Minimum number of instances in auto-scaled mode",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
         "nbInstance": {
           "canBeNull": true,
           "description": "Number of instance running",
@@ -5827,12 +6681,20 @@ export const schema: Schema = {
           "required": false,
           "type": "long"
         },
+        "scalingNotifyEnabled": {
+          "canBeNull": true,
+          "description": "If set, notify when scaling happens",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
         "streamId": {
           "canBeNull": false,
           "description": "Stream ID",
           "fullType": "uuid",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "uuid"
         },
         "title": {
@@ -5840,51 +6702,43 @@ export const schema: Schema = {
           "description": "Title",
           "fullType": "string",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "string"
         }
       }
     },
-    "dbaas.logs.Kibana": {
-      "description": "Kibana instance",
-      "id": "Kibana",
+    "dbaas.logs.LogKind": {
+      "description": "Log kind",
+      "id": "LogKind",
       "namespace": "dbaas.logs",
       "properties": {
+        "additionalReturnedFields": {
+          "canBeNull": false,
+          "description": "List of additional log fields managed in this log kind",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
         "createdAt": {
           "canBeNull": false,
-          "description": "Kibana creation",
+          "description": "Creation date of the log kind",
           "fullType": "datetime",
           "readOnly": true,
           "required": false,
           "type": "datetime"
         },
-        "deliveryStatus": {
+        "displayName": {
           "canBeNull": false,
-          "description": "Status of the delivering process",
-          "fullType": "dbaas.logs.DeliveryStatusEnum",
-          "readOnly": true,
-          "required": false,
-          "type": "dbaas.logs.DeliveryStatusEnum"
-        },
-        "description": {
-          "canBeNull": false,
-          "description": "Kibana description",
+          "description": "Log kind display name",
           "fullType": "string",
           "readOnly": true,
           "required": false,
           "type": "string"
         },
-        "isEditable": {
+        "kindId": {
           "canBeNull": false,
-          "description": "Indicates if you are allowed to edit entry",
-          "fullType": "boolean",
-          "readOnly": true,
-          "required": false,
-          "type": "boolean"
-        },
-        "kibanaId": {
-          "canBeNull": false,
-          "description": "Kibana ID",
+          "description": "Log kind ID",
           "fullType": "uuid",
           "readOnly": true,
           "required": false,
@@ -5892,15 +6746,15 @@ export const schema: Schema = {
         },
         "name": {
           "canBeNull": false,
-          "description": "Kibana name",
+          "description": "Log kind name",
           "fullType": "string",
           "readOnly": true,
           "required": false,
           "type": "string"
         },
         "updatedAt": {
-          "canBeNull": true,
-          "description": "Kibana last update",
+          "canBeNull": false,
+          "description": "Last update date of the log kind",
           "fullType": "datetime",
           "readOnly": true,
           "required": false,
@@ -5908,32 +6762,103 @@ export const schema: Schema = {
         }
       }
     },
-    "dbaas.logs.KibanaCreation": {
-      "description": "New Kibana instance",
-      "id": "KibanaCreation",
+    "dbaas.logs.LogSubscription": {
+      "description": "Log subscription",
+      "id": "LogSubscription",
       "namespace": "dbaas.logs",
       "properties": {
-        "description": {
+        "createdAt": {
           "canBeNull": false,
-          "description": "Description",
+          "description": "Creation date of the subscription",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "kind": {
+          "canBeNull": false,
+          "description": "Log kind name of this subscription",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "resource": {
+          "canBeNull": false,
+          "description": "Subscribed resource, where the logs come from",
+          "fullType": "dbaas.logs.LogSubscriptionResource",
+          "readOnly": true,
+          "required": false,
+          "type": "dbaas.logs.LogSubscriptionResource"
+        },
+        "serviceName": {
+          "canBeNull": false,
+          "description": "Name of the destination log service",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "streamId": {
+          "canBeNull": false,
+          "description": "Id of the destination log stream",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "subscriptionId": {
+          "canBeNull": false,
+          "description": "Subscription ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "updatedAt": {
+          "canBeNull": false,
+          "description": "Last update date of the subscription",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        }
+      }
+    },
+    "dbaas.logs.LogSubscriptionResource": {
+      "description": "Log subscription resource",
+      "id": "LogSubscriptionResource",
+      "namespace": "dbaas.logs",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "Name of subscribed resource",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Type of subscribed resource",
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
       }
     },
-    "dbaas.logs.KibanaUpdate": {
-      "description": "Kibana update",
-      "id": "KibanaUpdate",
+    "dbaas.logs.LogUrlCreation": {
+      "description": "Log temporary URL creation payload",
+      "id": "LogUrlCreation",
       "namespace": "dbaas.logs",
       "properties": {
-        "description": {
+        "kind": {
           "canBeNull": false,
-          "description": "Description",
+          "description": "Log kind name",
           "fullType": "string",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "string"
         }
       }
@@ -6029,6 +6954,14 @@ export const schema: Schema = {
           "required": false,
           "type": "uuid"
         },
+        "encryptionKeyId": {
+          "canBeNull": true,
+          "description": "Encryption key used",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
         "indexId": {
           "canBeNull": true,
           "description": "Index used",
@@ -6040,14 +6973,6 @@ export const schema: Schema = {
         "inputId": {
           "canBeNull": true,
           "description": "Input used",
-          "fullType": "uuid",
-          "readOnly": true,
-          "required": false,
-          "type": "uuid"
-        },
-        "kibanaId": {
-          "canBeNull": true,
-          "description": "Kibana used (DEPRECATED: use osdId)",
           "fullType": "uuid",
           "readOnly": true,
           "required": false,
@@ -6077,6 +7002,14 @@ export const schema: Schema = {
           "required": false,
           "type": "uuid"
         },
+        "serviceName": {
+          "canBeNull": false,
+          "description": "Service name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
         "state": {
           "canBeNull": false,
           "description": "Operation status",
@@ -6088,6 +7021,22 @@ export const schema: Schema = {
         "streamId": {
           "canBeNull": true,
           "description": "Stream used",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "subscriptionId": {
+          "canBeNull": true,
+          "description": "Subscription used",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "tokenId": {
+          "canBeNull": true,
+          "description": "Token used",
           "fullType": "uuid",
           "readOnly": true,
           "required": false,
@@ -6192,7 +7141,7 @@ export const schema: Schema = {
           "description": "Description",
           "fullType": "string",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "string"
         }
       }
@@ -6207,137 +7156,7 @@ export const schema: Schema = {
           "description": "Description",
           "fullType": "string",
           "readOnly": false,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "dbaas.logs.OutputElasticsearchAliasCreation": {
-      "description": "New Elasticsearch alias",
-      "id": "OutputElasticsearchAliasCreation",
-      "namespace": "dbaas.logs",
-      "properties": {
-        "description": {
-          "canBeNull": false,
-          "description": "Description",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "suffix": {
-          "canBeNull": false,
-          "description": "Suffix",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "dbaas.logs.OutputElasticsearchAliasIndexCreation": {
-      "description": "Link given Elasticsearch index to alias",
-      "id": "OutputElasticsearchAliasIndexCreation",
-      "namespace": "dbaas.logs",
-      "properties": {
-        "indexId": {
-          "canBeNull": false,
-          "description": "Index ID",
-          "fullType": "uuid",
-          "readOnly": false,
-          "required": false,
-          "type": "uuid"
-        }
-      }
-    },
-    "dbaas.logs.OutputElasticsearchAliasStreamCreation": {
-      "description": "Link given Graylog stream to Elasticsearch alias",
-      "id": "OutputElasticsearchAliasStreamCreation",
-      "namespace": "dbaas.logs",
-      "properties": {
-        "streamId": {
-          "canBeNull": false,
-          "description": "Stream ID",
-          "fullType": "uuid",
-          "readOnly": false,
-          "required": false,
-          "type": "uuid"
-        }
-      }
-    },
-    "dbaas.logs.OutputElasticsearchAliasUpdate": {
-      "description": "Elasticsearch alias update",
-      "id": "OutputElasticsearchAliasUpdate",
-      "namespace": "dbaas.logs",
-      "properties": {
-        "description": {
-          "canBeNull": false,
-          "description": "Description",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "dbaas.logs.OutputElasticsearchIndexCreation": {
-      "description": "New Elasticsearch index",
-      "id": "OutputElasticsearchIndexCreation",
-      "namespace": "dbaas.logs",
-      "properties": {
-        "alertNotifyEnabled": {
-          "canBeNull": true,
-          "description": "If set, notify when size is near 80, 90 or 100 % of its maximum capacity",
-          "fullType": "boolean",
-          "readOnly": false,
-          "required": false,
-          "type": "boolean"
-        },
-        "description": {
-          "canBeNull": false,
-          "description": "Description",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "nbShard": {
-          "canBeNull": true,
-          "description": "Number of shard",
-          "fullType": "long",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "suffix": {
-          "canBeNull": false,
-          "description": "Suffix",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "dbaas.logs.OutputElasticsearchIndexUpdate": {
-      "description": "Elasticsearch index update",
-      "id": "OutputElasticsearchIndexUpdate",
-      "namespace": "dbaas.logs",
-      "properties": {
-        "alertNotifyEnabled": {
-          "canBeNull": true,
-          "description": "If set, notify when size is near 80, 90 or 100 % of its maximum capacity",
-          "fullType": "boolean",
-          "readOnly": false,
-          "required": false,
-          "type": "boolean"
-        },
-        "description": {
-          "canBeNull": false,
-          "description": "Description",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "string"
         }
       }
@@ -6352,7 +7171,7 @@ export const schema: Schema = {
           "description": "Description",
           "fullType": "string",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "string"
         },
         "title": {
@@ -6360,7 +7179,7 @@ export const schema: Schema = {
           "description": "Title",
           "fullType": "string",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "string"
         }
       }
@@ -6375,7 +7194,7 @@ export const schema: Schema = {
           "description": "Description",
           "fullType": "string",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "string"
         },
         "streamId": {
@@ -6391,7 +7210,7 @@ export const schema: Schema = {
           "description": "Title",
           "fullType": "string",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "string"
         }
       }
@@ -6406,7 +7225,7 @@ export const schema: Schema = {
           "description": "Description",
           "fullType": "string",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "string"
         },
         "title": {
@@ -6414,7 +7233,7 @@ export const schema: Schema = {
           "description": "Title",
           "fullType": "string",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "string"
         }
       }
@@ -6429,7 +7248,7 @@ export const schema: Schema = {
           "description": "Backlog",
           "fullType": "long",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "long"
         },
         "conditionType": {
@@ -6461,7 +7280,7 @@ export const schema: Schema = {
           "description": "Grace period",
           "fullType": "long",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "long"
         },
         "queryFilter": {
@@ -6509,7 +7328,7 @@ export const schema: Schema = {
           "description": "Title",
           "fullType": "string",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "string"
         },
         "value": {
@@ -6532,7 +7351,7 @@ export const schema: Schema = {
           "description": "Backlog",
           "fullType": "long",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "long"
         },
         "conditionType": {
@@ -6564,7 +7383,7 @@ export const schema: Schema = {
           "description": "Grace period",
           "fullType": "long",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "long"
         },
         "queryFilter": {
@@ -6612,7 +7431,7 @@ export const schema: Schema = {
           "description": "Title",
           "fullType": "string",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "string"
         },
         "value": {
@@ -6683,8 +7502,16 @@ export const schema: Schema = {
           "description": "Description",
           "fullType": "string",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "string"
+        },
+        "encryptionKeysIds": {
+          "canBeNull": true,
+          "description": "Encryption keys used to encrypt stream archives",
+          "fullType": "uuid[]",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid[]"
         },
         "indexingEnabled": {
           "canBeNull": true,
@@ -6739,7 +7566,7 @@ export const schema: Schema = {
           "description": "Title",
           "fullType": "string",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "string"
         },
         "webSocketEnabled": {
@@ -6762,7 +7589,7 @@ export const schema: Schema = {
           "description": "Field name",
           "fullType": "string",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "string"
         },
         "isInverted": {
@@ -6778,7 +7605,7 @@ export const schema: Schema = {
           "description": "Field operator",
           "fullType": "dbaas.logs.StreamRuleOperatorEnum",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "dbaas.logs.StreamRuleOperatorEnum"
         },
         "value": {
@@ -6786,7 +7613,7 @@ export const schema: Schema = {
           "description": "Field value",
           "fullType": "string",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "string"
         }
       }
@@ -6849,8 +7676,16 @@ export const schema: Schema = {
           "description": "Description",
           "fullType": "string",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "string"
+        },
+        "encryptionKeysIds": {
+          "canBeNull": true,
+          "description": "Encryption keys used to encrypt stream archives",
+          "fullType": "uuid[]",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid[]"
         },
         "indexingEnabled": {
           "canBeNull": true,
@@ -6889,7 +7724,7 @@ export const schema: Schema = {
           "description": "Title",
           "fullType": "string",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "string"
         },
         "webSocketEnabled": {
@@ -6912,7 +7747,7 @@ export const schema: Schema = {
           "description": "Description",
           "fullType": "string",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "string"
         },
         "suffix": {
@@ -6920,7 +7755,7 @@ export const schema: Schema = {
           "description": "Suffix",
           "fullType": "string",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "string"
         }
       }
@@ -6935,7 +7770,7 @@ export const schema: Schema = {
           "description": "Index ID",
           "fullType": "uuid",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "uuid"
         }
       }
@@ -6950,7 +7785,7 @@ export const schema: Schema = {
           "description": "Stream ID",
           "fullType": "uuid",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "uuid"
         }
       }
@@ -6965,7 +7800,7 @@ export const schema: Schema = {
           "description": "Description",
           "fullType": "string",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "string"
         }
       }
@@ -6988,7 +7823,7 @@ export const schema: Schema = {
           "description": "Description",
           "fullType": "string",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "string"
         },
         "nbShard": {
@@ -7004,7 +7839,7 @@ export const schema: Schema = {
           "description": "Suffix",
           "fullType": "string",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "string"
         }
       }
@@ -7027,7 +7862,7 @@ export const schema: Schema = {
           "description": "Description",
           "fullType": "string",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "string"
         }
       }
@@ -7056,14 +7891,6 @@ export const schema: Schema = {
         "indexId": {
           "canBeNull": true,
           "description": "Associated Elasticsearch index",
-          "fullType": "uuid",
-          "readOnly": true,
-          "required": false,
-          "type": "uuid"
-        },
-        "kibanaId": {
-          "canBeNull": true,
-          "description": "Associated Kibana instance (DEPRECATED: use osdId)",
           "fullType": "uuid",
           "readOnly": true,
           "required": false,
@@ -7142,6 +7969,22 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "nbMember": {
+          "canBeNull": false,
+          "description": "Number of members",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "nbPermission": {
+          "canBeNull": false,
+          "description": "Number of permissions",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
         "roleId": {
           "canBeNull": false,
           "description": "Role ID",
@@ -7170,7 +8013,7 @@ export const schema: Schema = {
           "description": "Description",
           "fullType": "string",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "string"
         },
         "name": {
@@ -7178,7 +8021,7 @@ export const schema: Schema = {
           "description": "Name",
           "fullType": "string",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "string"
         }
       }
@@ -7201,7 +8044,7 @@ export const schema: Schema = {
           "description": "Username",
           "fullType": "string",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "string"
         }
       }
@@ -7231,7 +8074,7 @@ export const schema: Schema = {
           "description": "Alias ID",
           "fullType": "uuid",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "uuid"
         }
       }
@@ -7246,7 +8089,7 @@ export const schema: Schema = {
           "description": "Dashboard ID",
           "fullType": "uuid",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "uuid"
         },
         "permissionType": {
@@ -7269,30 +8112,7 @@ export const schema: Schema = {
           "description": "Index ID",
           "fullType": "uuid",
           "readOnly": false,
-          "required": false,
-          "type": "uuid"
-        },
-        "permissionType": {
-          "canBeNull": true,
-          "description": "Permission type",
-          "fullType": "dbaas.logs.PermissionTypeEnum",
-          "readOnly": false,
-          "required": false,
-          "type": "dbaas.logs.PermissionTypeEnum"
-        }
-      }
-    },
-    "dbaas.logs.RolePermissionKibanaCreation": {
-      "description": "Attach given Kibana instance to role",
-      "id": "RolePermissionKibanaCreation",
-      "namespace": "dbaas.logs",
-      "properties": {
-        "kibanaId": {
-          "canBeNull": false,
-          "description": "Kibana ID",
-          "fullType": "uuid",
-          "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "uuid"
         },
         "permissionType": {
@@ -7315,7 +8135,7 @@ export const schema: Schema = {
           "description": "Osd ID",
           "fullType": "uuid",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "uuid"
         },
         "permissionType": {
@@ -7338,7 +8158,7 @@ export const schema: Schema = {
           "description": "Stream ID",
           "fullType": "uuid",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "uuid"
         }
       }
@@ -7353,7 +8173,7 @@ export const schema: Schema = {
           "description": "Description",
           "fullType": "string",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "string"
         },
         "name": {
@@ -7361,7 +8181,7 @@ export const schema: Schema = {
           "description": "Name",
           "fullType": "string",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "string"
         }
       }
@@ -7482,6 +8302,84 @@ export const schema: Schema = {
       "id": "ServiceStateEnum",
       "namespace": "dbaas.logs"
     },
+    "dbaas.logs.ServiceWithIAM": {
+      "description": "Service",
+      "id": "Service",
+      "namespace": "dbaas.logs",
+      "properties": {
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Service creation",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "displayName": {
+          "canBeNull": true,
+          "description": "Service custom name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "iam": {
+          "canBeNull": true,
+          "description": "IAM resource metadata",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.ResourceMetadata"
+        },
+        "isClusterOwner": {
+          "canBeNull": false,
+          "description": "If set, can perform extra action on cluster",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "plan": {
+          "canBeNull": false,
+          "description": "Service plan",
+          "fullType": "dbaas.logs.ServicePlanEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dbaas.logs.ServicePlanEnum"
+        },
+        "serviceName": {
+          "canBeNull": false,
+          "description": "Service name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "state": {
+          "canBeNull": false,
+          "description": "Service state",
+          "fullType": "dbaas.logs.ServiceStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dbaas.logs.ServiceStateEnum"
+        },
+        "updatedAt": {
+          "canBeNull": true,
+          "description": "Service last update",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "username": {
+          "canBeNull": false,
+          "description": "Username on DBaaS Logs",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
     "dbaas.logs.Stream": {
       "description": "Graylog stream",
       "id": "Stream",
@@ -7494,6 +8392,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "boolean"
+        },
+        "clusterId": {
+          "canBeNull": false,
+          "description": "Cluster ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
         },
         "coldStorageCompression": {
           "canBeNull": true,
@@ -7559,6 +8465,22 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "encryptionKeysIds": {
+          "canBeNull": true,
+          "description": "Encryption keys used to encrypt stream archives",
+          "fullType": "uuid[]",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid[]"
+        },
+        "indexingCurrentSize": {
+          "canBeNull": true,
+          "description": "Indexing current size (in bytes)",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
         "indexingEnabled": {
           "canBeNull": true,
           "description": "Enable ES indexing",
@@ -7602,6 +8524,14 @@ export const schema: Schema = {
         "nbArchive": {
           "canBeNull": false,
           "description": "Number of coldstored archives",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "nbSubscription": {
+          "canBeNull": false,
+          "description": "Number of subscriptions targeting this stream",
           "fullType": "long",
           "readOnly": true,
           "required": false,
@@ -7803,10 +8733,11 @@ export const schema: Schema = {
     "dbaas.logs.StreamAlertConditionThresholdTypeEnum": {
       "description": "Possible values for StreamAlertConditionThresholdTypeEnum",
       "enum": [
-        "HIGHER",
-        "LESS",
-        "LOWER",
-        "MORE"
+        "EQ",
+        "GT",
+        "GTE",
+        "LT",
+        "LTE"
       ],
       "enumType": "string",
       "id": "StreamAlertConditionThresholdTypeEnum",
@@ -7906,7 +8837,7 @@ export const schema: Schema = {
       "namespace": "dbaas.logs"
     },
     "dbaas.logs.TemporaryLogsLink": {
-      "description": "Temporary url informations",
+      "description": "Temporary url information",
       "id": "TemporaryLogsLink",
       "namespace": "dbaas.logs",
       "properties": {
@@ -7933,6 +8864,14 @@ export const schema: Schema = {
       "id": "TestResult",
       "namespace": "dbaas.logs",
       "properties": {
+        "isValid": {
+          "canBeNull": false,
+          "description": "Whether the given configuration pass the syntax test",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
         "stderr": {
           "canBeNull": true,
           "description": "Standard error",
@@ -8032,7 +8971,7 @@ export const schema: Schema = {
           "description": "Token name",
           "fullType": "string",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "string"
         }
       }
@@ -8121,10 +9060,81 @@ export const schema: Schema = {
           "description": "Password must be at least 12 characters long contain a number, an uppercase, a lowercase and a special letter",
           "fullType": "password",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "password"
         }
       }
+    },
+    "iam.ResourceMetadata": {
+      "description": "IAM resource metadata embedded in services models",
+      "id": "ResourceMetadata",
+      "namespace": "iam",
+      "properties": {
+        "displayName": {
+          "canBeNull": true,
+          "description": "Resource display name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Unique identifier of the resource",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "tags": {
+          "canBeNull": true,
+          "description": "Resource tags. Tags that were internally computed are prefixed with ovh:",
+          "fullType": "map[string]string",
+          "readOnly": true,
+          "required": false,
+          "type": "map[string]string"
+        },
+        "urn": {
+          "canBeNull": false,
+          "description": "Unique resource name used in policies",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter": {
+      "description": "Resource tag filter",
+      "id": "TagFilter",
+      "namespace": "iam.resource",
+      "properties": {
+        "operator": {
+          "canBeNull": true,
+          "description": "Operator to use in order to filter on the value (defaults to 'EQ')",
+          "fullType": "iam.resource.TagFilter.OperatorEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.resource.TagFilter.OperatorEnum"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value to use in order to filter tags",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter.OperatorEnum": {
+      "description": "Operator that can be used in order to filter resources tags",
+      "enum": [
+        "EQ"
+      ],
+      "enumType": "string",
+      "id": "OperatorEnum",
+      "namespace": "iam.resource.TagFilter"
     },
     "service.RenewType": {
       "description": "Map a possible renew for a specific service",

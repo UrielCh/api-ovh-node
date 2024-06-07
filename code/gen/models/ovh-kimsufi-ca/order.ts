@@ -16,7 +16,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:dedicated/server/get"
+            {
+              "name": "order:apiovh:dedicated/server/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -36,7 +39,10 @@ export const schema: Schema = {
           "description": "Get allowed options",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:dedicated/server/get"
+            {
+              "name": "order:apiovh:dedicated/server/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -81,6 +87,30 @@ export const schema: Schema = {
         }
       }
     },
+    "complexType.SafeKeyValue<string>": {
+      "description": "Key and value, with proper key strings",
+      "generics": [
+        "T"
+      ],
+      "id": "SafeKeyValue",
+      "namespace": "complexType",
+      "properties": {
+        "key": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "fullType": "T",
+          "readOnly": true,
+          "required": false,
+          "type": "T"
+        }
+      }
+    },
     "dedicated.server.SupportLevelOrderableEnum": {
       "description": "distincts support level",
       "enum": [
@@ -91,6 +121,39 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "SupportLevelOrderableEnum",
       "namespace": "dedicated.server"
+    },
+    "nichandle.OvhSubsidiaryEnum": {
+      "description": "OVH subsidiaries",
+      "enum": [
+        "ASIA",
+        "AU",
+        "CA",
+        "CZ",
+        "DE",
+        "ES",
+        "EU",
+        "FI",
+        "FR",
+        "GB",
+        "IE",
+        "IN",
+        "IT",
+        "LT",
+        "MA",
+        "NL",
+        "PL",
+        "PT",
+        "QC",
+        "SG",
+        "SN",
+        "TN",
+        "US",
+        "WE",
+        "WS"
+      ],
+      "enumType": "string",
+      "id": "OvhSubsidiaryEnum",
+      "namespace": "nichandle"
     },
     "order.Contract": {
       "description": "A contract",
@@ -367,6 +430,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "order.CurrencyCodeEnum"
+        },
+        "priceInUcents": {
+          "canBeNull": true,
+          "description": "Price in microcents",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "text": {
           "canBeNull": false,
@@ -991,7 +1062,7 @@ export const schema: Schema = {
       "properties": {
         "blobs": {
           "canBeNull": true,
-          "description": "Extra informations of product offer",
+          "description": "Extra information of product offer",
           "fullType": "order.catalog.cloud.Blob",
           "readOnly": true,
           "required": false,
@@ -1095,7 +1166,7 @@ export const schema: Schema = {
       }
     },
     "order.catalog.cloud.Blob": {
-      "description": "Describe extra informations of product offer",
+      "description": "Describe extra information of product offer",
       "id": "Blob",
       "namespace": "order.catalog.cloud",
       "properties": {

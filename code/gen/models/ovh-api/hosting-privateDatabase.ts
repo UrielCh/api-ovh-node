@@ -6,73 +6,90 @@ export const schema: Schema = {
   "apiVersion": "1.0",
   "apis": [
     {
-      "description": "Operations about the SQLPRIVE service",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "List available services",
+          "description": "List available Web Cloud Databases",
           "httpMethod": "GET",
           "iamActions": [
-            "webCloudDatabases:apiovh:get"
+            {
+              "name": "webCloudDatabases:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
-          "parameters": [],
+          "parameters": [
+            {
+              "dataType": "map[string][]iam.resource.TagFilter",
+              "description": "Filter resources on IAM tags",
+              "name": "iamTags",
+              "paramType": "query",
+              "required": false
+            }
+          ],
           "responseType": "string[]"
         }
       ],
       "path": "/hosting/privateDatabase"
     },
     {
-      "description": "Private database",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get a Web Cloud Database properties",
           "httpMethod": "GET",
           "iamActions": [
-            "webCloudDatabases:apiovh:get"
+            {
+              "name": "webCloudDatabases:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.Service"
+          "responseType": "hosting.privateDatabase.ServiceWithIAM"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Alter a Web Cloud Database properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "webCloudDatabases:apiovh:put"
+            {
+              "name": "webCloudDatabases:apiovh:put",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "hosting.privateDatabase.Service",
-              "description": "New object properties",
+              "description": "Request Body",
               "fullType": "hosting.privateDatabase.Service",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -85,7 +102,7 @@ export const schema: Schema = {
       "path": "/hosting/privateDatabase/{serviceName}"
     },
     {
-      "description": "availableVersions operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -95,20 +112,23 @@ export const schema: Schema = {
           "description": "Get the availables versions for this private database",
           "httpMethod": "GET",
           "iamActions": [
-            "webCloudDatabases:apiovh:availableVersions/get"
+            {
+              "name": "webCloudDatabases:apiovh:availableVersions/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.PrivateDatabase.AvailableVersionEnum[]"
+          "responseType": "hosting.privateDatabase.AvailableVersionEnum[]"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/availableVersions"
@@ -124,7 +144,10 @@ export const schema: Schema = {
           "description": "Launch a contact change procedure",
           "httpMethod": "POST",
           "iamActions": [
-            "webCloudDatabases:apiovh:changeContact"
+            {
+              "name": "webCloudDatabases:apiovh:changeContact",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -167,75 +190,79 @@ export const schema: Schema = {
       "path": "/hosting/privateDatabase/{serviceName}/changeContact"
     },
     {
-      "description": "changeFtpPassword operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Change your ftp admin password",
+          "description": "Change FTP password of your Web Cloud Database",
           "httpMethod": "POST",
           "iamActions": [
-            "webCloudDatabases:apiovh:changeFtpPassword"
+            {
+              "name": "webCloudDatabases:apiovh:changeFtpPassword",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "password",
-              "description": "New ftp admin password ( alphanumeric and 8 characters minimum )",
-              "fullType": "password",
-              "name": "password",
+              "dataType": "hosting.privateDatabase.ChangeFtpPasswordPayload",
+              "description": "Request Body",
+              "fullType": "hosting.privateDatabase.ChangeFtpPasswordPayload",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task"
+          "responseType": "hosting.privateDatabase.Task"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/changeFtpPassword"
     },
     {
-      "description": "changeVersion operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Change the private database engine version",
+          "description": "Change DBMS version of your Web Cloud Database",
           "httpMethod": "POST",
           "iamActions": [
-            "webCloudDatabases:apiovh:changeVersion"
+            {
+              "name": "webCloudDatabases:apiovh:changeVersion",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "hosting.PrivateDatabase.AvailableVersionEnum",
-              "description": "Private database versions",
-              "fullType": "hosting.PrivateDatabase.AvailableVersionEnum",
-              "name": "version",
+              "dataType": "hosting.privateDatabase.ChangeVersionPayload",
+              "description": "Request Body",
+              "fullType": "hosting.privateDatabase.ChangeVersionPayload",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task"
+          "responseType": "hosting.privateDatabase.Task"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/changeVersion"
@@ -251,7 +278,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "webCloudDatabases:apiovh:config/get"
+            {
+              "name": "webCloudDatabases:apiovh:config/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -280,7 +310,10 @@ export const schema: Schema = {
           "description": "Update the configuration",
           "httpMethod": "POST",
           "iamActions": [
-            "webCloudDatabases:apiovh:config/update"
+            {
+              "name": "webCloudDatabases:apiovh:config/update",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -307,17 +340,20 @@ export const schema: Schema = {
       "path": "/hosting/privateDatabase/{serviceName}/config/update"
     },
     {
-      "description": "Confirm termination of your service",
+      "description": "Confirm service termination",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Confirm termination of your service",
+          "description": "Confirm service termination",
           "httpMethod": "POST",
           "iamActions": [
-            "webCloudDatabases:apiovh:confirmTermination"
+            {
+              "name": "webCloudDatabases:apiovh:confirmTermination",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -347,7 +383,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The termination token sent by mail to the admin contact",
+              "description": "The termination token sent by email to the admin contact",
               "fullType": "string",
               "name": "token",
               "paramType": "body",
@@ -368,7 +404,7 @@ export const schema: Schema = {
       "path": "/hosting/privateDatabase/{serviceName}/confirmTermination"
     },
     {
-      "description": "cpuThrottle operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -378,42 +414,48 @@ export const schema: Schema = {
           "description": "List of privatesql CPU throttle",
           "httpMethod": "GET",
           "iamActions": [
-            "webCloudDatabases:apiovh:cpuThrottle/get"
+            {
+              "name": "webCloudDatabases:apiovh:cpuThrottle/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.PrivateDatabase.CpuThrottle[]"
+          "responseType": "hosting.privateDatabase.CpuThrottle[]"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/cpuThrottle"
     },
     {
-      "description": "List the hosting.privateDatabase.database objects",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Databases linked to your private database service",
+          "description": "List databases on a privateDatabase",
           "httpMethod": "GET",
           "iamActions": [
-            "webCloudDatabases:apiovh:database/get"
+            {
+              "name": "webCloudDatabases:apiovh:database/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -427,47 +469,126 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Create a new database on your private database service",
+          "description": "Create a new database in a Web Cloud Database",
           "httpMethod": "POST",
           "iamActions": [
-            "webCloudDatabases:apiovh:database/create"
+            {
+              "name": "webCloudDatabases:apiovh:database/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Name of your new database",
-              "fullType": "string",
-              "name": "databaseName",
+              "dataType": "hosting.privateDatabase.Database.CreatePayload",
+              "description": "Request Body",
+              "fullType": "hosting.privateDatabase.Database.CreatePayload",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task"
+          "responseType": "hosting.privateDatabase.Task"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/database"
     },
     {
-      "description": "Databases",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Delete the database",
+          "description": "Delete a database from a Web Cloud Database",
           "httpMethod": "DELETE",
           "iamActions": [
-            "webCloudDatabases:apiovh:database/delete"
+            {
+              "name": "webCloudDatabases:apiovh:database/delete",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Database name",
+              "fullType": "string",
+              "name": "databaseName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "hosting.privateDatabase.Task"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get database properties",
+          "httpMethod": "GET",
+          "iamActions": [
+            {
+              "name": "webCloudDatabases:apiovh:database/get",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Database name",
+              "fullType": "string",
+              "name": "databaseName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "hosting.privateDatabase.Database"
+        }
+      ],
+      "path": "/hosting/privateDatabase/{serviceName}/database/{databaseName}"
+    },
+    {
+      "description": "List the hosting.privateDatabase.database.copy objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Copies available for your databases",
+          "httpMethod": "GET",
+          "iamActions": [
+            {
+              "name": "webCloudDatabases:apiovh:database/copy/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -488,7 +609,89 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task"
+          "responseType": "uuid[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create a new copy of your database",
+          "httpMethod": "POST",
+          "iamActions": [
+            {
+              "name": "webCloudDatabases:apiovh:database/copy/create",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Database name",
+              "fullType": "string",
+              "name": "databaseName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your private database",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "hosting.privateDatabase.database.copy"
+        }
+      ],
+      "path": "/hosting/privateDatabase/{serviceName}/database/{databaseName}/copy"
+    },
+    {
+      "description": "Copy",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete the database copy",
+          "httpMethod": "DELETE",
+          "iamActions": [
+            {
+              "name": "webCloudDatabases:apiovh:database/copy/delete",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Database name",
+              "fullType": "string",
+              "name": "databaseName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Copy id",
+              "fullType": "uuid",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your private database",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -498,10 +701,77 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "webCloudDatabases:apiovh:database/get"
+            {
+              "name": "webCloudDatabases:apiovh:database/copy/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
+            {
+              "dataType": "string",
+              "description": "Database name",
+              "fullType": "string",
+              "name": "databaseName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Copy id",
+              "fullType": "uuid",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your private database",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "hosting.privateDatabase.database.copy"
+        }
+      ],
+      "path": "/hosting/privateDatabase/{serviceName}/database/{databaseName}/copy/{id}"
+    },
+    {
+      "description": "copyRestore operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Request the copy restore in this database",
+          "httpMethod": "POST",
+          "iamActions": [
+            {
+              "name": "webCloudDatabases:apiovh:database/copyRestore",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "UUID of the copy to restore",
+              "fullType": "uuid",
+              "name": "copyId",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "If database will be flushed before importing the dump. Default: false",
+              "fullType": "boolean",
+              "name": "flushDatabase",
+              "paramType": "body",
+              "required": false
+            },
             {
               "dataType": "string",
               "description": "Database name",
@@ -519,23 +789,26 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.database"
+          "responseType": "hosting.privateDatabase.task"
         }
       ],
-      "path": "/hosting/privateDatabase/{serviceName}/database/{databaseName}"
+      "path": "/hosting/privateDatabase/{serviceName}/database/{databaseName}/copyRestore"
     },
     {
-      "description": "List the hosting.privateDatabase.database.dump objects",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Dump available for your databases",
+          "description": "Get all database dump from a Web Cloud Database",
           "httpMethod": "GET",
           "iamActions": [
-            "webCloudDatabases:apiovh:database/dump/get"
+            {
+              "name": "webCloudDatabases:apiovh:database/dump/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -549,27 +822,11 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
-            },
-            {
-              "dataType": "datetime",
-              "description": "Filter the value of creationDate property (like)",
-              "fullType": "datetime",
-              "name": "creationDate",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "datetime",
-              "description": "Filter the value of deletionDate property (like)",
-              "fullType": "datetime",
-              "name": "deletionDate",
-              "paramType": "query",
-              "required": false
             }
           ],
           "responseType": "long[]"
@@ -579,20 +836,22 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Request the dump of this database ( an email will be send with a link available 30 days )",
+          "description": "Request the dump of this database (an email will be sent with a link available 30 days)",
           "httpMethod": "POST",
           "iamActions": [
-            "webCloudDatabases:apiovh:database/dump/create"
+            {
+              "name": "webCloudDatabases:apiovh:database/dump/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "boolean",
-              "description": "Send an email when dump will be available? Default: false",
-              "fullType": "boolean",
-              "name": "sendEmail",
+              "dataType": "hosting.privateDatabase.Database.CreateDump",
+              "description": "Request Body",
+              "fullType": "hosting.privateDatabase.Database.CreateDump",
               "paramType": "body",
-              "required": false
+              "required": true
             },
             {
               "dataType": "string",
@@ -604,20 +863,20 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task"
+          "responseType": "hosting.privateDatabase.Task"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump"
     },
     {
-      "description": "Dump",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -627,7 +886,10 @@ export const schema: Schema = {
           "description": "Delete dump before expiration date",
           "httpMethod": "DELETE",
           "iamActions": [
-            "webCloudDatabases:apiovh:database/dump/delete"
+            {
+              "name": "webCloudDatabases:apiovh:database/dump/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -641,7 +903,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Dump id",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -649,24 +911,27 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task"
+          "responseType": "hosting.privateDatabase.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get a database dump from a Web Cloud Database",
           "httpMethod": "GET",
           "iamActions": [
-            "webCloudDatabases:apiovh:database/dump/get"
+            {
+              "name": "webCloudDatabases:apiovh:database/dump/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -680,7 +945,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Dump id",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -688,20 +953,20 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.database.dump"
+          "responseType": "hosting.privateDatabase.Database.Dump"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump/{id}"
     },
     {
-      "description": "restore operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -711,7 +976,10 @@ export const schema: Schema = {
           "description": "Request the restore from this dump",
           "httpMethod": "POST",
           "iamActions": [
-            "webCloudDatabases:apiovh:database/dump/restore"
+            {
+              "name": "webCloudDatabases:apiovh:database/dump/restore",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -725,7 +993,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Dump id",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -733,14 +1001,14 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task"
+          "responseType": "hosting.privateDatabase.Task"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump/{id}/restore"
@@ -756,7 +1024,10 @@ export const schema: Schema = {
           "description": "Extensions linked to your database",
           "httpMethod": "GET",
           "iamActions": [
-            "webCloudDatabases:apiovh:database/extension/get"
+            {
+              "name": "webCloudDatabases:apiovh:database/extension/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -809,7 +1080,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "webCloudDatabases:apiovh:database/extension/get"
+            {
+              "name": "webCloudDatabases:apiovh:database/extension/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -854,7 +1128,10 @@ export const schema: Schema = {
           "description": "Disable an extension from a database",
           "httpMethod": "POST",
           "iamActions": [
-            "webCloudDatabases:apiovh:database/extension/disable"
+            {
+              "name": "webCloudDatabases:apiovh:database/extension/disable",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -899,7 +1176,10 @@ export const schema: Schema = {
           "description": "Enable an extension on a database",
           "httpMethod": "POST",
           "iamActions": [
-            "webCloudDatabases:apiovh:database/extension/enable"
+            {
+              "name": "webCloudDatabases:apiovh:database/extension/enable",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -934,43 +1214,29 @@ export const schema: Schema = {
       "path": "/hosting/privateDatabase/{serviceName}/database/{databaseName}/extension/{extensionName}/enable"
     },
     {
-      "description": "import operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Request the import in this database",
+          "description": "Import a database into a Web Cloud Database",
           "httpMethod": "POST",
           "iamActions": [
-            "webCloudDatabases:apiovh:database/import"
+            {
+              "name": "webCloudDatabases:apiovh:database/import",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Documents ID of the dump from /me/documents",
-              "fullType": "string",
-              "name": "documentId",
+              "dataType": "hosting.privateDatabase.Database.ImportPayload",
+              "description": "Request Body",
+              "fullType": "hosting.privateDatabase.Database.ImportPayload",
               "paramType": "body",
               "required": true
-            },
-            {
-              "dataType": "boolean",
-              "description": "If database will be flushed before importing the dump. Default: false",
-              "fullType": "boolean",
-              "name": "flushDatabase",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "Send an email when the import will be done? Default: false",
-              "fullType": "boolean",
-              "name": "sendEmail",
-              "paramType": "body",
-              "required": false
             },
             {
               "dataType": "string",
@@ -982,20 +1248,20 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task"
+          "responseType": "hosting.privateDatabase.Task"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/database/{databaseName}/import"
     },
     {
-      "description": "databaseWizard operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1005,74 +1271,55 @@ export const schema: Schema = {
           "description": "Create a new database/user and grant it",
           "httpMethod": "POST",
           "iamActions": [
-            "webCloudDatabases:apiovh:databaseWizard/create"
+            {
+              "name": "webCloudDatabases:apiovh:databaseWizard/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Name of your new database",
-              "fullType": "string",
-              "name": "databaseName",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "hosting.PrivateDatabase.grant.GrantEnum",
-              "description": "Grant of the user on this database",
-              "fullType": "hosting.PrivateDatabase.grant.GrantEnum",
-              "name": "grant",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "password",
-              "description": "Password for the new user ( alphanumeric and 8 characters minimum )",
-              "fullType": "password",
-              "name": "password",
+              "dataType": "hosting.privateDatabase.DatabaseWizardPayload",
+              "description": "Request Body",
+              "fullType": "hosting.privateDatabase.DatabaseWizardPayload",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "New user name used to connect on your database",
-              "fullType": "string",
-              "name": "userName",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task"
+          "responseType": "hosting.privateDatabase.Task"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/databaseWizard"
     },
     {
-      "description": "List the hosting.privateDatabase.dump objects",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Dumps available for your private database service",
+          "description": "Get all database dump from a Web Cloud Database",
           "httpMethod": "GET",
           "iamActions": [
-            "webCloudDatabases:apiovh:dump/get"
+            {
+              "name": "webCloudDatabases:apiovh:dump/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1101,23 +1348,26 @@ export const schema: Schema = {
       "path": "/hosting/privateDatabase/{serviceName}/dump"
     },
     {
-      "description": "Dump",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Delete dump before expiration date",
+          "description": "Delete a database dump from a Web Cloud Database",
           "httpMethod": "DELETE",
           "iamActions": [
-            "webCloudDatabases:apiovh:dump/delete"
+            {
+              "name": "webCloudDatabases:apiovh:dump/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "Dump id",
+              "description": "Dump ID",
               "fullType": "long",
               "name": "dumpId",
               "paramType": "path",
@@ -1125,30 +1375,33 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task"
+          "responseType": "hosting.privateDatabase.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get a database dump from a Web Cloud Database",
           "httpMethod": "GET",
           "iamActions": [
-            "webCloudDatabases:apiovh:dump/get"
+            {
+              "name": "webCloudDatabases:apiovh:dump/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "Dump id",
+              "description": "Dump ID",
               "fullType": "long",
               "name": "dumpId",
               "paramType": "path",
@@ -1156,44 +1409,46 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.dump"
+          "responseType": "hosting.privateDatabase.Dump"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/dump/{dumpId}"
     },
     {
-      "description": "restore operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Request the restore from this dump",
+          "description": "Restore a database dump into a Web Cloud Database",
           "httpMethod": "POST",
           "iamActions": [
-            "webCloudDatabases:apiovh:dump/restore"
+            {
+              "name": "webCloudDatabases:apiovh:dump/restore",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The database where you want to restore this dump",
-              "fullType": "string",
-              "name": "databaseName",
+              "dataType": "hosting.privateDatabase.Dump.Restore",
+              "description": "Request Body",
+              "fullType": "hosting.privateDatabase.Dump.Restore",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "long",
-              "description": "Dump id",
+              "description": "Dump ID",
               "fullType": "long",
               "name": "dumpId",
               "paramType": "path",
@@ -1201,49 +1456,52 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task"
+          "responseType": "hosting.privateDatabase.Task"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/dump/{dumpId}/restore"
     },
     {
-      "description": "generateTemporaryLogsLink operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Generate a temporary url to retrieve instance logs",
+          "description": "Generate a temporary link to access logs for a Web Cloud Database",
           "httpMethod": "POST",
           "iamActions": [
-            "webCloudDatabases:apiovh:generateTemporaryLogsLink"
+            {
+              "name": "webCloudDatabases:apiovh:generateTemporaryLogsLink",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.PrivateDatabase.TemporaryLogsLink"
+          "responseType": "hosting.privateDatabase.TemporaryUrlInformations"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/generateTemporaryLogsLink"
     },
     {
-      "description": "oom operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1253,78 +1511,87 @@ export const schema: Schema = {
           "description": "List of privatesql OOM kill",
           "httpMethod": "GET",
           "iamActions": [
-            "webCloudDatabases:apiovh:oom/get"
+            {
+              "name": "webCloudDatabases:apiovh:oom/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.PrivateDatabase.Oom[]"
+          "responseType": "hosting.privateDatabase.Oom[]"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/oom"
     },
     {
-      "description": "quotaRefresh operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Refresh the quota of your private database",
+          "description": "Refresh the quota of your Web Cloud Database",
           "httpMethod": "POST",
           "iamActions": [
-            "webCloudDatabases:apiovh:quotaRefresh"
+            {
+              "name": "webCloudDatabases:apiovh:quotaRefresh",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task"
+          "responseType": "hosting.privateDatabase.Task"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/quotaRefresh"
     },
     {
-      "description": "restart operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Restart the private database",
+          "description": "Restart the Web Cloud Database",
           "httpMethod": "POST",
           "iamActions": [
-            "webCloudDatabases:apiovh:restart"
+            {
+              "name": "webCloudDatabases:apiovh:restart",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task"
+          "responseType": "hosting.privateDatabase.Task"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/restart"
@@ -1337,10 +1604,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get service information",
           "httpMethod": "GET",
           "iamActions": [
-            "webCloudDatabases:apiovh:serviceInfos/get"
+            {
+              "name": "webCloudDatabases:apiovh:serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1360,10 +1630,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Update service information",
           "httpMethod": "PUT",
           "iamActions": [
-            "webCloudDatabases:apiovh:serviceInfos/edit"
+            {
+              "name": "webCloudDatabases:apiovh:serviceInfos/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1399,7 +1672,10 @@ export const schema: Schema = {
           "description": "Start the private database",
           "httpMethod": "POST",
           "iamActions": [
-            "webCloudDatabases:apiovh:start"
+            {
+              "name": "webCloudDatabases:apiovh:start",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1428,7 +1704,10 @@ export const schema: Schema = {
           "description": "Stop the private database",
           "httpMethod": "POST",
           "iamActions": [
-            "webCloudDatabases:apiovh:stop"
+            {
+              "name": "webCloudDatabases:apiovh:stop",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1447,40 +1726,43 @@ export const schema: Schema = {
       "path": "/hosting/privateDatabase/{serviceName}/stop"
     },
     {
-      "description": "List the hosting.privateDatabase.task objects",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Tasks attached to your private database service",
+          "description": "List tasks for a Webcloud Database",
           "httpMethod": "GET",
           "iamActions": [
-            "webCloudDatabases:apiovh:tasks/get"
+            {
+              "name": "webCloudDatabases:apiovh:tasks/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "hosting.PrivateDatabase.task.FunctionEnum",
-              "description": "Filter the value of function property (=)",
-              "fullType": "hosting.PrivateDatabase.task.FunctionEnum",
+              "dataType": "hosting.privateDatabase.task.FunctionEnum",
+              "description": "Filter the value of function property",
+              "fullType": "hosting.privateDatabase.task.FunctionEnum",
               "name": "function",
               "paramType": "query",
               "required": false
             },
             {
-              "dataType": "hosting.PrivateDatabase.task.StatusEnum",
-              "description": "Filter the value of status property (=)",
-              "fullType": "hosting.PrivateDatabase.task.StatusEnum",
+              "dataType": "hosting.privateDatabase.task.StatusEnum",
+              "description": "Filter the value of status property",
+              "fullType": "hosting.privateDatabase.task.StatusEnum",
               "name": "status",
               "paramType": "query",
               "required": false
@@ -1492,23 +1774,26 @@ export const schema: Schema = {
       "path": "/hosting/privateDatabase/{serviceName}/tasks"
     },
     {
-      "description": "Tasks",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get task details",
           "httpMethod": "GET",
           "iamActions": [
-            "webCloudDatabases:apiovh:tasks/get"
+            {
+              "name": "webCloudDatabases:apiovh:tasks/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "The id of the task",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -1516,31 +1801,35 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task"
+          "responseType": "hosting.privateDatabase.Task"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/tasks/{id}"
     },
     {
-      "description": "Terminate your service",
+      "description": "Ask for the termination of your service. Admin contact of this service will receive a termination token in order to confirm its termination with /confirmTermination endpoint.",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Terminate your service",
+          "description": "Ask for the termination of your service",
           "httpMethod": "POST",
           "iamActions": [
-            "webCloudDatabases:apiovh:terminate"
+            {
+              "name": "webCloudDatabases:apiovh:terminate",
+              "required": true
+            }
           ],
+          "longDescription": "Ask for the termination of your service. Admin contact of this service will receive a termination token by email in order to confirm its termination with /confirmTermination endpoint.",
           "noAuthentication": false,
           "parameters": [
             {
@@ -1558,23 +1847,26 @@ export const schema: Schema = {
       "path": "/hosting/privateDatabase/{serviceName}/terminate"
     },
     {
-      "description": "List the hosting.privateDatabase.user objects",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "User allowed to connect on your databases",
+          "description": "List users on a Web Cloud Database",
           "httpMethod": "GET",
           "iamActions": [
-            "webCloudDatabases:apiovh:user/get"
+            {
+              "name": "webCloudDatabases:apiovh:user/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1588,61 +1880,58 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Create a new user on your service",
+          "description": "Create a user on a Web Cloud Database",
           "httpMethod": "POST",
           "iamActions": [
-            "webCloudDatabases:apiovh:user/create"
+            {
+              "name": "webCloudDatabases:apiovh:user/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "password",
-              "description": "Password for the new user ( alphanumeric and 8 characters minimum )",
-              "fullType": "password",
-              "name": "password",
+              "dataType": "hosting.privateDatabase.User.CreatePayload",
+              "description": "Request Body",
+              "fullType": "hosting.privateDatabase.User.CreatePayload",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "User name used to connect on your databases",
-              "fullType": "string",
-              "name": "userName",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task"
+          "responseType": "hosting.privateDatabase.Task"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/user"
     },
     {
-      "description": "Users",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Delete a user",
+          "description": "Delete a user on a Web Cloud Database",
           "httpMethod": "DELETE",
           "iamActions": [
-            "webCloudDatabases:apiovh:user/delete"
+            {
+              "name": "webCloudDatabases:apiovh:user/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1650,30 +1939,33 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "User name used to connect to your databases",
+              "description": "User name",
               "fullType": "string",
               "name": "userName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task"
+          "responseType": "hosting.privateDatabase.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get user properties",
           "httpMethod": "GET",
           "iamActions": [
-            "webCloudDatabases:apiovh:user/get"
+            {
+              "name": "webCloudDatabases:apiovh:user/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1681,44 +1973,46 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "User name used to connect to your databases",
+              "description": "User name",
               "fullType": "string",
               "name": "userName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.user"
+          "responseType": "hosting.privateDatabase.User"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/user/{userName}"
     },
     {
-      "description": "changePassword operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Request a change password for a user",
+          "description": "Change the password of a user on a Web Cloud Database",
           "httpMethod": "POST",
           "iamActions": [
-            "webCloudDatabases:apiovh:user/changePassword"
+            {
+              "name": "webCloudDatabases:apiovh:user/changePassword",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "password",
-              "description": "The new user password ( alphanumeric and 8 characters minimum )",
-              "fullType": "password",
-              "name": "password",
+              "dataType": "hosting.privateDatabase.User.ChangePasswordPayload",
+              "description": "Request Body",
+              "fullType": "hosting.privateDatabase.User.ChangePasswordPayload",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1726,36 +2020,39 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "User name used to connect to your databases",
+              "description": "User name",
               "fullType": "string",
               "name": "userName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task"
+          "responseType": "hosting.privateDatabase.Task"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/user/{userName}/changePassword"
     },
     {
-      "description": "List the hosting.privateDatabase.grant objects",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "User grant's on your databases",
+          "description": "Get all information about the grants for a user in a Web Cloud Database",
           "httpMethod": "GET",
           "iamActions": [
-            "webCloudDatabases:apiovh:user/grant/get"
+            {
+              "name": "webCloudDatabases:apiovh:user/grant/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1763,7 +2060,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "User name used to connect to your databases",
+              "description": "User name",
               "fullType": "string",
               "name": "userName",
               "paramType": "path",
@@ -1777,32 +2074,26 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Add grant on a database",
+          "description": "Add grant on a Web Cloud Database",
           "httpMethod": "POST",
           "iamActions": [
-            "webCloudDatabases:apiovh:user/grant/create"
+            {
+              "name": "webCloudDatabases:apiovh:user/grant/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Database name where add grant",
-              "fullType": "string",
-              "name": "databaseName",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "hosting.PrivateDatabase.grant.GrantEnum",
-              "description": "Grant you want set on the database for this user",
-              "fullType": "hosting.PrivateDatabase.grant.GrantEnum",
-              "name": "grant",
+              "dataType": "hosting.privateDatabase.User.Grant.Create",
+              "description": "Request Body",
+              "fullType": "hosting.privateDatabase.User.Grant.Create",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1810,36 +2101,39 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "User name used to connect to your databases",
+              "description": "User name",
               "fullType": "string",
               "name": "userName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task"
+          "responseType": "hosting.privateDatabase.Task"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/user/{userName}/grant"
     },
     {
-      "description": "Grants",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Delete a grant on a database",
+          "description": "Delete a grant from a Web Cloud Database",
           "httpMethod": "DELETE",
           "iamActions": [
-            "webCloudDatabases:apiovh:user/grant/delete"
+            {
+              "name": "webCloudDatabases:apiovh:user/grant/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Database name where grant is set",
+              "description": "Database name",
               "fullType": "string",
               "name": "databaseName",
               "paramType": "path",
@@ -1847,7 +2141,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1855,30 +2149,33 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "User name used to connect to your databases",
+              "description": "User name",
               "fullType": "string",
               "name": "userName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task"
+          "responseType": "hosting.privateDatabase.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get information about the grants for a user in a Web Cloud Database",
           "httpMethod": "GET",
           "iamActions": [
-            "webCloudDatabases:apiovh:user/grant/get"
+            {
+              "name": "webCloudDatabases:apiovh:user/grant/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Database name where grant is set",
+              "description": "Database name",
               "fullType": "string",
               "name": "databaseName",
               "paramType": "path",
@@ -1886,7 +2183,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1894,44 +2191,46 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "User name used to connect to your databases",
+              "description": "User name",
               "fullType": "string",
               "name": "userName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.grant"
+          "responseType": "hosting.privateDatabase.User.Grant"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/user/{userName}/grant/{databaseName}"
     },
     {
-      "description": "update operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Update user grant",
+          "description": "Update the permissions of a grant for a user on a Web Cloud Database",
           "httpMethod": "POST",
           "iamActions": [
-            "webCloudDatabases:apiovh:user/grant/update"
+            {
+              "name": "webCloudDatabases:apiovh:user/grant/update",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "hosting.PrivateDatabase.grant.GrantEnum",
-              "description": "Grant you want set on the database for this user",
-              "fullType": "hosting.PrivateDatabase.grant.GrantEnum",
-              "name": "grant",
+              "dataType": "hosting.privateDatabase.User.Grant.Update",
+              "description": "Request Body",
+              "fullType": "hosting.privateDatabase.User.Grant.Update",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Database name where grant is set",
+              "description": "Database name",
               "fullType": "string",
               "name": "databaseName",
               "paramType": "path",
@@ -1939,7 +2238,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1947,59 +2246,65 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "User name used to connect to your databases",
+              "description": "User name",
               "fullType": "string",
               "name": "userName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task"
+          "responseType": "hosting.privateDatabase.Task"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/user/{userName}/grant/{databaseName}/update"
     },
     {
-      "description": "Webhosting network for your instance",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Disable Webhosting network",
+          "description": "Delete access from the web hosting network on a Web Cloud Database",
           "httpMethod": "DELETE",
           "iamActions": [
-            "webCloudDatabases:apiovh:webhostingNetwork/delete"
+            {
+              "name": "webCloudDatabases:apiovh:webhostingNetwork/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task"
+          "responseType": "hosting.privateDatabase.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get Webhosting network status",
           "httpMethod": "GET",
           "iamActions": [
-            "webCloudDatabases:apiovh:webhostingNetwork/get"
+            {
+              "name": "webCloudDatabases:apiovh:webhostingNetwork/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2013,29 +2318,32 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Enable Webhosting network",
+          "description": "Permit access from the web hosting network on a Web Cloud Database",
           "httpMethod": "POST",
           "iamActions": [
-            "webCloudDatabases:apiovh:webhostingNetwork/create"
+            {
+              "name": "webCloudDatabases:apiovh:webhostingNetwork/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task"
+          "responseType": "hosting.privateDatabase.Task"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/webhostingNetwork"
     },
     {
-      "description": "webs operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -2045,13 +2353,16 @@ export const schema: Schema = {
           "description": "List linked webs",
           "httpMethod": "GET",
           "iamActions": [
-            "webCloudDatabases:apiovh:webs/get"
+            {
+              "name": "webCloudDatabases:apiovh:webs/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2064,39 +2375,42 @@ export const schema: Schema = {
       "path": "/hosting/privateDatabase/{serviceName}/webs"
     },
     {
-      "description": "List the hosting.privateDatabase.whitelist objects",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Whitelist allowed on your privatesql",
+          "description": "List whitelists on a Web Cloud Database",
           "httpMethod": "GET",
           "iamActions": [
-            "webCloudDatabases:apiovh:whitelist/get"
+            {
+              "name": "webCloudDatabases:apiovh:whitelist/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "ipBlock",
+              "dataType": "string",
               "description": "Filter the value of ip property (contains or equals)",
-              "fullType": "ipBlock",
+              "fullType": "string",
               "name": "ip",
               "paramType": "query",
               "required": false
             },
             {
               "dataType": "boolean",
-              "description": "Filter the value of service property (=)",
+              "description": "Filter the value of service property",
               "fullType": "boolean",
               "name": "service",
               "paramType": "query",
@@ -2104,168 +2418,155 @@ export const schema: Schema = {
             },
             {
               "dataType": "boolean",
-              "description": "Filter the value of sftp property (=)",
+              "description": "Filter the value of sftp property",
               "fullType": "boolean",
               "name": "sftp",
               "paramType": "query",
               "required": false
             }
           ],
-          "responseType": "ipBlock[]"
+          "responseType": "ipv4Block[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Create a new IP whitelist",
+          "description": "Create a new IP whitelist in a Web Cloud Database",
           "httpMethod": "POST",
           "iamActions": [
-            "webCloudDatabases:apiovh:whitelist/create"
+            {
+              "name": "webCloudDatabases:apiovh:whitelist/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "ipBlock",
-              "description": "The IP to whitelist in your instance",
-              "fullType": "ipBlock",
-              "name": "ip",
+              "dataType": "hosting.privateDatabase.Whitelist.CreatePayload",
+              "description": "Request Body",
+              "fullType": "hosting.privateDatabase.Whitelist.CreatePayload",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Custom name for your Whitelisted IP",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "Authorize this IP to access service port",
-              "fullType": "boolean",
-              "name": "service",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "Authorize this IP to access sftp port",
-              "fullType": "boolean",
-              "name": "sftp",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task"
+          "responseType": "hosting.privateDatabase.Task"
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/whitelist"
     },
     {
-      "description": "IP whitelisting for your instance",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Delete ain IP whitelist",
+          "description": "Delete an IP whitelist from a Web Cloud Database",
           "httpMethod": "DELETE",
           "iamActions": [
-            "webCloudDatabases:apiovh:whitelist/delete"
+            {
+              "name": "webCloudDatabases:apiovh:whitelist/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "ipBlock",
-              "description": "The whitelisted IP in your instance",
-              "fullType": "ipBlock",
+              "dataType": "ipv4Block",
+              "description": "Ip",
+              "fullType": "ipv4Block",
               "name": "ip",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task"
+          "responseType": "hosting.privateDatabase.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get whitelist properties",
           "httpMethod": "GET",
           "iamActions": [
-            "webCloudDatabases:apiovh:whitelist/get"
+            {
+              "name": "webCloudDatabases:apiovh:whitelist/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "ipBlock",
-              "description": "The whitelisted IP in your instance",
-              "fullType": "ipBlock",
+              "dataType": "ipv4Block",
+              "description": "Ip",
+              "fullType": "ipv4Block",
               "name": "ip",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.whitelist"
+          "responseType": "hosting.privateDatabase.Whitelist"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Update an IP whitelist in a Web Cloud Database",
           "httpMethod": "PUT",
           "iamActions": [
-            "webCloudDatabases:apiovh:whitelist/edit"
+            {
+              "name": "webCloudDatabases:apiovh:whitelist/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "hosting.privateDatabase.whitelist",
-              "description": "New object properties",
-              "fullType": "hosting.privateDatabase.whitelist",
+              "dataType": "hosting.privateDatabase.Whitelist",
+              "description": "Request Body",
+              "fullType": "hosting.privateDatabase.Whitelist",
               "paramType": "body",
               "required": true
             },
             {
-              "dataType": "ipBlock",
-              "description": "The whitelisted IP in your instance",
-              "fullType": "ipBlock",
+              "dataType": "ipv4Block",
+              "description": "Ip",
+              "fullType": "ipv4Block",
               "name": "ip",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2278,30 +2579,33 @@ export const schema: Schema = {
       "path": "/hosting/privateDatabase/{serviceName}/whitelist/{ip}"
     },
     {
-      "description": "Get available order capacitie",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get available order capacitie",
+          "description": "Get available order capacities",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:webCloudDatabases/availableOrderCapacities/get"
+            {
+              "name": "account:apiovh:webCloudDatabases/availableOrderCapacities/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "hosting.PrivateDatabase.OfferEnum",
-              "description": "Offer available order capacities to choose",
-              "fullType": "hosting.PrivateDatabase.OfferEnum",
+              "dataType": "hosting.privateDatabase.OfferEnum",
+              "description": "",
+              "fullType": "hosting.privateDatabase.OfferEnum",
               "name": "offer",
               "paramType": "query",
               "required": true
             }
           ],
-          "responseType": "hosting.PrivateDatabase.AvailableOrderCapacities"
+          "responseType": "hosting.privateDatabase.availableOrderCapacities"
         }
       ],
       "path": "/hosting/privateDatabase/availableOrderCapacities"
@@ -2341,13 +2645,43 @@ export const schema: Schema = {
       "properties": {
         "unit": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Unit of the value",
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Value",
+          "fullType": "T",
+          "readOnly": true,
+          "required": false,
+          "type": "T"
+        }
+      }
+    },
+    "complexType.UnitAndValue<long>": {
+      "description": "A numeric value tagged with its unit",
+      "generics": [
+        "T"
+      ],
+      "id": "UnitAndValue",
+      "namespace": "complexType",
+      "properties": {
+        "unit": {
+          "canBeNull": false,
+          "description": "Unit of the value",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value",
+          "fullType": "T",
+          "readOnly": true,
           "required": false,
           "type": "T"
         }
@@ -2404,15 +2738,11 @@ export const schema: Schema = {
       "description": "Private database available versions",
       "enum": [
         "mariadb_10.11",
-        "mariadb_10.2",
-        "mariadb_10.3",
         "mariadb_10.4",
         "mariadb_10.5",
         "mariadb_10.6",
         "mysql_5.7",
         "mysql_8.0",
-        "postgresql_10",
-        "postgresql_11",
         "postgresql_12",
         "postgresql_13",
         "postgresql_14",
@@ -2564,6 +2894,18 @@ export const schema: Schema = {
         }
       }
     },
+    "hosting.PrivateDatabase.Database.Copy.Status": {
+      "description": "Copy status",
+      "enum": [
+        "doing",
+        "done",
+        "error",
+        "todo"
+      ],
+      "enumType": "string",
+      "id": "Status",
+      "namespace": "hosting.PrivateDatabase.Database.Copy"
+    },
     "hosting.PrivateDatabase.Database.Extension.Status": {
       "description": "Extension status",
       "enum": [
@@ -2639,6 +2981,48 @@ export const schema: Schema = {
         "readTokenId": {
           "canBeNull": false,
           "description": "A read-only token ID",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "hosting.PrivateDatabase.LogSubscriptionResource": {
+      "description": "Log subscription resource",
+      "id": "LogSubscriptionResource",
+      "namespace": "hosting.PrivateDatabase",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "Name of subscribed resource",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Type of subscribed resource",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "hosting.PrivateDatabase.LogSubscriptionResponse": {
+      "description": "synchronous operation after subscribing or unsubscribing to a resource logs",
+      "id": "LogSubscriptionResponse",
+      "namespace": "hosting.PrivateDatabase",
+      "properties": {
+        "operationId": {
+          "canBeNull": false,
+          "description": "Identifier of the operation",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
+        },
+        "serviceName": {
+          "canBeNull": false,
+          "description": "Operation owner's service name",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -2791,13 +3175,13 @@ export const schema: Schema = {
       "description": "Task's function",
       "enum": [
         "abuse",
-        "boot",
         "changeFtpPassword",
         "changeRam",
-        "changeRootPassword",
         "changeVersion",
         "configuration/update",
         "create",
+        "database/copy",
+        "database/copyRestore",
         "database/create",
         "database/delete",
         "database/dump",
@@ -2811,7 +3195,6 @@ export const schema: Schema = {
         "grant/create",
         "grant/delete",
         "grant/update",
-        "halt",
         "install",
         "overquota/in",
         "overquota/out",
@@ -2819,7 +3202,6 @@ export const schema: Schema = {
         "refresh",
         "reopen",
         "restart",
-        "restore",
         "start",
         "stop",
         "suspend",
@@ -2843,12 +3225,112 @@ export const schema: Schema = {
         "doing",
         "done",
         "error",
-        "init",
         "todo"
       ],
       "enumType": "string",
       "id": "StatusEnum",
       "namespace": "hosting.PrivateDatabase.task"
+    },
+    "hosting.privateDatabase.AvailableRamSizeEnum": {
+      "description": "Private database available ram sizes",
+      "enum": [
+        "1024",
+        "2048",
+        "4096",
+        "512"
+      ],
+      "enumType": "string",
+      "id": "AvailableRamSizeEnum",
+      "namespace": "hosting.privateDatabase"
+    },
+    "hosting.privateDatabase.AvailableVersionEnum": {
+      "description": "Private database available version",
+      "enum": [
+        "mariadb_10.11",
+        "mariadb_10.4",
+        "mariadb_10.5",
+        "mariadb_10.6",
+        "mysql_5.7",
+        "mysql_8.0",
+        "postgresql_12",
+        "postgresql_13",
+        "postgresql_14",
+        "postgresql_15",
+        "redis_6.0",
+        "redis_7.0"
+      ],
+      "enumType": "string",
+      "id": "AvailableVersionEnum",
+      "namespace": "hosting.privateDatabase"
+    },
+    "hosting.privateDatabase.Capability": {
+      "description": "Private database capability",
+      "id": "Capability",
+      "namespace": "hosting.privateDatabase",
+      "properties": {
+        "create": {
+          "canBeNull": false,
+          "description": "Can the object be created",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "delete": {
+          "canBeNull": false,
+          "description": "Can the object be deleted",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "object": {
+          "canBeNull": false,
+          "description": "Object name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "update": {
+          "canBeNull": false,
+          "description": "Can the object be updated",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
+    "hosting.privateDatabase.ChangeFtpPasswordPayload": {
+      "description": "Payload used to change the FTP password of a Web Cloud Database",
+      "id": "ChangeFtpPasswordPayload",
+      "namespace": "hosting.privateDatabase",
+      "properties": {
+        "password": {
+          "canBeNull": false,
+          "description": "New ftp admin password (alphanumeric and 8 characters minimum)",
+          "fullType": "password",
+          "readOnly": false,
+          "required": true,
+          "type": "password"
+        }
+      }
+    },
+    "hosting.privateDatabase.ChangeVersionPayload": {
+      "description": "Payload used to change the DBMS version of a Web Cloud Database",
+      "id": "ChangeVersionPayload",
+      "namespace": "hosting.privateDatabase",
+      "properties": {
+        "version": {
+          "canBeNull": false,
+          "description": "Change the private database engine version",
+          "fullType": "hosting.privateDatabase.AvailableVersionEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "hosting.privateDatabase.AvailableVersionEnum"
+        }
+      }
     },
     "hosting.privateDatabase.Configuration": {
       "description": "Configuration",
@@ -2889,18 +3371,421 @@ export const schema: Schema = {
         }
       }
     },
+    "hosting.privateDatabase.CpuThrottle": {
+      "description": "CPU throttle informations",
+      "id": "CpuThrottle",
+      "namespace": "hosting.privateDatabase",
+      "properties": {
+        "endDate": {
+          "canBeNull": true,
+          "description": "End date of the CPU throttle",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "startDate": {
+          "canBeNull": false,
+          "description": "Start date of the CPU throttle",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        }
+      }
+    },
+    "hosting.privateDatabase.Database": {
+      "description": "Databases",
+      "id": "Database",
+      "namespace": "hosting.privateDatabase",
+      "properties": {
+        "backupTime": {
+          "canBeNull": true,
+          "description": "Time of the next backup (every day)",
+          "fullType": "time",
+          "readOnly": true,
+          "required": false,
+          "type": "time"
+        },
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Creation date of the database",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "databaseName": {
+          "canBeNull": false,
+          "description": "Database name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "quotaUsed": {
+          "canBeNull": false,
+          "description": "Space used by the database",
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": true,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
+        },
+        "users": {
+          "canBeNull": false,
+          "description": "Users granted to this database",
+          "fullType": "hosting.privateDatabase.Database.User[]",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.privateDatabase.Database.User[]"
+        }
+      }
+    },
+    "hosting.privateDatabase.Database.CreateDump": {
+      "description": "Dumps",
+      "id": "CreateDump",
+      "namespace": "hosting.privateDatabase.Database",
+      "properties": {
+        "sendEmail": {
+          "canBeNull": false,
+          "description": "Whether to receive an email when the import is complete (default to false)",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
+    "hosting.privateDatabase.Database.CreatePayload": {
+      "description": "Payload used to create a database on a Web Cloud Database",
+      "id": "CreatePayload",
+      "namespace": "hosting.privateDatabase.Database",
+      "properties": {
+        "databaseName": {
+          "canBeNull": false,
+          "description": "Name of your new database",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "hosting.privateDatabase.Database.Dump": {
+      "description": "Dumps",
+      "id": "Dump",
+      "namespace": "hosting.privateDatabase.Database",
+      "properties": {
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Creation date of the dump",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "databaseName": {
+          "canBeNull": false,
+          "description": "Dump of this database name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "deletionDate": {
+          "canBeNull": false,
+          "description": "Automatic deletion date of the dump",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Dump id",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "url": {
+          "canBeNull": false,
+          "description": "Dump URL access",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "hosting.privateDatabase.Database.ImportPayload": {
+      "description": "Payload used to import a dump in a database on a Web Cloud Database",
+      "id": "ImportPayload",
+      "namespace": "hosting.privateDatabase.Database",
+      "properties": {
+        "documentId": {
+          "canBeNull": false,
+          "description": "Documents ID of the dump from /me/documents",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "flushDatabase": {
+          "canBeNull": false,
+          "description": "Whether to flush the database before importing the dump (default to false)",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "sendEmail": {
+          "canBeNull": false,
+          "description": "Whether to receive an email when the import is complete (default to false)",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
+    "hosting.privateDatabase.Database.User": {
+      "description": "Users",
+      "id": "User",
+      "namespace": "hosting.privateDatabase.Database",
+      "properties": {
+        "grantId": {
+          "canBeNull": false,
+          "description": "The grantId associated for this databaseName and this userName",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "grantType": {
+          "canBeNull": false,
+          "description": "User's rights on this database",
+          "fullType": "hosting.PrivateDatabase.grant.GrantEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.PrivateDatabase.grant.GrantEnum"
+        },
+        "userName": {
+          "canBeNull": false,
+          "description": "User's name granted on this database",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "hosting.privateDatabase.DatabaseWizardPayload": {
+      "description": "Payload used to create user and grant and apply it on a new database on a Web Cloud Database",
+      "id": "DatabaseWizardPayload",
+      "namespace": "hosting.privateDatabase",
+      "properties": {
+        "databaseName": {
+          "canBeNull": false,
+          "description": "Name of your new database",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "grant": {
+          "canBeNull": false,
+          "description": "Grant of the user on this database",
+          "fullType": "hosting.PrivateDatabase.grant.GrantEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "hosting.PrivateDatabase.grant.GrantEnum"
+        },
+        "password": {
+          "canBeNull": false,
+          "description": "Password for the new user (alphanumeric and 8 characters minimum)",
+          "fullType": "password",
+          "readOnly": false,
+          "required": true,
+          "type": "password"
+        },
+        "userName": {
+          "canBeNull": false,
+          "description": "New user name used to connect on your database",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "hosting.privateDatabase.DatacenterEnum": {
+      "description": "Private database datacenter",
+      "enum": [
+        "bhs1",
+        "gra1",
+        "gra2",
+        "gra3"
+      ],
+      "enumType": "string",
+      "id": "DatacenterEnum",
+      "namespace": "hosting.privateDatabase"
+    },
+    "hosting.privateDatabase.Dump": {
+      "description": "Dumps",
+      "id": "Dump",
+      "namespace": "hosting.privateDatabase",
+      "properties": {
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Creation date of the dump",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "databaseName": {
+          "canBeNull": false,
+          "description": "Dump of this database name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "deletionDate": {
+          "canBeNull": false,
+          "description": "Automatic deletion date of the dump",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "dumpId": {
+          "canBeNull": false,
+          "description": "Dump id",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "orphan": {
+          "canBeNull": false,
+          "description": "Dump orphan flag (true if database does not exists)",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "url": {
+          "canBeNull": false,
+          "description": "Dump URL access",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "hosting.privateDatabase.Dump.Restore": {
+      "description": "Restore a database dump into a Web Cloud Database",
+      "id": "Restore",
+      "namespace": "hosting.privateDatabase.Dump",
+      "properties": {
+        "databaseName": {
+          "canBeNull": false,
+          "description": "Database name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "hosting.privateDatabase.GraphEndpoint": {
+      "description": "Parameters required to query metrics from OpenTSDB",
+      "id": "GraphEndpoint",
+      "namespace": "hosting.privateDatabase",
+      "properties": {
+        "host": {
+          "canBeNull": false,
+          "description": "The OpenTSDB host",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "readToken": {
+          "canBeNull": false,
+          "description": "A read-only token",
+          "fullType": "password",
+          "readOnly": true,
+          "required": false,
+          "type": "password"
+        },
+        "readTokenId": {
+          "canBeNull": false,
+          "description": "A read-only token ID",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "hosting.privateDatabase.InfrastructureEnum": {
+      "description": "Private database infrastructure",
+      "enum": [
+        "docker"
+      ],
+      "enumType": "string",
+      "id": "InfrastructureEnum",
+      "namespace": "hosting.privateDatabase"
+    },
+    "hosting.privateDatabase.OfferEnum": {
+      "description": "Available offers",
+      "enum": [
+        "classic",
+        "public"
+      ],
+      "enumType": "string",
+      "id": "OfferEnum",
+      "namespace": "hosting.privateDatabase"
+    },
+    "hosting.privateDatabase.Oom": {
+      "description": "List of privatesql OOM kill",
+      "id": "Oom",
+      "namespace": "hosting.privateDatabase",
+      "properties": {
+        "date": {
+          "canBeNull": false,
+          "description": "Date of the OOM kill",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "sizeReached": {
+          "canBeNull": false,
+          "description": "Memory size reached",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
     "hosting.privateDatabase.Service": {
-      "description": "Private database",
+      "description": "Web Cloud Database",
       "id": "Service",
       "namespace": "hosting.privateDatabase",
       "properties": {
         "capabilities": {
           "canBeNull": false,
           "description": "Private database capabilities",
-          "fullType": "hosting.PrivateDatabase.Capability[]",
+          "fullType": "hosting.privateDatabase.Capability[]",
           "readOnly": true,
           "required": false,
-          "type": "hosting.PrivateDatabase.Capability[]"
+          "type": "hosting.privateDatabase.Capability[]"
         },
         "cpu": {
           "canBeNull": false,
@@ -2913,10 +3798,10 @@ export const schema: Schema = {
         "datacenter": {
           "canBeNull": false,
           "description": "Datacenter where this private database is located",
-          "fullType": "hosting.PrivateDatabase.DatacenterEnum",
+          "fullType": "hosting.privateDatabase.DatacenterEnum",
           "readOnly": true,
           "required": false,
-          "type": "hosting.PrivateDatabase.DatacenterEnum"
+          "type": "hosting.privateDatabase.DatacenterEnum"
         },
         "displayName": {
           "canBeNull": true,
@@ -2929,10 +3814,10 @@ export const schema: Schema = {
         "graphEndpoint": {
           "canBeNull": true,
           "description": "Parameters required to query metrics from OpenTSDB",
-          "fullType": "hosting.PrivateDatabase.GraphEndpoint",
+          "fullType": "hosting.privateDatabase.GraphEndpoint",
           "readOnly": true,
           "required": false,
-          "type": "hosting.PrivateDatabase.GraphEndpoint"
+          "type": "hosting.privateDatabase.GraphEndpoint"
         },
         "guiURL": {
           "canBeNull": true,
@@ -2943,7 +3828,7 @@ export const schema: Schema = {
           "type": "string"
         },
         "hostname": {
-          "canBeNull": true,
+          "canBeNull": false,
           "description": "Private database hostname",
           "fullType": "string",
           "readOnly": true,
@@ -2961,18 +3846,18 @@ export const schema: Schema = {
         "infrastructure": {
           "canBeNull": false,
           "description": "Infrastructure where service was stored",
-          "fullType": "string",
+          "fullType": "hosting.privateDatabase.InfrastructureEnum",
           "readOnly": true,
           "required": false,
-          "type": "string"
+          "type": "hosting.privateDatabase.InfrastructureEnum"
         },
         "ip": {
           "canBeNull": true,
           "description": "Private database ip",
-          "fullType": "ip",
+          "fullType": "ipv4",
           "readOnly": true,
           "required": false,
-          "type": "ip"
+          "type": "ipv4"
         },
         "lastCheck": {
           "canBeNull": false,
@@ -2985,10 +3870,10 @@ export const schema: Schema = {
         "offer": {
           "canBeNull": false,
           "description": "Type of the private database offer",
-          "fullType": "hosting.PrivateDatabase.OfferEnum",
+          "fullType": "hosting.privateDatabase.OfferEnum",
           "readOnly": true,
           "required": false,
-          "type": "hosting.PrivateDatabase.OfferEnum"
+          "type": "hosting.privateDatabase.OfferEnum"
         },
         "port": {
           "canBeNull": false,
@@ -3031,7 +3916,7 @@ export const schema: Schema = {
           "type": "complexType.UnitAndValue<long>"
         },
         "server": {
-          "canBeNull": true,
+          "canBeNull": false,
           "description": "Private database server name",
           "fullType": "string",
           "readOnly": true,
@@ -3049,10 +3934,10 @@ export const schema: Schema = {
         "state": {
           "canBeNull": false,
           "description": "Private database state",
-          "fullType": "hosting.PrivateDatabase.StateEnum",
+          "fullType": "hosting.privateDatabase.StateEnum",
           "readOnly": true,
           "required": false,
-          "type": "hosting.PrivateDatabase.StateEnum"
+          "type": "hosting.privateDatabase.StateEnum"
         },
         "tlsCa": {
           "canBeNull": true,
@@ -3065,18 +3950,18 @@ export const schema: Schema = {
         "type": {
           "canBeNull": false,
           "description": "Private database type",
-          "fullType": "hosting.PrivateDatabase.TypeEnum",
+          "fullType": "hosting.privateDatabase.TypeEnum",
           "readOnly": true,
           "required": false,
-          "type": "hosting.PrivateDatabase.TypeEnum"
+          "type": "hosting.privateDatabase.TypeEnum"
         },
         "version": {
           "canBeNull": false,
           "description": "Private database version",
-          "fullType": "hosting.PrivateDatabase.AvailableVersionEnum",
+          "fullType": "hosting.privateDatabase.VersionEnum",
           "readOnly": true,
           "required": false,
-          "type": "hosting.PrivateDatabase.AvailableVersionEnum"
+          "type": "hosting.privateDatabase.VersionEnum"
         },
         "versionLabel": {
           "canBeNull": false,
@@ -3093,6 +3978,686 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "double"
+        }
+      }
+    },
+    "hosting.privateDatabase.ServiceWithIAM": {
+      "description": "Web Cloud Database",
+      "id": "Service",
+      "namespace": "hosting.privateDatabase",
+      "properties": {
+        "capabilities": {
+          "canBeNull": false,
+          "description": "Private database capabilities",
+          "fullType": "hosting.privateDatabase.Capability[]",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.privateDatabase.Capability[]"
+        },
+        "cpu": {
+          "canBeNull": false,
+          "description": "Number of cpu on your private database",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "datacenter": {
+          "canBeNull": false,
+          "description": "Datacenter where this private database is located",
+          "fullType": "hosting.privateDatabase.DatacenterEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.privateDatabase.DatacenterEnum"
+        },
+        "displayName": {
+          "canBeNull": true,
+          "description": "Set the name displayed in customer panel for your private database (max 50 chars)",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "graphEndpoint": {
+          "canBeNull": true,
+          "description": "Parameters required to query metrics from OpenTSDB",
+          "fullType": "hosting.privateDatabase.GraphEndpoint",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.privateDatabase.GraphEndpoint"
+        },
+        "guiURL": {
+          "canBeNull": true,
+          "description": "URL for the graphical user interface",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "hostname": {
+          "canBeNull": false,
+          "description": "Private database hostname",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "hostnameFtp": {
+          "canBeNull": true,
+          "description": "Private database ftp hostname",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "iam": {
+          "canBeNull": true,
+          "description": "IAM resource metadata",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.ResourceMetadata"
+        },
+        "infrastructure": {
+          "canBeNull": false,
+          "description": "Infrastructure where service was stored",
+          "fullType": "hosting.privateDatabase.InfrastructureEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.privateDatabase.InfrastructureEnum"
+        },
+        "ip": {
+          "canBeNull": true,
+          "description": "Private database ip",
+          "fullType": "ipv4",
+          "readOnly": true,
+          "required": false,
+          "type": "ipv4"
+        },
+        "lastCheck": {
+          "canBeNull": false,
+          "description": "Date of the last data synchronization",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "offer": {
+          "canBeNull": false,
+          "description": "Type of the private database offer",
+          "fullType": "hosting.privateDatabase.OfferEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.privateDatabase.OfferEnum"
+        },
+        "port": {
+          "canBeNull": false,
+          "description": "Private database service port",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "portFtp": {
+          "canBeNull": true,
+          "description": "Private database ftp port",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "quotaSize": {
+          "canBeNull": false,
+          "description": "Space allowed on your private database",
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": true,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
+        },
+        "quotaUsed": {
+          "canBeNull": false,
+          "description": "Total space used on your private database",
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": true,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
+        },
+        "ram": {
+          "canBeNull": false,
+          "description": "Amount of ram on your private database",
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": true,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
+        },
+        "server": {
+          "canBeNull": false,
+          "description": "Private database server name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "serviceName": {
+          "canBeNull": false,
+          "description": "Service name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "state": {
+          "canBeNull": false,
+          "description": "Private database state",
+          "fullType": "hosting.privateDatabase.StateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.privateDatabase.StateEnum"
+        },
+        "tlsCa": {
+          "canBeNull": true,
+          "description": "Return the TLS certificate authority used by the private database",
+          "fullType": "text",
+          "readOnly": true,
+          "required": false,
+          "type": "text"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Private database type",
+          "fullType": "hosting.privateDatabase.TypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.privateDatabase.TypeEnum"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": "Private database version",
+          "fullType": "hosting.privateDatabase.VersionEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.privateDatabase.VersionEnum"
+        },
+        "versionLabel": {
+          "canBeNull": false,
+          "description": "Private database version label",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "versionNumber": {
+          "canBeNull": false,
+          "description": "Private database version number",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        }
+      }
+    },
+    "hosting.privateDatabase.StateEnum": {
+      "description": "Private database state",
+      "enum": [
+        "detached",
+        "restartPending",
+        "startPending",
+        "started",
+        "stopPending",
+        "stopped"
+      ],
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "hosting.privateDatabase"
+    },
+    "hosting.privateDatabase.Task": {
+      "description": "Web Cloud Database task",
+      "id": "Task",
+      "namespace": "hosting.privateDatabase",
+      "properties": {
+        "databaseName": {
+          "canBeNull": true,
+          "description": "Database name on which the task is working",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "doneDate": {
+          "canBeNull": true,
+          "description": "Completion date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "dumpId": {
+          "canBeNull": true,
+          "description": "DumpId on which the task is working",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "function": {
+          "canBeNull": false,
+          "description": "Function name",
+          "fullType": "hosting.privateDatabase.task.FunctionEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.privateDatabase.task.FunctionEnum"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "The id of the task",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "lastUpdate": {
+          "canBeNull": true,
+          "description": "Last update",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "startDate": {
+          "canBeNull": false,
+          "description": "Task creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Task status",
+          "fullType": "hosting.privateDatabase.task.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.privateDatabase.task.StatusEnum"
+        },
+        "userName": {
+          "canBeNull": true,
+          "description": "User name on which the task is working",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "hosting.privateDatabase.TemporaryUrlInformations": {
+      "description": " Temporary url information",
+      "id": "TemporaryUrlInformations",
+      "namespace": "hosting.privateDatabase",
+      "properties": {
+        "expirationDate": {
+          "canBeNull": false,
+          "description": "Temporary url expiration date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "url": {
+          "canBeNull": false,
+          "description": "Temporary url",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "hosting.privateDatabase.TypeEnum": {
+      "description": "Private database type",
+      "enum": [
+        "mariadb",
+        "mysql",
+        "postgresql",
+        "redis"
+      ],
+      "enumType": "string",
+      "id": "TypeEnum",
+      "namespace": "hosting.privateDatabase"
+    },
+    "hosting.privateDatabase.User": {
+      "description": "Users",
+      "id": "User",
+      "namespace": "hosting.privateDatabase",
+      "properties": {
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Creation date of the user",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "databases": {
+          "canBeNull": false,
+          "description": "Databases granted for this user",
+          "fullType": "hosting.privateDatabase.User.Database[]",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.privateDatabase.User.Database[]"
+        },
+        "userName": {
+          "canBeNull": false,
+          "description": "User name used to connect to your databases",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "hosting.privateDatabase.User.ChangePasswordPayload": {
+      "description": "Payload used to change the password of a user on a Web Cloud Database",
+      "id": "ChangePasswordPayload",
+      "namespace": "hosting.privateDatabase.User",
+      "properties": {
+        "password": {
+          "canBeNull": false,
+          "description": "Password for the new user ( alphanumeric and 8 characters minimum )",
+          "fullType": "password",
+          "readOnly": false,
+          "required": true,
+          "type": "password"
+        }
+      }
+    },
+    "hosting.privateDatabase.User.CreatePayload": {
+      "description": "Payload used to create a user on a Web Cloud Database",
+      "id": "CreatePayload",
+      "namespace": "hosting.privateDatabase.User",
+      "properties": {
+        "password": {
+          "canBeNull": false,
+          "description": "Password for the new user ( alphanumeric and 8 characters minimum )",
+          "fullType": "password",
+          "readOnly": false,
+          "required": true,
+          "type": "password"
+        },
+        "userName": {
+          "canBeNull": false,
+          "description": "User name used to connect on your databases",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "hosting.privateDatabase.User.Database": {
+      "description": "Users",
+      "id": "Database",
+      "namespace": "hosting.privateDatabase.User",
+      "properties": {
+        "databaseName": {
+          "canBeNull": false,
+          "description": "Database granted for this user",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "grantId": {
+          "canBeNull": false,
+          "description": "The grantId associated for this databaseName and this userName",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "grantType": {
+          "canBeNull": false,
+          "description": "User's rights on this database",
+          "fullType": "hosting.PrivateDatabase.grant.GrantEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.PrivateDatabase.grant.GrantEnum"
+        }
+      }
+    },
+    "hosting.privateDatabase.User.Grant": {
+      "description": "Grant",
+      "id": "Grant",
+      "namespace": "hosting.privateDatabase.User",
+      "properties": {
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Automatic deletion date of the dump",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "databaseName": {
+          "canBeNull": false,
+          "description": "Dump of this database name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "grant": {
+          "canBeNull": false,
+          "description": "Grant set",
+          "fullType": "hosting.PrivateDatabase.grant.GrantEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.PrivateDatabase.grant.GrantEnum"
+        }
+      }
+    },
+    "hosting.privateDatabase.User.Grant.Create": {
+      "description": "Grant",
+      "id": "Create",
+      "namespace": "hosting.privateDatabase.User.Grant",
+      "properties": {
+        "databaseName": {
+          "canBeNull": false,
+          "description": "Database name where add grant",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "grant": {
+          "canBeNull": false,
+          "description": "Grant on a database for a specific user",
+          "fullType": "hosting.PrivateDatabase.grant.GrantEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "hosting.PrivateDatabase.grant.GrantEnum"
+        }
+      }
+    },
+    "hosting.privateDatabase.User.Grant.Update": {
+      "description": "Update user grant",
+      "id": "Update",
+      "namespace": "hosting.privateDatabase.User.Grant",
+      "properties": {
+        "grant": {
+          "canBeNull": false,
+          "description": "Grant on a database for a specific user",
+          "fullType": "hosting.PrivateDatabase.grant.GrantEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "hosting.PrivateDatabase.grant.GrantEnum"
+        }
+      }
+    },
+    "hosting.privateDatabase.VersionEnum": {
+      "description": "Private database version",
+      "enum": [
+        "mariadb_10.11",
+        "mariadb_10.4",
+        "mariadb_10.5",
+        "mariadb_10.6",
+        "mysql_5.7",
+        "mysql_8.0",
+        "postgresql_12",
+        "postgresql_13",
+        "postgresql_14",
+        "postgresql_15",
+        "redis_6.0",
+        "redis_7.0"
+      ],
+      "enumType": "string",
+      "id": "VersionEnum",
+      "namespace": "hosting.privateDatabase"
+    },
+    "hosting.privateDatabase.Whitelist": {
+      "description": "Whitelist",
+      "id": "Whitelist",
+      "namespace": "hosting.privateDatabase",
+      "properties": {
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Creation date of this whitelist",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "ip": {
+          "canBeNull": false,
+          "description": "The whitelisted IP in your Web Cloud Database",
+          "fullType": "ipv4Block",
+          "readOnly": true,
+          "required": false,
+          "type": "ipv4Block"
+        },
+        "lastUpdate": {
+          "canBeNull": false,
+          "description": "The last update date of this whitelist",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "name": {
+          "canBeNull": true,
+          "description": "Custom name for your Whitelisted IP",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "service": {
+          "canBeNull": false,
+          "description": "Authorize this IP to access service port",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "sftp": {
+          "canBeNull": false,
+          "description": "Authorize this IP to access sftp port",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Whitelist status",
+          "fullType": "hosting.privateDatabase.whitelist.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.privateDatabase.whitelist.StatusEnum"
+        },
+        "taskId": {
+          "canBeNull": true,
+          "description": "The id of the task working on this object",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "hosting.privateDatabase.Whitelist.CreatePayload": {
+      "description": "Whitelist",
+      "id": "CreatePayload",
+      "namespace": "hosting.privateDatabase.Whitelist",
+      "properties": {
+        "ip": {
+          "canBeNull": false,
+          "description": "The whitelisted IP in your Web Cloud Database",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": true,
+          "description": "Custom name for your Whitelisted IP",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "service": {
+          "canBeNull": false,
+          "description": "Authorize this IP to access service port",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "sftp": {
+          "canBeNull": false,
+          "description": "Authorize this IP to access sftp port",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
+    "hosting.privateDatabase.availableOrderCapacities": {
+      "description": "Description for available order capacities following an offer",
+      "id": "availableOrderCapacities",
+      "namespace": "hosting.privateDatabase",
+      "properties": {
+        "datacenter": {
+          "canBeNull": false,
+          "description": "A list of datacenter available for this offer",
+          "fullType": "hosting.privateDatabase.DatacenterEnum[]",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.privateDatabase.DatacenterEnum[]"
+        },
+        "offer": {
+          "canBeNull": false,
+          "description": "Offer",
+          "fullType": "hosting.privateDatabase.OfferEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.privateDatabase.OfferEnum"
+        },
+        "ram": {
+          "canBeNull": false,
+          "description": "A list of ram size available for this offer",
+          "fullType": "hosting.privateDatabase.AvailableRamSizeEnum[]",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.privateDatabase.AvailableRamSizeEnum[]"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": "A list of version available for this offer",
+          "fullType": "hosting.privateDatabase.AvailableVersionEnum[]",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.privateDatabase.AvailableVersionEnum[]"
         }
       }
     },
@@ -3140,6 +4705,53 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "hosting.PrivateDatabase.Database.User[]"
+        }
+      }
+    },
+    "hosting.privateDatabase.database.copy": {
+      "description": "Copy",
+      "id": "database.copy",
+      "namespace": "hosting.privateDatabase",
+      "properties": {
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "expirationDate": {
+          "canBeNull": true,
+          "description": "Expiration date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Copy id",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "lastUpdate": {
+          "canBeNull": false,
+          "description": "Last update date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Copy status",
+          "fullType": "hosting.PrivateDatabase.Database.Copy.Status",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.PrivateDatabase.Database.Copy.Status"
         }
       }
     },
@@ -3315,6 +4927,124 @@ export const schema: Schema = {
         }
       }
     },
+    "hosting.privateDatabase.ldpKind": {
+      "description": "Log kind for your instance",
+      "id": "ldpKind",
+      "namespace": "hosting.privateDatabase",
+      "properties": {
+        "additionalReturnedFields": {
+          "canBeNull": false,
+          "description": "List of additional log fields managed in this log kind",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Creation date of the log kind",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "displayName": {
+          "canBeNull": false,
+          "description": "Log kind display name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "kindId": {
+          "canBeNull": false,
+          "description": "Log kind ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Log kind name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "updatedAt": {
+          "canBeNull": false,
+          "description": "Last update date of the log kind",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        }
+      }
+    },
+    "hosting.privateDatabase.ldpSubscription": {
+      "description": "Log subscription for your instance",
+      "id": "ldpSubscription",
+      "namespace": "hosting.privateDatabase",
+      "properties": {
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Creation date of the subscription",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "kind": {
+          "canBeNull": false,
+          "description": "Log kind name of this subscription",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "resource": {
+          "canBeNull": false,
+          "description": "Subscribed resource, where the logs come from",
+          "fullType": "hosting.PrivateDatabase.LogSubscriptionResource",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.PrivateDatabase.LogSubscriptionResource"
+        },
+        "serviceName": {
+          "canBeNull": false,
+          "description": "Name of the destination log service",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "streamId": {
+          "canBeNull": false,
+          "description": "Id of the destination log stream",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "subscriptionId": {
+          "canBeNull": false,
+          "description": "Subscription ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "updatedAt": {
+          "canBeNull": false,
+          "description": "Last update date of the subscription",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        }
+      }
+    },
     "hosting.privateDatabase.task": {
       "description": "Tasks",
       "id": "task",
@@ -3394,6 +5124,66 @@ export const schema: Schema = {
         }
       }
     },
+    "hosting.privateDatabase.task.FunctionEnum": {
+      "description": "Task's dunction",
+      "enum": [
+        "abuse",
+        "changeFtpPassword",
+        "changeRam",
+        "changeVersion",
+        "configuration/update",
+        "create",
+        "database/copy",
+        "database/copyRestore",
+        "database/create",
+        "database/delete",
+        "database/dump",
+        "database/dump/delete",
+        "database/extension/create",
+        "database/extension/delete",
+        "database/import",
+        "database/restore",
+        "database/wizard",
+        "delete",
+        "grant/create",
+        "grant/delete",
+        "grant/update",
+        "install",
+        "overquota/in",
+        "overquota/out",
+        "quotaRefresh",
+        "refresh",
+        "reopen",
+        "restart",
+        "start",
+        "stop",
+        "suspend",
+        "user/changePassword",
+        "user/create",
+        "user/delete",
+        "webhostingNetwork/disable",
+        "webhostingNetwork/enable",
+        "whitelist/create",
+        "whitelist/delete",
+        "whitelist/update"
+      ],
+      "enumType": "string",
+      "id": "FunctionEnum",
+      "namespace": "hosting.privateDatabase.task"
+    },
+    "hosting.privateDatabase.task.StatusEnum": {
+      "description": "Task's status",
+      "enum": [
+        "cancelled",
+        "doing",
+        "done",
+        "error",
+        "todo"
+      ],
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "hosting.privateDatabase.task"
+    },
     "hosting.privateDatabase.user": {
       "description": "Users",
       "id": "user",
@@ -3426,19 +5216,31 @@ export const schema: Schema = {
       }
     },
     "hosting.privateDatabase.webhostingNetwork": {
-      "description": "Webhosting network for your instance",
+      "description": "webhosting Network",
       "id": "webhostingNetwork",
       "namespace": "hosting.privateDatabase",
       "properties": {
         "status": {
           "canBeNull": false,
           "description": "Webhosting network status",
-          "fullType": "hosting.PrivateDatabase.WebhostingNetwork.Status",
+          "fullType": "hosting.privateDatabase.webhostingNetwork.StatusEnum",
           "readOnly": true,
           "required": false,
-          "type": "hosting.PrivateDatabase.WebhostingNetwork.Status"
+          "type": "hosting.privateDatabase.webhostingNetwork.StatusEnum"
         }
       }
+    },
+    "hosting.privateDatabase.webhostingNetwork.StatusEnum": {
+      "description": "Webhosting network status",
+      "enum": [
+        "disabled",
+        "disabling",
+        "enabled",
+        "enabling"
+      ],
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "hosting.privateDatabase.webhostingNetwork"
     },
     "hosting.privateDatabase.whitelist": {
       "description": "IP whitelisting for your instance",
@@ -3510,6 +5312,89 @@ export const schema: Schema = {
           "type": "string"
         }
       }
+    },
+    "hosting.privateDatabase.whitelist.StatusEnum": {
+      "description": "Whitelist status",
+      "enum": [
+        "created",
+        "creating",
+        "deleting",
+        "updating"
+      ],
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "hosting.privateDatabase.whitelist"
+    },
+    "iam.ResourceMetadata": {
+      "description": "IAM resource metadata embedded in services models",
+      "id": "ResourceMetadata",
+      "namespace": "iam",
+      "properties": {
+        "displayName": {
+          "canBeNull": true,
+          "description": "Resource display name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Unique identifier of the resource",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "tags": {
+          "canBeNull": true,
+          "description": "Resource tags. Tags that were internally computed are prefixed with ovh:",
+          "fullType": "map[string]string",
+          "readOnly": true,
+          "required": false,
+          "type": "map[string]string"
+        },
+        "urn": {
+          "canBeNull": false,
+          "description": "Unique resource name used in policies",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter": {
+      "description": "Resource tag filter",
+      "id": "TagFilter",
+      "namespace": "iam.resource",
+      "properties": {
+        "operator": {
+          "canBeNull": true,
+          "description": "Operator to use in order to filter on the value (defaults to 'EQ')",
+          "fullType": "iam.resource.TagFilter.OperatorEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.resource.TagFilter.OperatorEnum"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value to use in order to filter tags",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter.OperatorEnum": {
+      "description": "Operator that can be used in order to filter resources tags",
+      "enum": [
+        "EQ"
+      ],
+      "enumType": "string",
+      "id": "OperatorEnum",
+      "namespace": "iam.resource.TagFilter"
     },
     "service.RenewType": {
       "description": "Map a possible renew for a specific service",

@@ -16,10 +16,21 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "licensePlesk:apiovh:get"
+            {
+              "name": "licensePlesk:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
-          "parameters": [],
+          "parameters": [
+            {
+              "dataType": "map[string][]iam.resource.TagFilter",
+              "description": "Filter resources on IAM tags",
+              "name": "iamTags",
+              "paramType": "query",
+              "required": false
+            }
+          ],
           "responseType": "string[]"
         }
       ],
@@ -36,7 +47,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "licensePlesk:apiovh:get"
+            {
+              "name": "licensePlesk:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -49,7 +63,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.plesk.Plesk"
+          "responseType": "license.plesk.PleskWithIAM"
         },
         {
           "apiStatus": {
@@ -59,7 +73,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "licensePlesk:apiovh:put"
+            {
+              "name": "licensePlesk:apiovh:put",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -95,7 +112,10 @@ export const schema: Schema = {
           "description": "Returns an array of ips where the license can be moved to",
           "httpMethod": "GET",
           "iamActions": [
-            "licensePlesk:apiovh:allowedDestinationIp/get"
+            {
+              "name": "licensePlesk:apiovh:allowedDestinationIp/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -124,7 +144,10 @@ export const schema: Schema = {
           "description": "Will tell if the ip can accept the license",
           "httpMethod": "GET",
           "iamActions": [
-            "licensePlesk:apiovh:canLicenseBeMovedTo/get"
+            {
+              "name": "licensePlesk:apiovh:canLicenseBeMovedTo/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -161,7 +184,10 @@ export const schema: Schema = {
           "description": "Move this license to another Ip",
           "httpMethod": "POST",
           "iamActions": [
-            "licensePlesk:apiovh:changeIp"
+            {
+              "name": "licensePlesk:apiovh:changeIp",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -188,17 +214,20 @@ export const schema: Schema = {
       "path": "/license/plesk/{serviceName}/changeIp"
     },
     {
-      "description": "Confirm termination of your service",
+      "description": "Confirm service termination",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Confirm termination of your service",
+          "description": "Confirm service termination",
           "httpMethod": "POST",
           "iamActions": [
-            "licensePlesk:apiovh:confirmTermination"
+            {
+              "name": "licensePlesk:apiovh:confirmTermination",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -228,7 +257,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The termination token sent by mail to the admin contact",
+              "description": "The termination token sent by email to the admin contact",
               "fullType": "string",
               "name": "token",
               "paramType": "body",
@@ -259,7 +288,10 @@ export const schema: Schema = {
           "description": "options attached to this license",
           "httpMethod": "GET",
           "iamActions": [
-            "licensePlesk:apiovh:option/get"
+            {
+              "name": "licensePlesk:apiovh:option/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -288,7 +320,10 @@ export const schema: Schema = {
           "description": "release this Option",
           "httpMethod": "DELETE",
           "iamActions": [
-            "licensePlesk:apiovh:option/delete"
+            {
+              "name": "licensePlesk:apiovh:option/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -319,7 +354,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "licensePlesk:apiovh:option/get"
+            {
+              "name": "licensePlesk:apiovh:option/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -353,10 +391,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get service information",
           "httpMethod": "GET",
           "iamActions": [
-            "licensePlesk:apiovh:serviceInfos/get"
+            {
+              "name": "licensePlesk:apiovh:serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -376,10 +417,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Update service information",
           "httpMethod": "PUT",
           "iamActions": [
-            "licensePlesk:apiovh:serviceInfos/edit"
+            {
+              "name": "licensePlesk:apiovh:serviceInfos/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -415,7 +459,10 @@ export const schema: Schema = {
           "description": "tasks linked to this license",
           "httpMethod": "GET",
           "iamActions": [
-            "licensePlesk:apiovh:tasks/get"
+            {
+              "name": "licensePlesk:apiovh:tasks/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -460,7 +507,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "licensePlesk:apiovh:tasks/get"
+            {
+              "name": "licensePlesk:apiovh:tasks/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -487,18 +537,22 @@ export const schema: Schema = {
       "path": "/license/plesk/{serviceName}/tasks/{taskId}"
     },
     {
-      "description": "Terminate your service",
+      "description": "Ask for the termination of your service. Admin contact of this service will receive a termination token in order to confirm its termination with /confirmTermination endpoint.",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Terminate your service",
+          "description": "Ask for the termination of your service",
           "httpMethod": "POST",
           "iamActions": [
-            "licensePlesk:apiovh:terminate"
+            {
+              "name": "licensePlesk:apiovh:terminate",
+              "required": true
+            }
           ],
+          "longDescription": "Ask for the termination of your service. Admin contact of this service will receive a termination token by email in order to confirm its termination with /confirmTermination endpoint.",
           "noAuthentication": false,
           "parameters": [
             {
@@ -526,7 +580,10 @@ export const schema: Schema = {
           "description": "Get the orderable Plesk versions and their associated compatibilities",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:licensePlesk/orderableVersions/get"
+            {
+              "name": "account:apiovh:licensePlesk/orderableVersions/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -547,6 +604,77 @@ export const schema: Schema = {
   ],
   "basePath": "https://ca.api.ovh.com/1.0",
   "models": {
+    "iam.ResourceMetadata": {
+      "description": "IAM resource metadata embedded in services models",
+      "id": "ResourceMetadata",
+      "namespace": "iam",
+      "properties": {
+        "displayName": {
+          "canBeNull": true,
+          "description": "Resource display name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Unique identifier of the resource",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "tags": {
+          "canBeNull": true,
+          "description": "Resource tags. Tags that were internally computed are prefixed with ovh:",
+          "fullType": "map[string]string",
+          "readOnly": true,
+          "required": false,
+          "type": "map[string]string"
+        },
+        "urn": {
+          "canBeNull": false,
+          "description": "Unique resource name used in policies",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter": {
+      "description": "Resource tag filter",
+      "id": "TagFilter",
+      "namespace": "iam.resource",
+      "properties": {
+        "operator": {
+          "canBeNull": true,
+          "description": "Operator to use in order to filter on the value (defaults to 'EQ')",
+          "fullType": "iam.resource.TagFilter.OperatorEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.resource.TagFilter.OperatorEnum"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value to use in order to filter tags",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter.OperatorEnum": {
+      "description": "Operator that can be used in order to filter resources tags",
+      "enum": [
+        "EQ"
+      ],
+      "enumType": "string",
+      "id": "OperatorEnum",
+      "namespace": "iam.resource.TagFilter"
+    },
     "license.ActionType": {
       "description": "A short description of what does the Task on your license",
       "enum": [
@@ -784,16 +912,22 @@ export const schema: Schema = {
       "enum": [
         "1",
         "1-extra-language-for-plesk12",
+        "1-extra-language-for-plesk12-for-vps",
         "2",
         "2-extra-languages-for-plesk12",
+        "2-extra-languages-for-plesk12-for-vps",
         "3",
         "3-extra-languages-for-plesk12",
+        "3-extra-languages-for-plesk12-for-vps",
         "4",
         "4-extra-languages-for-plesk12",
+        "4-extra-languages-for-plesk12-for-vps",
         "5",
         "5-extra-languages-for-plesk12",
+        "5-extra-languages-for-plesk12-for-vps",
         "unlimited",
-        "unlimited-extra-languages-for-plesk12"
+        "unlimited-extra-languages-for-plesk12",
+        "unlimited-extra-languages-for-plesk12-for-vps"
       ],
       "enumType": "string",
       "id": "OrderablePleskLanguagePackEnum",
@@ -1029,6 +1163,108 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "license.DomainNumberEnum"
+        },
+        "informationKey": {
+          "canBeNull": true,
+          "description": "This license Information key",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "ip": {
+          "canBeNull": false,
+          "description": "The ip on which this license is attached",
+          "fullType": "ipv4",
+          "readOnly": true,
+          "required": false,
+          "type": "ipv4"
+        },
+        "key": {
+          "canBeNull": false,
+          "description": "This license key",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "licenseId": {
+          "canBeNull": false,
+          "description": "The license id on license provider side",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "productKey": {
+          "canBeNull": true,
+          "description": "This license product key",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "This license state",
+          "fullType": "license.StateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "license.StateEnum"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": "This license version",
+          "fullType": "license.PleskVersionEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "license.PleskVersionEnum"
+        }
+      }
+    },
+    "license.plesk.PleskWithIAM": {
+      "description": "Your Plesk license",
+      "id": "Plesk",
+      "namespace": "license.plesk",
+      "properties": {
+        "creation": {
+          "canBeNull": false,
+          "description": "This license creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "deleteAtExpiration": {
+          "canBeNull": false,
+          "description": "Shall we delete this on expiration ?",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "domain": {
+          "canBeNull": false,
+          "description": "The internal name of your license",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "domainNumber": {
+          "canBeNull": true,
+          "description": "The amount of domain this license can manage",
+          "fullType": "license.DomainNumberEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "license.DomainNumberEnum"
+        },
+        "iam": {
+          "canBeNull": true,
+          "description": "IAM resource metadata",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.ResourceMetadata"
         },
         "informationKey": {
           "canBeNull": true,

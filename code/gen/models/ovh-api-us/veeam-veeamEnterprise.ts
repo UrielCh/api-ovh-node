@@ -13,30 +13,44 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "List available services",
+          "description": "List Veeam Enterprise Plus services",
           "httpMethod": "GET",
           "iamActions": [
-            "veeamEnterprise:apiovh:get"
+            {
+              "name": "veeamEnterprise:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
-          "parameters": [],
+          "parameters": [
+            {
+              "dataType": "map[string][]iam.resource.TagFilter",
+              "description": "Filter resources on IAM tags",
+              "name": "iamTags",
+              "paramType": "query",
+              "required": false
+            }
+          ],
           "responseType": "string[]"
         }
       ],
       "path": "/veeam/veeamEnterprise"
     },
     {
-      "description": "Veeeam Enterprise offer",
+      "description": "Veeam Enterprise Plus",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Get this object properties",
+          "description": "Get Veeam Enterprise Plus",
           "httpMethod": "GET",
           "iamActions": [
-            "veeamEnterprise:apiovh:get"
+            {
+              "name": "veeamEnterprise:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -49,23 +63,26 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "veeam.veeamEnterprise.Account"
+          "responseType": "veeam.veeamEnterprise.AccountWithIAM"
         }
       ],
       "path": "/veeam/veeamEnterprise/{serviceName}"
     },
     {
-      "description": "Confirm termination of your service",
+      "description": "Confirm service termination",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Confirm termination of your service",
+          "description": "Confirm service termination",
           "httpMethod": "POST",
           "iamActions": [
-            "veeamEnterprise:apiovh:confirmTermination"
+            {
+              "name": "veeamEnterprise:apiovh:confirmTermination",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -95,7 +112,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The termination token sent by mail to the admin contact",
+              "description": "The termination token sent by email to the admin contact",
               "fullType": "string",
               "name": "token",
               "paramType": "body",
@@ -123,10 +140,13 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Register Veeam Backup Server to Veeam Enterprise",
+          "description": "Register Veeam backup server",
           "httpMethod": "POST",
           "iamActions": [
-            "veeamEnterprise:apiovh:register"
+            {
+              "name": "veeamEnterprise:apiovh:register",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -143,14 +163,6 @@ export const schema: Schema = {
               "description": "Your Veeam Backup And Replication associated password",
               "fullType": "password",
               "name": "password",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Your Veeam Backup And Replication Server Port",
-              "fullType": "long",
-              "name": "port",
               "paramType": "body",
               "required": true
             },
@@ -184,10 +196,13 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Get this object properties",
+          "description": "Get service information",
           "httpMethod": "GET",
           "iamActions": [
-            "veeamEnterprise:apiovh:serviceInfos/get"
+            {
+              "name": "veeamEnterprise:apiovh:serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -207,10 +222,13 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Alter this object properties",
+          "description": "Update service information",
           "httpMethod": "PUT",
           "iamActions": [
-            "veeamEnterprise:apiovh:serviceInfos/edit"
+            {
+              "name": "veeamEnterprise:apiovh:serviceInfos/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -243,10 +261,13 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Tasks associated with Veeam Enterprise",
+          "description": "List operations",
           "httpMethod": "GET",
           "iamActions": [
-            "veeamEnterprise:apiovh:task/get"
+            {
+              "name": "veeamEnterprise:apiovh:task/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -288,10 +309,13 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Get this object properties",
+          "description": "Get operation",
           "httpMethod": "GET",
           "iamActions": [
-            "veeamEnterprise:apiovh:task/get"
+            {
+              "name": "veeamEnterprise:apiovh:task/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -318,18 +342,22 @@ export const schema: Schema = {
       "path": "/veeam/veeamEnterprise/{serviceName}/task/{taskId}"
     },
     {
-      "description": "Terminate your service",
+      "description": "Ask for the termination of your service. Admin contact of this service will receive a termination token in order to confirm its termination with /confirmTermination endpoint.",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Terminate your service",
+          "description": "Ask for the termination of your service",
           "httpMethod": "POST",
           "iamActions": [
-            "veeamEnterprise:apiovh:terminate"
+            {
+              "name": "veeamEnterprise:apiovh:terminate",
+              "required": true
+            }
           ],
+          "longDescription": "Ask for the termination of your service. Admin contact of this service will receive a termination token by email in order to confirm its termination with /confirmTermination endpoint.",
           "noAuthentication": false,
           "parameters": [
             {
@@ -354,10 +382,13 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Update Veeam enterprise configuration",
+          "description": "Update Veeam Enterprise Plus configuration",
           "httpMethod": "POST",
           "iamActions": [
-            "veeamEnterprise:apiovh:update"
+            {
+              "name": "veeamEnterprise:apiovh:update",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -374,14 +405,6 @@ export const schema: Schema = {
               "description": "Your Veeam Backup And Replication associated password",
               "fullType": "password",
               "name": "password",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Your Veeam Backup And Replication Server Port",
-              "fullType": "long",
-              "name": "port",
               "paramType": "body",
               "required": true
             },
@@ -410,6 +433,77 @@ export const schema: Schema = {
   ],
   "basePath": "https://api.us.ovhcloud.com/1.0",
   "models": {
+    "iam.ResourceMetadata": {
+      "description": "IAM resource metadata embedded in services models",
+      "id": "ResourceMetadata",
+      "namespace": "iam",
+      "properties": {
+        "displayName": {
+          "canBeNull": true,
+          "description": "Resource display name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Unique identifier of the resource",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "tags": {
+          "canBeNull": true,
+          "description": "Resource tags. Tags that were internally computed are prefixed with ovh:",
+          "fullType": "map[string]string",
+          "readOnly": true,
+          "required": false,
+          "type": "map[string]string"
+        },
+        "urn": {
+          "canBeNull": false,
+          "description": "Unique resource name used in policies",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter": {
+      "description": "Resource tag filter",
+      "id": "TagFilter",
+      "namespace": "iam.resource",
+      "properties": {
+        "operator": {
+          "canBeNull": true,
+          "description": "Operator to use in order to filter on the value (defaults to 'EQ')",
+          "fullType": "iam.resource.TagFilter.OperatorEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.resource.TagFilter.OperatorEnum"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value to use in order to filter tags",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter.OperatorEnum": {
+      "description": "Operator that can be used in order to filter resources tags",
+      "enum": [
+        "EQ"
+      ],
+      "enumType": "string",
+      "id": "OperatorEnum",
+      "namespace": "iam.resource.TagFilter"
+    },
     "service.RenewType": {
       "description": "Map a possible renew for a specific service",
       "id": "RenewType",
@@ -616,7 +710,7 @@ export const schema: Schema = {
       }
     },
     "veeam.veeamEnterprise.Account": {
-      "description": "Veeeam Enterprise offer",
+      "description": "Veeam Enterprise Plus",
       "id": "Account",
       "namespace": "veeam.veeamEnterprise",
       "properties": {
@@ -636,13 +730,51 @@ export const schema: Schema = {
           "required": false,
           "type": "ip"
         },
-        "port": {
-          "canBeNull": true,
-          "description": "This Backup Server port",
-          "fullType": "long",
+        "serviceName": {
+          "canBeNull": false,
+          "description": "Your Veeam Enterprise Service name",
+          "fullType": "string",
           "readOnly": true,
           "required": false,
-          "type": "long"
+          "type": "string"
+        },
+        "sourceIp": {
+          "canBeNull": false,
+          "description": "OVH Enterprise Manager IP",
+          "fullType": "ip",
+          "readOnly": true,
+          "required": false,
+          "type": "ip"
+        }
+      }
+    },
+    "veeam.veeamEnterprise.AccountWithIAM": {
+      "description": "Veeam Enterprise Plus",
+      "id": "Account",
+      "namespace": "veeam.veeamEnterprise",
+      "properties": {
+        "activationStatus": {
+          "canBeNull": false,
+          "description": "Activation status for your Veeam backup server",
+          "fullType": "veeamEnterprise.ActivationStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "veeamEnterprise.ActivationStatusEnum"
+        },
+        "iam": {
+          "canBeNull": true,
+          "description": "IAM resource metadata",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.ResourceMetadata"
+        },
+        "ip": {
+          "canBeNull": true,
+          "description": "This Backup Server IP",
+          "fullType": "ip",
+          "readOnly": true,
+          "required": false,
+          "type": "ip"
         },
         "serviceName": {
           "canBeNull": false,

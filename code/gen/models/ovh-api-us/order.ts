@@ -16,7 +16,10 @@ export const schema: Schema = {
           "description": "List of your OVH order carts",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:order/cart/get"
+            {
+              "name": "account:apiovh:order/cart/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -41,26 +44,9 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Description of your cart",
-              "fullType": "string",
-              "name": "description",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "datetime",
-              "description": "Time of expiration of the cart",
-              "fullType": "datetime",
-              "name": "expire",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "nichandle.OvhSubsidiaryEnum",
-              "description": "OVH Subsidiary where you want to order",
-              "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "ovhSubsidiary",
+              "dataType": "order.cart.Creation",
+              "description": "Request Body",
+              "fullType": "order.cart.Creation",
               "paramType": "body",
               "required": true
             }
@@ -81,13 +67,16 @@ export const schema: Schema = {
           "description": "Delete a cart",
           "httpMethod": "DELETE",
           "iamActions": [
-            "account:apiovh:order/cart/delete"
+            {
+              "name": "account:apiovh:order/cart/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -107,7 +96,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -126,24 +115,15 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Description of your cart",
-              "fullType": "string",
-              "name": "description",
+              "dataType": "order.cart.Update",
+              "description": "Request Body",
+              "fullType": "order.cart.Update",
               "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "datetime",
-              "description": "Time of expiration of the cart",
-              "fullType": "datetime",
-              "name": "expire",
-              "paramType": "body",
-              "required": false
+              "required": true
             },
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -166,13 +146,16 @@ export const schema: Schema = {
           "description": "Assign a shopping cart to an loggedin client",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:order/cart/assign"
+            {
+              "name": "account:apiovh:order/cart/assign",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -189,16 +172,16 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Beta version",
+            "value": "BETA"
           },
-          "description": "Get informations about a baremetal server",
+          "description": "Get information about a baremetal server",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -209,48 +192,23 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Beta version",
+            "value": "BETA"
           },
           "description": "Post a new baremetal server item in your cart",
           "httpMethod": "POST",
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
+              "dataType": "order.cart.GenericProductCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericProductCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of a baremetal server offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the purchase of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -267,16 +225,16 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Beta version",
+            "value": "BETA"
           },
-          "description": "Get informations about baremetal server options",
+          "description": "Get information about baremetal server options",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -295,56 +253,23 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Beta version",
+            "value": "BETA"
           },
           "description": "Post a new baremetal server option in your cart",
           "httpMethod": "POST",
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Cart item to be linked",
-              "fullType": "long",
-              "name": "itemId",
+              "dataType": "order.cart.GenericOptionCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericOptionCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of a baremetal server offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the purchase of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -370,7 +295,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -389,40 +314,15 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
+              "dataType": "order.cart.GenericProductCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericProductCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of the bring your own IP addresses offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the purchase of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -442,13 +342,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Ceph as a Service offers",
+          "description": "Get information about Ceph as a Service offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -467,40 +367,15 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
+              "dataType": "order.cart.GenericProductCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericProductCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of the Ceph as a Service offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the purchase of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -523,13 +398,16 @@ export const schema: Schema = {
           "description": "Get prices and contracts information for your cart",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:order/cart/checkout/get"
+            {
+              "name": "account:apiovh:order/cart/checkout/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -546,29 +424,23 @@ export const schema: Schema = {
           "description": "Validate your shopping and create order",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:order/cart/checkout/create"
+            {
+              "name": "account:apiovh:order/cart/checkout/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "boolean",
-              "description": "Indicates that order will be automatically paid with preferred payment method",
-              "fullType": "boolean",
-              "name": "autoPayWithPreferredPaymentMethod",
+              "dataType": "order.cart.Checkout",
+              "description": "Request Body",
+              "fullType": "order.cart.Checkout",
               "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "Indicates that order will be processed with waiving retractation period",
-              "fullType": "boolean",
-              "name": "waiveRetractationPeriod",
-              "paramType": "body",
-              "required": false
+              "required": true
             },
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -588,13 +460,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Public Cloud offers",
+          "description": "Get information about Public Cloud offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -613,40 +485,15 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
+              "dataType": "order.cart.GenericProductCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericProductCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of the Public Cloud offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the purchase of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -666,13 +513,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Public Cloud options",
+          "description": "Get information about Public Cloud options",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -699,48 +546,15 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Cart item to be linked",
-              "fullType": "long",
-              "name": "itemId",
+              "dataType": "order.cart.GenericOptionCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericOptionCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of a Public Cloud option offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the purchase of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -766,7 +580,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -794,7 +608,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -813,16 +627,15 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Coupon identifier",
-              "fullType": "string",
-              "name": "coupon",
+              "dataType": "order.cart.CouponCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.CouponCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -842,13 +655,13 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Get informations about a dedicated server",
+          "description": "Get information about a dedicated server",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -883,40 +696,15 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
+              "dataType": "order.cart.GenericProductCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericProductCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of a dedicated server offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the purchase of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -936,13 +724,13 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Get informations about dedicated server options",
+          "description": "Get information about dedicated server options",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -977,48 +765,15 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Cart item to be linked",
-              "fullType": "long",
-              "name": "itemId",
+              "dataType": "order.cart.GenericOptionCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericOptionCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of a dedicated server offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the purchase of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -1038,13 +793,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Dedicated Discover server offers",
+          "description": "Get information about Dedicated Discover server offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -1063,40 +818,15 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
+              "dataType": "order.cart.GenericProductCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericProductCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of the Dedicated Discover server offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the purchase of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -1116,13 +846,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Dedicated Discover server options",
+          "description": "Get information about Dedicated Discover server options",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -1149,48 +879,15 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Cart item to be linked",
-              "fullType": "long",
-              "name": "itemId",
+              "dataType": "order.cart.GenericOptionCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericOptionCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of a Dedicated Discover server option offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the purchase of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -1203,40 +900,24 @@ export const schema: Schema = {
       "path": "/order/cart/{cartId}/discover/options"
     },
     {
-      "description": "Missing description",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about a eco",
+          "description": "Get information about a eco",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
               "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Filter the value of family property (=)",
-              "fullType": "string",
-              "name": "family",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Filter the value of planCode property (=)",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "query",
-              "required": false
             }
           ],
           "responseType": "order.cart.GenericProductDefinition[]"
@@ -1251,40 +932,15 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
+              "dataType": "order.cart.GenericProductCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericProductCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of a eco offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the purchase of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -1297,20 +953,20 @@ export const schema: Schema = {
       "path": "/order/cart/{cartId}/eco"
     },
     {
-      "description": "Missing description",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about eco options",
+          "description": "Get information about the options of a Eco",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -1318,15 +974,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Filter the value of family property (=)",
-              "fullType": "string",
-              "name": "family",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Identifier of a eco offer",
+              "description": "Identifier of a Eco offer",
               "fullType": "string",
               "name": "planCode",
               "paramType": "query",
@@ -1340,53 +988,20 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Post a new eco option in your cart",
+          "description": "Post a new Eco option in your cart",
           "httpMethod": "POST",
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Cart item to be linked",
-              "fullType": "long",
-              "name": "itemId",
+              "dataType": "order.cart.GenericOptionCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericOptionCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of a eco offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the purchase of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -1412,7 +1027,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -1431,40 +1046,15 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
+              "dataType": "order.cart.GenericProductCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericProductCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of the IP addresses offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the purchase of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -1490,7 +1080,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -1517,48 +1107,15 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Cart item to be linked",
-              "fullType": "long",
-              "name": "itemId",
+              "dataType": "order.cart.GenericOptionCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericOptionCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of an IP addresses option offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the purchase of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -1578,13 +1135,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about IP Load-Balancing offers",
+          "description": "Get information about IP Load-Balancing offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -1603,40 +1160,15 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
+              "dataType": "order.cart.GenericProductCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericProductCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of the IP Load-Balancing offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the purchase of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -1656,13 +1188,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about IP Load-Balancing options",
+          "description": "Get information about IP Load-Balancing options",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -1689,48 +1221,15 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Cart item to be linked",
-              "fullType": "long",
-              "name": "itemId",
+              "dataType": "order.cart.GenericOptionCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericOptionCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of a IP Load-Balancing option offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the purchase of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -1756,7 +1255,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -1782,7 +1281,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -1790,7 +1289,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Product item identifier",
+              "description": "Item ID",
               "fullType": "long",
               "name": "itemId",
               "paramType": "path",
@@ -1810,7 +1309,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -1818,7 +1317,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Product item identifier",
+              "description": "Item ID",
               "fullType": "long",
               "name": "itemId",
               "paramType": "path",
@@ -1837,24 +1336,15 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "New duration for item",
-              "fullType": "duration",
-              "name": "duration",
+              "dataType": "order.cart.ItemUpdate",
+              "description": "Request Body",
+              "fullType": "order.cart.ItemUpdate",
               "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "long",
-              "description": "New quantity for item",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": false
+              "required": true
             },
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -1862,7 +1352,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Product item identifier",
+              "description": "Item ID",
               "fullType": "long",
               "name": "itemId",
               "paramType": "path",
@@ -1888,7 +1378,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -1896,7 +1386,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Product item identifier",
+              "description": "Item ID",
               "fullType": "long",
               "name": "itemId",
               "paramType": "path",
@@ -1923,24 +1413,15 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Label for your configuration item",
-              "fullType": "string",
-              "name": "label",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "text",
-              "description": "Value or resource URL on API.OVH.COM of your configuration item",
-              "fullType": "text",
-              "name": "value",
+              "dataType": "order.cart.ItemConfigurationCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.ItemConfigurationCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -1948,7 +1429,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Product item identifier",
+              "description": "Item ID",
               "fullType": "long",
               "name": "itemId",
               "paramType": "path",
@@ -1974,7 +1455,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -1982,7 +1463,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Configuration item identifier",
+              "description": "Configuration ID",
               "fullType": "long",
               "name": "configurationId",
               "paramType": "path",
@@ -1990,7 +1471,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Product item identifier",
+              "description": "Item ID",
               "fullType": "long",
               "name": "itemId",
               "paramType": "path",
@@ -2010,7 +1491,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -2018,7 +1499,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Configuration item identifier",
+              "description": "Configuration ID",
               "fullType": "long",
               "name": "configurationId",
               "paramType": "path",
@@ -2026,7 +1507,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Product item identifier",
+              "description": "Item ID",
               "fullType": "long",
               "name": "itemId",
               "paramType": "path",
@@ -2052,7 +1533,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -2060,7 +1541,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Product item identifier",
+              "description": "Item ID",
               "fullType": "long",
               "name": "itemId",
               "paramType": "path",
@@ -2077,18 +1558,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
+            "deletionDate": "2023-02-23T00:00:00Z",
+            "deprecatedDate": "2023-01-23T10:00:00Z",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
-          "description": "Get informations about CloudLinux licenses offers",
+          "description": "Get information about CloudLinux licenses offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -2099,8 +1580,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
+            "deletionDate": "2023-02-23T00:00:00Z",
+            "deprecatedDate": "2023-01-23T10:00:00Z",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -2109,40 +1590,15 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the rental of the product",
-              "fullType": "duration",
-              "name": "duration",
+              "dataType": "order.cart.GenericProductCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericProductCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of the CloudLinux license offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the rental of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -2162,13 +1618,13 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Get informations about cPanel licenses offers",
+          "description": "Get information about cPanel licenses offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -2187,40 +1643,15 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the rental of the product",
-              "fullType": "duration",
-              "name": "duration",
+              "dataType": "order.cart.GenericProductCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericProductCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of the cPanel license offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the rental of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -2237,18 +1668,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
+            "deletionDate": "2023-02-23T00:00:00Z",
+            "deprecatedDate": "2023-01-23T10:00:00Z",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
-          "description": "Get informations about Directadmin licenses offers",
+          "description": "Get information about Directadmin licenses offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -2259,8 +1690,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
+            "deletionDate": "2023-02-23T00:00:00Z",
+            "deprecatedDate": "2023-01-23T10:00:00Z",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -2269,40 +1700,15 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the rental of the product",
-              "fullType": "duration",
-              "name": "duration",
+              "dataType": "order.cart.GenericProductCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericProductCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of the Directadmin license offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the rental of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -2322,13 +1728,13 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Get informations about Plesk licenses offers",
+          "description": "Get information about Plesk licenses offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -2347,40 +1753,15 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the rental of the product",
-              "fullType": "duration",
-              "name": "duration",
+              "dataType": "order.cart.GenericProductCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericProductCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of the Plesk license offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the rental of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -2400,13 +1781,13 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Get informations about Plesk license options",
+          "description": "Get information about Plesk license options",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -2433,48 +1814,15 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the product",
-              "fullType": "duration",
-              "name": "duration",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Cart item to be linked",
-              "fullType": "long",
-              "name": "itemId",
+              "dataType": "order.cart.GenericOptionCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericOptionCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of a Plesk license option offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -2494,13 +1842,13 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Get informations about SqlServer licenses offers",
+          "description": "Get information about SqlServer licenses offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -2519,40 +1867,15 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the rental of the product",
-              "fullType": "duration",
-              "name": "duration",
+              "dataType": "order.cart.GenericProductCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericProductCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of the SqlServer license offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the rental of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -2569,18 +1892,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
+            "deletionDate": "2023-02-23T00:00:00Z",
+            "deprecatedDate": "2023-01-23T10:00:00Z",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
-          "description": "Get informations about Virtuozzo licenses offers",
+          "description": "Get information about Virtuozzo licenses offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -2591,8 +1914,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
+            "deletionDate": "2023-02-23T00:00:00Z",
+            "deprecatedDate": "2023-01-23T10:00:00Z",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -2601,40 +1924,15 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the rental of the product",
-              "fullType": "duration",
-              "name": "duration",
+              "dataType": "order.cart.GenericProductCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericProductCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of the Virtuozzo license offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the rental of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -2651,18 +1949,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
+            "deletionDate": "2023-02-23T00:00:00Z",
+            "deprecatedDate": "2023-01-23T10:00:00Z",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
-          "description": "Get informations about Virtuozzo license options",
+          "description": "Get information about Virtuozzo license options",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -2681,58 +1979,25 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
+            "deletionDate": "2023-02-23T00:00:00Z",
+            "deprecatedDate": "2023-01-23T10:00:00Z",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
-          "description": "Post a new Virtuozzo license option in your cart",
+          "description": "Add a new Virtuozzo license option in your cart",
           "httpMethod": "POST",
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the product",
-              "fullType": "duration",
-              "name": "duration",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Cart item to be linked",
-              "fullType": "long",
-              "name": "itemId",
+              "dataType": "order.cart.GenericOptionCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericOptionCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of a Virtuozzo license option offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -2752,13 +2017,13 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Get informations about Windows licenses offers",
+          "description": "Get information about Windows licenses offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -2777,40 +2042,15 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the rental of the product",
-              "fullType": "duration",
-              "name": "duration",
+              "dataType": "order.cart.GenericProductCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericProductCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of the Windows license offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the rental of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -2827,18 +2067,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
+            "deletionDate": "2023-02-23T00:00:00Z",
+            "deprecatedDate": "2023-01-23T10:00:00Z",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
-          "description": "Get informations about Worklight licenses offers",
+          "description": "Get information about Worklight licenses offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -2849,8 +2089,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
+            "deletionDate": "2023-02-23T00:00:00Z",
+            "deprecatedDate": "2023-01-23T10:00:00Z",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -2859,40 +2099,15 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the rental of the product",
-              "fullType": "duration",
-              "name": "duration",
+              "dataType": "order.cart.GenericProductCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericProductCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of the Worklight license offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the rental of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -2905,20 +2120,20 @@ export const schema: Schema = {
       "path": "/order/cart/{cartId}/licenseWorklight"
     },
     {
-      "description": "List of OVHcloud Connect product",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Beta version",
+            "value": "BETA"
           },
-          "description": "Get informations about OVHcloud Connect offers",
+          "description": "Get information about a Nutanix",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -2929,48 +2144,137 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Post a new Nutanix item in your cart",
+          "httpMethod": "POST",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "order.cart.GenericProductCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericProductCreation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.Item"
+        }
+      ],
+      "path": "/order/cart/{cartId}/nutanix"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get information about the options of a Nutanix",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Identifier of a Nutanix offer",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericOptionDefinition[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Post a new Nutanix option in your cart",
+          "httpMethod": "POST",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "order.cart.GenericOptionCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericOptionCreation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.Item"
+        }
+      ],
+      "path": "/order/cart/{cartId}/nutanix/options"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get information about OVHcloud Connect offers",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericProductDefinition[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
           },
           "description": "Post a new OVHcloud Connect item in your cart",
           "httpMethod": "POST",
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
+              "dataType": "order.cart.GenericProductCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericProductCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of the OVHcloud Connect offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the purchase of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -2990,13 +2294,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Hosted Dedicated Cloud offers",
+          "description": "Get information about Hosted Private Cloud offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -3010,45 +2314,20 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Post a new Hosted Dedicated Cloud item in your cart",
+          "description": "Post a new Hosted Private Cloud item in your cart",
           "httpMethod": "POST",
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
+              "dataType": "order.cart.GenericProductCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericProductCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of the Hosted Dedicated Cloud offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the purchase of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -3068,13 +2347,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Hosted Dedicated Cloud options",
+          "description": "Get information about Hosted Private Cloud options",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -3082,7 +2361,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Identifier of the Hosted Dedicated Cloud you want to consult options",
+              "description": "Identifier of the Hosted Private Cloud you want to consult options",
               "fullType": "string",
               "name": "planCode",
               "paramType": "query",
@@ -3096,53 +2375,20 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Post a new Hosted Dedicated Cloud option in your cart",
+          "description": "Post a new Hosted Private Cloud option in your cart",
           "httpMethod": "POST",
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Cart item to be linked",
-              "fullType": "long",
-              "name": "itemId",
+              "dataType": "order.cart.GenericOptionCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericOptionCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of a Hosted Dedicated Cloud option offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the purchase of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -3159,16 +2405,16 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
-          "description": "Get informations about SSL Comodo offers",
+          "description": "Get information about SSL Comodo offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -3179,48 +2425,23 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Post a new SSL Comodo item in your cart",
           "httpMethod": "POST",
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
+              "dataType": "order.cart.GenericProductCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericProductCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of the SSL Comodo offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the purchase of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -3237,16 +2458,16 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
-          "description": "Get informations about SSL Comodo options",
+          "description": "Get information about SSL Comodo options",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -3265,56 +2486,23 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Post a new SSL Comodo option in your cart",
           "httpMethod": "POST",
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Cart item to be linked",
-              "fullType": "long",
-              "name": "itemId",
+              "dataType": "order.cart.GenericOptionCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericOptionCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of a SSL Comodo option offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the purchase of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -3340,7 +2528,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -3360,13 +2548,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Veeam Cloud Connect offers",
+          "description": "Get information about Veeam Cloud Connect offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -3385,40 +2573,15 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
+              "dataType": "order.cart.GenericProductCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericProductCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of the Veeam Cloud Connect offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the purchase of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -3438,13 +2601,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Veeam Cloud Connect options",
+          "description": "Get information about Veeam Cloud Connect options",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -3471,48 +2634,15 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Cart item to be linked",
-              "fullType": "long",
-              "name": "itemId",
+              "dataType": "order.cart.GenericOptionCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericOptionCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of a Veeam Cloud Connect option offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the purchase of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -3532,13 +2662,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Veeam Enterprise offers",
+          "description": "Get information about Veeam Enterprise offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -3557,40 +2687,15 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
+              "dataType": "order.cart.GenericProductCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericProductCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of the Veeam Enterprise offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the purchase of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -3610,13 +2715,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Veeam Enterprise options",
+          "description": "Get information about Veeam Enterprise options",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -3643,48 +2748,15 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Cart item to be linked",
-              "fullType": "long",
-              "name": "itemId",
+              "dataType": "order.cart.GenericOptionCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericOptionCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of a Veeam Enterprise option offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the purchase of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -3704,13 +2776,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about VPS offers",
+          "description": "Get information about VPS offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -3729,40 +2801,15 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
+              "dataType": "order.cart.GenericProductCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericProductCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of the VPS offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the purchase of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -3782,13 +2829,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about VPS options",
+          "description": "Get information about VPS options",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -3815,48 +2862,15 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Cart item to be linked",
-              "fullType": "long",
-              "name": "itemId",
+              "dataType": "order.cart.GenericOptionCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericOptionCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of a VPS option offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the purchase of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -3876,13 +2890,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about vRack offers",
+          "description": "Get information about vRack offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -3901,40 +2915,15 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
+              "dataType": "order.cart.GenericProductCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericProductCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of the vRack offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the purchase of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart identifier",
+              "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -3957,7 +2946,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/baremetalServers/get"
+            {
+              "name": "order:apiovh:cartServiceOption/baremetalServers/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -3977,7 +2969,10 @@ export const schema: Schema = {
           "description": "Get informations about additional baremetal servers offer for your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/baremetalServers/get"
+            {
+              "name": "order:apiovh:cartServiceOption/baremetalServers/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4000,7 +2995,10 @@ export const schema: Schema = {
           "description": "Post an additional baremetal servers option in your cart",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:cartServiceOption/baremetalServers/create"
+            {
+              "name": "order:apiovh:cartServiceOption/baremetalServers/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4069,7 +3067,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/cloud/get"
+            {
+              "name": "order:apiovh:cartServiceOption/cloud/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -4089,7 +3090,10 @@ export const schema: Schema = {
           "description": "Get informations about additional Cloud offer for your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/cloud/get"
+            {
+              "name": "order:apiovh:cartServiceOption/cloud/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4112,7 +3116,10 @@ export const schema: Schema = {
           "description": "Post an additional Cloud option in your cart",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:cartServiceOption/cloud/create"
+            {
+              "name": "order:apiovh:cartServiceOption/cloud/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4181,7 +3188,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/dedicated/get"
+            {
+              "name": "order:apiovh:cartServiceOption/dedicated/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -4201,7 +3211,10 @@ export const schema: Schema = {
           "description": "Get informations about additional dedicated offer for your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/dedicated/get"
+            {
+              "name": "order:apiovh:cartServiceOption/dedicated/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4224,7 +3237,10 @@ export const schema: Schema = {
           "description": "Post an additional dedicated option in your cart",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:cartServiceOption/dedicated/create"
+            {
+              "name": "order:apiovh:cartServiceOption/dedicated/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4293,7 +3309,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/ipLoadbalancing/get"
+            {
+              "name": "order:apiovh:cartServiceOption/ipLoadbalancing/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -4313,7 +3332,10 @@ export const schema: Schema = {
           "description": "Get informations about additional IP Load-Balancing offer for your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/ipLoadbalancing/get"
+            {
+              "name": "order:apiovh:cartServiceOption/ipLoadbalancing/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4336,7 +3358,10 @@ export const schema: Schema = {
           "description": "Post an additional IP Load-Balancing option in your cart",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:cartServiceOption/ipLoadbalancing/create"
+            {
+              "name": "order:apiovh:cartServiceOption/ipLoadbalancing/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4405,7 +3430,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/logs/get"
+            {
+              "name": "order:apiovh:cartServiceOption/logs/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -4425,7 +3453,10 @@ export const schema: Schema = {
           "description": "Get informations about additional Logs offer for your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/logs/get"
+            {
+              "name": "order:apiovh:cartServiceOption/logs/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4448,7 +3479,10 @@ export const schema: Schema = {
           "description": "Post an additional Logs option in your cart",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:cartServiceOption/logs/create"
+            {
+              "name": "order:apiovh:cartServiceOption/logs/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4507,6 +3541,127 @@ export const schema: Schema = {
       "path": "/order/cartServiceOption/logs/{serviceName}"
     },
     {
+      "description": "Operations about the CLUSTER service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List available services",
+          "httpMethod": "GET",
+          "iamActions": [
+            {
+              "name": "order:apiovh:cartServiceOption/nutanix/get",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/cartServiceOption/nutanix"
+    },
+    {
+      "description": "Listing offers /order/cartServiceOptions/nutanix/#serviceName#",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get informations about additional Nutanix offer for your service",
+          "httpMethod": "GET",
+          "iamActions": [
+            {
+              "name": "order:apiovh:cartServiceOption/nutanix/get",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal ID of nutanix service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericOptionDefinition[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Post an additional nutanix option in your cart",
+          "httpMethod": "POST",
+          "iamActions": [
+            {
+              "name": "order:apiovh:cartServiceOption/nutanix/create",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Identifier of the additional nutanix offer",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Pricing mode selected for the purchase of the product",
+              "fullType": "string",
+              "name": "pricingMode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity of product desired",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal ID of nutanix service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.Item"
+        }
+      ],
+      "path": "/order/cartServiceOption/nutanix/{serviceName}"
+    },
+    {
       "description": "Operations about the PCC service",
       "operations": [
         {
@@ -4517,7 +3672,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/privateCloud/get"
+            {
+              "name": "order:apiovh:cartServiceOption/privateCloud/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -4537,7 +3695,10 @@ export const schema: Schema = {
           "description": "Get informations about additional Dedicated Cloud offer for your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/privateCloud/get"
+            {
+              "name": "order:apiovh:cartServiceOption/privateCloud/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4560,7 +3721,10 @@ export const schema: Schema = {
           "description": "Post an additional Dedicated Cloud option in your cart",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:cartServiceOption/privateCloud/create"
+            {
+              "name": "order:apiovh:cartServiceOption/privateCloud/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4629,7 +3793,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/privateCloudEnterprise/get"
+            {
+              "name": "order:apiovh:cartServiceOption/privateCloudEnterprise/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -4649,7 +3816,10 @@ export const schema: Schema = {
           "description": "Get informations about additional Dedicated Cloud offer for your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/privateCloudEnterprise/get"
+            {
+              "name": "order:apiovh:cartServiceOption/privateCloudEnterprise/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4672,7 +3842,10 @@ export const schema: Schema = {
           "description": "Post an additional Dedicated Cloud option in your cart",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:cartServiceOption/privateCloudEnterprise/create"
+            {
+              "name": "order:apiovh:cartServiceOption/privateCloudEnterprise/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4741,7 +3914,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/privateCloudReseller/get"
+            {
+              "name": "order:apiovh:cartServiceOption/privateCloudReseller/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -4761,7 +3937,10 @@ export const schema: Schema = {
           "description": "Get informations about additional Dedicated Cloud offer for your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/privateCloudReseller/get"
+            {
+              "name": "order:apiovh:cartServiceOption/privateCloudReseller/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4784,7 +3963,10 @@ export const schema: Schema = {
           "description": "Post an additional Dedicated Cloud option in your cart",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:cartServiceOption/privateCloudReseller/create"
+            {
+              "name": "order:apiovh:cartServiceOption/privateCloudReseller/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4853,7 +4035,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/privateCloudResellerEnterprise/get"
+            {
+              "name": "order:apiovh:cartServiceOption/privateCloudResellerEnterprise/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -4873,7 +4058,10 @@ export const schema: Schema = {
           "description": "Get informations about additional Dedicated Cloud Enterprise offer for your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/privateCloudResellerEnterprise/get"
+            {
+              "name": "order:apiovh:cartServiceOption/privateCloudResellerEnterprise/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4896,7 +4084,10 @@ export const schema: Schema = {
           "description": "Post an additional Dedicated Cloud Enterprise option in your cart",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:cartServiceOption/privateCloudResellerEnterprise/create"
+            {
+              "name": "order:apiovh:cartServiceOption/privateCloudResellerEnterprise/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4965,7 +4156,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/vps/get"
+            {
+              "name": "order:apiovh:cartServiceOption/vps/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -4985,7 +4179,10 @@ export const schema: Schema = {
           "description": "Get informations about additional VPS offer for your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/vps/get"
+            {
+              "name": "order:apiovh:cartServiceOption/vps/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5008,7 +4205,10 @@ export const schema: Schema = {
           "description": "Post an additional VPS option in your cart",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:cartServiceOption/vps/create"
+            {
+              "name": "order:apiovh:cartServiceOption/vps/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5077,7 +4277,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/webPaaS/get"
+            {
+              "name": "order:apiovh:cartServiceOption/webPaaS/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -5097,7 +4300,10 @@ export const schema: Schema = {
           "description": "Get informations about additional Web PaaS offer for your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:cartServiceOption/webPaaS/get"
+            {
+              "name": "order:apiovh:cartServiceOption/webPaaS/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5120,7 +4326,10 @@ export const schema: Schema = {
           "description": "Post an additional Web PaaS option in your cart",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:cartServiceOption/webPaaS/create"
+            {
+              "name": "order:apiovh:cartServiceOption/webPaaS/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5183,8 +4392,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2018-05-01 00:00:00 +0100 +0100",
-            "deprecatedDate": "2018-03-26 00:00:00 +0100 +0100",
+            "deletionDate": "2018-05-01T00:00:00+01:00",
+            "deprecatedDate": "2018-03-26T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -5270,7 +4479,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.catalog.Catalog"
+          "responseType": "order.catalog.dedicated.Catalog"
         }
       ],
       "path": "/order/catalog/formatted/dedicated"
@@ -5296,7 +4505,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.catalog.Catalog"
+          "responseType": "order.catalog.dedicated.Catalog"
         }
       ],
       "path": "/order/catalog/formatted/discover"
@@ -5332,8 +4541,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
+            "deletionDate": "2023-02-23T00:00:00Z",
+            "deprecatedDate": "2023-01-23T10:00:00Z",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -5386,8 +4595,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
+            "deletionDate": "2023-02-23T00:00:00Z",
+            "deprecatedDate": "2023-01-23T10:00:00Z",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -5466,8 +4675,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
+            "deletionDate": "2023-02-23T00:00:00Z",
+            "deprecatedDate": "2023-01-23T10:00:00Z",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -5520,8 +4729,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-02-16 00:00:00 +0100 +0100",
-            "deprecatedDate": "2023-01-16 00:00:00 +0100 +0100",
+            "deletionDate": "2023-02-23T00:00:00Z",
+            "deprecatedDate": "2023-01-23T10:00:00Z",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
@@ -5596,7 +4805,7 @@ export const schema: Schema = {
       "path": "/order/catalog/formatted/vps"
     },
     {
-      "description": "Missing description",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -5606,13 +4815,16 @@ export const schema: Schema = {
           "description": "Retrieve information of catalog",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:order/catalog/private/privateCloud/get"
+            {
+              "name": "account:apiovh:order/catalog/private/privateCloud/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Name of the private catalog you want to consult.",
+              "description": "Name of the private catalog you want to consult",
               "fullType": "string",
               "name": "catalogName",
               "paramType": "query",
@@ -5620,7 +4832,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "nichandle.OvhSubsidiaryEnum",
-              "description": "Subsidiary of the country you want to consult private catalog.",
+              "description": "Subsidiary of the country you want to consult private catalog",
               "fullType": "nichandle.OvhSubsidiaryEnum",
               "name": "ovhSubsidiary",
               "paramType": "query",
@@ -5637,34 +4849,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Retrieve Anthos catalog",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "nichandle.OvhSubsidiaryEnum",
-              "description": "Subsidiary of the country you want to consult catalog",
-              "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "ovhSubsidiary",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "order.catalog.public.Catalog"
-        }
-      ],
-      "path": "/order/catalog/public/anthos"
-    },
-    {
-      "description": "Missing description",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Beta version",
+            "value": "BETA"
           },
           "description": "Retrieve bare-metal servers catalog",
           "httpMethod": "GET",
@@ -5737,7 +4923,7 @@ export const schema: Schema = {
       "path": "/order/catalog/public/domain"
     },
     {
-      "description": "Missing description",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -5819,32 +5005,6 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Retrieve KMS catalog",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "nichandle.OvhSubsidiaryEnum",
-              "description": "Subsidiary of the country you want to consult catalog",
-              "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "ovhSubsidiary",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "order.catalog.public.Catalog"
-        }
-      ],
-      "path": "/order/catalog/public/kms"
-    },
-    {
-      "description": "Missing description",
-      "operations": [
-        {
-          "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
@@ -5865,6 +5025,32 @@ export const schema: Schema = {
         }
       ],
       "path": "/order/catalog/public/licensecPanel"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Retrieve Logs catalog",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": "Subsidiary of the country you want to consult catalog",
+              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.catalog.public.Catalog"
+        }
+      ],
+      "path": "/order/catalog/public/logs"
     },
     {
       "description": "Missing description",
@@ -5919,7 +5105,7 @@ export const schema: Schema = {
       "path": "/order/catalog/public/netapp"
     },
     {
-      "description": "Missing description",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -6001,8 +5187,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Beta version",
+            "value": "BETA"
           },
           "description": "Retrieve OVH Cloud Connect catalog",
           "httpMethod": "GET",
@@ -6023,7 +5209,7 @@ export const schema: Schema = {
       "path": "/order/catalog/public/ovhCloudConnect"
     },
     {
-      "description": "Missing description",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -6049,7 +5235,7 @@ export const schema: Schema = {
       "path": "/order/catalog/public/privateCloud"
     },
     {
-      "description": "Missing description",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -6189,7 +5375,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/baremetalPrivateBandwidth/get"
+            {
+              "name": "order:apiovh:upgrade/baremetalPrivateBandwidth/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -6209,7 +5398,10 @@ export const schema: Schema = {
           "description": "Retrieve available offers to upgrade your service to",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/baremetalPrivateBandwidth/get"
+            {
+              "name": "order:apiovh:upgrade/baremetalPrivateBandwidth/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6238,7 +5430,10 @@ export const schema: Schema = {
           "description": "Get a provisional order for the selected upgrade of your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/baremetalPrivateBandwidth/get"
+            {
+              "name": "order:apiovh:upgrade/baremetalPrivateBandwidth/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6277,7 +5472,10 @@ export const schema: Schema = {
           "description": "Perform the requested upgrade of your service",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:upgrade/baremetalPrivateBandwidth/create"
+            {
+              "name": "order:apiovh:upgrade/baremetalPrivateBandwidth/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6330,7 +5528,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/baremetalPublicBandwidth/get"
+            {
+              "name": "order:apiovh:upgrade/baremetalPublicBandwidth/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -6350,7 +5551,10 @@ export const schema: Schema = {
           "description": "Retrieve available offers to upgrade your service to",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/baremetalPublicBandwidth/get"
+            {
+              "name": "order:apiovh:upgrade/baremetalPublicBandwidth/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6379,7 +5583,10 @@ export const schema: Schema = {
           "description": "Get a provisional order for the selected upgrade of your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/baremetalPublicBandwidth/get"
+            {
+              "name": "order:apiovh:upgrade/baremetalPublicBandwidth/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6418,7 +5625,10 @@ export const schema: Schema = {
           "description": "Perform the requested upgrade of your service",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:upgrade/baremetalPublicBandwidth/create"
+            {
+              "name": "order:apiovh:upgrade/baremetalPublicBandwidth/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6471,7 +5681,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/cephaas/get"
+            {
+              "name": "order:apiovh:upgrade/cephaas/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -6491,7 +5704,10 @@ export const schema: Schema = {
           "description": "Retrieve available offers to upgrade your service to",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/cephaas/get"
+            {
+              "name": "order:apiovh:upgrade/cephaas/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6520,7 +5736,10 @@ export const schema: Schema = {
           "description": "Get a provisional order for the selected upgrade of your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/cephaas/get"
+            {
+              "name": "order:apiovh:upgrade/cephaas/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6559,7 +5778,10 @@ export const schema: Schema = {
           "description": "Perform the requested upgrade of your service",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:upgrade/cephaas/create"
+            {
+              "name": "order:apiovh:upgrade/cephaas/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6612,7 +5834,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/licensecPanel/get"
+            {
+              "name": "order:apiovh:upgrade/licensecPanel/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -6632,7 +5857,10 @@ export const schema: Schema = {
           "description": "Retrieve available offers to upgrade your service to",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/licensecPanel/get"
+            {
+              "name": "order:apiovh:upgrade/licensecPanel/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6661,7 +5889,10 @@ export const schema: Schema = {
           "description": "Get a provisional order for the selected upgrade of your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/licensecPanel/get"
+            {
+              "name": "order:apiovh:upgrade/licensecPanel/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6700,7 +5931,10 @@ export const schema: Schema = {
           "description": "Perform the requested upgrade of your service",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:upgrade/licensecPanel/create"
+            {
+              "name": "order:apiovh:upgrade/licensecPanel/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6753,7 +5987,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/licensePlesk/get"
+            {
+              "name": "order:apiovh:upgrade/licensePlesk/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -6773,7 +6010,10 @@ export const schema: Schema = {
           "description": "Retrieve available offers to upgrade your service to",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/licensePlesk/get"
+            {
+              "name": "order:apiovh:upgrade/licensePlesk/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6802,7 +6042,10 @@ export const schema: Schema = {
           "description": "Get a provisional order for the selected upgrade of your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/licensePlesk/get"
+            {
+              "name": "order:apiovh:upgrade/licensePlesk/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6841,7 +6084,10 @@ export const schema: Schema = {
           "description": "Perform the requested upgrade of your service",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:upgrade/licensePlesk/create"
+            {
+              "name": "order:apiovh:upgrade/licensePlesk/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6894,7 +6140,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/privateCloud/get"
+            {
+              "name": "order:apiovh:upgrade/privateCloud/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -6914,7 +6163,10 @@ export const schema: Schema = {
           "description": "Retrieve available offers to upgrade your service to",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/privateCloud/get"
+            {
+              "name": "order:apiovh:upgrade/privateCloud/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6943,7 +6195,10 @@ export const schema: Schema = {
           "description": "Get a provisional order for the selected upgrade of your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/privateCloud/get"
+            {
+              "name": "order:apiovh:upgrade/privateCloud/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6982,7 +6237,10 @@ export const schema: Schema = {
           "description": "Perform the requested upgrade of your service",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:upgrade/privateCloud/create"
+            {
+              "name": "order:apiovh:upgrade/privateCloud/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7035,7 +6293,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/privateCloudManagementFee/get"
+            {
+              "name": "order:apiovh:upgrade/privateCloudManagementFee/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -7055,7 +6316,10 @@ export const schema: Schema = {
           "description": "Retrieve available offers to upgrade your service to",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/privateCloudManagementFee/get"
+            {
+              "name": "order:apiovh:upgrade/privateCloudManagementFee/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7084,7 +6348,10 @@ export const schema: Schema = {
           "description": "Get a provisional order for the selected upgrade of your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/privateCloudManagementFee/get"
+            {
+              "name": "order:apiovh:upgrade/privateCloudManagementFee/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7123,7 +6390,10 @@ export const schema: Schema = {
           "description": "Perform the requested upgrade of your service",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:upgrade/privateCloudManagementFee/create"
+            {
+              "name": "order:apiovh:upgrade/privateCloudManagementFee/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7176,7 +6446,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/vps/get"
+            {
+              "name": "order:apiovh:upgrade/vps/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -7196,7 +6469,10 @@ export const schema: Schema = {
           "description": "Retrieve available offers to upgrade your service to",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/vps/get"
+            {
+              "name": "order:apiovh:upgrade/vps/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7225,7 +6501,10 @@ export const schema: Schema = {
           "description": "Get a provisional order for the selected upgrade of your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/vps/get"
+            {
+              "name": "order:apiovh:upgrade/vps/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7264,7 +6543,10 @@ export const schema: Schema = {
           "description": "Perform the requested upgrade of your service",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:upgrade/vps/create"
+            {
+              "name": "order:apiovh:upgrade/vps/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7317,7 +6599,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/vpsAdditionalDisk/get"
+            {
+              "name": "order:apiovh:upgrade/vpsAdditionalDisk/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -7337,7 +6622,10 @@ export const schema: Schema = {
           "description": "Retrieve available offers to upgrade your service to",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/vpsAdditionalDisk/get"
+            {
+              "name": "order:apiovh:upgrade/vpsAdditionalDisk/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7366,7 +6654,10 @@ export const schema: Schema = {
           "description": "Get a provisional order for the selected upgrade of your service",
           "httpMethod": "GET",
           "iamActions": [
-            "order:apiovh:upgrade/vpsAdditionalDisk/get"
+            {
+              "name": "order:apiovh:upgrade/vpsAdditionalDisk/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7405,7 +6696,10 @@ export const schema: Schema = {
           "description": "Perform the requested upgrade of your service",
           "httpMethod": "POST",
           "iamActions": [
-            "order:apiovh:upgrade/vpsAdditionalDisk/create"
+            {
+              "name": "order:apiovh:upgrade/vpsAdditionalDisk/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7474,6 +6768,30 @@ export const schema: Schema = {
         }
       }
     },
+    "complexType.SafeKeyValue<string>": {
+      "description": "Key and value, with proper key strings",
+      "generics": [
+        "T"
+      ],
+      "id": "SafeKeyValue",
+      "namespace": "complexType",
+      "properties": {
+        "key": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "fullType": "T",
+          "readOnly": true,
+          "required": false,
+          "type": "T"
+        }
+      }
+    },
     "complexType.UnitAndValue<T>": {
       "description": "A numeric value tagged with its unit",
       "generics": [
@@ -7484,13 +6802,69 @@ export const schema: Schema = {
       "properties": {
         "unit": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Unit of the value",
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Value",
+          "fullType": "T",
+          "readOnly": true,
+          "required": false,
+          "type": "T"
+        }
+      }
+    },
+    "complexType.UnitAndValue<double>": {
+      "description": "A numeric value tagged with its unit",
+      "generics": [
+        "T"
+      ],
+      "id": "UnitAndValue",
+      "namespace": "complexType",
+      "properties": {
+        "unit": {
+          "canBeNull": false,
+          "description": "Unit of the value",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value",
+          "fullType": "T",
+          "readOnly": true,
+          "required": false,
+          "type": "T"
+        }
+      }
+    },
+    "complexType.UnitAndValue<long>": {
+      "description": "A numeric value tagged with its unit",
+      "generics": [
+        "T"
+      ],
+      "id": "UnitAndValue",
+      "namespace": "complexType",
+      "properties": {
+        "unit": {
+          "canBeNull": false,
+          "description": "Unit of the value",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value",
+          "fullType": "T",
+          "readOnly": true,
           "required": false,
           "type": "T"
         }
@@ -7790,6 +7164,17 @@ export const schema: Schema = {
       "id": "OvhSubsidiaryEnum",
       "namespace": "nichandle"
     },
+    "order.ContextTypeEnum": {
+      "description": "Application context of a promotion",
+      "enum": [
+        "discover",
+        "standard",
+        "welcome"
+      ],
+      "enumType": "string",
+      "id": "ContextTypeEnum",
+      "namespace": "order"
+    },
     "order.Contract": {
       "description": "A contract",
       "id": "Contract",
@@ -8066,6 +7451,14 @@ export const schema: Schema = {
           "required": false,
           "type": "order.CurrencyCodeEnum"
         },
+        "priceInUcents": {
+          "canBeNull": true,
+          "description": "Price in microcents",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
         "text": {
           "canBeNull": false,
           "description": "Textual representation",
@@ -8177,7 +7570,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Description of your cart",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -8185,7 +7578,7 @@ export const schema: Schema = {
           "canBeNull": true,
           "description": "Expiration time",
           "fullType": "datetime",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "datetime"
         },
@@ -8207,6 +7600,29 @@ export const schema: Schema = {
         }
       }
     },
+    "order.cart.Checkout": {
+      "description": "Missing description",
+      "id": "Checkout",
+      "namespace": "order.cart",
+      "properties": {
+        "autoPayWithPreferredPaymentMethod": {
+          "canBeNull": false,
+          "description": "Indicates that order will be automatically paid with preferred payment method",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "waiveRetractationPeriod": {
+          "canBeNull": false,
+          "description": "Indicates that order will be processed with waiving retractation period",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
     "order.cart.ConfigurationItem": {
       "description": "Representation of a configuration item for personalizing product",
       "id": "ConfigurationItem",
@@ -8216,7 +7632,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Configuration ID",
           "fullType": "long",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
@@ -8224,7 +7640,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Identifier of the resource",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -8232,7 +7648,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Path to the resource in API.OVH.COM",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
@@ -8277,6 +7693,52 @@ export const schema: Schema = {
         }
       }
     },
+    "order.cart.CouponCreation": {
+      "description": "Missing description",
+      "id": "CouponCreation",
+      "namespace": "order.cart",
+      "properties": {
+        "coupon": {
+          "canBeNull": false,
+          "description": "Coupon identifier",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "order.cart.Creation": {
+      "description": "Missing description",
+      "id": "Creation",
+      "namespace": "order.cart",
+      "properties": {
+        "description": {
+          "canBeNull": false,
+          "description": "Description of your cart",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "expire": {
+          "canBeNull": false,
+          "description": "Time of expiration of the cart",
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
+        },
+        "ovhSubsidiary": {
+          "canBeNull": false,
+          "description": "OVH Subsidiary where you want to order",
+          "fullType": "nichandle.OvhSubsidiaryEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "nichandle.OvhSubsidiaryEnum"
+        }
+      }
+    },
     "order.cart.DomainSettings": {
       "description": "Representation of domain name order properties",
       "id": "DomainSettings",
@@ -8293,15 +7755,63 @@ export const schema: Schema = {
       }
     },
     "order.cart.DurationUnitEnum": {
-      "description": "Unit that correspond to a duration range",
+      "description": "Unit corresponding to a duration range",
       "enum": [
-        "month",
         "day",
+        "hour",
+        "month",
         "none"
       ],
       "enumType": "string",
       "id": "DurationUnitEnum",
       "namespace": "order.cart"
+    },
+    "order.cart.GenericOptionCreation": {
+      "description": "Missing description",
+      "id": "GenericOptionCreation",
+      "namespace": "order.cart",
+      "properties": {
+        "duration": {
+          "canBeNull": false,
+          "description": "Duration selected for the purchase of the product",
+          "fullType": "duration",
+          "readOnly": false,
+          "required": true,
+          "type": "duration"
+        },
+        "itemId": {
+          "canBeNull": false,
+          "description": "Cart item to be linked",
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
+        },
+        "planCode": {
+          "canBeNull": false,
+          "description": "Identifier of the option offer",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "pricingMode": {
+          "canBeNull": false,
+          "description": "Pricing mode selected for the purchase of the product",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "quantity": {
+          "canBeNull": false,
+          "description": "Quantity of product desired",
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
+        }
+      }
     },
     "order.cart.GenericOptionDefinition": {
       "description": "Representation of a generic product option",
@@ -8312,7 +7822,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Define if options of this family are exclusive with each other",
           "fullType": "boolean",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
@@ -8320,7 +7830,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Option family",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -8328,7 +7838,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Define if an option of this family is mandatory",
           "fullType": "boolean",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
@@ -8336,7 +7846,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Product offer identifier",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -8344,7 +7854,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Prices of the product offer",
           "fullType": "order.cart.GenericProductPricing[]",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "order.cart.GenericProductPricing[]"
         },
@@ -8352,7 +7862,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Name of the product",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -8360,9 +7870,48 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Product type",
           "fullType": "order.cart.GenericProductTypeEnum",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "order.cart.GenericProductTypeEnum"
+        }
+      }
+    },
+    "order.cart.GenericProductCreation": {
+      "description": "Missing description",
+      "id": "GenericProductCreation",
+      "namespace": "order.cart",
+      "properties": {
+        "duration": {
+          "canBeNull": false,
+          "description": "Duration selected for the purchase of the product",
+          "fullType": "duration",
+          "readOnly": false,
+          "required": true,
+          "type": "duration"
+        },
+        "planCode": {
+          "canBeNull": false,
+          "description": "Identifier of the offer",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "pricingMode": {
+          "canBeNull": false,
+          "description": "Pricing mode selected for the purchase of the product",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "quantity": {
+          "canBeNull": false,
+          "description": "Quantity of product desired",
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         }
       }
     },
@@ -8527,8 +8076,8 @@ export const schema: Schema = {
       "description": "Strategy of a Pricing",
       "enum": [
         "stairstep",
-        "volume",
-        "tiered"
+        "tiered",
+        "volume"
       ],
       "enumType": "string",
       "id": "GenericProductPricingStrategyEnum",
@@ -8585,10 +8134,10 @@ export const schema: Schema = {
         "duration": {
           "canBeNull": true,
           "description": "Duration for the service",
-          "fullType": "duration:string",
+          "fullType": "duration",
           "readOnly": true,
           "required": false,
-          "type": "string"
+          "type": "duration"
         },
         "itemId": {
           "canBeNull": false,
@@ -8599,7 +8148,7 @@ export const schema: Schema = {
           "type": "long"
         },
         "offerId": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Offer unique identifier of the product added",
           "fullType": "string",
           "readOnly": true,
@@ -8640,16 +8189,93 @@ export const schema: Schema = {
         },
         "settings": {
           "canBeNull": false,
-          "description": "Domain related settings",
-          "fullType": "order.cart.DomainSettings",
+          "description": "Item settings",
+          "fullType": "order.cart.ItemSettings",
           "readOnly": true,
           "required": false,
-          "type": "order.cart.DomainSettings"
+          "type": "order.cart.ItemSettings"
+        }
+      }
+    },
+    "order.cart.ItemConfigurationCreation": {
+      "description": "Missing description",
+      "id": "ItemConfigurationCreation",
+      "namespace": "order.cart",
+      "properties": {
+        "label": {
+          "canBeNull": false,
+          "description": "Label for your configuration item",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value or resource URL on API.OVH.COM of your configuration item",
+          "fullType": "text",
+          "readOnly": false,
+          "required": true,
+          "type": "text"
+        }
+      }
+    },
+    "order.cart.ItemSettings": {
+      "description": "Order item settings",
+      "id": "ItemSettings",
+      "namespace": "order.cart",
+      "properties": {
+        "planCode": {
+          "canBeNull": true,
+          "description": "Order plan code",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "pricingMode": {
+          "canBeNull": true,
+          "description": "Pricing mode selected for the purchase of the product",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "quantity": {
+          "canBeNull": true,
+          "description": "Quantity of product desired",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "order.cart.ItemUpdate": {
+      "description": "Missing description",
+      "id": "ItemUpdate",
+      "namespace": "order.cart",
+      "properties": {
+        "duration": {
+          "canBeNull": false,
+          "description": "New duration for item",
+          "fullType": "duration",
+          "readOnly": false,
+          "required": false,
+          "type": "duration"
+        },
+        "quantity": {
+          "canBeNull": false,
+          "description": "New quantity for item",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "order.cart.Price": {
-      "description": "Price informations with label",
+      "description": "Price information with label",
       "id": "Price",
       "namespace": "order.cart",
       "properties": {
@@ -8668,21 +8294,115 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "order.Price"
+        },
+        "promotions": {
+          "canBeNull": true,
+          "description": "Promotions on the product",
+          "fullType": "order.cart.Promotion[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.cart.Promotion[]"
         }
       }
     },
     "order.cart.PriceLabelEnum": {
       "description": "Label corresponding to different type of price",
       "enum": [
-        "PRICE",
         "DISCOUNT",
         "FEE",
-        "TOTAL",
-        "RENEW"
+        "PRICE",
+        "RENEW",
+        "TOTAL"
       ],
       "enumType": "string",
       "id": "PriceLabelEnum",
       "namespace": "order.cart"
+    },
+    "order.cart.Promotion": {
+      "description": "Describes a promotion of a product",
+      "id": "Promotion",
+      "namespace": "order.cart",
+      "properties": {
+        "bundleWithPlanCodes": {
+          "canBeNull": false,
+          "description": "Bundle with plan code",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "endDate": {
+          "canBeNull": true,
+          "description": "Promotion end date using rfc3339",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the promotion",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "price": {
+          "canBeNull": false,
+          "description": "Price",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "startDate": {
+          "canBeNull": false,
+          "description": "Promotion start date using rfc3339",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "tags": {
+          "canBeNull": true,
+          "description": "Promotion tags",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Promotion type",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "order.cart.Update": {
+      "description": "Missing description",
+      "id": "Update",
+      "namespace": "order.cart",
+      "properties": {
+        "description": {
+          "canBeNull": false,
+          "description": "Description of your cart",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "expire": {
+          "canBeNull": false,
+          "description": "Time of expiration of the cart",
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
+        }
+      }
     },
     "order.catalog.AddonItem": {
       "description": "Describes an Addon",
@@ -8779,7 +8499,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Identifier of the catalog",
           "fullType": "long",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
@@ -8787,17 +8507,17 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "OVH Subsidiary concerned by this catalog",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
-        "plansFamily": {
-          "canBeNull": false,
+        "plans": {
+          "canBeNull": true,
           "description": "List of plans of the catalog",
-          "fullType": "order.catalog.PlansItem[]",
-          "readOnly": false,
+          "fullType": "order.catalog.ProductPlan[]",
+          "readOnly": true,
           "required": false,
-          "type": "order.catalog.PlansItem[]"
+          "type": "order.catalog.ProductPlan[]"
         }
       }
     },
@@ -9083,7 +8803,7 @@ export const schema: Schema = {
       "properties": {
         "blobs": {
           "canBeNull": true,
-          "description": "Extra informations of product offer",
+          "description": "Extra information of product offer",
           "fullType": "order.catalog.cloud.Blob",
           "readOnly": true,
           "required": false,
@@ -9187,7 +8907,7 @@ export const schema: Schema = {
       }
     },
     "order.catalog.cloud.Blob": {
-      "description": "Describe extra informations of product offer",
+      "description": "Describe extra information of product offer",
       "id": "Blob",
       "namespace": "order.catalog.cloud",
       "properties": {
@@ -9278,24 +8998,928 @@ export const schema: Schema = {
         }
       }
     },
+    "order.catalog.dedicated.Catalog": {
+      "description": "Describes a dedicated Catalog",
+      "id": "Catalog",
+      "namespace": "order.catalog.dedicated",
+      "properties": {
+        "families": {
+          "canBeNull": false,
+          "description": "Families of the catalog",
+          "fullType": "order.catalog.dedicated.Family[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.Family[]"
+        },
+        "metadatas": {
+          "canBeNull": false,
+          "description": "Metadata of the catalog",
+          "fullType": "order.catalog.dedicated.Metadata",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.Metadata"
+        },
+        "products": {
+          "canBeNull": false,
+          "description": "Products of the catalog",
+          "fullType": "order.catalog.dedicated.Product[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.Product[]"
+        },
+        "techDetails": {
+          "canBeNull": false,
+          "description": "Technical details",
+          "fullType": "order.catalog.dedicated.TechDetails[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.TechDetails[]"
+        }
+      }
+    },
+    "order.catalog.dedicated.Family": {
+      "description": "Describes a Family",
+      "id": "Family",
+      "namespace": "order.catalog.dedicated",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "Family name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "products": {
+          "canBeNull": false,
+          "description": "Family products",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        }
+      }
+    },
+    "order.catalog.dedicated.Metadata": {
+      "description": "Describes a Metadata",
+      "id": "Metadata",
+      "namespace": "order.catalog.dedicated",
+      "properties": {
+        "catalog": {
+          "canBeNull": false,
+          "description": "Identifier of the catalog",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "core": {
+          "canBeNull": false,
+          "description": "Core",
+          "fullType": "order.catalog.dedicated.Metadata.Capacities",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.Metadata.Capacities"
+        },
+        "currency": {
+          "canBeNull": false,
+          "description": "Currency",
+          "fullType": "order.catalog.dedicated.Metadata.Currency",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.Metadata.Currency"
+        },
+        "datacenters": {
+          "canBeNull": false,
+          "description": "List of datacenters",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "frequency": {
+          "canBeNull": false,
+          "description": "Frequency",
+          "fullType": "order.catalog.dedicated.Metadata.Frequency",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.Metadata.Frequency"
+        },
+        "merchant": {
+          "canBeNull": false,
+          "description": "Merchant",
+          "fullType": "nichandle.OvhSubsidiaryEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "nichandle.OvhSubsidiaryEnum"
+        },
+        "price": {
+          "canBeNull": false,
+          "description": "Price",
+          "fullType": "order.catalog.dedicated.Metadata.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.Metadata.Price"
+        },
+        "ram": {
+          "canBeNull": false,
+          "description": "RAM",
+          "fullType": "order.catalog.dedicated.Metadata.Capacities",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.Metadata.Capacities"
+        },
+        "thread": {
+          "canBeNull": false,
+          "description": "Thread",
+          "fullType": "order.catalog.dedicated.Metadata.Capacities",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.Metadata.Capacities"
+        },
+        "timestamp": {
+          "canBeNull": false,
+          "description": "Timestamp",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "order.catalog.dedicated.Metadata.Capacities": {
+      "description": "Describes a Capacity",
+      "id": "Capacities",
+      "namespace": "order.catalog.dedicated.Metadata",
+      "properties": {
+        "max": {
+          "canBeNull": false,
+          "description": "Max",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "min": {
+          "canBeNull": false,
+          "description": "Min",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "order.catalog.dedicated.Metadata.Currency": {
+      "description": "Describes a Currency",
+      "id": "Currency",
+      "namespace": "order.catalog.dedicated.Metadata",
+      "properties": {
+        "code": {
+          "canBeNull": false,
+          "description": "Currency code",
+          "fullType": "order.CurrencyCodeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "order.CurrencyCodeEnum"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "Currency description",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "symbol": {
+          "canBeNull": false,
+          "description": "Currency symbol",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "order.catalog.dedicated.Metadata.Frequency": {
+      "description": "Describes a Frequency",
+      "id": "Frequency",
+      "namespace": "order.catalog.dedicated.Metadata",
+      "properties": {
+        "max": {
+          "canBeNull": false,
+          "description": "Max",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "min": {
+          "canBeNull": false,
+          "description": "Min",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        }
+      }
+    },
+    "order.catalog.dedicated.Metadata.Price": {
+      "description": "Describes a Price",
+      "id": "Price",
+      "namespace": "order.catalog.dedicated.Metadata",
+      "properties": {
+        "max": {
+          "canBeNull": false,
+          "description": "Max",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "min": {
+          "canBeNull": false,
+          "description": "Min",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        }
+      }
+    },
+    "order.catalog.dedicated.Product": {
+      "description": "Describes a product",
+      "id": "Product",
+      "namespace": "order.catalog.dedicated",
+      "properties": {
+        "addonsFamily": {
+          "canBeNull": false,
+          "description": "List of addon family",
+          "fullType": "order.catalog.dedicated.Product.AddonFamily[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.Product.AddonFamily[]"
+        },
+        "code": {
+          "canBeNull": false,
+          "description": "Code",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "compatibilities": {
+          "canBeNull": true,
+          "description": "List of compatibility",
+          "fullType": "order.catalog.dedicated.Product.Compatibility[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.Product.Compatibility[]"
+        },
+        "datacenters": {
+          "canBeNull": false,
+          "description": "Datacenters",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "derivatives": {
+          "canBeNull": true,
+          "description": "List of derivative",
+          "fullType": "order.catalog.dedicated.Product.AddonItem[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.Product.AddonItem[]"
+        },
+        "family": {
+          "canBeNull": false,
+          "description": "Family",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "invoiceName": {
+          "canBeNull": false,
+          "description": "Name that appears on invoice",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "isChildOf": {
+          "canBeNull": true,
+          "description": "Name of the parent",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "isParentOf": {
+          "canBeNull": true,
+          "description": "Name of the children",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "prices": {
+          "canBeNull": false,
+          "description": "Prices",
+          "fullType": "order.catalog.dedicated.Product.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.Product.Price"
+        },
+        "specifications": {
+          "canBeNull": false,
+          "description": "Specifications",
+          "fullType": "order.catalog.dedicated.Product.Specification",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.Product.Specification"
+        }
+      }
+    },
+    "order.catalog.dedicated.Product.AddonFamily": {
+      "description": "Describes an addon family",
+      "id": "AddonFamily",
+      "namespace": "order.catalog.dedicated.Product",
+      "properties": {
+        "addons": {
+          "canBeNull": false,
+          "description": "List of addon",
+          "fullType": "order.catalog.dedicated.Product.AddonItem[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.Product.AddonItem[]"
+        },
+        "family": {
+          "canBeNull": false,
+          "description": "Family name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "order.catalog.dedicated.Product.AddonItem": {
+      "description": "Describes an addon",
+      "id": "AddonItem",
+      "namespace": "order.catalog.dedicated.Product",
+      "properties": {
+        "code": {
+          "canBeNull": false,
+          "description": "Addon code",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "datacenters": {
+          "canBeNull": true,
+          "description": "List of datacenter",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Addon name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "options": {
+          "canBeNull": true,
+          "description": "Options",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "price": {
+          "canBeNull": false,
+          "description": "Addon price",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        }
+      }
+    },
+    "order.catalog.dedicated.Product.Compatibility": {
+      "description": "Describes a Compatibility",
+      "id": "Compatibility",
+      "namespace": "order.catalog.dedicated.Product",
+      "properties": {
+        "plan": {
+          "canBeNull": false,
+          "description": "Plan name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "restrictions": {
+          "canBeNull": true,
+          "description": "List of restriction",
+          "fullType": "order.catalog.dedicated.Product.Compatibility.Restriction[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.Product.Compatibility.Restriction[]"
+        },
+        "specificities": {
+          "canBeNull": true,
+          "description": "List of restriction",
+          "fullType": "order.catalog.dedicated.TechDetails.Plan.Specificity[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.TechDetails.Plan.Specificity[]"
+        }
+      }
+    },
+    "order.catalog.dedicated.Product.Compatibility.Restriction": {
+      "description": "Describes a Restriction",
+      "id": "Restriction",
+      "namespace": "order.catalog.dedicated.Product.Compatibility",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "Name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "sections": {
+          "canBeNull": false,
+          "description": "List of section",
+          "fullType": "order.catalog.dedicated.Product.Compatibility.Restriction.Section[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.Product.Compatibility.Restriction.Section[]"
+        }
+      }
+    },
+    "order.catalog.dedicated.Product.Compatibility.Restriction.Section": {
+      "description": "Describes a Section",
+      "id": "Section",
+      "namespace": "order.catalog.dedicated.Product.Compatibility.Restriction",
+      "properties": {
+        "comment": {
+          "canBeNull": false,
+          "description": "Comment",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "plans": {
+          "canBeNull": false,
+          "description": "List of plan",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Type",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "order.catalog.dedicated.Product.Price": {
+      "description": "Describes a Prices",
+      "id": "Price",
+      "namespace": "order.catalog.dedicated.Product",
+      "properties": {
+        "default": {
+          "canBeNull": false,
+          "description": "Default price",
+          "fullType": "order.catalog.dedicated.Product.Price.Default",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.Product.Price.Default"
+        },
+        "hardzone": {
+          "canBeNull": true,
+          "description": "Hardzone",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "week": {
+          "canBeNull": true,
+          "description": "Week",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "order.catalog.dedicated.Product.Price.Default": {
+      "description": "Describes a Default price",
+      "id": "Default",
+      "namespace": "order.catalog.dedicated.Product.Price",
+      "properties": {
+        "installation": {
+          "canBeNull": true,
+          "description": "Installation price",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "renew": {
+          "canBeNull": true,
+          "description": "Renew price",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        }
+      }
+    },
+    "order.catalog.dedicated.Product.Specification": {
+      "description": "Describes a Specification for a product",
+      "id": "Specification",
+      "namespace": "order.catalog.dedicated.Product",
+      "properties": {
+        "cpu": {
+          "canBeNull": true,
+          "description": "CPU",
+          "fullType": "order.catalog.dedicated.Product.Specification.CPU",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.Product.Specification.CPU"
+        },
+        "disks": {
+          "canBeNull": true,
+          "description": "List of disk",
+          "fullType": "order.catalog.dedicated.Product.Specification.Disk[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.Product.Specification.Disk[]"
+        },
+        "gpu": {
+          "canBeNull": true,
+          "description": "GPU",
+          "fullType": "order.catalog.dedicated.Product.Specification.GPU",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.Product.Specification.GPU"
+        },
+        "memory": {
+          "canBeNull": true,
+          "description": "Memory",
+          "fullType": "order.catalog.dedicated.Product.Specification.Memory",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.Product.Specification.Memory"
+        },
+        "network": {
+          "canBeNull": false,
+          "description": "Network",
+          "fullType": "order.catalog.dedicated.Product.Specification.Network",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.Product.Specification.Network"
+        }
+      }
+    },
+    "order.catalog.dedicated.Product.Specification.CPU": {
+      "description": "Describes a CPU",
+      "id": "CPU",
+      "namespace": "order.catalog.dedicated.Product.Specification",
+      "properties": {
+        "boost": {
+          "canBeNull": true,
+          "description": "CPU Boost",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "brand": {
+          "canBeNull": true,
+          "description": "CPU Brand",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "cores": {
+          "canBeNull": true,
+          "description": "Number of cores",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "frequency": {
+          "canBeNull": true,
+          "description": "Frequency of CPU in GHz",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "model": {
+          "canBeNull": true,
+          "description": "Displayable name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "planCode": {
+          "canBeNull": true,
+          "description": "Plan code",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "threads": {
+          "canBeNull": true,
+          "description": "Number of threads",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "order.catalog.dedicated.Product.Specification.Disk": {
+      "description": "Describes a Disk",
+      "id": "Disk",
+      "namespace": "order.catalog.dedicated.Product.Specification",
+      "properties": {
+        "number": {
+          "canBeNull": false,
+          "description": "Disk number",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "planCode": {
+          "canBeNull": true,
+          "description": "Plan code",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "raid": {
+          "canBeNull": false,
+          "description": "Disk raid",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "size": {
+          "canBeNull": false,
+          "description": "Disk size",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Disk type",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "order.catalog.dedicated.Product.Specification.GPU": {
+      "description": "Describes a GPU",
+      "id": "GPU",
+      "namespace": "order.catalog.dedicated.Product.Specification",
+      "properties": {
+        "model": {
+          "canBeNull": true,
+          "description": "Displayable name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "number": {
+          "canBeNull": true,
+          "description": "GPU number",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "planCode": {
+          "canBeNull": true,
+          "description": "Plan code",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "order.catalog.dedicated.Product.Specification.Memory": {
+      "description": "Describes a Memory",
+      "id": "Memory",
+      "namespace": "order.catalog.dedicated.Product.Specification",
+      "properties": {
+        "planCode": {
+          "canBeNull": true,
+          "description": "Plan code",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "size": {
+          "canBeNull": true,
+          "description": "Memory size",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "type": {
+          "canBeNull": true,
+          "description": "Memory type",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "order.catalog.dedicated.Product.Specification.Network": {
+      "description": "Describes a Network",
+      "id": "Network",
+      "namespace": "order.catalog.dedicated.Product.Specification",
+      "properties": {
+        "failover": {
+          "canBeNull": false,
+          "description": "Failover",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "internal": {
+          "canBeNull": false,
+          "description": "Internal",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "ip": {
+          "canBeNull": false,
+          "description": "IP",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "outgoing": {
+          "canBeNull": false,
+          "description": "Outgoing",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "private": {
+          "canBeNull": false,
+          "description": "Private",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "privateBandwidth": {
+          "canBeNull": false,
+          "description": "Private bandwidth",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "order.catalog.dedicated.TechDetails": {
+      "description": "Describes technical details",
+      "id": "TechDetails",
+      "namespace": "order.catalog.dedicated",
+      "properties": {
+        "plans": {
+          "canBeNull": false,
+          "description": "List of plan",
+          "fullType": "order.catalog.dedicated.TechDetails.Plan[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.TechDetails.Plan[]"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Technical type",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "order.catalog.dedicated.TechDetails.Plan": {
+      "description": "Describes a Plan",
+      "id": "Plan",
+      "namespace": "order.catalog.dedicated.TechDetails",
+      "properties": {
+        "code": {
+          "canBeNull": false,
+          "description": "Plan code",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "specificities": {
+          "canBeNull": false,
+          "description": "List of specificity",
+          "fullType": "order.catalog.dedicated.TechDetails.Plan.Specificity[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.dedicated.TechDetails.Plan.Specificity[]"
+        }
+      }
+    },
+    "order.catalog.dedicated.TechDetails.Plan.Specificity": {
+      "description": "Describes a Specificity for a plan",
+      "id": "Specificity",
+      "namespace": "order.catalog.dedicated.TechDetails.Plan",
+      "properties": {
+        "key": {
+          "canBeNull": false,
+          "description": "Key",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        }
+      }
+    },
     "order.catalog.pcc.Catalog": {
       "description": "Describe a Dedicated Cloud commercial catalog",
       "id": "Catalog",
       "namespace": "order.catalog.pcc",
       "properties": {
+        "active": {
+          "canBeNull": false,
+          "description": "Describe if a catalog is Active",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
         "catalogId": {
           "canBeNull": false,
           "description": "Catalog ID",
-          "fullType": "long",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
-          "type": "long"
+          "type": "string"
         },
         "catalogName": {
           "canBeNull": false,
           "description": "Catalog name",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -9303,7 +9927,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes Commercial Ranges of a Dedicated Cloud",
           "fullType": "order.catalog.pcc.CommercialRange[]",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "order.catalog.pcc.CommercialRange[]"
         },
@@ -9311,7 +9935,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "OVH Subsidiary of the Catalog",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -9319,7 +9943,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Commercial offers",
           "fullType": "order.catalog.ProductPlan[]",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "order.catalog.ProductPlan[]"
         }
@@ -9334,7 +9958,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes Dedicated Cloud Datacenters",
           "fullType": "order.catalog.pcc.Datacenter[]",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "order.catalog.pcc.Datacenter[]"
         },
@@ -9342,7 +9966,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Default datacenter of the commercial range",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -9350,7 +9974,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Name of the commercial range",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
@@ -9365,15 +9989,15 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "City Code of a Datacenter",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "cityName": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "City Name of a Datacenter",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -9381,7 +10005,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Country Code of a Datacenter",
           "fullType": "nichandle.CountryEnum",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "nichandle.CountryEnum"
         },
@@ -9389,7 +10013,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Name of the default hypervisor of a Datacenter",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -9397,7 +10021,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes Dedicated Cloud Hypervisors",
           "fullType": "order.catalog.pcc.Hypervisor[]",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "order.catalog.pcc.Hypervisor[]"
         },
@@ -9405,7 +10029,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Main plan code to use for a Datacenter",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -9413,7 +10037,7 @@ export const schema: Schema = {
           "canBeNull": true,
           "description": "Describes the management cost of a range of Dedicated Cloud",
           "fullType": "order.catalog.pcc.managementFees",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "order.catalog.pcc.managementFees"
         },
@@ -9421,7 +10045,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes if a Dedicated Cloud can be ordered on a Datacenter",
           "fullType": "boolean",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
@@ -9429,7 +10053,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes if options can be ordered on a Datacenter",
           "fullType": "boolean",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
@@ -9437,7 +10061,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes if resources can be ordered on a Datacenter",
           "fullType": "boolean",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
@@ -9445,7 +10069,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "List of filers add in case of a No Pack order",
           "fullType": "string[]",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string[]"
         },
@@ -9453,7 +10077,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Zone Code of a datacenter",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -9461,7 +10085,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Zone Name of a datacenter",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
@@ -9476,7 +10100,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Name of the host",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -9484,7 +10108,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes if host is orderable on a initial Order",
           "fullType": "boolean",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
@@ -9492,7 +10116,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes if host is orderable on a upgrade order",
           "fullType": "boolean",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
@@ -9500,7 +10124,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Plan Code",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -9508,15 +10132,15 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes Dedicated Cloud Host specifications",
           "fullType": "order.catalog.pcc.HostSpecifications",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "order.catalog.pcc.HostSpecifications"
         },
         "storagesPack": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "List of filers add in case of a Pack order",
           "fullType": "string[]",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string[]"
         }
@@ -9531,7 +10155,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Number of CPU Cores",
           "fullType": "long",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
@@ -9539,7 +10163,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "CPU Frequency",
           "fullType": "complexType.UnitAndValue<double>",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "complexType.UnitAndValue<double>"
         },
@@ -9547,7 +10171,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "CPU Generation",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -9555,7 +10179,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "CPU Model",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -9563,7 +10187,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Number of CPU",
           "fullType": "long",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
@@ -9571,7 +10195,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Number of CPU Threads",
           "fullType": "long",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "long"
         }
@@ -9586,7 +10210,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Memory Size",
           "fullType": "complexType.UnitAndValue<long>",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "complexType.UnitAndValue<long>"
         }
@@ -9601,7 +10225,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Number of network interfaces",
           "fullType": "long",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
@@ -9609,7 +10233,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Speed of the network interfaces",
           "fullType": "complexType.UnitAndValue<long>",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "complexType.UnitAndValue<long>"
         }
@@ -9624,7 +10248,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes the CPU specification of a Host",
           "fullType": "order.catalog.pcc.HostCpuSpecifications",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "order.catalog.pcc.HostCpuSpecifications"
         },
@@ -9632,7 +10256,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes the memory specification of a Host",
           "fullType": "order.catalog.pcc.HostMemorySpecifications",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "order.catalog.pcc.HostMemorySpecifications"
         },
@@ -9640,9 +10264,39 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes the network specification of a Host",
           "fullType": "order.catalog.pcc.HostNetworkSpecifications[]",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "order.catalog.pcc.HostNetworkSpecifications[]"
+        },
+        "storage": {
+          "canBeNull": false,
+          "fullType": "order.catalog.pcc.HostStorageSpecifications",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.pcc.HostStorageSpecifications"
+        }
+      }
+    },
+    "order.catalog.pcc.HostStorageSpecifications": {
+      "description": "Describes a Dedicated Cloud Host Storage",
+      "id": "HostStorageSpecifications",
+      "namespace": "order.catalog.pcc",
+      "properties": {
+        "size": {
+          "canBeNull": false,
+          "description": "Size of storage",
+          "fullType": "order.catalog.pcc.PccUnitAndValue",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.pcc.PccUnitAndValue"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Type of storage",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
@@ -9655,7 +10309,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes Dedicated Cloud Hosts",
           "fullType": "order.catalog.pcc.Host[]",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "order.catalog.pcc.Host[]"
         },
@@ -9663,7 +10317,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Name of the hypervisor",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -9671,7 +10325,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes Dedicated Cloud Options",
           "fullType": "order.catalog.pcc.Option[]",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "order.catalog.pcc.Option[]"
         },
@@ -9679,7 +10333,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes if an hypervisor is orderable",
           "fullType": "boolean",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
@@ -9687,7 +10341,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes Dedicated Cloud Service Packs",
           "fullType": "order.catalog.pcc.ServicePack[]",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "order.catalog.pcc.ServicePack[]"
         },
@@ -9695,7 +10349,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Short Name of the hypervisor",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -9703,7 +10357,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes Dedicated Cloud Storages",
           "fullType": "order.catalog.pcc.Storage[]",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "order.catalog.pcc.Storage[]"
         },
@@ -9711,7 +10365,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Type of the hypervisor",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
@@ -9726,7 +10380,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes the maximum quantity on the initial order",
           "fullType": "long",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
@@ -9734,7 +10388,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Name of the option",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -9742,7 +10396,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes if option is orderable on a initial order",
           "fullType": "boolean",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
@@ -9750,7 +10404,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes if option is orderable on a upgrade order",
           "fullType": "boolean",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
@@ -9758,17 +10412,48 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Plan Code",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
+        },
+        "showInOrderFunnel": {
+          "canBeNull": true,
+          "description": "Whether to show in order funnel or not",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "type": {
           "canBeNull": false,
           "description": "Category of the option",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
+        }
+      }
+    },
+    "order.catalog.pcc.PccUnitAndValue": {
+      "description": "Describes unit and value for a Private Cloud",
+      "id": "PccUnitAndValue",
+      "namespace": "order.catalog.pcc",
+      "properties": {
+        "unit": {
+          "canBeNull": false,
+          "description": "Unit",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },
@@ -9777,11 +10462,19 @@ export const schema: Schema = {
       "id": "ServicePack",
       "namespace": "order.catalog.pcc",
       "properties": {
+        "disabledElementForOrderType": {
+          "canBeNull": true,
+          "description": "Disabled element for order type",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
         "name": {
           "canBeNull": false,
           "description": "Name of the service pack",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -9789,7 +10482,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes Option include in the service pack",
           "fullType": "order.catalog.pcc.ServicePackOption[]",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "order.catalog.pcc.ServicePackOption[]"
         },
@@ -9797,15 +10490,23 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Plan Code",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
+        },
+        "showInOrderFunnel": {
+          "canBeNull": true,
+          "description": "Whether to show in order funnel or not",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "upgradableTo": {
           "canBeNull": false,
           "description": "List of available service pack upgrades",
           "fullType": "string[]",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string[]"
         }
@@ -9820,7 +10521,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Name of the option",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -9828,7 +10529,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Plan Code",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -9836,7 +10537,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Category of the option",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
@@ -9851,7 +10552,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Name of the filer",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -9859,7 +10560,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes if filer is orderable on a initial Order",
           "fullType": "boolean",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
@@ -9867,7 +10568,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes if filer is orderable on a upgrade order",
           "fullType": "boolean",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
@@ -9875,7 +10576,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Plan Code",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -9883,7 +10584,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Describes Dedicated Cloud Storage specifications",
           "fullType": "order.catalog.pcc.StorageSpecifications",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "order.catalog.pcc.StorageSpecifications"
         }
@@ -9898,7 +10599,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Size of the storage",
           "fullType": "complexType.UnitAndValue<long>",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "complexType.UnitAndValue<long>"
         },
@@ -9906,7 +10607,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Type of the storage",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
@@ -9917,11 +10618,19 @@ export const schema: Schema = {
       "id": "managementFees",
       "namespace": "order.catalog.pcc",
       "properties": {
+        "disabledElementForOrderType": {
+          "canBeNull": true,
+          "description": "Disabled element for order type",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
         "planCode": {
           "canBeNull": false,
           "description": "Plan Code",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -9929,7 +10638,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "List of available range upgrades",
           "fullType": "string[]",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string[]"
         }
@@ -9941,7 +10650,7 @@ export const schema: Schema = {
       "namespace": "order.catalog.public",
       "properties": {
         "addons": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "List of Commercial offers that can be ordered as an Addon of the current Commerical offer for the current Family",
           "fullType": "string[]",
           "readOnly": true,
@@ -9957,7 +10666,7 @@ export const schema: Schema = {
           "type": "string"
         },
         "exclusive": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Whether this Addon family is exclusive and can be ordered only once for the main Commercial offer",
           "fullType": "boolean",
           "readOnly": true,
@@ -9965,7 +10674,7 @@ export const schema: Schema = {
           "type": "boolean"
         },
         "mandatory": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Whether this Addon family is mandatory",
           "fullType": "boolean",
           "readOnly": true,
@@ -9985,12 +10694,12 @@ export const schema: Schema = {
     "order.catalog.public.BillingStrategyEnum": {
       "description": "Enum values for Billing Strategy",
       "enum": [
-        "max",
-        "sum",
-        "max_retain",
+        "custom",
         "diff",
+        "max",
+        "max_retain",
         "ping",
-        "custom"
+        "sum"
       ],
       "enumType": "string",
       "id": "BillingStrategyEnum",
@@ -10081,7 +10790,7 @@ export const schema: Schema = {
           "type": "string"
         },
         "values": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Possible values for this Configuration, if not custom",
           "fullType": "string[]",
           "readOnly": true,
@@ -10123,7 +10832,7 @@ export const schema: Schema = {
     },
     "order.catalog.public.DedicatedServerCatalog": {
       "description": "Describes a Dedicated server Catalog inside a Subsidiary",
-      "id": "Catalog",
+      "id": "DedicatedServerCatalog",
       "namespace": "order.catalog.public",
       "properties": {
         "addons": {
@@ -10184,10 +10893,18 @@ export const schema: Schema = {
         "blobs": {
           "canBeNull": true,
           "description": "Additional information for this Product",
-          "fullType": "order.catalog.public.DedicatedServerProductBlob",
+          "fullType": "order.catalog.public.ProductBlob",
           "readOnly": true,
           "required": false,
-          "type": "order.catalog.public.DedicatedServerProductBlob"
+          "type": "order.catalog.public.ProductBlob"
+        },
+        "configurations": {
+          "canBeNull": false,
+          "description": "List of possible Configurations for this Commercial offer",
+          "fullType": "order.catalog.public.Configuration[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.Configuration[]"
         },
         "description": {
           "canBeNull": false,
@@ -10580,7 +11297,7 @@ export const schema: Schema = {
         },
         "duration": {
           "canBeNull": false,
-          "description": "Engagement's duration displayed using ISO8601",
+          "description": "Engagement's duration",
           "fullType": "duration",
           "readOnly": true,
           "required": false,
@@ -10599,9 +11316,9 @@ export const schema: Schema = {
     "order.catalog.public.EngagementConfiguration.EndStrategyEnum": {
       "description": "Strategy applicable at the end of the Engagement",
       "enum": [
-        "STOP_ENGAGEMENT_FALLBACK_DEFAULT_PRICE",
-        "REACTIVATE_ENGAGEMENT",
         "CANCEL_SERVICE",
+        "REACTIVATE_ENGAGEMENT",
+        "STOP_ENGAGEMENT_FALLBACK_DEFAULT_PRICE",
         "STOP_ENGAGEMENT_KEEP_PRICE"
       ],
       "enumType": "string",
@@ -10652,8 +11369,8 @@ export const schema: Schema = {
     "order.catalog.public.PingEndPolicyEnum": {
       "description": "Enum values for Ping End Policy",
       "enum": [
-        "prorata",
-        "full"
+        "full",
+        "prorata"
       ],
       "enumType": "string",
       "id": "PingEndPolicyEnum",
@@ -10671,6 +11388,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "order.catalog.public.AddonFamily[]"
+        },
+        "blobs": {
+          "canBeNull": true,
+          "description": "Blobs",
+          "fullType": "order.catalog.public.ProductBlob",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlob"
         },
         "configurations": {
           "canBeNull": false,
@@ -10838,6 +11563,14 @@ export const schema: Schema = {
           "required": false,
           "type": "long"
         },
+        "promotions": {
+          "canBeNull": true,
+          "description": "Promotions",
+          "fullType": "order.catalog.public.Promotion[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.Promotion[]"
+        },
         "quantity": {
           "canBeNull": false,
           "description": "Describes how many times the Commercial offer can be added to the Cart",
@@ -10908,6 +11641,22 @@ export const schema: Schema = {
       "id": "Product",
       "namespace": "order.catalog.public",
       "properties": {
+        "blobs": {
+          "canBeNull": true,
+          "description": "Product blobs",
+          "fullType": "order.catalog.public.ProductBlob",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlob"
+        },
+        "configurations": {
+          "canBeNull": true,
+          "description": "List of possible Configurations for this Commercial offer",
+          "fullType": "order.catalog.public.Configuration[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.Configuration[]"
+        },
         "description": {
           "canBeNull": false,
           "description": "Description of the Product",
@@ -11281,7 +12030,7 @@ export const schema: Schema = {
       "properties": {
         "bandwidth": {
           "canBeNull": true,
-          "description": "Network informations",
+          "description": "Network information",
           "fullType": "order.catalog.public.ProductBlobTechnicalNetwork",
           "readOnly": true,
           "required": false,
@@ -11305,7 +12054,7 @@ export const schema: Schema = {
         },
         "cpu": {
           "canBeNull": true,
-          "description": "CPU informations",
+          "description": "CPU information",
           "fullType": "order.catalog.public.ProductBlobTechnicalCPU",
           "readOnly": true,
           "required": false,
@@ -11329,7 +12078,7 @@ export const schema: Schema = {
         },
         "gpu": {
           "canBeNull": true,
-          "description": "GPU informations",
+          "description": "GPU information",
           "fullType": "order.catalog.public.ProductBlobTechnicalGPU",
           "readOnly": true,
           "required": false,
@@ -11337,7 +12086,7 @@ export const schema: Schema = {
         },
         "license": {
           "canBeNull": true,
-          "description": "License informations",
+          "description": "License information",
           "fullType": "order.catalog.public.ProductBlobTechnicalLicense",
           "readOnly": true,
           "required": false,
@@ -11345,7 +12094,7 @@ export const schema: Schema = {
         },
         "memory": {
           "canBeNull": true,
-          "description": "Memory informations",
+          "description": "Memory information",
           "fullType": "order.catalog.public.ProductBlobTechnicalMemory",
           "readOnly": true,
           "required": false,
@@ -11383,6 +12132,14 @@ export const schema: Schema = {
           "required": false,
           "type": "order.catalog.public.ProductBlobTechnicalOS"
         },
+        "provider": {
+          "canBeNull": true,
+          "description": "Provider",
+          "fullType": "order.catalog.public.ProductBlobTechnicalProvider",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProductBlobTechnicalProvider"
+        },
         "requestPerSeconds": {
           "canBeNull": true,
           "description": "Connection per seconds",
@@ -11393,7 +12150,7 @@ export const schema: Schema = {
         },
         "server": {
           "canBeNull": true,
-          "description": "Hardware informations",
+          "description": "Hardware information",
           "fullType": "order.catalog.public.ProductBlobTechnicalServer",
           "readOnly": true,
           "required": false,
@@ -11401,7 +12158,7 @@ export const schema: Schema = {
         },
         "storage": {
           "canBeNull": true,
-          "description": "Disks informations",
+          "description": "Disks information",
           "fullType": "order.catalog.public.ProductBlobTechnicalStorage",
           "readOnly": true,
           "required": false,
@@ -11433,7 +12190,7 @@ export const schema: Schema = {
         },
         "vrack": {
           "canBeNull": true,
-          "description": "vRack informations",
+          "description": "vRack information",
           "fullType": "order.catalog.public.ProductBlobTechnicalNetwork",
           "readOnly": true,
           "required": false,
@@ -11486,6 +12243,14 @@ export const schema: Schema = {
           "required": false,
           "type": "double"
         },
+        "maxFrequency": {
+          "canBeNull": true,
+          "description": "Maximum frequency of CPU in GHz",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
         "model": {
           "canBeNull": true,
           "description": "Displayable name",
@@ -11517,6 +12282,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "long"
+        },
+        "type": {
+          "canBeNull": true,
+          "description": "Type of CPU",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
@@ -11596,6 +12369,14 @@ export const schema: Schema = {
           "required": false,
           "type": "long"
         },
+        "maximumCapacity": {
+          "canBeNull": false,
+          "description": "Maximum disk capacity in Gb",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
         "number": {
           "canBeNull": true,
           "description": "Number of disks",
@@ -11630,7 +12411,7 @@ export const schema: Schema = {
         },
         "usage": {
           "canBeNull": true,
-          "description": "Usage informations",
+          "description": "Usage information",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -11746,7 +12527,7 @@ export const schema: Schema = {
         },
         "cores": {
           "canBeNull": true,
-          "description": "Cores informations",
+          "description": "Cores information",
           "fullType": "order.catalog.public.ProductBlobTechnicalLicenseCores",
           "readOnly": true,
           "required": false,
@@ -11762,7 +12543,7 @@ export const schema: Schema = {
         },
         "distribution": {
           "canBeNull": true,
-          "description": "Network informations",
+          "description": "Network information",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -11770,7 +12551,7 @@ export const schema: Schema = {
         },
         "edition": {
           "canBeNull": true,
-          "description": "Edition informations",
+          "description": "Edition information",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -11794,7 +12575,7 @@ export const schema: Schema = {
         },
         "flavor": {
           "canBeNull": true,
-          "description": "Flavor informations",
+          "description": "Flavor information",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -11802,7 +12583,7 @@ export const schema: Schema = {
         },
         "images": {
           "canBeNull": true,
-          "description": "Images informations",
+          "description": "Images information",
           "fullType": "string[]",
           "readOnly": true,
           "required": false,
@@ -11810,7 +12591,7 @@ export const schema: Schema = {
         },
         "nbOfAccount": {
           "canBeNull": true,
-          "description": "Number of account",
+          "description": "Number of accounts",
           "fullType": "long",
           "readOnly": true,
           "required": false,
@@ -11826,7 +12607,7 @@ export const schema: Schema = {
         },
         "version": {
           "canBeNull": true,
-          "description": "Version informations",
+          "description": "Version information",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -11968,10 +12749,10 @@ export const schema: Schema = {
         "level": {
           "canBeNull": true,
           "description": "Network level",
-          "fullType": "long",
+          "fullType": "double",
           "readOnly": true,
           "required": false,
-          "type": "long"
+          "type": "double"
         },
         "limit": {
           "canBeNull": true,
@@ -11980,6 +12761,22 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "long"
+        },
+        "max": {
+          "canBeNull": false,
+          "description": "Maximum",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "maxUnit": {
+          "canBeNull": false,
+          "description": "Unit of maximum",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "shared": {
           "canBeNull": true,
@@ -11996,6 +12793,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "long"
+        },
+        "unit": {
+          "canBeNull": false,
+          "description": "Unit",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "unlimited": {
           "canBeNull": true,
@@ -12099,6 +12904,29 @@ export const schema: Schema = {
         }
       }
     },
+    "order.catalog.public.ProductBlobTechnicalProvider": {
+      "description": "Describes a provider for a technical blob",
+      "id": "ProductBlobTechnicalProvider",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "pointsOfPresence": {
+          "canBeNull": false,
+          "description": "Number of points of presence",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "reference": {
+          "canBeNull": true,
+          "description": "Reference",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
     "order.catalog.public.ProductBlobTechnicalRaid": {
       "description": "Describes a Raid for a technical blob",
       "id": "ProductBlobTechnicalRaid",
@@ -12131,7 +12959,7 @@ export const schema: Schema = {
       }
     },
     "order.catalog.public.ProductBlobTechnicalServer": {
-      "description": "Describes some technicals informations for a technical blob",
+      "description": "Describes some technicals information for a technical blob",
       "id": "ProductBlobTechnicalServer",
       "namespace": "order.catalog.public",
       "properties": {
@@ -12178,7 +13006,7 @@ export const schema: Schema = {
       }
     },
     "order.catalog.public.ProductBlobTechnicalServices": {
-      "description": "Describes some technicals informations",
+      "description": "Describes some technicals information",
       "id": "ProductBlobTechnicalServices",
       "namespace": "order.catalog.public",
       "properties": {
@@ -12191,7 +13019,7 @@ export const schema: Schema = {
           "type": "string"
         },
         "includedBackup": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Included backup",
           "fullType": "long",
           "readOnly": true,
@@ -12292,7 +13120,7 @@ export const schema: Schema = {
         },
         "iops": {
           "canBeNull": false,
-          "description": "CPU informations",
+          "description": "CPU information",
           "fullType": "order.catalog.public.ProductBlobTechnicalVolumeIops",
           "readOnly": true,
           "required": false,
@@ -12335,14 +13163,157 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "long"
+        },
+        "max": {
+          "canBeNull": false,
+          "description": "Maximum IOPS",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "maxUnit": {
+          "canBeNull": false,
+          "description": "Unit of maximum IOPS",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "unit": {
+          "canBeNull": false,
+          "description": "Unit",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "order.catalog.public.Promotion": {
+      "description": "Describes a Promotion inside a Catalog",
+      "id": "Promotion",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "description": {
+          "canBeNull": false,
+          "description": "Promotion description",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "discount": {
+          "canBeNull": false,
+          "description": "Promotion discount",
+          "fullType": "order.catalog.public.PromotionDiscountTotal",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.PromotionDiscountTotal"
+        },
+        "duration": {
+          "canBeNull": true,
+          "description": "Promotion duration",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "endDate": {
+          "canBeNull": true,
+          "description": "Promotion end date using rfc3339",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "isGlobalQuantityLimited": {
+          "canBeNull": false,
+          "description": "Is the global quantity of the promotion limited?",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Promotion name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "quantity": {
+          "canBeNull": true,
+          "description": "Promotion quantity",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "startDate": {
+          "canBeNull": false,
+          "description": "Promotion start date using rfc3339",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "total": {
+          "canBeNull": false,
+          "description": "Promotion total",
+          "fullType": "order.catalog.public.PromotionDiscountTotal",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.PromotionDiscountTotal"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Promotion type",
+          "fullType": "order.ReductionTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "order.ReductionTypeEnum"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Promotion value",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "order.catalog.public.PromotionDiscountTotal": {
+      "description": "Describes a Promotion discount or total inside a Catalog",
+      "id": "PromotionDiscountTotal",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "tax": {
+          "canBeNull": false,
+          "description": "Tax",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "order.catalog.public.ProrataUnitEnum": {
       "description": "Enum values for Prorata Unit",
       "enum": [
+        "day",
         "hour",
-        "day"
+        "month"
       ],
       "enumType": "string",
       "id": "ProrataUnitEnum",
@@ -12436,13 +13407,13 @@ export const schema: Schema = {
     "order.upgrade.OperationStatusEnum": {
       "description": "Unit that represent the status of an operation",
       "enum": [
-        "TODO",
+        "CANCELLED",
+        "DELAYED",
         "DOING",
         "DONE",
         "ERROR",
-        "DELAYED",
-        "CANCELLED",
-        "SCHEDULED"
+        "SCHEDULED",
+        "TODO"
       ],
       "enumType": "string",
       "id": "OperationStatusEnum",

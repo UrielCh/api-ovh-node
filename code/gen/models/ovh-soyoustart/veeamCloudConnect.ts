@@ -13,10 +13,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "List available services",
+          "description": "List Veeam Cloud Connect services",
           "httpMethod": "GET",
           "iamActions": [
-            "veeamCloudConnect:apiovh:get"
+            {
+              "name": "veeamCloudConnect:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -26,17 +29,20 @@ export const schema: Schema = {
       "path": "/veeamCloudConnect"
     },
     {
-      "description": "Veeam Cloud Connect account",
+      "description": "Veeam Cloud Connect",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get Veeam Cloud Connect",
           "httpMethod": "GET",
           "iamActions": [
-            "veeamCloudConnect:apiovh:get"
+            {
+              "name": "veeamCloudConnect:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -62,10 +68,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Veeam Backup Repository linked to this Veeam Cloud Connect account",
+          "description": "List Veeam backup repositories",
           "httpMethod": "GET",
           "iamActions": [
-            "veeamCloudConnect:apiovh:backupRepository/get"
+            {
+              "name": "veeamCloudConnect:apiovh:backupRepository/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -85,10 +94,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Add a new Backup Repository to your professional account",
+          "description": "Create backup repository",
           "httpMethod": "POST",
           "iamActions": [
-            "veeamCloudConnect:apiovh:backupRepository/create"
+            {
+              "name": "veeamCloudConnect:apiovh:backupRepository/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -107,17 +119,20 @@ export const schema: Schema = {
       "path": "/veeamCloudConnect/{serviceName}/backupRepository"
     },
     {
-      "description": "Veeam Backup Repository",
+      "description": "Veeam backup repository",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Delete this backup Repository. ",
+          "description": "Delete backup repository",
           "httpMethod": "DELETE",
           "iamActions": [
-            "veeamCloudConnect:apiovh:backupRepository/delete"
+            {
+              "name": "veeamCloudConnect:apiovh:backupRepository/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -145,10 +160,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get Veeam backup repository",
           "httpMethod": "GET",
           "iamActions": [
-            "veeamCloudConnect:apiovh:backupRepository/get"
+            {
+              "name": "veeamCloudConnect:apiovh:backupRepository/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -182,16 +200,19 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Change your quota",
+          "description": "Change quota",
           "httpMethod": "POST",
           "iamActions": [
-            "veeamCloudConnect:apiovh:backupRepository/upgradeQuota"
+            {
+              "name": "veeamCloudConnect:apiovh:backupRepository/upgradeQuota",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "my new quota in GB",
+              "description": "New quota in GB",
               "fullType": "long",
               "name": "newQuota",
               "paramType": "body",
@@ -227,10 +248,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Show capabilities of your current offer",
+          "description": "Get capabilities",
           "httpMethod": "GET",
           "iamActions": [
-            "veeamCloudConnect:apiovh:capabilities/get"
+            {
+              "name": "veeamCloudConnect:apiovh:capabilities/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -256,10 +280,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "List the possible upgrades on your Veeam Cloud Connect account",
+          "description": "Get available offer upgrades",
           "httpMethod": "GET",
           "iamActions": [
-            "veeamCloudConnect:apiovh:orderableUpgrade/get"
+            {
+              "name": "veeamCloudConnect:apiovh:orderableUpgrade/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -285,10 +312,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Reset your Cloud Tenant Password",
+          "description": "Reset password",
           "httpMethod": "POST",
           "iamActions": [
-            "veeamCloudConnect:apiovh:resetPassword"
+            {
+              "name": "veeamCloudConnect:apiovh:resetPassword",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -314,10 +344,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get service information",
           "httpMethod": "GET",
           "iamActions": [
-            "veeamCloudConnect:apiovh:serviceInfos/get"
+            {
+              "name": "veeamCloudConnect:apiovh:serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -337,10 +370,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Update service information",
           "httpMethod": "PUT",
           "iamActions": [
-            "veeamCloudConnect:apiovh:serviceInfos/edit"
+            {
+              "name": "veeamCloudConnect:apiovh:serviceInfos/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -373,10 +409,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Tasks associated with Cloud Tenant",
+          "description": "List operations",
           "httpMethod": "GET",
           "iamActions": [
-            "veeamCloudConnect:apiovh:task/get"
+            {
+              "name": "veeamCloudConnect:apiovh:task/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -411,17 +450,20 @@ export const schema: Schema = {
       "path": "/veeamCloudConnect/{serviceName}/task"
     },
     {
-      "description": "Operation with the Cloud Tenant Account",
+      "description": "Operation",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get operation",
           "httpMethod": "GET",
           "iamActions": [
-            "veeamCloudConnect:apiovh:task/get"
+            {
+              "name": "veeamCloudConnect:apiovh:task/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -451,6 +493,28 @@ export const schema: Schema = {
   "basePath": "https://eu.api.soyoustart.com/1.0",
   "models": {
     "complexType.UnitAndValue<T>": {
+      "description": "A numeric value tagged with its unit",
+      "generics": [
+        "T"
+      ],
+      "id": "UnitAndValue",
+      "namespace": "complexType",
+      "properties": {
+        "unit": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "T"
+        }
+      }
+    },
+    "complexType.UnitAndValue<long>": {
       "description": "A numeric value tagged with its unit",
       "generics": [
         "T"
@@ -643,7 +707,7 @@ export const schema: Schema = {
       }
     },
     "veeamCloudConnect.Account": {
-      "description": "Veeam Cloud Connect account",
+      "description": "Veeam Cloud Connect",
       "id": "Account",
       "namespace": "veeamCloudConnect",
       "properties": {
@@ -682,7 +746,7 @@ export const schema: Schema = {
       }
     },
     "veeamCloudConnect.BackupRepository": {
-      "description": "Veeam Backup Repository",
+      "description": "Veeam backup repository",
       "id": "BackupRepository",
       "namespace": "veeamCloudConnect",
       "properties": {
@@ -774,7 +838,7 @@ export const schema: Schema = {
       "namespace": "veeamCloudConnect"
     },
     "veeamCloudConnect.Task": {
-      "description": "Operation with the Cloud Tenant Account",
+      "description": "Operation",
       "id": "Task",
       "namespace": "veeamCloudConnect",
       "properties": {

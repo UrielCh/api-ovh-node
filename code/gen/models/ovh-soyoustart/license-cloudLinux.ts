@@ -16,7 +16,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseCloudLinux:apiovh:get"
+            {
+              "name": "licenseCloudLinux:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -36,7 +39,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseCloudLinux:apiovh:get"
+            {
+              "name": "licenseCloudLinux:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -55,17 +61,20 @@ export const schema: Schema = {
       "path": "/license/cloudLinux/{serviceName}"
     },
     {
-      "description": "Confirm termination of your service",
+      "description": "Confirm service termination",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Confirm termination of your service",
+          "description": "Confirm service termination",
           "httpMethod": "POST",
           "iamActions": [
-            "licenseCloudLinux:apiovh:confirmTermination"
+            {
+              "name": "licenseCloudLinux:apiovh:confirmTermination",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -95,7 +104,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The termination token sent by mail to the admin contact",
+              "description": "The termination token sent by email to the admin contact",
               "fullType": "string",
               "name": "token",
               "paramType": "body",
@@ -123,10 +132,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get service information",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseCloudLinux:apiovh:serviceInfos/get"
+            {
+              "name": "licenseCloudLinux:apiovh:serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -146,10 +158,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Update service information",
           "httpMethod": "PUT",
           "iamActions": [
-            "licenseCloudLinux:apiovh:serviceInfos/edit"
+            {
+              "name": "licenseCloudLinux:apiovh:serviceInfos/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -185,7 +200,10 @@ export const schema: Schema = {
           "description": "Tasks linked to this license",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseCloudLinux:apiovh:tasks/get"
+            {
+              "name": "licenseCloudLinux:apiovh:tasks/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -230,7 +248,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseCloudLinux:apiovh:tasks/get"
+            {
+              "name": "licenseCloudLinux:apiovh:tasks/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -257,18 +278,22 @@ export const schema: Schema = {
       "path": "/license/cloudLinux/{serviceName}/tasks/{taskId}"
     },
     {
-      "description": "Terminate your service",
+      "description": "Ask for the termination of your service. Admin contact of this service will receive a termination token in order to confirm its termination with /confirmTermination endpoint.",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Terminate your service",
+          "description": "Ask for the termination of your service",
           "httpMethod": "POST",
           "iamActions": [
-            "licenseCloudLinux:apiovh:terminate"
+            {
+              "name": "licenseCloudLinux:apiovh:terminate",
+              "required": true
+            }
           ],
+          "longDescription": "Ask for the termination of your service. Admin contact of this service will receive a termination token by email in order to confirm its termination with /confirmTermination endpoint.",
           "noAuthentication": false,
           "parameters": [
             {
@@ -296,7 +321,10 @@ export const schema: Schema = {
           "description": "Get the orderable CloudLinux versions",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:licenseCloudLinux/orderableVersions/get"
+            {
+              "name": "account:apiovh:licenseCloudLinux/orderableVersions/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [

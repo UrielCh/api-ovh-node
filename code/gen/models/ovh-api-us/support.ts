@@ -16,7 +16,10 @@ export const schema: Schema = {
           "description": "List support tickets identifiers for this service",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:support/tickets/get"
+            {
+              "name": "account:apiovh:support/tickets/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -33,6 +36,14 @@ export const schema: Schema = {
               "description": "Search by ticket category",
               "fullType": "support.TicketCategoryEnum",
               "name": "category",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "Tickets pending a customer reply",
+              "fullType": "boolean",
+              "name": "customerReplyNeeded",
               "paramType": "query",
               "required": false
             },
@@ -133,7 +144,10 @@ export const schema: Schema = {
           "description": "Get ticket",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:support/tickets/get"
+            {
+              "name": "account:apiovh:support/tickets/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -162,7 +176,10 @@ export const schema: Schema = {
           "description": "Checks whether ticket can be scored",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:support/tickets/canBeScored/get"
+            {
+              "name": "account:apiovh:support/tickets/canBeScored/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -191,7 +208,10 @@ export const schema: Schema = {
           "description": "Close ticket",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:support/tickets/close"
+            {
+              "name": "account:apiovh:support/tickets/close",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -220,7 +240,10 @@ export const schema: Schema = {
           "description": "Get ticket messages",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:support/tickets/messages/get"
+            {
+              "name": "account:apiovh:support/tickets/messages/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -249,7 +272,10 @@ export const schema: Schema = {
           "description": "Reopen a ticket",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:support/tickets/reopen"
+            {
+              "name": "account:apiovh:support/tickets/reopen",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -286,7 +312,10 @@ export const schema: Schema = {
           "description": "Reply to ticket",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:support/tickets/reply"
+            {
+              "name": "account:apiovh:support/tickets/reply",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -323,7 +352,10 @@ export const schema: Schema = {
           "description": "Set ticket score",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:support/tickets/score"
+            {
+              "name": "account:apiovh:support/tickets/score",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -368,7 +400,10 @@ export const schema: Schema = {
           "description": "Create a new ticket",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:support/tickets/create"
+            {
+              "name": "account:apiovh:support/tickets/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [

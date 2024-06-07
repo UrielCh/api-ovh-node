@@ -16,7 +16,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:get"
+            {
+              "name": "dedicatedServer:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -36,7 +39,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:get"
+            {
+              "name": "dedicatedServer:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -59,7 +65,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "dedicatedServer:apiovh:put"
+            {
+              "name": "dedicatedServer:apiovh:put",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -95,7 +104,10 @@ export const schema: Schema = {
           "description": "Retrieve secret to connect to the server / application",
           "httpMethod": "POST",
           "iamActions": [
-            "dedicatedServer:apiovh:authenticationSecret/create"
+            {
+              "name": "dedicatedServer:apiovh:authenticationSecret/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -124,7 +136,10 @@ export const schema: Schema = {
           "description": "Get details on offered backup cloud if available for the current server",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:backupCloudOfferDetails/get"
+            {
+              "name": "dedicatedServer:apiovh:backupCloudOfferDetails/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -153,7 +168,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:biosSettings/get"
+            {
+              "name": "dedicatedServer:apiovh:biosSettings/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -182,7 +200,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:biosSettings/sgx/get"
+            {
+              "name": "dedicatedServer:apiovh:biosSettings/sgx/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -208,11 +229,15 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Enable or disable SGX and configure PRMRR size. This will cause your server to reboot one or several time(s).",
+          "description": "Enable or disable SGX and configure PRMRR size",
           "httpMethod": "POST",
           "iamActions": [
-            "dedicatedServer:apiovh:biosSettings/sgx/configure"
+            {
+              "name": "dedicatedServer:apiovh:biosSettings/sgx/configure",
+              "required": true
+            }
           ],
+          "longDescription": "Enable or disable SGX and configure PRMRR size. This will cause your server to reboot one or several time(s).",
           "noAuthentication": false,
           "parameters": [
             {
@@ -256,7 +281,10 @@ export const schema: Schema = {
           "description": "Server compatibles netboots",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:boot/get"
+            {
+              "name": "dedicatedServer:apiovh:boot/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -293,7 +321,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:boot/get"
+            {
+              "name": "dedicatedServer:apiovh:boot/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -330,7 +361,10 @@ export const schema: Schema = {
           "description": "Option used on this netboot",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:boot/option/get"
+            {
+              "name": "dedicatedServer:apiovh:boot/option/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -367,7 +401,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:boot/option/get"
+            {
+              "name": "dedicatedServer:apiovh:boot/option/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -402,156 +439,20 @@ export const schema: Schema = {
       "path": "/dedicated/server/{serviceName}/boot/{bootId}/option/{option}"
     },
     {
-      "description": "Bring you own Image on your server",
+      "description": "Confirm service termination",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Delete your current image installation",
-          "httpMethod": "DELETE",
-          "iamActions": [
-            "dedicatedServer:apiovh:bringYourOwnImage/delete"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "iamActions": [
-            "dedicatedServer:apiovh:bringYourOwnImage/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dedicated.server.ByoiStatus"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Start an install with your own image",
+          "description": "Confirm service termination",
           "httpMethod": "POST",
           "iamActions": [
-            "dedicatedServer:apiovh:bringYourOwnImage/create"
-          ],
-          "noAuthentication": false,
-          "parameters": [
             {
-              "dataType": "string",
-              "description": "Image checksum",
-              "fullType": "string",
-              "name": "checkSum",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "dedicated.CheckSumTypesEnum",
-              "description": "Checksum type",
-              "fullType": "dedicated.CheckSumTypesEnum",
-              "name": "checkSumType",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "dedicated.server.ConfigDrive",
-              "description": "enable and set ConfigDrive",
-              "fullType": "dedicated.server.ConfigDrive",
-              "name": "configdrive",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Image description",
-              "fullType": "string",
-              "name": "description",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "long",
-              "description": "Disk group id to process install on (only available for some templates)",
-              "fullType": "long",
-              "name": "diskGroupId",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "complexType.SafeKeyValueCanBeNull<password>[]",
-              "description": "HTTP Headers",
-              "fullType": "complexType.SafeKeyValueCanBeNull<password>[]",
-              "name": "httpHeader",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "dedicated.ImageTypesEnum",
-              "description": "Image type",
-              "fullType": "dedicated.ImageTypesEnum",
-              "name": "type",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Image URL",
-              "fullType": "string",
-              "name": "URL",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
+              "name": "dedicatedServer:apiovh:confirmTermination",
               "required": true
             }
-          ],
-          "responseType": "void"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/bringYourOwnImage"
-    },
-    {
-      "description": "Confirm termination of your service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Confirm termination of your service",
-          "httpMethod": "POST",
-          "iamActions": [
-            "dedicatedServer:apiovh:confirmTermination"
           ],
           "noAuthentication": false,
           "parameters": [
@@ -581,7 +482,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The termination token sent by mail to the admin contact",
+              "description": "The termination token sent by email to the admin contact",
               "fullType": "string",
               "name": "token",
               "paramType": "body",
@@ -612,7 +513,10 @@ export const schema: Schema = {
           "description": "Terminate your Backup FTP service, ALL DATA WILL BE PERMANENTLY DELETED",
           "httpMethod": "DELETE",
           "iamActions": [
-            "dedicatedServer:apiovh:features/backupFTP/delete"
+            {
+              "name": "dedicatedServer:apiovh:features/backupFTP/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -635,7 +539,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:features/backupFTP/get"
+            {
+              "name": "dedicatedServer:apiovh:features/backupFTP/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -658,7 +565,10 @@ export const schema: Schema = {
           "description": "Create a new Backup FTP space",
           "httpMethod": "POST",
           "iamActions": [
-            "dedicatedServer:apiovh:features/backupFTP/create"
+            {
+              "name": "dedicatedServer:apiovh:features/backupFTP/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -687,7 +597,10 @@ export const schema: Schema = {
           "description": "List of IP blocks (and protocols to allow on these blocks) authorized on your backup FTP",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:features/backupFTP/access/get"
+            {
+              "name": "dedicatedServer:apiovh:features/backupFTP/access/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -710,7 +623,10 @@ export const schema: Schema = {
           "description": "Create a new Backup FTP ACL",
           "httpMethod": "POST",
           "iamActions": [
-            "dedicatedServer:apiovh:features/backupFTP/access/create"
+            {
+              "name": "dedicatedServer:apiovh:features/backupFTP/access/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -771,7 +687,10 @@ export const schema: Schema = {
           "description": "Revoke this ACL",
           "httpMethod": "DELETE",
           "iamActions": [
-            "dedicatedServer:apiovh:features/backupFTP/access/delete"
+            {
+              "name": "dedicatedServer:apiovh:features/backupFTP/access/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -802,7 +721,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:features/backupFTP/access/get"
+            {
+              "name": "dedicatedServer:apiovh:features/backupFTP/access/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -833,7 +755,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "dedicatedServer:apiovh:features/backupFTP/access/edit"
+            {
+              "name": "dedicatedServer:apiovh:features/backupFTP/access/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -877,7 +802,10 @@ export const schema: Schema = {
           "description": "Get all IP blocks that can be used in the ACL",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:features/backupFTP/authorizableBlocks/get"
+            {
+              "name": "dedicatedServer:apiovh:features/backupFTP/authorizableBlocks/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -906,7 +834,10 @@ export const schema: Schema = {
           "description": "Change your Backup FTP password",
           "httpMethod": "POST",
           "iamActions": [
-            "dedicatedServer:apiovh:features/backupFTP/password/create"
+            {
+              "name": "dedicatedServer:apiovh:features/backupFTP/password/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -935,7 +866,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:features/firewall/get"
+            {
+              "name": "dedicatedServer:apiovh:features/firewall/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -958,7 +892,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "dedicatedServer:apiovh:features/firewall/edit"
+            {
+              "name": "dedicatedServer:apiovh:features/firewall/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -994,7 +931,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:features/ipmi/get"
+            {
+              "name": "dedicatedServer:apiovh:features/ipmi/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1023,7 +963,10 @@ export const schema: Schema = {
           "description": "IPMI access method",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:features/ipmi/access/get"
+            {
+              "name": "dedicatedServer:apiovh:features/ipmi/access/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1054,7 +997,10 @@ export const schema: Schema = {
           "description": "Request an acces on KVM IPMI interface",
           "httpMethod": "POST",
           "iamActions": [
-            "dedicatedServer:apiovh:features/ipmi/access/create"
+            {
+              "name": "dedicatedServer:apiovh:features/ipmi/access/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1067,9 +1013,9 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "string",
-              "description": "SSH key name to allow access on KVM/IP interface with (name from /me/sshKey)",
-              "fullType": "string",
+              "dataType": "text",
+              "description": "Public SSH key for Serial Over Lan SSH access",
+              "fullType": "text",
               "name": "sshKey",
               "paramType": "body",
               "required": false
@@ -1115,7 +1061,10 @@ export const schema: Schema = {
           "description": "Reset KVM IPMI interface",
           "httpMethod": "POST",
           "iamActions": [
-            "dedicatedServer:apiovh:features/ipmi/resetInterface"
+            {
+              "name": "dedicatedServer:apiovh:features/ipmi/resetInterface",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1144,7 +1093,10 @@ export const schema: Schema = {
           "description": "Reset KVM IPMI sessions",
           "httpMethod": "POST",
           "iamActions": [
-            "dedicatedServer:apiovh:features/ipmi/resetSessions"
+            {
+              "name": "dedicatedServer:apiovh:features/ipmi/resetSessions",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1173,7 +1125,10 @@ export const schema: Schema = {
           "description": "Result of http, ping and identification tests on IPMI interface",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:features/ipmi/test/get"
+            {
+              "name": "dedicatedServer:apiovh:features/ipmi/test/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1204,7 +1159,10 @@ export const schema: Schema = {
           "description": "Launch test on KVM IPMI interface",
           "httpMethod": "POST",
           "iamActions": [
-            "dedicatedServer:apiovh:features/ipmi/test/create"
+            {
+              "name": "dedicatedServer:apiovh:features/ipmi/test/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1249,7 +1207,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:features/kvm/get"
+            {
+              "name": "dedicatedServer:apiovh:features/kvm/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1278,7 +1239,10 @@ export const schema: Schema = {
           "description": "Get name binary for asa",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:firewall/binary/compatible/get"
+            {
+              "name": "dedicatedServer:apiovh:firewall/binary/compatible/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1307,7 +1271,10 @@ export const schema: Schema = {
           "description": "Get url of binary to update firewall asa",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:firewall/binary/link/get"
+            {
+              "name": "dedicatedServer:apiovh:firewall/binary/link/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1344,7 +1311,10 @@ export const schema: Schema = {
           "description": "Retrieve compatible  install template partitions scheme",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:install/compatibleTemplatePartitionSchemes/get"
+            {
+              "name": "dedicatedServer:apiovh:install/compatibleTemplatePartitionSchemes/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1381,7 +1351,10 @@ export const schema: Schema = {
           "description": "Retrieve compatible  install templates names",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:install/compatibleTemplates/get"
+            {
+              "name": "dedicatedServer:apiovh:install/compatibleTemplates/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1410,7 +1383,10 @@ export const schema: Schema = {
           "description": "Retrieve hardware RAID profile",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:install/hardwareRaidProfile/get"
+            {
+              "name": "dedicatedServer:apiovh:install/hardwareRaidProfile/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1439,7 +1415,10 @@ export const schema: Schema = {
           "description": "Get hardware RAID size for a given configuration",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:install/hardwareRaidSize/get"
+            {
+              "name": "dedicatedServer:apiovh:install/hardwareRaidSize/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1484,7 +1463,10 @@ export const schema: Schema = {
           "description": "Start an install",
           "httpMethod": "POST",
           "iamActions": [
-            "dedicatedServer:apiovh:install/start"
+            {
+              "name": "dedicatedServer:apiovh:install/start",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1545,7 +1527,10 @@ export const schema: Schema = {
           "description": "Get installation status",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:install/status/get"
+            {
+              "name": "dedicatedServer:apiovh:install/status/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1568,13 +1553,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2024-07-03T08:30:00Z",
+            "deprecatedDate": "2024-05-02T10:00:00Z",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Gives some capabilities regarding the template for the current dedicated server.",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:install/templateCapabilities/get"
+            {
+              "name": "dedicatedServer:apiovh:install/templateCapabilities/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1611,7 +1601,10 @@ export const schema: Schema = {
           "description": "technical intervention history",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:intervention/get"
+            {
+              "name": "dedicatedServer:apiovh:intervention/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1640,7 +1633,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:intervention/get"
+            {
+              "name": "dedicatedServer:apiovh:intervention/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1677,7 +1673,10 @@ export const schema: Schema = {
           "description": "Merge a splitted block and route it to the choosen server. You cannot undo this operation",
           "httpMethod": "POST",
           "iamActions": [
-            "dedicatedServer:apiovh:ipBlockMerge"
+            {
+              "name": "dedicatedServer:apiovh:ipBlockMerge",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1714,7 +1713,10 @@ export const schema: Schema = {
           "description": "Check if given IP can be moved to this server",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:ipCanBeMovedTo/get"
+            {
+              "name": "dedicatedServer:apiovh:ipCanBeMovedTo/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1751,7 +1753,10 @@ export const schema: Schema = {
           "description": "Retrieve available country for IP order",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:ipCountryAvailable/get"
+            {
+              "name": "dedicatedServer:apiovh:ipCountryAvailable/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1780,7 +1785,10 @@ export const schema: Schema = {
           "description": "Move an Ip failover to this server",
           "httpMethod": "POST",
           "iamActions": [
-            "dedicatedServer:apiovh:ipMove"
+            {
+              "name": "dedicatedServer:apiovh:ipMove",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1817,7 +1825,10 @@ export const schema: Schema = {
           "description": "List all ip from server",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:ips/get"
+            {
+              "name": "dedicatedServer:apiovh:ips/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1846,7 +1857,10 @@ export const schema: Schema = {
           "description": "Get the windows license compliant with your server.",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:license/compliantWindows/get"
+            {
+              "name": "dedicatedServer:apiovh:license/compliantWindows/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1875,7 +1889,10 @@ export const schema: Schema = {
           "description": "Get the windows SQL server license compliant with your server.",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:license/compliantWindowsSqlServer/get"
+            {
+              "name": "dedicatedServer:apiovh:license/compliantWindowsSqlServer/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1901,11 +1918,15 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Add your existing windows license serial to this dedicated server. Will be manageable in /license/windows.",
+          "description": "Add your existing windows license serial to this dedicated server",
           "httpMethod": "POST",
           "iamActions": [
-            "dedicatedServer:apiovh:license/windows/create"
+            {
+              "name": "dedicatedServer:apiovh:license/windows/create",
+              "required": true
+            }
           ],
+          "longDescription": "Add your existing windows license serial to this dedicated server. Will be manageable in /license/windows.",
           "noAuthentication": false,
           "parameters": [
             {
@@ -1943,8 +1964,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2018-04-23 00:00:00 +0100 +0100",
-            "deprecatedDate": "2017-10-23 00:00:00 +0100 +0100",
+            "deletionDate": "2018-04-23T00:00:00+01:00",
+            "deprecatedDate": "2017-10-23T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/dedicated/server/{serviceName}/networkInterfaceController",
             "value": "DEPRECATED"
@@ -1952,7 +1973,10 @@ export const schema: Schema = {
           "description": "Retrieve traffic graph values",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:mrtg/get"
+            {
+              "name": "dedicatedServer:apiovh:mrtg/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1997,7 +2021,10 @@ export const schema: Schema = {
           "description": "List server networkInterfaceController",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:networkInterfaceController/get"
+            {
+              "name": "dedicatedServer:apiovh:networkInterfaceController/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2034,7 +2061,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:networkInterfaceController/get"
+            {
+              "name": "dedicatedServer:apiovh:networkInterfaceController/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2071,7 +2101,10 @@ export const schema: Schema = {
           "description": "Retrieve traffic graph values",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:networkInterfaceController/mrtg/get"
+            {
+              "name": "dedicatedServer:apiovh:networkInterfaceController/mrtg/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2124,7 +2157,10 @@ export const schema: Schema = {
           "description": "What is ongoing on this server",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:ongoing/get"
+            {
+              "name": "dedicatedServer:apiovh:ongoing/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2153,7 +2189,10 @@ export const schema: Schema = {
           "description": "List of dedicated server options",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:option/get"
+            {
+              "name": "dedicatedServer:apiovh:option/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2182,7 +2221,10 @@ export const schema: Schema = {
           "description": "Release a given option",
           "httpMethod": "DELETE",
           "iamActions": [
-            "dedicatedServer:apiovh:option/delete"
+            {
+              "name": "dedicatedServer:apiovh:option/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2213,7 +2255,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:option/get"
+            {
+              "name": "dedicatedServer:apiovh:option/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2250,7 +2295,10 @@ export const schema: Schema = {
           "description": "Get the backup storage orderable with your server.",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:orderable/backupStorage/get"
+            {
+              "name": "dedicatedServer:apiovh:orderable/backupStorage/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2279,7 +2327,10 @@ export const schema: Schema = {
           "description": "Is this feature orderable with your server",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:orderable/feature/get"
+            {
+              "name": "dedicatedServer:apiovh:orderable/feature/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2316,7 +2367,10 @@ export const schema: Schema = {
           "description": "Get IP orderable with your server.",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:orderable/ip/get"
+            {
+              "name": "dedicatedServer:apiovh:orderable/ip/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2345,7 +2399,10 @@ export const schema: Schema = {
           "description": "Is a KVM express orderable with your server",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:orderable/kvmExpress/get"
+            {
+              "name": "dedicatedServer:apiovh:orderable/kvmExpress/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2374,7 +2431,10 @@ export const schema: Schema = {
           "description": "Get USB keys orderable with your server",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:orderable/usbKey/get"
+            {
+              "name": "dedicatedServer:apiovh:orderable/usbKey/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2403,7 +2463,10 @@ export const schema: Schema = {
           "description": "Planned interventions for the server",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:plannedIntervention/get"
+            {
+              "name": "dedicatedServer:apiovh:plannedIntervention/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2432,7 +2495,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:plannedIntervention/get"
+            {
+              "name": "dedicatedServer:apiovh:plannedIntervention/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2469,7 +2535,10 @@ export const schema: Schema = {
           "description": "Hard reboot this server",
           "httpMethod": "POST",
           "iamActions": [
-            "dedicatedServer:apiovh:reboot"
+            {
+              "name": "dedicatedServer:apiovh:reboot",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2498,7 +2567,10 @@ export const schema: Schema = {
           "description": "List of secondary dns domain name",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:secondaryDnsDomains/get"
+            {
+              "name": "dedicatedServer:apiovh:secondaryDnsDomains/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2521,7 +2593,10 @@ export const schema: Schema = {
           "description": "add a domain on secondary dns",
           "httpMethod": "POST",
           "iamActions": [
-            "dedicatedServer:apiovh:secondaryDnsDomains/create"
+            {
+              "name": "dedicatedServer:apiovh:secondaryDnsDomains/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2566,7 +2641,10 @@ export const schema: Schema = {
           "description": "remove this domain",
           "httpMethod": "DELETE",
           "iamActions": [
-            "dedicatedServer:apiovh:secondaryDnsDomains/delete"
+            {
+              "name": "dedicatedServer:apiovh:secondaryDnsDomains/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2597,7 +2675,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:secondaryDnsDomains/get"
+            {
+              "name": "dedicatedServer:apiovh:secondaryDnsDomains/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2628,7 +2709,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "dedicatedServer:apiovh:secondaryDnsDomains/edit"
+            {
+              "name": "dedicatedServer:apiovh:secondaryDnsDomains/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2672,7 +2756,10 @@ export const schema: Schema = {
           "description": "domain name server informations",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:secondaryDnsDomains/dnsServer/get"
+            {
+              "name": "dedicatedServer:apiovh:secondaryDnsDomains/dnsServer/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2709,7 +2796,10 @@ export const schema: Schema = {
           "description": "DNS field to temporarily add to your zone so that we can verify you are the owner of this domain",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:secondaryDnsNameDomainToken/get"
+            {
+              "name": "dedicatedServer:apiovh:secondaryDnsNameDomainToken/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2746,7 +2836,10 @@ export const schema: Schema = {
           "description": "Secondary nameServer available for your Server",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:secondaryDnsNameServerAvailable/get"
+            {
+              "name": "dedicatedServer:apiovh:secondaryDnsNameServerAvailable/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2772,10 +2865,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get service information",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:serviceInfos/get"
+            {
+              "name": "dedicatedServer:apiovh:serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2795,10 +2891,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Update service information",
           "httpMethod": "PUT",
           "iamActions": [
-            "dedicatedServer:apiovh:serviceInfos/edit"
+            {
+              "name": "dedicatedServer:apiovh:serviceInfos/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2824,672 +2923,6 @@ export const schema: Schema = {
       "path": "/dedicated/server/{serviceName}/serviceInfos"
     },
     {
-      "description": "List the dedicated.server.serviceMonitoring objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Service monitoring details",
-          "httpMethod": "GET",
-          "iamActions": [
-            "dedicatedServer:apiovh:serviceMonitoring/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "long[]"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Add a new service monitoring",
-          "httpMethod": "POST",
-          "iamActions": [
-            "dedicatedServer:apiovh:serviceMonitoring/create"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The expected return",
-              "fullType": "string",
-              "name": "challengeText",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "Is this service monitoring is enabled",
-              "fullType": "boolean",
-              "name": "enabled",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.server.MonitoringIntervalEnum",
-              "description": "The test interval",
-              "fullType": "dedicated.server.MonitoringIntervalEnum",
-              "name": "interval",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "ipv4",
-              "description": "The IP to monitor",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "The service port to monitor",
-              "fullType": "long",
-              "name": "port",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.server.MonitoringProtocolEnum",
-              "description": "The protocol to use",
-              "fullType": "dedicated.server.MonitoringProtocolEnum",
-              "name": "protocol",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The URL to test",
-              "fullType": "string",
-              "name": "url",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dedicated.server.serviceMonitoring"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/serviceMonitoring"
-    },
-    {
-      "description": "Service monitoring details",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Remove this service monitoring",
-          "httpMethod": "DELETE",
-          "iamActions": [
-            "dedicatedServer:apiovh:serviceMonitoring/delete"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "This monitoring id",
-              "fullType": "long",
-              "name": "monitoringId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "iamActions": [
-            "dedicatedServer:apiovh:serviceMonitoring/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "This monitoring id",
-              "fullType": "long",
-              "name": "monitoringId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dedicated.server.serviceMonitoring"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "iamActions": [
-            "dedicatedServer:apiovh:serviceMonitoring/edit"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "dedicated.server.serviceMonitoring",
-              "description": "New object properties",
-              "fullType": "dedicated.server.serviceMonitoring",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "This monitoring id",
-              "fullType": "long",
-              "name": "monitoringId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}"
-    },
-    {
-      "description": "List the dedicated.server.emailAlert objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Service monitoring alert by email",
-          "httpMethod": "GET",
-          "iamActions": [
-            "dedicatedServer:apiovh:serviceMonitoring/alert/email/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "This monitoring id",
-              "fullType": "long",
-              "name": "monitoringId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "long[]"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Add a new email alert",
-          "httpMethod": "POST",
-          "iamActions": [
-            "dedicatedServer:apiovh:serviceMonitoring/alert/email/create"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Alert destination",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.server.AlertLanguageEnum",
-              "description": "Alert language",
-              "fullType": "dedicated.server.AlertLanguageEnum",
-              "name": "language",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "This monitoring id",
-              "fullType": "long",
-              "name": "monitoringId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dedicated.server.emailAlert"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email"
-    },
-    {
-      "description": "Service monitoring Email alert",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Remove this Email alert monitoring",
-          "httpMethod": "DELETE",
-          "iamActions": [
-            "dedicatedServer:apiovh:serviceMonitoring/alert/email/delete"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "This monitoring id",
-              "fullType": "long",
-              "name": "alertId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "This monitoring id",
-              "fullType": "long",
-              "name": "monitoringId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "iamActions": [
-            "dedicatedServer:apiovh:serviceMonitoring/alert/email/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "This monitoring id",
-              "fullType": "long",
-              "name": "alertId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "This monitoring id",
-              "fullType": "long",
-              "name": "monitoringId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dedicated.server.emailAlert"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "iamActions": [
-            "dedicatedServer:apiovh:serviceMonitoring/alert/email/edit"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "dedicated.server.emailAlert",
-              "description": "New object properties",
-              "fullType": "dedicated.server.emailAlert",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "This monitoring id",
-              "fullType": "long",
-              "name": "alertId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "This monitoring id",
-              "fullType": "long",
-              "name": "monitoringId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}"
-    },
-    {
-      "description": "List the dedicated.server.smsAlert objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Service monitoring alert by SMS",
-          "httpMethod": "GET",
-          "iamActions": [
-            "dedicatedServer:apiovh:serviceMonitoring/alert/sms/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "This monitoring id",
-              "fullType": "long",
-              "name": "monitoringId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "long[]"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Create a SMS alert",
-          "httpMethod": "POST",
-          "iamActions": [
-            "dedicatedServer:apiovh:serviceMonitoring/alert/sms/create"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Daily hour start time for SMS notification",
-              "fullType": "long",
-              "name": "fromHour",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "dedicated.server.AlertLanguageEnum",
-              "description": "Alert language",
-              "fullType": "dedicated.server.AlertLanguageEnum",
-              "name": "language",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Alert destination",
-              "fullType": "string",
-              "name": "phoneNumberTo",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Your SMS account",
-              "fullType": "string",
-              "name": "smsAccount",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Daily hour end time for SMS notification",
-              "fullType": "long",
-              "name": "toHour",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "long",
-              "description": "This monitoring id",
-              "fullType": "long",
-              "name": "monitoringId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dedicated.server.smsAlert"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms"
-    },
-    {
-      "description": "Monitoring SMS alert details, This service is currently not supported for servers at BHS ",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Remove this SMS alert",
-          "httpMethod": "DELETE",
-          "iamActions": [
-            "dedicatedServer:apiovh:serviceMonitoring/alert/sms/delete"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Id of this alert",
-              "fullType": "long",
-              "name": "alertId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "This monitoring id",
-              "fullType": "long",
-              "name": "monitoringId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "iamActions": [
-            "dedicatedServer:apiovh:serviceMonitoring/alert/sms/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Id of this alert",
-              "fullType": "long",
-              "name": "alertId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "This monitoring id",
-              "fullType": "long",
-              "name": "monitoringId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dedicated.server.smsAlert"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "iamActions": [
-            "dedicatedServer:apiovh:serviceMonitoring/alert/sms/edit"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "dedicated.server.smsAlert",
-              "description": "New object properties",
-              "fullType": "dedicated.server.smsAlert",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Id of this alert",
-              "fullType": "long",
-              "name": "alertId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "This monitoring id",
-              "fullType": "long",
-              "name": "monitoringId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}"
-    },
-    {
       "description": "hardware operations",
       "operations": [
         {
@@ -3500,7 +2933,10 @@ export const schema: Schema = {
           "description": "Retrieve hardware informations about this dedicated server",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:specifications/hardware/get"
+            {
+              "name": "dedicatedServer:apiovh:specifications/hardware/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3529,7 +2965,10 @@ export const schema: Schema = {
           "description": "Retrieve IP capabilities about this dedicated server",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:specifications/ip/get"
+            {
+              "name": "dedicatedServer:apiovh:specifications/ip/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3558,7 +2997,10 @@ export const schema: Schema = {
           "description": "Retrieve network informations about this dedicated server",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:specifications/network/get"
+            {
+              "name": "dedicatedServer:apiovh:specifications/network/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3587,7 +3029,10 @@ export const schema: Schema = {
           "description": "Your own SPLA licenses attached to this dedicated server",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:spla/get"
+            {
+              "name": "dedicatedServer:apiovh:spla/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3626,7 +3071,10 @@ export const schema: Schema = {
           "description": "Add a new SPLA license",
           "httpMethod": "POST",
           "iamActions": [
-            "dedicatedServer:apiovh:spla/create"
+            {
+              "name": "dedicatedServer:apiovh:spla/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3671,7 +3119,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:spla/get"
+            {
+              "name": "dedicatedServer:apiovh:spla/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3702,7 +3153,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "dedicatedServer:apiovh:spla/edit"
+            {
+              "name": "dedicatedServer:apiovh:spla/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3746,7 +3200,10 @@ export const schema: Schema = {
           "description": "Revoke an SPLA license",
           "httpMethod": "POST",
           "iamActions": [
-            "dedicatedServer:apiovh:spla/revoke"
+            {
+              "name": "dedicatedServer:apiovh:spla/revoke",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3773,772 +3230,6 @@ export const schema: Schema = {
       "path": "/dedicated/server/{serviceName}/spla/{id}/revoke"
     },
     {
-      "description": "Servers statistics sent by RTM (Real Time Monitoring)",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "iamActions": [
-            "dedicatedServer:apiovh:statistics/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dedicated.server.Rtm"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/statistics"
-    },
-    {
-      "description": "chart operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Retrieve RTM graph values",
-          "httpMethod": "GET",
-          "iamActions": [
-            "dedicatedServer:apiovh:statistics/chart/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.server.RtmChartPeriodEnum",
-              "description": "chart period",
-              "fullType": "dedicated.server.RtmChartPeriodEnum",
-              "name": "period",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.server.RtmChartTypeEnum",
-              "description": "RTM chart type",
-              "fullType": "dedicated.server.RtmChartTypeEnum",
-              "name": "type",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "complexType.ChartReturn"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/statistics/chart"
-    },
-    {
-      "description": "connection operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get server opened connections",
-          "httpMethod": "GET",
-          "iamActions": [
-            "dedicatedServer:apiovh:statistics/connection/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dedicated.server.RtmConnection[]"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/statistics/connection"
-    },
-    {
-      "description": "cpu operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get server cpu informations",
-          "httpMethod": "GET",
-          "iamActions": [
-            "dedicatedServer:apiovh:statistics/cpu/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dedicated.server.RtmCpu"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/statistics/cpu"
-    },
-    {
-      "description": "List the dedicated.server.RtmDisk objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Server disks",
-          "httpMethod": "GET",
-          "iamActions": [
-            "dedicatedServer:apiovh:statistics/disk/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/statistics/disk"
-    },
-    {
-      "description": "Server disks informations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "iamActions": [
-            "dedicatedServer:apiovh:statistics/disk/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Disk",
-              "fullType": "string",
-              "name": "disk",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dedicated.server.RtmDisk"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/statistics/disk/{disk}"
-    },
-    {
-      "description": "smart operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get disk smart informations",
-          "httpMethod": "GET",
-          "iamActions": [
-            "dedicatedServer:apiovh:statistics/disk/smart/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Disk",
-              "fullType": "string",
-              "name": "disk",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dedicated.server.RtmDiskSmart"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/statistics/disk/{disk}/smart"
-    },
-    {
-      "description": "load operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get server load",
-          "httpMethod": "GET",
-          "iamActions": [
-            "dedicatedServer:apiovh:statistics/load/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dedicated.server.RtmLoad"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/statistics/load"
-    },
-    {
-      "description": "memory operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get server memory informations",
-          "httpMethod": "GET",
-          "iamActions": [
-            "dedicatedServer:apiovh:statistics/memory/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dedicated.server.RtmMemory[]"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/statistics/memory"
-    },
-    {
-      "description": "motherboard operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get server motherboard hardware informations",
-          "httpMethod": "GET",
-          "iamActions": [
-            "dedicatedServer:apiovh:statistics/motherboard/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dedicated.server.RtmMotherboardHw"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/statistics/motherboard"
-    },
-    {
-      "description": "os operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get server os informations",
-          "httpMethod": "GET",
-          "iamActions": [
-            "dedicatedServer:apiovh:statistics/os/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dedicated.server.RtmOs"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/statistics/os"
-    },
-    {
-      "description": "List the dedicated.server.RtmPartition objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Server partitions",
-          "httpMethod": "GET",
-          "iamActions": [
-            "dedicatedServer:apiovh:statistics/partition/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/statistics/partition"
-    },
-    {
-      "description": "Server partitions informations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "iamActions": [
-            "dedicatedServer:apiovh:statistics/partition/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Partition",
-              "fullType": "string",
-              "name": "partition",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dedicated.server.RtmPartition"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/statistics/partition/{partition}"
-    },
-    {
-      "description": "chart operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Retrieve partition charts",
-          "httpMethod": "GET",
-          "iamActions": [
-            "dedicatedServer:apiovh:statistics/partition/chart/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Partition",
-              "fullType": "string",
-              "name": "partition",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.server.RtmChartPeriodEnum",
-              "description": "chart period",
-              "fullType": "dedicated.server.RtmChartPeriodEnum",
-              "name": "period",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "complexType.ChartReturn"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/statistics/partition/{partition}/chart"
-    },
-    {
-      "description": "pci operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get server PCI devices informations",
-          "httpMethod": "GET",
-          "iamActions": [
-            "dedicatedServer:apiovh:statistics/pci/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dedicated.server.RtmPci[]"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/statistics/pci"
-    },
-    {
-      "description": "process operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get server process",
-          "httpMethod": "GET",
-          "iamActions": [
-            "dedicatedServer:apiovh:statistics/process/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dedicated.server.RtmCommandSize[]"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/statistics/process"
-    },
-    {
-      "description": "List the dedicated.server.RtmRaid objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Server raid informations",
-          "httpMethod": "GET",
-          "iamActions": [
-            "dedicatedServer:apiovh:statistics/raid/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/statistics/raid"
-    },
-    {
-      "description": "Server raid informations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "iamActions": [
-            "dedicatedServer:apiovh:statistics/raid/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Raid unit",
-              "fullType": "string",
-              "name": "unit",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dedicated.server.RtmRaid"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/statistics/raid/{unit}"
-    },
-    {
-      "description": "List the dedicated.server.RtmRaidVolume objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Raid unit volumes",
-          "httpMethod": "GET",
-          "iamActions": [
-            "dedicatedServer:apiovh:statistics/raid/volume/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Raid unit",
-              "fullType": "string",
-              "name": "unit",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/statistics/raid/{unit}/volume"
-    },
-    {
-      "description": "Server raid volume information",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "iamActions": [
-            "dedicatedServer:apiovh:statistics/raid/volume/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Raid unit",
-              "fullType": "string",
-              "name": "unit",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Raid volume name",
-              "fullType": "string",
-              "name": "volume",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dedicated.server.RtmRaidVolume"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}"
-    },
-    {
-      "description": "List the dedicated.server.RtmRaidVolumePort objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Raid unit volume ports",
-          "httpMethod": "GET",
-          "iamActions": [
-            "dedicatedServer:apiovh:statistics/raid/volume/port/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Raid unit",
-              "fullType": "string",
-              "name": "unit",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Raid volume name",
-              "fullType": "string",
-              "name": "volume",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}/port"
-    },
-    {
-      "description": "Server raid volume port informations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "iamActions": [
-            "dedicatedServer:apiovh:statistics/raid/volume/port/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Raid volume port",
-              "fullType": "string",
-              "name": "port",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Raid unit",
-              "fullType": "string",
-              "name": "unit",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Raid volume name",
-              "fullType": "string",
-              "name": "volume",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dedicated.server.RtmRaidVolumePort"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}/port/{port}"
-    },
-    {
       "description": "cooling operations",
       "operations": [
         {
@@ -4549,7 +3240,10 @@ export const schema: Schema = {
           "description": "Ask for a cooling module replacement",
           "httpMethod": "POST",
           "iamActions": [
-            "dedicatedServer:apiovh:support/replace/cooling/create"
+            {
+              "name": "dedicatedServer:apiovh:support/replace/cooling/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4594,7 +3288,10 @@ export const schema: Schema = {
           "description": "Ask for a broken HDD replacement",
           "httpMethod": "POST",
           "iamActions": [
-            "dedicatedServer:apiovh:support/replace/hardDiskDrive/create"
+            {
+              "name": "dedicatedServer:apiovh:support/replace/hardDiskDrive/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4647,7 +3344,10 @@ export const schema: Schema = {
           "description": "Ask for a faulty RAM module replacement",
           "httpMethod": "POST",
           "iamActions": [
-            "dedicatedServer:apiovh:support/replace/memory/create"
+            {
+              "name": "dedicatedServer:apiovh:support/replace/memory/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4700,7 +3400,10 @@ export const schema: Schema = {
           "description": "Dedicated server todos",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:task/get"
+            {
+              "name": "dedicatedServer:apiovh:task/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4745,7 +3448,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:task/get"
+            {
+              "name": "dedicatedServer:apiovh:task/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4782,7 +3488,10 @@ export const schema: Schema = {
           "description": "List available time slots for intervention",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:task/availableTimeslots/get"
+            {
+              "name": "dedicatedServer:apiovh:task/availableTimeslots/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4835,7 +3544,10 @@ export const schema: Schema = {
           "description": "this action stop the task progression if it's possible",
           "httpMethod": "POST",
           "iamActions": [
-            "dedicatedServer:apiovh:task/cancel"
+            {
+              "name": "dedicatedServer:apiovh:task/cancel",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4872,7 +3584,10 @@ export const schema: Schema = {
           "description": "Schedule intervention",
           "httpMethod": "POST",
           "iamActions": [
-            "dedicatedServer:apiovh:task/schedule"
+            {
+              "name": "dedicatedServer:apiovh:task/schedule",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4915,18 +3630,22 @@ export const schema: Schema = {
       "path": "/dedicated/server/{serviceName}/task/{taskId}/schedule"
     },
     {
-      "description": "Terminate your service",
+      "description": "Ask for the termination of your service. Admin contact of this service will receive a termination token in order to confirm its termination with /confirmTermination endpoint.",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Terminate your service",
+          "description": "Ask for the termination of your service",
           "httpMethod": "POST",
           "iamActions": [
-            "dedicatedServer:apiovh:terminate"
+            {
+              "name": "dedicatedServer:apiovh:terminate",
+              "required": true
+            }
           ],
+          "longDescription": "Ask for the termination of your service. Admin contact of this service will receive a termination token by email in order to confirm its termination with /confirmTermination endpoint.",
           "noAuthentication": false,
           "parameters": [
             {
@@ -4954,7 +3673,10 @@ export const schema: Schema = {
           "description": "Virtual MAC addresses of the server",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:virtualMac/get"
+            {
+              "name": "dedicatedServer:apiovh:virtualMac/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4977,7 +3699,10 @@ export const schema: Schema = {
           "description": "Add a virtual mac to an IP address",
           "httpMethod": "POST",
           "iamActions": [
-            "dedicatedServer:apiovh:virtualMac/create"
+            {
+              "name": "dedicatedServer:apiovh:virtualMac/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5030,7 +3755,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:virtualMac/get"
+            {
+              "name": "dedicatedServer:apiovh:virtualMac/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5067,7 +3795,10 @@ export const schema: Schema = {
           "description": "List of IPs associated to this Virtual MAC",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:virtualMac/virtualAddress/get"
+            {
+              "name": "dedicatedServer:apiovh:virtualMac/virtualAddress/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5098,7 +3829,10 @@ export const schema: Schema = {
           "description": "Add an IP to this Virtual MAC",
           "httpMethod": "POST",
           "iamActions": [
-            "dedicatedServer:apiovh:virtualMac/virtualAddress/create"
+            {
+              "name": "dedicatedServer:apiovh:virtualMac/virtualAddress/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5151,7 +3885,10 @@ export const schema: Schema = {
           "description": "Remove this ip from virtual mac , if you remove the last linked Ip, virtualmac will be deleted",
           "httpMethod": "DELETE",
           "iamActions": [
-            "dedicatedServer:apiovh:virtualMac/virtualAddress/delete"
+            {
+              "name": "dedicatedServer:apiovh:virtualMac/virtualAddress/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5190,7 +3927,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:virtualMac/virtualAddress/get"
+            {
+              "name": "dedicatedServer:apiovh:virtualMac/virtualAddress/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5235,7 +3975,10 @@ export const schema: Schema = {
           "description": "List server VirtualNetworkInterfaces",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:virtualNetworkInterface/get"
+            {
+              "name": "dedicatedServer:apiovh:virtualNetworkInterface/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5296,7 +4039,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:virtualNetworkInterface/get"
+            {
+              "name": "dedicatedServer:apiovh:virtualNetworkInterface/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5321,8 +4067,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2021-04-08 00:00:00 +0100 +0100",
-            "deprecatedDate": "2021-01-08 00:00:00 +0100 CET",
+            "deletionDate": "2021-04-08T00:00:00+01:00",
+            "deprecatedDate": "2021-01-08T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/dedicated/server/{serviceName}/ola/aggregation",
             "value": "DEPRECATED"
@@ -5330,7 +4076,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "dedicatedServer:apiovh:virtualNetworkInterface/edit"
+            {
+              "name": "dedicatedServer:apiovh:virtualNetworkInterface/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5368,8 +4117,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2021-04-08 00:00:00 +0100 +0100",
-            "deprecatedDate": "2021-01-08 00:00:00 +0100 CET",
+            "deletionDate": "2021-04-08T00:00:00+01:00",
+            "deprecatedDate": "2021-01-08T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/dedicated/server/{serviceName}/ola/aggregation",
             "value": "DEPRECATED"
@@ -5377,7 +4126,10 @@ export const schema: Schema = {
           "description": "Disable this VirtualNetworkInterface",
           "httpMethod": "POST",
           "iamActions": [
-            "dedicatedServer:apiovh:virtualNetworkInterface/disable"
+            {
+              "name": "dedicatedServer:apiovh:virtualNetworkInterface/disable",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5408,8 +4160,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2021-04-08 00:00:00 +0100 +0100",
-            "deprecatedDate": "2021-01-08 00:00:00 +0100 CET",
+            "deletionDate": "2021-04-08T00:00:00+01:00",
+            "deprecatedDate": "2021-01-08T00:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/dedicated/server/{serviceName}/ola/aggregation",
             "value": "DEPRECATED"
@@ -5417,7 +4169,10 @@ export const schema: Schema = {
           "description": "Enable this VirtualNetworkInterface",
           "httpMethod": "POST",
           "iamActions": [
-            "dedicatedServer:apiovh:virtualNetworkInterface/enable"
+            {
+              "name": "dedicatedServer:apiovh:virtualNetworkInterface/enable",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5448,15 +4203,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "0001-01-01 00:00:00 +0000 UTC",
-            "deprecatedDate": "0001-01-01 00:00:00 +0000 UTC",
+            "deletionDate": "0001-01-01T00:00:00Z",
+            "deprecatedDate": "0001-01-01T00:00:00Z",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
           "description": "Get public logs for servers",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedServer:apiovh:log/get"
+            {
+              "name": "dedicatedServer:apiovh:log/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5501,44 +4259,6 @@ export const schema: Schema = {
   ],
   "basePath": "https://eu.api.soyoustart.com/1.0",
   "models": {
-    "complexType.ChartReturn": {
-      "description": "Chart",
-      "id": "ChartReturn",
-      "namespace": "complexType",
-      "properties": {
-        "unit": {
-          "canBeNull": true,
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "values": {
-          "canBeNull": true,
-          "readOnly": false,
-          "required": false,
-          "type": "complexType.ChartTimestampValue[]"
-        }
-      }
-    },
-    "complexType.ChartTimestampValue": {
-      "description": "A timestamp associated to a value",
-      "id": "ChartTimestampValue",
-      "namespace": "complexType",
-      "properties": {
-        "timestamp": {
-          "canBeNull": false,
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "value": {
-          "canBeNull": true,
-          "readOnly": false,
-          "required": false,
-          "type": "double"
-        }
-      }
-    },
     "complexType.SafeKeyValue<T>": {
       "description": "Key and value, with proper key strings",
       "generics": [
@@ -5583,6 +4303,28 @@ export const schema: Schema = {
         }
       }
     },
+    "complexType.SafeKeyValueCanBeNull<string>": {
+      "description": "Key and value, with proper key strings",
+      "generics": [
+        "T"
+      ],
+      "id": "SafeKeyValueCanBeNull",
+      "namespace": "complexType",
+      "properties": {
+        "key": {
+          "canBeNull": true,
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": true,
+          "readOnly": false,
+          "required": false,
+          "type": "T"
+        }
+      }
+    },
     "complexType.UnitAndValue<T>": {
       "description": "A numeric value tagged with its unit",
       "generics": [
@@ -5605,273 +4347,71 @@ export const schema: Schema = {
         }
       }
     },
-    "coreTypes.CountryEnum": {
-      "description": "ISO country codes",
-      "enum": [
-        "ac",
-        "ad",
-        "ae",
-        "af",
-        "ag",
-        "ai",
-        "al",
-        "am",
-        "an",
-        "ao",
-        "aq",
-        "ar",
-        "as",
-        "at",
-        "au",
-        "aw",
-        "ax",
-        "az",
-        "ba",
-        "bb",
-        "bd",
-        "be",
-        "bf",
-        "bg",
-        "bh",
-        "bi",
-        "bj",
-        "bl",
-        "bm",
-        "bn",
-        "bo",
-        "bq",
-        "br",
-        "bs",
-        "bt",
-        "bv",
-        "bw",
-        "by",
-        "bz",
-        "ca",
-        "cc",
-        "cd",
-        "cf",
-        "cg",
-        "ch",
-        "ci",
-        "ck",
-        "cl",
-        "cm",
-        "cn",
-        "co",
-        "cr",
-        "cs",
-        "cu",
-        "cv",
-        "cw",
-        "cx",
-        "cy",
-        "cz",
-        "de",
-        "dj",
-        "dk",
-        "dm",
-        "do",
-        "dz",
-        "ec",
-        "ee",
-        "eg",
-        "eh",
-        "er",
-        "es",
-        "et",
-        "fc",
-        "fd",
-        "fi",
-        "fj",
-        "fk",
-        "fm",
-        "fo",
-        "fr",
-        "fx",
-        "ga",
-        "gb",
-        "gd",
-        "ge",
-        "gf",
-        "gg",
-        "gh",
-        "gi",
-        "gl",
-        "gm",
-        "gn",
-        "gp",
-        "gq",
-        "gr",
-        "gs",
-        "gt",
-        "gu",
-        "gw",
-        "gy",
-        "hk",
-        "hm",
-        "hn",
-        "hr",
-        "ht",
-        "hu",
-        "id",
-        "ie",
-        "il",
-        "im",
-        "in",
-        "io",
-        "iq",
-        "ir",
-        "is",
-        "it",
-        "je",
-        "jm",
-        "jo",
-        "jp",
-        "ke",
-        "kg",
-        "kh",
-        "ki",
-        "km",
-        "kn",
-        "kp",
-        "kr",
-        "kw",
-        "ky",
-        "kz",
-        "la",
-        "lb",
-        "lc",
-        "li",
-        "lk",
-        "lr",
-        "ls",
-        "lt",
-        "lu",
-        "lv",
-        "ly",
-        "ma",
-        "mc",
-        "md",
-        "me",
-        "mf",
-        "mg",
-        "mh",
-        "mk",
-        "ml",
-        "mm",
-        "mn",
-        "mo",
-        "mp",
-        "mq",
-        "mr",
-        "ms",
-        "mt",
-        "mu",
-        "mv",
-        "mw",
-        "mx",
-        "my",
-        "mz",
-        "na",
-        "nc",
-        "ne",
-        "nf",
-        "ng",
-        "ni",
-        "nl",
-        "no",
-        "np",
-        "nr",
-        "nu",
-        "nz",
-        "om",
-        "pa",
-        "pe",
-        "pf",
-        "pg",
-        "ph",
-        "pk",
-        "pl",
-        "pm",
-        "pn",
-        "pr",
-        "ps",
-        "pt",
-        "pw",
-        "py",
-        "qa",
-        "qc",
-        "re",
-        "ro",
-        "rs",
-        "ru",
-        "rw",
-        "sa",
-        "sb",
-        "sc",
-        "sd",
-        "se",
-        "sg",
-        "sh",
-        "si",
-        "sj",
-        "sk",
-        "sl",
-        "sm",
-        "sn",
-        "so",
-        "sr",
-        "ss",
-        "st",
-        "sv",
-        "sx",
-        "sy",
-        "sz",
-        "tc",
-        "td",
-        "tf",
-        "tg",
-        "th",
-        "tj",
-        "tk",
-        "tl",
-        "tm",
-        "tn",
-        "to",
-        "tp",
-        "tr",
-        "tt",
-        "tv",
-        "tw",
-        "tz",
-        "ua",
-        "ug",
-        "uk",
-        "um",
-        "us",
-        "uy",
-        "uz",
-        "va",
-        "vc",
-        "ve",
-        "vg",
-        "vi",
-        "vn",
-        "vu",
-        "we",
-        "wf",
-        "ws",
-        "ye",
-        "yt",
-        "yu",
-        "za",
-        "zm",
-        "zw"
+    "complexType.UnitAndValue<double>": {
+      "description": "A numeric value tagged with its unit",
+      "generics": [
+        "T"
       ],
-      "enumType": "string",
-      "id": "CountryEnum",
-      "namespace": "coreTypes"
+      "id": "UnitAndValue",
+      "namespace": "complexType",
+      "properties": {
+        "unit": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "T"
+        }
+      }
+    },
+    "complexType.UnitAndValue<long>": {
+      "description": "A numeric value tagged with its unit",
+      "generics": [
+        "T"
+      ],
+      "id": "UnitAndValue",
+      "namespace": "complexType",
+      "properties": {
+        "unit": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "T"
+        }
+      }
+    },
+    "complexType.UnitAndValue<string>": {
+      "description": "A numeric value tagged with its unit",
+      "generics": [
+        "T"
+      ],
+      "id": "UnitAndValue",
+      "namespace": "complexType",
+      "properties": {
+        "unit": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "T"
+        }
+      }
     },
     "dedicated.BinaryFirewall": {
       "description": "Get list of compatible firewall binaries",
@@ -5914,18 +4454,6 @@ export const schema: Schema = {
         }
       }
     },
-    "dedicated.CheckSumTypesEnum": {
-      "description": "CheckSum type",
-      "enum": [
-        "md5",
-        "sha1",
-        "sha256",
-        "sha512"
-      ],
-      "enumType": "string",
-      "id": "CheckSumTypesEnum",
-      "namespace": "dedicated"
-    },
     "dedicated.DatacenterEnum": {
       "description": "ovh datacenter",
       "enum": [
@@ -5937,19 +4465,29 @@ export const schema: Schema = {
         "bhs6",
         "bhs7",
         "bhs8",
+        "cch01",
+        "crx1",
+        "crx2",
         "dc1",
         "eri1",
+        "eri2",
+        "gra04",
         "gra1",
         "gra2",
         "gra3",
         "gsw",
         "hil1",
+        "ieb01",
         "lil1-int1",
         "lim1",
+        "lim2",
         "lim3",
+        "mr901",
         "p19",
+        "rbx",
         "rbx-hz",
         "rbx1",
+        "rbx10",
         "rbx2",
         "rbx3",
         "rbx4",
@@ -5957,17 +4495,21 @@ export const schema: Schema = {
         "rbx6",
         "rbx7",
         "rbx8",
+        "rbx9",
         "sbg1",
         "sbg2",
         "sbg3",
         "sbg4",
         "sbg5",
+        "sgp02",
         "sgp1",
+        "syd03",
         "syd1",
         "syd2",
         "vin1",
         "waw1",
-        "ynm1"
+        "ynm1",
+        "yyz01"
       ],
       "enumType": "string",
       "id": "DatacenterEnum",
@@ -6007,16 +4549,6 @@ export const schema: Schema = {
           "type": "datetime"
         }
       }
-    },
-    "dedicated.ImageTypesEnum": {
-      "description": "Type of your image",
-      "enum": [
-        "qcow2",
-        "raw"
-      ],
-      "enumType": "string",
-      "id": "ImageTypesEnum",
-      "namespace": "dedicated"
     },
     "dedicated.OperationFunctionEnum": {
       "description": "List of operation type",
@@ -6159,6 +4691,8 @@ export const schema: Schema = {
         "INFRA_002_VirtualNetworkInterface",
         "INFRA_002_VirtualNetworkInterface_group",
         "INFRA_002_VirtualNetworkInterface_ungroup",
+        "INFRA_ONE_NETWORK_ONEAPI_VirtualNetworkInterface_group",
+        "INFRA_ONE_NETWORK_ONEAPI_VirtualNetworkInterface_ungroup",
         "INFRA_ONE_NETWORK_VirtualNetworkInterface_group",
         "INFRA_ONE_NETWORK_VirtualNetworkInterface_ungroup",
         "addVirtualMac",
@@ -6305,7 +4839,7 @@ export const schema: Schema = {
       "namespace": "dedicated.server",
       "properties": {
         "password": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Password",
           "readOnly": false,
           "required": false,
@@ -6357,25 +4891,6 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "AddonFamilyEnum",
-      "namespace": "dedicated.server"
-    },
-    "dedicated.server.AlertLanguageEnum": {
-      "description": "Monitoring alert language",
-      "enum": [
-        "cz",
-        "de",
-        "en",
-        "es",
-        "fi",
-        "fr",
-        "it",
-        "lt",
-        "nl",
-        "pl",
-        "pt"
-      ],
-      "enumType": "string",
-      "id": "AlertLanguageEnum",
       "namespace": "dedicated.server"
     },
     "dedicated.server.BMC": {
@@ -6506,10 +5021,10 @@ export const schema: Schema = {
     "dedicated.server.BackupStorageCapacityEnum": {
       "description": "Different backup storage capacity in gigabytes",
       "enum": [
-        "1000",
-        "10000",
         "500",
-        "5000"
+        "1000",
+        "5000",
+        "10000"
       ],
       "enumType": "long",
       "id": "BackupStorageCapacityEnum",
@@ -6651,6 +5166,7 @@ export const schema: Schema = {
       "description": "SGX PRMRR value enum",
       "enum": [
         "128",
+        "131072",
         "16384",
         "2048",
         "256",
@@ -6935,110 +5451,18 @@ export const schema: Schema = {
       "id": "BootTypeEnum",
       "namespace": "dedicated.server"
     },
-    "dedicated.server.ByoiStatus": {
-      "description": "Bring you own Image on your server",
-      "id": "ByoiStatus",
-      "namespace": "dedicated.server",
-      "properties": {
-        "checksum": {
-          "canBeNull": true,
-          "description": "Last checksum",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "message": {
-          "canBeNull": true,
-          "description": "Last message",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "servername": {
-          "canBeNull": true,
-          "description": "Server name",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "status": {
-          "canBeNull": true,
-          "description": "Status",
-          "fullType": "dedicated.server.ByoiStatusEnum",
-          "readOnly": true,
-          "required": false,
-          "type": "dedicated.server.ByoiStatusEnum"
-        }
-      }
-    },
-    "dedicated.server.ByoiStatusEnum": {
-      "description": "All states a status can be in",
-      "enum": [
-        "doing",
-        "done",
-        "error"
-      ],
-      "enumType": "string",
-      "id": "ByoiStatusEnum",
-      "namespace": "dedicated.server"
-    },
     "dedicated.server.CacheTTLEnum": {
       "description": "Time to live in minutes for cache",
       "enum": [
         "1",
-        "10",
-        "15",
         "3",
-        "5"
+        "5",
+        "10",
+        "15"
       ],
       "enumType": "long",
       "id": "CacheTTLEnum",
       "namespace": "dedicated.server"
-    },
-    "dedicated.server.ConfigDrive": {
-      "description": "Configurations used by cloud-init or cloudbase-init",
-      "id": "ConfigDrive",
-      "namespace": "dedicated.server",
-      "properties": {
-        "enable": {
-          "canBeNull": true,
-          "description": "enable ConfigDrive",
-          "readOnly": false,
-          "required": false,
-          "type": "boolean"
-        },
-        "hostname": {
-          "canBeNull": true,
-          "description": "Hostname",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "sshKey": {
-          "canBeNull": true,
-          "description": "SshKey",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "userData": {
-          "canBeNull": true,
-          "description": "Configuration script",
-          "readOnly": false,
-          "required": false,
-          "type": "text"
-        },
-        "userMetadatas": {
-          "canBeNull": true,
-          "description": "Metadata",
-          "readOnly": false,
-          "required": false,
-          "type": "complexType.SafeKeyValueCanBeNull<string>[]"
-        }
-      }
     },
     "dedicated.server.CpuFamilyEnum": {
       "description": "cpu family ",
@@ -7059,12 +5483,28 @@ export const schema: Schema = {
       "id": "Dedicated",
       "namespace": "dedicated.server",
       "properties": {
+        "availabilityZone": {
+          "canBeNull": false,
+          "description": "dedicated AZ localisation",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
         "bootId": {
           "canBeNull": true,
           "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
+        },
+        "bootScript": {
+          "canBeNull": true,
+          "description": "Ipxe script served on boot",
+          "fullType": "text",
+          "readOnly": false,
+          "required": false,
+          "type": "text"
         },
         "commercialRange": {
           "canBeNull": true,
@@ -7159,12 +5599,29 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "region": {
+          "canBeNull": false,
+          "description": "dedicated region localisation",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
         "rescueMail": {
           "canBeNull": true,
+          "description": "Custom email used to receive rescue credentials",
           "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
+        },
+        "rescueSshKey": {
+          "canBeNull": true,
+          "description": "Public SSH Key used in the rescue mode",
+          "fullType": "text",
+          "readOnly": false,
+          "required": false,
+          "type": "text"
         },
         "reverse": {
           "canBeNull": true,
@@ -7687,27 +6144,6 @@ export const schema: Schema = {
           "required": false,
           "type": "long"
         },
-        "installRTM": {
-          "canBeNull": true,
-          "description": "true if you want to install RTM",
-          "readOnly": false,
-          "required": false,
-          "type": "boolean"
-        },
-        "installSqlServer": {
-          "canBeNull": true,
-          "description": "true if you want to install windows with sql feature",
-          "readOnly": false,
-          "required": false,
-          "type": "boolean"
-        },
-        "language": {
-          "canBeNull": true,
-          "description": "install language for ovh install choice",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
         "noRaid": {
           "canBeNull": true,
           "description": "true if you want to install only on the first disk",
@@ -7742,20 +6178,6 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string"
-        },
-        "useDistribKernel": {
-          "canBeNull": true,
-          "description": "true if you want to install with distrib kernel",
-          "readOnly": false,
-          "required": false,
-          "type": "boolean"
-        },
-        "useSpla": {
-          "canBeNull": true,
-          "description": "true if you want to install windows with your spla license",
-          "readOnly": false,
-          "required": false,
-          "type": "boolean"
         }
       }
     },
@@ -7901,13 +6323,13 @@ export const schema: Schema = {
       "description": "IP block size",
       "enum": [
         "1",
-        "128",
-        "16",
-        "256",
-        "32",
         "4",
+        "8",
+        "16",
+        "32",
         "64",
-        "8"
+        "128",
+        "256"
       ],
       "enumType": "long",
       "id": "IpBlockSizeEnum",
@@ -7935,7 +6357,7 @@ export const schema: Schema = {
         "uk",
         "us"
       ],
-      "enumType": "coreTypes.CountryEnum",
+      "enumType": "string",
       "id": "IpCountryEnum",
       "namespace": "dedicated.server"
     },
@@ -8141,34 +6563,6 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "IpmiTestTypeEnum",
-      "namespace": "dedicated.server"
-    },
-    "dedicated.server.MonitoringIntervalEnum": {
-      "description": "Monitoring interval in seconds",
-      "enum": [
-        "1800",
-        "21600",
-        "300",
-        "3600"
-      ],
-      "enumType": "string",
-      "id": "MonitoringIntervalEnum",
-      "namespace": "dedicated.server"
-    },
-    "dedicated.server.MonitoringProtocolEnum": {
-      "description": "Monitoring protocol",
-      "enum": [
-        "DNS",
-        "FTP",
-        "HTTP",
-        "IMAP",
-        "POP",
-        "SMTP",
-        "SSH",
-        "openTCP"
-      ],
-      "enumType": "string",
-      "id": "MonitoringProtocolEnum",
       "namespace": "dedicated.server"
     },
     "dedicated.server.MrtgPeriodEnum": {
@@ -8732,684 +7126,6 @@ export const schema: Schema = {
         }
       }
     },
-    "dedicated.server.Rtm": {
-      "description": "Servers statistics sent by RTM (Real Time Monitoring)",
-      "id": "Rtm",
-      "namespace": "dedicated.server",
-      "properties": {
-        "currentVersion": {
-          "canBeNull": true,
-          "description": "RTM current version",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "installedVersion": {
-          "canBeNull": true,
-          "description": "RTM currently installed version",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "needsUpdate": {
-          "canBeNull": false,
-          "description": "You need to update RTM script on your server",
-          "fullType": "boolean",
-          "readOnly": true,
-          "required": false,
-          "type": "boolean"
-        }
-      }
-    },
-    "dedicated.server.RtmChartPeriodEnum": {
-      "description": "distincts RTM charts period",
-      "enum": [
-        "daily",
-        "monthly",
-        "weekly",
-        "yearly"
-      ],
-      "enumType": "string",
-      "id": "RtmChartPeriodEnum",
-      "namespace": "dedicated.server"
-    },
-    "dedicated.server.RtmChartTypeEnum": {
-      "description": "distincts probes type",
-      "enum": [
-        "cpu",
-        "loadavg1",
-        "loadavg15",
-        "loadavg5",
-        "memory",
-        "processCount",
-        "processRunning",
-        "swap"
-      ],
-      "enumType": "string",
-      "id": "RtmChartTypeEnum",
-      "namespace": "dedicated.server"
-    },
-    "dedicated.server.RtmCommandSize": {
-      "description": "A structure describing informations about RTM",
-      "id": "RtmCommandSize",
-      "namespace": "dedicated.server",
-      "properties": {
-        "command": {
-          "canBeNull": true,
-          "description": "Complete command line used for starting this process",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "memory": {
-          "canBeNull": true,
-          "description": "Memory used by this process",
-          "readOnly": false,
-          "required": false,
-          "type": "complexType.UnitAndValue<long>"
-        }
-      }
-    },
-    "dedicated.server.RtmConnection": {
-      "description": "A structure describing informations about opened sockets on the server",
-      "id": "RtmConnection",
-      "namespace": "dedicated.server",
-      "properties": {
-        "cmdline": {
-          "canBeNull": true,
-          "description": "Complete command line used for starting this process",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "domain": {
-          "canBeNull": true,
-          "description": "Domain used by the process",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "exe": {
-          "canBeNull": true,
-          "description": "Path to the program",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "ip": {
-          "canBeNull": true,
-          "description": "The IP address connected",
-          "readOnly": false,
-          "required": false,
-          "type": "ip"
-        },
-        "pid": {
-          "canBeNull": true,
-          "description": "Process ID",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "port": {
-          "canBeNull": true,
-          "description": "Port opened",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "procname": {
-          "canBeNull": true,
-          "description": "Name of the process",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "uid": {
-          "canBeNull": true,
-          "description": "System user ID",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "username": {
-          "canBeNull": true,
-          "description": "Username used to start the process",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "dedicated.server.RtmCpu": {
-      "description": "A structure describing informations about server cpu",
-      "id": "RtmCpu",
-      "namespace": "dedicated.server",
-      "properties": {
-        "cache": {
-          "canBeNull": true,
-          "description": "CPU cache size",
-          "readOnly": false,
-          "required": false,
-          "type": "complexType.UnitAndValue<long>"
-        },
-        "core": {
-          "canBeNull": true,
-          "description": "CPU core number",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "freq": {
-          "canBeNull": true,
-          "description": "CPU frequency",
-          "readOnly": false,
-          "required": false,
-          "type": "complexType.UnitAndValue<long>"
-        },
-        "name": {
-          "canBeNull": true,
-          "description": "CPU  name",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "dedicated.server.RtmDisk": {
-      "description": "Server disks informations",
-      "id": "RtmDisk",
-      "namespace": "dedicated.server",
-      "properties": {
-        "capacity": {
-          "canBeNull": true,
-          "description": "Disk capacity",
-          "fullType": "complexType.UnitAndValue<long>",
-          "readOnly": true,
-          "required": false,
-          "type": "complexType.UnitAndValue<long>"
-        },
-        "disk": {
-          "canBeNull": false,
-          "description": "Disk",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "model": {
-          "canBeNull": true,
-          "description": "Disk model",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "temperature": {
-          "canBeNull": true,
-          "description": "Disk temperature",
-          "fullType": "complexType.UnitAndValue<long>",
-          "readOnly": true,
-          "required": false,
-          "type": "complexType.UnitAndValue<long>"
-        }
-      }
-    },
-    "dedicated.server.RtmDiskSmart": {
-      "description": "A structure describing SMART health disk status",
-      "id": "RtmDiskSmart",
-      "namespace": "dedicated.server",
-      "properties": {
-        "current_pending_sector": {
-          "canBeNull": true,
-          "description": "Current pending sectors",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "multizone_error_rate": {
-          "canBeNull": true,
-          "description": "Multizone error rate",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "offline_seek_performance": {
-          "canBeNull": true,
-          "description": "Offline seek rate",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "offline_uncorrectable": {
-          "canBeNull": true,
-          "description": "Offline uncorrectable",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "other_errors": {
-          "canBeNull": true,
-          "description": "Other errors",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "realocated_event_count": {
-          "canBeNull": true,
-          "description": "Realocated event count",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "temperature_celsius": {
-          "canBeNull": true,
-          "description": "temperature",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "udma_crc_error": {
-          "canBeNull": true,
-          "description": "UDMA crc error",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "uncorrected_read_errors": {
-          "canBeNull": true,
-          "description": "Uncorrected read errors",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "uncorrected_write_errors": {
-          "canBeNull": true,
-          "description": "Uncorrected write errors",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        }
-      }
-    },
-    "dedicated.server.RtmLoad": {
-      "description": "A structure describing informations about server load",
-      "id": "RtmLoad",
-      "namespace": "dedicated.server",
-      "properties": {
-        "cpu": {
-          "canBeNull": true,
-          "description": "CPU usage",
-          "readOnly": false,
-          "required": false,
-          "type": "complexType.UnitAndValue<double>"
-        },
-        "loadavg1": {
-          "canBeNull": true,
-          "description": "Load average in the last 1 minute",
-          "readOnly": false,
-          "required": false,
-          "type": "double"
-        },
-        "loadavg15": {
-          "canBeNull": true,
-          "description": "Load average in the last 15 minutes",
-          "readOnly": false,
-          "required": false,
-          "type": "double"
-        },
-        "loadavg5": {
-          "canBeNull": true,
-          "description": "Load average in the last 5 minutes",
-          "readOnly": false,
-          "required": false,
-          "type": "double"
-        },
-        "memory": {
-          "canBeNull": true,
-          "description": "Memory usage",
-          "readOnly": false,
-          "required": false,
-          "type": "complexType.UnitAndValue<double>"
-        },
-        "processCount": {
-          "canBeNull": true,
-          "description": "Number of processes using or waiting for CPU time",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "processRunning": {
-          "canBeNull": true,
-          "description": "Number of process running",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "swap": {
-          "canBeNull": true,
-          "description": "Swap usage",
-          "readOnly": false,
-          "required": false,
-          "type": "complexType.UnitAndValue<double>"
-        },
-        "uptime": {
-          "canBeNull": true,
-          "description": "Server uptime",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        }
-      }
-    },
-    "dedicated.server.RtmMemory": {
-      "description": "A structure describing informations about server memory",
-      "id": "RtmMemory",
-      "namespace": "dedicated.server",
-      "properties": {
-        "capacity": {
-          "canBeNull": true,
-          "description": "Memory capacity ",
-          "readOnly": false,
-          "required": false,
-          "type": "complexType.UnitAndValue<long>"
-        },
-        "slot": {
-          "canBeNull": true,
-          "description": "Memory slot",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "dedicated.server.RtmMotherboardHw": {
-      "description": "A structure describing informations about motherboard",
-      "id": "RtmMotherboardHw",
-      "namespace": "dedicated.server",
-      "properties": {
-        "manufacturer": {
-          "canBeNull": true,
-          "description": "Motherboard manufacturer",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "name": {
-          "canBeNull": true,
-          "description": "Motherboard name",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "dedicated.server.RtmOs": {
-      "description": "A structure describing informations about Rtm os",
-      "id": "RtmOs",
-      "namespace": "dedicated.server",
-      "properties": {
-        "kernelRelease": {
-          "canBeNull": true,
-          "description": "OS kernel release",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "kernelVersion": {
-          "canBeNull": true,
-          "description": "OS kernel version",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "release": {
-          "canBeNull": true,
-          "description": "OS release",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "dedicated.server.RtmPartition": {
-      "description": "Server partitions informations",
-      "id": "RtmPartition",
-      "namespace": "dedicated.server",
-      "properties": {
-        "inodeUsage": {
-          "canBeNull": true,
-          "description": "Partition inode",
-          "fullType": "complexType.UnitAndValue<long>",
-          "readOnly": true,
-          "required": false,
-          "type": "complexType.UnitAndValue<long>"
-        },
-        "mountPoint": {
-          "canBeNull": true,
-          "description": "Partition mount point",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "partition": {
-          "canBeNull": false,
-          "description": "Partition",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "usage": {
-          "canBeNull": true,
-          "description": "Partition usage",
-          "fullType": "complexType.UnitAndValue<long>",
-          "readOnly": true,
-          "required": false,
-          "type": "complexType.UnitAndValue<long>"
-        }
-      }
-    },
-    "dedicated.server.RtmPci": {
-      "description": "A structure describing informations about server PCI devices",
-      "id": "RtmPci",
-      "namespace": "dedicated.server",
-      "properties": {
-        "bus": {
-          "canBeNull": true,
-          "description": "PCI bus device",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "device": {
-          "canBeNull": true,
-          "description": "PCI device information",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "dedicated.server.RtmRaid": {
-      "description": "Server raid informations",
-      "id": "RtmRaid",
-      "namespace": "dedicated.server",
-      "properties": {
-        "unit": {
-          "canBeNull": false,
-          "description": "Raid unit",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "dedicated.server.RtmRaidStatusEnum": {
-      "description": " Different RAID status",
-      "enum": [
-        "KO",
-        "OK",
-        "REBUILDING",
-        "UNKNOWN"
-      ],
-      "enumType": "string",
-      "id": "RtmRaidStatusEnum",
-      "namespace": "dedicated.server"
-    },
-    "dedicated.server.RtmRaidVolume": {
-      "description": "Server raid volume information",
-      "id": "RtmRaidVolume",
-      "namespace": "dedicated.server",
-      "properties": {
-        "capacity": {
-          "canBeNull": true,
-          "description": "Raid volume capacity",
-          "fullType": "complexType.UnitAndValue<double>",
-          "readOnly": true,
-          "required": false,
-          "type": "complexType.UnitAndValue<double>"
-        },
-        "chunks": {
-          "canBeNull": true,
-          "description": "Raid volume chunks",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "label": {
-          "canBeNull": true,
-          "description": "Raid volume label",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "letter": {
-          "canBeNull": true,
-          "description": "Raid volume letter",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "phys": {
-          "canBeNull": true,
-          "description": "Raid volume phys",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "status": {
-          "canBeNull": true,
-          "description": "Raid volume status",
-          "fullType": "dedicated.server.RtmRaidStatusEnum",
-          "readOnly": true,
-          "required": false,
-          "type": "dedicated.server.RtmRaidStatusEnum"
-        },
-        "stripe": {
-          "canBeNull": true,
-          "description": "Raid volume stripe",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "syncprogress": {
-          "canBeNull": true,
-          "description": "Raid volume synchronization progress",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "type": {
-          "canBeNull": true,
-          "description": "Raid volume type",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "volume": {
-          "canBeNull": true,
-          "description": "Raid volume name",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "dedicated.server.RtmRaidVolumePort": {
-      "description": "Server raid volume port informations",
-      "id": "RtmRaidVolumePort",
-      "namespace": "dedicated.server",
-      "properties": {
-        "capacity": {
-          "canBeNull": true,
-          "description": "Port capacity",
-          "fullType": "complexType.UnitAndValue<double>",
-          "readOnly": true,
-          "required": false,
-          "type": "complexType.UnitAndValue<double>"
-        },
-        "disk": {
-          "canBeNull": true,
-          "description": "Port disk",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "model": {
-          "canBeNull": true,
-          "description": "Port model name",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "port": {
-          "canBeNull": true,
-          "description": "Raid volume port",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "serial": {
-          "canBeNull": true,
-          "description": "Serial of this port",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "status": {
-          "canBeNull": true,
-          "description": "Status of this port",
-          "fullType": "dedicated.server.RtmRaidStatusEnum",
-          "readOnly": true,
-          "required": false,
-          "type": "dedicated.server.RtmRaidStatusEnum"
-        },
-        "syncprogress": {
-          "canBeNull": true,
-          "description": "Raid port synchronization progress",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
     "dedicated.server.SplaStatusEnum": {
       "description": "SPLA license status",
       "enum": [
@@ -9692,11 +7408,11 @@ export const schema: Schema = {
     "dedicated.server.UsbKeyCapacityEnum": {
       "description": " Different USB key capacity in gigabytes",
       "enum": [
-        "128",
         "16",
-        "256",
         "32",
-        "64"
+        "64",
+        "128",
+        "256"
       ],
       "enumType": "long",
       "id": "UsbKeyCapacityEnum",
@@ -9842,45 +7558,6 @@ export const schema: Schema = {
         }
       }
     },
-    "dedicated.server.emailAlert": {
-      "description": "Service monitoring Email alert",
-      "id": "emailAlert",
-      "namespace": "dedicated.server",
-      "properties": {
-        "alertId": {
-          "canBeNull": false,
-          "description": "This monitoring id",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "email": {
-          "canBeNull": false,
-          "description": "Alert destination",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "enabled": {
-          "canBeNull": false,
-          "description": "Is this monitor enabled",
-          "fullType": "boolean",
-          "readOnly": false,
-          "required": false,
-          "type": "boolean"
-        },
-        "language": {
-          "canBeNull": false,
-          "description": "Alert language",
-          "fullType": "dedicated.server.AlertLanguageEnum",
-          "readOnly": false,
-          "required": false,
-          "type": "dedicated.server.AlertLanguageEnum"
-        }
-      }
-    },
     "dedicated.server.kvm": {
       "description": "Physical KVM",
       "id": "kvm",
@@ -9932,140 +7609,6 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
-        }
-      }
-    },
-    "dedicated.server.serviceMonitoring": {
-      "description": "Service monitoring details",
-      "id": "serviceMonitoring",
-      "namespace": "dedicated.server",
-      "properties": {
-        "challengeText": {
-          "canBeNull": true,
-          "description": "The expected return",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "enabled": {
-          "canBeNull": false,
-          "description": "Is this service monitoring is enabled",
-          "fullType": "boolean",
-          "readOnly": false,
-          "required": false,
-          "type": "boolean"
-        },
-        "interval": {
-          "canBeNull": false,
-          "description": "The test interval in seconds",
-          "fullType": "dedicated.server.MonitoringIntervalEnum",
-          "readOnly": false,
-          "required": false,
-          "type": "dedicated.server.MonitoringIntervalEnum"
-        },
-        "ip": {
-          "canBeNull": false,
-          "description": "The ip to monitor",
-          "fullType": "ipv4",
-          "readOnly": true,
-          "required": false,
-          "type": "ipv4"
-        },
-        "monitoringId": {
-          "canBeNull": false,
-          "description": "This monitoring id",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "port": {
-          "canBeNull": false,
-          "description": "The service port to monitor",
-          "fullType": "long",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "protocol": {
-          "canBeNull": false,
-          "description": "The protocol to use",
-          "fullType": "dedicated.server.MonitoringProtocolEnum",
-          "readOnly": false,
-          "required": false,
-          "type": "dedicated.server.MonitoringProtocolEnum"
-        },
-        "url": {
-          "canBeNull": true,
-          "description": "The URL to test",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "dedicated.server.smsAlert": {
-      "description": "Monitoring SMS alert details, This service is currently not supported for servers at BHS ",
-      "id": "smsAlert",
-      "namespace": "dedicated.server",
-      "properties": {
-        "alertId": {
-          "canBeNull": false,
-          "description": "Id of this alert",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "enabled": {
-          "canBeNull": false,
-          "description": "Is this alert enabled",
-          "fullType": "boolean",
-          "readOnly": false,
-          "required": false,
-          "type": "boolean"
-        },
-        "fromHour": {
-          "canBeNull": true,
-          "description": "Daily hour end time for SMS notification",
-          "fullType": "long",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "language": {
-          "canBeNull": false,
-          "description": "Alert language",
-          "fullType": "dedicated.server.AlertLanguageEnum",
-          "readOnly": false,
-          "required": false,
-          "type": "dedicated.server.AlertLanguageEnum"
-        },
-        "phoneNumberTo": {
-          "canBeNull": false,
-          "description": "Alert destination",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "smsAccount": {
-          "canBeNull": false,
-          "description": "Your SMS account",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "toHour": {
-          "canBeNull": true,
-          "description": "Daily hour start time for SMS notification",
-          "fullType": "long",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
         }
       }
     },
@@ -10279,6 +7822,7 @@ export const schema: Schema = {
         "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_24_CORES",
         "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_8_CORES",
         "WINDOWS_SERVER_2019_DATACENTER_EDITION_10_CORES",
+        "WINDOWS_SERVER_2019_DATACENTER_EDITION_128_CORES",
         "WINDOWS_SERVER_2019_DATACENTER_EDITION_12_CORES",
         "WINDOWS_SERVER_2019_DATACENTER_EDITION_14_CORES",
         "WINDOWS_SERVER_2019_DATACENTER_EDITION_16_CORES",
@@ -10286,6 +7830,7 @@ export const schema: Schema = {
         "WINDOWS_SERVER_2019_DATACENTER_EDITION_20_CORES",
         "WINDOWS_SERVER_2019_DATACENTER_EDITION_22_CORES",
         "WINDOWS_SERVER_2019_DATACENTER_EDITION_24_CORES",
+        "WINDOWS_SERVER_2019_DATACENTER_EDITION_256_CORES",
         "WINDOWS_SERVER_2019_DATACENTER_EDITION_26_CORES",
         "WINDOWS_SERVER_2019_DATACENTER_EDITION_28_CORES",
         "WINDOWS_SERVER_2019_DATACENTER_EDITION_30_CORES",
@@ -10299,6 +7844,7 @@ export const schema: Schema = {
         "WINDOWS_SERVER_2019_DATACENTER_EDITION_46_CORES",
         "WINDOWS_SERVER_2019_DATACENTER_EDITION_48_CORES",
         "WINDOWS_SERVER_2019_DATACENTER_EDITION_50_CORES",
+        "WINDOWS_SERVER_2019_DATACENTER_EDITION_512_CORES",
         "WINDOWS_SERVER_2019_DATACENTER_EDITION_52_CORES",
         "WINDOWS_SERVER_2019_DATACENTER_EDITION_54_CORES",
         "WINDOWS_SERVER_2019_DATACENTER_EDITION_56_CORES",
@@ -10307,7 +7853,9 @@ export const schema: Schema = {
         "WINDOWS_SERVER_2019_DATACENTER_EDITION_62_CORES",
         "WINDOWS_SERVER_2019_DATACENTER_EDITION_64_CORES",
         "WINDOWS_SERVER_2019_DATACENTER_EDITION_8_CORES",
+        "WINDOWS_SERVER_2019_DATACENTER_EDITION_96_CORES",
         "WINDOWS_SERVER_2019_STANDARD_EDITION_10_CORES",
+        "WINDOWS_SERVER_2019_STANDARD_EDITION_128_CORES",
         "WINDOWS_SERVER_2019_STANDARD_EDITION_12_CORES",
         "WINDOWS_SERVER_2019_STANDARD_EDITION_14_CORES",
         "WINDOWS_SERVER_2019_STANDARD_EDITION_16_CORES",
@@ -10315,6 +7863,7 @@ export const schema: Schema = {
         "WINDOWS_SERVER_2019_STANDARD_EDITION_20_CORES",
         "WINDOWS_SERVER_2019_STANDARD_EDITION_22_CORES",
         "WINDOWS_SERVER_2019_STANDARD_EDITION_24_CORES",
+        "WINDOWS_SERVER_2019_STANDARD_EDITION_256_CORES",
         "WINDOWS_SERVER_2019_STANDARD_EDITION_26_CORES",
         "WINDOWS_SERVER_2019_STANDARD_EDITION_28_CORES",
         "WINDOWS_SERVER_2019_STANDARD_EDITION_30_CORES",
@@ -10328,6 +7877,7 @@ export const schema: Schema = {
         "WINDOWS_SERVER_2019_STANDARD_EDITION_46_CORES",
         "WINDOWS_SERVER_2019_STANDARD_EDITION_48_CORES",
         "WINDOWS_SERVER_2019_STANDARD_EDITION_50_CORES",
+        "WINDOWS_SERVER_2019_STANDARD_EDITION_512_CORES",
         "WINDOWS_SERVER_2019_STANDARD_EDITION_52_CORES",
         "WINDOWS_SERVER_2019_STANDARD_EDITION_54_CORES",
         "WINDOWS_SERVER_2019_STANDARD_EDITION_56_CORES",
@@ -10336,7 +7886,9 @@ export const schema: Schema = {
         "WINDOWS_SERVER_2019_STANDARD_EDITION_62_CORES",
         "WINDOWS_SERVER_2019_STANDARD_EDITION_64_CORES",
         "WINDOWS_SERVER_2019_STANDARD_EDITION_8_CORES",
+        "WINDOWS_SERVER_2019_STANDARD_EDITION_96_CORES",
         "WINDOWS_SERVER_2022_DATACENTER_EDITION_10_CORES",
+        "WINDOWS_SERVER_2022_DATACENTER_EDITION_128_CORES",
         "WINDOWS_SERVER_2022_DATACENTER_EDITION_12_CORES",
         "WINDOWS_SERVER_2022_DATACENTER_EDITION_14_CORES",
         "WINDOWS_SERVER_2022_DATACENTER_EDITION_16_CORES",
@@ -10344,6 +7896,7 @@ export const schema: Schema = {
         "WINDOWS_SERVER_2022_DATACENTER_EDITION_20_CORES",
         "WINDOWS_SERVER_2022_DATACENTER_EDITION_22_CORES",
         "WINDOWS_SERVER_2022_DATACENTER_EDITION_24_CORES",
+        "WINDOWS_SERVER_2022_DATACENTER_EDITION_256_CORES",
         "WINDOWS_SERVER_2022_DATACENTER_EDITION_26_CORES",
         "WINDOWS_SERVER_2022_DATACENTER_EDITION_28_CORES",
         "WINDOWS_SERVER_2022_DATACENTER_EDITION_30_CORES",
@@ -10357,6 +7910,7 @@ export const schema: Schema = {
         "WINDOWS_SERVER_2022_DATACENTER_EDITION_46_CORES",
         "WINDOWS_SERVER_2022_DATACENTER_EDITION_48_CORES",
         "WINDOWS_SERVER_2022_DATACENTER_EDITION_50_CORES",
+        "WINDOWS_SERVER_2022_DATACENTER_EDITION_512_CORES",
         "WINDOWS_SERVER_2022_DATACENTER_EDITION_52_CORES",
         "WINDOWS_SERVER_2022_DATACENTER_EDITION_54_CORES",
         "WINDOWS_SERVER_2022_DATACENTER_EDITION_56_CORES",
@@ -10365,7 +7919,9 @@ export const schema: Schema = {
         "WINDOWS_SERVER_2022_DATACENTER_EDITION_62_CORES",
         "WINDOWS_SERVER_2022_DATACENTER_EDITION_64_CORES",
         "WINDOWS_SERVER_2022_DATACENTER_EDITION_8_CORES",
+        "WINDOWS_SERVER_2022_DATACENTER_EDITION_96_CORES",
         "WINDOWS_SERVER_2022_STANDARD_EDITION_10_CORES",
+        "WINDOWS_SERVER_2022_STANDARD_EDITION_128_CORES",
         "WINDOWS_SERVER_2022_STANDARD_EDITION_12_CORES",
         "WINDOWS_SERVER_2022_STANDARD_EDITION_14_CORES",
         "WINDOWS_SERVER_2022_STANDARD_EDITION_16_CORES",
@@ -10373,6 +7929,7 @@ export const schema: Schema = {
         "WINDOWS_SERVER_2022_STANDARD_EDITION_20_CORES",
         "WINDOWS_SERVER_2022_STANDARD_EDITION_22_CORES",
         "WINDOWS_SERVER_2022_STANDARD_EDITION_24_CORES",
+        "WINDOWS_SERVER_2022_STANDARD_EDITION_256_CORES",
         "WINDOWS_SERVER_2022_STANDARD_EDITION_26_CORES",
         "WINDOWS_SERVER_2022_STANDARD_EDITION_28_CORES",
         "WINDOWS_SERVER_2022_STANDARD_EDITION_30_CORES",
@@ -10386,6 +7943,7 @@ export const schema: Schema = {
         "WINDOWS_SERVER_2022_STANDARD_EDITION_46_CORES",
         "WINDOWS_SERVER_2022_STANDARD_EDITION_48_CORES",
         "WINDOWS_SERVER_2022_STANDARD_EDITION_50_CORES",
+        "WINDOWS_SERVER_2022_STANDARD_EDITION_512_CORES",
         "WINDOWS_SERVER_2022_STANDARD_EDITION_52_CORES",
         "WINDOWS_SERVER_2022_STANDARD_EDITION_54_CORES",
         "WINDOWS_SERVER_2022_STANDARD_EDITION_56_CORES",
@@ -10394,6 +7952,7 @@ export const schema: Schema = {
         "WINDOWS_SERVER_2022_STANDARD_EDITION_62_CORES",
         "WINDOWS_SERVER_2022_STANDARD_EDITION_64_CORES",
         "WINDOWS_SERVER_2022_STANDARD_EDITION_8_CORES",
+        "WINDOWS_SERVER_2022_STANDARD_EDITION_96_CORES",
         "windows-server-2008-license-datacenter-edition-1-cpu",
         "windows-server-2008-license-datacenter-edition-2-cpu",
         "windows-server-2008-license-datacenter-edition-4-cpu",
@@ -10468,12 +8027,14 @@ export const schema: Schema = {
         "windows-server-2016-license-standard-edition-4-cpu-8-cores",
         "windows-server-2019-license-datacenter-edition-10-cores",
         "windows-server-2019-license-datacenter-edition-12-cores",
+        "windows-server-2019-license-datacenter-edition-128-cores",
         "windows-server-2019-license-datacenter-edition-14-cores",
         "windows-server-2019-license-datacenter-edition-16-cores",
         "windows-server-2019-license-datacenter-edition-18-cores",
         "windows-server-2019-license-datacenter-edition-20-cores",
         "windows-server-2019-license-datacenter-edition-22-cores",
         "windows-server-2019-license-datacenter-edition-24-cores",
+        "windows-server-2019-license-datacenter-edition-256-cores",
         "windows-server-2019-license-datacenter-edition-26-cores",
         "windows-server-2019-license-datacenter-edition-28-cores",
         "windows-server-2019-license-datacenter-edition-30-cores",
@@ -10487,6 +8048,7 @@ export const schema: Schema = {
         "windows-server-2019-license-datacenter-edition-46-cores",
         "windows-server-2019-license-datacenter-edition-48-cores",
         "windows-server-2019-license-datacenter-edition-50-cores",
+        "windows-server-2019-license-datacenter-edition-512-cores",
         "windows-server-2019-license-datacenter-edition-52-cores",
         "windows-server-2019-license-datacenter-edition-54-cores",
         "windows-server-2019-license-datacenter-edition-56-cores",
@@ -10495,14 +8057,17 @@ export const schema: Schema = {
         "windows-server-2019-license-datacenter-edition-62-cores",
         "windows-server-2019-license-datacenter-edition-64-cores",
         "windows-server-2019-license-datacenter-edition-8-cores",
+        "windows-server-2019-license-datacenter-edition-96-cores",
         "windows-server-2019-license-standard-edition-10-cores",
         "windows-server-2019-license-standard-edition-12-cores",
+        "windows-server-2019-license-standard-edition-128-cores",
         "windows-server-2019-license-standard-edition-14-cores",
         "windows-server-2019-license-standard-edition-16-cores",
         "windows-server-2019-license-standard-edition-18-cores",
         "windows-server-2019-license-standard-edition-20-cores",
         "windows-server-2019-license-standard-edition-22-cores",
         "windows-server-2019-license-standard-edition-24-cores",
+        "windows-server-2019-license-standard-edition-256-cores",
         "windows-server-2019-license-standard-edition-26-cores",
         "windows-server-2019-license-standard-edition-28-cores",
         "windows-server-2019-license-standard-edition-30-cores",
@@ -10516,6 +8081,7 @@ export const schema: Schema = {
         "windows-server-2019-license-standard-edition-46-cores",
         "windows-server-2019-license-standard-edition-48-cores",
         "windows-server-2019-license-standard-edition-50-cores",
+        "windows-server-2019-license-standard-edition-512-cores",
         "windows-server-2019-license-standard-edition-52-cores",
         "windows-server-2019-license-standard-edition-54-cores",
         "windows-server-2019-license-standard-edition-56-cores",
@@ -10524,14 +8090,17 @@ export const schema: Schema = {
         "windows-server-2019-license-standard-edition-62-cores",
         "windows-server-2019-license-standard-edition-64-cores",
         "windows-server-2019-license-standard-edition-8-cores",
+        "windows-server-2019-license-standard-edition-96-cores",
         "windows-server-2022-license-datacenter-edition-10-cores",
         "windows-server-2022-license-datacenter-edition-12-cores",
+        "windows-server-2022-license-datacenter-edition-128-cores",
         "windows-server-2022-license-datacenter-edition-14-cores",
         "windows-server-2022-license-datacenter-edition-16-cores",
         "windows-server-2022-license-datacenter-edition-18-cores",
         "windows-server-2022-license-datacenter-edition-20-cores",
         "windows-server-2022-license-datacenter-edition-22-cores",
         "windows-server-2022-license-datacenter-edition-24-cores",
+        "windows-server-2022-license-datacenter-edition-256-cores",
         "windows-server-2022-license-datacenter-edition-26-cores",
         "windows-server-2022-license-datacenter-edition-28-cores",
         "windows-server-2022-license-datacenter-edition-30-cores",
@@ -10545,6 +8114,7 @@ export const schema: Schema = {
         "windows-server-2022-license-datacenter-edition-46-cores",
         "windows-server-2022-license-datacenter-edition-48-cores",
         "windows-server-2022-license-datacenter-edition-50-cores",
+        "windows-server-2022-license-datacenter-edition-512-cores",
         "windows-server-2022-license-datacenter-edition-52-cores",
         "windows-server-2022-license-datacenter-edition-54-cores",
         "windows-server-2022-license-datacenter-edition-56-cores",
@@ -10553,14 +8123,17 @@ export const schema: Schema = {
         "windows-server-2022-license-datacenter-edition-62-cores",
         "windows-server-2022-license-datacenter-edition-64-cores",
         "windows-server-2022-license-datacenter-edition-8-cores",
+        "windows-server-2022-license-datacenter-edition-96-cores",
         "windows-server-2022-license-standard-edition-10-cores",
         "windows-server-2022-license-standard-edition-12-cores",
+        "windows-server-2022-license-standard-edition-128-cores",
         "windows-server-2022-license-standard-edition-14-cores",
         "windows-server-2022-license-standard-edition-16-cores",
         "windows-server-2022-license-standard-edition-18-cores",
         "windows-server-2022-license-standard-edition-20-cores",
         "windows-server-2022-license-standard-edition-22-cores",
         "windows-server-2022-license-standard-edition-24-cores",
+        "windows-server-2022-license-standard-edition-256-cores",
         "windows-server-2022-license-standard-edition-26-cores",
         "windows-server-2022-license-standard-edition-28-cores",
         "windows-server-2022-license-standard-edition-30-cores",
@@ -10574,6 +8147,7 @@ export const schema: Schema = {
         "windows-server-2022-license-standard-edition-46-cores",
         "windows-server-2022-license-standard-edition-48-cores",
         "windows-server-2022-license-standard-edition-50-cores",
+        "windows-server-2022-license-standard-edition-512-cores",
         "windows-server-2022-license-standard-edition-52-cores",
         "windows-server-2022-license-standard-edition-54-cores",
         "windows-server-2022-license-standard-edition-56-cores",
@@ -10581,7 +8155,8 @@ export const schema: Schema = {
         "windows-server-2022-license-standard-edition-60-cores",
         "windows-server-2022-license-standard-edition-62-cores",
         "windows-server-2022-license-standard-edition-64-cores",
-        "windows-server-2022-license-standard-edition-8-cores"
+        "windows-server-2022-license-standard-edition-8-cores",
+        "windows-server-2022-license-standard-edition-96-cores"
       ],
       "enumType": "string",
       "id": "WindowsOsVersionEnum",

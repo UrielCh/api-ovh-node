@@ -6,23 +6,34 @@ export const schema: Schema = {
   "apiVersion": "1.0",
   "apis": [
     {
-      "description": "Operations about the DOMAIN service",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "List available services",
+          "description": "Get the list of managed domain names",
           "httpMethod": "GET",
           "iamActions": [
-            "domain:apiovh:get"
+            {
+              "name": "domain:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "getDomains",
           "parameters": [
             {
+              "dataType": "map[string][]iam.resource.TagFilter",
+              "description": "Filter resources on IAM tags",
+              "name": "iamTags",
+              "paramType": "query",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "description": "Filter the value of whoisOwner property (=)",
+              "description": "Filter domain names by owner ID",
               "fullType": "string",
               "name": "whoisOwner",
               "paramType": "query",
@@ -35,60 +46,68 @@ export const schema: Schema = {
       "path": "/domain"
     },
     {
-      "description": "Domain name administration",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get domain name information",
           "httpMethod": "GET",
           "iamActions": [
-            "domain:apiovh:get"
+            {
+              "name": "domain:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "getDomain",
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your domain",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "domain.Domain"
+          "responseType": "domain.DomainServiceWithIAM"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Edit domain name properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "domain:apiovh:edit"
+            {
+              "name": "domain:apiovh:edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "editDomain",
           "parameters": [
             {
-              "dataType": "domain.Domain",
-              "description": "New object properties",
-              "fullType": "domain.Domain",
+              "dataType": "domain.DomainService",
+              "description": "Request Body",
+              "fullType": "domain.DomainService",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your domain",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "domain.DomainService"
         }
       ],
       "path": "/domain/{serviceName}"
@@ -104,13 +123,16 @@ export const schema: Schema = {
           "description": "Return authInfo code if the domain is unlocked",
           "httpMethod": "GET",
           "iamActions": [
-            "domain:apiovh:authInfo/get"
+            {
+              "name": "domain:apiovh:authInfo/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your domain",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -133,7 +155,10 @@ export const schema: Schema = {
           "description": "Launch a contact change procedure",
           "httpMethod": "POST",
           "iamActions": [
-            "domain:apiovh:changeContact"
+            {
+              "name": "domain:apiovh:changeContact",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -186,13 +211,16 @@ export const schema: Schema = {
           "description": "Retrieve obfuscated emails configuration",
           "httpMethod": "GET",
           "iamActions": [
-            "domain:apiovh:configuration/obfuscatedEmail/get"
+            {
+              "name": "domain:apiovh:configuration/obfuscatedEmail/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your domain",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -209,7 +237,10 @@ export const schema: Schema = {
           "description": "Save a new obfuscated emails configuration",
           "httpMethod": "PUT",
           "iamActions": [
-            "domain:apiovh:configuration/obfuscatedEmail/edit"
+            {
+              "name": "domain:apiovh:configuration/obfuscatedEmail/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -222,7 +253,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your domain",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -245,7 +276,10 @@ export const schema: Schema = {
           "description": "Refresh an obfuscated emails configuration with new values",
           "httpMethod": "POST",
           "iamActions": [
-            "domain:apiovh:configuration/obfuscatedEmail/refresh"
+            {
+              "name": "domain:apiovh:configuration/obfuscatedEmail/refresh",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -258,7 +292,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your domain",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -281,13 +315,16 @@ export const schema: Schema = {
           "description": "Retrieve optin configuration",
           "httpMethod": "GET",
           "iamActions": [
-            "domain:apiovh:configuration/optin/get"
+            {
+              "name": "domain:apiovh:configuration/optin/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your domain",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -304,7 +341,10 @@ export const schema: Schema = {
           "description": "Save a new optin configuration",
           "httpMethod": "PUT",
           "iamActions": [
-            "domain:apiovh:configuration/optin/edit"
+            {
+              "name": "domain:apiovh:configuration/optin/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -317,7 +357,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your domain",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -330,7 +370,7 @@ export const schema: Schema = {
       "path": "/domain/{serviceName}/configurations/optin"
     },
     {
-      "description": "List the domain.DnssecKey objects",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -340,13 +380,16 @@ export const schema: Schema = {
           "description": "List of domain's DS Records",
           "httpMethod": "GET",
           "iamActions": [
-            "domain:apiovh:dsRecord/get"
+            {
+              "name": "domain:apiovh:dsRecord/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your domain",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -379,21 +422,23 @@ export const schema: Schema = {
           "description": "Update DS records",
           "httpMethod": "POST",
           "iamActions": [
-            "domain:apiovh:dsRecord/create"
+            {
+              "name": "domain:apiovh:dsRecord/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "dnssec.Key[]",
-              "description": "New Keys",
-              "fullType": "dnssec.Key[]",
-              "name": "keys",
+              "dataType": "dnssec.UpdatePayload",
+              "description": "Request Body",
+              "fullType": "dnssec.UpdatePayload",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your domain",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -406,23 +451,26 @@ export const schema: Schema = {
       "path": "/domain/{serviceName}/dsRecord"
     },
     {
-      "description": "Domain's DNSSEC Key",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get details on this DS Record",
           "httpMethod": "GET",
           "iamActions": [
-            "domain:apiovh:dsRecord/get"
+            {
+              "name": "domain:apiovh:dsRecord/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -430,14 +478,14 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your domain",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "domain.DnssecKey"
+          "responseType": "dnssec.Key"
         }
       ],
       "path": "/domain/{serviceName}/dsRecord/{id}"
@@ -453,13 +501,16 @@ export const schema: Schema = {
           "description": "List of glue records",
           "httpMethod": "GET",
           "iamActions": [
-            "domain:apiovh:glueRecord/get"
+            {
+              "name": "domain:apiovh:glueRecord/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your domain",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -484,7 +535,10 @@ export const schema: Schema = {
           "description": "Create a glue record",
           "httpMethod": "POST",
           "iamActions": [
-            "domain:apiovh:glueRecord/create"
+            {
+              "name": "domain:apiovh:glueRecord/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -497,7 +551,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your domain",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -520,7 +574,10 @@ export const schema: Schema = {
           "description": "Delete the glue record",
           "httpMethod": "DELETE",
           "iamActions": [
-            "domain:apiovh:glueRecord/delete"
+            {
+              "name": "domain:apiovh:glueRecord/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -534,7 +591,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your domain",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -551,7 +608,10 @@ export const schema: Schema = {
           "description": "Get this glue record",
           "httpMethod": "GET",
           "iamActions": [
-            "domain:apiovh:glueRecord/get"
+            {
+              "name": "domain:apiovh:glueRecord/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -565,7 +625,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your domain",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -588,7 +648,10 @@ export const schema: Schema = {
           "description": "Update the glue record",
           "httpMethod": "POST",
           "iamActions": [
-            "domain:apiovh:glueRecord/edit"
+            {
+              "name": "domain:apiovh:glueRecord/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -609,7 +672,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your domain",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -632,13 +695,16 @@ export const schema: Schema = {
           "description": "List of current name servers",
           "httpMethod": "GET",
           "iamActions": [
-            "domain:apiovh:nameServer/get"
+            {
+              "name": "domain:apiovh:nameServer/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your domain",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -655,7 +721,10 @@ export const schema: Schema = {
           "description": "Add new name server",
           "httpMethod": "POST",
           "iamActions": [
-            "domain:apiovh:nameServer/create"
+            {
+              "name": "domain:apiovh:nameServer/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -668,7 +737,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your domain",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -691,7 +760,10 @@ export const schema: Schema = {
           "description": "Delete a name server",
           "httpMethod": "DELETE",
           "iamActions": [
-            "domain:apiovh:nameServer/delete"
+            {
+              "name": "domain:apiovh:nameServer/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -705,7 +777,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your domain",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -722,7 +794,10 @@ export const schema: Schema = {
           "description": "Get this name server configuration",
           "httpMethod": "GET",
           "iamActions": [
-            "domain:apiovh:nameServer/get"
+            {
+              "name": "domain:apiovh:nameServer/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -736,7 +811,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your domain",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -759,7 +834,10 @@ export const schema: Schema = {
           "description": "Get name server status",
           "httpMethod": "GET",
           "iamActions": [
-            "domain:apiovh:nameServer/status/get"
+            {
+              "name": "domain:apiovh:nameServer/status/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -773,7 +851,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your domain",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -796,7 +874,10 @@ export const schema: Schema = {
           "description": "Update DNS servers",
           "httpMethod": "POST",
           "iamActions": [
-            "domain:apiovh:nameServer/edit"
+            {
+              "name": "domain:apiovh:nameServer/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -809,7 +890,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your domain",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -832,13 +913,16 @@ export const schema: Schema = {
           "description": "List domain options",
           "httpMethod": "GET",
           "iamActions": [
-            "domain:apiovh:option/get"
+            {
+              "name": "domain:apiovh:option/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your domain",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -861,7 +945,10 @@ export const schema: Schema = {
           "description": "Remove a given option",
           "httpMethod": "DELETE",
           "iamActions": [
-            "domain:apiovh:option/delete"
+            {
+              "name": "domain:apiovh:option/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -875,7 +962,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your domain",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -892,7 +979,10 @@ export const schema: Schema = {
           "description": "Get details on this domain option",
           "httpMethod": "GET",
           "iamActions": [
-            "domain:apiovh:option/get"
+            {
+              "name": "domain:apiovh:option/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -906,7 +996,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your domain",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -929,13 +1019,16 @@ export const schema: Schema = {
           "description": "Retrieve data about the options associated to a domain",
           "httpMethod": "GET",
           "iamActions": [
-            "domain:apiovh:options/get"
+            {
+              "name": "domain:apiovh:options/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your domain",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -958,7 +1051,10 @@ export const schema: Schema = {
           "description": "Approve Outgoing Transfer for a domain",
           "httpMethod": "POST",
           "iamActions": [
-            "domain:apiovh:outgoingTransfer/approve"
+            {
+              "name": "domain:apiovh:outgoingTransfer/approve",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -971,7 +1067,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your domain",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -984,151 +1080,6 @@ export const schema: Schema = {
       "path": "/domain/{serviceName}/outgoingTransfer/approve"
     },
     {
-      "description": "List the domain.Owo objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2022-03-31 00:00:00 +0100 +0100",
-            "deprecatedDate": "2022-01-24 00:00:00 +0100 +0100",
-            "description": "Deprecated, will be removed",
-            "replacement": "/domain/{serviceName}/configurations/optin",
-            "value": "DEPRECATED"
-          },
-          "description": "List of whois obfuscators",
-          "httpMethod": "GET",
-          "iamActions": [
-            "domain:apiovh:owo/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your domain",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "domain.WhoisObfuscatorFieldsEnum",
-              "description": "Filter the value of field property (=)",
-              "fullType": "domain.WhoisObfuscatorFieldsEnum",
-              "name": "field",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "responseType": "domain.WhoisObfuscatorFieldsEnum[]"
-        },
-        {
-          "apiStatus": {
-            "deletionDate": "2022-03-31 00:00:00 +0100 +0100",
-            "deprecatedDate": "2022-01-24 00:00:00 +0100 +0100",
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED"
-          },
-          "description": "Add whois obfuscators",
-          "httpMethod": "POST",
-          "iamActions": [
-            "domain:apiovh:owo/create"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "domain.WhoisObfuscatorFieldsEnum[]",
-              "description": "Fields to obfuscate",
-              "fullType": "domain.WhoisObfuscatorFieldsEnum[]",
-              "name": "fields",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your domain",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "domain.WhoisObfuscatorFieldsEnum[]"
-        }
-      ],
-      "path": "/domain/{serviceName}/owo"
-    },
-    {
-      "description": "Obfuscate whois",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2022-03-31 00:00:00 +0100 +0100",
-            "deprecatedDate": "2022-01-24 00:00:00 +0100 +0100",
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED"
-          },
-          "description": "Delete a whois obfuscator",
-          "httpMethod": "DELETE",
-          "iamActions": [
-            "domain:apiovh:owo/delete"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "domain.WhoisObfuscatorFieldsEnum",
-              "description": "Obfuscated field",
-              "fullType": "domain.WhoisObfuscatorFieldsEnum",
-              "name": "field",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your domain",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        },
-        {
-          "apiStatus": {
-            "deletionDate": "2022-03-31 00:00:00 +0100 +0100",
-            "deprecatedDate": "2022-01-24 00:00:00 +0100 +0100",
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "iamActions": [
-            "domain:apiovh:owo/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "domain.WhoisObfuscatorFieldsEnum",
-              "description": "Obfuscated field",
-              "fullType": "domain.WhoisObfuscatorFieldsEnum",
-              "name": "field",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your domain",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "domain.Owo"
-        }
-      ],
-      "path": "/domain/{serviceName}/owo/{field}"
-    },
-    {
       "description": "",
       "operations": [
         {
@@ -1139,13 +1090,16 @@ export const schema: Schema = {
           "description": "Retrieve emails obfuscation rule",
           "httpMethod": "GET",
           "iamActions": [
-            "domain:apiovh:rule/emailsObfuscation/get"
+            {
+              "name": "domain:apiovh:rule/emailsObfuscation/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your domain",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1168,13 +1122,16 @@ export const schema: Schema = {
           "description": "Retrieve optin rule",
           "httpMethod": "GET",
           "iamActions": [
-            "domain:apiovh:rule/optin/get"
+            {
+              "name": "domain:apiovh:rule/optin/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your domain",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1194,10 +1151,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get service information",
           "httpMethod": "GET",
           "iamActions": [
-            "domain:apiovh:serviceInfos/get"
+            {
+              "name": "domain:apiovh:serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1217,10 +1177,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Update service information",
           "httpMethod": "PUT",
           "iamActions": [
-            "domain:apiovh:serviceInfos/edit"
+            {
+              "name": "domain:apiovh:serviceInfos/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1256,13 +1219,16 @@ export const schema: Schema = {
           "description": "List all domain tasks",
           "httpMethod": "GET",
           "iamActions": [
-            "domain:apiovh:task/get"
+            {
+              "name": "domain:apiovh:task/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your domain",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1301,7 +1267,10 @@ export const schema: Schema = {
           "description": "Get details about a domain task",
           "httpMethod": "GET",
           "iamActions": [
-            "domain:apiovh:task/get"
+            {
+              "name": "domain:apiovh:task/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1315,7 +1284,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your domain",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1338,7 +1307,10 @@ export const schema: Schema = {
           "description": "Accelerate the task",
           "httpMethod": "POST",
           "iamActions": [
-            "domain:apiovh:task/accelerate"
+            {
+              "name": "domain:apiovh:task/accelerate",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1352,7 +1324,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your domain",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1375,7 +1347,10 @@ export const schema: Schema = {
           "description": "Cancel the task",
           "httpMethod": "POST",
           "iamActions": [
-            "domain:apiovh:task/cancel"
+            {
+              "name": "domain:apiovh:task/cancel",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1389,7 +1364,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your domain",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1412,7 +1387,10 @@ export const schema: Schema = {
           "description": "Relaunch the task",
           "httpMethod": "POST",
           "iamActions": [
-            "domain:apiovh:task/relaunch"
+            {
+              "name": "domain:apiovh:task/relaunch",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1426,7 +1404,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your domain",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1449,7 +1427,10 @@ export const schema: Schema = {
           "description": "Schedule an outgoing transfer task for this domain (.uk only)",
           "httpMethod": "POST",
           "iamActions": [
-            "domain:apiovh:outgoingTransfer/uk/create"
+            {
+              "name": "domain:apiovh:outgoingTransfer/uk/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1462,7 +1443,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your domain",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1485,13 +1466,16 @@ export const schema: Schema = {
           "description": "Return the list of all .uk registrars",
           "httpMethod": "GET",
           "iamActions": [
-            "domain:apiovh:ukRegistrar/get"
+            {
+              "name": "domain:apiovh:ukRegistrar/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your domain",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1548,7 +1532,10 @@ export const schema: Schema = {
           "description": "Validate a rule data for a specified domain",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:domain/configurationRule/check"
+            {
+              "name": "account:apiovh:domain/configurationRule/check",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1592,9 +1579,13 @@ export const schema: Schema = {
           "description": "List all contacts",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:domain/contact/get"
+            {
+              "name": "account:apiovh:domain/contact/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "getContacts",
           "parameters": [],
           "responseType": "domain.Contact[]"
         },
@@ -1606,9 +1597,13 @@ export const schema: Schema = {
           "description": "Create a contact",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:domain/contact/create"
+            {
+              "name": "account:apiovh:domain/contact/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "createContact",
           "parameters": [
             {
               "dataType": "domain.Contact",
@@ -1634,9 +1629,13 @@ export const schema: Schema = {
           "description": "Get details about a contact",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:domain/contact/get"
+            {
+              "name": "account:apiovh:domain/contact/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "getContact",
           "parameters": [
             {
               "dataType": "long",
@@ -1657,9 +1656,13 @@ export const schema: Schema = {
           "description": "Update a contact",
           "httpMethod": "PUT",
           "iamActions": [
-            "account:apiovh:domain/contact/edit"
+            {
+              "name": "account:apiovh:domain/contact/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "updateContact",
           "parameters": [
             {
               "dataType": "domain.Contact",
@@ -1713,8 +1716,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2021-08-31 00:00:00 +0000 UTC",
-            "deprecatedDate": "2021-02-01 00:00:00 +0000 UTC",
+            "deletionDate": "2021-08-31T00:00:00Z",
+            "deprecatedDate": "2021-02-01T00:00:00Z",
             "description": "Deprecated, will be removed",
             "replacement": "/domain/extensions",
             "value": "DEPRECATED"
@@ -1748,7 +1751,10 @@ export const schema: Schema = {
           "description": "List all extensions",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:domain/extension/get"
+            {
+              "name": "account:apiovh:domain/extension/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1801,7 +1807,10 @@ export const schema: Schema = {
           "description": "Get an extension",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:domain/extension/get"
+            {
+              "name": "account:apiovh:domain/extension/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1830,7 +1839,10 @@ export const schema: Schema = {
           "description": "Retrieve registry configuration for an extension",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:domain/extension/registryConfiguration/get"
+            {
+              "name": "account:apiovh:domain/extension/registryConfiguration/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1859,7 +1871,10 @@ export const schema: Schema = {
           "description": "List extensions, grouped by category types (like 'thematic', 'geolocalization') and category names (like 'europe')",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:domain/extension/byCategory/get"
+            {
+              "name": "account:apiovh:domain/extension/byCategory/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1888,7 +1903,10 @@ export const schema: Schema = {
           "description": "List highlighted extensions, ordered by decreased importance",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:domain/extension/highlighted/get"
+            {
+              "name": "account:apiovh:domain/extension/highlighted/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1914,11 +1932,15 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "List extensions with their pricing attributes. It especially documents whether an extension has been implemented recently or whether the price has dropped",
+          "description": "List extensions with their pricing attributes",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:domain/extension/get"
+            {
+              "name": "account:apiovh:domain/extension/get",
+              "required": true
+            }
           ],
+          "longDescription": "List extensions with their pricing attributes. It especially documents whether an extension has been implemented recently or whether the price has dropped.",
           "noAuthentication": false,
           "parameters": [
             {
@@ -1936,79 +1958,98 @@ export const schema: Schema = {
       "path": "/domain/extensions/pricingAttributes"
     },
     {
-      "description": "Operations about the DNS service",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "List available services",
+          "description": "List dnsZone services",
           "httpMethod": "GET",
           "iamActions": [
-            "dnsZone:apiovh:get"
+            {
+              "name": "dnsZone:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
-          "parameters": [],
+          "operationId": "getZones",
+          "parameters": [
+            {
+              "dataType": "map[string][]iam.resource.TagFilter",
+              "description": "Filter resources on IAM tags",
+              "name": "iamTags",
+              "paramType": "query",
+              "required": false
+            }
+          ],
           "responseType": "string[]"
         }
       ],
       "path": "/domain/zone"
     },
     {
-      "description": "Zone dns Management",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get a dnsZone service",
           "httpMethod": "GET",
           "iamActions": [
-            "dnsZone:apiovh:get"
+            {
+              "name": "dnsZone:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "getZone",
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your zone",
+              "description": "Zone name",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "domain.zone.Zone"
+          "responseType": "domain.ZoneWithIAM"
         }
       ],
       "path": "/domain/zone/{zoneName}"
     },
     {
-      "description": "capabilities operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Zone capabilities",
+          "description": "Get zone capabilities",
           "httpMethod": "GET",
           "iamActions": [
-            "dnsZone:apiovh:capabilities/get"
+            {
+              "name": "dnsZone:apiovh:capabilities/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your zone",
+              "description": "Zone name",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "zone.Capabilities"
+          "responseType": "domain.zone.Capabilities"
         }
       ],
       "path": "/domain/zone/{zoneName}/capabilities"
@@ -2024,7 +2065,10 @@ export const schema: Schema = {
           "description": "Launch a contact change procedure",
           "httpMethod": "POST",
           "iamActions": [
-            "dnsZone:apiovh:changeContact"
+            {
+              "name": "dnsZone:apiovh:changeContact",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2067,17 +2111,20 @@ export const schema: Schema = {
       "path": "/domain/zone/{zoneName}/changeContact"
     },
     {
-      "description": "Confirm termination of your service",
+      "description": "Confirm service termination",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Confirm termination of your service",
+          "description": "Confirm service termination",
           "httpMethod": "POST",
           "iamActions": [
-            "dnsZone:apiovh:confirmTermination"
+            {
+              "name": "dnsZone:apiovh:confirmTermination",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2107,7 +2154,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The termination token sent by mail to the admin contact",
+              "description": "The termination token sent by email to the admin contact",
               "fullType": "string",
               "name": "token",
               "paramType": "body",
@@ -2128,23 +2175,27 @@ export const schema: Schema = {
       "path": "/domain/zone/{zoneName}/confirmTermination"
     },
     {
-      "description": "Manage Dnssec for this zone",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Disable Dnssec",
+          "description": "Disable DNSSEC",
           "httpMethod": "DELETE",
           "iamActions": [
-            "dnsZone:apiovh:dnssec/delete"
+            {
+              "name": "dnsZone:apiovh:dnssec/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "disableDNSSEC",
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your zone",
+              "description": "Zone name",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -2158,16 +2209,20 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get a zone DNSSEC status",
           "httpMethod": "GET",
           "iamActions": [
-            "dnsZone:apiovh:dnssec/get"
+            {
+              "name": "dnsZone:apiovh:dnssec/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "getDNSSECStatus",
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your zone",
+              "description": "Zone name",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -2181,16 +2236,20 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Enable Dnssec",
+          "description": "Enable DNSSEC",
           "httpMethod": "POST",
           "iamActions": [
-            "dnsZone:apiovh:dnssec/create"
+            {
+              "name": "dnsZone:apiovh:dnssec/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "enableDNSSEC",
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your zone",
+              "description": "Zone name",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -2203,52 +2262,58 @@ export const schema: Schema = {
       "path": "/domain/zone/{zoneName}/dnssec"
     },
     {
-      "description": "export operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Export zone",
+          "description": "Export DNS zone",
           "httpMethod": "GET",
           "iamActions": [
-            "dnsZone:apiovh:export/get"
+            {
+              "name": "dnsZone:apiovh:export/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your zone",
+              "description": "Zone name",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "text"
+          "responseType": "string"
         }
       ],
       "path": "/domain/zone/{zoneName}/export"
     },
     {
-      "description": "List the domain.zone.ZoneRestorePoint objects",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
-          "description": "Zone restore points",
+          "description": "List zone histories",
           "httpMethod": "GET",
           "iamActions": [
-            "dnsZone:apiovh:history/get"
+            {
+              "name": "dnsZone:apiovh:history/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your zone",
+              "description": "Zone name",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -2256,7 +2321,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "datetime",
-              "description": "Filter the value of creationDate property (>=)",
+              "description": "Filter using the value of creationDate property (>=)",
               "fullType": "datetime",
               "name": "creationDate.from",
               "paramType": "query",
@@ -2264,7 +2329,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "datetime",
-              "description": "Filter the value of creationDate property (<=)",
+              "description": "Filter using the value of creationDate property (<=)",
               "fullType": "datetime",
               "name": "creationDate.to",
               "paramType": "query",
@@ -2277,23 +2342,26 @@ export const schema: Schema = {
       "path": "/domain/zone/{zoneName}/history"
     },
     {
-      "description": "Zone restore point",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get a zone history",
           "httpMethod": "GET",
           "iamActions": [
-            "dnsZone:apiovh:history/get"
+            {
+              "name": "dnsZone:apiovh:history/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "datetime",
-              "description": "Date of backup creation",
+              "description": "Creation date",
               "fullType": "datetime",
               "name": "creationDate",
               "paramType": "path",
@@ -2301,7 +2369,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your zone",
+              "description": "Zone name",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -2314,23 +2382,26 @@ export const schema: Schema = {
       "path": "/domain/zone/{zoneName}/history/{creationDate}"
     },
     {
-      "description": "restore operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
-          "description": "Restore the DNS zone",
+          "description": "Restore a backup point",
           "httpMethod": "POST",
           "iamActions": [
-            "dnsZone:apiovh:history/restore"
+            {
+              "name": "dnsZone:apiovh:history/restore",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "datetime",
-              "description": "Date of backup creation",
+              "description": "Creation date",
               "fullType": "datetime",
               "name": "creationDate",
               "paramType": "path",
@@ -2338,7 +2409,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your zone",
+              "description": "Zone name",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -2351,31 +2422,33 @@ export const schema: Schema = {
       "path": "/domain/zone/{zoneName}/history/{creationDate}/restore"
     },
     {
-      "description": "import operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Import zone",
+          "description": "Import a DNS zone from a zone file",
           "httpMethod": "POST",
           "iamActions": [
-            "dnsZone:apiovh:import"
+            {
+              "name": "dnsZone:apiovh:import",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "text",
-              "description": "Zone file that will be imported",
-              "fullType": "text",
-              "name": "zoneFile",
+              "dataType": "domain.zone.Import",
+              "description": "Request Body",
+              "fullType": "domain.zone.Import",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your zone",
+              "description": "Zone name",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -2388,23 +2461,26 @@ export const schema: Schema = {
       "path": "/domain/zone/{zoneName}/import"
     },
     {
-      "description": "List the domain.zone.Option objects",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List zone options",
           "httpMethod": "GET",
           "iamActions": [
-            "dnsZone:apiovh:option/get"
+            {
+              "name": "dnsZone:apiovh:option/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your zone",
+              "description": "Zone name",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -2417,23 +2493,26 @@ export const schema: Schema = {
       "path": "/domain/zone/{zoneName}/option"
     },
     {
-      "description": "Information about the options of a zone",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get zone option",
           "httpMethod": "GET",
           "iamActions": [
-            "dnsZone:apiovh:option/get"
+            {
+              "name": "dnsZone:apiovh:option/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The option name",
+              "description": "Name",
               "fullType": "string",
               "name": "name",
               "paramType": "path",
@@ -2441,7 +2520,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your zone",
+              "description": "Zone name",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -2464,7 +2543,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "dnsZone:apiovh:option/serviceInfos/get"
+            {
+              "name": "dnsZone:apiovh:option/serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2495,7 +2577,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "dnsZone:apiovh:option/serviceInfos/edit"
+            {
+              "name": "dnsZone:apiovh:option/serviceInfos/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2530,32 +2615,36 @@ export const schema: Schema = {
       "path": "/domain/zone/{zoneName}/option/{name}/serviceInfos"
     },
     {
-      "description": "List the domain.zone.Record objects",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Records of the zone",
+          "description": "List record",
           "httpMethod": "GET",
           "iamActions": [
-            "dnsZone:apiovh:record/get"
+            {
+              "name": "dnsZone:apiovh:record/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "getRecords",
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your zone",
+              "description": "Zone name",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "zone.NamedResolutionFieldTypeEnum",
+              "dataType": "domain.zone.RecordTypeEnum",
               "description": "Filter the value of fieldType property (like)",
-              "fullType": "zone.NamedResolutionFieldTypeEnum",
+              "fullType": "domain.zone.RecordTypeEnum",
               "name": "fieldType",
               "paramType": "query",
               "required": false
@@ -2576,48 +2665,27 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Create a new DNS record (Don't forget to refresh the zone)",
+          "description": "Create a new record (Don't forget to refresh the zone)",
           "httpMethod": "POST",
           "iamActions": [
-            "dnsZone:apiovh:record/create"
+            {
+              "name": "dnsZone:apiovh:record/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "createRecord",
           "parameters": [
             {
-              "dataType": "zone.NamedResolutionFieldTypeEnum",
-              "description": "Resource record Name",
-              "fullType": "zone.NamedResolutionFieldTypeEnum",
-              "name": "fieldType",
+              "dataType": "domain.zone.RecordCreate",
+              "description": "Request Body",
+              "fullType": "domain.zone.RecordCreate",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Resource record subdomain",
-              "fullType": "string",
-              "name": "subDomain",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Resource record target",
-              "fullType": "string",
-              "name": "target",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Resource record ttl",
-              "fullType": "long",
-              "name": "ttl",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your zone",
+              "description": "Zone name",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -2630,23 +2698,27 @@ export const schema: Schema = {
       "path": "/domain/zone/{zoneName}/record"
     },
     {
-      "description": "Zone resource records",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Delete a DNS record (Don't forget to refresh the zone)",
+          "description": "Delete record object (Don't forget to refresh the zone)",
           "httpMethod": "DELETE",
           "iamActions": [
-            "dnsZone:apiovh:record/delete"
+            {
+              "name": "dnsZone:apiovh:record/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "deleteRecord",
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -2654,7 +2726,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your zone",
+              "description": "Zone name",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -2668,16 +2740,20 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get record object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "dnsZone:apiovh:record/get"
+            {
+              "name": "dnsZone:apiovh:record/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "getRecord",
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -2685,7 +2761,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your zone",
+              "description": "Zone name",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -2699,23 +2775,27 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Alter record object properties (Don't forget to refresh the zone)",
           "httpMethod": "PUT",
           "iamActions": [
-            "dnsZone:apiovh:record/edit"
+            {
+              "name": "dnsZone:apiovh:record/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "editRecord",
           "parameters": [
             {
-              "dataType": "domain.zone.Record",
-              "description": "New object properties",
-              "fullType": "domain.zone.Record",
+              "dataType": "domain.zone.RecordUpdate",
+              "description": "Request Body",
+              "fullType": "domain.zone.RecordUpdate",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -2723,7 +2803,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your zone",
+              "description": "Zone name",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -2736,23 +2816,27 @@ export const schema: Schema = {
       "path": "/domain/zone/{zoneName}/record/{id}"
     },
     {
-      "description": "List the domain.zone.Redirection objects",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Redirections",
+          "description": "List redirections",
           "httpMethod": "GET",
           "iamActions": [
-            "dnsZone:apiovh:redirection/get"
+            {
+              "name": "dnsZone:apiovh:redirection/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "getRedirections",
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your zone",
+              "description": "Zone name",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -2760,7 +2844,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Filter the value of subDomain property (like)",
+              "description": "Filter the value of subDomain property",
               "fullType": "string",
               "name": "subDomain",
               "paramType": "query",
@@ -2777,61 +2861,24 @@ export const schema: Schema = {
           "description": "Create a new redirection (Don't forget to refresh the zone)",
           "httpMethod": "POST",
           "iamActions": [
-            "dnsZone:apiovh:redirection/create"
+            {
+              "name": "dnsZone:apiovh:redirection/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "createRedirection",
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Desciption for invisible redirection",
-              "fullType": "string",
-              "name": "description",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Keywords for invisible redirection",
-              "fullType": "string",
-              "name": "keywords",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "subdomain to redirect",
-              "fullType": "string",
-              "name": "subDomain",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Target of the redirection",
-              "fullType": "string",
-              "name": "target",
+              "dataType": "domain.zone.RedirectionCreate",
+              "description": "Request Body",
+              "fullType": "domain.zone.RedirectionCreate",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Title for invisible redirection",
-              "fullType": "string",
-              "name": "title",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "zone.RedirectionTypeEnum",
-              "description": "Redirection type",
-              "fullType": "zone.RedirectionTypeEnum",
-              "name": "type",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your zone",
+              "description": "Zone name",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -2844,23 +2891,27 @@ export const schema: Schema = {
       "path": "/domain/zone/{zoneName}/redirection"
     },
     {
-      "description": "Redirection",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Delete a redirection (Don't forget to refresh the zone)",
+          "description": "Delete redirection object (Don't forget to refresh the zone)",
           "httpMethod": "DELETE",
           "iamActions": [
-            "dnsZone:apiovh:redirection/delete"
+            {
+              "name": "dnsZone:apiovh:redirection/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "deleteRedirection",
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -2868,7 +2919,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your zone",
+              "description": "Zone name",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -2882,16 +2933,20 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get redirection object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "dnsZone:apiovh:redirection/get"
+            {
+              "name": "dnsZone:apiovh:redirection/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "getRedirection",
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -2899,7 +2954,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your zone",
+              "description": "Zone name",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -2913,23 +2968,27 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Alter redirection object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "dnsZone:apiovh:redirection/edit"
+            {
+              "name": "dnsZone:apiovh:redirection/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "editRedirection",
           "parameters": [
             {
-              "dataType": "domain.zone.Redirection",
-              "description": "New object properties",
-              "fullType": "domain.zone.Redirection",
+              "dataType": "domain.zone.RedirectionUpdate",
+              "description": "Request Body",
+              "fullType": "domain.zone.RedirectionUpdate",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -2937,7 +2996,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your zone",
+              "description": "Zone name",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -2950,23 +3009,27 @@ export const schema: Schema = {
       "path": "/domain/zone/{zoneName}/redirection/{id}"
     },
     {
-      "description": "refresh operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Apply zone modification on DNS servers",
+          "description": "Refresh a DNS zone",
           "httpMethod": "POST",
           "iamActions": [
-            "dnsZone:apiovh:refresh"
+            {
+              "name": "dnsZone:apiovh:refresh",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "refreshZone",
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your zone",
+              "description": "Zone name",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -2979,39 +3042,33 @@ export const schema: Schema = {
       "path": "/domain/zone/{zoneName}/refresh"
     },
     {
-      "description": "reset operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Reset the DNS zone",
+          "description": "Reset a DNS zone",
           "httpMethod": "POST",
           "iamActions": [
-            "dnsZone:apiovh:reset"
+            {
+              "name": "dnsZone:apiovh:reset",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "zone.ResetRecord[]",
-              "description": "Records that will be set after reset",
-              "fullType": "zone.ResetRecord[]",
-              "name": "DnsRecords",
+              "dataType": "domain.zone.Reset",
+              "description": "Request Body",
+              "fullType": "domain.zone.Reset",
               "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "Create only mandatory records",
-              "fullType": "boolean",
-              "name": "minimized",
-              "paramType": "body",
-              "required": false
+              "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your zone",
+              "description": "Zone name",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -3031,10 +3088,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get service information",
           "httpMethod": "GET",
           "iamActions": [
-            "dnsZone:apiovh:serviceInfos/get"
+            {
+              "name": "dnsZone:apiovh:serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3054,10 +3114,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Update service information",
           "httpMethod": "PUT",
           "iamActions": [
-            "dnsZone:apiovh:serviceInfos/edit"
+            {
+              "name": "dnsZone:apiovh:serviceInfos/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3083,23 +3146,26 @@ export const schema: Schema = {
       "path": "/domain/zone/{zoneName}/serviceInfos"
     },
     {
-      "description": "Zone Start Of Authority",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get zone SOA",
           "httpMethod": "GET",
           "iamActions": [
-            "dnsZone:apiovh:soa/get"
+            {
+              "name": "dnsZone:apiovh:soa/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your zone",
+              "description": "Zone name",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -3113,23 +3179,26 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Update zone SOA",
           "httpMethod": "PUT",
           "iamActions": [
-            "dnsZone:apiovh:soa/edit"
+            {
+              "name": "dnsZone:apiovh:soa/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "domain.zone.Soa",
-              "description": "New object properties",
+              "description": "Request Body",
               "fullType": "domain.zone.Soa",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your zone",
+              "description": "Zone name",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -3142,69 +3211,75 @@ export const schema: Schema = {
       "path": "/domain/zone/{zoneName}/soa"
     },
     {
-      "description": "status operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Zone status",
+          "description": "Get zone status",
           "httpMethod": "GET",
           "iamActions": [
-            "dnsZone:apiovh:status/get"
+            {
+              "name": "dnsZone:apiovh:status/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your zone",
+              "description": "Zone name",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "zone.Status"
+          "responseType": "domain.zone.Status"
         }
       ],
       "path": "/domain/zone/{zoneName}/status"
     },
     {
-      "description": "List the domain.zone.Task objects",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Domain pending tasks",
+          "description": "List zone tasks",
           "httpMethod": "GET",
           "iamActions": [
-            "dnsZone:apiovh:task/get"
+            {
+              "name": "dnsZone:apiovh:task/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your zone",
+              "description": "Zone name",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Filter the value of function property (like)",
-              "fullType": "string",
+              "dataType": "domain.TaskFunctionEnum",
+              "description": "",
+              "fullType": "domain.TaskFunctionEnum",
               "name": "function",
               "paramType": "query",
               "required": false
             },
             {
-              "dataType": "domain.OperationStatusEnum",
-              "description": "Filter the value of status property (=)",
-              "fullType": "domain.OperationStatusEnum",
+              "dataType": "domain.TaskStatusEnum",
+              "description": "",
+              "fullType": "domain.TaskStatusEnum",
               "name": "status",
               "paramType": "query",
               "required": false
@@ -3216,23 +3291,26 @@ export const schema: Schema = {
       "path": "/domain/zone/{zoneName}/task"
     },
     {
-      "description": "Tasks associated to a zone",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get a zone task",
           "httpMethod": "GET",
           "iamActions": [
-            "dnsZone:apiovh:task/get"
+            {
+              "name": "dnsZone:apiovh:task/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -3240,7 +3318,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your zone",
+              "description": "Zone name",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -3253,23 +3331,26 @@ export const schema: Schema = {
       "path": "/domain/zone/{zoneName}/task/{id}"
     },
     {
-      "description": "accelerate operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Accelerate the task",
+          "description": "Accelerate a zone task",
           "httpMethod": "POST",
           "iamActions": [
-            "dnsZone:apiovh:task/accelerate"
+            {
+              "name": "dnsZone:apiovh:task/accelerate",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -3277,7 +3358,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your zone",
+              "description": "Zone name",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -3290,23 +3371,26 @@ export const schema: Schema = {
       "path": "/domain/zone/{zoneName}/task/{id}/accelerate"
     },
     {
-      "description": "cancel operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Cancel the task",
+          "description": "Cancel a zone task",
           "httpMethod": "POST",
           "iamActions": [
-            "dnsZone:apiovh:task/cancel"
+            {
+              "name": "dnsZone:apiovh:task/cancel",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -3314,7 +3398,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your zone",
+              "description": "Zone name",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -3327,23 +3411,26 @@ export const schema: Schema = {
       "path": "/domain/zone/{zoneName}/task/{id}/cancel"
     },
     {
-      "description": "relaunch operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Relaunch the task",
+          "description": "Restart a zone task",
           "httpMethod": "POST",
           "iamActions": [
-            "dnsZone:apiovh:task/relaunch"
+            {
+              "name": "dnsZone:apiovh:task/relaunch",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -3351,7 +3438,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your zone",
+              "description": "Zone name",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -3364,18 +3451,22 @@ export const schema: Schema = {
       "path": "/domain/zone/{zoneName}/task/{id}/relaunch"
     },
     {
-      "description": "Terminate your service",
+      "description": "Ask for the termination of your service. Admin contact of this service will receive a termination token in order to confirm its termination with /confirmTermination endpoint.",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Terminate your service",
+          "description": "Ask for the termination of your service",
           "httpMethod": "POST",
           "iamActions": [
-            "dnsZone:apiovh:terminate"
+            {
+              "name": "dnsZone:apiovh:terminate",
+              "required": true
+            }
           ],
+          "longDescription": "Ask for the termination of your service. Admin contact of this service will receive a termination token by email in order to confirm its termination with /confirmTermination endpoint.",
           "noAuthentication": false,
           "parameters": [
             {
@@ -3408,34 +3499,54 @@ export const schema: Schema = {
       "namespace": "dnssec"
     },
     "dnssec.Key": {
-      "description": "Key type",
+      "description": "Domain's DNSSEC Key",
       "id": "Key",
       "namespace": "dnssec",
       "properties": {
         "algorithm": {
           "canBeNull": false,
-          "description": "Algorithm",
+          "description": "Algorithm number of the DNSSEC key",
+          "fullType": "dnssec.KeyAlgorithmEnum",
           "readOnly": false,
           "required": false,
           "type": "dnssec.KeyAlgorithmEnum"
         },
         "flags": {
           "canBeNull": false,
-          "description": "Flag of the dnssec key",
+          "description": "Flag of the DNSSEC key",
+          "fullType": "dnssec.KeyFlagEnum",
           "readOnly": false,
           "required": false,
           "type": "dnssec.KeyFlagEnum"
         },
+        "id": {
+          "canBeNull": false,
+          "description": "ID of the DNSSEC key",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
         "publicKey": {
           "canBeNull": false,
           "description": "Public key",
+          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
         },
+        "status": {
+          "canBeNull": false,
+          "description": "Key status of the DNSSEC key",
+          "fullType": "dnssec.KeyStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dnssec.KeyStatusEnum"
+        },
         "tag": {
           "canBeNull": false,
-          "description": "Key tag",
+          "description": "Tag of the DNSSEC key",
+          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -3443,32 +3554,32 @@ export const schema: Schema = {
       }
     },
     "dnssec.KeyAlgorithmEnum": {
-      "description": "Dnssec Algorithm\n                        ###\n                        5  : RSASHA1\n                        7  : RSASHA1-NSEC3-SHA1\n                        8  : RSASHA256\n                        10 : RSASHA512\n                        13 : ECDSAP256SHA256\n                        14 : ECDSAP384SHA384\n                        15 : ED25519",
+      "description": "DNSSEC Algorithm\n5: RSASHA1\n7: RSASHA1-NSEC3-SHA1\n8: RSASHA256\n10: RSASHA512\n13: ECDSAP256SHA256\n14: ECDSAP384SHA384\n15: ED25519",
       "enum": [
-        "10",
-        "13",
-        "14",
-        "15",
-        "5",
-        "7",
-        "8"
+        5,
+        7,
+        8,
+        10,
+        13,
+        14,
+        15
       ],
       "enumType": "long",
       "id": "KeyAlgorithmEnum",
       "namespace": "dnssec"
     },
     "dnssec.KeyFlagEnum": {
-      "description": "Dnssec Key Flag Type\n                        ###\n                        256 : Zone Signing Key (ZSK)\n                        257 : Key  Signing Key (KSK)",
+      "description": "DNSSEC Key Flag Type: 256=ZSK (Zone Signing Key), 257=KSK (Key Signing Key)",
       "enum": [
-        "256",
-        "257"
+        256,
+        257
       ],
       "enumType": "long",
       "id": "KeyFlagEnum",
       "namespace": "dnssec"
     },
     "dnssec.KeyStatusEnum": {
-      "description": "\n                Generated : The key has been created, but has not yet been used for anything.\n                ###\n                Published : The DNSKEY record is published in the zone, but predecessors of the key may be held in caches.\n                ###\n                Ready     : The new key data has been published for long enough to guarantee that any previous versions of the DNSKEY RRset have expired from caches.\n                ###\n                Active    : The key has started to be used to sign RRsets.\n                ###\n                Retired   : A successor key has become active and this key is no longer being used to generate RRSIGs.\n                ###\n                Removed   : The key has been removed from the zone.\n                ###\n                Revoked   : The key is published for a period with the \"revoke\" bit set as a way of notifying validating resolvers that have configured it as an trust anchor that it is about to be removed from the zone.",
+      "description": "Generated: The key has been created, but has not yet been used for anything.\nPublished: The DNSKEY record is published in the zone, but predecessors of the key may be held in caches.\nReady: The new key data has been published for long enough to guarantee that any previous versions of the DNSKEY RRset have expired from caches.\nActive: The key has started to be used to sign RRsets.\nRetired: A successor key has become active and this key is no longer being used to generate RRSIGs.\nRemoved: The key has been removed from the zone.\nRevoked: The key is published for a period with the \"revoke\" bit set as a way of notifying validating resolvers that have configured it as an trust anchor that it is about to be removed from the zone.",
       "enum": [
         "active",
         "generated",
@@ -3480,6 +3591,21 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "KeyStatusEnum",
       "namespace": "dnssec"
+    },
+    "dnssec.UpdatePayload": {
+      "description": "Payload used to update the DNSSEC keys of a domain name",
+      "id": "UpdatePayload",
+      "namespace": "dnssec",
+      "properties": {
+        "keys": {
+          "canBeNull": false,
+          "description": "New Keys",
+          "fullType": "dnssec.Key[]",
+          "readOnly": false,
+          "required": true,
+          "type": "dnssec.Key[]"
+        }
+      }
     },
     "domain.ActionEnum": {
       "description": "An action to execute on a domain name",
@@ -3811,6 +3937,14 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "trademarkId": {
+          "canBeNull": true,
+          "description": "Trademark related to the contact",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
         "vat": {
           "canBeNull": true,
           "description": "VAT number",
@@ -3900,6 +4034,21 @@ export const schema: Schema = {
         }
       }
     },
+    "domain.ContactSummary": {
+      "description": "A contact summary contains the personal data of a user",
+      "id": "ContactSummary",
+      "namespace": "domain",
+      "properties": {
+        "id": {
+          "canBeNull": false,
+          "description": "Unique contact identifier (contact data can be edited via /me/contact/<ID>)",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
     "domain.Data": {
       "description": "A domain data",
       "id": "Data",
@@ -3955,60 +4104,28 @@ export const schema: Schema = {
         }
       }
     },
-    "domain.DnssecKey": {
-      "description": "Domain's DNSSEC Key",
-      "id": "DnssecKey",
-      "namespace": "domain",
-      "properties": {
-        "algorithm": {
-          "canBeNull": false,
-          "description": "Algorithm number of the DNSSEC key",
-          "fullType": "dnssec.KeyAlgorithmEnum",
-          "readOnly": true,
-          "required": false,
-          "type": "dnssec.KeyAlgorithmEnum"
-        },
-        "flags": {
-          "canBeNull": false,
-          "description": "Flag of the DNSSEC key",
-          "fullType": "dnssec.KeyFlagEnum",
-          "readOnly": true,
-          "required": false,
-          "type": "dnssec.KeyFlagEnum"
-        },
-        "id": {
-          "canBeNull": false,
-          "description": "Id of the DNSSEC key",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "publicKey": {
-          "canBeNull": false,
-          "description": "Public key",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "status": {
-          "canBeNull": false,
-          "description": "Key status of the DNSSEC key",
-          "fullType": "dnssec.KeyStatusEnum",
-          "readOnly": true,
-          "required": false,
-          "type": "dnssec.KeyStatusEnum"
-        },
-        "tag": {
-          "canBeNull": false,
-          "description": "Tag of the DNSSEC key",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        }
-      }
+    "domain.DnssecStateEnum": {
+      "description": "Domain dnssec state",
+      "enum": [
+        "disabled",
+        "enabled",
+        "not_supported"
+      ],
+      "enumType": "string",
+      "id": "DnssecStateEnum",
+      "namespace": "domain"
+    },
+    "domain.DnssecStatusEnum": {
+      "description": "All DNSSEC statuses",
+      "enum": [
+        "disableInProgress",
+        "disabled",
+        "enableInProgress",
+        "enabled"
+      ],
+      "enumType": "string",
+      "id": "DnssecStatusEnum",
+      "namespace": "domain"
     },
     "domain.Domain": {
       "description": "Domain name administration",
@@ -4171,6 +4288,411 @@ export const schema: Schema = {
       "id": "DomainOptionStateEnum",
       "namespace": "domain"
     },
+    "domain.DomainService": {
+      "description": "General information about a domain name service",
+      "id": "DomainService",
+      "namespace": "domain",
+      "properties": {
+        "contactAdmin": {
+          "canBeNull": false,
+          "description": "Administrative contact data",
+          "fullType": "domain.ContactSummary",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.ContactSummary"
+        },
+        "contactBilling": {
+          "canBeNull": false,
+          "description": "Billing contact data",
+          "fullType": "domain.ContactSummary",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.ContactSummary"
+        },
+        "contactOwner": {
+          "canBeNull": false,
+          "description": "Owner (registrant) contact data",
+          "fullType": "domain.ContactSummary",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.ContactSummary"
+        },
+        "contactTech": {
+          "canBeNull": false,
+          "description": "Technical contact data",
+          "fullType": "domain.ContactSummary",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.ContactSummary"
+        },
+        "dnssecState": {
+          "canBeNull": false,
+          "description": "Current DNSSEC state of the domain name",
+          "fullType": "domain.DnssecStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.DnssecStateEnum"
+        },
+        "dnssecSupported": {
+          "canBeNull": false,
+          "description": "Whether DNSSEC is activated for this domain name",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "domain": {
+          "canBeNull": false,
+          "description": "Domain name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "expirationDate": {
+          "canBeNull": false,
+          "description": "Date when the domain name will expire, if not renewed",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "glueRecordIpv6Supported": {
+          "canBeNull": false,
+          "description": "Whether the registry supports IPv6 glue records",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "glueRecordMultiIpSupported": {
+          "canBeNull": false,
+          "description": "Whether the registry supports multi-ip glue records",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "hostSupported": {
+          "canBeNull": false,
+          "description": "Whether the registry supports hosts as independent entities",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "lastUpdate": {
+          "canBeNull": false,
+          "description": "Last update date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "nameServerType": {
+          "canBeNull": false,
+          "description": "Name servers type",
+          "fullType": "domain.nameServer.NameServerTypeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "domain.nameServer.NameServerTypeEnum"
+        },
+        "nameServers": {
+          "canBeNull": false,
+          "description": "Name servers list",
+          "fullType": "domain.nameServer.NameServer[]",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.nameServer.NameServer[]"
+        },
+        "offer": {
+          "canBeNull": false,
+          "description": "Offer associated with the domain name",
+          "fullType": "domain.OfferEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.OfferEnum"
+        },
+        "owoSupported": {
+          "canBeNull": false,
+          "description": "Whether Whois data obfuscation is supported for this domain name",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "parentService": {
+          "canBeNull": true,
+          "description": "Parent service",
+          "fullType": "domain.ParentService",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.ParentService"
+        },
+        "renewalDate": {
+          "canBeNull": false,
+          "description": "Date when the domain name should be renewed (relevant if renewalState is automatic_renew)",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "renewalState": {
+          "canBeNull": false,
+          "description": "Current renewal state of the domain name",
+          "fullType": "domain.RenewalStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.RenewalStateEnum"
+        },
+        "serviceId": {
+          "canBeNull": false,
+          "description": "Technical service identifier",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "state": {
+          "canBeNull": false,
+          "description": "Current state of the domain name",
+          "fullType": "domain.DomainStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.DomainStateEnum"
+        },
+        "suspensionState": {
+          "canBeNull": false,
+          "description": "Current suspension state of the domain name",
+          "fullType": "domain.SuspensionStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.SuspensionStateEnum"
+        },
+        "transferLockStatus": {
+          "canBeNull": false,
+          "description": "Current transfer lock status of the domain name",
+          "fullType": "domain.LockStatusEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "domain.LockStatusEnum"
+        },
+        "whoisOwner": {
+          "canBeNull": false,
+          "description": "Owner (registrant) contact ID (contact data can be edited via /me/contact/<ID>)",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "domain.DomainServiceWithIAM": {
+      "description": "General information about a domain name service",
+      "id": "DomainService",
+      "namespace": "domain",
+      "properties": {
+        "contactAdmin": {
+          "canBeNull": false,
+          "description": "Administrative contact data",
+          "fullType": "domain.ContactSummary",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.ContactSummary"
+        },
+        "contactBilling": {
+          "canBeNull": false,
+          "description": "Billing contact data",
+          "fullType": "domain.ContactSummary",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.ContactSummary"
+        },
+        "contactOwner": {
+          "canBeNull": false,
+          "description": "Owner (registrant) contact data",
+          "fullType": "domain.ContactSummary",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.ContactSummary"
+        },
+        "contactTech": {
+          "canBeNull": false,
+          "description": "Technical contact data",
+          "fullType": "domain.ContactSummary",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.ContactSummary"
+        },
+        "dnssecState": {
+          "canBeNull": false,
+          "description": "Current DNSSEC state of the domain name",
+          "fullType": "domain.DnssecStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.DnssecStateEnum"
+        },
+        "dnssecSupported": {
+          "canBeNull": false,
+          "description": "Whether DNSSEC is activated for this domain name",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "domain": {
+          "canBeNull": false,
+          "description": "Domain name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "expirationDate": {
+          "canBeNull": false,
+          "description": "Date when the domain name will expire, if not renewed",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "glueRecordIpv6Supported": {
+          "canBeNull": false,
+          "description": "Whether the registry supports IPv6 glue records",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "glueRecordMultiIpSupported": {
+          "canBeNull": false,
+          "description": "Whether the registry supports multi-ip glue records",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "hostSupported": {
+          "canBeNull": false,
+          "description": "Whether the registry supports hosts as independent entities",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "iam": {
+          "canBeNull": true,
+          "description": "IAM resource metadata",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.ResourceMetadata"
+        },
+        "lastUpdate": {
+          "canBeNull": false,
+          "description": "Last update date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "nameServerType": {
+          "canBeNull": false,
+          "description": "Name servers type",
+          "fullType": "domain.nameServer.NameServerTypeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "domain.nameServer.NameServerTypeEnum"
+        },
+        "nameServers": {
+          "canBeNull": false,
+          "description": "Name servers list",
+          "fullType": "domain.nameServer.NameServer[]",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.nameServer.NameServer[]"
+        },
+        "offer": {
+          "canBeNull": false,
+          "description": "Offer associated with the domain name",
+          "fullType": "domain.OfferEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.OfferEnum"
+        },
+        "owoSupported": {
+          "canBeNull": false,
+          "description": "Whether Whois data obfuscation is supported for this domain name",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "parentService": {
+          "canBeNull": true,
+          "description": "Parent service",
+          "fullType": "domain.ParentService",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.ParentService"
+        },
+        "renewalDate": {
+          "canBeNull": false,
+          "description": "Date when the domain name should be renewed (relevant if renewalState is automatic_renew)",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "renewalState": {
+          "canBeNull": false,
+          "description": "Current renewal state of the domain name",
+          "fullType": "domain.RenewalStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.RenewalStateEnum"
+        },
+        "serviceId": {
+          "canBeNull": false,
+          "description": "Technical service identifier",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "state": {
+          "canBeNull": false,
+          "description": "Current state of the domain name",
+          "fullType": "domain.DomainStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.DomainStateEnum"
+        },
+        "suspensionState": {
+          "canBeNull": false,
+          "description": "Current suspension state of the domain name",
+          "fullType": "domain.SuspensionStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.SuspensionStateEnum"
+        },
+        "transferLockStatus": {
+          "canBeNull": false,
+          "description": "Current transfer lock status of the domain name",
+          "fullType": "domain.LockStatusEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "domain.LockStatusEnum"
+        },
+        "whoisOwner": {
+          "canBeNull": false,
+          "description": "Owner (registrant) contact ID (contact data can be edited via /me/contact/<ID>)",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
     "domain.DomainStateEnum": {
       "description": "Domain name current state",
       "enum": [
@@ -4179,9 +4701,13 @@ export const schema: Schema = {
         "expired",
         "ok",
         "outgoing_transfer",
+        "pending_create",
         "pending_delete",
+        "pending_incoming_transfer",
         "pending_installation",
-        "restorable"
+        "registry_suspended",
+        "restorable",
+        "technical_suspended"
       ],
       "enumType": "string",
       "id": "DomainStateEnum",
@@ -4197,6 +4723,132 @@ export const schema: Schema = {
       "id": "DomainSuspensionStateEnum",
       "namespace": "domain"
     },
+    "domain.DomainWithIAM": {
+      "description": "Domain name administration",
+      "id": "Domain",
+      "namespace": "domain",
+      "properties": {
+        "dnssecSupported": {
+          "canBeNull": false,
+          "description": "Is DNSSEC implemented for this domain name's tld",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "domain": {
+          "canBeNull": false,
+          "description": "Domain name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "glueRecordIpv6Supported": {
+          "canBeNull": false,
+          "description": "Does the registry support ipv6 glue record",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "glueRecordMultiIpSupported": {
+          "canBeNull": false,
+          "description": "Does the registry support multi ip glue record",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "hostSupported": {
+          "canBeNull": false,
+          "description": "Does the registry support hosts as independent entities",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "iam": {
+          "canBeNull": true,
+          "description": "IAM resource metadata",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.ResourceMetadata"
+        },
+        "lastUpdate": {
+          "canBeNull": false,
+          "description": "Last update date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "nameServerType": {
+          "canBeNull": false,
+          "description": "Name servers type",
+          "fullType": "domain.DomainNsTypeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "domain.DomainNsTypeEnum"
+        },
+        "offer": {
+          "canBeNull": false,
+          "description": "Domain's offer",
+          "fullType": "domain.OfferEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.OfferEnum"
+        },
+        "owoSupported": {
+          "canBeNull": false,
+          "description": "Is whois obfuscation supported by this domain name's registry",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "parentService": {
+          "canBeNull": true,
+          "description": "Parent service",
+          "fullType": "domain.ParentService",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.ParentService"
+        },
+        "state": {
+          "canBeNull": false,
+          "description": "Current state of the domain",
+          "fullType": "domain.DomainStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.DomainStateEnum"
+        },
+        "suspensionState": {
+          "canBeNull": false,
+          "description": "Current suspension state of the domain",
+          "fullType": "domain.DomainSuspensionStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.DomainSuspensionStateEnum"
+        },
+        "transferLockStatus": {
+          "canBeNull": false,
+          "description": "Transfer lock status",
+          "fullType": "domain.DomainLockStatusEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "domain.DomainLockStatusEnum"
+        },
+        "whoisOwner": {
+          "canBeNull": false,
+          "description": "Contact Owner (you can edit it via /me/contact/<ID>)",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
     "domain.IsForEnum": {
       "description": "Possible purposes of the domain",
       "enum": [
@@ -4210,6 +4862,19 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "IsForEnum",
+      "namespace": "domain"
+    },
+    "domain.LockStatusEnum": {
+      "description": "Domain lock status",
+      "enum": [
+        "locked",
+        "locking",
+        "unavailable",
+        "unlocked",
+        "unlocking"
+      ],
+      "enumType": "string",
+      "id": "LockStatusEnum",
       "namespace": "domain"
     },
     "domain.OfferEnum": {
@@ -4230,6 +4895,7 @@ export const schema: Schema = {
         "doing",
         "done",
         "error",
+        "problem",
         "todo"
       ],
       "enumType": "string",
@@ -4285,21 +4951,6 @@ export const schema: Schema = {
         }
       }
     },
-    "domain.Owo": {
-      "description": "Obfuscate whois",
-      "id": "Owo",
-      "namespace": "domain",
-      "properties": {
-        "field": {
-          "canBeNull": false,
-          "description": "Obfuscated field",
-          "fullType": "domain.WhoisObfuscatorFieldsEnum",
-          "readOnly": true,
-          "required": false,
-          "type": "domain.WhoisObfuscatorFieldsEnum"
-        }
-      }
-    },
     "domain.ParentService": {
       "description": "Parent service",
       "id": "ParentService",
@@ -4308,14 +4959,16 @@ export const schema: Schema = {
         "name": {
           "canBeNull": false,
           "description": "Name of the parent service",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "type": {
           "canBeNull": false,
           "description": "Type of the parent service",
-          "readOnly": false,
+          "fullType": "domain.ParentServiceTypeEnum",
+          "readOnly": true,
           "required": false,
           "type": "domain.ParentServiceTypeEnum"
         }
@@ -4328,6 +4981,19 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "ParentServiceTypeEnum",
+      "namespace": "domain"
+    },
+    "domain.RenewalStateEnum": {
+      "description": "Domain renewal state",
+      "enum": [
+        "automatic_renew",
+        "cancellation_complete",
+        "cancellation_requested",
+        "manual_renew",
+        "unpaid"
+      ],
+      "enumType": "string",
+      "id": "RenewalStateEnum",
       "namespace": "domain"
     },
     "domain.ServiceOption": {
@@ -4375,6 +5041,16 @@ export const schema: Schema = {
           "type": "domain.ServiceOption"
         }
       }
+    },
+    "domain.SuspensionStateEnum": {
+      "description": "Domain suspension state",
+      "enum": [
+        "not_suspended",
+        "suspended"
+      ],
+      "enumType": "string",
+      "id": "SuspensionStateEnum",
+      "namespace": "domain"
     },
     "domain.Task": {
       "description": "Tasks associated to domain",
@@ -4479,6 +5155,40 @@ export const schema: Schema = {
         }
       }
     },
+    "domain.TaskFunctionEnum": {
+      "description": "All functions from a dns task",
+      "enum": [
+        "DnsAnycastActivate",
+        "DnsAnycastDeactivate",
+        "DnssecDisable",
+        "DnssecEnable",
+        "DnssecResigning",
+        "DnssecRollKsk",
+        "DnssecRollZsk",
+        "ZoneCreate",
+        "ZoneCut",
+        "ZoneDelete",
+        "ZoneImport",
+        "ZoneRestore"
+      ],
+      "enumType": "string",
+      "id": "TaskFunctionEnum",
+      "namespace": "domain"
+    },
+    "domain.TaskStatusEnum": {
+      "description": "All statuses from a dns task",
+      "enum": [
+        "cancelled",
+        "doing",
+        "done",
+        "error",
+        "problem",
+        "todo"
+      ],
+      "enumType": "string",
+      "id": "TaskStatusEnum",
+      "namespace": "domain"
+    },
     "domain.UkRegistrar": {
       "description": "Representation of a UK Registrar (used for outgoing transfer)",
       "id": "UkRegistrar",
@@ -4502,16 +5212,106 @@ export const schema: Schema = {
         }
       }
     },
-    "domain.WhoisObfuscatorFieldsEnum": {
-      "description": "Whois obfuscable fields",
-      "enum": [
-        "address",
-        "email",
-        "phone"
-      ],
-      "enumType": "string",
-      "id": "WhoisObfuscatorFieldsEnum",
-      "namespace": "domain"
+    "domain.Zone": {
+      "description": "DNS zone",
+      "id": "Zone",
+      "namespace": "domain",
+      "properties": {
+        "dnssecSupported": {
+          "canBeNull": false,
+          "description": "Is DNSSEC supported by this zone",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "hasDnsAnycast": {
+          "canBeNull": false,
+          "description": "Whether the DNS zone has a DNS Anycast subscription",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "lastUpdate": {
+          "canBeNull": true,
+          "description": "Last update date of the DNS zone",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Zone name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "nameServers": {
+          "canBeNull": false,
+          "description": "Name servers that host the DNS zone",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        }
+      }
+    },
+    "domain.ZoneWithIAM": {
+      "description": "DNS zone",
+      "id": "Zone",
+      "namespace": "domain",
+      "properties": {
+        "dnssecSupported": {
+          "canBeNull": false,
+          "description": "Is DNSSEC supported by this zone",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "hasDnsAnycast": {
+          "canBeNull": false,
+          "description": "Whether the DNS zone has a DNS Anycast subscription",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "iam": {
+          "canBeNull": true,
+          "description": "IAM resource metadata",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.ResourceMetadata"
+        },
+        "lastUpdate": {
+          "canBeNull": true,
+          "description": "Last update date of the DNS zone",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Zone name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "nameServers": {
+          "canBeNull": false,
+          "description": "Name servers that host the DNS zone",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        }
+      }
     },
     "domain.configuration.rules.Constraint": {
       "description": "A configuration rule defines validation to launch when executing an action on a domain (create, trade...). Depending on the extension, the rule may be different",
@@ -5174,7 +5974,7 @@ export const schema: Schema = {
         },
         "trademarkUDRP": {
           "canBeNull": false,
-          "description": "Trademark UDRP informations",
+          "description": "Trademark UDRP information",
           "fullType": "domain.data.claimNotice.UDRP[]",
           "readOnly": true,
           "required": false,
@@ -5760,10 +6560,10 @@ export const schema: Schema = {
         "nameServer": {
           "canBeNull": false,
           "description": "Name servers to create",
-          "fullType": "domain.nameServer.NameServer[]",
+          "fullType": "domain.nameServer.NameServerInput[]",
           "readOnly": false,
           "required": true,
-          "type": "domain.nameServer.NameServer[]"
+          "type": "domain.nameServer.NameServerInput[]"
         }
       }
     },
@@ -5815,8 +6615,55 @@ export const schema: Schema = {
       }
     },
     "domain.nameServer.NameServer": {
-      "description": "Name server",
+      "description": "Name server configuration",
       "id": "NameServer",
+      "namespace": "domain.nameServer",
+      "properties": {
+        "id": {
+          "canBeNull": false,
+          "description": "ID of the name server",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "ipv4": {
+          "canBeNull": true,
+          "description": "IPv4 adress of the name server",
+          "fullType": "ipv4",
+          "readOnly": true,
+          "required": false,
+          "type": "ipv4"
+        },
+        "ipv6": {
+          "canBeNull": true,
+          "description": "IPv6 adress  of the name server",
+          "fullType": "ipv6",
+          "readOnly": true,
+          "required": false,
+          "type": "ipv6"
+        },
+        "nameServer": {
+          "canBeNull": false,
+          "description": "Name of the name server",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "nameServerType": {
+          "canBeNull": false,
+          "description": "Type of the name server",
+          "fullType": "domain.nameServer.NameServerTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.nameServer.NameServerTypeEnum"
+        }
+      }
+    },
+    "domain.nameServer.NameServerInput": {
+      "description": "Name server input data",
+      "id": "NameServerInput",
       "namespace": "domain.nameServer",
       "properties": {
         "host": {
@@ -5881,8 +6728,15 @@ export const schema: Schema = {
     "domain.nameServer.NameServerTypeEnum": {
       "description": "DNS server type",
       "enum": [
+        "anycast",
+        "dedicated",
+        "empty",
         "external",
-        "hosted"
+        "hold",
+        "hosted",
+        "hosting",
+        "mixed",
+        "parking"
       ],
       "enumType": "string",
       "id": "NameServerTypeEnum",
@@ -5896,10 +6750,10 @@ export const schema: Schema = {
         "nameServers": {
           "canBeNull": false,
           "description": "Name servers to update",
-          "fullType": "domain.nameServer.NameServer[]",
+          "fullType": "domain.nameServer.NameServerInput[]",
           "readOnly": false,
           "required": true,
-          "type": "domain.nameServer.NameServer[]"
+          "type": "domain.nameServer.NameServerInput[]"
         }
       }
     },
@@ -5949,22 +6803,53 @@ export const schema: Schema = {
         }
       }
     },
+    "domain.zone.Capabilities": {
+      "description": "DNS zone capabilities",
+      "id": "Capabilities",
+      "namespace": "domain.zone",
+      "properties": {
+        "dynHost": {
+          "canBeNull": false,
+          "description": "True if dynHost available for this zone",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
     "domain.zone.Dnssec": {
-      "description": "Manage Dnssec for this zone",
+      "description": "DNS zone DNSSEC",
       "id": "Dnssec",
       "namespace": "domain.zone",
       "properties": {
         "status": {
           "canBeNull": false,
-          "fullType": "dnssec.DnssecStatusEnum",
+          "description": "DNSSEC Status",
+          "fullType": "domain.DnssecStatusEnum",
           "readOnly": true,
           "required": false,
-          "type": "dnssec.DnssecStatusEnum"
+          "type": "domain.DnssecStatusEnum"
+        }
+      }
+    },
+    "domain.zone.Import": {
+      "description": "DNS zone import",
+      "id": "Import",
+      "namespace": "domain.zone",
+      "properties": {
+        "zoneFile": {
+          "canBeNull": false,
+          "description": "Zone file that will be imported",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "domain.zone.Option": {
-      "description": "Information about the options of a zone",
+      "description": "DNS zone option",
       "id": "Option",
       "namespace": "domain.zone",
       "properties": {
@@ -5979,21 +6864,20 @@ export const schema: Schema = {
       }
     },
     "domain.zone.Record": {
-      "description": "Zone resource records",
+      "description": "DNS zone history",
       "id": "Record",
       "namespace": "domain.zone",
       "properties": {
         "fieldType": {
           "canBeNull": false,
-          "description": "Resource record Name",
-          "fullType": "zone.NamedResolutionFieldTypeEnum",
+          "fullType": "domain.zone.RecordTypeEnum",
           "readOnly": true,
           "required": false,
-          "type": "zone.NamedResolutionFieldTypeEnum"
+          "type": "domain.zone.RecordTypeEnum"
         },
         "id": {
           "canBeNull": false,
-          "description": "Id of the zone resource record",
+          "description": "Id of the record",
           "fullType": "long",
           "readOnly": true,
           "required": false,
@@ -6001,7 +6885,61 @@ export const schema: Schema = {
         },
         "subDomain": {
           "canBeNull": true,
-          "description": "Resource record subdomain",
+          "description": "Record subDomain",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "target": {
+          "canBeNull": false,
+          "description": "Target of the record",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "ttl": {
+          "canBeNull": true,
+          "description": "TTL of the record",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "zone": {
+          "canBeNull": false,
+          "description": "Resource record zone",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "domain.zone.RecordCreate": {
+      "description": "DNS zone history",
+      "id": "RecordCreate",
+      "namespace": "domain.zone",
+      "properties": {
+        "fieldType": {
+          "canBeNull": false,
+          "fullType": "domain.zone.RecordTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "domain.zone.RecordTypeEnum"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Id of the record",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "subDomain": {
+          "canBeNull": true,
+          "description": "Record subDomain",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -6009,15 +6947,15 @@ export const schema: Schema = {
         },
         "target": {
           "canBeNull": false,
-          "description": "Resource record target",
+          "description": "Target of the record",
           "fullType": "string",
           "readOnly": false,
-          "required": false,
+          "required": true,
           "type": "string"
         },
         "ttl": {
-          "canBeNull": true,
-          "description": "Resource record ttl",
+          "canBeNull": false,
+          "description": "TTL of the record",
           "fullType": "long",
           "readOnly": false,
           "required": false,
@@ -6033,16 +6971,72 @@ export const schema: Schema = {
         }
       }
     },
+    "domain.zone.RecordTypeEnum": {
+      "description": "Resource record name",
+      "enum": [
+        "A",
+        "AAAA",
+        "CAA",
+        "CNAME",
+        "DKIM",
+        "DMARC",
+        "DNAME",
+        "LOC",
+        "MX",
+        "NAPTR",
+        "NS",
+        "PTR",
+        "SPF",
+        "SRV",
+        "SSHFP",
+        "TLSA",
+        "TXT"
+      ],
+      "enumType": "string",
+      "id": "RecordTypeEnum",
+      "namespace": "domain.zone"
+    },
+    "domain.zone.RecordUpdate": {
+      "description": "DNS zone record",
+      "id": "RecordUpdate",
+      "namespace": "domain.zone",
+      "properties": {
+        "subDomain": {
+          "canBeNull": true,
+          "description": "Record subdomain",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "target": {
+          "canBeNull": false,
+          "description": "Target of the record",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "ttl": {
+          "canBeNull": true,
+          "description": "TTL of the record",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
     "domain.zone.Redirection": {
-      "description": "Redirection",
+      "description": "DNS zone redirections",
       "id": "Redirection",
       "namespace": "domain.zone",
       "properties": {
         "description": {
           "canBeNull": true,
-          "description": "Desciption for invisible redirection",
+          "description": "Description for the invisible redirection",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -6056,17 +7050,136 @@ export const schema: Schema = {
         },
         "keywords": {
           "canBeNull": true,
-          "description": "Keywords for invisible redirection",
+          "description": "Keywords for the invisible redirection",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "subDomain": {
+          "canBeNull": true,
+          "description": "Subdomain to redirect",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "target": {
+          "canBeNull": false,
+          "description": "Target of the redirection",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "title": {
+          "canBeNull": true,
+          "description": "Title for the invisible redirection",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "type": {
+          "canBeNull": false,
+          "fullType": "domain.zone.RedirectionTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.zone.RedirectionTypeEnum"
+        },
+        "zone": {
+          "canBeNull": false,
+          "description": "Redirection zone",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "domain.zone.RedirectionCreate": {
+      "description": "DNS zone redirection create",
+      "id": "RedirectionCreate",
+      "namespace": "domain.zone",
+      "properties": {
+        "description": {
+          "canBeNull": true,
+          "description": "Description for the invisible redirection",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "keywords": {
+          "canBeNull": true,
+          "description": "Keywords for the invisible redirection",
           "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
         },
         "subDomain": {
-          "canBeNull": true,
-          "description": "subdomain to redirect",
+          "canBeNull": false,
+          "description": "Subdomain to redirect",
           "fullType": "string",
-          "readOnly": true,
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "target": {
+          "canBeNull": false,
+          "description": "Target of the redirection",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "title": {
+          "canBeNull": true,
+          "description": "Title for the invisible redirection",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "type": {
+          "canBeNull": false,
+          "fullType": "domain.zone.RedirectionTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "domain.zone.RedirectionTypeEnum"
+        }
+      }
+    },
+    "domain.zone.RedirectionTypeEnum": {
+      "description": "Redirection type:\n - visible -> Redirection by http code 302\n - visiblePermanent -> Redirection by http code 301\n - invisible -> Redirection by html frame",
+      "enum": [
+        "invisible",
+        "visible",
+        "visiblePermanent"
+      ],
+      "enumType": "string",
+      "id": "RedirectionTypeEnum",
+      "namespace": "domain.zone"
+    },
+    "domain.zone.RedirectionUpdate": {
+      "description": "DNS zone redirection update",
+      "id": "RedirectionUpdate",
+      "namespace": "domain.zone",
+      "properties": {
+        "description": {
+          "canBeNull": true,
+          "description": "Description for the invisible redirection",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "keywords": {
+          "canBeNull": true,
+          "description": "Keywords for the invisible redirection",
+          "fullType": "string",
+          "readOnly": false,
           "required": false,
           "type": "string"
         },
@@ -6080,7 +7193,7 @@ export const schema: Schema = {
         },
         "title": {
           "canBeNull": true,
-          "description": "Title for invisible redirection",
+          "description": "Title for the invisible redirection",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -6088,24 +7201,71 @@ export const schema: Schema = {
         },
         "type": {
           "canBeNull": false,
-          "description": "Redirection type",
-          "fullType": "zone.RedirectionTypeEnum",
+          "fullType": "domain.zone.RedirectionTypeEnum",
           "readOnly": false,
           "required": false,
-          "type": "zone.RedirectionTypeEnum"
-        },
-        "zone": {
+          "type": "domain.zone.RedirectionTypeEnum"
+        }
+      }
+    },
+    "domain.zone.Reset": {
+      "description": "DNS zone reset",
+      "id": "Reset",
+      "namespace": "domain.zone",
+      "properties": {
+        "DnsRecords": {
           "canBeNull": false,
-          "description": "Redirection zone",
+          "description": "Records that will be set after reset",
+          "fullType": "domain.zone.ResetRecord[]",
+          "readOnly": false,
+          "required": false,
+          "type": "domain.zone.ResetRecord[]"
+        },
+        "minimized": {
+          "canBeNull": false,
+          "description": "Create only mandatory records",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
+    "domain.zone.ResetRecord": {
+      "description": "Record associated to domain zone reset",
+      "id": "ResetRecord",
+      "namespace": "domain.zone",
+      "properties": {
+        "fieldType": {
+          "canBeNull": false,
+          "description": "Field type associated to domain zone reset",
+          "fullType": "domain.zone.ResettableNamedResolutionFieldTypeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "domain.zone.ResettableNamedResolutionFieldTypeEnum"
+        },
+        "target": {
+          "canBeNull": false,
+          "description": "Target associated to domain zone reset",
           "fullType": "string",
-          "readOnly": true,
+          "readOnly": false,
           "required": false,
           "type": "string"
         }
       }
     },
+    "domain.zone.ResettableNamedResolutionFieldTypeEnum": {
+      "description": "Resource record name",
+      "enum": [
+        "A",
+        "MX"
+      ],
+      "enumType": "string",
+      "id": "ResettableNamedResolutionFieldTypeEnum",
+      "namespace": "domain.zone"
+    },
     "domain.zone.Soa": {
-      "description": "Zone Start Of Authority",
+      "description": "DNS zone SOA",
       "id": "Soa",
       "namespace": "domain.zone",
       "properties": {
@@ -6167,8 +7327,39 @@ export const schema: Schema = {
         }
       }
     },
+    "domain.zone.Status": {
+      "description": "DNS zone status",
+      "id": "Status",
+      "namespace": "domain.zone",
+      "properties": {
+        "errors": {
+          "canBeNull": true,
+          "description": "Error list if any",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "isDeployed": {
+          "canBeNull": false,
+          "description": "Whether the zone is deployed or not",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "warnings": {
+          "canBeNull": true,
+          "description": "Warning list if any",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        }
+      }
+    },
     "domain.zone.Task": {
-      "description": "Tasks associated to a zone",
+      "description": "DNS zone task",
       "id": "Task",
       "namespace": "domain.zone",
       "properties": {
@@ -6223,10 +7414,10 @@ export const schema: Schema = {
         "function": {
           "canBeNull": false,
           "description": "Function of the task",
-          "fullType": "string",
+          "fullType": "domain.TaskFunctionEnum",
           "readOnly": true,
           "required": false,
-          "type": "string"
+          "type": "domain.TaskFunctionEnum"
         },
         "id": {
           "canBeNull": false,
@@ -6237,7 +7428,7 @@ export const schema: Schema = {
           "type": "long"
         },
         "lastUpdate": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Last update date of the task",
           "fullType": "datetime",
           "readOnly": true,
@@ -6247,10 +7438,10 @@ export const schema: Schema = {
         "status": {
           "canBeNull": false,
           "description": "Status of the task",
-          "fullType": "domain.OperationStatusEnum",
+          "fullType": "domain.TaskStatusEnum",
           "readOnly": true,
           "required": false,
-          "type": "domain.OperationStatusEnum"
+          "type": "domain.TaskStatusEnum"
         },
         "todoDate": {
           "canBeNull": false,
@@ -6310,13 +7501,13 @@ export const schema: Schema = {
       }
     },
     "domain.zone.ZoneRestorePoint": {
-      "description": "Zone restore point",
+      "description": "DNS zone history",
       "id": "ZoneRestorePoint",
       "namespace": "domain.zone",
       "properties": {
         "creationDate": {
           "canBeNull": false,
-          "description": "Date of backup creation",
+          "description": "The date of backup creation",
           "fullType": "datetime",
           "readOnly": true,
           "required": false,
@@ -6324,13 +7515,138 @@ export const schema: Schema = {
         },
         "zoneFileUrl": {
           "canBeNull": false,
-          "description": "URL to get backup content",
+          "description": "The URL of the saved zone at this date",
           "fullType": "string",
           "readOnly": true,
           "required": false,
           "type": "string"
         }
       }
+    },
+    "domain.zone.ZoneWithIAM": {
+      "description": "Zone dns Management",
+      "id": "Zone",
+      "namespace": "domain.zone",
+      "properties": {
+        "dnssecSupported": {
+          "canBeNull": false,
+          "description": "Is DNSSEC supported by this zone",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "hasDnsAnycast": {
+          "canBeNull": false,
+          "description": "hasDnsAnycast flag of the DNS zone",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "iam": {
+          "canBeNull": true,
+          "description": "IAM resource metadata",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.ResourceMetadata"
+        },
+        "lastUpdate": {
+          "canBeNull": false,
+          "description": "Last update date of the DNS zone",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Zone name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "nameServers": {
+          "canBeNull": false,
+          "description": "Name servers that host the DNS zone",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        }
+      }
+    },
+    "iam.ResourceMetadata": {
+      "description": "IAM resource metadata embedded in services models",
+      "id": "ResourceMetadata",
+      "namespace": "iam",
+      "properties": {
+        "displayName": {
+          "canBeNull": true,
+          "description": "Resource display name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Unique identifier of the resource",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "tags": {
+          "canBeNull": true,
+          "description": "Resource tags. Tags that were internally computed are prefixed with ovh:",
+          "fullType": "map[string]string",
+          "readOnly": true,
+          "required": false,
+          "type": "map[string]string"
+        },
+        "urn": {
+          "canBeNull": false,
+          "description": "Unique resource name used in policies",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter": {
+      "description": "Resource tag filter",
+      "id": "TagFilter",
+      "namespace": "iam.resource",
+      "properties": {
+        "operator": {
+          "canBeNull": true,
+          "description": "Operator to use in order to filter on the value (defaults to 'EQ')",
+          "fullType": "iam.resource.TagFilter.OperatorEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.resource.TagFilter.OperatorEnum"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value to use in order to filter tags",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter.OperatorEnum": {
+      "description": "Operator that can be used in order to filter resources tags",
+      "enum": [
+        "EQ"
+      ],
+      "enumType": "string",
+      "id": "OperatorEnum",
+      "namespace": "iam.resource.TagFilter"
     },
     "nichandle.CountryEnum": {
       "description": "Countries a nichandle can choose",
@@ -6721,6 +8037,14 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "complementaryAddress": {
+          "canBeNull": true,
+          "description": "Complementary Address",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
         "corporationType": {
           "canBeNull": true,
           "description": "Corporation type",
@@ -6843,7 +8167,7 @@ export const schema: Schema = {
         },
         "ovhCompany": {
           "canBeNull": false,
-          "description": "OVH subsidiary",
+          "description": "OVH company",
           "fullType": "nichandle.OvhCompanyEnum",
           "readOnly": true,
           "required": false,
@@ -6871,6 +8195,22 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "nichandle.CountryEnum"
+        },
+        "phoneType": {
+          "canBeNull": true,
+          "description": "Type of phone(mobile, landline)",
+          "fullType": "nichandle.PhoneTypeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "nichandle.PhoneTypeEnum"
+        },
+        "purposeOfPurchase": {
+          "canBeNull": true,
+          "description": "Customer purpose of purchase",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "sex": {
           "canBeNull": true,
@@ -6915,7 +8255,7 @@ export const schema: Schema = {
       }
     },
     "nichandle.OvhCompanyEnum": {
-      "description": "OVH subsidiaries",
+      "description": "OVH companies",
       "enum": [
         "kimsufi",
         "ovh",
@@ -6939,6 +8279,16 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "OvhSubsidiaryEnum",
+      "namespace": "nichandle"
+    },
+    "nichandle.PhoneTypeEnum": {
+      "description": "All phone type a person can choose",
+      "enum": [
+        "landline",
+        "mobile"
+      ],
+      "enumType": "string",
+      "id": "PhoneTypeEnum",
       "namespace": "nichandle"
     },
     "nichandle.StateEnum": {

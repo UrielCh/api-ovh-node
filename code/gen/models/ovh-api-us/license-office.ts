@@ -13,13 +13,24 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "List available services",
+          "description": "manage your Office service",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseOffice:apiovh:get"
+            {
+              "name": "licenseOffice:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
-          "parameters": [],
+          "parameters": [
+            {
+              "dataType": "map[string][]iam.resource.TagFilter",
+              "description": "Filter resources on IAM tags",
+              "name": "iamTags",
+              "paramType": "query",
+              "required": false
+            }
+          ],
           "responseType": "string[]"
         }
       ],
@@ -36,7 +47,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseOffice:apiovh:get"
+            {
+              "name": "licenseOffice:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -49,7 +63,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.office.OfficeTenant"
+          "responseType": "license.office.OfficeTenantWithIAM"
         },
         {
           "apiStatus": {
@@ -59,7 +73,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "licenseOffice:apiovh:put"
+            {
+              "name": "licenseOffice:apiovh:put",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -95,7 +112,10 @@ export const schema: Schema = {
           "description": "Domain associated to this office tenant",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseOffice:apiovh:domain/get"
+            {
+              "name": "licenseOffice:apiovh:domain/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -124,7 +144,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseOffice:apiovh:domain/get"
+            {
+              "name": "licenseOffice:apiovh:domain/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -161,7 +184,10 @@ export const schema: Schema = {
           "description": "Tasks associated to this office tenant",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseOffice:apiovh:pendingTask/get"
+            {
+              "name": "licenseOffice:apiovh:pendingTask/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -190,7 +216,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseOffice:apiovh:pendingTask/get"
+            {
+              "name": "licenseOffice:apiovh:pendingTask/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -224,10 +253,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get service information",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseOffice:apiovh:serviceInfos/get"
+            {
+              "name": "licenseOffice:apiovh:serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -247,10 +279,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Update service information",
           "httpMethod": "PUT",
           "iamActions": [
-            "licenseOffice:apiovh:serviceInfos/edit"
+            {
+              "name": "licenseOffice:apiovh:serviceInfos/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -286,7 +321,10 @@ export const schema: Schema = {
           "description": "Shows the subscriptions' usage statistics for the given time period",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseOffice:apiovh:usageStatistics/get"
+            {
+              "name": "licenseOffice:apiovh:usageStatistics/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -331,7 +369,10 @@ export const schema: Schema = {
           "description": "Accounts associated to this office tenant",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseOffice:apiovh:user/get"
+            {
+              "name": "licenseOffice:apiovh:user/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -386,7 +427,10 @@ export const schema: Schema = {
           "description": "Create new office user",
           "httpMethod": "POST",
           "iamActions": [
-            "licenseOffice:apiovh:user/create"
+            {
+              "name": "licenseOffice:apiovh:user/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -463,7 +507,10 @@ export const schema: Schema = {
           "description": "Delete existing office user",
           "httpMethod": "DELETE",
           "iamActions": [
-            "licenseOffice:apiovh:user/delete"
+            {
+              "name": "licenseOffice:apiovh:user/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -494,7 +541,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseOffice:apiovh:user/get"
+            {
+              "name": "licenseOffice:apiovh:user/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -525,7 +575,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "licenseOffice:apiovh:user/edit"
+            {
+              "name": "licenseOffice:apiovh:user/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -569,7 +622,10 @@ export const schema: Schema = {
           "description": "Change or reset  user's password",
           "httpMethod": "POST",
           "iamActions": [
-            "licenseOffice:apiovh:user/changePassword"
+            {
+              "name": "licenseOffice:apiovh:user/changePassword",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -890,6 +946,77 @@ export const schema: Schema = {
       "id": "CountryEnum",
       "namespace": "coreTypes"
     },
+    "iam.ResourceMetadata": {
+      "description": "IAM resource metadata embedded in services models",
+      "id": "ResourceMetadata",
+      "namespace": "iam",
+      "properties": {
+        "displayName": {
+          "canBeNull": true,
+          "description": "Resource display name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Unique identifier of the resource",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "tags": {
+          "canBeNull": true,
+          "description": "Resource tags. Tags that were internally computed are prefixed with ovh:",
+          "fullType": "map[string]string",
+          "readOnly": true,
+          "required": false,
+          "type": "map[string]string"
+        },
+        "urn": {
+          "canBeNull": false,
+          "description": "Unique resource name used in policies",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter": {
+      "description": "Resource tag filter",
+      "id": "TagFilter",
+      "namespace": "iam.resource",
+      "properties": {
+        "operator": {
+          "canBeNull": true,
+          "description": "Operator to use in order to filter on the value (defaults to 'EQ')",
+          "fullType": "iam.resource.TagFilter.OperatorEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.resource.TagFilter.OperatorEnum"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value to use in order to filter tags",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter.OperatorEnum": {
+      "description": "Operator that can be used in order to filter resources tags",
+      "enum": [
+        "EQ"
+      ],
+      "enumType": "string",
+      "id": "OperatorEnum",
+      "namespace": "iam.resource.TagFilter"
+    },
     "license.office.DomainStateEnum": {
       "description": "Office domain state",
       "enum": [
@@ -1095,6 +1222,107 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string"
+        },
+        "lastName": {
+          "canBeNull": false,
+          "description": "Contact's fisrt name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "phone": {
+          "canBeNull": false,
+          "description": "Primary phone number",
+          "fullType": "phoneNumber",
+          "readOnly": false,
+          "required": false,
+          "type": "phoneNumber"
+        },
+        "serviceName": {
+          "canBeNull": false,
+          "description": "Internal service name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "serviceType": {
+          "canBeNull": false,
+          "description": "Tenant's service type",
+          "fullType": "license.office.ServiceTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "license.office.ServiceTypeEnum"
+        },
+        "status": {
+          "canBeNull": false,
+          "fullType": "license.office.ServiceStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "license.office.ServiceStateEnum"
+        },
+        "zipCode": {
+          "canBeNull": false,
+          "description": "Contact's zip code",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "license.office.OfficeTenantWithIAM": {
+      "description": "Office tenant",
+      "id": "OfficeTenant",
+      "namespace": "license.office",
+      "properties": {
+        "address": {
+          "canBeNull": false,
+          "description": "Contact's address line",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "city": {
+          "canBeNull": false,
+          "description": "Contact's city",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "displayName": {
+          "canBeNull": false,
+          "description": "Tenant's display name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "firstName": {
+          "canBeNull": false,
+          "description": "Contact's fisrt name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "iam": {
+          "canBeNull": true,
+          "description": "IAM resource metadata",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.ResourceMetadata"
         },
         "lastName": {
           "canBeNull": false,

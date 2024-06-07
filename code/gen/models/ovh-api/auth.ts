@@ -389,6 +389,14 @@ export const schema: Schema = {
           "required": true,
           "type": "auth.AccessRuleRequest[]"
         },
+        "allowedIPs": {
+          "canBeNull": false,
+          "description": "If defined, list of IP blocks that can use the credential",
+          "fullType": "ipBlock[]",
+          "readOnly": false,
+          "required": false,
+          "type": "ipBlock[]"
+        },
         "redirection": {
           "canBeNull": true,
           "description": "Address where the customer will be redirected after authentication",
@@ -410,6 +418,29 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "ApplicationStatusEnum",
       "namespace": "auth"
+    },
+    "auth.Certificate": {
+      "description": "X509 Certificate",
+      "id": "Certificate",
+      "namespace": "auth",
+      "properties": {
+        "expiration": {
+          "canBeNull": false,
+          "description": "Certificate's expiration",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "subject": {
+          "canBeNull": false,
+          "description": "Certificate's subject",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
     },
     "auth.Credential": {
       "description": "Credential request to get access to the API",
@@ -453,6 +484,14 @@ export const schema: Schema = {
       "id": "Details",
       "namespace": "auth",
       "properties": {
+        "account": {
+          "canBeNull": false,
+          "description": "Customer identifier",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
         "allowedRoutes": {
           "canBeNull": true,
           "description": "Allowed API routes, null means everything",
@@ -463,11 +502,19 @@ export const schema: Schema = {
         },
         "description": {
           "canBeNull": true,
-          "description": "Description of the connected user",
+          "description": "Description of the authenticated identity",
           "fullType": "string",
           "readOnly": true,
           "required": false,
           "type": "string"
+        },
+        "identities": {
+          "canBeNull": false,
+          "description": "Identities of the current session: corresponds to all the authentication provider identities that could be used to match IAM policies",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
         },
         "method": {
           "canBeNull": false,
@@ -479,7 +526,7 @@ export const schema: Schema = {
         },
         "roles": {
           "canBeNull": true,
-          "description": "Roles of the authenticated user",
+          "description": "Roles of the authenticated identity",
           "fullType": "string[]",
           "readOnly": true,
           "required": false,
@@ -487,11 +534,105 @@ export const schema: Schema = {
         },
         "user": {
           "canBeNull": true,
-          "description": "Connected username",
+          "description": "Username of the authenticated identity",
           "fullType": "string",
           "readOnly": true,
           "required": false,
           "type": "string"
+        }
+      }
+    },
+    "auth.Group": {
+      "description": "An IAM Group",
+      "id": "Group",
+      "namespace": "auth",
+      "properties": {
+        "creation": {
+          "canBeNull": false,
+          "description": "Creation date of this group",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "defaultGroup": {
+          "canBeNull": false,
+          "description": "Whether it is a default group. This kind of group can't be edited or deleted",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "description": {
+          "canBeNull": true,
+          "description": "Group's description",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "lastUpdate": {
+          "canBeNull": false,
+          "description": "Last update of this group",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Group's name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "role": {
+          "canBeNull": false,
+          "description": "Group's role",
+          "fullType": "auth.RoleEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "auth.RoleEnum"
+        },
+        "urn": {
+          "canBeNull": false,
+          "description": "IAM identity URN of the group",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "auth.GroupRequest": {
+      "description": "A new IAM group",
+      "id": "GroupRequest",
+      "namespace": "auth",
+      "properties": {
+        "description": {
+          "canBeNull": true,
+          "description": "Group's description",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Group's name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "role": {
+          "canBeNull": false,
+          "description": "Group's role",
+          "fullType": "auth.RoleEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "auth.RoleEnum"
         }
       }
     },
@@ -511,11 +652,349 @@ export const schema: Schema = {
       "description": "All authentication methods available",
       "enum": [
         "account",
+        "oauth2_client_credentials",
         "provider",
         "user"
       ],
       "enumType": "string",
       "id": "MethodEnum",
+      "namespace": "auth"
+    },
+    "auth.Provider": {
+      "description": "An IAM Federation Provider",
+      "id": "Provider",
+      "namespace": "auth",
+      "properties": {
+        "creation": {
+          "canBeNull": false,
+          "description": "Creation date of the identity provider",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "disableUsers": {
+          "canBeNull": true,
+          "description": "Whether account users should still be usable as a login method or not",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "extensions": {
+          "canBeNull": false,
+          "description": "SAML Extensions to embed inside the SAML requests",
+          "fullType": "auth.ProviderExtensions",
+          "readOnly": false,
+          "required": false,
+          "type": "auth.ProviderExtensions"
+        },
+        "groupAttributeName": {
+          "canBeNull": false,
+          "description": "SAML Group attribute name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "idpSigningCertificates": {
+          "canBeNull": false,
+          "description": "IdP's signing certificate",
+          "fullType": "auth.Certificate[]",
+          "readOnly": true,
+          "required": false,
+          "type": "auth.Certificate[]"
+        },
+        "lastUpdate": {
+          "canBeNull": false,
+          "description": "Last update of the identity provider",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "signRequests": {
+          "canBeNull": true,
+          "description": "Whether SAML Authn Requests should be signed",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "ssoServiceUrl": {
+          "canBeNull": false,
+          "description": "IdP's Single Sign On Service Url",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "userAttributeName": {
+          "canBeNull": false,
+          "description": "SAML User attribute name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "auth.ProviderExtensions": {
+      "description": "A SAML 2.0 Extension that should be added to SAML requests when using this provider",
+      "id": "ProviderExtensions",
+      "namespace": "auth",
+      "properties": {
+        "requestedAttributes": {
+          "canBeNull": true,
+          "description": "List of SAML RequestedAttribute to add to SAML requests",
+          "fullType": "auth.ProviderRequestedAttributes[]",
+          "readOnly": false,
+          "required": false,
+          "type": "auth.ProviderRequestedAttributes[]"
+        }
+      }
+    },
+    "auth.ProviderRequest": {
+      "description": "An IAM Federation Provider creation request",
+      "id": "ProviderRequest",
+      "namespace": "auth",
+      "properties": {
+        "disableUsers": {
+          "canBeNull": true,
+          "description": "Whether account users should still be usable as a login method or not",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "extensions": {
+          "canBeNull": false,
+          "description": "SAML Extensions to embed inside the SAML requests",
+          "fullType": "auth.ProviderExtensions",
+          "readOnly": false,
+          "required": false,
+          "type": "auth.ProviderExtensions"
+        },
+        "groupAttributeName": {
+          "canBeNull": true,
+          "description": "SAML Group attribute name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "metadata": {
+          "canBeNull": false,
+          "description": "IdP's signing certificate",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "signRequests": {
+          "canBeNull": true,
+          "description": "Whether SAML Authn Requests should be signed",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "userAttributeName": {
+          "canBeNull": true,
+          "description": "SAML User attribute name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "auth.ProviderRequestedAttributes": {
+      "description": "A SAML 2.0 requested attribute that should be added to SAML requests when using this provider",
+      "id": "ProviderRequestedAttributes",
+      "namespace": "auth",
+      "properties": {
+        "isRequired": {
+          "canBeNull": false,
+          "description": "Expresses that this RequestedAttribute is mandatory (remains advisory)",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the SAML RequestedAttribute",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "nameFormat": {
+          "canBeNull": true,
+          "description": "NameFormat of the SAML RequestedAttribute",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "values": {
+          "canBeNull": true,
+          "description": "List of AttributeValues allowed for this RequestedAttribute",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        }
+      }
+    },
+    "auth.RoleEnum": {
+      "description": "Permission given on the account",
+      "enum": [
+        "ADMIN",
+        "NONE",
+        "REGULAR",
+        "UNPRIVILEGED"
+      ],
+      "enumType": "string",
+      "id": "RoleEnum",
+      "namespace": "auth"
+    },
+    "auth.User": {
+      "description": "An IAM User",
+      "id": "User",
+      "namespace": "auth",
+      "properties": {
+        "creation": {
+          "canBeNull": false,
+          "description": "Creation date of this user",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "User's description",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "email": {
+          "canBeNull": false,
+          "description": "User's email",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "group": {
+          "canBeNull": false,
+          "description": "User's group",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "lastUpdate": {
+          "canBeNull": false,
+          "description": "User's last update date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "login": {
+          "canBeNull": false,
+          "description": "User's login suffix",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "passwordLastUpdate": {
+          "canBeNull": false,
+          "description": "User's password last update date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Current user's status",
+          "fullType": "auth.UserStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "auth.UserStatusEnum"
+        },
+        "urn": {
+          "canBeNull": false,
+          "description": "IAM identity URN of the user",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "auth.UserRequest": {
+      "description": "An IAM user creation request",
+      "id": "UserRequest",
+      "namespace": "auth",
+      "properties": {
+        "description": {
+          "canBeNull": false,
+          "description": "User's description",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "email": {
+          "canBeNull": false,
+          "description": "User's email",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "group": {
+          "canBeNull": false,
+          "description": "User's group",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "login": {
+          "canBeNull": false,
+          "description": "User's login",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "password": {
+          "canBeNull": false,
+          "description": "User's password",
+          "fullType": "password",
+          "readOnly": false,
+          "required": true,
+          "type": "password"
+        }
+      }
+    },
+    "auth.UserStatusEnum": {
+      "description": "Status of a User",
+      "enum": [
+        "DISABLED",
+        "OK",
+        "PASSWORD_CHANGE_REQUIRED"
+      ],
+      "enumType": "string",
+      "id": "UserStatusEnum",
       "namespace": "auth"
     },
     "http.MethodEnum": {

@@ -3,8 +3,8 @@ import fse from 'fs-extra'
 import path from 'path'
 import GenApiTypes from './GenApiTypes';
 import { CodeGenerator } from './CodeGenerator';
-import Bluebird from 'bluebird';
-import rimraf from 'rimraf'
+import Nativebird from 'nativebird';
+import { sync as rimraf} from 'rimraf'
 import { IEndpoint } from './endpoints';
 import { formatUpperCamlCase, formatLowerCamlCase, writeIfDiff } from './utils';
 import { EOL } from 'os';
@@ -51,7 +51,7 @@ export class RegionGenerator {
     async deleteApi(name: string) {
         const fullDir = path.join(this.workDir, name);
         console.log(`${this.endpoint.directory}/${name} can be remove, deleting: ${fullDir}`);
-        rimraf.sync(fullDir);
+        rimraf(fullDir);
         this.deletedApi++;
     }
 
@@ -85,7 +85,7 @@ export class RegionGenerator {
          */
         const concurrency = 1;
         console.log(`Found ${allApi.length} Api available on ${host}`);
-        await Bluebird.map(apis, async apiPath => {
+        await Nativebird.map(apis, async apiPath => {
             let cg = new CodeGenerator(this.endpoint.namespace, { host, port }, apiPath);
             try {
                 await cg.loadSchema();

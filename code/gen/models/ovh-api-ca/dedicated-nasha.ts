@@ -16,10 +16,21 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "nasHA:apiovh:get"
+            {
+              "name": "nasHA:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
-          "parameters": [],
+          "parameters": [
+            {
+              "dataType": "map[string][]iam.resource.TagFilter",
+              "description": "Filter resources on IAM tags",
+              "name": "iamTags",
+              "paramType": "query",
+              "required": false
+            }
+          ],
           "responseType": "string[]"
         }
       ],
@@ -36,7 +47,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "nasHA:apiovh:get"
+            {
+              "name": "nasHA:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -49,7 +63,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.nasha.Storage"
+          "responseType": "dedicated.nasha.StorageWithIAM"
         },
         {
           "apiStatus": {
@@ -59,7 +73,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "nasHA:apiovh:put"
+            {
+              "name": "nasHA:apiovh:put",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -95,7 +112,10 @@ export const schema: Schema = {
           "description": "Launch a contact change procedure",
           "httpMethod": "POST",
           "iamActions": [
-            "nasHA:apiovh:changeContact"
+            {
+              "name": "nasHA:apiovh:changeContact",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -138,17 +158,20 @@ export const schema: Schema = {
       "path": "/dedicated/nasha/{serviceName}/changeContact"
     },
     {
-      "description": "Confirm termination of your service",
+      "description": "Confirm service termination",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Confirm termination of your service",
+          "description": "Confirm service termination",
           "httpMethod": "POST",
           "iamActions": [
-            "nasHA:apiovh:confirmTermination"
+            {
+              "name": "nasHA:apiovh:confirmTermination",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -178,7 +201,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The termination token sent by mail to the admin contact",
+              "description": "The termination token sent by email to the admin contact",
               "fullType": "string",
               "name": "token",
               "paramType": "body",
@@ -199,6 +222,38 @@ export const schema: Schema = {
       "path": "/dedicated/nasha/{serviceName}/confirmTermination"
     },
     {
+      "description": "metricsToken operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Return a read token for manager mimir metrics",
+          "httpMethod": "GET",
+          "iamActions": [
+            {
+              "name": "nasHA:apiovh:metricsToken/get",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your storage",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.storage.MetricsTokenResult"
+        }
+      ],
+      "path": "/dedicated/nasha/{serviceName}/metricsToken"
+    },
+    {
       "description": "List the dedicated.nasha.Partition objects",
       "operations": [
         {
@@ -209,7 +264,10 @@ export const schema: Schema = {
           "description": "Get partition list",
           "httpMethod": "GET",
           "iamActions": [
-            "nasHA:apiovh:partition/get"
+            {
+              "name": "nasHA:apiovh:partition/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -232,7 +290,10 @@ export const schema: Schema = {
           "description": "Create a new partition",
           "httpMethod": "POST",
           "iamActions": [
-            "nasHA:apiovh:partition/create"
+            {
+              "name": "nasHA:apiovh:partition/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -293,7 +354,10 @@ export const schema: Schema = {
           "description": "Delete this partition",
           "httpMethod": "DELETE",
           "iamActions": [
-            "nasHA:apiovh:partition/delete"
+            {
+              "name": "nasHA:apiovh:partition/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -324,7 +388,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "nasHA:apiovh:partition/get"
+            {
+              "name": "nasHA:apiovh:partition/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -355,7 +422,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "nasHA:apiovh:partition/edit"
+            {
+              "name": "nasHA:apiovh:partition/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -399,7 +469,10 @@ export const schema: Schema = {
           "description": "get ACL for this partition",
           "httpMethod": "GET",
           "iamActions": [
-            "nasHA:apiovh:partition/access/get"
+            {
+              "name": "nasHA:apiovh:partition/access/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -430,10 +503,21 @@ export const schema: Schema = {
           "description": "Add a new ACL entry",
           "httpMethod": "POST",
           "iamActions": [
-            "nasHA:apiovh:partition/access/create"
+            {
+              "name": "nasHA:apiovh:partition/access/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
+            {
+              "dataType": "string",
+              "description": "ACL description",
+              "fullType": "string",
+              "name": "aclDescription",
+              "paramType": "body",
+              "required": false
+            },
             {
               "dataType": "ipBlock",
               "description": "Ip or block to add",
@@ -483,7 +567,10 @@ export const schema: Schema = {
           "description": "Delete an ACL entry",
           "httpMethod": "DELETE",
           "iamActions": [
-            "nasHA:apiovh:partition/access/delete"
+            {
+              "name": "nasHA:apiovh:partition/access/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -522,7 +609,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "nasHA:apiovh:partition/access/get"
+            {
+              "name": "nasHA:apiovh:partition/access/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -567,7 +657,10 @@ export const schema: Schema = {
           "description": "Get all RIPE/ARIN blocks that can be used in the ACL",
           "httpMethod": "GET",
           "iamActions": [
-            "nasHA:apiovh:partition/authorizableBlocks/get"
+            {
+              "name": "nasHA:apiovh:partition/authorizableBlocks/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -604,7 +697,10 @@ export const schema: Schema = {
           "description": "Get all IPs that can be used in the ACL",
           "httpMethod": "GET",
           "iamActions": [
-            "nasHA:apiovh:partition/authorizableIps/get"
+            {
+              "name": "nasHA:apiovh:partition/authorizableIps/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -641,7 +737,10 @@ export const schema: Schema = {
           "description": "Get custom snapshots for this partition",
           "httpMethod": "GET",
           "iamActions": [
-            "nasHA:apiovh:partition/customSnapshot/get"
+            {
+              "name": "nasHA:apiovh:partition/customSnapshot/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -672,7 +771,10 @@ export const schema: Schema = {
           "description": "Create a new snapshot",
           "httpMethod": "POST",
           "iamActions": [
-            "nasHA:apiovh:partition/customSnapshot/create"
+            {
+              "name": "nasHA:apiovh:partition/customSnapshot/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -725,7 +827,10 @@ export const schema: Schema = {
           "description": "Delete a given snapshot",
           "httpMethod": "DELETE",
           "iamActions": [
-            "nasHA:apiovh:partition/customSnapshot/delete"
+            {
+              "name": "nasHA:apiovh:partition/customSnapshot/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -764,7 +869,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "nasHA:apiovh:partition/customSnapshot/get"
+            {
+              "name": "nasHA:apiovh:partition/customSnapshot/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -809,7 +917,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "nasHA:apiovh:partition/options/get"
+            {
+              "name": "nasHA:apiovh:partition/options/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -840,7 +951,10 @@ export const schema: Schema = {
           "description": "Setup options",
           "httpMethod": "POST",
           "iamActions": [
-            "nasHA:apiovh:partition/options/create"
+            {
+              "name": "nasHA:apiovh:partition/options/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -901,7 +1015,10 @@ export const schema: Schema = {
           "description": "Get quota for this partition",
           "httpMethod": "GET",
           "iamActions": [
-            "nasHA:apiovh:partition/quota/get"
+            {
+              "name": "nasHA:apiovh:partition/quota/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -932,7 +1049,10 @@ export const schema: Schema = {
           "description": "Set a new quota",
           "httpMethod": "POST",
           "iamActions": [
-            "nasHA:apiovh:partition/quota/create"
+            {
+              "name": "nasHA:apiovh:partition/quota/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -985,7 +1105,10 @@ export const schema: Schema = {
           "description": "Delete a given quota",
           "httpMethod": "DELETE",
           "iamActions": [
-            "nasHA:apiovh:partition/quota/delete"
+            {
+              "name": "nasHA:apiovh:partition/quota/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1024,7 +1147,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "nasHA:apiovh:partition/quota/get"
+            {
+              "name": "nasHA:apiovh:partition/quota/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1069,7 +1195,10 @@ export const schema: Schema = {
           "description": "Get scheduled snapshot types for this partition",
           "httpMethod": "GET",
           "iamActions": [
-            "nasHA:apiovh:partition/snapshot/get"
+            {
+              "name": "nasHA:apiovh:partition/snapshot/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1100,7 +1229,10 @@ export const schema: Schema = {
           "description": "Schedule a new snapshot type",
           "httpMethod": "POST",
           "iamActions": [
-            "nasHA:apiovh:partition/snapshot/create"
+            {
+              "name": "nasHA:apiovh:partition/snapshot/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1145,7 +1277,10 @@ export const schema: Schema = {
           "description": "Delete a given snapshot",
           "httpMethod": "DELETE",
           "iamActions": [
-            "nasHA:apiovh:partition/snapshot/delete"
+            {
+              "name": "nasHA:apiovh:partition/snapshot/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1184,7 +1319,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "nasHA:apiovh:partition/snapshot/get"
+            {
+              "name": "nasHA:apiovh:partition/snapshot/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1229,7 +1367,10 @@ export const schema: Schema = {
           "description": "Return statistics about the partition",
           "httpMethod": "GET",
           "iamActions": [
-            "nasHA:apiovh:partition/use/get"
+            {
+              "name": "nasHA:apiovh:partition/use/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1271,10 +1412,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get service information",
           "httpMethod": "GET",
           "iamActions": [
-            "nasHA:apiovh:serviceInfos/get"
+            {
+              "name": "nasHA:apiovh:serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1294,10 +1438,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Update service information",
           "httpMethod": "PUT",
           "iamActions": [
-            "nasHA:apiovh:serviceInfos/edit"
+            {
+              "name": "nasHA:apiovh:serviceInfos/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1333,7 +1480,10 @@ export const schema: Schema = {
           "description": "View task list",
           "httpMethod": "GET",
           "iamActions": [
-            "nasHA:apiovh:task/get"
+            {
+              "name": "nasHA:apiovh:task/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1378,7 +1528,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "nasHA:apiovh:task/get"
+            {
+              "name": "nasHA:apiovh:task/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1405,18 +1558,22 @@ export const schema: Schema = {
       "path": "/dedicated/nasha/{serviceName}/task/{taskId}"
     },
     {
-      "description": "Terminate your service",
+      "description": "Ask for the termination of your service. Admin contact of this service will receive a termination token in order to confirm its termination with /confirmTermination endpoint.",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Terminate your service",
+          "description": "Ask for the termination of your service",
           "httpMethod": "POST",
           "iamActions": [
-            "nasHA:apiovh:terminate"
+            {
+              "name": "nasHA:apiovh:terminate",
+              "required": true
+            }
           ],
+          "longDescription": "Ask for the termination of your service. Admin contact of this service will receive a termination token by email in order to confirm its termination with /confirmTermination endpoint.",
           "noAuthentication": false,
           "parameters": [
             {
@@ -1444,7 +1601,10 @@ export const schema: Schema = {
           "description": "Return statistics about the nas",
           "httpMethod": "GET",
           "iamActions": [
-            "nasHA:apiovh:use/get"
+            {
+              "name": "nasHA:apiovh:use/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1601,6 +1761,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "long"
+        },
+        "aclDescription": {
+          "canBeNull": true,
+          "description": "a brief description of the acl",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "ip": {
           "canBeNull": false,
@@ -1792,42 +1960,89 @@ export const schema: Schema = {
         }
       }
     },
-    "dedicated.nasha.Vrack": {
-      "description": "Partition Vrack",
-      "id": "Vrack",
+    "dedicated.nasha.StorageWithIAM": {
+      "description": "Storage nas HA",
+      "id": "Storage",
       "namespace": "dedicated.nasha",
       "properties": {
-        "id": {
+        "canCreatePartition": {
           "canBeNull": false,
-          "description": "ID",
+          "description": "True, if partition creation is allowed on this nas HA",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "customName": {
+          "canBeNull": true,
+          "description": "The name you give to the nas",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "datacenter": {
+          "canBeNull": true,
+          "description": "area of nas",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "diskType": {
+          "canBeNull": false,
+          "description": "the disk type of the nasHa",
+          "fullType": "dedicated.storage.DiskTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicated.storage.DiskTypeEnum"
+        },
+        "iam": {
+          "canBeNull": true,
+          "description": "IAM resource metadata",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.ResourceMetadata"
+        },
+        "ip": {
+          "canBeNull": true,
+          "description": "Access ip of nas",
+          "fullType": "ip",
+          "readOnly": true,
+          "required": false,
+          "type": "ip"
+        },
+        "monitored": {
+          "canBeNull": false,
+          "description": "Send an email to customer if any issue is detected",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "serviceName": {
+          "canBeNull": false,
+          "description": "The storage service name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "zpoolCapacity": {
+          "canBeNull": false,
+          "description": "percentage of nas space used in %",
           "fullType": "long",
           "readOnly": true,
           "required": false,
           "type": "long"
         },
-        "serviceIp": {
+        "zpoolSize": {
           "canBeNull": false,
-          "description": "service ip",
-          "fullType": "ipInterface",
+          "description": "the size of the nas",
+          "fullType": "long",
           "readOnly": true,
           "required": false,
-          "type": "ipInterface"
-        },
-        "type": {
-          "canBeNull": false,
-          "description": "type of",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "vrackName": {
-          "canBeNull": false,
-          "description": "vrack name",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
+          "type": "long"
         }
       }
     },
@@ -1923,6 +2138,27 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "DiskTypeEnum",
       "namespace": "dedicated.storage"
+    },
+    "dedicated.storage.MetricsTokenResult": {
+      "description": "A structure describing the metrics token result",
+      "id": "MetricsTokenResult",
+      "namespace": "dedicated.storage",
+      "properties": {
+        "endpoint": {
+          "canBeNull": false,
+          "description": "The url of the endpoint",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "token": {
+          "canBeNull": false,
+          "description": "The token value",
+          "readOnly": false,
+          "required": false,
+          "type": "password"
+        }
+      }
     },
     "dedicated.storage.NasUsageTypeEnum": {
       "description": "Available types for NAS usage",
@@ -2024,6 +2260,77 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "TaskFunctionEnum",
       "namespace": "dedicated.storage"
+    },
+    "iam.ResourceMetadata": {
+      "description": "IAM resource metadata embedded in services models",
+      "id": "ResourceMetadata",
+      "namespace": "iam",
+      "properties": {
+        "displayName": {
+          "canBeNull": true,
+          "description": "Resource display name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Unique identifier of the resource",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "tags": {
+          "canBeNull": true,
+          "description": "Resource tags. Tags that were internally computed are prefixed with ovh:",
+          "fullType": "map[string]string",
+          "readOnly": true,
+          "required": false,
+          "type": "map[string]string"
+        },
+        "urn": {
+          "canBeNull": false,
+          "description": "Unique resource name used in policies",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter": {
+      "description": "Resource tag filter",
+      "id": "TagFilter",
+      "namespace": "iam.resource",
+      "properties": {
+        "operator": {
+          "canBeNull": true,
+          "description": "Operator to use in order to filter on the value (defaults to 'EQ')",
+          "fullType": "iam.resource.TagFilter.OperatorEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.resource.TagFilter.OperatorEnum"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value to use in order to filter tags",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter.OperatorEnum": {
+      "description": "Operator that can be used in order to filter resources tags",
+      "enum": [
+        "EQ"
+      ],
+      "enumType": "string",
+      "id": "OperatorEnum",
+      "namespace": "iam.resource.TagFilter"
     },
     "service.RenewType": {
       "description": "Map a possible renew for a specific service",

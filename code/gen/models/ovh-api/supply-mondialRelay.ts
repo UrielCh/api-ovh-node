@@ -16,7 +16,10 @@ export const schema: Schema = {
           "description": "Find the 10 nearest MondialRelay points from address or city.",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:supplyMondialRelay/create"
+            {
+              "name": "account:apiovh:supplyMondialRelay/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [

@@ -16,10 +16,21 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:get"
+            {
+              "name": "webHosting:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
-          "parameters": [],
+          "parameters": [
+            {
+              "dataType": "map[string][]iam.resource.TagFilter",
+              "description": "Filter resources on IAM tags",
+              "name": "iamTags",
+              "paramType": "query",
+              "required": false
+            }
+          ],
           "responseType": "string[]"
         }
       ],
@@ -36,7 +47,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:get"
+            {
+              "name": "webHosting:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -49,7 +63,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "hosting.web.Service"
+          "responseType": "hosting.web.ServiceWithIAM"
         },
         {
           "apiStatus": {
@@ -59,7 +73,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "webHosting:apiovh:edit"
+            {
+              "name": "webHosting:apiovh:edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -85,71 +102,26 @@ export const schema: Schema = {
       "path": "/hosting/web/{serviceName}"
     },
     {
-      "description": "activatePrivateDatabase operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2019-12-15 00:00:00 +0100 +0100",
-            "deprecatedDate": "2019-12-01 00:00:00 +0100 +0100",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cartServiceOption/webHosting/{serviceName}",
-            "value": "DEPRECATED"
-          },
-          "description": "Activate an included private database on your hosting offer",
-          "httpMethod": "POST",
-          "iamActions": [
-            "webHosting:apiovh:activatePrivateDatabase"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "hosting.PrivateDatabase.AvailableRamSizeEnum",
-              "description": "The private database ram size included in your offer",
-              "fullType": "hosting.PrivateDatabase.AvailableRamSizeEnum",
-              "name": "ram",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "hosting.PrivateDatabase.OrderableVersionEnum",
-              "description": "Private database available versions",
-              "fullType": "hosting.PrivateDatabase.OrderableVersionEnum",
-              "name": "version",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your hosting",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "hosting.web.task"
-        }
-      ],
-      "path": "/hosting/web/{serviceName}/activatePrivateDatabase"
-    },
-    {
-      "description": "List the hosting.web.attachedDomain objects",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Domains or subdomains attached to your hosting",
+          "description": "Get list of attached domains or subdomains attached to your hosting",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:attachedDomain/get"
+            {
+              "name": "webHosting:apiovh:attachedDomain/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your hosting",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -179,101 +151,58 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Link a domain to this hosting",
+          "description": "Create an attached domain",
           "httpMethod": "POST",
           "iamActions": [
-            "webHosting:apiovh:attachedDomain/create"
+            {
+              "name": "webHosting:apiovh:attachedDomain/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "hosting.web.attachedDomain.CdnEnum",
-              "description": "Is linked to the hosting cdn",
-              "fullType": "hosting.web.attachedDomain.CdnEnum",
-              "name": "cdn",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Domain to link",
-              "fullType": "string",
-              "name": "domain",
+              "dataType": "hosting.web.AttachedDomain",
+              "description": "Request Body",
+              "fullType": "hosting.web.AttachedDomain",
               "paramType": "body",
               "required": true
             },
             {
-              "dataType": "hosting.web.attachedDomain.FirewallEnum",
-              "description": "Firewall state for this path",
-              "fullType": "hosting.web.attachedDomain.FirewallEnum",
-              "name": "firewall",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "string",
-              "description": "Put domain for separate the logs on logs.ovh.net",
-              "fullType": "string",
-              "name": "ownLog",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Domain's path, relative to your home directory",
-              "fullType": "string",
-              "name": "path",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "The runtime configuration ID linked to this attached domain",
-              "fullType": "long",
-              "name": "runtimeId",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "Put domain in ssl certificate",
-              "fullType": "boolean",
-              "name": "ssl",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your hosting",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.web.task"
+          "responseType": "hosting.web.PublicTask"
         }
       ],
       "path": "/hosting/web/{serviceName}/attachedDomain"
     },
     {
-      "description": "Virtual service",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Unlink domain from hosting",
+          "description": "Unlink attached domain from hosting",
           "httpMethod": "DELETE",
           "iamActions": [
-            "webHosting:apiovh:attachedDomain/delete"
+            {
+              "name": "webHosting:apiovh:attachedDomain/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Domain linked (fqdn)",
+              "description": "Domain",
               "fullType": "string",
               "name": "domain",
               "paramType": "path",
@@ -281,30 +210,41 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your hosting",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "If set to true, DNS zone will not be updated by the operation",
+              "fullType": "boolean",
+              "name": "bypassDNSConfiguration",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "hosting.web.task"
+          "responseType": "hosting.web.PublicTask"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get attachedDomain properties",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:attachedDomain/get"
+            {
+              "name": "webHosting:apiovh:attachedDomain/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Domain linked (fqdn)",
+              "description": "Domain",
               "fullType": "string",
               "name": "domain",
               "paramType": "path",
@@ -312,37 +252,40 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your hosting",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.web.attachedDomain"
+          "responseType": "hosting.web.attachedDomain.PublicAttachedDomain"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Update attached domain properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "webHosting:apiovh:attachedDomain/edit"
+            {
+              "name": "webHosting:apiovh:attachedDomain/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "hosting.web.attachedDomain",
-              "description": "New object properties",
-              "fullType": "hosting.web.attachedDomain",
+              "dataType": "hosting.web.AttachedDomain",
+              "description": "Request Body",
+              "fullType": "hosting.web.AttachedDomain",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Domain linked (fqdn)",
+              "description": "Domain",
               "fullType": "string",
               "name": "domain",
               "paramType": "path",
@@ -350,7 +293,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your hosting",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -363,6 +306,46 @@ export const schema: Schema = {
       "path": "/hosting/web/{serviceName}/attachedDomain/{domain}"
     },
     {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get attachedDomain DNS status",
+          "httpMethod": "GET",
+          "iamActions": [
+            {
+              "name": "webHosting:apiovh:attachedDomain/digStatus/get",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "hosting.web.attachedDomain.DigStatus"
+        }
+      ],
+      "path": "/hosting/web/{serviceName}/attachedDomain/{domain}/digStatus"
+    },
+    {
       "description": "purgeCache operations",
       "operations": [
         {
@@ -373,7 +356,10 @@ export const schema: Schema = {
           "description": "Purge cache for this attached domain",
           "httpMethod": "POST",
           "iamActions": [
-            "webHosting:apiovh:attachedDomain/purgeCache"
+            {
+              "name": "webHosting:apiovh:attachedDomain/purgeCache",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -410,7 +396,10 @@ export const schema: Schema = {
           "description": "Restart the virtual host of the attached domain",
           "httpMethod": "POST",
           "iamActions": [
-            "webHosting:apiovh:attachedDomain/restart"
+            {
+              "name": "webHosting:apiovh:attachedDomain/restart",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -447,7 +436,10 @@ export const schema: Schema = {
           "description": "List configurations available for current hosting",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:availableConfigurations/get"
+            {
+              "name": "webHosting:apiovh:availableConfigurations/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -484,7 +476,10 @@ export const schema: Schema = {
           "description": "History of your hosting boost",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:boostHistory/get"
+            {
+              "name": "webHosting:apiovh:boostHistory/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -521,7 +516,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:boostHistory/get"
+            {
+              "name": "webHosting:apiovh:boostHistory/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -558,7 +556,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:cdn/get"
+            {
+              "name": "webHosting:apiovh:cdn/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -587,7 +588,10 @@ export const schema: Schema = {
           "description": "List available options for a Shared CDN service",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:cdn/availableOptions/get"
+            {
+              "name": "webHosting:apiovh:cdn/availableOptions/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -616,7 +620,10 @@ export const schema: Schema = {
           "description": "List all domains for a Shared CDN service",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:cdn/domain/get"
+            {
+              "name": "webHosting:apiovh:cdn/domain/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -645,7 +652,10 @@ export const schema: Schema = {
           "description": "Get details for a domain on a Shared CDN service",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:cdn/domain/get"
+            {
+              "name": "webHosting:apiovh:cdn/domain/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -682,7 +692,10 @@ export const schema: Schema = {
           "description": "Generate URL to logs archive",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:cdn/domain/logs/get"
+            {
+              "name": "webHosting:apiovh:cdn/domain/logs/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -727,7 +740,10 @@ export const schema: Schema = {
           "description": "List all options for a domain",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:cdn/domain/option/get"
+            {
+              "name": "webHosting:apiovh:cdn/domain/option/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -758,7 +774,10 @@ export const schema: Schema = {
           "description": "Add an option on a domain",
           "httpMethod": "POST",
           "iamActions": [
-            "webHosting:apiovh:cdn/domain/option/create"
+            {
+              "name": "webHosting:apiovh:cdn/domain/option/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -802,7 +821,10 @@ export const schema: Schema = {
           "description": "Remove or Reset an option to his default value",
           "httpMethod": "DELETE",
           "iamActions": [
-            "webHosting:apiovh:cdn/domain/option/delete"
+            {
+              "name": "webHosting:apiovh:cdn/domain/option/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -841,7 +863,10 @@ export const schema: Schema = {
           "description": "Get details for an option on a domain",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:cdn/domain/option/get"
+            {
+              "name": "webHosting:apiovh:cdn/domain/option/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -880,7 +905,10 @@ export const schema: Schema = {
           "description": "Update an option on a domain",
           "httpMethod": "PUT",
           "iamActions": [
-            "webHosting:apiovh:cdn/domain/option/edit"
+            {
+              "name": "webHosting:apiovh:cdn/domain/option/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -932,7 +960,10 @@ export const schema: Schema = {
           "description": "Flush cache content on CDN for a domain",
           "httpMethod": "POST",
           "iamActions": [
-            "webHosting:apiovh:cdn/domain/purge"
+            {
+              "name": "webHosting:apiovh:cdn/domain/purge",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -985,7 +1016,10 @@ export const schema: Schema = {
           "description": "Trigger a refresh for a domain",
           "httpMethod": "POST",
           "iamActions": [
-            "webHosting:apiovh:cdn/domain/refresh"
+            {
+              "name": "webHosting:apiovh:cdn/domain/refresh",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1016,13 +1050,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2024-01-01T00:00:00Z",
+            "deprecatedDate": "2023-11-03T00:00:00Z",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Get CDN statistics for a domain",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:cdn/domain/statistics/get"
+            {
+              "name": "webHosting:apiovh:cdn/domain/statistics/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1067,7 +1106,10 @@ export const schema: Schema = {
           "description": "List all operations for a Shared CDN service",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:cdn/operation/get"
+            {
+              "name": "webHosting:apiovh:cdn/operation/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1096,7 +1138,10 @@ export const schema: Schema = {
           "description": "Get details for a Shared CDN operation",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:cdn/operation/get"
+            {
+              "name": "webHosting:apiovh:cdn/operation/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1133,7 +1178,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:cdn/serviceInfos/get"
+            {
+              "name": "webHosting:apiovh:cdn/serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1162,7 +1210,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "POST",
           "iamActions": [
-            "webHosting:apiovh:cdn/serviceInfosUpdate/create"
+            {
+              "name": "webHosting:apiovh:cdn/serviceInfosUpdate/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1199,7 +1250,10 @@ export const schema: Schema = {
           "description": "Terminate your cdn sub service",
           "httpMethod": "POST",
           "iamActions": [
-            "webHosting:apiovh:cdn/terminate"
+            {
+              "name": "webHosting:apiovh:cdn/terminate",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1228,7 +1282,10 @@ export const schema: Schema = {
           "description": "Launch a contact change procedure",
           "httpMethod": "POST",
           "iamActions": [
-            "webHosting:apiovh:changeContact"
+            {
+              "name": "webHosting:apiovh:changeContact",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1281,7 +1338,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:configuration/get"
+            {
+              "name": "webHosting:apiovh:configuration/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1304,7 +1364,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "webHosting:apiovh:configuration/edit"
+            {
+              "name": "webHosting:apiovh:configuration/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1330,17 +1393,20 @@ export const schema: Schema = {
       "path": "/hosting/web/{serviceName}/configuration"
     },
     {
-      "description": "Confirm termination of your service",
+      "description": "Confirm service termination",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Confirm termination of your service",
+          "description": "Confirm service termination",
           "httpMethod": "POST",
           "iamActions": [
-            "webHosting:apiovh:confirmTermination"
+            {
+              "name": "webHosting:apiovh:confirmTermination",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1370,7 +1436,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The termination token sent by mail to the admin contact",
+              "description": "The termination token sent by email to the admin contact",
               "fullType": "string",
               "name": "token",
               "paramType": "body",
@@ -1401,7 +1467,10 @@ export const schema: Schema = {
           "description": "Crons on your webhosting",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:cron/get"
+            {
+              "name": "webHosting:apiovh:cron/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1456,7 +1525,10 @@ export const schema: Schema = {
           "description": "Create new cron",
           "httpMethod": "POST",
           "iamActions": [
-            "webHosting:apiovh:cron/create"
+            {
+              "name": "webHosting:apiovh:cron/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1492,7 +1564,10 @@ export const schema: Schema = {
           "description": "Delete cron",
           "httpMethod": "DELETE",
           "iamActions": [
-            "webHosting:apiovh:cron/delete"
+            {
+              "name": "webHosting:apiovh:cron/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1523,7 +1598,10 @@ export const schema: Schema = {
           "description": "Get cron by id",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:cron/get"
+            {
+              "name": "webHosting:apiovh:cron/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1554,7 +1632,10 @@ export const schema: Schema = {
           "description": "Update cron",
           "httpMethod": "PUT",
           "iamActions": [
-            "webHosting:apiovh:cron/edit"
+            {
+              "name": "webHosting:apiovh:cron/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1598,7 +1679,10 @@ export const schema: Schema = {
           "description": "Get the list of supported languages by web domain",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:cronAvailableLanguages/get"
+            {
+              "name": "webHosting:apiovh:cronAvailableLanguages/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1627,7 +1711,10 @@ export const schema: Schema = {
           "description": "Databases linked to your hosting",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:database/get"
+            {
+              "name": "webHosting:apiovh:database/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1690,7 +1777,10 @@ export const schema: Schema = {
           "description": "Install new database",
           "httpMethod": "POST",
           "iamActions": [
-            "webHosting:apiovh:database/create"
+            {
+              "name": "webHosting:apiovh:database/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1767,7 +1857,10 @@ export const schema: Schema = {
           "description": "Delete database",
           "httpMethod": "DELETE",
           "iamActions": [
-            "webHosting:apiovh:database/delete"
+            {
+              "name": "webHosting:apiovh:database/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1798,7 +1891,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:database/get"
+            {
+              "name": "webHosting:apiovh:database/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1835,7 +1931,10 @@ export const schema: Schema = {
           "description": "Get available capabilities for this database",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:database/capabilities/get"
+            {
+              "name": "webHosting:apiovh:database/capabilities/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1872,7 +1971,10 @@ export const schema: Schema = {
           "description": "Request a password change",
           "httpMethod": "POST",
           "iamActions": [
-            "webHosting:apiovh:database/changePassword"
+            {
+              "name": "webHosting:apiovh:database/changePassword",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1907,6 +2009,226 @@ export const schema: Schema = {
       "path": "/hosting/web/{serviceName}/database/{name}/changePassword"
     },
     {
+      "description": "List the hosting.web.database.copy objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Copies available for your databases",
+          "httpMethod": "GET",
+          "iamActions": [
+            {
+              "name": "webHosting:apiovh:database/copy/get",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Database name (like mydb.mysql.db or mydb.postgres.db)",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "uuid[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create a new copy of your database",
+          "httpMethod": "POST",
+          "iamActions": [
+            {
+              "name": "webHosting:apiovh:database/copy/create",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Database name (like mydb.mysql.db or mydb.postgres.db)",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "hosting.web.database.copy"
+        }
+      ],
+      "path": "/hosting/web/{serviceName}/database/{name}/copy"
+    },
+    {
+      "description": "Copy",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete the database copy",
+          "httpMethod": "DELETE",
+          "iamActions": [
+            {
+              "name": "webHosting:apiovh:database/copy/delete",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Copy id",
+              "fullType": "uuid",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Database name (like mydb.mysql.db or mydb.postgres.db)",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "iamActions": [
+            {
+              "name": "webHosting:apiovh:database/copy/get",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Copy id",
+              "fullType": "uuid",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Database name (like mydb.mysql.db or mydb.postgres.db)",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "hosting.web.database.copy"
+        }
+      ],
+      "path": "/hosting/web/{serviceName}/database/{name}/copy/{id}"
+    },
+    {
+      "description": "copyRestore operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Request the copy restore in this database",
+          "httpMethod": "POST",
+          "iamActions": [
+            {
+              "name": "webHosting:apiovh:database/copyRestore",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "UUID of the copy to restore",
+              "fullType": "uuid",
+              "name": "copyId",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "If database will be flushed before importing the dump. Default: false",
+              "fullType": "boolean",
+              "name": "flushDatabase",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Database name (like mydb.mysql.db or mydb.postgres.db)",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "hosting.web.task"
+        }
+      ],
+      "path": "/hosting/web/{serviceName}/database/{name}/copyRestore"
+    },
+    {
       "description": "List the hosting.web.database.dump objects",
       "operations": [
         {
@@ -1917,7 +2239,10 @@ export const schema: Schema = {
           "description": "Dump available for your databases",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:database/dump/get"
+            {
+              "name": "webHosting:apiovh:database/dump/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1988,7 +2313,10 @@ export const schema: Schema = {
           "description": "Request the dump from your database",
           "httpMethod": "POST",
           "iamActions": [
-            "webHosting:apiovh:database/dump/create"
+            {
+              "name": "webHosting:apiovh:database/dump/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2041,7 +2369,10 @@ export const schema: Schema = {
           "description": "Delete dump before expiration date",
           "httpMethod": "DELETE",
           "iamActions": [
-            "webHosting:apiovh:database/dump/delete"
+            {
+              "name": "webHosting:apiovh:database/dump/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2080,7 +2411,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:database/dump/get"
+            {
+              "name": "webHosting:apiovh:database/dump/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2125,7 +2459,10 @@ export const schema: Schema = {
           "description": "Request the restore from this dump",
           "httpMethod": "POST",
           "iamActions": [
-            "webHosting:apiovh:database/dump/restore"
+            {
+              "name": "webHosting:apiovh:database/dump/restore",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2170,7 +2507,10 @@ export const schema: Schema = {
           "description": "Import a dump from an specific file uploaded with /me/documents",
           "httpMethod": "POST",
           "iamActions": [
-            "webHosting:apiovh:database/import"
+            {
+              "name": "webHosting:apiovh:database/import",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2231,7 +2571,10 @@ export const schema: Schema = {
           "description": "Request specific operation for your database",
           "httpMethod": "POST",
           "iamActions": [
-            "webHosting:apiovh:database/request/create"
+            {
+              "name": "webHosting:apiovh:database/request/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2276,7 +2619,10 @@ export const schema: Schema = {
           "description": "Request the restore from your database backup",
           "httpMethod": "POST",
           "iamActions": [
-            "webHosting:apiovh:database/restore"
+            {
+              "name": "webHosting:apiovh:database/restore",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2329,7 +2675,10 @@ export const schema: Schema = {
           "description": "Get statistics about this database",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:database/statistics/get"
+            {
+              "name": "webHosting:apiovh:database/statistics/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2382,7 +2731,10 @@ export const schema: Schema = {
           "description": "List available database type",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:databaseAvailableType/get"
+            {
+              "name": "webHosting:apiovh:databaseAvailableType/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2411,7 +2763,10 @@ export const schema: Schema = {
           "description": "List available database version following a type",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:databaseAvailableVersion/get"
+            {
+              "name": "webHosting:apiovh:databaseAvailableVersion/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2448,7 +2803,10 @@ export const schema: Schema = {
           "description": "List available database you can install",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:databaseCreationCapabilities/get"
+            {
+              "name": "webHosting:apiovh:databaseCreationCapabilities/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2477,7 +2835,10 @@ export const schema: Schema = {
           "description": "Dumps linked to your hosting",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:dump/get"
+            {
+              "name": "webHosting:apiovh:dump/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2554,7 +2915,10 @@ export const schema: Schema = {
           "description": "Delete dump before expiration date",
           "httpMethod": "DELETE",
           "iamActions": [
-            "webHosting:apiovh:dump/delete"
+            {
+              "name": "webHosting:apiovh:dump/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2585,7 +2949,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:dump/get"
+            {
+              "name": "webHosting:apiovh:dump/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2622,7 +2989,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:email/get"
+            {
+              "name": "webHosting:apiovh:email/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2645,7 +3015,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "webHosting:apiovh:email/edit"
+            {
+              "name": "webHosting:apiovh:email/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2681,7 +3054,10 @@ export const schema: Schema = {
           "description": "Request the last bounces",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:email/bounces/get"
+            {
+              "name": "webHosting:apiovh:email/bounces/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2718,7 +3094,10 @@ export const schema: Schema = {
           "description": "Request specific operation for your email",
           "httpMethod": "POST",
           "iamActions": [
-            "webHosting:apiovh:email/request/create"
+            {
+              "name": "webHosting:apiovh:email/request/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2755,7 +3134,10 @@ export const schema: Schema = {
           "description": "Request the history volume of email sent",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:email/volumes/get"
+            {
+              "name": "webHosting:apiovh:email/volumes/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2784,7 +3166,10 @@ export const schema: Schema = {
           "description": "Mail service linked to webhosting",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:emailOption/get"
+            {
+              "name": "webHosting:apiovh:emailOption/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2813,7 +3198,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:emailOption/get"
+            {
+              "name": "webHosting:apiovh:emailOption/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2850,7 +3238,10 @@ export const schema: Schema = {
           "description": "Get the service properties",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:emailOption/serviceInfos/get"
+            {
+              "name": "webHosting:apiovh:emailOption/serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2887,7 +3278,10 @@ export const schema: Schema = {
           "description": "Terminate your email sub service",
           "httpMethod": "POST",
           "iamActions": [
-            "webHosting:apiovh:emailOption/terminate"
+            {
+              "name": "webHosting:apiovh:emailOption/terminate",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2914,23 +3308,25 @@ export const schema: Schema = {
       "path": "/hosting/web/{serviceName}/emailOption/{id}/terminate"
     },
     {
-      "description": "List the hosting.web.envVar objects",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Environment variables set on your webhosting",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:envVar/get"
+            {
+              "name": "webHosting:apiovh:envVar/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your hosting",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2952,69 +3348,56 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Set a variable to this hosting",
           "httpMethod": "POST",
           "iamActions": [
-            "webHosting:apiovh:envVar/create"
+            {
+              "name": "webHosting:apiovh:envVar/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Name of the new variable",
-              "fullType": "string",
-              "name": "key",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "hosting.web.envVar.TypeEnum",
-              "description": "Type of variable set",
-              "fullType": "hosting.web.envVar.TypeEnum",
-              "name": "type",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "password",
-              "description": "Value of the variable",
-              "fullType": "password",
-              "name": "value",
+              "dataType": "hosting.web.EnvVarInput",
+              "description": "Request Body",
+              "fullType": "hosting.web.EnvVarInput",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your hosting",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.web.task"
+          "responseType": "hosting.web.PublicTask"
         }
       ],
       "path": "/hosting/web/{serviceName}/envVar"
     },
     {
-      "description": "Environment variables set into your webhosting account",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Remove variable from hosting",
           "httpMethod": "DELETE",
           "iamActions": [
-            "webHosting:apiovh:envVar/delete"
+            {
+              "name": "webHosting:apiovh:envVar/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Name of the variable",
+              "description": "Key",
               "fullType": "string",
               "name": "key",
               "paramType": "path",
@@ -3022,30 +3405,32 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your hosting",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.web.task"
+          "responseType": "hosting.web.PublicTask"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:envVar/get"
+            {
+              "name": "webHosting:apiovh:envVar/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Name of the variable",
+              "description": "Key",
               "fullType": "string",
               "name": "key",
               "paramType": "path",
@@ -3053,37 +3438,39 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your hosting",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.web.envVar"
+          "responseType": "hosting.web.EnvVar"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "webHosting:apiovh:envVar/edit"
+            {
+              "name": "webHosting:apiovh:envVar/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "hosting.web.envVar",
-              "description": "New object properties",
-              "fullType": "hosting.web.envVar",
+              "dataType": "hosting.web.EnvVar",
+              "description": "Request Body",
+              "fullType": "hosting.web.EnvVar",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Name of the variable",
+              "description": "Key",
               "fullType": "string",
               "name": "key",
               "paramType": "path",
@@ -3091,14 +3478,14 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your hosting",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "void"
+          "responseType": "hosting.web.PublicTask"
         }
       ],
       "path": "/hosting/web/{serviceName}/envVar/{key}"
@@ -3114,7 +3501,10 @@ export const schema: Schema = {
           "description": "Sqlperso linked to your hosting",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:extraSqlPerso/get"
+            {
+              "name": "webHosting:apiovh:extraSqlPerso/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3143,7 +3533,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:extraSqlPerso/get"
+            {
+              "name": "webHosting:apiovh:extraSqlPerso/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3180,7 +3573,10 @@ export const schema: Schema = {
           "description": "Get databases linked with this option",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:extraSqlPerso/databases/get"
+            {
+              "name": "webHosting:apiovh:extraSqlPerso/databases/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3217,7 +3613,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:extraSqlPerso/serviceInfos/get"
+            {
+              "name": "webHosting:apiovh:extraSqlPerso/serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3254,7 +3653,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "POST",
           "iamActions": [
-            "webHosting:apiovh:extraSqlPerso/serviceInfosUpdate/create"
+            {
+              "name": "webHosting:apiovh:extraSqlPerso/serviceInfosUpdate/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3299,7 +3701,10 @@ export const schema: Schema = {
           "description": "Terminate your extraSqlPerso sub service",
           "httpMethod": "POST",
           "iamActions": [
-            "webHosting:apiovh:extraSqlPerso/terminate"
+            {
+              "name": "webHosting:apiovh:extraSqlPerso/terminate",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3336,7 +3741,10 @@ export const schema: Schema = {
           "description": "Freedom linked to this hosting account",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:freedom/get"
+            {
+              "name": "webHosting:apiovh:freedom/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3373,7 +3781,10 @@ export const schema: Schema = {
           "description": "Delete the freedom",
           "httpMethod": "DELETE",
           "iamActions": [
-            "webHosting:apiovh:freedom/delete"
+            {
+              "name": "webHosting:apiovh:freedom/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3404,7 +3815,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:freedom/get"
+            {
+              "name": "webHosting:apiovh:freedom/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3441,7 +3855,10 @@ export const schema: Schema = {
           "description": "User of multidomain independent allowed on your hosting",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:indy/get"
+            {
+              "name": "webHosting:apiovh:indy/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3478,7 +3895,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:indy/get"
+            {
+              "name": "webHosting:apiovh:indy/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3515,7 +3935,10 @@ export const schema: Schema = {
           "description": "Local SEO accounts associated to the hosting",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:localSeo/account/get"
+            {
+              "name": "webHosting:apiovh:localSeo/account/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3552,7 +3975,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:localSeo/account/get"
+            {
+              "name": "webHosting:apiovh:localSeo/account/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3589,7 +4015,10 @@ export const schema: Schema = {
           "description": "Login this location for SSO",
           "httpMethod": "POST",
           "iamActions": [
-            "webHosting:apiovh:localSeo/account/login"
+            {
+              "name": "webHosting:apiovh:localSeo/account/login",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3626,7 +4055,10 @@ export const schema: Schema = {
           "description": "Check email availability for a local SEO order",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:localSeo/emailAvailability/get"
+            {
+              "name": "webHosting:apiovh:localSeo/emailAvailability/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3663,7 +4095,10 @@ export const schema: Schema = {
           "description": "Local SEO locations associated to the hosting",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:localSeo/location/get"
+            {
+              "name": "webHosting:apiovh:localSeo/location/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3692,7 +4127,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:localSeo/location/get"
+            {
+              "name": "webHosting:apiovh:localSeo/location/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3729,7 +4167,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:localSeo/location/serviceInfos/get"
+            {
+              "name": "webHosting:apiovh:localSeo/location/serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3766,7 +4207,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "POST",
           "iamActions": [
-            "webHosting:apiovh:localSeo/location/serviceInfosUpdate"
+            {
+              "name": "webHosting:apiovh:localSeo/location/serviceInfosUpdate",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3811,7 +4255,10 @@ export const schema: Schema = {
           "description": "Terminate a local SEO sub service",
           "httpMethod": "POST",
           "iamActions": [
-            "webHosting:apiovh:localSeo/location/terminate"
+            {
+              "name": "webHosting:apiovh:localSeo/location/terminate",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3848,7 +4295,10 @@ export const schema: Schema = {
           "description": "Module installed on your hosting",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:module/get"
+            {
+              "name": "webHosting:apiovh:module/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3871,7 +4321,10 @@ export const schema: Schema = {
           "description": "Install a new module",
           "httpMethod": "POST",
           "iamActions": [
-            "webHosting:apiovh:module/create"
+            {
+              "name": "webHosting:apiovh:module/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3956,7 +4409,10 @@ export const schema: Schema = {
           "description": "Delete a module installed",
           "httpMethod": "DELETE",
           "iamActions": [
-            "webHosting:apiovh:module/delete"
+            {
+              "name": "webHosting:apiovh:module/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3995,7 +4451,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:module/get"
+            {
+              "name": "webHosting:apiovh:module/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4032,7 +4491,10 @@ export const schema: Schema = {
           "description": "Generate a new admin password for your module",
           "httpMethod": "POST",
           "iamActions": [
-            "webHosting:apiovh:module/changePassword"
+            {
+              "name": "webHosting:apiovh:module/changePassword",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4069,7 +4531,10 @@ export const schema: Schema = {
           "description": "Configuration used on your hosting",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:ovhConfig/get"
+            {
+              "name": "webHosting:apiovh:ovhConfig/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4114,7 +4579,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:ovhConfig/get"
+            {
+              "name": "webHosting:apiovh:ovhConfig/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4151,7 +4619,10 @@ export const schema: Schema = {
           "description": "Apply a new configuration on this path",
           "httpMethod": "POST",
           "iamActions": [
-            "webHosting:apiovh:ovhConfig/changeConfiguration"
+            {
+              "name": "webHosting:apiovh:ovhConfig/changeConfiguration",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4228,7 +4699,10 @@ export const schema: Schema = {
           "description": "Rollback to an old configuration",
           "httpMethod": "POST",
           "iamActions": [
-            "webHosting:apiovh:ovhConfig/rollback"
+            {
+              "name": "webHosting:apiovh:ovhConfig/rollback",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4273,7 +4747,10 @@ export const schema: Schema = {
           "description": "Get the list of versions and container image available on your hosting",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:ovhConfigCapabilities/get"
+            {
+              "name": "webHosting:apiovh:ovhConfigCapabilities/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4302,7 +4779,10 @@ export const schema: Schema = {
           "description": "Get recommended values on ovhConfig file",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:ovhConfigRecommendedValues/get"
+            {
+              "name": "webHosting:apiovh:ovhConfigRecommendedValues/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4331,7 +4811,10 @@ export const schema: Schema = {
           "description": "Synchronize the configuration listing with content on your hosting",
           "httpMethod": "POST",
           "iamActions": [
-            "webHosting:apiovh:ovhConfig/refresh"
+            {
+              "name": "webHosting:apiovh:ovhConfig/refresh",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4360,7 +4843,10 @@ export const schema: Schema = {
           "description": "Own Logs linked to your hosting",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:ownLogs/get"
+            {
+              "name": "webHosting:apiovh:ownLogs/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4397,7 +4883,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:ownLogs/get"
+            {
+              "name": "webHosting:apiovh:ownLogs/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4434,7 +4923,10 @@ export const schema: Schema = {
           "description": "User allowed to connect into your logs interface",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:ownLogs/userLogs/get"
+            {
+              "name": "webHosting:apiovh:ownLogs/userLogs/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4473,7 +4965,10 @@ export const schema: Schema = {
           "description": "Create new userLogs",
           "httpMethod": "POST",
           "iamActions": [
-            "webHosting:apiovh:ownLogs/userLogs/create"
+            {
+              "name": "webHosting:apiovh:ownLogs/userLogs/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4542,7 +5037,10 @@ export const schema: Schema = {
           "description": "Delete the userLogs",
           "httpMethod": "DELETE",
           "iamActions": [
-            "webHosting:apiovh:ownLogs/userLogs/delete"
+            {
+              "name": "webHosting:apiovh:ownLogs/userLogs/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4581,7 +5079,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:ownLogs/userLogs/get"
+            {
+              "name": "webHosting:apiovh:ownLogs/userLogs/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4620,7 +5121,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "webHosting:apiovh:ownLogs/userLogs/edit"
+            {
+              "name": "webHosting:apiovh:ownLogs/userLogs/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4672,7 +5176,10 @@ export const schema: Schema = {
           "description": "Request a password change",
           "httpMethod": "POST",
           "iamActions": [
-            "webHosting:apiovh:ownLogs/userLogs/changePassword"
+            {
+              "name": "webHosting:apiovh:ownLogs/userLogs/changePassword",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4725,7 +5232,10 @@ export const schema: Schema = {
           "description": "List available privateDatabase you can install",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:privateDatabaseCreationCapabilities/get"
+            {
+              "name": "webHosting:apiovh:privateDatabaseCreationCapabilities/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4754,7 +5264,10 @@ export const schema: Schema = {
           "description": "List linked privateDatabases",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:privateDatabases/get"
+            {
+              "name": "webHosting:apiovh:privateDatabases/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4783,7 +5296,10 @@ export const schema: Schema = {
           "description": "Request specific operation for your hosting",
           "httpMethod": "POST",
           "iamActions": [
-            "webHosting:apiovh:request"
+            {
+              "name": "webHosting:apiovh:request",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4820,7 +5336,10 @@ export const schema: Schema = {
           "description": "Allows you to boost your offer.",
           "httpMethod": "POST",
           "iamActions": [
-            "webHosting:apiovh:requestBoost"
+            {
+              "name": "webHosting:apiovh:requestBoost",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4857,7 +5376,10 @@ export const schema: Schema = {
           "description": "Restore this snapshot ALL CURRENT DATA WILL BE REPLACED BY YOUR SNAPSHOT",
           "httpMethod": "POST",
           "iamActions": [
-            "webHosting:apiovh:restoreSnapshot"
+            {
+              "name": "webHosting:apiovh:restoreSnapshot",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4894,7 +5416,10 @@ export const schema: Schema = {
           "description": "List of runtime configurations to your hosting",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:runtime/get"
+            {
+              "name": "webHosting:apiovh:runtime/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4933,7 +5458,10 @@ export const schema: Schema = {
           "description": "Request the creation of a new runtime configuration",
           "httpMethod": "POST",
           "iamActions": [
-            "webHosting:apiovh:runtime/create"
+            {
+              "name": "webHosting:apiovh:runtime/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5018,7 +5546,10 @@ export const schema: Schema = {
           "description": "Delete a runtime configuration of an hosting",
           "httpMethod": "DELETE",
           "iamActions": [
-            "webHosting:apiovh:runtime/delete"
+            {
+              "name": "webHosting:apiovh:runtime/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5049,7 +5580,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:runtime/get"
+            {
+              "name": "webHosting:apiovh:runtime/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5080,7 +5614,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "webHosting:apiovh:runtime/edit"
+            {
+              "name": "webHosting:apiovh:runtime/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5124,7 +5661,10 @@ export const schema: Schema = {
           "description": "Get the attached domains linked to this runtime configuration",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:runtime/attachedDomains/get"
+            {
+              "name": "webHosting:apiovh:runtime/attachedDomains/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5161,7 +5701,10 @@ export const schema: Schema = {
           "description": "List available runtime configurations available backend types",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:runtimeAvailableTypes/get"
+            {
+              "name": "webHosting:apiovh:runtimeAvailableTypes/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5195,10 +5738,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get service information",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:serviceInfos/get"
+            {
+              "name": "webHosting:apiovh:serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5218,10 +5764,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Update service information",
           "httpMethod": "PUT",
           "iamActions": [
-            "webHosting:apiovh:serviceInfos/edit"
+            {
+              "name": "webHosting:apiovh:serviceInfos/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5257,7 +5806,10 @@ export const schema: Schema = {
           "description": "Delete a hosted SSL",
           "httpMethod": "DELETE",
           "iamActions": [
-            "webHosting:apiovh:ssl/delete"
+            {
+              "name": "webHosting:apiovh:ssl/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5280,7 +5832,10 @@ export const schema: Schema = {
           "description": "Get hosted SSL properties",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:ssl/get"
+            {
+              "name": "webHosting:apiovh:ssl/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5300,47 +5855,33 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Create the free default HostedSsl OR import your proper SSL on your hosting",
+          "description": "Create the free default HostedSsl OR import your own SSL on your hosting",
           "httpMethod": "POST",
           "iamActions": [
-            "webHosting:apiovh:ssl/create"
+            {
+              "name": "webHosting:apiovh:ssl/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "text",
-              "description": "If you want import your proper SSL, give the certificate here and the associated key after (optional)",
-              "fullType": "text",
-              "name": "certificate",
+              "dataType": "hosting.web.SSLInput",
+              "description": "Request Body",
+              "fullType": "hosting.web.SSLInput",
               "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "text",
-              "description": "If you want import your proper SSL, give the chain linked to the associated certificate (optional)",
-              "fullType": "text",
-              "name": "chain",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "text",
-              "description": "If you want import your proper SSL, give the key here and the associated certificate before (optional)",
-              "fullType": "text",
-              "name": "key",
-              "paramType": "body",
-              "required": false
+              "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your hosting",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.web.ssl"
+          "responseType": "hosting.web.SSL"
         }
       ],
       "path": "/hosting/web/{serviceName}/ssl"
@@ -5356,7 +5897,10 @@ export const schema: Schema = {
           "description": "Get list of domains linked to the hosted SSL",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:ssl/get"
+            {
+              "name": "webHosting:apiovh:ssl/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5375,30 +5919,33 @@ export const schema: Schema = {
       "path": "/hosting/web/{serviceName}/ssl/domains"
     },
     {
-      "description": "regenerate operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Request the regeneration of your HostedSsl",
+          "description": "Regenerate a hosted SSL",
           "httpMethod": "POST",
           "iamActions": [
-            "webHosting:apiovh:ssl/regenerate"
+            {
+              "name": "webHosting:apiovh:ssl/regenerate",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your hosting",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.web.ssl"
+          "responseType": "hosting.web.SSL"
         }
       ],
       "path": "/hosting/web/{serviceName}/ssl/regenerate"
@@ -5414,7 +5961,10 @@ export const schema: Schema = {
           "description": "Get hosted SSL report properties",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:ssl/get"
+            {
+              "name": "webHosting:apiovh:ssl/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5443,7 +5993,10 @@ export const schema: Schema = {
           "description": "Get statistics about this web hosting",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:statistics/get"
+            {
+              "name": "webHosting:apiovh:statistics/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5478,23 +6031,26 @@ export const schema: Schema = {
       "path": "/hosting/web/{serviceName}/statistics"
     },
     {
-      "description": "List the hosting.web.task objects",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Tasks attached to your hosting",
+          "description": "List tasks attached to your hosting",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:tasks/get"
+            {
+              "name": "webHosting:apiovh:tasks/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your hosting",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5502,7 +6058,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Filter the value of function property (like)",
+              "description": "Filter tasks by function (like)",
               "fullType": "string",
               "name": "function",
               "paramType": "query",
@@ -5510,7 +6066,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "hosting.web.task.StatusEnum",
-              "description": "Filter the value of status property (=)",
+              "description": "Filter tasks by status (like)",
               "fullType": "hosting.web.task.StatusEnum",
               "name": "status",
               "paramType": "query",
@@ -5523,23 +6079,26 @@ export const schema: Schema = {
       "path": "/hosting/web/{serviceName}/tasks"
     },
     {
-      "description": "Tasks",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get this task properties",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:tasks/get"
+            {
+              "name": "webHosting:apiovh:tasks/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "the id of the task",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -5547,31 +6106,35 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your hosting",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "hosting.web.task"
+          "responseType": "hosting.web.PublicTask"
         }
       ],
       "path": "/hosting/web/{serviceName}/tasks/{id}"
     },
     {
-      "description": "Terminate your service",
+      "description": "Ask for the termination of your service. Admin contact of this service will receive a termination token in order to confirm its termination with /confirmTermination endpoint.",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Terminate your service",
+          "description": "Ask for the termination of your service",
           "httpMethod": "POST",
           "iamActions": [
-            "webHosting:apiovh:terminate"
+            {
+              "name": "webHosting:apiovh:terminate",
+              "required": true
+            }
           ],
+          "longDescription": "Ask for the termination of your service. Admin contact of this service will receive a termination token by email in order to confirm its termination with /confirmTermination endpoint.",
           "noAuthentication": false,
           "parameters": [
             {
@@ -5596,11 +6159,15 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Use to link an external domain. ( This token has to be insert into a TXT field on your dns zone with ovhcontrol subdomain )",
+          "description": "Use to link an external domain",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:token/get"
+            {
+              "name": "webHosting:apiovh:token/get",
+              "required": true
+            }
           ],
+          "longDescription": "Use to link an external domain. ( This token has to be insert into a TXT field on your dns zone with ovhcontrol subdomain )",
           "noAuthentication": false,
           "parameters": [
             {
@@ -5628,7 +6195,10 @@ export const schema: Schema = {
           "description": "User allowed to connect into your hosting",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:user/get"
+            {
+              "name": "webHosting:apiovh:user/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5667,7 +6237,10 @@ export const schema: Schema = {
           "description": "Create new ftp/ssh user",
           "httpMethod": "POST",
           "iamActions": [
-            "webHosting:apiovh:user/create"
+            {
+              "name": "webHosting:apiovh:user/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5728,7 +6301,10 @@ export const schema: Schema = {
           "description": "Delete ftp/ssh user",
           "httpMethod": "DELETE",
           "iamActions": [
-            "webHosting:apiovh:user/delete"
+            {
+              "name": "webHosting:apiovh:user/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5759,7 +6335,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:user/get"
+            {
+              "name": "webHosting:apiovh:user/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5790,7 +6369,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "webHosting:apiovh:user/edit"
+            {
+              "name": "webHosting:apiovh:user/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5834,7 +6416,10 @@ export const schema: Schema = {
           "description": "Request a password change",
           "httpMethod": "POST",
           "iamActions": [
-            "webHosting:apiovh:user/changePassword"
+            {
+              "name": "webHosting:apiovh:user/changePassword",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5873,13 +6458,19 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2024-03-01T00:00:00+01:00",
+            "deprecatedDate": "2023-11-03T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/hosting/web/{serviceName}/ownLogs/{id}/userLogs",
+            "value": "DEPRECATED"
           },
           "description": "User allowed to connect into your logs interface",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:userLogs/get"
+            {
+              "name": "webHosting:apiovh:userLogs/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5904,13 +6495,19 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2024-03-01T00:00:00+01:00",
+            "deprecatedDate": "2023-11-03T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/hosting/web/{serviceName}/ownLogs/{id}/userLogs",
+            "value": "DEPRECATED"
           },
           "description": "Create new userLogs",
           "httpMethod": "POST",
           "iamActions": [
-            "webHosting:apiovh:userLogs/create"
+            {
+              "name": "webHosting:apiovh:userLogs/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5965,13 +6562,19 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2024-03-01T00:00:00+01:00",
+            "deprecatedDate": "2023-11-03T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}",
+            "value": "DEPRECATED"
           },
           "description": "Delete the userLogs",
           "httpMethod": "DELETE",
           "iamActions": [
-            "webHosting:apiovh:userLogs/delete"
+            {
+              "name": "webHosting:apiovh:userLogs/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5996,13 +6599,19 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2024-03-01T00:00:00+01:00",
+            "deprecatedDate": "2023-11-03T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}",
+            "value": "DEPRECATED"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:userLogs/get"
+            {
+              "name": "webHosting:apiovh:userLogs/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6027,13 +6636,19 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2024-03-01T00:00:00+01:00",
+            "deprecatedDate": "2023-11-03T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}",
+            "value": "DEPRECATED"
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "webHosting:apiovh:userLogs/edit"
+            {
+              "name": "webHosting:apiovh:userLogs/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6071,13 +6686,19 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2024-03-01T00:00:00+01:00",
+            "deprecatedDate": "2023-11-03T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}",
+            "value": "DEPRECATED"
           },
           "description": "Request a password change",
           "httpMethod": "POST",
           "iamActions": [
-            "webHosting:apiovh:userLogs/changePassword"
+            {
+              "name": "webHosting:apiovh:userLogs/changePassword",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6122,7 +6743,10 @@ export const schema: Schema = {
           "description": "Get a temporary token to access the your web hosting logs interface",
           "httpMethod": "GET",
           "iamActions": [
-            "webHosting:apiovh:userLogsToken/get"
+            {
+              "name": "webHosting:apiovh:userLogsToken/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6165,7 +6789,7 @@ export const schema: Schema = {
       "path": "/hosting/web/{serviceName}/userLogsToken"
     },
     {
-      "description": "Find hosting service linked to a domain",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -6175,13 +6799,16 @@ export const schema: Schema = {
           "description": "Find hosting service linked to a domain",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:webHosting/attachedDomain/get"
+            {
+              "name": "account:apiovh:webHosting/attachedDomain/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Domain used into web hosting attached Domains",
+              "description": "Domain used into web hosting attached domains",
               "fullType": "string",
               "name": "domain",
               "paramType": "query",
@@ -6204,7 +6831,10 @@ export const schema: Schema = {
           "description": "Get available offer",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:webHosting/availableOffer/get"
+            {
+              "name": "account:apiovh:webHosting/availableOffer/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6233,7 +6863,10 @@ export const schema: Schema = {
           "description": "Get current incident",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:webHosting/incident/get"
+            {
+              "name": "account:apiovh:webHosting/incident/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -6948,7 +7581,7 @@ export const schema: Schema = {
         },
         "extra": {
           "canBeNull": true,
-          "description": "Additional informations about option",
+          "description": "Additional information about option",
           "fullType": "cdn.domain.option.extra",
           "readOnly": false,
           "required": false,
@@ -7060,7 +7693,7 @@ export const schema: Schema = {
       }
     },
     "cdn.domain.option.extra": {
-      "description": "Additional informations about option",
+      "description": "Additional information about option",
       "id": "extra",
       "namespace": "cdn.domain.option",
       "properties": {
@@ -7390,39 +8023,75 @@ export const schema: Schema = {
         }
       }
     },
-    "hosting.PrivateDatabase.AvailableRamSizeEnum": {
-      "description": "Private database available ram sizes",
-      "enum": [
-        "1024",
-        "2048",
-        "4096",
-        "512"
+    "complexType.UnitAndValue<double>": {
+      "description": "A numeric value tagged with its unit",
+      "generics": [
+        "T"
       ],
-      "enumType": "string",
-      "id": "AvailableRamSizeEnum",
-      "namespace": "hosting.PrivateDatabase"
+      "id": "UnitAndValue",
+      "namespace": "complexType",
+      "properties": {
+        "unit": {
+          "canBeNull": false,
+          "description": "Unit of the value",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value",
+          "fullType": "T",
+          "readOnly": true,
+          "required": false,
+          "type": "T"
+        }
+      }
     },
-    "hosting.PrivateDatabase.OrderableVersionEnum": {
-      "description": "Private database orderable versions",
-      "enum": [
-        "mariadb_10.11",
-        "mariadb_10.3",
-        "mariadb_10.4",
-        "mariadb_10.5",
-        "mariadb_10.6",
-        "mysql_5.7",
-        "mysql_8.0",
-        "postgresql_11",
-        "postgresql_12",
-        "postgresql_13",
-        "postgresql_14",
-        "postgresql_15",
-        "redis_6.0",
-        "redis_7.0"
+    "complexType.UnitAndValue<long>": {
+      "description": "A numeric value tagged with its unit",
+      "generics": [
+        "T"
       ],
-      "enumType": "string",
-      "id": "OrderableVersionEnum",
-      "namespace": "hosting.PrivateDatabase"
+      "id": "UnitAndValue",
+      "namespace": "complexType",
+      "properties": {
+        "unit": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "T"
+        }
+      }
+    },
+    "complexType.UnitAndValue<string>": {
+      "description": "A numeric value tagged with its unit",
+      "generics": [
+        "T"
+      ],
+      "id": "UnitAndValue",
+      "namespace": "complexType",
+      "properties": {
+        "unit": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "T"
+        }
+      }
     },
     "hosting.web.Address": {
       "description": "Url and port of a service",
@@ -7444,6 +8113,85 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string"
+        }
+      }
+    },
+    "hosting.web.AttachedDomain": {
+      "description": "Attached domain",
+      "id": "AttachedDomain",
+      "namespace": "hosting.web",
+      "properties": {
+        "bypassDNSConfiguration": {
+          "canBeNull": true,
+          "description": "If set to true, DNS zone will not be updated by the operation",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "cdn": {
+          "canBeNull": true,
+          "description": "Whether the attached domain is linked to the hosting CDN",
+          "fullType": "hosting.web.attachedDomain.CdnEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "hosting.web.attachedDomain.CdnEnum"
+        },
+        "domain": {
+          "canBeNull": true,
+          "description": "Domain to link",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "firewall": {
+          "canBeNull": true,
+          "description": "Whether the firewall is active for this domain",
+          "fullType": "hosting.web.attachedDomain.FirewallEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "hosting.web.attachedDomain.FirewallEnum"
+        },
+        "ipLocation": {
+          "canBeNull": true,
+          "description": "Change attached domain's DNS to the IP of the country",
+          "fullType": "hosting.web.CountryEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "hosting.web.CountryEnum"
+        },
+        "ownLog": {
+          "canBeNull": true,
+          "description": "Domain to separate the logs on",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "path": {
+          "canBeNull": true,
+          "description": "Path of the attached domain",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "runtimeId": {
+          "canBeNull": true,
+          "description": "The runtime configuration ID used on this domain",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "ssl": {
+          "canBeNull": true,
+          "description": "Whether to put the attached domain in the SSL certificate",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         }
       }
     },
@@ -7605,15 +8353,15 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "The whois country of the ip",
           "fullType": "hosting.web.CountryEnum",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "hosting.web.CountryEnum"
         },
         "ip": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "The cluster ip",
           "fullType": "ipv4",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "ipv4"
         },
@@ -7621,7 +8369,7 @@ export const schema: Schema = {
           "canBeNull": true,
           "description": "The cluster ipv6",
           "fullType": "ipv6",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "ipv6"
         }
@@ -7829,6 +8577,84 @@ export const schema: Schema = {
       "id": "DiskTypeEnum",
       "namespace": "hosting.web"
     },
+    "hosting.web.EnvVar": {
+      "description": "Environment variables set into your webhosting account",
+      "id": "EnvVar",
+      "namespace": "hosting.web",
+      "properties": {
+        "key": {
+          "canBeNull": false,
+          "description": "Name of the variable",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "The environnement variable status",
+          "fullType": "hosting.web.envVar.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.web.envVar.StatusEnum"
+        },
+        "taskId": {
+          "canBeNull": true,
+          "description": "The task ID working on this variable",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Type of variable set",
+          "fullType": "hosting.web.envVar.TypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.web.envVar.TypeEnum"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value of the variable",
+          "fullType": "password",
+          "readOnly": false,
+          "required": false,
+          "type": "password"
+        }
+      }
+    },
+    "hosting.web.EnvVarInput": {
+      "description": "Environment variables set into your webhosting account",
+      "id": "EnvVarInput",
+      "namespace": "hosting.web",
+      "properties": {
+        "key": {
+          "canBeNull": false,
+          "description": "Name of the variable",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Type of variable set",
+          "fullType": "hosting.web.envVar.TypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "hosting.web.envVar.TypeEnum"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value of the variable",
+          "fullType": "password",
+          "readOnly": false,
+          "required": true,
+          "type": "password"
+        }
+      }
+    },
     "hosting.web.HighLightEnum": {
       "description": "Highlight tips for offer",
       "enum": [
@@ -7838,6 +8664,21 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "HighLightEnum",
       "namespace": "hosting.web"
+    },
+    "hosting.web.Key": {
+      "description": "Key information",
+      "id": "Key",
+      "namespace": "hosting.web",
+      "properties": {
+        "publicKey": {
+          "canBeNull": false,
+          "description": "Public key",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
     },
     "hosting.web.LanguagesEnum": {
       "description": "Web supported languages",
@@ -7863,6 +8704,7 @@ export const schema: Schema = {
         "php8.0",
         "php8.1",
         "php8.2",
+        "php8.3",
         "python2",
         "python3",
         "ruby2.6"
@@ -8034,6 +8876,15 @@ export const schema: Schema = {
         "destartl2012",
         "destartxl2012",
         "domainpack",
+        "hosting-free-100m",
+        "hosting-performance-1",
+        "hosting-performance-2",
+        "hosting-performance-3",
+        "hosting-performance-4",
+        "hosting-perso",
+        "hosting-pro",
+        "hosting-starter",
+        "hosting-starter-ovh",
         "hostingAtScaleX128",
         "hostingAtScaleX16",
         "hostingAtScaleX20",
@@ -8204,7 +9055,8 @@ export const schema: Schema = {
         "phpfpm-7.4",
         "phpfpm-8.0",
         "phpfpm-8.1",
-        "phpfpm-8.2"
+        "phpfpm-8.2",
+        "phpfpm-8.3"
       ],
       "enumType": "string",
       "id": "PhpVersionAvailableEnum",
@@ -8387,6 +9239,37 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "hosting.web.hostedssl.TypeEnum"
+        }
+      }
+    },
+    "hosting.web.SSLInput": {
+      "description": "SSL input properties",
+      "id": "SSLInput",
+      "namespace": "hosting.web",
+      "properties": {
+        "certificate": {
+          "canBeNull": false,
+          "description": "certificate",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "chain": {
+          "canBeNull": false,
+          "description": "certificate chain",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "key": {
+          "canBeNull": false,
+          "description": "private key",
+          "fullType": "password",
+          "readOnly": false,
+          "required": false,
+          "type": "password"
         }
       }
     },
@@ -8668,6 +9551,260 @@ export const schema: Schema = {
         }
       }
     },
+    "hosting.web.ServiceWithIAM": {
+      "description": "Web Hosting",
+      "id": "Service",
+      "namespace": "hosting.web",
+      "properties": {
+        "availableBoostOffer": {
+          "canBeNull": false,
+          "description": "Available offers for boost option",
+          "fullType": "hosting.web.AvailableOfferStruct[]",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.web.AvailableOfferStruct[]"
+        },
+        "boostOffer": {
+          "canBeNull": true,
+          "description": "Current boost offer",
+          "fullType": "hosting.web.OfferCapabilitiesEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.web.OfferCapabilitiesEnum"
+        },
+        "cluster": {
+          "canBeNull": false,
+          "description": "Cluster name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "clusterIp": {
+          "canBeNull": true,
+          "description": "This direct ip to your cluster ( usefull for application like api )",
+          "fullType": "ipv4",
+          "readOnly": true,
+          "required": false,
+          "type": "ipv4"
+        },
+        "clusterIpv6": {
+          "canBeNull": true,
+          "description": "This direct ipv6 to your cluster ( usefull for application like api )",
+          "fullType": "ipv6",
+          "readOnly": true,
+          "required": false,
+          "type": "ipv6"
+        },
+        "countriesIp": {
+          "canBeNull": true,
+          "description": "Available clusterIp by countries",
+          "fullType": "hosting.web.CountriesIp[]",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.web.CountriesIp[]"
+        },
+        "datacenter": {
+          "canBeNull": false,
+          "description": "Datacenter where this account is located",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "displayName": {
+          "canBeNull": true,
+          "description": "Set the name displayed in ManagerV6 for your hosting (max 50 chars)",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "filer": {
+          "canBeNull": true,
+          "description": "Filer name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "hasCdn": {
+          "canBeNull": true,
+          "description": "Has a CDN service linked on the hosting",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "hasHostedSsl": {
+          "canBeNull": true,
+          "description": "Has a HostedSSL service linked on the hosting",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "home": {
+          "canBeNull": false,
+          "description": "Path of your home",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "hostingIp": {
+          "canBeNull": true,
+          "description": "The recommended ip for your hosting ( depends on hosting's linked services, e.g CDN or hostedSSL )",
+          "fullType": "ipv4",
+          "readOnly": true,
+          "required": false,
+          "type": "ipv4"
+        },
+        "hostingIpv6": {
+          "canBeNull": true,
+          "description": "The recommended ipv6 for your hosting ( depends on hosting's linked services, e.g CDN or hostedSSL )",
+          "fullType": "ipv6",
+          "readOnly": true,
+          "required": false,
+          "type": "ipv6"
+        },
+        "iam": {
+          "canBeNull": true,
+          "description": "IAM resource metadata",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.ResourceMetadata"
+        },
+        "lastOvhConfigScan": {
+          "canBeNull": true,
+          "description": "/hosting/web/{serviceName}/ovhConfig is stored in cache. This date is the last refresh of this data",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "offer": {
+          "canBeNull": false,
+          "description": "Hosting offer",
+          "fullType": "hosting.web.OfferCapabilitiesEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.web.OfferCapabilitiesEnum"
+        },
+        "operatingSystem": {
+          "canBeNull": false,
+          "description": "Hosting's OS",
+          "fullType": "hosting.web.OperatingSystemEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.web.OperatingSystemEnum"
+        },
+        "phpVersions": {
+          "canBeNull": false,
+          "description": "State of available php versions for this account",
+          "fullType": "hosting.web.PhpVersion[]",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.web.PhpVersion[]"
+        },
+        "primaryLogin": {
+          "canBeNull": false,
+          "description": "Hosting's main login",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "quotaSize": {
+          "canBeNull": false,
+          "description": "Space allowed",
+          "fullType": "complexType.UnitAndValue<double>",
+          "readOnly": true,
+          "required": false,
+          "type": "complexType.UnitAndValue<double>"
+        },
+        "quotaUsed": {
+          "canBeNull": true,
+          "description": "Space used",
+          "fullType": "complexType.UnitAndValue<double>",
+          "readOnly": true,
+          "required": false,
+          "type": "complexType.UnitAndValue<double>"
+        },
+        "recommendedOffer": {
+          "canBeNull": true,
+          "description": "If your offer is old, return a recommended offer to migrate on",
+          "fullType": "hosting.web.OfferEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.web.OfferEnum"
+        },
+        "resourceType": {
+          "canBeNull": false,
+          "description": "Hosting resource type",
+          "fullType": "hosting.web.ResourceEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.web.ResourceEnum"
+        },
+        "serviceManagementAccess": {
+          "canBeNull": false,
+          "description": "URLs to use to manage your webhosting",
+          "fullType": "hosting.web.ServiceAccess",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.web.ServiceAccess"
+        },
+        "serviceName": {
+          "canBeNull": false,
+          "description": "Service name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "state": {
+          "canBeNull": false,
+          "description": "State of your hosting",
+          "fullType": "hosting.web.StateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.web.StateEnum"
+        },
+        "token": {
+          "canBeNull": true,
+          "description": "Use to link an external domain. ( This token has to be insert into a TXT field on your dns zone with ovhcontrol subdomain )",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "trafficQuotaSize": {
+          "canBeNull": true,
+          "description": "Traffic quota allowed ( null = unlimited )",
+          "fullType": "complexType.UnitAndValue<double>",
+          "readOnly": true,
+          "required": false,
+          "type": "complexType.UnitAndValue<double>"
+        },
+        "trafficQuotaUsed": {
+          "canBeNull": true,
+          "description": "Traffic quota used",
+          "fullType": "complexType.UnitAndValue<double>",
+          "readOnly": true,
+          "required": false,
+          "type": "complexType.UnitAndValue<double>"
+        },
+        "updates": {
+          "canBeNull": false,
+          "description": "List of updates on your hosting",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        }
+      }
+    },
     "hosting.web.StateEnum": {
       "description": "Hosting's state",
       "enum": [
@@ -8704,6 +9841,85 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "StatisticsTypeEnum",
       "namespace": "hosting.web"
+    },
+    "hosting.web.SupportedVcsEnum": {
+      "description": "Supported VCS platforms",
+      "enum": [
+        "github"
+      ],
+      "enumType": "string",
+      "id": "SupportedVcsEnum",
+      "namespace": "hosting.web"
+    },
+    "hosting.web.VcsWebhooks": {
+      "description": "VCS webhooks URLs for given hosting and VCS platform",
+      "id": "VcsWebhooks",
+      "namespace": "hosting.web",
+      "properties": {
+        "push": {
+          "canBeNull": false,
+          "description": "Webhook URL for push events",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "hosting.web.Website": {
+      "description": "A website on your hosting",
+      "id": "Website",
+      "namespace": "hosting.web",
+      "properties": {
+        "id": {
+          "canBeNull": false,
+          "description": "Website numeric identifier",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "name": {
+          "canBeNull": true,
+          "description": "Customizable name of the website",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "path": {
+          "canBeNull": false,
+          "description": "Relative path on the hosting filesystem the website is deployed into",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Current status of the website",
+          "fullType": "hosting.web.website.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.web.website.StatusEnum"
+        },
+        "vcsBranch": {
+          "canBeNull": false,
+          "description": "Branch of the repository containing the website source code to deploy",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "vcsUrl": {
+          "canBeNull": false,
+          "description": "URL of the repository containing the website source code to deploy",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
     },
     "hosting.web.attachedDomain": {
       "description": "Virtual service",
@@ -8809,42 +10025,58 @@ export const schema: Schema = {
       }
     },
     "hosting.web.attachedDomain.Capabilities": {
-      "description": "Provides the capabilities related to the attachedDomain",
+      "description": "Attached domain Capability",
       "id": "Capabilities",
       "namespace": "hosting.web.attachedDomain",
       "properties": {
         "description": {
           "canBeNull": false,
-          "description": "Provides the description of the current ressource",
-          "readOnly": false,
+          "description": "Capability description",
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "href": {
           "canBeNull": false,
-          "description": "Path of the route",
-          "readOnly": false,
+          "description": "Capability href",
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "key": {
           "canBeNull": false,
-          "description": "Key name",
-          "readOnly": false,
+          "description": "Capability key",
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "method": {
           "canBeNull": false,
-          "description": "Method type of the route",
-          "readOnly": false,
+          "description": "Capability method",
+          "fullType": "hosting.web.attachedDomain.CapabilityMethodEnum",
+          "readOnly": true,
           "required": false,
-          "type": "hosting.web.attachedDomain.MethodEnum"
+          "type": "hosting.web.attachedDomain.CapabilityMethodEnum"
         }
       }
     },
+    "hosting.web.attachedDomain.CapabilityMethodEnum": {
+      "description": "allowed attachedDomain's capabilities methods",
+      "enum": [
+        "DELETE",
+        "GET",
+        "POST",
+        "PUT"
+      ],
+      "enumType": "string",
+      "id": "CapabilityMethodEnum",
+      "namespace": "hosting.web.attachedDomain"
+    },
     "hosting.web.attachedDomain.CdnEnum": {
-      "description": "Attached domain cdn enum",
+      "description": "whether or not the attachedDomain is linked to the hosting cdn",
       "enum": [
         "active",
         "none"
@@ -8853,8 +10085,37 @@ export const schema: Schema = {
       "id": "CdnEnum",
       "namespace": "hosting.web.attachedDomain"
     },
+    "hosting.web.attachedDomain.DigStatus": {
+      "description": "Attached domain DNS status",
+      "id": "DigStatus",
+      "namespace": "hosting.web.attachedDomain",
+      "properties": {
+        "domain": {
+          "canBeNull": false,
+          "description": "Attached domain",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "recommendedIps": {
+          "canBeNull": false,
+          "fullType": "hosting.web.attachedDomain.RecommendedIps",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.web.attachedDomain.RecommendedIps"
+        },
+        "records": {
+          "canBeNull": false,
+          "fullType": "map[string]hosting.web.attachedDomain.RecordStatus",
+          "readOnly": true,
+          "required": false,
+          "type": "map[string]hosting.web.attachedDomain.RecordStatus"
+        }
+      }
+    },
     "hosting.web.attachedDomain.FirewallEnum": {
-      "description": "Attached domain firewall enum",
+      "description": "Firewall state for this path",
       "enum": [
         "active",
         "none"
@@ -8875,8 +10136,183 @@ export const schema: Schema = {
       "id": "MethodEnum",
       "namespace": "hosting.web.attachedDomain"
     },
+    "hosting.web.attachedDomain.PublicAttachedDomain": {
+      "description": "Public attached domain",
+      "id": "PublicAttachedDomain",
+      "namespace": "hosting.web.attachedDomain",
+      "properties": {
+        "capabilities": {
+          "canBeNull": false,
+          "description": "Provides the capabilities related to your attachedDomain",
+          "fullType": "hosting.web.attachedDomain.Capabilities[]",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.web.attachedDomain.Capabilities[]"
+        },
+        "cdn": {
+          "canBeNull": false,
+          "description": "whether or not attachedDomain is linked to the hosting cdn",
+          "fullType": "hosting.web.attachedDomain.CdnEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.web.attachedDomain.CdnEnum"
+        },
+        "domain": {
+          "canBeNull": false,
+          "description": "Domain linked (fqdn)",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "firewall": {
+          "canBeNull": false,
+          "description": "Firewall state for this path",
+          "fullType": "hosting.web.attachedDomain.FirewallEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.web.attachedDomain.FirewallEnum"
+        },
+        "ipLocation": {
+          "canBeNull": true,
+          "description": "IP location of the domain linked",
+          "fullType": "hosting.web.CountryEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.web.CountryEnum"
+        },
+        "isFlushable": {
+          "canBeNull": false,
+          "description": "Whether your CDN can be flushed",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "ownLog": {
+          "canBeNull": true,
+          "description": "Domain for separate the logs",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "path": {
+          "canBeNull": false,
+          "description": "Attached domain path",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "runtimeId": {
+          "canBeNull": true,
+          "description": "The runtime configuration ID used on this domain",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "ssl": {
+          "canBeNull": true,
+          "description": "Put domain in SSL certificate",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Domain status",
+          "fullType": "hosting.web.attachedDomain.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.web.attachedDomain.StatusEnum"
+        },
+        "taskId": {
+          "canBeNull": true,
+          "description": "The task ID working on this domain",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "vcsStatus": {
+          "canBeNull": false,
+          "description": "The status of the VCS synchronization",
+          "fullType": "hosting.web.attachedDomain.VcsStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.web.attachedDomain.VcsStatusEnum"
+        }
+      }
+    },
+    "hosting.web.attachedDomain.RecommendedIps": {
+      "description": "Recommended IPs for DNS records configuration",
+      "id": "RecommendedIps",
+      "namespace": "hosting.web.attachedDomain",
+      "properties": {
+        "recommendedIpV4": {
+          "canBeNull": false,
+          "description": "Recommended IPV4",
+          "fullType": "ipv4[]",
+          "readOnly": true,
+          "required": false,
+          "type": "ipv4[]"
+        },
+        "recommendedIpV6": {
+          "canBeNull": false,
+          "description": "Recommended IPV6",
+          "fullType": "ipv6[]",
+          "readOnly": true,
+          "required": false,
+          "type": "ipv6[]"
+        }
+      }
+    },
+    "hosting.web.attachedDomain.RecordStatus": {
+      "description": "Attached domain record status",
+      "id": "RecordStatus",
+      "namespace": "hosting.web.attachedDomain",
+      "properties": {
+        "dnsConfigured": {
+          "canBeNull": false,
+          "description": "Whether DNS is configured",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "isOvhIp": {
+          "canBeNull": false,
+          "description": "Whether IP is an OVH one",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "DNS record type",
+          "fullType": "hosting.web.attachedDomain.RecordTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.web.attachedDomain.RecordTypeEnum"
+        }
+      }
+    },
+    "hosting.web.attachedDomain.RecordTypeEnum": {
+      "description": "DNS Record type",
+      "enum": [
+        "A",
+        "AAAA"
+      ],
+      "enumType": "string",
+      "id": "RecordTypeEnum",
+      "namespace": "hosting.web.attachedDomain"
+    },
     "hosting.web.attachedDomain.StatusEnum": {
-      "description": "AttachedDomain status",
+      "description": "attachedDomain status",
       "enum": [
         "created",
         "creating",
@@ -8885,6 +10321,20 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "StatusEnum",
+      "namespace": "hosting.web.attachedDomain"
+    },
+    "hosting.web.attachedDomain.VcsStatusEnum": {
+      "description": "AttachedDomain vcs status",
+      "enum": [
+        "created",
+        "creating",
+        "deleting",
+        "disabled",
+        "error",
+        "initialError"
+      ],
+      "enumType": "string",
+      "id": "VcsStatusEnum",
       "namespace": "hosting.web.attachedDomain"
     },
     "hosting.web.backup.TypeEnum": {
@@ -9212,6 +10662,7 @@ export const schema: Schema = {
         "php8.0",
         "php8.1",
         "php8.2",
+        "php8.3",
         "python2",
         "python3",
         "ruby2.6"
@@ -9248,6 +10699,14 @@ export const schema: Schema = {
       "id": "database",
       "namespace": "hosting.web",
       "properties": {
+        "databaseServiceDeprecated": {
+          "canBeNull": false,
+          "description": "Whether service database is deprecated",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
         "databaseType": {
           "canBeNull": true,
           "description": "Database service type",
@@ -9583,11 +11042,14 @@ export const schema: Schema = {
     "hosting.web.database.ExtraSqlQuotaEnum": {
       "description": "ExtraSqlPerso quota enum",
       "enum": [
+        "25",
         "100",
         "200",
-        "25",
+        "256",
         "400",
-        "800"
+        "512",
+        "800",
+        "1024"
       ],
       "enumType": "long",
       "id": "ExtraSqlQuotaEnum",
@@ -9696,6 +11158,65 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "VersionEnum",
       "namespace": "hosting.web.database"
+    },
+    "hosting.web.database.copy": {
+      "description": "Copy",
+      "id": "database.copy",
+      "namespace": "hosting.web",
+      "properties": {
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "expirationDate": {
+          "canBeNull": true,
+          "description": "Expiration date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Copy id",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "lastUpdate": {
+          "canBeNull": false,
+          "description": "Last update date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Copy status",
+          "fullType": "hosting.web.database.copy.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.web.database.copy.StatusEnum"
+        }
+      }
+    },
+    "hosting.web.database.copy.StatusEnum": {
+      "description": "Database copy status",
+      "enum": [
+        "doing",
+        "done",
+        "error",
+        "todo"
+      ],
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "hosting.web.database.copy"
     },
     "hosting.web.database.dump": {
       "description": "Dump",
@@ -10007,7 +11528,7 @@ export const schema: Schema = {
       "namespace": "hosting.web.envVar"
     },
     "hosting.web.envVar.TypeEnum": {
-      "description": "EnvVar type",
+      "description": "Filter the value of type property (=)",
       "enum": [
         "integer",
         "password",
@@ -11242,7 +12763,8 @@ export const schema: Schema = {
         "7.4",
         "8.0",
         "8.1",
-        "8.2"
+        "8.2",
+        "8.3"
       ],
       "enumType": "string",
       "id": "AvailableEngineVersionEnum",
@@ -11277,6 +12799,7 @@ export const schema: Schema = {
         "8.0",
         "8.1",
         "8.2",
+        "8.3",
         "AUTO"
       ],
       "enumType": "string",
@@ -11797,9 +13320,196 @@ export const schema: Schema = {
     "hosting.web.task.FunctionEnum": {
       "description": "Task function enum",
       "enum": [
+        "abuse/close",
+        "abuse/create",
+        "abuse/create/web",
+        "abuse/delete/web",
+        "abuse/update",
+        "abuse/update/web",
+        "agora/AnycastUpdateReference",
+        "agora/DnsAddonUpdateReference",
+        "agora/DnsUpdateReference",
+        "agora/updateReference",
+        "attachedDomain/create",
+        "attachedDomain/delete",
+        "attachedDomain/restart",
+        "attachedDomain/update",
+        "cdn/delete",
+        "cdn/domain/create",
+        "cdn/domain/delete",
+        "cdn/domain/flush",
+        "cdn/domain/suspend",
+        "cdn/flush",
+        "cdn/install",
+        "cdn/reopen",
+        "cdn/suspend",
+        "cdn/upgrade",
+        "cluster/setDevelopment",
+        "cluster/setTesting",
+        "cluster/ssl/deploy",
+        "cluster/ssl/renew",
+        "cluster/test/attachedDomains",
+        "cluster/test/cdn",
+        "cluster/test/crons",
+        "cluster/test/emails",
+        "cluster/test/fileBrowser",
+        "cluster/test/hostedssl",
+        "cluster/test/modules",
+        "cluster/test/ovhConfig",
+        "cluster/test/userLogs",
+        "cluster/test/users",
+        "configuration/create",
+        "configuration/delete",
+        "configuration/update",
         "cron/create",
         "cron/delete",
-        "cron/update"
+        "cron/update",
+        "database/changePassword",
+        "database/changePasswordTest",
+        "database/changeRight",
+        "database/changeRightTest",
+        "database/checkQuotaNow",
+        "database/copy",
+        "database/copyRestore",
+        "database/create",
+        "database/delete",
+        "database/deleteTest",
+        "database/dumpAnyDay",
+        "database/hostUpdate",
+        "database/import",
+        "database/optimize",
+        "database/restore",
+        "dedicatedIp/delete",
+        "dedicatedIp/reopen",
+        "dedicatedIp/suspend",
+        "depc/push",
+        "dump/create",
+        "dump/delete",
+        "envVar/create",
+        "envVar/delete",
+        "envVar/update",
+        "envVar/upgrade",
+        "eventbus/push",
+        "filerz/customerMonitoring",
+        "filerz/delete",
+        "hostedssl/assignFreeKey",
+        "hostedssl/cdn/update",
+        "hostedssl/create",
+        "hostedssl/delete",
+        "hostedssl/globalsign/delete",
+        "hostedssl/htaccess/install",
+        "hostedssl/import",
+        "hostedssl/install",
+        "hostedssl/install/sectigo",
+        "hostedssl/iplb/reload",
+        "hostedssl/push",
+        "hostedssl/pushDcvFile",
+        "hostedssl/regenerate",
+        "hostedssl/repush",
+        "hosting/activate/privateDatabase",
+        "hosting/basculement",
+        "hosting/changeOffer/cloud",
+        "hosting/changeOffer/shared",
+        "hosting/changement",
+        "hosting/delete",
+        "hosting/delete_start1m",
+        "hosting/install",
+        "hosting/reopen",
+        "hosting/suspend",
+        "indy/reopen",
+        "indy/suspend",
+        "infra/certificate/deploy",
+        "infra/certificate/generate",
+        "infra/certificate/install",
+        "infra/sharedsql/upgrade",
+        "infra/ssl/deploy",
+        "infra/ssl/renew",
+        "ip/move",
+        "ip/park",
+        "localSeoAccount/create",
+        "localSeoAccount/delete",
+        "localSeoLocation/delete",
+        "localSeoLocation/install",
+        "localSeoLocation/reopen",
+        "localSeoLocation/suspend",
+        "localSeoVisibilityCheck/process",
+        "mailsout/checkMailsoutQueue",
+        "mailsout/flushMailsoutQueue",
+        "mailsout/updateUserInRedis",
+        "migration/copyUsers",
+        "migration/dday/filerz",
+        "migration/dday/listPrivateDatabases",
+        "migration/dday/lot",
+        "migration/dday/updateInfra/crons",
+        "migration/dday/updateInfra/dedicated",
+        "migration/dday/updateInfra/migratedFqdn",
+        "migration/updateOrt",
+        "module/changePassword",
+        "module/create",
+        "module/delete",
+        "module/install",
+        "monitoring/remotewrite",
+        "notification/send",
+        "ovhConfig/refresh",
+        "ovhConfig/rollback",
+        "ovhConfig/update",
+        "ovhOrg/delete",
+        "ownLogs/create",
+        "ownLogs/delete",
+        "provisionning/cdn",
+        "provisionning/cluster",
+        "provisionning/filerz",
+        "provisionning/filerz_log",
+        "provisionning/hosting",
+        "provisionning/ipfo",
+        "provisionning/ipifo",
+        "provisionning/iplb",
+        "provisionning/privatesql",
+        "provisionning/sharedsql",
+        "provisionning/ssl",
+        "provisionning/web",
+        "provisionning/webapp",
+        "runtime/create",
+        "runtime/delete",
+        "runtime/setDefault",
+        "runtime/update",
+        "scan/create",
+        "sqlperso/delete",
+        "sqlperso/install",
+        "sqlperso/reopen",
+        "sqlperso/suspend",
+        "synchronizeDepc/attachedDomain",
+        "synchronizeDepc/cluster",
+        "synchronizeDepc/database",
+        "synchronizeDepc/filer",
+        "synchronizeDepc/offer",
+        "synchronizeDepc/webd",
+        "test/migration",
+        "user/changePassword",
+        "user/create",
+        "user/delete",
+        "user/update",
+        "userLogs/changePassword",
+        "userLogs/create",
+        "userLogs/delete",
+        "uster/setTesting",
+        "web/changeDns",
+        "web/changeFilerz",
+        "web/changeFilerzWithCallback",
+        "web/changeJailState",
+        "web/changeOutState",
+        "web/changeState",
+        "web/changeWebState",
+        "web/checkQuotaNow",
+        "web/create",
+        "web/delete",
+        "web/deleteUser",
+        "web/restoreSnapshot",
+        "webProvisionning",
+        "webd/changeSlots",
+        "website/create",
+        "website/delete",
+        "website/deploy"
       ],
       "enumType": "string",
       "id": "FunctionEnum",
@@ -11814,6 +13524,7 @@ export const schema: Schema = {
         "Cdn",
         "Cron",
         "Database",
+        "Deployment",
         "Dump",
         "EnvVar",
         "Filerz",
@@ -11833,7 +13544,8 @@ export const schema: Schema = {
         "User",
         "UserLogs",
         "Web",
-        "Webd"
+        "Webd",
+        "Website"
       ],
       "enumType": "string",
       "id": "ObjectTypeEnum",
@@ -12072,6 +13784,265 @@ export const schema: Schema = {
       "id": "StatusEnum",
       "namespace": "hosting.web.userLogs"
     },
+    "hosting.web.website.CreationRequest": {
+      "description": "Information needed to create a new website",
+      "id": "CreationRequest",
+      "namespace": "hosting.web.website",
+      "properties": {
+        "path": {
+          "canBeNull": false,
+          "description": "Relative path on the hosting filesystem the website will be deployed into",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "vcsBranch": {
+          "canBeNull": false,
+          "description": "Branch of the repository containing the website source code to deploy",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "vcsUrl": {
+          "canBeNull": false,
+          "description": "Clone URL of the repository containing the website source code to deploy",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "hosting.web.website.Deployment": {
+      "description": "A website deployment",
+      "id": "Deployment",
+      "namespace": "hosting.web.website",
+      "properties": {
+        "date": {
+          "canBeNull": false,
+          "description": "Date of the deployment",
+          "fullType": "date",
+          "readOnly": true,
+          "required": false,
+          "type": "date"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Deployment numeric identifier",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "reset": {
+          "canBeNull": false,
+          "description": "Whether a reset was requested before deploying",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "source": {
+          "canBeNull": false,
+          "description": "Source which triggered the deployment",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Current status of the deployment",
+          "fullType": "hosting.web.website.deployment.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.web.website.deployment.StatusEnum"
+        },
+        "vcsBranch": {
+          "canBeNull": false,
+          "description": "Which branch of the repository is deployed",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "vcsCommitId": {
+          "canBeNull": true,
+          "description": "Identifier of the last commit after deployment",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "vcsCommitMessage": {
+          "canBeNull": true,
+          "description": "Message of the last commit after deployment",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "websiteId": {
+          "canBeNull": false,
+          "description": "Website numeric identifier",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "hosting.web.website.DeploymentRequest": {
+      "description": "Information needed to request deployment of a website",
+      "id": "DeploymentRequest",
+      "namespace": "hosting.web.website",
+      "properties": {
+        "reset": {
+          "canBeNull": false,
+          "description": "Whether a reset was requested before deploying",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
+    "hosting.web.website.StatusEnum": {
+      "description": "Website status",
+      "enum": [
+        "created",
+        "creating",
+        "deleting",
+        "deploying",
+        "error",
+        "initialError"
+      ],
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "hosting.web.website"
+    },
+    "hosting.web.website.Update": {
+      "description": "Information to update on a website",
+      "id": "Update",
+      "namespace": "hosting.web.website",
+      "properties": {
+        "vcsBranch": {
+          "canBeNull": true,
+          "description": "Branch of the repository containing the website source code to deploy",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "hosting.web.website.deployment.LogsMessage": {
+      "description": "Message from logs of a website deployment",
+      "id": "LogsMessage",
+      "namespace": "hosting.web.website.deployment",
+      "properties": {
+        "date": {
+          "canBeNull": false,
+          "description": "Date of the message",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "message": {
+          "canBeNull": false,
+          "description": "Content of the message",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "hosting.web.website.deployment.StatusEnum": {
+      "description": "Website deployment status",
+      "enum": [
+        "doing",
+        "failed",
+        "succeeded"
+      ],
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "hosting.web.website.deployment"
+    },
+    "iam.ResourceMetadata": {
+      "description": "IAM resource metadata embedded in services models",
+      "id": "ResourceMetadata",
+      "namespace": "iam",
+      "properties": {
+        "displayName": {
+          "canBeNull": true,
+          "description": "Resource display name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Unique identifier of the resource",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "tags": {
+          "canBeNull": true,
+          "description": "Resource tags. Tags that were internally computed are prefixed with ovh:",
+          "fullType": "map[string]string",
+          "readOnly": true,
+          "required": false,
+          "type": "map[string]string"
+        },
+        "urn": {
+          "canBeNull": false,
+          "description": "Unique resource name used in policies",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter": {
+      "description": "Resource tag filter",
+      "id": "TagFilter",
+      "namespace": "iam.resource",
+      "properties": {
+        "operator": {
+          "canBeNull": true,
+          "description": "Operator to use in order to filter on the value (defaults to 'EQ')",
+          "fullType": "iam.resource.TagFilter.OperatorEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.resource.TagFilter.OperatorEnum"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value to use in order to filter tags",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter.OperatorEnum": {
+      "description": "Operator that can be used in order to filter resources tags",
+      "enum": [
+        "EQ"
+      ],
+      "enumType": "string",
+      "id": "OperatorEnum",
+      "namespace": "iam.resource.TagFilter"
+    },
     "order.CurrencyCodeEnum": {
       "description": "Currency code",
       "enum": [
@@ -12107,6 +14078,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "order.CurrencyCodeEnum"
+        },
+        "priceInUcents": {
+          "canBeNull": true,
+          "description": "Price in microcents",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "text": {
           "canBeNull": false,

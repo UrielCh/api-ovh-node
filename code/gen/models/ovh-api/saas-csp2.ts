@@ -16,10 +16,21 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "cspReseller:apiovh:get"
+            {
+              "name": "cspReseller:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
-          "parameters": [],
+          "parameters": [
+            {
+              "dataType": "map[string][]iam.resource.TagFilter",
+              "description": "Filter resources on IAM tags",
+              "name": "iamTags",
+              "paramType": "query",
+              "required": false
+            }
+          ],
           "responseType": "string[]"
         }
       ],
@@ -36,7 +47,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "cspReseller:apiovh:get"
+            {
+              "name": "cspReseller:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -49,7 +63,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "saas.csp2.OfficeTenant"
+          "responseType": "saas.csp2.OfficeTenantWithIAM"
         },
         {
           "apiStatus": {
@@ -59,7 +73,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "cspReseller:apiovh:put"
+            {
+              "name": "cspReseller:apiovh:put",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -95,7 +112,10 @@ export const schema: Schema = {
           "description": "Get the current billing period's usage peak for each subscription",
           "httpMethod": "GET",
           "iamActions": [
-            "cspReseller:apiovh:billingPeriodPeaks/get"
+            {
+              "name": "cspReseller:apiovh:billingPeriodPeaks/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -124,7 +144,10 @@ export const schema: Schema = {
           "description": "Licenses available for order",
           "httpMethod": "GET",
           "iamActions": [
-            "cspReseller:apiovh:orderableLicenses/get"
+            {
+              "name": "cspReseller:apiovh:orderableLicenses/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -153,7 +176,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "cspReseller:apiovh:orderableLicenses/get"
+            {
+              "name": "cspReseller:apiovh:orderableLicenses/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -187,10 +213,13 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Get this object properties",
+          "description": "Get service information",
           "httpMethod": "GET",
           "iamActions": [
-            "cspReseller:apiovh:serviceInfos/get"
+            {
+              "name": "cspReseller:apiovh:serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -210,10 +239,13 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Alter this object properties",
+          "description": "Update service information",
           "httpMethod": "PUT",
           "iamActions": [
-            "cspReseller:apiovh:serviceInfos/edit"
+            {
+              "name": "cspReseller:apiovh:serviceInfos/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -249,7 +281,10 @@ export const schema: Schema = {
           "description": "Subscriptions associated to this office tenant",
           "httpMethod": "GET",
           "iamActions": [
-            "cspReseller:apiovh:subscription/get"
+            {
+              "name": "cspReseller:apiovh:subscription/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -272,7 +307,10 @@ export const schema: Schema = {
           "description": "Add a subscription to this tenant",
           "httpMethod": "POST",
           "iamActions": [
-            "cspReseller:apiovh:subscription/create"
+            {
+              "name": "cspReseller:apiovh:subscription/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -308,7 +346,10 @@ export const schema: Schema = {
           "description": "Delete a subscription from this tenant",
           "httpMethod": "DELETE",
           "iamActions": [
-            "cspReseller:apiovh:subscription/delete"
+            {
+              "name": "cspReseller:apiovh:subscription/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -339,7 +380,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "cspReseller:apiovh:subscription/get"
+            {
+              "name": "cspReseller:apiovh:subscription/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -376,7 +420,10 @@ export const schema: Schema = {
           "description": "Addon subscriptions associated to this office subscription",
           "httpMethod": "GET",
           "iamActions": [
-            "cspReseller:apiovh:subscription/addonsSubscriptionIds/get"
+            {
+              "name": "cspReseller:apiovh:subscription/addonsSubscriptionIds/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -413,7 +460,10 @@ export const schema: Schema = {
           "description": "Gives a list of licenses ids that can be ordered as an addon for this subscription",
           "httpMethod": "GET",
           "iamActions": [
-            "cspReseller:apiovh:subscription/availableAddonLicenses/get"
+            {
+              "name": "cspReseller:apiovh:subscription/availableAddonLicenses/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -450,7 +500,10 @@ export const schema: Schema = {
           "description": "Change the quantity of seats in the subscription",
           "httpMethod": "POST",
           "iamActions": [
-            "cspReseller:apiovh:subscription/changeQuantity"
+            {
+              "name": "cspReseller:apiovh:subscription/changeQuantity",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -494,7 +547,10 @@ export const schema: Schema = {
           "description": "Creates a new subscription as an addon for this subscription",
           "httpMethod": "POST",
           "iamActions": [
-            "cspReseller:apiovh:subscription/orderAddon"
+            {
+              "name": "cspReseller:apiovh:subscription/orderAddon",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -538,7 +594,10 @@ export const schema: Schema = {
           "description": "Pending tasks of this tenant",
           "httpMethod": "GET",
           "iamActions": [
-            "cspReseller:apiovh:task/get"
+            {
+              "name": "cspReseller:apiovh:task/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -567,7 +626,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "cspReseller:apiovh:task/get"
+            {
+              "name": "cspReseller:apiovh:task/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -604,7 +666,10 @@ export const schema: Schema = {
           "description": "Get the usage statistics over the chosen period",
           "httpMethod": "GET",
           "iamActions": [
-            "cspReseller:apiovh:usageStatistics/get"
+            {
+              "name": "cspReseller:apiovh:usageStatistics/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -633,6 +698,77 @@ export const schema: Schema = {
   ],
   "basePath": "https://eu.api.ovh.com/1.0",
   "models": {
+    "iam.ResourceMetadata": {
+      "description": "IAM resource metadata embedded in services models",
+      "id": "ResourceMetadata",
+      "namespace": "iam",
+      "properties": {
+        "displayName": {
+          "canBeNull": true,
+          "description": "Resource display name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Unique identifier of the resource",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "tags": {
+          "canBeNull": true,
+          "description": "Resource tags. Tags that were internally computed are prefixed with ovh:",
+          "fullType": "map[string]string",
+          "readOnly": true,
+          "required": false,
+          "type": "map[string]string"
+        },
+        "urn": {
+          "canBeNull": false,
+          "description": "Unique resource name used in policies",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter": {
+      "description": "Resource tag filter",
+      "id": "TagFilter",
+      "namespace": "iam.resource",
+      "properties": {
+        "operator": {
+          "canBeNull": true,
+          "description": "Operator to use in order to filter on the value (defaults to 'EQ')",
+          "fullType": "iam.resource.TagFilter.OperatorEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.resource.TagFilter.OperatorEnum"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value to use in order to filter tags",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter.OperatorEnum": {
+      "description": "Operator that can be used in order to filter resources tags",
+      "enum": [
+        "EQ"
+      ],
+      "enumType": "string",
+      "id": "OperatorEnum",
+      "namespace": "iam.resource.TagFilter"
+    },
     "msServices.LicensePeriodEnum": {
       "description": "Period of time used to determine license statistics",
       "enum": [
@@ -934,6 +1070,124 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string"
+        },
+        "lastName": {
+          "canBeNull": false,
+          "description": "Contact's last name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "mpnId": {
+          "canBeNull": true,
+          "description": "Microsoft Partner Network identifier linked to this tenant",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "mpnIssueFlag": {
+          "canBeNull": true,
+          "description": "Code of any detected issue regarding the MPN Id",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "phone": {
+          "canBeNull": false,
+          "description": "Primary phone number",
+          "fullType": "phoneNumber",
+          "readOnly": false,
+          "required": false,
+          "type": "phoneNumber"
+        },
+        "serviceName": {
+          "canBeNull": false,
+          "description": "Internal service name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Tenant's status",
+          "fullType": "saas.csp2.ServiceStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "saas.csp2.ServiceStateEnum"
+        },
+        "zipCode": {
+          "canBeNull": false,
+          "description": "Contact's zip code",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "saas.csp2.OfficeTenantWithIAM": {
+      "description": "Office tenant",
+      "id": "OfficeTenant",
+      "namespace": "saas.csp2",
+      "properties": {
+        "address": {
+          "canBeNull": false,
+          "description": "Contact's address line",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "city": {
+          "canBeNull": false,
+          "description": "Contact's city",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "displayName": {
+          "canBeNull": false,
+          "description": "Tenant's display name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "email": {
+          "canBeNull": false,
+          "description": "Contact's email address",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "firstName": {
+          "canBeNull": false,
+          "description": "Contact's first name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "iam": {
+          "canBeNull": true,
+          "description": "IAM resource metadata",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.ResourceMetadata"
         },
         "lastName": {
           "canBeNull": false,

@@ -16,10 +16,21 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:get"
+            {
+              "name": "sms:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
-          "parameters": [],
+          "parameters": [
+            {
+              "dataType": "map[string][]iam.resource.TagFilter",
+              "description": "Filter resources on IAM tags",
+              "name": "iamTags",
+              "paramType": "query",
+              "required": false
+            }
+          ],
           "responseType": "string[]"
         }
       ],
@@ -36,7 +47,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:get"
+            {
+              "name": "sms:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -49,7 +63,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.Account"
+          "responseType": "sms.AccountWithIAM"
         },
         {
           "apiStatus": {
@@ -59,7 +73,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "sms:apiovh:put"
+            {
+              "name": "sms:apiovh:put",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -95,7 +112,10 @@ export const schema: Schema = {
           "description": "Get batches list",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:batches/get"
+            {
+              "name": "sms:apiovh:batches/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -118,7 +138,10 @@ export const schema: Schema = {
           "description": "Create a batch",
           "httpMethod": "POST",
           "iamActions": [
-            "sms:apiovh:batches/create"
+            {
+              "name": "sms:apiovh:batches/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -151,10 +174,47 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Remove a batch",
+          "httpMethod": "DELETE",
+          "iamActions": [
+            {
+              "name": "sms:apiovh:batches/delete",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Id",
+              "fullType": "uuid",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
           "description": "Get a batch",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:batches/get"
+            {
+              "name": "sms:apiovh:batches/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -185,7 +245,10 @@ export const schema: Schema = {
           "description": "Update a batch",
           "httpMethod": "PUT",
           "iamActions": [
-            "sms:apiovh:batches/edit"
+            {
+              "name": "sms:apiovh:batches/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -229,7 +292,10 @@ export const schema: Schema = {
           "description": "Cancel a deferred batch (no SMS must have been sent)",
           "httpMethod": "POST",
           "iamActions": [
-            "sms:apiovh:batches/cancel"
+            {
+              "name": "sms:apiovh:batches/cancel",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -266,7 +332,10 @@ export const schema: Schema = {
           "description": "Batch's statistics",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:batches/statistics/get"
+            {
+              "name": "sms:apiovh:batches/statistics/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -303,7 +372,10 @@ export const schema: Schema = {
           "description": "Numbers blacklisted associated to the sms account",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:blacklists/get"
+            {
+              "name": "sms:apiovh:blacklists/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -348,7 +420,10 @@ export const schema: Schema = {
           "description": "Delete the blacklisted sms number given",
           "httpMethod": "DELETE",
           "iamActions": [
-            "sms:apiovh:blacklists/delete"
+            {
+              "name": "sms:apiovh:blacklists/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -379,7 +454,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:blacklists/get"
+            {
+              "name": "sms:apiovh:blacklists/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -416,7 +494,10 @@ export const schema: Schema = {
           "description": "Get the /me/document id generated",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:document/get"
+            {
+              "name": "sms:apiovh:document/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -485,7 +566,10 @@ export const schema: Schema = {
           "description": "Describe filter exceptions in sms sending from a specific receiver.",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:exceptions/get"
+            {
+              "name": "sms:apiovh:exceptions/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -522,7 +606,10 @@ export const schema: Schema = {
           "description": "Home Location Register informations. Give informations about a given cellular phone.",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:hlr/get"
+            {
+              "name": "sms:apiovh:hlr/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -545,7 +632,10 @@ export const schema: Schema = {
           "description": "Add one or several sending hlr lookup request",
           "httpMethod": "POST",
           "iamActions": [
-            "sms:apiovh:hlr/create"
+            {
+              "name": "sms:apiovh:hlr/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -590,7 +680,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:hlr/get"
+            {
+              "name": "sms:apiovh:hlr/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -627,7 +720,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:hlr/operator/get"
+            {
+              "name": "sms:apiovh:hlr/operator/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -664,7 +760,10 @@ export const schema: Schema = {
           "description": "Sms received associated to the sms account",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:incoming/get"
+            {
+              "name": "sms:apiovh:incoming/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -725,7 +824,10 @@ export const schema: Schema = {
           "description": "Delete the sms incoming history given",
           "httpMethod": "DELETE",
           "iamActions": [
-            "sms:apiovh:incoming/delete"
+            {
+              "name": "sms:apiovh:incoming/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -756,7 +858,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:incoming/get"
+            {
+              "name": "sms:apiovh:incoming/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -793,7 +898,10 @@ export const schema: Schema = {
           "description": "Sms in pending associated to the sms account",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:jobs/get"
+            {
+              "name": "sms:apiovh:jobs/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -816,7 +924,10 @@ export const schema: Schema = {
           "description": "Add one or several sending jobs",
           "httpMethod": "POST",
           "iamActions": [
-            "sms:apiovh:jobs/create"
+            {
+              "name": "sms:apiovh:jobs/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -830,7 +941,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "sms.ClassEnum",
-              "description": "The sms class",
+              "description": "Deprecated: The sms class",
               "fullType": "sms.ClassEnum",
               "name": "class",
               "paramType": "body",
@@ -838,7 +949,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "sms.CodingEnum",
-              "description": "The sms coding",
+              "description": "Deprecated: the coding is deduced from the message and its charset",
               "fullType": "sms.CodingEnum",
               "name": "coding",
               "paramType": "body",
@@ -957,7 +1068,10 @@ export const schema: Schema = {
           "description": "Delete the sms job given (stop sending)",
           "httpMethod": "DELETE",
           "iamActions": [
-            "sms:apiovh:jobs/delete"
+            {
+              "name": "sms:apiovh:jobs/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -988,7 +1102,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:jobs/get"
+            {
+              "name": "sms:apiovh:jobs/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1025,7 +1142,10 @@ export const schema: Schema = {
           "description": "Get SMS list",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:outgoing/get"
+            {
+              "name": "sms:apiovh:outgoing/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1134,7 +1254,10 @@ export const schema: Schema = {
           "description": "Delete outgoing SMS from history",
           "httpMethod": "DELETE",
           "iamActions": [
-            "sms:apiovh:outgoing/delete"
+            {
+              "name": "sms:apiovh:outgoing/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1165,7 +1288,10 @@ export const schema: Schema = {
           "description": "Get SMS details",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:outgoing/get"
+            {
+              "name": "sms:apiovh:outgoing/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1202,7 +1328,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:outgoing/hlr/get"
+            {
+              "name": "sms:apiovh:outgoing/hlr/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1239,7 +1368,10 @@ export const schema: Schema = {
           "description": "Return phonebooks associated to this account",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:phonebooks/get"
+            {
+              "name": "sms:apiovh:phonebooks/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1262,7 +1394,10 @@ export const schema: Schema = {
           "description": "Add a phonebook. Return the bookKey.",
           "httpMethod": "POST",
           "iamActions": [
-            "sms:apiovh:phonebooks/create"
+            {
+              "name": "sms:apiovh:phonebooks/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1299,7 +1434,10 @@ export const schema: Schema = {
           "description": "Delete a phonebook",
           "httpMethod": "DELETE",
           "iamActions": [
-            "sms:apiovh:phonebooks/delete"
+            {
+              "name": "sms:apiovh:phonebooks/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1330,7 +1468,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:phonebooks/get"
+            {
+              "name": "sms:apiovh:phonebooks/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1361,7 +1502,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "sms:apiovh:phonebooks/edit"
+            {
+              "name": "sms:apiovh:phonebooks/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1405,7 +1549,10 @@ export const schema: Schema = {
           "description": "Export the phonebook's contacts",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:phonebooks/export/get"
+            {
+              "name": "sms:apiovh:phonebooks/export/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1450,7 +1597,10 @@ export const schema: Schema = {
           "description": "Import a contacts file. Supported formats are Excel (.xls and .xlsx) and CSV",
           "httpMethod": "POST",
           "iamActions": [
-            "sms:apiovh:phonebooks/import"
+            {
+              "name": "sms:apiovh:phonebooks/import",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1495,7 +1645,10 @@ export const schema: Schema = {
           "description": "Phonebook contacts",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:phonebooks/phonebookContact/get"
+            {
+              "name": "sms:apiovh:phonebooks/phonebookContact/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1526,7 +1679,10 @@ export const schema: Schema = {
           "description": "Create a phonebook contact. Return identifier of the phonebook contact.",
           "httpMethod": "POST",
           "iamActions": [
-            "sms:apiovh:phonebooks/phonebookContact/create"
+            {
+              "name": "sms:apiovh:phonebooks/phonebookContact/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1619,7 +1775,10 @@ export const schema: Schema = {
           "description": "Delete a phonebook contact",
           "httpMethod": "DELETE",
           "iamActions": [
-            "sms:apiovh:phonebooks/phonebookContact/delete"
+            {
+              "name": "sms:apiovh:phonebooks/phonebookContact/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1658,7 +1817,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:phonebooks/phonebookContact/get"
+            {
+              "name": "sms:apiovh:phonebooks/phonebookContact/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1697,7 +1859,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "sms:apiovh:phonebooks/phonebookContact/edit"
+            {
+              "name": "sms:apiovh:phonebooks/phonebookContact/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1749,7 +1914,10 @@ export const schema: Schema = {
           "description": "Receivers preloaded from text or csv document file",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:receivers/get"
+            {
+              "name": "sms:apiovh:receivers/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1772,7 +1940,10 @@ export const schema: Schema = {
           "description": "Add a new document of csv receivers",
           "httpMethod": "POST",
           "iamActions": [
-            "sms:apiovh:receivers/create"
+            {
+              "name": "sms:apiovh:receivers/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1841,7 +2012,10 @@ export const schema: Schema = {
           "description": "Delete the document from the slot",
           "httpMethod": "DELETE",
           "iamActions": [
-            "sms:apiovh:receivers/delete"
+            {
+              "name": "sms:apiovh:receivers/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1872,7 +2046,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:receivers/get"
+            {
+              "name": "sms:apiovh:receivers/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1903,7 +2080,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "sms:apiovh:receivers/edit"
+            {
+              "name": "sms:apiovh:receivers/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1944,11 +2124,15 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Clean the invalid and inactive receivers in the document by requesting HLR on each receiver. A report is sent by e-mail at the end of the operation.",
+          "description": "Clean the invalid and inactive receivers in the document by requesting HLR on each receiver",
           "httpMethod": "POST",
           "iamActions": [
-            "sms:apiovh:receivers/clean"
+            {
+              "name": "sms:apiovh:receivers/clean",
+              "required": true
+            }
           ],
+          "longDescription": "Clean the invalid and inactive receivers in the document by requesting HLR on each receiver. A report is sent by e-mail at the end of the operation.",
           "noAuthentication": false,
           "parameters": [
             {
@@ -2000,7 +2184,10 @@ export const schema: Schema = {
           "description": "Get the document data container",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:receivers/csv/get"
+            {
+              "name": "sms:apiovh:receivers/csv/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2037,7 +2224,10 @@ export const schema: Schema = {
           "description": "Describe SMS offers available.",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:seeOffers/get"
+            {
+              "name": "sms:apiovh:seeOffers/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2090,7 +2280,10 @@ export const schema: Schema = {
           "description": "Senders allowed associated to the sms account",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:senders/get"
+            {
+              "name": "sms:apiovh:senders/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2113,7 +2306,10 @@ export const schema: Schema = {
           "description": "Create the sms sender given",
           "httpMethod": "POST",
           "iamActions": [
-            "sms:apiovh:senders/create"
+            {
+              "name": "sms:apiovh:senders/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2166,7 +2362,10 @@ export const schema: Schema = {
           "description": "Delete the sms sender given",
           "httpMethod": "DELETE",
           "iamActions": [
-            "sms:apiovh:senders/delete"
+            {
+              "name": "sms:apiovh:senders/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2197,7 +2396,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:senders/get"
+            {
+              "name": "sms:apiovh:senders/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2228,7 +2430,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "sms:apiovh:senders/edit"
+            {
+              "name": "sms:apiovh:senders/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2272,7 +2477,10 @@ export const schema: Schema = {
           "description": "Documents linked to SMS sender for validation purpose",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:senders/documents/get"
+            {
+              "name": "sms:apiovh:senders/documents/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2303,7 +2511,10 @@ export const schema: Schema = {
           "description": "Create a new empty document",
           "httpMethod": "POST",
           "iamActions": [
-            "sms:apiovh:senders/documents/create"
+            {
+              "name": "sms:apiovh:senders/documents/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2356,7 +2567,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:senders/documents/get"
+            {
+              "name": "sms:apiovh:senders/documents/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2395,7 +2609,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "sms:apiovh:senders/documents/edit"
+            {
+              "name": "sms:apiovh:senders/documents/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2447,7 +2664,10 @@ export const schema: Schema = {
           "description": "Validate a given sender with an activation code.",
           "httpMethod": "POST",
           "iamActions": [
-            "sms:apiovh:senders/validate"
+            {
+              "name": "sms:apiovh:senders/validate",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2492,7 +2712,10 @@ export const schema: Schema = {
           "description": "The senders that are attached to your personal informations or OVH services and that can be automatically validated",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:sendersAvailableForValidation/get"
+            {
+              "name": "sms:apiovh:sendersAvailableForValidation/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2526,10 +2749,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get service information",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:serviceInfos/get"
+            {
+              "name": "sms:apiovh:serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2549,10 +2775,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Update service information",
           "httpMethod": "PUT",
           "iamActions": [
-            "sms:apiovh:serviceInfos/edit"
+            {
+              "name": "sms:apiovh:serviceInfos/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2588,7 +2817,10 @@ export const schema: Schema = {
           "description": "Get SMPP allowed IPs",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:smpp/allowedIPs/get"
+            {
+              "name": "sms:apiovh:smpp/allowedIPs/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2611,7 +2843,10 @@ export const schema: Schema = {
           "description": "Add or remove allowed IPs",
           "httpMethod": "PUT",
           "iamActions": [
-            "sms:apiovh:smpp/allowedIPs/edit"
+            {
+              "name": "sms:apiovh:smpp/allowedIPs/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2647,7 +2882,10 @@ export const schema: Schema = {
           "description": "Renew SMPP password",
           "httpMethod": "POST",
           "iamActions": [
-            "sms:apiovh:smpp/password/create"
+            {
+              "name": "sms:apiovh:smpp/password/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2676,7 +2914,10 @@ export const schema: Schema = {
           "description": "Get SMPP settings",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:smpp/settings/get"
+            {
+              "name": "sms:apiovh:smpp/settings/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2705,7 +2946,10 @@ export const schema: Schema = {
           "description": "Operations on a SMS service",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:task/get"
+            {
+              "name": "sms:apiovh:task/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2742,7 +2986,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:task/get"
+            {
+              "name": "sms:apiovh:task/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2779,7 +3026,10 @@ export const schema: Schema = {
           "description": "Template pattern filled up for moderation (Needed to send in US country)",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:templatesControl/get"
+            {
+              "name": "sms:apiovh:templatesControl/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2802,7 +3052,10 @@ export const schema: Schema = {
           "description": "Create the sms template control given",
           "httpMethod": "POST",
           "iamActions": [
-            "sms:apiovh:templatesControl/create"
+            {
+              "name": "sms:apiovh:templatesControl/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2871,7 +3124,10 @@ export const schema: Schema = {
           "description": "Delete the sms template control",
           "httpMethod": "DELETE",
           "iamActions": [
-            "sms:apiovh:templatesControl/delete"
+            {
+              "name": "sms:apiovh:templatesControl/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2902,7 +3158,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:templatesControl/get"
+            {
+              "name": "sms:apiovh:templatesControl/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2933,7 +3192,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "sms:apiovh:templatesControl/edit"
+            {
+              "name": "sms:apiovh:templatesControl/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2977,7 +3239,10 @@ export const schema: Schema = {
           "description": "Attempt a new validation after moderation refusal",
           "httpMethod": "POST",
           "iamActions": [
-            "sms:apiovh:templatesControl/relaunchValidation"
+            {
+              "name": "sms:apiovh:templatesControl/relaunchValidation",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3030,7 +3295,10 @@ export const schema: Schema = {
           "description": "Credit transfer between two sms accounts.",
           "httpMethod": "POST",
           "iamActions": [
-            "sms:apiovh:transferCredits"
+            {
+              "name": "sms:apiovh:transferCredits",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3075,7 +3343,10 @@ export const schema: Schema = {
           "description": "Users associated to the sms account",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:users/get"
+            {
+              "name": "sms:apiovh:users/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3098,7 +3369,10 @@ export const schema: Schema = {
           "description": "Create a new user for an sms account",
           "httpMethod": "POST",
           "iamActions": [
-            "sms:apiovh:users/create"
+            {
+              "name": "sms:apiovh:users/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3143,7 +3417,10 @@ export const schema: Schema = {
           "description": "Delete the sms user given",
           "httpMethod": "DELETE",
           "iamActions": [
-            "sms:apiovh:users/delete"
+            {
+              "name": "sms:apiovh:users/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3174,7 +3451,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:users/get"
+            {
+              "name": "sms:apiovh:users/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3205,7 +3485,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "sms:apiovh:users/edit"
+            {
+              "name": "sms:apiovh:users/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3249,7 +3532,10 @@ export const schema: Schema = {
           "description": "Get the /me/document id generated",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:users/document/get"
+            {
+              "name": "sms:apiovh:users/document/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3318,7 +3604,10 @@ export const schema: Schema = {
           "description": "Sms received associated to the sms user",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:users/incoming/get"
+            {
+              "name": "sms:apiovh:users/incoming/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3371,7 +3660,10 @@ export const schema: Schema = {
           "description": "Delete the sms incoming history given",
           "httpMethod": "DELETE",
           "iamActions": [
-            "sms:apiovh:users/incoming/delete"
+            {
+              "name": "sms:apiovh:users/incoming/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3410,7 +3702,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:users/incoming/get"
+            {
+              "name": "sms:apiovh:users/incoming/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3455,7 +3750,10 @@ export const schema: Schema = {
           "description": "Sms in pending associated to the sms user",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:users/jobs/get"
+            {
+              "name": "sms:apiovh:users/jobs/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3486,7 +3784,10 @@ export const schema: Schema = {
           "description": "Add one or several sending jobs",
           "httpMethod": "POST",
           "iamActions": [
-            "sms:apiovh:users/jobs/create"
+            {
+              "name": "sms:apiovh:users/jobs/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3500,7 +3801,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "sms.ClassEnum",
-              "description": "The sms class",
+              "description": "Deprecated: The sms class",
               "fullType": "sms.ClassEnum",
               "name": "class",
               "paramType": "body",
@@ -3508,7 +3809,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "sms.CodingEnum",
-              "description": "The sms coding",
+              "description": "Deprecated: the coding is deduced from the message and its charset",
               "fullType": "sms.CodingEnum",
               "name": "coding",
               "paramType": "body",
@@ -3635,7 +3936,10 @@ export const schema: Schema = {
           "description": "Delete the sms job given (stop sending)",
           "httpMethod": "DELETE",
           "iamActions": [
-            "sms:apiovh:users/jobs/delete"
+            {
+              "name": "sms:apiovh:users/jobs/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3674,7 +3978,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:users/jobs/get"
+            {
+              "name": "sms:apiovh:users/jobs/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3719,7 +4026,10 @@ export const schema: Schema = {
           "description": "Sms sent associated to the sms user",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:users/outgoing/get"
+            {
+              "name": "sms:apiovh:users/outgoing/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3804,7 +4114,10 @@ export const schema: Schema = {
           "description": "Delete the sms outgoing history given",
           "httpMethod": "DELETE",
           "iamActions": [
-            "sms:apiovh:users/outgoing/delete"
+            {
+              "name": "sms:apiovh:users/outgoing/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3843,7 +4156,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:users/outgoing/get"
+            {
+              "name": "sms:apiovh:users/outgoing/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3888,7 +4204,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:users/outgoing/hlr/get"
+            {
+              "name": "sms:apiovh:users/outgoing/hlr/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3933,7 +4252,10 @@ export const schema: Schema = {
           "description": "Receivers preloaded from text or csv document file",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:users/receivers/get"
+            {
+              "name": "sms:apiovh:users/receivers/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3964,7 +4286,10 @@ export const schema: Schema = {
           "description": "Add a new document of csv receivers",
           "httpMethod": "POST",
           "iamActions": [
-            "sms:apiovh:users/receivers/create"
+            {
+              "name": "sms:apiovh:users/receivers/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4041,7 +4366,10 @@ export const schema: Schema = {
           "description": "Delete the document from the slot",
           "httpMethod": "DELETE",
           "iamActions": [
-            "sms:apiovh:users/receivers/delete"
+            {
+              "name": "sms:apiovh:users/receivers/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4080,7 +4408,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:users/receivers/get"
+            {
+              "name": "sms:apiovh:users/receivers/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4119,7 +4450,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "sms:apiovh:users/receivers/edit"
+            {
+              "name": "sms:apiovh:users/receivers/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4168,11 +4502,15 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Clean the invalid and inactive receivers in the document by requesting HLR on each receiver. A report is sent by e-mail at the end of the operation.",
+          "description": "Clean the invalid and inactive receivers in the document by requesting HLR on each receiver",
           "httpMethod": "POST",
           "iamActions": [
-            "sms:apiovh:users/receivers/clean"
+            {
+              "name": "sms:apiovh:users/receivers/clean",
+              "required": true
+            }
           ],
+          "longDescription": "Clean the invalid and inactive receivers in the document by requesting HLR on each receiver. A report is sent by e-mail at the end of the operation.",
           "noAuthentication": false,
           "parameters": [
             {
@@ -4232,7 +4570,10 @@ export const schema: Schema = {
           "description": "Get the document data container",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:users/receivers/csv/get"
+            {
+              "name": "sms:apiovh:users/receivers/csv/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4277,7 +4618,10 @@ export const schema: Schema = {
           "description": "Virtual numbers associated to the sms account",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:virtualNumbers/get"
+            {
+              "name": "sms:apiovh:virtualNumbers/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4306,7 +4650,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:virtualNumbers/get"
+            {
+              "name": "sms:apiovh:virtualNumbers/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4343,7 +4690,10 @@ export const schema: Schema = {
           "description": "Delete the given web access",
           "httpMethod": "DELETE",
           "iamActions": [
-            "sms:apiovh:virtualNumbers/chatAccess/delete"
+            {
+              "name": "sms:apiovh:virtualNumbers/chatAccess/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4374,7 +4724,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:virtualNumbers/chatAccess/get"
+            {
+              "name": "sms:apiovh:virtualNumbers/chatAccess/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4405,7 +4758,10 @@ export const schema: Schema = {
           "description": "Create a new web access for this ressource",
           "httpMethod": "POST",
           "iamActions": [
-            "sms:apiovh:virtualNumbers/chatAccess/create"
+            {
+              "name": "sms:apiovh:virtualNumbers/chatAccess/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4442,7 +4798,10 @@ export const schema: Schema = {
           "description": "Sms received associated to the sms account",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:virtualNumbers/incoming/get"
+            {
+              "name": "sms:apiovh:virtualNumbers/incoming/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4511,7 +4870,10 @@ export const schema: Schema = {
           "description": "Delete the sms incoming history given",
           "httpMethod": "DELETE",
           "iamActions": [
-            "sms:apiovh:virtualNumbers/incoming/delete"
+            {
+              "name": "sms:apiovh:virtualNumbers/incoming/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4550,7 +4912,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:virtualNumbers/incoming/get"
+            {
+              "name": "sms:apiovh:virtualNumbers/incoming/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4595,7 +4960,10 @@ export const schema: Schema = {
           "description": "Sms in pending associated to the sms account",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:virtualNumbers/jobs/get"
+            {
+              "name": "sms:apiovh:virtualNumbers/jobs/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4626,7 +4994,10 @@ export const schema: Schema = {
           "description": "Add one or several sending jobs",
           "httpMethod": "POST",
           "iamActions": [
-            "sms:apiovh:virtualNumbers/jobs/create"
+            {
+              "name": "sms:apiovh:virtualNumbers/jobs/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4640,7 +5011,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "sms.ClassEnum",
-              "description": "The sms class",
+              "description": "Deprecated: The sms class",
               "fullType": "sms.ClassEnum",
               "name": "class",
               "paramType": "body",
@@ -4648,7 +5019,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "sms.CodingEnum",
-              "description": "The sms coding",
+              "description": "Deprecated: the coding is deduced from the message and its charset",
               "fullType": "sms.CodingEnum",
               "name": "coding",
               "paramType": "body",
@@ -4751,7 +5122,10 @@ export const schema: Schema = {
           "description": "Delete the sms job given (stop sending)",
           "httpMethod": "DELETE",
           "iamActions": [
-            "sms:apiovh:virtualNumbers/jobs/delete"
+            {
+              "name": "sms:apiovh:virtualNumbers/jobs/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4790,7 +5164,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:virtualNumbers/jobs/get"
+            {
+              "name": "sms:apiovh:virtualNumbers/jobs/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4835,7 +5212,10 @@ export const schema: Schema = {
           "description": "Sms sent associated to the sms account",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:virtualNumbers/outgoing/get"
+            {
+              "name": "sms:apiovh:virtualNumbers/outgoing/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4936,7 +5316,10 @@ export const schema: Schema = {
           "description": "Delete the sms outgoing history given",
           "httpMethod": "DELETE",
           "iamActions": [
-            "sms:apiovh:virtualNumbers/outgoing/delete"
+            {
+              "name": "sms:apiovh:virtualNumbers/outgoing/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4975,7 +5358,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:virtualNumbers/outgoing/get"
+            {
+              "name": "sms:apiovh:virtualNumbers/outgoing/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5020,7 +5406,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "sms:apiovh:virtualNumbers/outgoing/hlr/get"
+            {
+              "name": "sms:apiovh:virtualNumbers/outgoing/hlr/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5065,7 +5454,10 @@ export const schema: Schema = {
           "description": "Get the encoding, length and number of SMS parts of a text message",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:sms/estimate"
+            {
+              "name": "account:apiovh:sms/estimate",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5201,13 +5593,24 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "List available services",
+          "description": "Your virtual numbers",
           "httpMethod": "GET",
           "iamActions": [
-            "smsVirtualNumbers:apiovh:get"
+            {
+              "name": "smsVirtualNumbers:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
-          "parameters": [],
+          "parameters": [
+            {
+              "dataType": "map[string][]iam.resource.TagFilter",
+              "description": "Filter resources on IAM tags",
+              "name": "iamTags",
+              "paramType": "query",
+              "required": false
+            }
+          ],
           "responseType": "string[]"
         }
       ],
@@ -5224,7 +5627,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "smsVirtualNumbers:apiovh:get"
+            {
+              "name": "smsVirtualNumbers:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5237,7 +5643,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "sms.VirtualNumberGenericService"
+          "responseType": "sms.VirtualNumberGenericServiceWithIAM"
         }
       ],
       "path": "/sms/virtualNumbers/{number}"
@@ -5250,10 +5656,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get service information",
           "httpMethod": "GET",
           "iamActions": [
-            "smsVirtualNumbers:apiovh:serviceInfos/get"
+            {
+              "name": "smsVirtualNumbers:apiovh:serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5273,10 +5682,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Update service information",
           "httpMethod": "PUT",
           "iamActions": [
-            "smsVirtualNumbers:apiovh:serviceInfos/edit"
+            {
+              "name": "smsVirtualNumbers:apiovh:serviceInfos/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5304,6 +5716,77 @@ export const schema: Schema = {
   ],
   "basePath": "https://eu.api.ovh.com/1.0",
   "models": {
+    "iam.ResourceMetadata": {
+      "description": "IAM resource metadata embedded in services models",
+      "id": "ResourceMetadata",
+      "namespace": "iam",
+      "properties": {
+        "displayName": {
+          "canBeNull": true,
+          "description": "Resource display name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Unique identifier of the resource",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "tags": {
+          "canBeNull": true,
+          "description": "Resource tags. Tags that were internally computed are prefixed with ovh:",
+          "fullType": "map[string]string",
+          "readOnly": true,
+          "required": false,
+          "type": "map[string]string"
+        },
+        "urn": {
+          "canBeNull": false,
+          "description": "Unique resource name used in policies",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter": {
+      "description": "Resource tag filter",
+      "id": "TagFilter",
+      "namespace": "iam.resource",
+      "properties": {
+        "operator": {
+          "canBeNull": true,
+          "description": "Operator to use in order to filter on the value (defaults to 'EQ')",
+          "fullType": "iam.resource.TagFilter.OperatorEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.resource.TagFilter.OperatorEnum"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value to use in order to filter tags",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter.OperatorEnum": {
+      "description": "Operator that can be used in order to filter resources tags",
+      "enum": [
+        "EQ"
+      ],
+      "enumType": "string",
+      "id": "OperatorEnum",
+      "namespace": "iam.resource.TagFilter"
+    },
     "order.CurrencyCodeEnum": {
       "enum": [
         "AUD",
@@ -5662,6 +6145,123 @@ export const schema: Schema = {
         }
       }
     },
+    "sms.AccountWithIAM": {
+      "description": "SMS details",
+      "id": "Account",
+      "namespace": "sms",
+      "properties": {
+        "automaticRecreditAmount": {
+          "canBeNull": true,
+          "fullType": "sms.PackQuantityAutomaticRecreditEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "sms.PackQuantityAutomaticRecreditEnum"
+        },
+        "callBack": {
+          "canBeNull": true,
+          "description": "URL called when state of a sent SMS changes",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "channel": {
+          "canBeNull": false,
+          "description": "For what purpose this account can be used for",
+          "fullType": "sms.ChannelEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "sms.ChannelEnum"
+        },
+        "creditThresholdForAutomaticRecredit": {
+          "canBeNull": false,
+          "description": "Credit threshold after which an automatic recredit is launched",
+          "fullType": "double",
+          "readOnly": false,
+          "required": false,
+          "type": "double"
+        },
+        "creditsHoldByQuota": {
+          "canBeNull": false,
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "creditsLeft": {
+          "canBeNull": false,
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "description": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "iam": {
+          "canBeNull": true,
+          "description": "IAM resource metadata",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.ResourceMetadata"
+        },
+        "name": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "smpp": {
+          "canBeNull": false,
+          "description": "Whether the account can be used for smpp or not",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "smsResponse": {
+          "canBeNull": false,
+          "fullType": "sms.Response",
+          "readOnly": false,
+          "required": false,
+          "type": "sms.Response"
+        },
+        "status": {
+          "canBeNull": false,
+          "fullType": "sms.StatusAccountEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "sms.StatusAccountEnum"
+        },
+        "stopCallBack": {
+          "canBeNull": true,
+          "description": "URL called when a STOP is received after a receiver replied stop to a SMS",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "templates": {
+          "canBeNull": false,
+          "fullType": "sms.Templates",
+          "readOnly": false,
+          "required": false,
+          "type": "sms.Templates"
+        },
+        "userQuantityWithQuota": {
+          "canBeNull": false,
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
     "sms.AlertThreshold": {
       "description": "A structure describing all information about alert threshold informations",
       "id": "AlertThreshold",
@@ -5910,7 +6510,7 @@ export const schema: Schema = {
       "properties": {
         "class": {
           "canBeNull": false,
-          "description": "SMS class",
+          "description": "Deprecated: SMS class",
           "fullType": "sms.BatchClassEnum",
           "readOnly": false,
           "required": false,
@@ -6195,7 +6795,7 @@ export const schema: Schema = {
       }
     },
     "sms.ClassEnum": {
-      "description": "The sms class of sms sending job",
+      "description": "Deprecated: The sms class of sms sending job",
       "enum": [
         "flash",
         "phoneDisplay",
@@ -7140,12 +7740,12 @@ export const schema: Schema = {
       "description": "Pack quantity automatic recredit possibilities",
       "enum": [
         "100",
-        "1000",
-        "10000",
         "200",
         "250",
         "500",
-        "5000"
+        "1000",
+        "5000",
+        "10000"
       ],
       "enumType": "long",
       "id": "PackQuantityAutomaticRecreditEnum",
@@ -7155,17 +7755,17 @@ export const schema: Schema = {
       "description": "Pack quantity levels",
       "enum": [
         "100",
-        "1000",
-        "10000",
-        "100000",
-        "1000000",
         "200",
         "250",
-        "2500",
-        "25000",
         "500",
+        "1000",
+        "2500",
         "5000",
-        "50000"
+        "10000",
+        "25000",
+        "50000",
+        "100000",
+        "1000000"
       ],
       "enumType": "long",
       "id": "PackQuantityEnum",
@@ -7718,6 +8318,14 @@ export const schema: Schema = {
           "required": false,
           "type": "sms.SettingsStatusEnum"
         },
+        "systemID": {
+          "canBeNull": false,
+          "description": "Username used to connect to OVHcloud SMSC",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
         "throughput": {
           "canBeNull": false,
           "description": "Number of messages allowed per seconds",
@@ -7789,6 +8397,12 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string[]"
+        },
+        "tag": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "totalCreditsRemoved": {
           "canBeNull": false,
@@ -8118,6 +8732,36 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "sms.VirtualNumberIsoCountryCodeEnum"
+        },
+        "number": {
+          "canBeNull": false,
+          "description": "The virtual number",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "sms.VirtualNumberGenericServiceWithIAM": {
+      "description": "Virtual numbers",
+      "id": "VirtualNumberGenericService",
+      "namespace": "sms",
+      "properties": {
+        "countryCode": {
+          "canBeNull": false,
+          "description": "The ISO formated country code of the number",
+          "fullType": "sms.VirtualNumberIsoCountryCodeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "sms.VirtualNumberIsoCountryCodeEnum"
+        },
+        "iam": {
+          "canBeNull": true,
+          "description": "IAM resource metadata",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.ResourceMetadata"
         },
         "number": {
           "canBeNull": false,

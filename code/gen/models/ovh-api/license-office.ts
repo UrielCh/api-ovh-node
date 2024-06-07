@@ -6,73 +6,90 @@ export const schema: Schema = {
   "apiVersion": "1.0",
   "apis": [
     {
-      "description": "Operations about the OFFICE service",
+      "description": "Operations about Office services",
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseOffice:apiovh:get"
+            {
+              "name": "licenseOffice:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
-          "parameters": [],
+          "parameters": [
+            {
+              "dataType": "map[string][]iam.resource.TagFilter",
+              "description": "Filter resources on IAM tags",
+              "name": "iamTags",
+              "paramType": "query",
+              "required": false
+            }
+          ],
           "responseType": "string[]"
         }
       ],
       "path": "/license/office"
     },
     {
-      "description": "Office tenant",
+      "description": "Operations about Office services",
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseOffice:apiovh:get"
+            {
+              "name": "licenseOffice:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The unique identifier of your Office service",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "license.office.OfficeTenant"
+          "responseType": "license.office.OfficeTenantNativeWithIAM"
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
-          "description": "Alter this object properties",
+          "description": "Modify the office service",
           "httpMethod": "PUT",
           "iamActions": [
-            "licenseOffice:apiovh:put"
+            {
+              "name": "licenseOffice:apiovh:edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "license.office.OfficeTenant",
-              "description": "New object properties",
-              "fullType": "license.office.OfficeTenant",
+              "dataType": "license.office.OfficeTenantNative",
+              "description": "Request Body",
+              "fullType": "license.office.OfficeTenantNative",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The unique identifier of your Office service",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -85,23 +102,26 @@ export const schema: Schema = {
       "path": "/license/office/{serviceName}"
     },
     {
-      "description": "List the license.office.OfficeDomain objects",
+      "description": "Operations about Office services",
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
-          "description": "Domain associated to this office tenant",
+          "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseOffice:apiovh:domain/get"
+            {
+              "name": "licenseOffice:apiovh:domain/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The unique identifier of your Office service",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -114,17 +134,20 @@ export const schema: Schema = {
       "path": "/license/office/{serviceName}/domain"
     },
     {
-      "description": "Office domain",
+      "description": "Operations about Office services",
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseOffice:apiovh:domain/get"
+            {
+              "name": "licenseOffice:apiovh:domain/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -138,36 +161,39 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The unique identifier of your Office service",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "license.office.OfficeDomain"
+          "responseType": "license.office.DomainNative"
         }
       ],
       "path": "/license/office/{serviceName}/domain/{domainName}"
     },
     {
-      "description": "List the license.office.OfficeTask objects",
+      "description": "Operations about a service tasks",
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
-          "description": "Tasks associated to this office tenant",
+          "description": "List pending task",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseOffice:apiovh:pendingTask/get"
+            {
+              "name": "licenseOffice:apiovh:pendingTask/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The unique identifier of your Office service",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -180,23 +206,26 @@ export const schema: Schema = {
       "path": "/license/office/{serviceName}/pendingTask"
     },
     {
-      "description": "Office task",
+      "description": "Operations about a service tasks",
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseOffice:apiovh:pendingTask/get"
+            {
+              "name": "licenseOffice:apiovh:pendingTask/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "Task's unique identifier",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -204,14 +233,14 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The unique identifier of your Office service",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "license.office.OfficeTask"
+          "responseType": "license.office.OfficeTaskNative"
         }
       ],
       "path": "/license/office/{serviceName}/pendingTask/{id}"
@@ -224,10 +253,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get service information",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseOffice:apiovh:serviceInfos/get"
+            {
+              "name": "licenseOffice:apiovh:serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -247,10 +279,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Update service information",
           "httpMethod": "PUT",
           "iamActions": [
-            "licenseOffice:apiovh:serviceInfos/edit"
+            {
+              "name": "licenseOffice:apiovh:serviceInfos/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -276,68 +311,74 @@ export const schema: Schema = {
       "path": "/license/office/{serviceName}/serviceInfos"
     },
     {
-      "description": "usageStatistics operations",
+      "description": "Get the current total available quantity as well as current usage",
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
-          "description": "Shows the subscriptions' usage statistics for the given time period",
+          "description": "Get day-to-day statistics of license usage and availability",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseOffice:apiovh:usageStatistics/get"
+            {
+              "name": "licenseOffice:apiovh:usageStatistics/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The unique identifier of your Office service",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "date",
-              "description": "Period's start point.",
-              "fullType": "date",
+              "dataType": "datetime",
+              "description": "Period's start point",
+              "fullType": "datetime",
               "name": "from",
               "paramType": "query",
-              "required": true
+              "required": false
             },
             {
-              "dataType": "date",
-              "description": "Period's end point.",
-              "fullType": "date",
+              "dataType": "datetime",
+              "description": "Period's end point",
+              "fullType": "datetime",
               "name": "to",
               "paramType": "query",
-              "required": true
+              "required": false
             }
           ],
-          "responseType": "license.office.Statistics[]"
+          "responseType": "license.office.OfficeCurrentStatisticsNative[]"
         }
       ],
       "path": "/license/office/{serviceName}/usageStatistics"
     },
     {
-      "description": "List the license.office.OfficeUser objects",
+      "description": "Operations about user",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Accounts associated to this office tenant",
+          "description": "Get accounts associated to this office tenant",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseOffice:apiovh:user/get"
+            {
+              "name": "licenseOffice:apiovh:user/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The unique identifier of your Office service",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -345,7 +386,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Filter the value of activationEmail property (like)",
+              "description": "",
               "fullType": "string",
               "name": "activationEmail",
               "paramType": "query",
@@ -353,7 +394,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Filter the value of firstName property (like)",
+              "description": "",
               "fullType": "string",
               "name": "firstName",
               "paramType": "query",
@@ -361,16 +402,16 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Filter the value of lastName property (like)",
+              "description": "",
               "fullType": "string",
               "name": "lastName",
               "paramType": "query",
               "required": false
             },
             {
-              "dataType": "license.office.LicenceEnum[]",
-              "description": "Filter the value of licences property (=)",
-              "fullType": "license.office.LicenceEnum[]",
+              "dataType": "license.office.LicenseEnum[]",
+              "description": "",
+              "fullType": "license.office.LicenseEnum[]",
               "name": "licences",
               "paramType": "query",
               "required": false
@@ -386,74 +427,36 @@ export const schema: Schema = {
           "description": "Create new office user",
           "httpMethod": "POST",
           "iamActions": [
-            "licenseOffice:apiovh:user/create"
+            {
+              "name": "licenseOffice:apiovh:user/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Office domain",
-              "fullType": "string",
-              "name": "domain",
+              "dataType": "license.office.PostUserNative",
+              "description": "Request Body",
+              "fullType": "license.office.PostUserNative",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Account first name",
-              "fullType": "string",
-              "name": "firstName",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Account last name",
-              "fullType": "string",
-              "name": "lastName",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "license.office.LicenceEnum",
-              "description": "Office licence",
-              "fullType": "license.office.LicenceEnum",
-              "name": "licence",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Account login",
-              "fullType": "string",
-              "name": "login",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "coreTypes.CountryEnum",
-              "description": "ISO 3166-1 alpha-2 country code where the user is using Office365 services",
-              "fullType": "coreTypes.CountryEnum",
-              "name": "usageLocation",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The unique identifier of your Office service",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "license.office.OfficeTask"
+          "responseType": "license.office.OfficeTaskNative"
         }
       ],
       "path": "/license/office/{serviceName}/user"
     },
     {
-      "description": "Office user",
+      "description": "Operations about user",
       "operations": [
         {
           "apiStatus": {
@@ -463,13 +466,16 @@ export const schema: Schema = {
           "description": "Delete existing office user",
           "httpMethod": "DELETE",
           "iamActions": [
-            "licenseOffice:apiovh:user/delete"
+            {
+              "name": "licenseOffice:apiovh:user/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Email used to activate Microsoft Office",
+              "description": "Activation email",
               "fullType": "string",
               "name": "activationEmail",
               "paramType": "path",
@@ -477,30 +483,33 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The unique identifier of your Office service",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "license.office.OfficeTask"
+          "responseType": "license.office.OfficeTaskNative"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get an office user",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseOffice:apiovh:user/get"
+            {
+              "name": "licenseOffice:apiovh:user/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Email used to activate Microsoft Office",
+              "description": "Activation email",
               "fullType": "string",
               "name": "activationEmail",
               "paramType": "path",
@@ -508,37 +517,40 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The unique identifier of your Office service",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "license.office.OfficeUser"
+          "responseType": "license.office.OfficeUserNative"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Modify the office user",
           "httpMethod": "PUT",
           "iamActions": [
-            "licenseOffice:apiovh:user/edit"
+            {
+              "name": "licenseOffice:apiovh:user/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "license.office.OfficeUser",
-              "description": "New object properties",
-              "fullType": "license.office.OfficeUser",
+              "dataType": "license.office.OfficeUserNativeUpdate",
+              "description": "Request Body",
+              "fullType": "license.office.OfficeUserNativeUpdate",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Email used to activate Microsoft Office",
+              "description": "Activation email",
               "fullType": "string",
               "name": "activationEmail",
               "paramType": "path",
@@ -546,7 +558,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The unique identifier of your Office service",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -559,47 +571,33 @@ export const schema: Schema = {
       "path": "/license/office/{serviceName}/user/{activationEmail}"
     },
     {
-      "description": "changePassword operations",
+      "description": "Change or reset user's password",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Change or reset  user's password",
+          "description": "Change password",
           "httpMethod": "POST",
           "iamActions": [
-            "licenseOffice:apiovh:user/changePassword"
+            {
+              "name": "licenseOffice:apiovh:user/changePassword",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Email to send the new password to. Default is nicAdmin's email.",
-              "fullType": "string",
-              "name": "notifyEmail",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "password",
-              "description": "New password or empty to receive a generated password by email",
-              "fullType": "password",
-              "name": "password",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "Specify if the new password should be send via email or not.",
-              "fullType": "boolean",
-              "name": "shouldSendMail",
+              "dataType": "license.office.OfficeTenantPostChangePassword",
+              "description": "Request Body",
+              "fullType": "license.office.OfficeTenantPostChangePassword",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Email used to activate Microsoft Office",
+              "description": "Activation email",
               "fullType": "string",
               "name": "activationEmail",
               "paramType": "path",
@@ -607,14 +605,14 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The unique identifier of your Office service",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "license.office.OfficeTask"
+          "responseType": "license.office.OfficeTaskNative"
         }
       ],
       "path": "/license/office/{serviceName}/user/{activationEmail}/changePassword"
@@ -890,6 +888,376 @@ export const schema: Schema = {
       "id": "CountryEnum",
       "namespace": "coreTypes"
     },
+    "iam.ResourceMetadata": {
+      "description": "IAM resource metadata embedded in services models",
+      "id": "ResourceMetadata",
+      "namespace": "iam",
+      "properties": {
+        "displayName": {
+          "canBeNull": true,
+          "description": "Resource display name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Unique identifier of the resource",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "tags": {
+          "canBeNull": true,
+          "description": "Resource tags. Tags that were internally computed are prefixed with ovh:",
+          "fullType": "map[string]string",
+          "readOnly": true,
+          "required": false,
+          "type": "map[string]string"
+        },
+        "urn": {
+          "canBeNull": false,
+          "description": "Unique resource name used in policies",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter": {
+      "description": "Resource tag filter",
+      "id": "TagFilter",
+      "namespace": "iam.resource",
+      "properties": {
+        "operator": {
+          "canBeNull": true,
+          "description": "Operator to use in order to filter on the value (defaults to 'EQ')",
+          "fullType": "iam.resource.TagFilter.OperatorEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.resource.TagFilter.OperatorEnum"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value to use in order to filter tags",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter.OperatorEnum": {
+      "description": "Operator that can be used in order to filter resources tags",
+      "enum": [
+        "EQ"
+      ],
+      "enumType": "string",
+      "id": "OperatorEnum",
+      "namespace": "iam.resource.TagFilter"
+    },
+    "license.office.CountryEnum": {
+      "description": "ISO country codes",
+      "enum": [
+        "ac",
+        "ad",
+        "ae",
+        "af",
+        "ag",
+        "ai",
+        "al",
+        "am",
+        "an",
+        "ao",
+        "aq",
+        "ar",
+        "as",
+        "at",
+        "au",
+        "aw",
+        "ax",
+        "az",
+        "ba",
+        "bb",
+        "bd",
+        "be",
+        "bf",
+        "bg",
+        "bh",
+        "bi",
+        "bj",
+        "bl",
+        "bm",
+        "bn",
+        "bo",
+        "bq",
+        "br",
+        "bs",
+        "bt",
+        "bv",
+        "bw",
+        "by",
+        "bz",
+        "ca",
+        "cc",
+        "cd",
+        "cf",
+        "cg",
+        "ch",
+        "ci",
+        "ck",
+        "cl",
+        "cm",
+        "cn",
+        "co",
+        "cr",
+        "cs",
+        "cu",
+        "cv",
+        "cw",
+        "cx",
+        "cy",
+        "cz",
+        "de",
+        "dj",
+        "dk",
+        "dm",
+        "do",
+        "dz",
+        "ec",
+        "ee",
+        "eg",
+        "eh",
+        "er",
+        "es",
+        "et",
+        "fc",
+        "fd",
+        "fi",
+        "fj",
+        "fk",
+        "fm",
+        "fo",
+        "fr",
+        "fx",
+        "ga",
+        "gb",
+        "gd",
+        "ge",
+        "gf",
+        "gg",
+        "gh",
+        "gi",
+        "gl",
+        "gm",
+        "gn",
+        "gp",
+        "gq",
+        "gr",
+        "gs",
+        "gt",
+        "gu",
+        "gw",
+        "gy",
+        "hk",
+        "hm",
+        "hn",
+        "hr",
+        "ht",
+        "hu",
+        "id",
+        "ie",
+        "il",
+        "im",
+        "in",
+        "io",
+        "iq",
+        "ir",
+        "is",
+        "it",
+        "je",
+        "jm",
+        "jo",
+        "jp",
+        "ke",
+        "kg",
+        "kh",
+        "ki",
+        "km",
+        "kn",
+        "kp",
+        "kr",
+        "kw",
+        "ky",
+        "kz",
+        "la",
+        "lb",
+        "lc",
+        "li",
+        "lk",
+        "lr",
+        "ls",
+        "lt",
+        "lu",
+        "lv",
+        "ly",
+        "ma",
+        "mc",
+        "md",
+        "me",
+        "mf",
+        "mg",
+        "mh",
+        "mk",
+        "ml",
+        "mm",
+        "mn",
+        "mo",
+        "mp",
+        "mq",
+        "mr",
+        "ms",
+        "mt",
+        "mu",
+        "mv",
+        "mw",
+        "mx",
+        "my",
+        "mz",
+        "na",
+        "nc",
+        "ne",
+        "nf",
+        "ng",
+        "ni",
+        "nl",
+        "no",
+        "np",
+        "nr",
+        "nu",
+        "nz",
+        "om",
+        "pa",
+        "pe",
+        "pf",
+        "pg",
+        "ph",
+        "pk",
+        "pl",
+        "pm",
+        "pn",
+        "pr",
+        "ps",
+        "pt",
+        "pw",
+        "py",
+        "qa",
+        "qc",
+        "re",
+        "ro",
+        "rs",
+        "ru",
+        "rw",
+        "sa",
+        "sb",
+        "sc",
+        "sd",
+        "se",
+        "sg",
+        "sh",
+        "si",
+        "sj",
+        "sk",
+        "sl",
+        "sm",
+        "sn",
+        "so",
+        "sr",
+        "ss",
+        "st",
+        "sv",
+        "sx",
+        "sy",
+        "sz",
+        "tc",
+        "td",
+        "tf",
+        "tg",
+        "th",
+        "tj",
+        "tk",
+        "tl",
+        "tm",
+        "tn",
+        "to",
+        "tp",
+        "tr",
+        "tt",
+        "tv",
+        "tw",
+        "tz",
+        "ua",
+        "ug",
+        "uk",
+        "um",
+        "us",
+        "uy",
+        "uz",
+        "va",
+        "vc",
+        "ve",
+        "vg",
+        "vi",
+        "vn",
+        "vu",
+        "we",
+        "wf",
+        "ws",
+        "ye",
+        "yt",
+        "yu",
+        "za",
+        "zm",
+        "zw"
+      ],
+      "enumType": "string",
+      "id": "CountryEnum",
+      "namespace": "license.office"
+    },
+    "license.office.DomainNative": {
+      "description": "Office tenant",
+      "id": "DomainNative",
+      "namespace": "license.office",
+      "properties": {
+        "domainName": {
+          "canBeNull": false,
+          "description": "Domain name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Domain status",
+          "fullType": "license.office.DomainStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "license.office.DomainStatusEnum"
+        },
+        "txtEntry": {
+          "canBeNull": false,
+          "description": "Domain status",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
     "license.office.DomainStateEnum": {
       "description": "Office domain state",
       "enum": [
@@ -898,6 +1266,16 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "DomainStateEnum",
+      "namespace": "license.office"
+    },
+    "license.office.DomainStatusEnum": {
+      "description": "Office tenant type",
+      "enum": [
+        "ok",
+        "unverified"
+      ],
+      "enumType": "string",
+      "id": "DomainStatusEnum",
       "namespace": "license.office"
     },
     "license.office.LicenceEnum": {
@@ -909,6 +1287,39 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "LicenceEnum",
       "namespace": "license.office"
+    },
+    "license.office.LicenseEnum": {
+      "description": "Office tenant type",
+      "enum": [
+        "officeBusiness",
+        "officeProPlus"
+      ],
+      "enumType": "string",
+      "id": "LicenseEnum",
+      "namespace": "license.office"
+    },
+    "license.office.OfficeCurrentStatisticsNative": {
+      "description": "Office Current Statisitics",
+      "id": "OfficeCurrentStatisticsNative",
+      "namespace": "license.office",
+      "properties": {
+        "date": {
+          "canBeNull": false,
+          "description": "Date of the statistics",
+          "fullType": "date",
+          "readOnly": true,
+          "required": false,
+          "type": "date"
+        },
+        "lines": {
+          "canBeNull": false,
+          "description": "List of lines associated to this statistics entity.",
+          "fullType": "license.office.StatisticsLineNative[]",
+          "readOnly": true,
+          "required": false,
+          "type": "license.office.StatisticsLineNative[]"
+        }
+      }
     },
     "license.office.OfficeDomain": {
       "description": "Office domain",
@@ -1051,6 +1462,53 @@ export const schema: Schema = {
         }
       }
     },
+    "license.office.OfficeTaskNative": {
+      "description": "Office tenant",
+      "id": "OfficeTaskNative",
+      "namespace": "license.office",
+      "properties": {
+        "finishDate": {
+          "canBeNull": true,
+          "description": "Completion date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "function": {
+          "canBeNull": false,
+          "description": "Function name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Task's unique identifier",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Task's unique identifier",
+          "fullType": "license.office.TaskStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "license.office.TaskStatusEnum"
+        },
+        "todoDate": {
+          "canBeNull": false,
+          "description": "Creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        }
+      }
+    },
     "license.office.OfficeTenant": {
       "description": "Office tenant",
       "id": "OfficeTenant",
@@ -1095,6 +1553,335 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string"
+        },
+        "lastName": {
+          "canBeNull": false,
+          "description": "Contact's fisrt name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "phone": {
+          "canBeNull": false,
+          "description": "Primary phone number",
+          "fullType": "phoneNumber",
+          "readOnly": false,
+          "required": false,
+          "type": "phoneNumber"
+        },
+        "serviceName": {
+          "canBeNull": false,
+          "description": "Internal service name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "serviceType": {
+          "canBeNull": false,
+          "description": "Tenant's service type",
+          "fullType": "license.office.ServiceTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "license.office.ServiceTypeEnum"
+        },
+        "status": {
+          "canBeNull": false,
+          "fullType": "license.office.ServiceStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "license.office.ServiceStateEnum"
+        },
+        "zipCode": {
+          "canBeNull": false,
+          "description": "Contact's zip code",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "license.office.OfficeTenantNative": {
+      "description": "Office tenant",
+      "id": "OfficeTenantNative",
+      "namespace": "license.office",
+      "properties": {
+        "address": {
+          "canBeNull": false,
+          "description": "Contact's address line",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "city": {
+          "canBeNull": false,
+          "description": "Contact's city",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "displayName": {
+          "canBeNull": false,
+          "description": "Tenant's display name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "firstName": {
+          "canBeNull": false,
+          "description": "Contact's first name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "lastName": {
+          "canBeNull": false,
+          "description": "Contact's last name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "phone": {
+          "canBeNull": false,
+          "description": "Primary phone number",
+          "fullType": "phoneNumber",
+          "readOnly": false,
+          "required": false,
+          "type": "phoneNumber"
+        },
+        "serviceName": {
+          "canBeNull": false,
+          "description": "Internal service name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "serviceType": {
+          "canBeNull": false,
+          "description": "Tenant's service type",
+          "fullType": "license.office.ServiceTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "license.office.ServiceTypeEnum"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Tenant's status",
+          "fullType": "license.office.ServiceStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "license.office.ServiceStateEnum"
+        },
+        "zipCode": {
+          "canBeNull": false,
+          "description": "Contact's zip code",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "license.office.OfficeTenantNativeWithIAM": {
+      "description": "Office tenant",
+      "id": "OfficeTenantNative",
+      "namespace": "license.office",
+      "properties": {
+        "address": {
+          "canBeNull": false,
+          "description": "Contact's address line",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "city": {
+          "canBeNull": false,
+          "description": "Contact's city",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "displayName": {
+          "canBeNull": false,
+          "description": "Tenant's display name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "firstName": {
+          "canBeNull": false,
+          "description": "Contact's first name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "iam": {
+          "canBeNull": true,
+          "description": "IAM resource metadata",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.ResourceMetadata"
+        },
+        "lastName": {
+          "canBeNull": false,
+          "description": "Contact's last name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "phone": {
+          "canBeNull": false,
+          "description": "Primary phone number",
+          "fullType": "phoneNumber",
+          "readOnly": false,
+          "required": false,
+          "type": "phoneNumber"
+        },
+        "serviceName": {
+          "canBeNull": false,
+          "description": "Internal service name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "serviceType": {
+          "canBeNull": false,
+          "description": "Tenant's service type",
+          "fullType": "license.office.ServiceTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "license.office.ServiceTypeEnum"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Tenant's status",
+          "fullType": "license.office.ServiceStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "license.office.ServiceStateEnum"
+        },
+        "zipCode": {
+          "canBeNull": false,
+          "description": "Contact's zip code",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "license.office.OfficeTenantPostChangePassword": {
+      "description": "Office change password",
+      "id": "OfficeTenantPostChangePassword",
+      "namespace": "license.office",
+      "properties": {
+        "notifyEmail": {
+          "canBeNull": true,
+          "description": "Email to send the new password to. Default is nicAdmin's email",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "password": {
+          "canBeNull": true,
+          "description": "New password or empty to receive a generated password by email",
+          "fullType": "password",
+          "readOnly": false,
+          "required": false,
+          "type": "password"
+        },
+        "shouldSendMail": {
+          "canBeNull": false,
+          "description": "Specify whether the new password should be sent via email or not",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
+        }
+      }
+    },
+    "license.office.OfficeTenantWithIAM": {
+      "description": "Office tenant",
+      "id": "OfficeTenant",
+      "namespace": "license.office",
+      "properties": {
+        "address": {
+          "canBeNull": false,
+          "description": "Contact's address line",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "city": {
+          "canBeNull": false,
+          "description": "Contact's city",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "displayName": {
+          "canBeNull": false,
+          "description": "Tenant's display name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "firstName": {
+          "canBeNull": false,
+          "description": "Contact's fisrt name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "iam": {
+          "canBeNull": true,
+          "description": "IAM resource metadata",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.ResourceMetadata"
         },
         "lastName": {
           "canBeNull": false,
@@ -1224,20 +2011,203 @@ export const schema: Schema = {
         }
       }
     },
+    "license.office.OfficeUserNative": {
+      "description": "Office user",
+      "id": "OfficeUserNative",
+      "namespace": "license.office",
+      "properties": {
+        "activationEmail": {
+          "canBeNull": false,
+          "description": "Email used to activate Microsoft Office",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "deleteAtExpiration": {
+          "canBeNull": false,
+          "description": "Whether or not this user slot will be resigned at the next renew period",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "firstName": {
+          "canBeNull": false,
+          "description": "User's first name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "isVirtual": {
+          "canBeNull": false,
+          "description": "Specify if the user is actually a user slot (configureme) or a real user",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "lastName": {
+          "canBeNull": false,
+          "description": "User's last name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "licences": {
+          "canBeNull": false,
+          "description": "Licenses attributed to the user",
+          "fullType": "license.office.LicenseEnum[]",
+          "readOnly": true,
+          "required": false,
+          "type": "license.office.LicenseEnum[]"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "User state",
+          "fullType": "license.office.UserStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "license.office.UserStateEnum"
+        },
+        "taskPendingId": {
+          "canBeNull": false,
+          "description": "Pending task id",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "usageLocation": {
+          "canBeNull": false,
+          "description": "ISO 3166-1 alpha-2 country code where the user is using Office365 services",
+          "fullType": "license.office.CountryEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "license.office.CountryEnum"
+        }
+      }
+    },
+    "license.office.OfficeUserNativeUpdate": {
+      "description": "Office user",
+      "id": "OfficeUserNativeUpdate",
+      "namespace": "license.office",
+      "properties": {
+        "activationEmail": {
+          "canBeNull": false,
+          "description": "Email used to activate Microsoft Office",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "deleteAtExpiration": {
+          "canBeNull": false,
+          "description": "Whether or not this user slot will be resigned at the next renew period",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "firstName": {
+          "canBeNull": false,
+          "description": "User's first name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "lastName": {
+          "canBeNull": false,
+          "description": "User's last name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "usageLocation": {
+          "canBeNull": false,
+          "description": "ISO 3166-1 alpha-2 country code where the user is using Office365 services",
+          "fullType": "license.office.CountryEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "license.office.CountryEnum"
+        }
+      }
+    },
+    "license.office.PostUserNative": {
+      "description": "Office user",
+      "id": "PostUserNative",
+      "namespace": "license.office",
+      "properties": {
+        "domain": {
+          "canBeNull": false,
+          "description": "Office domain",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "firstName": {
+          "canBeNull": false,
+          "description": "User's first name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "lastName": {
+          "canBeNull": false,
+          "description": "User's last name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "licence": {
+          "canBeNull": false,
+          "description": "Licenses attributed to the user",
+          "fullType": "license.officePrepaid.LicenseEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "license.officePrepaid.LicenseEnum"
+        },
+        "login": {
+          "canBeNull": false,
+          "description": "Account login",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "usageLocation": {
+          "canBeNull": false,
+          "description": "ISO 3166-1 alpha-2 country code where the user is using Office365 services",
+          "fullType": "license.officePrepaid.CountryEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "license.officePrepaid.CountryEnum"
+        }
+      }
+    },
     "license.office.ServiceStateEnum": {
       "description": "Office tenant state",
       "enum": [
         "creating",
         "inMaintenance",
         "ok",
-        "suspended"
+        "reopening",
+        "suspended",
+        "suspending"
       ],
       "enumType": "string",
       "id": "ServiceStateEnum",
       "namespace": "license.office"
     },
     "license.office.ServiceTypeEnum": {
-      "description": "Type of service",
+      "description": "Office tenant type",
       "enum": [
         "payAsYouGo",
         "prepaid"
@@ -1323,8 +2293,39 @@ export const schema: Schema = {
         }
       }
     },
+    "license.office.StatisticsLineNative": {
+      "description": "License usage statistics line.",
+      "id": "StatisticsLineNative",
+      "namespace": "license.office",
+      "properties": {
+        "endOfDayCount": {
+          "canBeNull": false,
+          "description": "Count of activated licenses at the end of the day.",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "licenceType": {
+          "canBeNull": false,
+          "description": "Type of the Office license.",
+          "fullType": "license.office.LicenseEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "license.office.LicenseEnum"
+        },
+        "peakCount": {
+          "canBeNull": false,
+          "description": "Maximum count of simultaneous activated licences.",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
     "license.office.TaskStatusEnum": {
-      "description": "Exchange task status",
+      "description": "Excahnge task status",
       "enum": [
         "cancelled",
         "doing",
@@ -1337,15 +2338,296 @@ export const schema: Schema = {
       "namespace": "license.office"
     },
     "license.office.UserStateEnum": {
-      "description": "Office user  state",
+      "description": "Office tenant type",
       "enum": [
         "creating",
         "deleting",
-        "ok"
+        "ok",
+        "suspended",
+        "suspending",
+        "unsuspending"
       ],
       "enumType": "string",
       "id": "UserStateEnum",
       "namespace": "license.office"
+    },
+    "license.officePrepaid.CountryEnum": {
+      "description": "ISO country codes",
+      "enum": [
+        "ac",
+        "ad",
+        "ae",
+        "af",
+        "ag",
+        "ai",
+        "al",
+        "am",
+        "an",
+        "ao",
+        "aq",
+        "ar",
+        "as",
+        "at",
+        "au",
+        "aw",
+        "ax",
+        "az",
+        "ba",
+        "bb",
+        "bd",
+        "be",
+        "bf",
+        "bg",
+        "bh",
+        "bi",
+        "bj",
+        "bl",
+        "bm",
+        "bn",
+        "bo",
+        "bq",
+        "br",
+        "bs",
+        "bt",
+        "bv",
+        "bw",
+        "by",
+        "bz",
+        "ca",
+        "cc",
+        "cd",
+        "cf",
+        "cg",
+        "ch",
+        "ci",
+        "ck",
+        "cl",
+        "cm",
+        "cn",
+        "co",
+        "cr",
+        "cs",
+        "cu",
+        "cv",
+        "cw",
+        "cx",
+        "cy",
+        "cz",
+        "de",
+        "dj",
+        "dk",
+        "dm",
+        "do",
+        "dz",
+        "ec",
+        "ee",
+        "eg",
+        "eh",
+        "er",
+        "es",
+        "et",
+        "fc",
+        "fd",
+        "fi",
+        "fj",
+        "fk",
+        "fm",
+        "fo",
+        "fr",
+        "fx",
+        "ga",
+        "gb",
+        "gd",
+        "ge",
+        "gf",
+        "gg",
+        "gh",
+        "gi",
+        "gl",
+        "gm",
+        "gn",
+        "gp",
+        "gq",
+        "gr",
+        "gs",
+        "gt",
+        "gu",
+        "gw",
+        "gy",
+        "hk",
+        "hm",
+        "hn",
+        "hr",
+        "ht",
+        "hu",
+        "id",
+        "ie",
+        "il",
+        "im",
+        "in",
+        "io",
+        "iq",
+        "ir",
+        "is",
+        "it",
+        "je",
+        "jm",
+        "jo",
+        "jp",
+        "ke",
+        "kg",
+        "kh",
+        "ki",
+        "km",
+        "kn",
+        "kp",
+        "kr",
+        "kw",
+        "ky",
+        "kz",
+        "la",
+        "lb",
+        "lc",
+        "li",
+        "lk",
+        "lr",
+        "ls",
+        "lt",
+        "lu",
+        "lv",
+        "ly",
+        "ma",
+        "mc",
+        "md",
+        "me",
+        "mf",
+        "mg",
+        "mh",
+        "mk",
+        "ml",
+        "mm",
+        "mn",
+        "mo",
+        "mp",
+        "mq",
+        "mr",
+        "ms",
+        "mt",
+        "mu",
+        "mv",
+        "mw",
+        "mx",
+        "my",
+        "mz",
+        "na",
+        "nc",
+        "ne",
+        "nf",
+        "ng",
+        "ni",
+        "nl",
+        "no",
+        "np",
+        "nr",
+        "nu",
+        "nz",
+        "om",
+        "pa",
+        "pe",
+        "pf",
+        "pg",
+        "ph",
+        "pk",
+        "pl",
+        "pm",
+        "pn",
+        "pr",
+        "ps",
+        "pt",
+        "pw",
+        "py",
+        "qa",
+        "qc",
+        "re",
+        "ro",
+        "rs",
+        "ru",
+        "rw",
+        "sa",
+        "sb",
+        "sc",
+        "sd",
+        "se",
+        "sg",
+        "sh",
+        "si",
+        "sj",
+        "sk",
+        "sl",
+        "sm",
+        "sn",
+        "so",
+        "sr",
+        "ss",
+        "st",
+        "sv",
+        "sx",
+        "sy",
+        "sz",
+        "tc",
+        "td",
+        "tf",
+        "tg",
+        "th",
+        "tj",
+        "tk",
+        "tl",
+        "tm",
+        "tn",
+        "to",
+        "tp",
+        "tr",
+        "tt",
+        "tv",
+        "tw",
+        "tz",
+        "ua",
+        "ug",
+        "uk",
+        "um",
+        "us",
+        "uy",
+        "uz",
+        "va",
+        "vc",
+        "ve",
+        "vg",
+        "vi",
+        "vn",
+        "vu",
+        "we",
+        "wf",
+        "ws",
+        "ye",
+        "yt",
+        "yu",
+        "za",
+        "zm",
+        "zw"
+      ],
+      "enumType": "string",
+      "id": "CountryEnum",
+      "namespace": "license.officePrepaid"
+    },
+    "license.officePrepaid.LicenseEnum": {
+      "description": "Office tenant type",
+      "enum": [
+        "officeBusiness",
+        "officeProPlus"
+      ],
+      "enumType": "string",
+      "id": "LicenseEnum",
+      "namespace": "license.officePrepaid"
     },
     "service.RenewType": {
       "description": "Map a possible renew for a specific service",

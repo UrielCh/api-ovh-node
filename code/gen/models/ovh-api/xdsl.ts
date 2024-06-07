@@ -6,7 +6,7 @@ export const schema: Schema = {
   "apiVersion": "1.0",
   "apis": [
     {
-      "description": "Operations about the XDSL service",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -16,17 +16,28 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:get"
+            {
+              "name": "xdsl:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
-          "parameters": [],
+          "parameters": [
+            {
+              "dataType": "map[string][]iam.resource.TagFilter",
+              "description": "Filter resources on IAM tags",
+              "name": "iamTags",
+              "paramType": "query",
+              "required": false
+            }
+          ],
           "responseType": "string[]"
         }
       ],
       "path": "/xdsl"
     },
     {
-      "description": "XDSL Access",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -36,20 +47,23 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:get"
+            {
+              "name": "xdsl:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "xdsl.Access"
+          "responseType": "xdsl.AccessWithIAM"
         },
         {
           "apiStatus": {
@@ -59,20 +73,23 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "xdsl:apiovh:put"
+            {
+              "name": "xdsl:apiovh:put",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "xdsl.Access",
-              "description": "New object properties",
+              "description": "Request Body",
               "fullType": "xdsl.Access",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -85,7 +102,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}"
     },
     {
-      "description": "extraIpRange operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -95,13 +112,16 @@ export const schema: Schema = {
           "description": "Informations about the extra IP range during address move",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:addressMove/extraIpRange/get"
+            {
+              "name": "xdsl:apiovh:addressMove/extraIpRange/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -114,7 +134,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/addressMove/extraIpRange"
     },
     {
-      "description": "extraIpRangeMove operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -124,13 +144,16 @@ export const schema: Schema = {
           "description": "Initiate the extra IP range migration",
           "httpMethod": "POST",
           "iamActions": [
-            "xdsl:apiovh:addressMove/extraIpRangeMove"
+            {
+              "name": "xdsl:apiovh:addressMove/extraIpRangeMove",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -143,7 +166,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/addressMove/extraIpRangeMove"
     },
     {
-      "description": "List the xdsl.AntiSpam objects",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -153,13 +176,16 @@ export const schema: Schema = {
           "description": "List antiSpams for this access",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:antiSpams/get"
+            {
+              "name": "xdsl:apiovh:antiSpams/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -172,7 +198,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/antiSpams"
     },
     {
-      "description": "Spams detected from xdsl access",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -182,13 +208,16 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:antiSpams/get"
+            {
+              "name": "xdsl:apiovh:antiSpams/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "ip",
-              "description": "IP which spam",
+              "description": "Ip",
               "fullType": "ip",
               "name": "ip",
               "paramType": "path",
@@ -196,7 +225,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -209,7 +238,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/antiSpams/{ip}"
     },
     {
-      "description": "evidences operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -219,13 +248,16 @@ export const schema: Schema = {
           "description": "List of evidences stored on PCS for this ip",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:antiSpams/evidences/get"
+            {
+              "name": "xdsl:apiovh:antiSpams/evidences/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "ip",
-              "description": "IP which spam",
+              "description": "Ip",
               "fullType": "ip",
               "name": "ip",
               "paramType": "path",
@@ -233,7 +265,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -246,31 +278,34 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/antiSpams/{ip}/evidences"
     },
     {
-      "description": "applyTemplateToModem operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Apply TemplateModem to existing Modem",
           "httpMethod": "POST",
           "iamActions": [
-            "xdsl:apiovh:applyTemplateToModem"
+            {
+              "name": "xdsl:apiovh:applyTemplateToModem",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "applyTemplateModem",
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Modem Template Name",
-              "fullType": "string",
-              "name": "templateName",
+              "dataType": "xdsl.applyTemplateToModem.post",
+              "description": "Request Body",
+              "fullType": "xdsl.applyTemplateToModem.post",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -283,7 +318,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/applyTemplateToModem"
     },
     {
-      "description": "canCancelResiliation operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -293,13 +328,16 @@ export const schema: Schema = {
           "description": "Get information about the ongoing resiliation",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:canCancelResiliation/get"
+            {
+              "name": "xdsl:apiovh:canCancelResiliation/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -312,7 +350,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/canCancelResiliation"
     },
     {
-      "description": "cancelResiliation operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -322,13 +360,16 @@ export const schema: Schema = {
           "description": "Cancel the ongoing resiliation",
           "httpMethod": "POST",
           "iamActions": [
-            "xdsl:apiovh:cancelResiliation"
+            {
+              "name": "xdsl:apiovh:cancelResiliation",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -341,7 +382,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/cancelResiliation"
     },
     {
-      "description": "Change the contacts of this service",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -351,37 +392,24 @@ export const schema: Schema = {
           "description": "Launch a contact change procedure",
           "httpMethod": "POST",
           "iamActions": [
-            "xdsl:apiovh:changeContact"
+            {
+              "name": "xdsl:apiovh:changeContact",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "changeContact",
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The contact to set as admin contact",
-              "fullType": "coreTypes.AccountId:string",
-              "name": "contactAdmin",
+              "dataType": "xdsl.changeContact.post",
+              "description": "Request Body",
+              "fullType": "xdsl.changeContact.post",
               "paramType": "body",
-              "required": false
+              "required": true
             },
             {
               "dataType": "string",
-              "description": "The contact to set as billing contact",
-              "fullType": "coreTypes.AccountId:string",
-              "name": "contactBilling",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The contact to set as tech contact",
-              "fullType": "coreTypes.AccountId:string",
-              "name": "contactTech",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -394,7 +422,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/changeContact"
     },
     {
-      "description": "Diagnostic of the access",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -404,13 +432,16 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:diagnostic/get"
+            {
+              "name": "xdsl:apiovh:diagnostic/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -427,13 +458,16 @@ export const schema: Schema = {
           "description": "Run diagnostic on the access",
           "httpMethod": "POST",
           "iamActions": [
-            "xdsl:apiovh:diagnostic/create"
+            {
+              "name": "xdsl:apiovh:diagnostic/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -446,7 +480,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/diagnostic"
     },
     {
-      "description": "List the xdsl.FiberEligibility objects",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -456,13 +490,16 @@ export const schema: Schema = {
           "description": "List fiber eligibilities for this access",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:fiberEligibilities/get"
+            {
+              "name": "xdsl:apiovh:fiberEligibilities/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -483,7 +520,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/fiberEligibilities"
     },
     {
-      "description": "Fiber eligibility",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -493,13 +530,16 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:fiberEligibilities/get"
+            {
+              "name": "xdsl:apiovh:fiberEligibilities/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -507,7 +547,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -520,7 +560,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/fiberEligibilities/{id}"
     },
     {
-      "description": "Detected incident",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -530,13 +570,16 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:incident/get"
+            {
+              "name": "xdsl:apiovh:incident/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -549,7 +592,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/incident"
     },
     {
-      "description": "List the xdsl.IP objects",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -559,13 +602,16 @@ export const schema: Schema = {
           "description": "List of IPs addresses for this access",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:ips/get"
+            {
+              "name": "xdsl:apiovh:ips/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -582,13 +628,16 @@ export const schema: Schema = {
           "description": "Order an extra /29 range of IPv4 addresses",
           "httpMethod": "POST",
           "iamActions": [
-            "xdsl:apiovh:ips/create"
+            {
+              "name": "xdsl:apiovh:ips/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -601,7 +650,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/ips"
     },
     {
-      "description": "Informations about an IP address",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -611,13 +660,16 @@ export const schema: Schema = {
           "description": "Stop renewing this extra IPv4 option",
           "httpMethod": "DELETE",
           "iamActions": [
-            "xdsl:apiovh:ips/delete"
+            {
+              "name": "xdsl:apiovh:ips/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "ip",
-              "description": "The IP address",
+              "description": "Ip",
               "fullType": "ip",
               "name": "ip",
               "paramType": "path",
@@ -625,7 +677,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -642,13 +694,16 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:ips/get"
+            {
+              "name": "xdsl:apiovh:ips/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "ip",
-              "description": "The IP address",
+              "description": "Ip",
               "fullType": "ip",
               "name": "ip",
               "paramType": "path",
@@ -656,7 +711,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -669,7 +724,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/ips/{ip}"
     },
     {
-      "description": "ipv6 operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -679,21 +734,24 @@ export const schema: Schema = {
           "description": "Change the status of the IPv6 for this access",
           "httpMethod": "POST",
           "iamActions": [
-            "xdsl:apiovh:ipv6/create"
+            {
+              "name": "xdsl:apiovh:ipv6/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "updateIp",
           "parameters": [
             {
-              "dataType": "boolean",
-              "description": "Should the IPv6 be enabled ?",
-              "fullType": "boolean",
-              "name": "enabled",
+              "dataType": "xdsl.ipv6.post",
+              "description": "Request Body",
+              "fullType": "xdsl.ipv6.post",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -706,7 +764,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/ipv6"
     },
     {
-      "description": "List the xdsl.Line objects",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -716,13 +774,16 @@ export const schema: Schema = {
           "description": "The lines of the access",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:lines/get"
+            {
+              "name": "xdsl:apiovh:lines/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -735,7 +796,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/lines"
     },
     {
-      "description": "Information about the physical copper line",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -745,13 +806,16 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:lines/get"
+            {
+              "name": "xdsl:apiovh:lines/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The number of the line",
+              "description": "Number",
               "fullType": "string",
               "name": "number",
               "paramType": "path",
@@ -759,7 +823,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -772,7 +836,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/lines/{number}"
     },
     {
-      "description": "cancel operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -782,13 +846,16 @@ export const schema: Schema = {
           "description": "Cancel line diagnostic if possible",
           "httpMethod": "POST",
           "iamActions": [
-            "xdsl:apiovh:lines/diagnostic/cancel"
+            {
+              "name": "xdsl:apiovh:lines/diagnostic/cancel",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The number of the line",
+              "description": "Number",
               "fullType": "string",
               "name": "number",
               "paramType": "path",
@@ -796,7 +863,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -809,7 +876,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/lines/{number}/diagnostic/cancel"
     },
     {
-      "description": "run operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -819,37 +886,24 @@ export const schema: Schema = {
           "description": "Update and get advanced diagnostic of the line",
           "httpMethod": "POST",
           "iamActions": [
-            "xdsl:apiovh:lines/diagnostic/run"
+            {
+              "name": "xdsl:apiovh:lines/diagnostic/run",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "updateLineDiagnostic",
           "parameters": [
             {
-              "dataType": "xdsl.lineDiagnostic.CustomerActionsEnum[]",
-              "description": "Customer possible actions",
-              "fullType": "xdsl.lineDiagnostic.CustomerActionsEnum[]",
-              "name": "actionsDone",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "xdsl.lineDiagnostic.Answers",
-              "description": "Customer answers for line diagnostic",
-              "fullType": "xdsl.lineDiagnostic.Answers",
-              "name": "answers",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "xdsl.lineDiagnostic.FaultTypeEnum",
-              "description": "Line diagnostic type. Depends of problem",
-              "fullType": "xdsl.lineDiagnostic.FaultTypeEnum",
-              "name": "faultType",
+              "dataType": "xdsl.lines.diagnostic.run.post",
+              "description": "Request Body",
+              "fullType": "xdsl.lines.diagnostic.run.post",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The number of the line",
+              "description": "Number",
               "fullType": "string",
               "name": "number",
               "paramType": "path",
@@ -857,7 +911,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -870,7 +924,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/lines/{number}/diagnostic/run"
     },
     {
-      "description": "Information about the port on the DSLAM",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -880,13 +934,16 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:lines/dslamPort/get"
+            {
+              "name": "xdsl:apiovh:lines/dslamPort/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The number of the line",
+              "description": "Number",
               "fullType": "string",
               "name": "number",
               "paramType": "path",
@@ -894,7 +951,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -907,7 +964,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/lines/{number}/dslamPort"
     },
     {
-      "description": "availableProfiles operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -917,13 +974,16 @@ export const schema: Schema = {
           "description": "List all availables profiles for this port",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:lines/dslamPort/availableProfiles/get"
+            {
+              "name": "xdsl:apiovh:lines/dslamPort/availableProfiles/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The number of the line",
+              "description": "Number",
               "fullType": "string",
               "name": "number",
               "paramType": "path",
@@ -931,7 +991,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -944,7 +1004,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/lines/{number}/dslamPort/availableProfiles"
     },
     {
-      "description": "changeProfile operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -954,21 +1014,24 @@ export const schema: Schema = {
           "description": "Change the profile of the port",
           "httpMethod": "POST",
           "iamActions": [
-            "xdsl:apiovh:lines/dslamPort/changeProfile"
+            {
+              "name": "xdsl:apiovh:lines/dslamPort/changeProfile",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "changeLineDSLAMProfile",
           "parameters": [
             {
-              "dataType": "long",
-              "description": "The id of the xdsl.DslamLineProfile",
-              "fullType": "long",
-              "name": "dslamProfileId",
+              "dataType": "xdsl.lines.dslamPort.changeProfile.post",
+              "description": "Request Body",
+              "fullType": "xdsl.lines.dslamPort.changeProfile.post",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The number of the line",
+              "description": "Number",
               "fullType": "string",
               "name": "number",
               "paramType": "path",
@@ -976,7 +1039,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -989,7 +1052,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/lines/{number}/dslamPort/changeProfile"
     },
     {
-      "description": "logs operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -999,13 +1062,16 @@ export const schema: Schema = {
           "description": "Get the logs emitted by the DSLAM for this port",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:lines/dslamPort/logs/get"
+            {
+              "name": "xdsl:apiovh:lines/dslamPort/logs/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The number of the line",
+              "description": "Number",
               "fullType": "string",
               "name": "number",
               "paramType": "path",
@@ -1013,7 +1079,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1034,7 +1100,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/lines/{number}/dslamPort/logs"
     },
     {
-      "description": "reset operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1044,13 +1110,16 @@ export const schema: Schema = {
           "description": "Reset the port on the DSLAM",
           "httpMethod": "POST",
           "iamActions": [
-            "xdsl:apiovh:lines/dslamPort/reset"
+            {
+              "name": "xdsl:apiovh:lines/dslamPort/reset",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The number of the line",
+              "description": "Number",
               "fullType": "string",
               "name": "number",
               "paramType": "path",
@@ -1058,7 +1127,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1071,7 +1140,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/lines/{number}/dslamPort/reset"
     },
     {
-      "description": "statistics operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1081,13 +1150,16 @@ export const schema: Schema = {
           "description": "Get various statistics about the line",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:lines/statistics/get"
+            {
+              "name": "xdsl:apiovh:lines/statistics/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The number of the line",
+              "description": "Number",
               "fullType": "string",
               "name": "number",
               "paramType": "path",
@@ -1095,7 +1167,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1118,13 +1190,13 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "complexType.UnitAndValues<xdsl.TimestampAndValue>"
+          "responseType": "complexType.UnitAndValues_xdsl.TimestampAndValue"
         }
       ],
       "path": "/xdsl/{serviceName}/lines/{number}/statistics"
     },
     {
-      "description": "Modem",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1134,13 +1206,16 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:modem/get"
+            {
+              "name": "xdsl:apiovh:modem/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1157,20 +1232,23 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "xdsl:apiovh:modem/edit"
+            {
+              "name": "xdsl:apiovh:modem/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "xdsl.Modem",
-              "description": "New object properties",
+              "description": "Request Body",
               "fullType": "xdsl.Modem",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1183,7 +1261,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/modem"
     },
     {
-      "description": "availableACSBackend operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1193,13 +1271,16 @@ export const schema: Schema = {
           "description": "List available ACS backend for this modem",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:modem/availableACSBackend/get"
+            {
+              "name": "xdsl:apiovh:modem/availableACSBackend/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1212,7 +1293,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/modem/availableACSBackend"
     },
     {
-      "description": "availableWLANChannel operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1222,13 +1303,16 @@ export const schema: Schema = {
           "description": "List available WLAN channel for this modem",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:modem/availableWLANChannel/get"
+            {
+              "name": "xdsl:apiovh:modem/availableWLANChannel/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1249,7 +1333,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/modem/availableWLANChannel"
     },
     {
-      "description": "blocIp operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1259,13 +1343,17 @@ export const schema: Schema = {
           "description": "Get the status of the Bloc IP on modem",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:modem/blocIp/get"
+            {
+              "name": "xdsl:apiovh:modem/blocIp/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "getBlocIPStatus",
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1282,21 +1370,24 @@ export const schema: Schema = {
           "description": "Change the status of the Bloc IP on modem",
           "httpMethod": "POST",
           "iamActions": [
-            "xdsl:apiovh:modem/blocIp/create"
+            {
+              "name": "xdsl:apiovh:modem/blocIp/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "updateBlocIPStatus",
           "parameters": [
             {
-              "dataType": "xdsl.ServiceStatusEnum",
-              "description": "the new status of the bloc ip service",
-              "fullType": "xdsl.ServiceStatusEnum",
-              "name": "status",
+              "dataType": "xdsl.modem.blocIp.post",
+              "description": "Request Body",
+              "fullType": "xdsl.modem.blocIp.post",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1309,7 +1400,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/modem/blocIp"
     },
     {
-      "description": "callWaiting operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1319,13 +1410,17 @@ export const schema: Schema = {
           "description": "Get the status of callWaiting on modem",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:modem/callWaiting/get"
+            {
+              "name": "xdsl:apiovh:modem/callWaiting/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "getModemCallWaitingStatus",
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1342,21 +1437,24 @@ export const schema: Schema = {
           "description": "Change the status of callWaiting on modem",
           "httpMethod": "POST",
           "iamActions": [
-            "xdsl:apiovh:modem/callWaiting/create"
+            {
+              "name": "xdsl:apiovh:modem/callWaiting/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "updateModemCallWaiting",
           "parameters": [
             {
-              "dataType": "xdsl.ServiceStatusEnum",
-              "description": "the new status of the callWaiting service",
-              "fullType": "xdsl.ServiceStatusEnum",
-              "name": "callWaiting",
+              "dataType": "xdsl.modem.callWaiting.post",
+              "description": "Request Body",
+              "fullType": "xdsl.modem.callWaiting.post",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1369,7 +1467,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/modem/callWaiting"
     },
     {
-      "description": "comfortExchange operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1379,13 +1477,17 @@ export const schema: Schema = {
           "description": "Get info about access modem replacement by last model.",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:modem/comfortExchange/get"
+            {
+              "name": "xdsl:apiovh:modem/comfortExchange/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "getAccessModemReplacement",
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1402,21 +1504,24 @@ export const schema: Schema = {
           "description": "Replace access modem by last model, fees will be applied.",
           "httpMethod": "POST",
           "iamActions": [
-            "xdsl:apiovh:modem/comfortExchange/create"
+            {
+              "name": "xdsl:apiovh:modem/comfortExchange/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "replaceAccessModem",
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Customer identifier for shipping address. By default Internet access address will be used. Allowed values are nichandle or «/me/contact/xyz»",
-              "fullType": "string",
-              "name": "contactShipping",
+              "dataType": "xdsl.modem.comfortExchange.post",
+              "description": "Request Body",
+              "fullType": "xdsl.modem.comfortExchange.post",
               "paramType": "body",
-              "required": false
+              "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1429,7 +1534,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/modem/comfortExchange"
     },
     {
-      "description": "List the xdsl.connectedDevice objects",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1439,13 +1544,16 @@ export const schema: Schema = {
           "description": "List of devices connected on this modem",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:modem/connectedDevices/get"
+            {
+              "name": "xdsl:apiovh:modem/connectedDevices/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1458,7 +1566,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/modem/connectedDevices"
     },
     {
-      "description": "Connected Device",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1468,13 +1576,16 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:modem/connectedDevices/get"
+            {
+              "name": "xdsl:apiovh:modem/connectedDevices/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "MAC address of the device",
+              "description": "Mac address",
               "fullType": "string",
               "name": "macAddress",
               "paramType": "path",
@@ -1482,7 +1593,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1495,7 +1606,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/modem/connectedDevices/{macAddress}"
     },
     {
-      "description": "contentSharing operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1505,13 +1616,17 @@ export const schema: Schema = {
           "description": "Get the status of contentSharing on modem",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:modem/contentSharing/get"
+            {
+              "name": "xdsl:apiovh:modem/contentSharing/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "getContentSharingStatus",
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1528,21 +1643,24 @@ export const schema: Schema = {
           "description": "Change the status of contentSharing on modem",
           "httpMethod": "POST",
           "iamActions": [
-            "xdsl:apiovh:modem/contentSharing/create"
+            {
+              "name": "xdsl:apiovh:modem/contentSharing/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "updateContentSharingStatus",
           "parameters": [
             {
-              "dataType": "xdsl.ServiceStatusEnum",
-              "description": "the new status of the contentSharing service",
-              "fullType": "xdsl.ServiceStatusEnum",
-              "name": "contentSharing",
+              "dataType": "xdsl.modem.contentSharing.post",
+              "description": "Request Body",
+              "fullType": "xdsl.modem.contentSharing.post",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1555,7 +1673,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/modem/contentSharing"
     },
     {
-      "description": "firmware operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1565,13 +1683,17 @@ export const schema: Schema = {
           "description": "Get the firmware version installed on modem",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:modem/firmware/get"
+            {
+              "name": "xdsl:apiovh:modem/firmware/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "getFirmwareVersion",
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1588,29 +1710,24 @@ export const schema: Schema = {
           "description": "Launch a task to install target firmware on modem",
           "httpMethod": "POST",
           "iamActions": [
-            "xdsl:apiovh:modem/firmware/create"
+            {
+              "name": "xdsl:apiovh:modem/firmware/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "installFrimware",
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The firmware version to upgrade to",
-              "fullType": "string",
-              "name": "firmware",
+              "dataType": "xdsl.modem.firmware.post",
+              "description": "Request Body",
+              "fullType": "xdsl.modem.firmware.post",
               "paramType": "body",
               "required": true
             },
             {
-              "dataType": "datetime",
-              "description": "Date of execution, default is now",
-              "fullType": "datetime",
-              "name": "todoDate",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1623,7 +1740,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/modem/firmware"
     },
     {
-      "description": "firmwareAvailable operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1633,13 +1750,16 @@ export const schema: Schema = {
           "description": "List available firmware for this modem",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:modem/firmwareAvailable/get"
+            {
+              "name": "xdsl:apiovh:modem/firmwareAvailable/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1652,7 +1772,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/modem/firmwareAvailable"
     },
     {
-      "description": "ftp operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1662,13 +1782,17 @@ export const schema: Schema = {
           "description": "Get the status of ftp service on modem",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:modem/ftp/get"
+            {
+              "name": "xdsl:apiovh:modem/ftp/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "getFTPStatus",
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1685,21 +1809,24 @@ export const schema: Schema = {
           "description": "Change the status of the ftp service on modem",
           "httpMethod": "POST",
           "iamActions": [
-            "xdsl:apiovh:modem/ftp/create"
+            {
+              "name": "xdsl:apiovh:modem/ftp/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "updateFTPStatus",
           "parameters": [
             {
-              "dataType": "xdsl.ServiceStatusEnum",
-              "description": "the new status of the ftp service",
-              "fullType": "xdsl.ServiceStatusEnum",
-              "name": "ftp",
+              "dataType": "xdsl.modem.ftp.post",
+              "description": "Request Body",
+              "fullType": "xdsl.modem.ftp.post",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1712,7 +1839,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/modem/ftp"
     },
     {
-      "description": "ipsecAlg operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1722,13 +1849,17 @@ export const schema: Schema = {
           "description": "Get the status of ipsec alg service on modem",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:modem/ipsecAlg/get"
+            {
+              "name": "xdsl:apiovh:modem/ipsecAlg/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "getIpsecAlgStatus",
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1745,21 +1876,24 @@ export const schema: Schema = {
           "description": "Change the status of the ipsec alg service on modem",
           "httpMethod": "POST",
           "iamActions": [
-            "xdsl:apiovh:modem/ipsecAlg/create"
+            {
+              "name": "xdsl:apiovh:modem/ipsecAlg/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "updateIpsecAlgStatus",
           "parameters": [
             {
-              "dataType": "xdsl.ServiceStatusEnum",
-              "description": "the new status of the ipsec alg service",
-              "fullType": "xdsl.ServiceStatusEnum",
-              "name": "ipsecAlg",
+              "dataType": "xdsl.modem.ipsecAlg.post",
+              "description": "Request Body",
+              "fullType": "xdsl.modem.ipsecAlg.post",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1772,7 +1906,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/modem/ipsecAlg"
     },
     {
-      "description": "List the xdsl.LAN objects",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1782,13 +1916,16 @@ export const schema: Schema = {
           "description": "List of LANs on this modem",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:modem/lan/get"
+            {
+              "name": "xdsl:apiovh:modem/lan/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1801,7 +1938,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/modem/lan"
     },
     {
-      "description": "LAN Configuration of the Modem",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1811,13 +1948,16 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:modem/lan/get"
+            {
+              "name": "xdsl:apiovh:modem/lan/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Name of the LAN",
+              "description": "Lan name",
               "fullType": "string",
               "name": "lanName",
               "paramType": "path",
@@ -1825,7 +1965,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1842,20 +1982,23 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "xdsl:apiovh:modem/lan/edit"
+            {
+              "name": "xdsl:apiovh:modem/lan/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "xdsl.LAN",
-              "description": "New object properties",
+              "description": "Request Body",
               "fullType": "xdsl.LAN",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Name of the LAN",
+              "description": "Lan name",
               "fullType": "string",
               "name": "lanName",
               "paramType": "path",
@@ -1863,7 +2006,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1876,7 +2019,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/modem/lan/{lanName}"
     },
     {
-      "description": "List the xdsl.DHCP objects",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1886,13 +2029,16 @@ export const schema: Schema = {
           "description": "List of DHCP on this modem",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:modem/lan/dhcp/get"
+            {
+              "name": "xdsl:apiovh:modem/lan/dhcp/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Name of the LAN",
+              "description": "Lan name",
               "fullType": "string",
               "name": "lanName",
               "paramType": "path",
@@ -1900,7 +2046,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1913,7 +2059,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/modem/lan/{lanName}/dhcp"
     },
     {
-      "description": "DHCP Configuration of the Modem",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1923,13 +2069,16 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:modem/lan/dhcp/get"
+            {
+              "name": "xdsl:apiovh:modem/lan/dhcp/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Name of the DHCP",
+              "description": "Dhcp name",
               "fullType": "string",
               "name": "dhcpName",
               "paramType": "path",
@@ -1937,7 +2086,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Name of the LAN",
+              "description": "Lan name",
               "fullType": "string",
               "name": "lanName",
               "paramType": "path",
@@ -1945,7 +2094,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1962,20 +2111,23 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "xdsl:apiovh:modem/lan/dhcp/edit"
+            {
+              "name": "xdsl:apiovh:modem/lan/dhcp/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "xdsl.DHCP",
-              "description": "New object properties",
+              "description": "Request Body",
               "fullType": "xdsl.DHCP",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Name of the DHCP",
+              "description": "Dhcp name",
               "fullType": "string",
               "name": "dhcpName",
               "paramType": "path",
@@ -1983,7 +2135,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Name of the LAN",
+              "description": "Lan name",
               "fullType": "string",
               "name": "lanName",
               "paramType": "path",
@@ -1991,7 +2143,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2004,7 +2156,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}"
     },
     {
-      "description": "List the xdsl.DHCPStaticAddress objects",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -2014,13 +2166,17 @@ export const schema: Schema = {
           "description": "List of DHCP Static Address of this modem",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:modem/lan/dhcp/DHCPStaticAddresses/get"
+            {
+              "name": "xdsl:apiovh:modem/lan/dhcp/DHCPStaticAddresses/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "getDHCPStaticAddresses",
           "parameters": [
             {
               "dataType": "string",
-              "description": "Name of the DHCP",
+              "description": "Dhcp name",
               "fullType": "string",
               "name": "dhcpName",
               "paramType": "path",
@@ -2028,7 +2184,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Name of the LAN",
+              "description": "Lan name",
               "fullType": "string",
               "name": "lanName",
               "paramType": "path",
@@ -2036,7 +2192,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2053,37 +2209,24 @@ export const schema: Schema = {
           "description": "Add a DHCP static lease",
           "httpMethod": "POST",
           "iamActions": [
-            "xdsl:apiovh:modem/lan/dhcp/DHCPStaticAddresses/create"
+            {
+              "name": "xdsl:apiovh:modem/lan/dhcp/DHCPStaticAddresses/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "addDHCPStaticAddress",
           "parameters": [
             {
-              "dataType": "ip",
-              "description": "The IP address of the device",
-              "fullType": "ip",
-              "name": "IPAddress",
+              "dataType": "xdsl.modem.lan.dhcp.DHCPStaticAddresses.post",
+              "description": "Request Body",
+              "fullType": "xdsl.modem.lan.dhcp.DHCPStaticAddresses.post",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The MAC address of the device",
-              "fullType": "string",
-              "name": "MACAddress",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Name of the DHCP static lease",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Name of the DHCP",
+              "description": "Dhcp name",
               "fullType": "string",
               "name": "dhcpName",
               "paramType": "path",
@@ -2091,7 +2234,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Name of the LAN",
+              "description": "Lan name",
               "fullType": "string",
               "name": "lanName",
               "paramType": "path",
@@ -2099,7 +2242,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2112,7 +2255,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses"
     },
     {
-      "description": "DHCP Static Address",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -2122,13 +2265,17 @@ export const schema: Schema = {
           "description": "Delete this port mapping",
           "httpMethod": "DELETE",
           "iamActions": [
-            "xdsl:apiovh:modem/lan/dhcp/DHCPStaticAddresses/delete"
+            {
+              "name": "xdsl:apiovh:modem/lan/dhcp/DHCPStaticAddresses/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "removeDHCPStaticAddress",
           "parameters": [
             {
               "dataType": "string",
-              "description": "Name of the DHCP",
+              "description": "Dhcp name",
               "fullType": "string",
               "name": "dhcpName",
               "paramType": "path",
@@ -2136,7 +2283,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Name of the LAN",
+              "description": "Lan name",
               "fullType": "string",
               "name": "lanName",
               "paramType": "path",
@@ -2144,7 +2291,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The MAC address of the device",
+              "description": " macaddress",
               "fullType": "string",
               "name": "MACAddress",
               "paramType": "path",
@@ -2152,7 +2299,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2169,13 +2316,17 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:modem/lan/dhcp/DHCPStaticAddresses/get"
+            {
+              "name": "xdsl:apiovh:modem/lan/dhcp/DHCPStaticAddresses/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "getDHCPStaticAddress",
           "parameters": [
             {
               "dataType": "string",
-              "description": "Name of the DHCP",
+              "description": "Dhcp name",
               "fullType": "string",
               "name": "dhcpName",
               "paramType": "path",
@@ -2183,7 +2334,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Name of the LAN",
+              "description": "Lan name",
               "fullType": "string",
               "name": "lanName",
               "paramType": "path",
@@ -2191,7 +2342,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The MAC address of the device",
+              "description": " macaddress",
               "fullType": "string",
               "name": "MACAddress",
               "paramType": "path",
@@ -2199,7 +2350,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2216,20 +2367,24 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "xdsl:apiovh:modem/lan/dhcp/DHCPStaticAddresses/edit"
+            {
+              "name": "xdsl:apiovh:modem/lan/dhcp/DHCPStaticAddresses/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "updateDHCPStaticAddress",
           "parameters": [
             {
               "dataType": "xdsl.DHCPStaticAddress",
-              "description": "New object properties",
+              "description": "Request Body",
               "fullType": "xdsl.DHCPStaticAddress",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Name of the DHCP",
+              "description": "Dhcp name",
               "fullType": "string",
               "name": "dhcpName",
               "paramType": "path",
@@ -2237,7 +2392,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Name of the LAN",
+              "description": "Lan name",
               "fullType": "string",
               "name": "lanName",
               "paramType": "path",
@@ -2245,7 +2400,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The MAC address of the device",
+              "description": " macaddress",
               "fullType": "string",
               "name": "MACAddress",
               "paramType": "path",
@@ -2253,7 +2408,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2266,7 +2421,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}"
     },
     {
-      "description": "List the xdsl.PortMapping objects",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -2276,13 +2431,17 @@ export const schema: Schema = {
           "description": "List of PortMappings on this modem",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:modem/portMappings/get"
+            {
+              "name": "xdsl:apiovh:modem/portMappings/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "getPortMappings",
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2299,85 +2458,24 @@ export const schema: Schema = {
           "description": "Add a port mapping",
           "httpMethod": "POST",
           "iamActions": [
-            "xdsl:apiovh:modem/portMappings/create"
+            {
+              "name": "xdsl:apiovh:modem/portMappings/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "addPortMapping",
           "parameters": [
             {
-              "dataType": "ipv4",
-              "description": "An ip which will access to the defined rule. Default : no restriction applied",
-              "fullType": "ipv4",
-              "name": "allowedRemoteIp",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Description of the Port Mapping",
-              "fullType": "string",
-              "name": "description",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "long",
-              "description": "The last port of the interval on the External Client that will get the connections",
-              "fullType": "long",
-              "name": "externalPortEnd",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "long",
-              "description": "External Port that the modem will listen on",
-              "fullType": "long",
-              "name": "externalPortStart",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "ip",
-              "description": "The IP address of the destination of the packets",
-              "fullType": "ip",
-              "name": "internalClient",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "The port on the Internal Client that will get the connections",
-              "fullType": "long",
-              "name": "internalPort",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "The last port of the interval on the Internal Client that will get the connections",
-              "fullType": "long",
-              "name": "internalPortEnd",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Name of the port mapping entry",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "xdsl.xdslModemConfig.ProtocolTypeEnum",
-              "description": "Protocol of the port mapping (TCP / UDP)",
-              "fullType": "xdsl.xdslModemConfig.ProtocolTypeEnum",
-              "name": "protocol",
+              "dataType": "xdsl.modem.portMappings.post",
+              "description": "Request Body",
+              "fullType": "xdsl.modem.portMappings.post",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2390,7 +2488,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/modem/portMappings"
     },
     {
-      "description": "Port Mappings",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -2400,13 +2498,17 @@ export const schema: Schema = {
           "description": "Delete this port mapping",
           "httpMethod": "DELETE",
           "iamActions": [
-            "xdsl:apiovh:modem/portMappings/delete"
+            {
+              "name": "xdsl:apiovh:modem/portMappings/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "removePortMapping",
           "parameters": [
             {
               "dataType": "string",
-              "description": "Name of the port mapping entry",
+              "description": "Name",
               "fullType": "string",
               "name": "name",
               "paramType": "path",
@@ -2414,7 +2516,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2431,13 +2533,17 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:modem/portMappings/get"
+            {
+              "name": "xdsl:apiovh:modem/portMappings/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "getPortMapping",
           "parameters": [
             {
               "dataType": "string",
-              "description": "Name of the port mapping entry",
+              "description": "Name",
               "fullType": "string",
               "name": "name",
               "paramType": "path",
@@ -2445,7 +2551,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2462,20 +2568,24 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "xdsl:apiovh:modem/portMappings/edit"
+            {
+              "name": "xdsl:apiovh:modem/portMappings/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "updatePortMapping",
           "parameters": [
             {
               "dataType": "xdsl.PortMapping",
-              "description": "New object properties",
+              "description": "Request Body",
               "fullType": "xdsl.PortMapping",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Name of the port mapping entry",
+              "description": "Name",
               "fullType": "string",
               "name": "name",
               "paramType": "path",
@@ -2483,7 +2593,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2496,7 +2606,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/modem/portMappings/{name}"
     },
     {
-      "description": "reboot operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -2506,21 +2616,24 @@ export const schema: Schema = {
           "description": "Reboot the modem",
           "httpMethod": "POST",
           "iamActions": [
-            "xdsl:apiovh:modem/reboot"
+            {
+              "name": "xdsl:apiovh:modem/reboot",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "rebootModem",
           "parameters": [
             {
-              "dataType": "datetime",
-              "description": "Date when the reboot will start",
-              "fullType": "datetime",
-              "name": "todoDate",
+              "dataType": "xdsl.modem.reboot.post",
+              "description": "Request Body",
+              "fullType": "xdsl.modem.reboot.post",
               "paramType": "body",
-              "required": false
+              "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2533,7 +2646,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/modem/reboot"
     },
     {
-      "description": "reconfigureVoip operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -2543,13 +2656,16 @@ export const schema: Schema = {
           "description": "Reconfigure voip line on modem",
           "httpMethod": "POST",
           "iamActions": [
-            "xdsl:apiovh:modem/reconfigureVoip"
+            {
+              "name": "xdsl:apiovh:modem/reconfigureVoip",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2562,7 +2678,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/modem/reconfigureVoip"
     },
     {
-      "description": "refreshConnectedDevices operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -2572,13 +2688,16 @@ export const schema: Schema = {
           "description": "Refresh the list of connected devices on the modem",
           "httpMethod": "POST",
           "iamActions": [
-            "xdsl:apiovh:modem/refreshConnectedDevices"
+            {
+              "name": "xdsl:apiovh:modem/refreshConnectedDevices",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2591,7 +2710,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/modem/refreshConnectedDevices"
     },
     {
-      "description": "reset operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -2601,21 +2720,24 @@ export const schema: Schema = {
           "description": "Reset the modem to its default configuration",
           "httpMethod": "POST",
           "iamActions": [
-            "xdsl:apiovh:modem/reset"
+            {
+              "name": "xdsl:apiovh:modem/reset",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "resetModemConfiguration",
           "parameters": [
             {
-              "dataType": "boolean",
-              "description": "Reset configuration stored in OVH databases",
-              "fullType": "boolean",
-              "name": "resetOvhConfig",
+              "dataType": "xdsl.modem.reset.post",
+              "description": "Request Body",
+              "fullType": "xdsl.modem.reset.post",
               "paramType": "body",
-              "required": false
+              "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2628,7 +2750,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/modem/reset"
     },
     {
-      "description": "resetPortMappingConfig operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -2638,13 +2760,16 @@ export const schema: Schema = {
           "description": "Remove all the current port mapping rules",
           "httpMethod": "POST",
           "iamActions": [
-            "xdsl:apiovh:modem/resetPortMappingConfig"
+            {
+              "name": "xdsl:apiovh:modem/resetPortMappingConfig",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2657,7 +2782,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/modem/resetPortMappingConfig"
     },
     {
-      "description": "retrieveInfo operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -2667,26 +2792,29 @@ export const schema: Schema = {
           "description": "get general Modem information",
           "httpMethod": "POST",
           "iamActions": [
-            "xdsl:apiovh:modem/retrieveInfo"
+            {
+              "name": "xdsl:apiovh:modem/retrieveInfo",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "xdsl.AsyncTask<xdsl.ModemInfo>"
+          "responseType": "xdsl.AsyncTask_xdsl.ModemInfo"
         }
       ],
       "path": "/xdsl/{serviceName}/modem/retrieveInfo"
     },
     {
-      "description": "sipAlg operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -2696,13 +2824,17 @@ export const schema: Schema = {
           "description": "Get the status of sip alg service on modem",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:modem/sipAlg/get"
+            {
+              "name": "xdsl:apiovh:modem/sipAlg/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "getSipAlgStatus",
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2719,21 +2851,24 @@ export const schema: Schema = {
           "description": "Change the status of the sip alg service on modem",
           "httpMethod": "POST",
           "iamActions": [
-            "xdsl:apiovh:modem/sipAlg/create"
+            {
+              "name": "xdsl:apiovh:modem/sipAlg/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "updateSipAlgStatus",
           "parameters": [
             {
-              "dataType": "xdsl.ServiceStatusEnum",
-              "description": "the new status of the sip alg service",
-              "fullType": "xdsl.ServiceStatusEnum",
-              "name": "sipAlg",
+              "dataType": "xdsl.modem.sipAlg.post",
+              "description": "Request Body",
+              "fullType": "xdsl.modem.sipAlg.post",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2746,7 +2881,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/modem/sipAlg"
     },
     {
-      "description": "upnp operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -2756,13 +2891,17 @@ export const schema: Schema = {
           "description": "Get the status of the Upnp on modem",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:modem/upnp/get"
+            {
+              "name": "xdsl:apiovh:modem/upnp/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "getUpnpStatus",
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2779,21 +2918,24 @@ export const schema: Schema = {
           "description": "Change the status of the Upnp on modem",
           "httpMethod": "POST",
           "iamActions": [
-            "xdsl:apiovh:modem/upnp/create"
+            {
+              "name": "xdsl:apiovh:modem/upnp/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "updateUpnpStatus",
           "parameters": [
             {
-              "dataType": "xdsl.ServiceStatusEnum",
-              "description": "the new status of the upnp service",
-              "fullType": "xdsl.ServiceStatusEnum",
-              "name": "upnp",
+              "dataType": "xdsl.modem.upnp.post",
+              "description": "Request Body",
+              "fullType": "xdsl.modem.upnp.post",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2806,7 +2948,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/modem/upnp"
     },
     {
-      "description": "List the xdsl.WLAN objects",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -2816,13 +2958,16 @@ export const schema: Schema = {
           "description": "List of WLANs on this modem",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:modem/wifi/get"
+            {
+              "name": "xdsl:apiovh:modem/wifi/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2835,7 +2980,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/modem/wifi"
     },
     {
-      "description": "WLAN Configuration of the Modem",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -2845,13 +2990,16 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:modem/wifi/get"
+            {
+              "name": "xdsl:apiovh:modem/wifi/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2859,7 +3007,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Name of the Wifi",
+              "description": "Wifi name",
               "fullType": "string",
               "name": "wifiName",
               "paramType": "path",
@@ -2876,20 +3024,23 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "xdsl:apiovh:modem/wifi/edit"
+            {
+              "name": "xdsl:apiovh:modem/wifi/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "xdsl.WLAN",
-              "description": "New object properties",
+              "description": "Request Body",
               "fullType": "xdsl.WLAN",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2897,7 +3048,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Name of the Wifi",
+              "description": "Wifi name",
               "fullType": "string",
               "name": "wifiName",
               "paramType": "path",
@@ -2910,7 +3061,47 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/modem/wifi/{wifiName}"
     },
     {
-      "description": "List the xdsl.MonitoringNotification objects",
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get the WiFi configuration QR code as base64, if applicable",
+          "httpMethod": "GET",
+          "iamActions": [
+            {
+              "name": "xdsl:apiovh:modem/wifi/qrCode/get",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Wifi name",
+              "fullType": "string",
+              "name": "wifiName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string"
+        }
+      ],
+      "path": "/xdsl/{serviceName}/modem/wifi/{wifiName}/qrCode"
+    },
+    {
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -2920,13 +3111,17 @@ export const schema: Schema = {
           "description": "List the notifications for this access",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:monitoringNotifications/get"
+            {
+              "name": "xdsl:apiovh:monitoringNotifications/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "getMonitoringNotifications",
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2943,69 +3138,24 @@ export const schema: Schema = {
           "description": "Add a notification",
           "httpMethod": "POST",
           "iamActions": [
-            "xdsl:apiovh:monitoringNotifications/create"
+            {
+              "name": "xdsl:apiovh:monitoringNotifications/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "addMonitoringNotification",
           "parameters": [
             {
-              "dataType": "boolean",
-              "description": "Whether or not to allow notifications concerning generic incidents",
-              "fullType": "boolean",
-              "name": "allowIncident",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "long",
-              "description": "The number of seconds the access has to be down to trigger the alert",
-              "fullType": "long",
-              "name": "downThreshold",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The e-mail address, if type is mail",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "xdsl.monitoringNotifications.FrequencyEnum",
-              "description": "",
-              "fullType": "xdsl.monitoringNotifications.FrequencyEnum",
-              "name": "frequency",
+              "dataType": "xdsl.monitoringNotifications.post",
+              "description": "Request Body",
+              "fullType": "xdsl.monitoringNotifications.post",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The phone number, if type is sms",
-              "fullType": "string",
-              "name": "phone",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The SMS account which will be debited for each sent SMS, if the type is sms",
-              "fullType": "string",
-              "name": "smsAccount",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "xdsl.monitoringNotifications.TypeEnum",
-              "description": "",
-              "fullType": "xdsl.monitoringNotifications.TypeEnum",
-              "name": "type",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3018,7 +3168,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/monitoringNotifications"
     },
     {
-      "description": "Defines where and how the notifications will be sent",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -3028,13 +3178,17 @@ export const schema: Schema = {
           "description": "Delete this notification",
           "httpMethod": "DELETE",
           "iamActions": [
-            "xdsl:apiovh:monitoringNotifications/delete"
+            {
+              "name": "xdsl:apiovh:monitoringNotifications/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "removeMonitoringNotification",
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -3042,7 +3196,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3059,13 +3213,17 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:monitoringNotifications/get"
+            {
+              "name": "xdsl:apiovh:monitoringNotifications/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "getMonitoringNotification",
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -3073,7 +3231,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3090,20 +3248,24 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "xdsl:apiovh:monitoringNotifications/edit"
+            {
+              "name": "xdsl:apiovh:monitoringNotifications/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "updateMonitoringNotification",
           "parameters": [
             {
               "dataType": "xdsl.MonitoringNotification",
-              "description": "New object properties",
+              "description": "Request Body",
               "fullType": "xdsl.MonitoringNotification",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -3111,7 +3273,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3124,7 +3286,39 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/monitoringNotifications/{id}"
     },
     {
-      "description": "orderFollowup operations",
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "iamActions": [
+            {
+              "name": "xdsl:apiovh:ont/get",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "xdsl.Ont"
+        }
+      ],
+      "path": "/xdsl/{serviceName}/ont"
+    },
+    {
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -3134,13 +3328,16 @@ export const schema: Schema = {
           "description": "Get the status of the order",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:orderFollowup/get"
+            {
+              "name": "xdsl:apiovh:orderFollowup/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3153,7 +3350,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/orderFollowup"
     },
     {
-      "description": "orderMeeting operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -3163,37 +3360,24 @@ export const schema: Schema = {
           "description": "Book a meeting and relaunch order",
           "httpMethod": "POST",
           "iamActions": [
-            "xdsl:apiovh:orderMeeting/create"
+            {
+              "name": "xdsl:apiovh:orderMeeting/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "bookMeeting",
           "parameters": [
             {
-              "dataType": "datetime",
-              "description": "Meeting end date",
-              "fullType": "datetime",
-              "name": "endDate",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "datetime",
-              "description": "Meeting start date",
-              "fullType": "datetime",
-              "name": "startDate",
+              "dataType": "xdsl.orderMeeting.post",
+              "description": "Request Body",
+              "fullType": "xdsl.orderMeeting.post",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Meeting ui code ( code linked to the meeting returned by POST /xdsl/{serviceName}/orderMeetings )",
-              "fullType": "string",
-              "name": "uiCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3206,7 +3390,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/orderMeeting"
     },
     {
-      "description": "Scheduled action before the next renewal of the service",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -3216,13 +3400,16 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:pendingAction/get"
+            {
+              "name": "xdsl:apiovh:pendingAction/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3235,7 +3422,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/pendingAction"
     },
     {
-      "description": "radiusConnectionLogs operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -3245,13 +3432,16 @@ export const schema: Schema = {
           "description": "List the radius connection logs",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:radiusConnectionLogs/get"
+            {
+              "name": "xdsl:apiovh:radiusConnectionLogs/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3264,23 +3454,26 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/radiusConnectionLogs"
     },
     {
-      "description": "requestPPPLoginMail operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Renew PPP password and send the PPP login informations to the e-mail of the nicAdmin",
+          "description": "Renew PPP password and send the PPP login information to the e-mail of the nicAdmin",
           "httpMethod": "POST",
           "iamActions": [
-            "xdsl:apiovh:requestPPPLoginMail"
+            {
+              "name": "xdsl:apiovh:requestPPPLoginMail",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3293,7 +3486,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/requestPPPLoginMail"
     },
     {
-      "description": "requestTotalDeconsolidation operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -3303,29 +3496,24 @@ export const schema: Schema = {
           "description": "Switch this access to total deconsolidation",
           "httpMethod": "POST",
           "iamActions": [
-            "xdsl:apiovh:requestTotalDeconsolidation"
+            {
+              "name": "xdsl:apiovh:requestTotalDeconsolidation",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "requestTotalDeconsolidation",
           "parameters": [
             {
-              "dataType": "boolean",
-              "description": "Do not port the number",
-              "fullType": "boolean",
-              "name": "noPortability",
+              "dataType": "xdsl.requestTotalDeconsolidation.post",
+              "description": "Request Body",
+              "fullType": "xdsl.requestTotalDeconsolidation.post",
               "paramType": "body",
-              "required": false
+              "required": true
             },
             {
               "dataType": "string",
-              "description": "A token to prove the ownership of the line number, needed to port the number",
-              "fullType": "string",
-              "name": "rio",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3338,7 +3526,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/requestTotalDeconsolidation"
     },
     {
-      "description": "resiliate operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -3348,29 +3536,24 @@ export const schema: Schema = {
           "description": "Resiliate the access",
           "httpMethod": "POST",
           "iamActions": [
-            "xdsl:apiovh:resiliate"
+            {
+              "name": "xdsl:apiovh:resiliate",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "resiliateAccess",
           "parameters": [
             {
-              "dataType": "datetime",
-              "description": "The desired resiliation date",
-              "fullType": "datetime",
-              "name": "resiliationDate",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "xdsl.ResiliationSurvey",
-              "description": "Comment about resiliation reasons",
-              "fullType": "xdsl.ResiliationSurvey",
-              "name": "resiliationSurvey",
+              "dataType": "xdsl.resiliate.post",
+              "description": "Request Body",
+              "fullType": "xdsl.resiliate.post",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3383,7 +3566,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/resiliate"
     },
     {
-      "description": "resiliationFollowup operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -3393,13 +3576,16 @@ export const schema: Schema = {
           "description": "Get information about the ongoing resiliation",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:resiliationFollowup/get"
+            {
+              "name": "xdsl:apiovh:resiliationFollowup/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3412,7 +3598,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/resiliationFollowup"
     },
     {
-      "description": "resiliationTerms operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -3422,13 +3608,16 @@ export const schema: Schema = {
           "description": "Get resiliation terms",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:resiliationTerms/get"
+            {
+              "name": "xdsl:apiovh:resiliationTerms/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3449,7 +3638,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/resiliationTerms"
     },
     {
-      "description": "List the telephony.Rma objects",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -3459,13 +3648,16 @@ export const schema: Schema = {
           "description": "Return Merchandise Authorisation associated",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:rma/get"
+            {
+              "name": "xdsl:apiovh:rma/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3478,7 +3670,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/rma"
     },
     {
-      "description": "Current Return Merchandise Authorisation",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -3488,13 +3680,16 @@ export const schema: Schema = {
           "description": "Cancel the rma",
           "httpMethod": "DELETE",
           "iamActions": [
-            "xdsl:apiovh:rma/delete"
+            {
+              "name": "xdsl:apiovh:rma/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Return merchandise authorisation identifier",
+              "description": "Id",
               "fullType": "string",
               "name": "id",
               "paramType": "path",
@@ -3502,7 +3697,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3519,13 +3714,16 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:rma/get"
+            {
+              "name": "xdsl:apiovh:rma/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Return merchandise authorisation identifier",
+              "description": "Id",
               "fullType": "string",
               "name": "id",
               "paramType": "path",
@@ -3533,7 +3731,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3550,20 +3748,23 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "xdsl:apiovh:rma/edit"
+            {
+              "name": "xdsl:apiovh:rma/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "telephony.Rma",
-              "description": "New object properties",
+              "description": "Request Body",
               "fullType": "telephony.Rma",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Return merchandise authorisation identifier",
+              "description": "Id",
               "fullType": "string",
               "name": "id",
               "paramType": "path",
@@ -3571,7 +3772,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3584,7 +3785,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/rma/{id}"
     },
     {
-      "description": "changeType operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -3594,21 +3795,24 @@ export const schema: Schema = {
           "description": "Change RMA type",
           "httpMethod": "POST",
           "iamActions": [
-            "xdsl:apiovh:rma/changeType"
+            {
+              "name": "xdsl:apiovh:rma/changeType",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "updateRMAType",
           "parameters": [
             {
-              "dataType": "telephony.RmaChangeTypeEnum",
-              "description": "new RMA type",
-              "fullType": "telephony.RmaChangeTypeEnum",
-              "name": "type",
+              "dataType": "xdsl.rma.changeType.post",
+              "description": "Request Body",
+              "fullType": "xdsl.rma.changeType.post",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Return merchandise authorisation identifier",
+              "description": "Id",
               "fullType": "string",
               "name": "id",
               "paramType": "path",
@@ -3616,7 +3820,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3629,7 +3833,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/rma/{id}/changeType"
     },
     {
-      "description": "searchOrderMeetings operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -3639,42 +3843,48 @@ export const schema: Schema = {
           "description": "Search for available line creation meeting time slots, for order only",
           "httpMethod": "POST",
           "iamActions": [
-            "xdsl:apiovh:searchOrderMeetings"
+            {
+              "name": "xdsl:apiovh:searchOrderMeetings",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "xdsl.AsyncTask<connectivity.eligibility.Meetings>"
+          "responseType": "xdsl.AsyncTask_connectivity.eligibility.Meetings"
         }
       ],
       "path": "/xdsl/{serviceName}/searchOrderMeetings"
     },
     {
-      "description": "sendOrderToProvider operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Unlock order in \"waitingCustomer\" status. It only concerns orders whose modem is sent before anything have been forwarded to our provider",
+          "description": "Unlock order in \"waitingCustomer\" status",
           "httpMethod": "POST",
           "iamActions": [
-            "xdsl:apiovh:sendOrderToProvider"
+            {
+              "name": "xdsl:apiovh:sendOrderToProvider",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3687,23 +3897,26 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/sendOrderToProvider"
     },
     {
-      "description": "Details about a Service",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get service information",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:serviceInfos/get"
+            {
+              "name": "xdsl:apiovh:serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3717,23 +3930,26 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Update service information",
           "httpMethod": "PUT",
           "iamActions": [
-            "xdsl:apiovh:serviceInfos/edit"
+            {
+              "name": "xdsl:apiovh:serviceInfos/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "services.Service",
-              "description": "New object properties",
+              "description": "Request Body",
               "fullType": "services.Service",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3746,7 +3962,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/serviceInfos"
     },
     {
-      "description": "statistics operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -3756,13 +3972,16 @@ export const schema: Schema = {
           "description": "Get various statistics about this access",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:statistics/get"
+            {
+              "name": "xdsl:apiovh:statistics/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3785,13 +4004,13 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "complexType.UnitAndValues<xdsl.TimestampAndValue>"
+          "responseType": "complexType.UnitAndValues_xdsl.AccessLatency"
         }
       ],
       "path": "/xdsl/{serviceName}/statistics"
     },
     {
-      "description": "List the xdsl.Task objects",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -3801,13 +4020,16 @@ export const schema: Schema = {
           "description": "Tasks scheduled for this access",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:tasks/get"
+            {
+              "name": "xdsl:apiovh:tasks/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3836,7 +4058,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/tasks"
     },
     {
-      "description": "Describes the current status of a task",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -3846,13 +4068,16 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:tasks/get"
+            {
+              "name": "xdsl:apiovh:tasks/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -3860,7 +4085,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3873,7 +4098,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/tasks/{id}"
     },
     {
-      "description": "archive operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -3883,13 +4108,16 @@ export const schema: Schema = {
           "description": "Delete the task in problem from the results",
           "httpMethod": "POST",
           "iamActions": [
-            "xdsl:apiovh:tasks/archive"
+            {
+              "name": "xdsl:apiovh:tasks/archive",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -3897,7 +4125,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3910,7 +4138,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/tasks/{id}/archive"
     },
     {
-      "description": "totalDeconsolidationTerms operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -3920,13 +4148,16 @@ export const schema: Schema = {
           "description": "Give the price to requestTotalDeconsolidation on the access",
           "httpMethod": "GET",
           "iamActions": [
-            "xdsl:apiovh:totalDeconsolidationTerms/get"
+            {
+              "name": "xdsl:apiovh:totalDeconsolidationTerms/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3939,7 +4170,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/totalDeconsolidationTerms"
     },
     {
-      "description": "updateInvalidOrMissingRio operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -3949,29 +4180,24 @@ export const schema: Schema = {
           "description": "Update RIO, or disable portability, for order in error because of missing or invalid RIO",
           "httpMethod": "POST",
           "iamActions": [
-            "xdsl:apiovh:updateInvalidOrMissingRio"
+            {
+              "name": "xdsl:apiovh:updateInvalidOrMissingRio",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "updateRIO",
           "parameters": [
             {
-              "dataType": "boolean",
-              "description": "Do not set RIO, and relaunch order without portability",
-              "fullType": "boolean",
-              "name": "relaunchWithoutPortability",
+              "dataType": "xdsl.updateInvalidOrMissingRio.post",
+              "description": "Request Body",
+              "fullType": "xdsl.updateInvalidOrMissingRio.post",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "RIO number for portability",
-              "fullType": "string",
-              "name": "rio",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3984,7 +4210,7 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/updateInvalidOrMissingRio"
     },
     {
-      "description": "Operations about the XDSL service",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -3994,17 +4220,28 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "xdslEmail:apiovh:get"
+            {
+              "name": "xdslEmail:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
-          "parameters": [],
+          "parameters": [
+            {
+              "dataType": "map[string][]iam.resource.TagFilter",
+              "description": "Filter resources on IAM tags",
+              "name": "iamTags",
+              "paramType": "query",
+              "required": false
+            }
+          ],
           "responseType": "string[]"
         }
       ],
       "path": "/xdsl/email/pro"
     },
     {
-      "description": "XDSL Email Pro",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -4014,13 +4251,16 @@ export const schema: Schema = {
           "description": "Delete the email",
           "httpMethod": "DELETE",
           "iamActions": [
-            "xdslEmail:apiovh:delete"
+            {
+              "name": "xdslEmail:apiovh:delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The email address if the XDSL Email Pro",
+              "description": "Email",
               "fullType": "string",
               "name": "email",
               "paramType": "path",
@@ -4037,20 +4277,23 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "xdslEmail:apiovh:get"
+            {
+              "name": "xdslEmail:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The email address if the XDSL Email Pro",
+              "description": "Email",
               "fullType": "string",
               "name": "email",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "xdsl.xdslEmailPro"
+          "responseType": "xdsl.xdslEmailProWithIAM"
         },
         {
           "apiStatus": {
@@ -4060,20 +4303,23 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "xdslEmail:apiovh:edit"
+            {
+              "name": "xdslEmail:apiovh:edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "xdsl.xdslEmailPro",
-              "description": "New object properties",
+              "description": "Request Body",
               "fullType": "xdsl.xdslEmailPro",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The email address if the XDSL Email Pro",
+              "description": "Email",
               "fullType": "string",
               "name": "email",
               "paramType": "path",
@@ -4086,7 +4332,7 @@ export const schema: Schema = {
       "path": "/xdsl/email/pro/{email}"
     },
     {
-      "description": "changePassword operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -4096,21 +4342,24 @@ export const schema: Schema = {
           "description": "Change the email password",
           "httpMethod": "POST",
           "iamActions": [
-            "xdslEmail:apiovh:changePassword"
+            {
+              "name": "xdslEmail:apiovh:changePassword",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "changeEmailPassword",
           "parameters": [
             {
-              "dataType": "password",
-              "description": "New email password",
-              "fullType": "password",
-              "name": "password",
+              "dataType": "xdsl.email.pro.changePassword.post",
+              "description": "Request Body",
+              "fullType": "xdsl.email.pro.changePassword.post",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The email address if the XDSL Email Pro",
+              "description": "Email",
               "fullType": "string",
               "name": "email",
               "paramType": "path",
@@ -4123,7 +4372,7 @@ export const schema: Schema = {
       "path": "/xdsl/email/pro/{email}/changePassword"
     },
     {
-      "description": "List the xdsl.Incident objects",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -4157,7 +4406,7 @@ export const schema: Schema = {
       "path": "/xdsl/incidents"
     },
     {
-      "description": "Detected incident",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -4170,7 +4419,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "ID of the incident",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -4183,7 +4432,7 @@ export const schema: Schema = {
       "path": "/xdsl/incidents/{id}"
     },
     {
-      "description": "Operations about the XDSL service",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -4193,17 +4442,28 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "xdslSpare:apiovh:get"
+            {
+              "name": "xdslSpare:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
-          "parameters": [],
+          "parameters": [
+            {
+              "dataType": "map[string][]iam.resource.TagFilter",
+              "description": "Filter resources on IAM tags",
+              "name": "iamTags",
+              "paramType": "query",
+              "required": false
+            }
+          ],
           "responseType": "string[]"
         }
       ],
       "path": "/xdsl/spare"
     },
     {
-      "description": "Spare properties",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -4213,13 +4473,16 @@ export const schema: Schema = {
           "description": "Delete the spare as if it was not belonging to OVH anymore",
           "httpMethod": "DELETE",
           "iamActions": [
-            "xdslSpare:apiovh:delete"
+            {
+              "name": "xdslSpare:apiovh:delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your spare",
+              "description": "Spare",
               "fullType": "string",
               "name": "spare",
               "paramType": "path",
@@ -4236,26 +4499,29 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "xdslSpare:apiovh:get"
+            {
+              "name": "xdslSpare:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your spare",
+              "description": "Spare",
               "fullType": "string",
               "name": "spare",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "spare.xdsl.XdslSpare"
+          "responseType": "spare.xdsl.XdslSpareWithIAM"
         }
       ],
       "path": "/xdsl/spare/{spare}"
     },
     {
-      "description": "compatibleReplacement operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -4265,13 +4531,16 @@ export const schema: Schema = {
           "description": "Return the list of brand compatible to be replaced",
           "httpMethod": "GET",
           "iamActions": [
-            "xdslSpare:apiovh:compatibleReplacement/get"
+            {
+              "name": "xdslSpare:apiovh:compatibleReplacement/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your spare",
+              "description": "Spare",
               "fullType": "string",
               "name": "spare",
               "paramType": "path",
@@ -4284,7 +4553,7 @@ export const schema: Schema = {
       "path": "/xdsl/spare/{spare}/compatibleReplacement"
     },
     {
-      "description": "replace operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -4294,21 +4563,24 @@ export const schema: Schema = {
           "description": "Replace the modem by its spare",
           "httpMethod": "POST",
           "iamActions": [
-            "xdslSpare:apiovh:replace"
+            {
+              "name": "xdslSpare:apiovh:replace",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "replaceModemBySpare",
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The modem to replace by the spare",
-              "fullType": "string",
-              "name": "domain",
+              "dataType": "xdsl.spare.replace.post",
+              "description": "Request Body",
+              "fullType": "xdsl.spare.replace.post",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your spare",
+              "description": "Spare",
               "fullType": "string",
               "name": "spare",
               "paramType": "path",
@@ -4321,7 +4593,7 @@ export const schema: Schema = {
       "path": "/xdsl/spare/{spare}/replace"
     },
     {
-      "description": "returnMerchandise operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -4331,13 +4603,16 @@ export const schema: Schema = {
           "description": "Return the broken equipment in instantRefund",
           "httpMethod": "POST",
           "iamActions": [
-            "xdslSpare:apiovh:returnMerchandise"
+            {
+              "name": "xdslSpare:apiovh:returnMerchandise",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your spare",
+              "description": "Spare",
               "fullType": "string",
               "name": "spare",
               "paramType": "path",
@@ -4350,23 +4625,26 @@ export const schema: Schema = {
       "path": "/xdsl/spare/{spare}/returnMerchandise"
     },
     {
-      "description": "Details about a Service",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get service information",
           "httpMethod": "GET",
           "iamActions": [
-            "xdslSpare:apiovh:serviceInfos/get"
+            {
+              "name": "xdslSpare:apiovh:serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your spare",
+              "description": "Spare",
               "fullType": "string",
               "name": "spare",
               "paramType": "path",
@@ -4380,23 +4658,26 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Update service information",
           "httpMethod": "PUT",
           "iamActions": [
-            "xdslSpare:apiovh:serviceInfos/edit"
+            {
+              "name": "xdslSpare:apiovh:serviceInfos/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "services.Service",
-              "description": "New object properties",
+              "description": "Request Body",
               "fullType": "services.Service",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your spare",
+              "description": "Spare",
               "fullType": "string",
               "name": "spare",
               "paramType": "path",
@@ -4409,7 +4690,7 @@ export const schema: Schema = {
       "path": "/xdsl/spare/{spare}/serviceInfos"
     },
     {
-      "description": "Get all available spare brands",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -4426,47 +4707,46 @@ export const schema: Schema = {
       "path": "/xdsl/spare/brands"
     },
     {
-      "description": "List the xdsl.TemplateModem objects",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List of TemplateModem",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:xdslTemplateModem/get"
+            {
+              "name": "account:apiovh:xdslTemplateModem/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "getModemTemplates",
           "parameters": [],
           "responseType": "string[]"
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Create new Modem Template from existing modem",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:xdslTemplateModem/create"
+            {
+              "name": "account:apiovh:xdslTemplateModem/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "createModemTemplate",
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Modem Template name (only alphanumeric characters)",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The access name with the config you want to duplicate",
-              "fullType": "string",
-              "name": "serviceName",
+              "dataType": "xdsl.templateModem.post",
+              "description": "Request Body",
+              "fullType": "xdsl.templateModem.post",
               "paramType": "body",
               "required": true
             }
@@ -4477,23 +4757,27 @@ export const schema: Schema = {
       "path": "/xdsl/templateModem"
     },
     {
-      "description": "Modem Template",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Delete this Modem Template",
           "httpMethod": "DELETE",
           "iamActions": [
-            "account:apiovh:xdslTemplateModem/delete"
+            {
+              "name": "account:apiovh:xdslTemplateModem/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "deleteModemTemplate",
           "parameters": [
             {
               "dataType": "string",
-              "description": "Name of the Modem Template",
+              "description": "Name",
               "fullType": "string",
               "name": "name",
               "paramType": "path",
@@ -4504,19 +4788,23 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:xdslTemplateModem/get"
+            {
+              "name": "account:apiovh:xdslTemplateModem/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "getModemTemplate",
           "parameters": [
             {
               "dataType": "string",
-              "description": "Name of the Modem Template",
+              "description": "Name",
               "fullType": "string",
               "name": "name",
               "paramType": "path",
@@ -4533,20 +4821,24 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "account:apiovh:xdslTemplateModem/edit"
+            {
+              "name": "account:apiovh:xdslTemplateModem/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "updateModemTemplate",
           "parameters": [
             {
               "dataType": "xdsl.TemplateModem",
-              "description": "New object properties",
+              "description": "Request Body",
               "fullType": "xdsl.TemplateModem",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Name of the Modem Template",
+              "description": "Name",
               "fullType": "string",
               "name": "name",
               "paramType": "path",
@@ -4561,47 +4853,110 @@ export const schema: Schema = {
   ],
   "basePath": "https://eu.api.ovh.com/1.0",
   "models": {
-    "complexType.UnitAndValue<T>": {
-      "description": "A numeric value tagged with its unit",
-      "generics": [
-        "T"
-      ],
-      "id": "UnitAndValue",
+    "complexType.UnitAndValue_double": {
+      "description": "complexType.UnitAndValue_double",
+      "id": "UnitAndValue_double",
       "namespace": "complexType",
       "properties": {
         "unit": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "double",
+          "readOnly": true,
           "required": false,
-          "type": "T"
+          "type": "double"
         }
       }
     },
-    "complexType.UnitAndValues<T>": {
-      "description": "A value set tagged with its unit",
-      "generics": [
-        "T"
-      ],
-      "id": "UnitAndValues",
+    "complexType.UnitAndValue_long": {
+      "description": "complexType.UnitAndValue_long",
+      "id": "UnitAndValue_long",
       "namespace": "complexType",
       "properties": {
         "unit": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "complexType.UnitAndValues_xdsl.AccessLatency": {
+      "description": "complexType.UnitAndValues_xdsl.AccessLatency",
+      "id": "AccessLatency",
+      "namespace": "complexType.UnitAndValues_xdsl",
+      "properties": {
+        "unit": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "values": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "xdsl.AccessLatency[]",
+          "readOnly": true,
           "required": false,
-          "type": "T[]"
+          "type": "xdsl.AccessLatency[]"
+        }
+      }
+    },
+    "complexType.UnitAndValues_xdsl.TimestampAndValue": {
+      "description": "complexType.UnitAndValues_xdsl.TimestampAndValue",
+      "id": "TimestampAndValue",
+      "namespace": "complexType.UnitAndValues_xdsl",
+      "properties": {
+        "unit": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "values": {
+          "canBeNull": false,
+          "fullType": "xdsl.TimestampAndValue[]",
+          "readOnly": true,
+          "required": false,
+          "type": "xdsl.TimestampAndValue[]"
+        }
+      }
+    },
+    "connectivity.eligibility.MeetingCapacities": {
+      "description": "Represents meeting booking options",
+      "id": "MeetingCapacities",
+      "namespace": "connectivity.eligibility",
+      "properties": {
+        "eRdv": {
+          "canBeNull": false,
+          "description": "Whether or not it is possible to book a meeting online",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "phoneCall": {
+          "canBeNull": false,
+          "description": "Whether or not it is possible to be be called by phone to book a meeting",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         }
       }
     },
@@ -4613,28 +4968,32 @@ export const schema: Schema = {
         "endDate": {
           "canBeNull": false,
           "description": "End date",
-          "readOnly": false,
+          "fullType": "datetime",
+          "readOnly": true,
           "required": false,
           "type": "datetime"
         },
         "slotId": {
           "canBeNull": true,
           "description": "Represent a meeting id for a fiber collect operator",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "startDate": {
           "canBeNull": false,
           "description": "Start date",
-          "readOnly": false,
+          "fullType": "datetime",
+          "readOnly": true,
           "required": false,
           "type": "datetime"
         },
         "uiCode": {
           "canBeNull": true,
           "description": "An opaque string that represents an intervention unit",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
@@ -4648,14 +5007,24 @@ export const schema: Schema = {
         "canBookFakeMeeting": {
           "canBeNull": false,
           "description": "Whether or not it is possible to book a fake meeting",
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
+        },
+        "capacities": {
+          "canBeNull": false,
+          "description": "Represents meeting booking options",
+          "fullType": "connectivity.eligibility.MeetingCapacities",
+          "readOnly": true,
+          "required": false,
+          "type": "connectivity.eligibility.MeetingCapacities"
         },
         "meetingSlots": {
           "canBeNull": false,
           "description": "A time slot",
-          "readOnly": false,
+          "fullType": "connectivity.eligibility.MeetingSlot[]",
+          "readOnly": true,
           "required": false,
           "type": "connectivity.eligibility.MeetingSlot[]"
         }
@@ -4954,6 +5323,77 @@ export const schema: Schema = {
       "id": "ObjectStateEnum",
       "namespace": "email.pro"
     },
+    "iam.ResourceMetadata": {
+      "description": "IAM resource metadata embedded in services models",
+      "id": "ResourceMetadata",
+      "namespace": "iam",
+      "properties": {
+        "displayName": {
+          "canBeNull": true,
+          "description": "Resource display name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Unique identifier of the resource",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "tags": {
+          "canBeNull": true,
+          "description": "Resource tags. Tags that were internally computed are prefixed with ovh:",
+          "fullType": "map[string]string",
+          "readOnly": true,
+          "required": false,
+          "type": "map[string]string"
+        },
+        "urn": {
+          "canBeNull": false,
+          "description": "Unique resource name used in policies",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter": {
+      "description": "Resource tag filter",
+      "id": "TagFilter",
+      "namespace": "iam.resource",
+      "properties": {
+        "operator": {
+          "canBeNull": true,
+          "description": "Operator to use in order to filter on the value (defaults to 'EQ')",
+          "fullType": "iam.resource.TagFilter.OperatorEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.resource.TagFilter.OperatorEnum"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value to use in order to filter tags",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter.OperatorEnum": {
+      "description": "Operator that can be used in order to filter resources tags",
+      "enum": [
+        "EQ"
+      ],
+      "enumType": "string",
+      "id": "OperatorEnum",
+      "namespace": "iam.resource.TagFilter"
+    },
     "order.Contract": {
       "description": "A contract",
       "id": "Contract",
@@ -4961,25 +5401,32 @@ export const schema: Schema = {
       "properties": {
         "content": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Terms of the contract",
+          "fullType": "text",
+          "readOnly": true,
           "required": false,
           "type": "text"
         },
         "name": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Name of the contract",
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "url": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "URL to download the contract",
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
       }
     },
     "order.CurrencyCodeEnum": {
+      "description": "Currency code",
       "enum": [
         "AUD",
         "CAD",
@@ -5008,31 +5455,41 @@ export const schema: Schema = {
       "properties": {
         "contracts": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "List of contracts related to the order",
+          "fullType": "order.Contract[]",
+          "readOnly": true,
           "required": false,
           "type": "order.Contract[]"
         },
         "details": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Details of the order",
+          "fullType": "order.OrderDetail[]",
+          "readOnly": true,
           "required": false,
           "type": "order.OrderDetail[]"
         },
         "orderId": {
           "canBeNull": true,
-          "readOnly": false,
+          "description": "Identifier of the order",
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
         "prices": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Prices of the order including with and without taxes",
+          "fullType": "order.OrderPrices",
+          "readOnly": true,
           "required": false,
           "type": "order.OrderPrices"
         },
         "url": {
           "canBeNull": true,
-          "readOnly": false,
+          "description": "URL to download the order",
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
@@ -5043,39 +5500,83 @@ export const schema: Schema = {
       "id": "OrderDetail",
       "namespace": "order",
       "properties": {
+        "cartItemID": {
+          "canBeNull": true,
+          "description": "Cart Item ID the details is related to",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
         "description": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Description of the detail",
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "detailType": {
           "canBeNull": true,
-          "readOnly": false,
+          "description": "Type of detail",
+          "fullType": "order.OrderDetailTypeEnum",
+          "readOnly": true,
           "required": false,
           "type": "order.OrderDetailTypeEnum"
         },
         "domain": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Service name",
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
+        "originalTotalPrice": {
+          "canBeNull": false,
+          "description": "Original price of the detail before reduction application",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
         "quantity": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Quantity of the service",
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
+        "reductionTotalPrice": {
+          "canBeNull": false,
+          "description": "Total price of the reduction",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "reductions": {
+          "canBeNull": false,
+          "description": "List of reductions applied to the detail",
+          "fullType": "order.Reduction[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Reduction[]"
+        },
         "totalPrice": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Price total of the services",
+          "fullType": "order.Price",
+          "readOnly": true,
           "required": false,
           "type": "order.Price"
         },
         "unitPrice": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Unitary price of the service",
+          "fullType": "order.Price",
+          "readOnly": true,
           "required": false,
           "type": "order.Price"
         }
@@ -5114,50 +5615,162 @@ export const schema: Schema = {
       "id": "OrderPrices",
       "namespace": "order",
       "properties": {
+        "originalWithoutTax": {
+          "canBeNull": true,
+          "description": "Price before reduction application",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "reduction": {
+          "canBeNull": true,
+          "description": "Price concerning the reduced amount",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
         "tax": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Tax amount",
+          "fullType": "order.Price",
+          "readOnly": true,
           "required": false,
           "type": "order.Price"
         },
         "withTax": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Price with tax",
+          "fullType": "order.Price",
+          "readOnly": true,
           "required": false,
           "type": "order.Price"
         },
         "withoutTax": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Price without tax",
+          "fullType": "order.Price",
+          "readOnly": true,
           "required": false,
           "type": "order.Price"
         }
       }
     },
     "order.Price": {
-      "description": "Price with it's currency and textual representation",
+      "description": "Price with its currency and textual representation",
       "id": "Price",
       "namespace": "order",
       "properties": {
         "currencyCode": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Currency code",
+          "fullType": "order.CurrencyCodeEnum",
+          "readOnly": true,
           "required": false,
           "type": "order.CurrencyCodeEnum"
         },
+        "priceInUcents": {
+          "canBeNull": true,
+          "description": "Price in microcents",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
         "text": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Textual representation",
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "The effective price",
+          "fullType": "double",
+          "readOnly": true,
           "required": false,
           "type": "double"
         }
       }
+    },
+    "order.Reduction": {
+      "description": "Order detail reduction",
+      "id": "Reduction",
+      "namespace": "order",
+      "properties": {
+        "context": {
+          "canBeNull": false,
+          "description": "In which context the reduction is applied",
+          "fullType": "order.ReductionContextEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "order.ReductionContextEnum"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "Promotion description",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "price": {
+          "canBeNull": false,
+          "description": "Reduction price applied with this promotion",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "reductionDescription": {
+          "canBeNull": false,
+          "description": "Reduction description",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Reduction effect, price modification",
+          "fullType": "order.ReductionTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "order.ReductionTypeEnum"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "The reduction value",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        }
+      }
+    },
+    "order.ReductionContextEnum": {
+      "description": "Context of the reduction",
+      "enum": [
+        "promotion",
+        "voucher"
+      ],
+      "enumType": "string",
+      "id": "ReductionContextEnum",
+      "namespace": "order"
+    },
+    "order.ReductionTypeEnum": {
+      "description": "Type of reduction",
+      "enum": [
+        "fixed_amount",
+        "forced_amount",
+        "percentage"
+      ],
+      "enumType": "string",
+      "id": "ReductionTypeEnum",
+      "namespace": "order"
     },
     "service.RenewType": {
       "description": "Map a possible renew for a specific service",
@@ -5167,6 +5780,7 @@ export const schema: Schema = {
         "automatic": {
           "canBeNull": false,
           "description": "The service is automatically renewed",
+          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -5174,6 +5788,7 @@ export const schema: Schema = {
         "deleteAtExpiration": {
           "canBeNull": false,
           "description": "The service will be deleted at expiration",
+          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -5181,6 +5796,7 @@ export const schema: Schema = {
         "forced": {
           "canBeNull": false,
           "description": "The service forced to be renewed",
+          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -5188,6 +5804,7 @@ export const schema: Schema = {
         "manualPayment": {
           "canBeNull": true,
           "description": "The service needs to be manually renewed and paid",
+          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -5195,6 +5812,7 @@ export const schema: Schema = {
         "period": {
           "canBeNull": true,
           "description": "period of renew in month",
+          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -5217,6 +5835,7 @@ export const schema: Schema = {
       "namespace": "service"
     },
     "service.StateEnum": {
+      "description": "service.StateEnum",
       "enum": [
         "expired",
         "inCreation",
@@ -5243,21 +5862,21 @@ export const schema: Schema = {
         },
         "contactAdmin": {
           "canBeNull": false,
-          "fullType": "coreTypes.AccountId:string",
+          "fullType": "string",
           "readOnly": true,
           "required": false,
           "type": "string"
         },
         "contactBilling": {
           "canBeNull": false,
-          "fullType": "coreTypes.AccountId:string",
+          "fullType": "string",
           "readOnly": true,
           "required": false,
           "type": "string"
         },
         "contactTech": {
           "canBeNull": false,
-          "fullType": "coreTypes.AccountId:string",
+          "fullType": "string",
           "readOnly": true,
           "required": false,
           "type": "string"
@@ -5315,7 +5934,7 @@ export const schema: Schema = {
         },
         "serviceId": {
           "canBeNull": false,
-          "fullType": "coreTypes.ServiceId:long",
+          "fullType": "long",
           "readOnly": true,
           "required": false,
           "type": "long"
@@ -5352,14 +5971,45 @@ export const schema: Schema = {
         }
       }
     },
+    "spare.xdsl.XdslSpareWithIAM": {
+      "description": "Spare properties",
+      "id": "XdslSpare",
+      "namespace": "spare.xdsl",
+      "properties": {
+        "brand": {
+          "canBeNull": false,
+          "description": "Modem brand model",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "iam": {
+          "canBeNull": true,
+          "description": "IAM resource metadata",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.ResourceMetadata"
+        },
+        "macAddress": {
+          "canBeNull": false,
+          "description": "Mac address",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
     "telephony.Contact": {
-      "description": "Contact informations structure",
+      "description": "Contact information structure",
       "id": "Contact",
       "namespace": "telephony",
       "properties": {
         "address": {
           "canBeNull": true,
           "description": "Contact address",
+          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -5367,6 +6017,7 @@ export const schema: Schema = {
         "city": {
           "canBeNull": true,
           "description": "Contact city",
+          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -5374,12 +6025,14 @@ export const schema: Schema = {
         "country": {
           "canBeNull": true,
           "description": "Contact country",
+          "fullType": "coreTypes.CountryEnum",
           "readOnly": false,
           "required": false,
           "type": "coreTypes.CountryEnum"
         },
         "email": {
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -5387,6 +6040,7 @@ export const schema: Schema = {
         "firstname": {
           "canBeNull": true,
           "description": "Contact firstname",
+          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -5394,6 +6048,7 @@ export const schema: Schema = {
         "name": {
           "canBeNull": true,
           "description": "Contact name",
+          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -5401,6 +6056,7 @@ export const schema: Schema = {
         "organisation": {
           "canBeNull": true,
           "description": "Contact organisation",
+          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -5408,6 +6064,7 @@ export const schema: Schema = {
         "phone": {
           "canBeNull": true,
           "description": "Contact phone",
+          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -5415,6 +6072,7 @@ export const schema: Schema = {
         "zip": {
           "canBeNull": true,
           "description": "Contact zip",
+          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -5484,7 +6142,7 @@ export const schema: Schema = {
         },
         "process": {
           "canBeNull": false,
-          "description": "Process determined for merchandise returned",
+          "description": "Return merchandise authorisation type",
           "fullType": "telephony.RmaReplaceTypeEnum",
           "readOnly": false,
           "required": false,
@@ -5500,7 +6158,7 @@ export const schema: Schema = {
         },
         "shippingContact": {
           "canBeNull": false,
-          "description": "Contact information related to the delivery shipping in case of exchange",
+          "description": "Contact information structure",
           "fullType": "telephony.Contact",
           "readOnly": false,
           "required": false,
@@ -5591,35 +6249,40 @@ export const schema: Schema = {
         "description": {
           "canBeNull": false,
           "description": "A brief description of the step",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "doneDate": {
           "canBeNull": true,
           "description": "The date when this step was done",
-          "readOnly": false,
+          "fullType": "datetime",
+          "readOnly": true,
           "required": false,
           "type": "datetime"
         },
         "infos": {
           "canBeNull": true,
-          "description": "Additional informations about the step",
-          "readOnly": false,
+          "description": "Additional information about the step",
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "name": {
           "canBeNull": false,
-          "description": "The name of the RMA step",
-          "readOnly": false,
+          "description": "RMA step names",
+          "fullType": "telephony.RmaStepNameEnum",
+          "readOnly": true,
           "required": false,
           "type": "telephony.RmaStepNameEnum"
         },
         "status": {
           "canBeNull": false,
-          "description": "Status of the step",
-          "readOnly": false,
+          "description": "Status of the RMA step",
+          "fullType": "telephony.RmaStepStatusEnum",
+          "readOnly": true,
           "required": false,
           "type": "telephony.RmaStepStatusEnum"
         }
@@ -5754,6 +6417,22 @@ export const schema: Schema = {
           "required": false,
           "type": "long"
         },
+        "provider": {
+          "canBeNull": false,
+          "description": "The provider",
+          "fullType": "xdsl.ProviderEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "xdsl.ProviderEnum"
+        },
+        "providerInfra": {
+          "canBeNull": true,
+          "description": "The provider of the infrastructure, if applicable",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
         "role": {
           "canBeNull": false,
           "fullType": "xdsl.AccessRoleEnum",
@@ -5777,37 +6456,43 @@ export const schema: Schema = {
       "properties": {
         "canApplyLnsRateLimit": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "canChangeDslamProfile": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "canChangeLns": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "canGetRadiusConnectionLogs": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "canResetDslamPort": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "hasDslamPort": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         }
@@ -5899,45 +6584,94 @@ export const schema: Schema = {
       "properties": {
         "incident": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "isActiveOnLns": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "isModemConnected": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "lineTest": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "ping": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "proposedProfileId": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "sync": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
+        }
+      }
+    },
+    "xdsl.AccessLatency": {
+      "description": "An access latency item",
+      "id": "AccessLatency",
+      "namespace": "xdsl",
+      "properties": {
+        "loss": {
+          "canBeNull": true,
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "status": {
+          "canBeNull": true,
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "timestamp": {
+          "canBeNull": false,
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "value": {
+          "canBeNull": true,
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "verboseStatus": {
+          "canBeNull": true,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
@@ -5979,6 +6713,130 @@ export const schema: Schema = {
       "id": "AccessStatusEnum",
       "namespace": "xdsl"
     },
+    "xdsl.AccessWithIAM": {
+      "description": "XDSL Access",
+      "id": "Access",
+      "namespace": "xdsl",
+      "properties": {
+        "accessName": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "accessType": {
+          "canBeNull": false,
+          "fullType": "xdsl.DslTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "xdsl.DslTypeEnum"
+        },
+        "address": {
+          "canBeNull": false,
+          "fullType": "xdsl.AddressDetail",
+          "readOnly": true,
+          "required": false,
+          "type": "xdsl.AddressDetail"
+        },
+        "capabilities": {
+          "canBeNull": false,
+          "fullType": "xdsl.AccessCapabilities",
+          "readOnly": true,
+          "required": false,
+          "type": "xdsl.AccessCapabilities"
+        },
+        "description": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "iam": {
+          "canBeNull": true,
+          "description": "IAM resource metadata",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.ResourceMetadata"
+        },
+        "ipv6Enabled": {
+          "canBeNull": false,
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "lnsRateLimit": {
+          "canBeNull": true,
+          "description": "Rate limit on the LNS in kbps - Only available if canApplyLnsRateLimit capability is set to true - Must be a multiple of 64 - Min value 64 / Max value 100032",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "monitoring": {
+          "canBeNull": false,
+          "description": "Whether or not this access is monitored",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "nra": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "packName": {
+          "canBeNull": true,
+          "description": "Pack name, if access is in a pack",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "pairsNumber": {
+          "canBeNull": false,
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "provider": {
+          "canBeNull": false,
+          "description": "The provider",
+          "fullType": "xdsl.ProviderEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "xdsl.ProviderEnum"
+        },
+        "providerInfra": {
+          "canBeNull": true,
+          "description": "The provider of the infrastructure, if applicable",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "role": {
+          "canBeNull": false,
+          "fullType": "xdsl.AccessRoleEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "xdsl.AccessRoleEnum"
+        },
+        "status": {
+          "canBeNull": false,
+          "fullType": "xdsl.AccessStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "xdsl.AccessStatusEnum"
+        }
+      }
+    },
     "xdsl.AddressDetail": {
       "description": "All components of an address",
       "id": "AddressDetail",
@@ -5986,81 +6844,94 @@ export const schema: Schema = {
       "properties": {
         "building": {
           "canBeNull": true,
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "city": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "door": {
           "canBeNull": true,
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "firstName": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "floor": {
           "canBeNull": true,
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "inseeCode": {
           "canBeNull": false,
           "description": "Identifier of the city",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "lastName": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "numberStreet": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "residence": {
           "canBeNull": true,
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "rivoliCode": {
           "canBeNull": false,
           "description": "Identifier of the street",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "stairs": {
           "canBeNull": true,
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "street": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "zipCode": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
@@ -6105,37 +6976,6 @@ export const schema: Schema = {
         }
       }
     },
-    "xdsl.AsyncTask<T>": {
-      "description": "Async task",
-      "generics": [
-        "T"
-      ],
-      "id": "AsyncTask",
-      "namespace": "xdsl",
-      "properties": {
-        "error": {
-          "canBeNull": true,
-          "description": "Error",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "result": {
-          "canBeNull": true,
-          "description": "Result of the call",
-          "readOnly": false,
-          "required": false,
-          "type": "T"
-        },
-        "status": {
-          "canBeNull": false,
-          "description": "Status of the call",
-          "readOnly": false,
-          "required": false,
-          "type": "xdsl.AsyncTaskStatusEnum"
-        }
-      }
-    },
     "xdsl.AsyncTaskStatusEnum": {
       "description": "AsyncTask status",
       "enum": [
@@ -6147,6 +6987,185 @@ export const schema: Schema = {
       "id": "AsyncTaskStatusEnum",
       "namespace": "xdsl"
     },
+    "xdsl.AsyncTask_connectivity.eligibility.Meetings": {
+      "description": "xdsl.AsyncTask_connectivity.eligibility.Meetings",
+      "id": "Meetings",
+      "namespace": "xdsl.AsyncTask_connectivity.eligibility",
+      "properties": {
+        "error": {
+          "canBeNull": true,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "result": {
+          "canBeNull": false,
+          "description": "List of available meeting time slots",
+          "fullType": "connectivity.eligibility.Meetings",
+          "readOnly": true,
+          "required": false,
+          "type": "connectivity.eligibility.Meetings"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "AsyncTask status",
+          "fullType": "xdsl.AsyncTaskStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "xdsl.AsyncTaskStatusEnum"
+        }
+      }
+    },
+    "xdsl.AsyncTask_xdsl.ModemInfo": {
+      "description": "xdsl.AsyncTask_xdsl.ModemInfo",
+      "id": "ModemInfo",
+      "namespace": "xdsl.AsyncTask_xdsl",
+      "properties": {
+        "error": {
+          "canBeNull": true,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "result": {
+          "canBeNull": true,
+          "description": "Describe general information of a Modem",
+          "fullType": "xdsl.ModemInfo",
+          "readOnly": true,
+          "required": false,
+          "type": "xdsl.ModemInfo"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "AsyncTask status",
+          "fullType": "xdsl.AsyncTaskStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "xdsl.AsyncTaskStatusEnum"
+        }
+      }
+    },
+    "xdsl.CopperGridClosureTrajectory": {
+      "description": "Copper grid closure trajectory",
+      "id": "CopperGridClosureTrajectory",
+      "namespace": "xdsl",
+      "properties": {
+        "commercialClosureAnnouncementDate": {
+          "canBeNull": true,
+          "description": "Commercial closure announcement date",
+          "fullType": "date",
+          "readOnly": true,
+          "required": false,
+          "type": "date"
+        },
+        "commercialClosureDate": {
+          "canBeNull": true,
+          "description": "Commercial closure date",
+          "fullType": "date",
+          "readOnly": true,
+          "required": false,
+          "type": "date"
+        },
+        "commercialClosureInitialDate": {
+          "canBeNull": true,
+          "description": "Commercial closure initial date",
+          "fullType": "date",
+          "readOnly": true,
+          "required": false,
+          "type": "date"
+        },
+        "departmentCode": {
+          "canBeNull": false,
+          "description": "Department code",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "departmentName": {
+          "canBeNull": true,
+          "description": "Department name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "ftthZone": {
+          "canBeNull": true,
+          "description": "FTTH zone",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "inseeCode": {
+          "canBeNull": false,
+          "description": "INSEE code",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "lot": {
+          "canBeNull": true,
+          "description": "Lot",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "municipalityName": {
+          "canBeNull": false,
+          "description": "Municipality name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "oiCode": {
+          "canBeNull": true,
+          "description": "OI code",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "oiName": {
+          "canBeNull": true,
+          "description": "OI name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "technicalClosureAnnouncementDate": {
+          "canBeNull": true,
+          "description": "Technical closure announcement date",
+          "fullType": "date",
+          "readOnly": true,
+          "required": false,
+          "type": "date"
+        },
+        "technicalClosureDate": {
+          "canBeNull": true,
+          "description": "Technical closure date",
+          "fullType": "date",
+          "readOnly": true,
+          "required": false,
+          "type": "date"
+        },
+        "technicalClosureInitialDate": {
+          "canBeNull": true,
+          "description": "Technical closure initial date",
+          "fullType": "date",
+          "readOnly": true,
+          "required": false,
+          "type": "date"
+        }
+      }
+    },
     "xdsl.DHCP": {
       "description": "DHCP Configuration of the Modem",
       "id": "DHCP",
@@ -6154,7 +7173,7 @@ export const schema: Schema = {
       "properties": {
         "defaultGateway": {
           "canBeNull": false,
-          "description": "The default gateway to be given to the clients",
+          "description": "IP address (e.g., 192.0.2.0)",
           "fullType": "ip",
           "readOnly": false,
           "required": false,
@@ -6178,7 +7197,7 @@ export const schema: Schema = {
         },
         "endAddress": {
           "canBeNull": false,
-          "description": "Last address of the pool assigned by the DHCP",
+          "description": "IP address (e.g., 192.0.2.0)",
           "fullType": "ip",
           "readOnly": false,
           "required": false,
@@ -6194,7 +7213,7 @@ export const schema: Schema = {
         },
         "primaryDNS": {
           "canBeNull": false,
-          "description": "Primary DNS servers to be given to the clients",
+          "description": "IP address (e.g., 192.0.2.0)",
           "fullType": "ip",
           "readOnly": false,
           "required": false,
@@ -6218,7 +7237,7 @@ export const schema: Schema = {
         },
         "startAddress": {
           "canBeNull": false,
-          "description": "First address of the pool assigned by the DHCP",
+          "description": "IP address (e.g., 192.0.2.0)",
           "fullType": "ip",
           "readOnly": false,
           "required": false,
@@ -6226,7 +7245,7 @@ export const schema: Schema = {
         },
         "subnetMask": {
           "canBeNull": false,
-          "description": "The subnet mask given to the clients",
+          "description": "IP address (e.g., 192.0.2.0)",
           "fullType": "ip",
           "readOnly": false,
           "required": false,
@@ -6249,7 +7268,7 @@ export const schema: Schema = {
       "properties": {
         "IPAddress": {
           "canBeNull": false,
-          "description": "The IP address of the device",
+          "description": "IP address (e.g., 192.0.2.0)",
           "fullType": "ip",
           "readOnly": false,
           "required": false,
@@ -6302,98 +7321,111 @@ export const schema: Schema = {
         "engagement": {
           "canBeNull": false,
           "description": "Duration of month the access will be engaged",
-          "readOnly": false,
+          "fullType": "double",
+          "readOnly": true,
           "required": false,
           "type": "double"
         },
         "monthlyPrice": {
           "canBeNull": false,
-          "description": "New abo price after the deconsolidation",
-          "readOnly": false,
+          "description": "Price with it's currency and textual representation",
+          "fullType": "order.Price",
+          "readOnly": true,
           "required": false,
           "type": "order.Price"
         },
         "price": {
           "canBeNull": false,
-          "description": "Price to pay",
-          "readOnly": false,
+          "description": "Price with it's currency and textual representation",
+          "fullType": "order.Price",
+          "readOnly": true,
           "required": false,
           "type": "order.Price"
         }
       }
     },
     "xdsl.DeviceModemInfo": {
-      "description": "Describe device informations of a Modem",
+      "description": "Describe device information of a Modem",
       "id": "DeviceModemInfo",
       "namespace": "xdsl",
       "properties": {
         "brand": {
           "canBeNull": false,
           "description": "Modem brand",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "ip": {
           "canBeNull": false,
-          "description": "Modem ip address",
-          "readOnly": false,
+          "description": "IPv4 address (e.g., 192.0.2.0)",
+          "fullType": "ipv4",
+          "readOnly": true,
           "required": false,
           "type": "ipv4"
         },
         "lastUpdate": {
           "canBeNull": false,
           "description": "Time of last information refresh",
-          "readOnly": false,
+          "fullType": "datetime",
+          "readOnly": true,
           "required": false,
           "type": "datetime"
         },
         "macAddress": {
           "canBeNull": false,
           "description": "Modem mac address",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "model": {
           "canBeNull": false,
           "description": "Modem type of model",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "oui": {
           "canBeNull": false,
           "description": "Organizational Unique Identifier",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "overEthernet": {
           "canBeNull": true,
           "description": "Protocol used for connection",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "pppLogin": {
           "canBeNull": true,
           "description": "login used for ppp protocol",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "serial": {
           "canBeNull": false,
           "description": "Modem serial key",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "softVersion": {
           "canBeNull": false,
           "description": "Software Version",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
@@ -6419,19 +7451,22 @@ export const schema: Schema = {
       "properties": {
         "id": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
         "isCurrent": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "name": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
@@ -6530,21 +7565,24 @@ export const schema: Schema = {
         "date": {
           "canBeNull": false,
           "description": "Date of the migration",
-          "readOnly": false,
+          "fullType": "datetime",
+          "readOnly": true,
           "required": false,
           "type": "datetime"
         },
         "ipRange": {
           "canBeNull": false,
-          "description": "IP range to migrate",
-          "readOnly": false,
+          "description": "IPv4 CIDR notation (e.g., 192.0.2.0/24)",
+          "fullType": "ipv4Block",
+          "readOnly": true,
           "required": false,
           "type": "ipv4Block"
         },
         "moveTo": {
           "canBeNull": false,
           "description": "Access where the IP range will be moved to",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
@@ -6599,6 +7637,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "long"
+        },
+        "copperGridClosureTrajectory": {
+          "canBeNull": true,
+          "description": "Copper grid closure trajectory",
+          "fullType": "xdsl.CopperGridClosureTrajectory",
+          "readOnly": true,
+          "required": false,
+          "type": "xdsl.CopperGridClosureTrajectory"
         },
         "firstEligibleDate": {
           "canBeNull": true,
@@ -6738,10 +7784,10 @@ export const schema: Schema = {
       "properties": {
         "comment": {
           "canBeNull": false,
-          "fullType": "text",
+          "fullType": "string",
           "readOnly": true,
           "required": false,
-          "type": "text"
+          "type": "string"
         },
         "creationDate": {
           "canBeNull": false,
@@ -6826,7 +7872,7 @@ export const schema: Schema = {
       "properties": {
         "IPAddress": {
           "canBeNull": false,
-          "description": "The IP address of the LAN interface of the modem",
+          "description": "IP address (e.g., 192.0.2.0)",
           "fullType": "ip",
           "readOnly": false,
           "required": false,
@@ -6834,7 +7880,7 @@ export const schema: Schema = {
         },
         "addressingType": {
           "canBeNull": false,
-          "description": "How the LAN interface of the modem is gettig its address",
+          "description": "How the modem gets its LAN IP Address",
           "fullType": "xdsl.xdslModemConfig.AddressingTypeEnum",
           "readOnly": false,
           "required": false,
@@ -6850,7 +7896,7 @@ export const schema: Schema = {
         },
         "subnetMask": {
           "canBeNull": false,
-          "description": "The subnet mask of the LAN interface of the modem",
+          "description": "IP address (e.g., 192.0.2.0)",
           "fullType": "ip",
           "readOnly": false,
           "required": false,
@@ -6874,21 +7920,24 @@ export const schema: Schema = {
         "lineHead": {
           "canBeNull": false,
           "description": "Identifier of the head of the cable from the MDF",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "lineInitialSection": {
           "canBeNull": false,
           "description": "Identifier of the section at the lineHead",
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
         "lineInitialSectionPair": {
           "canBeNull": false,
           "description": "Identifier of the pair at the lineHead's lineInitialSection",
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         }
@@ -7002,51 +8051,59 @@ export const schema: Schema = {
       "properties": {
         "lineTest": {
           "canBeNull": true,
-          "readOnly": false,
+          "fullType": "xdsl.LineTestEnum",
+          "readOnly": true,
           "required": false,
           "type": "xdsl.LineTestEnum"
         },
         "lineTestTime": {
           "canBeNull": true,
-          "readOnly": false,
+          "fullType": "datetime",
+          "readOnly": true,
           "required": false,
           "type": "datetime"
         },
         "number": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "proposedProfileId": {
           "canBeNull": true,
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
         "sync": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         }
       }
     },
     "xdsl.LineSectionLength": {
+      "description": "xdsl.LineSectionLength",
       "id": "LineSectionLength",
       "namespace": "xdsl",
       "properties": {
         "diameter": {
           "canBeNull": false,
           "description": "The diameter of this section in millimeters",
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
         "length": {
           "canBeNull": false,
           "description": "The length of this section in meters",
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         }
@@ -7203,97 +8260,113 @@ export const schema: Schema = {
       "properties": {
         "canBeManagedByOvh": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "canChangeACS": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "canChangeBridgeMode": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "canChangeDHCP": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "canChangeDMZ": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "canChangeEasyFirewallLevel": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "canChangeFirmware": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "canChangeLAN": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "canChangeManagement": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "canChangeMtu": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "canChangePortMapping": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "canChangeWLAN": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "canReboot": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "canReconfigureVoip": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "canRefreshConnectedDevices": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "canReset": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         }
@@ -7307,28 +8380,32 @@ export const schema: Schema = {
         "canExchange": {
           "canBeNull": false,
           "description": "To know if you can exchange your modem",
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "newModel": {
           "canBeNull": false,
           "description": "Model of the new modem",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "price": {
           "canBeNull": false,
-          "description": "Price without tax to pay for exchange",
-          "readOnly": false,
+          "description": "Price with it's currency and textual representation",
+          "fullType": "order.Price",
+          "readOnly": true,
           "required": false,
           "type": "order.Price"
         },
         "priceWithTax": {
           "canBeNull": false,
-          "description": "Price with tax included to pay for exchange",
-          "readOnly": false,
+          "description": "Price with it's currency and textual representation",
+          "fullType": "order.Price",
+          "readOnly": true,
           "required": false,
           "type": "order.Price"
         }
@@ -7341,15 +8418,17 @@ export const schema: Schema = {
       "properties": {
         "device": {
           "canBeNull": false,
-          "description": "Hardware information",
-          "readOnly": false,
+          "description": "Describe device information of a Modem",
+          "fullType": "xdsl.DeviceModemInfo",
+          "readOnly": true,
           "required": false,
           "type": "xdsl.DeviceModemInfo"
         },
         "statistics": {
           "canBeNull": false,
-          "description": "Modem Connection information",
-          "readOnly": false,
+          "description": "Describe statistics information of a Modem",
+          "fullType": "xdsl.StatsModemInfo",
+          "readOnly": true,
           "required": false,
           "type": "xdsl.StatsModemInfo"
         }
@@ -7386,6 +8465,7 @@ export const schema: Schema = {
         },
         "enabled": {
           "canBeNull": false,
+          "description": "Whether to enable or not",
           "fullType": "boolean",
           "readOnly": false,
           "required": false,
@@ -7393,7 +8473,7 @@ export const schema: Schema = {
         },
         "frequency": {
           "canBeNull": false,
-          "description": "The frenquency to send reminders when the access is still down",
+          "description": "Frequency between notifications.",
           "fullType": "xdsl.monitoringNotifications.FrequencyEnum",
           "readOnly": false,
           "required": false,
@@ -7439,14 +8519,39 @@ export const schema: Schema = {
         "code": {
           "canBeNull": false,
           "description": "Offer code",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "name": {
           "canBeNull": false,
           "description": "Offer name",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "xdsl.Ont": {
+      "description": "Access ONT information",
+      "id": "Ont",
+      "namespace": "xdsl",
+      "properties": {
+        "mac": {
+          "canBeNull": false,
+          "description": "MAC address of the device",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "serial": {
+          "canBeNull": false,
+          "description": "Serial of the device",
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
@@ -7531,7 +8636,7 @@ export const schema: Schema = {
         },
         "internalClient": {
           "canBeNull": false,
-          "description": "The IP address of the destination of the packets",
+          "description": "IP address (e.g., 192.0.2.0)",
           "fullType": "ip",
           "readOnly": false,
           "required": false,
@@ -7563,7 +8668,7 @@ export const schema: Schema = {
         },
         "protocol": {
           "canBeNull": false,
-          "description": "Protocol of the port mapping (TCP / UDP)",
+          "description": "Type of protocol for the Port Mapping",
           "fullType": "xdsl.xdslModemConfig.ProtocolTypeEnum",
           "readOnly": false,
           "required": false,
@@ -7587,18 +8692,36 @@ export const schema: Schema = {
         "code": {
           "canBeNull": false,
           "description": "Provider code",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "name": {
           "canBeNull": false,
           "description": "Provider name",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
       }
+    },
+    "xdsl.ProviderEnum": {
+      "description": "The providers",
+      "enum": [
+        "axione",
+        "bouygues",
+        "ft",
+        "ftBySfr",
+        "kosc",
+        "koscDeg",
+        "ovh",
+        "sfr"
+      ],
+      "enumType": "string",
+      "id": "ProviderEnum",
+      "namespace": "xdsl"
     },
     "xdsl.RadiusConnectionLog": {
       "description": "Log entry of an auth attempt to the radius server",
@@ -7607,25 +8730,29 @@ export const schema: Schema = {
       "properties": {
         "date": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "datetime",
+          "readOnly": true,
           "required": false,
           "type": "datetime"
         },
         "login": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "message": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "state": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
@@ -7639,28 +8766,32 @@ export const schema: Schema = {
         "dateTodo": {
           "canBeNull": false,
           "description": "Date when the resiliation will take effect",
-          "readOnly": false,
+          "fullType": "datetime",
+          "readOnly": true,
           "required": false,
           "type": "datetime"
         },
         "needModemReturn": {
           "canBeNull": false,
           "description": "If the customer needs to return his modem",
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "registrationDate": {
           "canBeNull": false,
           "description": "Date when the resiliation was done",
-          "readOnly": false,
+          "fullType": "datetime",
+          "readOnly": true,
           "required": false,
           "type": "datetime"
         },
         "status": {
           "canBeNull": false,
           "description": "Status of the resiliation",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
@@ -7690,14 +8821,16 @@ export const schema: Schema = {
         "comment": {
           "canBeNull": true,
           "description": "Comment about this resiliation",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "type": {
           "canBeNull": false,
-          "description": "Type of reason for the resiliation",
-          "readOnly": false,
+          "description": "Reason of a resiliation",
+          "fullType": "xdsl.ResiliationReasonEnum",
+          "readOnly": true,
           "required": false,
           "type": "xdsl.ResiliationReasonEnum"
         }
@@ -7710,36 +8843,41 @@ export const schema: Schema = {
       "properties": {
         "due": {
           "canBeNull": false,
-          "description": "Price due at resiliationDate",
-          "readOnly": false,
+          "description": "Price with it's currency and textual representation",
+          "fullType": "order.Price",
+          "readOnly": true,
           "required": false,
           "type": "order.Price"
         },
         "engageDate": {
           "canBeNull": true,
           "description": "Date until which the customer is engaged",
-          "readOnly": false,
+          "fullType": "datetime",
+          "readOnly": true,
           "required": false,
           "type": "datetime"
         },
         "minResiliationDate": {
           "canBeNull": false,
           "description": "Minumum resiliationDate",
-          "readOnly": false,
+          "fullType": "datetime",
+          "readOnly": true,
           "required": false,
           "type": "datetime"
         },
         "resiliationDate": {
           "canBeNull": false,
           "description": "Date at which the access will be resiliated",
-          "readOnly": false,
+          "fullType": "datetime",
+          "readOnly": true,
           "required": false,
           "type": "datetime"
         },
         "resiliationReasons": {
           "canBeNull": false,
           "description": "List of available resiliation reasons",
-          "readOnly": false,
+          "fullType": "xdsl.ResiliationReasonEnum[]",
+          "readOnly": true,
           "required": false,
           "type": "xdsl.ResiliationReasonEnum[]"
         }
@@ -7776,105 +8914,120 @@ export const schema: Schema = {
         "connectionUptime": {
           "canBeNull": false,
           "description": "Connection uptime",
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
         "crcError": {
           "canBeNull": false,
           "description": "Amount of CRC error detected",
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
         "deviceUptime": {
           "canBeNull": false,
           "description": "Modem uptime",
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
         "downstreamAttenuation": {
           "canBeNull": false,
           "description": "Downstream attenuation",
-          "readOnly": false,
+          "fullType": "double",
+          "readOnly": true,
           "required": false,
           "type": "double"
         },
         "downstreamMargin": {
           "canBeNull": false,
           "description": "Downstream margin",
-          "readOnly": false,
+          "fullType": "double",
+          "readOnly": true,
           "required": false,
           "type": "double"
         },
         "downstreamSync": {
           "canBeNull": false,
           "description": "Downstream synchronization",
-          "readOnly": false,
+          "fullType": "double",
+          "readOnly": true,
           "required": false,
           "type": "double"
         },
         "fecError": {
           "canBeNull": false,
           "description": "Amount of FEC error detected",
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
         "hecError": {
           "canBeNull": false,
           "description": "Amount of HEC error detected",
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
         "lastUpdate": {
           "canBeNull": false,
           "description": "Time of last refresh",
-          "readOnly": false,
+          "fullType": "datetime",
+          "readOnly": true,
           "required": false,
           "type": "datetime"
         },
         "modulation": {
           "canBeNull": false,
           "description": "Line modulation used",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "quarterHourStart": {
           "canBeNull": false,
           "description": "Count from last refresh in seconds",
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
         "syncUptime": {
           "canBeNull": false,
           "description": "Synchronization uptime",
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
         "upstreamAttenuation": {
           "canBeNull": false,
           "description": "Upstream attenuation",
-          "readOnly": false,
+          "fullType": "double",
+          "readOnly": true,
           "required": false,
           "type": "double"
         },
         "upstreamMargin": {
           "canBeNull": false,
           "description": "Upstream margin",
-          "readOnly": false,
+          "fullType": "double",
+          "readOnly": true,
           "required": false,
           "type": "double"
         },
         "upstreamSync": {
           "canBeNull": false,
           "description": "Upstream synchronization",
-          "readOnly": false,
+          "fullType": "double",
+          "readOnly": true,
           "required": false,
           "type": "double"
         }
@@ -7969,10 +9122,10 @@ export const schema: Schema = {
         "capabilities": {
           "canBeNull": false,
           "description": "Parameters capabilities. Lists what can be applied from this template",
-          "fullType": "text",
+          "fullType": "string",
           "readOnly": true,
           "required": false,
-          "type": "text"
+          "type": "string"
         },
         "creationDate": {
           "canBeNull": false,
@@ -8031,13 +9184,15 @@ export const schema: Schema = {
       "properties": {
         "timestamp": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
         "value": {
           "canBeNull": true,
-          "readOnly": false,
+          "fullType": "double",
+          "readOnly": true,
           "required": false,
           "type": "double"
         }
@@ -8082,7 +9237,7 @@ export const schema: Schema = {
         },
         "channelMode": {
           "canBeNull": false,
-          "description": "How the channel is chosen (Auto / Manual)",
+          "description": "How the WiFi channel is selected",
           "fullType": "xdsl.xdslModemConfig.ChannelModeEnum",
           "readOnly": false,
           "required": false,
@@ -8122,7 +9277,7 @@ export const schema: Schema = {
         },
         "securityType": {
           "canBeNull": false,
-          "description": "WiFi security mode",
+          "description": "Type of WLAN security protection",
           "fullType": "xdsl.xdslModemConfig.SecurityTypeEnum",
           "readOnly": false,
           "required": false,
@@ -8177,21 +9332,24 @@ export const schema: Schema = {
         "error": {
           "canBeNull": true,
           "description": "AsyncTask detailed error",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "result": {
           "canBeNull": true,
           "description": "Table with evidences stored on PCS",
-          "readOnly": false,
+          "fullType": "xdsl.antiSpam.EvidencesInfoDetail[]",
+          "readOnly": true,
           "required": false,
           "type": "xdsl.antiSpam.EvidencesInfoDetail[]"
         },
         "status": {
           "canBeNull": false,
-          "description": "AsyncTask status",
-          "readOnly": false,
+          "description": "Evidences AsyncTask status",
+          "fullType": "xdsl.antiSpam.EvidencesInfoStatusEnum",
+          "readOnly": true,
           "required": false,
           "type": "xdsl.antiSpam.EvidencesInfoStatusEnum"
         }
@@ -8205,21 +9363,24 @@ export const schema: Schema = {
         "date": {
           "canBeNull": false,
           "description": "File date on the PCS",
-          "readOnly": false,
+          "fullType": "datetime",
+          "readOnly": true,
           "required": false,
           "type": "datetime"
         },
         "filename": {
           "canBeNull": false,
           "description": "File name on the PCS",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "url": {
           "canBeNull": false,
           "description": "Temporary URL to access file",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
@@ -8235,6 +9396,52 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "EvidencesInfoStatusEnum",
       "namespace": "xdsl.antiSpam"
+    },
+    "xdsl.applyTemplateToModem.post": {
+      "description": "xdsl.applyTemplateToModem.post",
+      "id": "post",
+      "namespace": "xdsl.applyTemplateToModem",
+      "properties": {
+        "templateName": {
+          "canBeNull": false,
+          "description": "Modem Template Name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "xdsl.changeContact.post": {
+      "description": "xdsl.changeContact.post",
+      "id": "post",
+      "namespace": "xdsl.changeContact",
+      "properties": {
+        "contactAdmin": {
+          "canBeNull": false,
+          "description": "The contact to set as admin contact",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "contactBilling": {
+          "canBeNull": false,
+          "description": "The contact to set as billing contact",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "contactTech": {
+          "canBeNull": false,
+          "description": "The contact to set as tech contact",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
     },
     "xdsl.connectedDevice": {
       "description": "Connected Device",
@@ -8267,7 +9474,7 @@ export const schema: Schema = {
         },
         "informationDate": {
           "canBeNull": false,
-          "description": "The date time of the last update of thoses informations",
+          "description": "The date time of the last update of thoses information",
           "fullType": "datetime",
           "readOnly": true,
           "required": false,
@@ -8315,28 +9522,32 @@ export const schema: Schema = {
         "finishDate": {
           "canBeNull": true,
           "description": "Finished date of the task",
-          "readOnly": false,
+          "fullType": "datetime",
+          "readOnly": true,
           "required": false,
           "type": "datetime"
         },
         "function": {
           "canBeNull": false,
           "description": "Function of the task",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "status": {
           "canBeNull": false,
-          "description": "Status of the task",
-          "readOnly": false,
+          "description": "Status of an Email Pro task.",
+          "fullType": "xdsl.email.pro.TaskStatusEnum",
+          "readOnly": true,
           "required": false,
           "type": "xdsl.email.pro.TaskStatusEnum"
         },
         "todoDate": {
           "canBeNull": false,
           "description": "Todo date of the task",
-          "readOnly": false,
+          "fullType": "datetime",
+          "readOnly": true,
           "required": false,
           "type": "datetime"
         }
@@ -8355,6 +9566,36 @@ export const schema: Schema = {
       "id": "TaskStatusEnum",
       "namespace": "xdsl.email.pro"
     },
+    "xdsl.email.pro.changePassword.post": {
+      "description": "xdsl.email.pro.changePassword.post",
+      "id": "post",
+      "namespace": "xdsl.email.pro.changePassword",
+      "properties": {
+        "password": {
+          "canBeNull": false,
+          "description": "New email password",
+          "fullType": "password",
+          "readOnly": false,
+          "required": true,
+          "type": "password"
+        }
+      }
+    },
+    "xdsl.ipv6.post": {
+      "description": "xdsl.ipv6.post",
+      "id": "post",
+      "namespace": "xdsl.ipv6",
+      "properties": {
+        "enabled": {
+          "canBeNull": false,
+          "description": "Should the IPv6 be enabled ?",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
+        }
+      }
+    },
     "xdsl.lineDiagnostic.Answers": {
       "description": "Customer answers for line diagnostic",
       "id": "Answers",
@@ -8363,189 +9604,216 @@ export const schema: Schema = {
         "bandwidthTestUnit": {
           "canBeNull": true,
           "description": "bandwidth unit for proof.ovh.net test values",
-          "readOnly": false,
+          "fullType": "xdsl.lineDiagnostic.BandwidthTestUnitEnum",
+          "readOnly": true,
           "required": false,
           "type": "xdsl.lineDiagnostic.BandwidthTestUnitEnum"
         },
         "comment": {
           "canBeNull": true,
-          "description": "comment will contains all informations needed for intervention and about your access problem",
-          "readOnly": false,
+          "description": "comment will contains all information needed for intervention and about your access problem",
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "conditionsAccepted": {
           "canBeNull": true,
           "description": "customer knows that he can be charged (150 euros HT) if he is responsible for the problem or if tests have not been done correctly ?",
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "contactPhone": {
           "canBeNull": true,
           "description": "customer's phone number",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "datetimeOfAppearance": {
           "canBeNull": true,
           "description": "approximative datetime of problem happening",
-          "readOnly": false,
+          "fullType": "datetime",
+          "readOnly": true,
           "required": false,
           "type": "datetime"
         },
         "downloadBandwidthTest": {
           "canBeNull": true,
           "description": "bandwidth download value on proof.ovh.net test",
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
         "endAfternoonHours": {
           "canBeNull": true,
-          "description": "afternoon closing informations or time for the site",
-          "readOnly": false,
+          "description": "afternoon closing information or time for the site",
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "endMorningHours": {
           "canBeNull": true,
-          "description": "morning closing informations or time for the site",
-          "readOnly": false,
+          "description": "morning closing information or time for the site",
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "followBySms": {
           "canBeNull": true,
           "description": "indicate if customer wants to be informed by sms",
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "hasModemKeptSynchronization": {
           "canBeNull": true,
           "description": "Has modem kept his synchronization during line port reset ?",
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "idAppointment": {
           "canBeNull": true,
           "description": "id of appointment chosen (\"possibleValues\" contains choices list with id)",
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
         "individualSite": {
           "canBeNull": true,
           "description": "is non-professional site ?",
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "modemIsSynchronized": {
           "canBeNull": true,
           "description": "Is modem synchronized ? (whatever internet connection)",
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "modemMac": {
           "canBeNull": true,
           "description": "modem mac address",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "modemStillSynchronized": {
           "canBeNull": true,
           "description": "Modem still synchronized ? Please check once again.",
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "modemType": {
           "canBeNull": true,
           "description": "modem brand and reference",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "ovhTicket": {
           "canBeNull": true,
           "description": "Ovh ticket name or ticket ID, only if a ticket is already opened for this problem",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "problemType": {
           "canBeNull": true,
           "description": "Problem Type on DSL connection",
-          "readOnly": false,
+          "fullType": "xdsl.lineDiagnostic.ProblemTypeEnum",
+          "readOnly": true,
           "required": false,
           "type": "xdsl.lineDiagnostic.ProblemTypeEnum"
         },
         "resolvedAfterTests": {
           "canBeNull": true,
           "description": "is access problem solved ?",
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "secureSite": {
           "canBeNull": true,
           "description": "is secure site ?",
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "severalInternetConnections": {
           "canBeNull": true,
           "description": "Has customer several internal connections ? (on the same place)",
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "siteClosedDays": {
           "canBeNull": true,
           "description": "days or period where site access is not possible",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "siteDigicode": {
           "canBeNull": true,
           "description": "digicode for site entrance",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "siteOpening": {
           "canBeNull": true,
-          "description": "site opening hours or informations",
-          "readOnly": false,
+          "description": "site opening hours or information",
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "startAfternoonHours": {
           "canBeNull": true,
-          "description": "afternoon opening informations or time for the site",
-          "readOnly": false,
+          "description": "afternoon opening information or time for the site",
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "startMorningHours": {
           "canBeNull": true,
-          "description": "morning opening informations or time for the site",
-          "readOnly": false,
+          "description": "morning opening information or time for the site",
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "uploadBandwidthTest": {
           "canBeNull": true,
           "description": "bandwidth upload value on proof.ovh.net test",
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         }
@@ -8569,63 +9837,72 @@ export const schema: Schema = {
         "crcError": {
           "canBeNull": true,
           "description": "Amount of CRC error detected",
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
         "downstreamAttenuation": {
           "canBeNull": true,
           "description": "Downstream attenuation",
-          "readOnly": false,
+          "fullType": "double",
+          "readOnly": true,
           "required": false,
           "type": "double"
         },
         "downstreamMargin": {
           "canBeNull": true,
           "description": "Downstream margin",
-          "readOnly": false,
+          "fullType": "double",
+          "readOnly": true,
           "required": false,
           "type": "double"
         },
         "downstreamSync": {
           "canBeNull": true,
           "description": "Downstream synchronization",
-          "readOnly": false,
+          "fullType": "double",
+          "readOnly": true,
           "required": false,
           "type": "double"
         },
         "ifName": {
           "canBeNull": true,
           "description": "Modem interface name",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "profile": {
           "canBeNull": true,
           "description": "Profile on the DSLAM",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "upstreamAttenuation": {
           "canBeNull": true,
           "description": "Upstream attenuation",
-          "readOnly": false,
+          "fullType": "double",
+          "readOnly": true,
           "required": false,
           "type": "double"
         },
         "upstreamMargin": {
           "canBeNull": true,
           "description": "Upstream margin",
-          "readOnly": false,
+          "fullType": "double",
+          "readOnly": true,
           "required": false,
           "type": "double"
         },
         "upstreamSync": {
           "canBeNull": true,
           "description": "Upstream synchronization",
-          "readOnly": false,
+          "fullType": "double",
+          "readOnly": true,
           "required": false,
           "type": "double"
         }
@@ -8639,14 +9916,16 @@ export const schema: Schema = {
         "description": {
           "canBeNull": false,
           "description": "action's description",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "name": {
           "canBeNull": false,
-          "description": "action's name",
-          "readOnly": false,
+          "description": "Customer possible actions",
+          "fullType": "xdsl.lineDiagnostic.CustomerActionsEnum",
+          "readOnly": true,
           "required": false,
           "type": "xdsl.lineDiagnostic.CustomerActionsEnum"
         }
@@ -8674,133 +9953,150 @@ export const schema: Schema = {
       "namespace": "xdsl.lineDiagnostic"
     },
     "xdsl.lineDiagnostic.Diagnostic": {
-      "description": "Diagnostic status and informations",
+      "description": "Diagnostic status and information",
       "id": "Diagnostic",
       "namespace": "xdsl.lineDiagnostic",
       "properties": {
         "data": {
           "canBeNull": false,
-          "description": "Contains informations about diagnostic (questions, previous answers, actions to do, line details, selt result...)",
-          "readOnly": false,
+          "description": "Diagnostic data and information",
+          "fullType": "xdsl.lineDiagnostic.DiagnosticData",
+          "readOnly": true,
           "required": false,
           "type": "xdsl.lineDiagnostic.DiagnosticData"
         },
         "faultType": {
           "canBeNull": false,
-          "description": "Detected fault type",
-          "readOnly": false,
+          "description": "Line diagnostic fault type",
+          "fullType": "xdsl.lineDiagnostic.FaultTypeEnum",
+          "readOnly": true,
           "required": false,
           "type": "xdsl.lineDiagnostic.FaultTypeEnum"
         },
         "id": {
           "canBeNull": false,
           "description": "Diagnostic id",
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
         "status": {
           "canBeNull": false,
-          "description": "Diagnostic status",
-          "readOnly": false,
+          "description": "Diagnostic status possible values",
+          "fullType": "xdsl.lineDiagnostic.DiagnosticStatusEnum",
+          "readOnly": true,
           "required": false,
           "type": "xdsl.lineDiagnostic.DiagnosticStatusEnum"
         }
       }
     },
     "xdsl.lineDiagnostic.DiagnosticData": {
-      "description": "Diagnostic data and informations",
+      "description": "Diagnostic data and information",
       "id": "DiagnosticData",
       "namespace": "xdsl.lineDiagnostic",
       "properties": {
         "actionsDone": {
           "canBeNull": false,
           "description": "List of actions already done by customer",
-          "readOnly": false,
+          "fullType": "xdsl.lineDiagnostic.CustomerActionsEnum[]",
+          "readOnly": true,
           "required": false,
           "type": "xdsl.lineDiagnostic.CustomerActionsEnum[]"
         },
         "actionsToDo": {
           "canBeNull": false,
           "description": "List of actions that must be done by customer",
-          "readOnly": false,
+          "fullType": "xdsl.lineDiagnostic.CustomerActionToDo[]",
+          "readOnly": true,
           "required": false,
           "type": "xdsl.lineDiagnostic.CustomerActionToDo[]"
         },
         "answers": {
           "canBeNull": false,
-          "description": "Previous customer answers",
-          "readOnly": false,
+          "description": "Customer answers for line diagnostic",
+          "fullType": "xdsl.lineDiagnostic.Answers",
+          "readOnly": true,
           "required": false,
           "type": "xdsl.lineDiagnostic.Answers"
         },
         "comment": {
           "canBeNull": true,
           "description": "Diagnostic comment. Can be update during any diagnostic step",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "creationDate": {
           "canBeNull": false,
           "description": "Diagnostic creation date",
-          "readOnly": false,
+          "fullType": "datetime",
+          "readOnly": true,
           "required": false,
           "type": "datetime"
         },
         "diagnosticDoneDate": {
           "canBeNull": true,
           "description": "End of diagnostic date. Will be null until problem totally identified",
-          "readOnly": false,
+          "fullType": "datetime",
+          "readOnly": true,
           "required": false,
           "type": "datetime"
         },
         "error": {
           "canBeNull": false,
           "description": "Error message",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "lastUpdate": {
           "canBeNull": false,
           "description": "Last diagnostic update date",
-          "readOnly": false,
+          "fullType": "datetime",
+          "readOnly": true,
           "required": false,
           "type": "datetime"
         },
         "lineDetails": {
           "canBeNull": false,
-          "description": "Informations about line",
-          "readOnly": false,
+          "description": "Line information",
+          "fullType": "xdsl.lineDiagnostic.LineDetails",
+          "readOnly": true,
           "required": false,
           "type": "xdsl.lineDiagnostic.LineDetails"
         },
         "robotAction": {
           "canBeNull": true,
           "description": "Current or last robot action",
-          "readOnly": false,
+          "fullType": "xdsl.lineDiagnostic.RobotActionsEnum",
+          "readOnly": true,
           "required": false,
           "type": "xdsl.lineDiagnostic.RobotActionsEnum"
         },
         "seltTest": {
           "canBeNull": false,
-          "description": "SELT test result",
-          "readOnly": false,
+          "description": "Customer answers for line diagnostic",
+          "fullType": "xdsl.lineDiagnostic.SeltResult",
+          "readOnly": true,
           "required": false,
           "type": "xdsl.lineDiagnostic.SeltResult"
         },
         "timeout": {
           "canBeNull": false,
           "description": "Diagnostic timeout in minutes. Any action restart timeout",
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
         "toAnswer": {
           "canBeNull": false,
           "description": "List of questions that must be answered by customer",
-          "readOnly": false,
+          "fullType": "xdsl.lineDiagnostic.Question[]",
+          "readOnly": true,
           "required": false,
           "type": "xdsl.lineDiagnostic.Question[]"
         }
@@ -8850,140 +10146,159 @@ export const schema: Schema = {
         "down": {
           "canBeNull": true,
           "description": "Theoretical Downstream synchronization ",
-          "readOnly": false,
+          "fullType": "double",
+          "readOnly": true,
           "required": false,
           "type": "double"
         },
         "mitigation": {
           "canBeNull": true,
           "description": "Theoretical line mitigation",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "ping": {
           "canBeNull": true,
           "description": "Theoretical ping",
-          "readOnly": false,
+          "fullType": "double",
+          "readOnly": true,
           "required": false,
           "type": "double"
         },
         "up": {
           "canBeNull": true,
           "description": "Theoretical Upstream synchronization ",
-          "readOnly": false,
+          "fullType": "double",
+          "readOnly": true,
           "required": false,
           "type": "double"
         }
       }
     },
     "xdsl.lineDiagnostic.LineDetails": {
-      "description": "Line informations",
+      "description": "Line information",
       "id": "LineDetails",
       "namespace": "xdsl.lineDiagnostic",
       "properties": {
         "accessName": {
           "canBeNull": false,
           "description": "access name",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "accessPing": {
           "canBeNull": true,
           "description": "Access IP ping or not",
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "address": {
           "canBeNull": true,
           "description": "address of the access",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "connectionInfo": {
           "canBeNull": true,
-          "description": "informations directly get on DSLAM or Modem",
-          "readOnly": false,
+          "description": "information directly get on DSLAM or Modem",
+          "fullType": "xdsl.lineDiagnostic.ConnectionInformations",
+          "readOnly": true,
           "required": false,
           "type": "xdsl.lineDiagnostic.ConnectionInformations"
         },
         "contactPhone": {
           "canBeNull": true,
           "description": "customer phone number for contact",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "description": {
           "canBeNull": true,
           "description": "custom access description",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "dslamIsSynchronized": {
           "canBeNull": true,
           "description": "DSLAM is synchronized or not",
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "gtr": {
           "canBeNull": false,
           "description": "is GTR access or not",
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "length": {
           "canBeNull": false,
           "description": "Line length in meters",
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
         "lineCapabilities": {
           "canBeNull": true,
           "description": "Theoretical line capabilities",
-          "readOnly": false,
+          "fullType": "xdsl.lineDiagnostic.LineCapabilities",
+          "readOnly": true,
           "required": false,
           "type": "xdsl.lineDiagnostic.LineCapabilities"
         },
         "lineType": {
           "canBeNull": false,
-          "description": "dsl connexion type for the line",
-          "readOnly": false,
+          "description": "Possible DSL technologies",
+          "fullType": "xdsl.DslTypeEnum",
+          "readOnly": true,
           "required": false,
           "type": "xdsl.DslTypeEnum"
         },
         "nra": {
           "canBeNull": true,
           "description": "NRA name",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "number": {
           "canBeNull": false,
           "description": "line number",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "operator": {
           "canBeNull": false,
-          "description": "provider for internet connexion",
-          "readOnly": false,
+          "description": "The providers",
+          "fullType": "xdsl.ProviderEnum",
+          "readOnly": true,
           "required": false,
-          "type": "xdsl.lineDiagnostic.ProviderEnum"
+          "type": "xdsl.ProviderEnum"
         },
         "sections": {
           "canBeNull": true,
           "description": "cables sections details",
-          "readOnly": false,
+          "fullType": "xdsl.lineDiagnostic.Section[]",
+          "readOnly": true,
           "required": false,
           "type": "xdsl.lineDiagnostic.Section[]"
         }
@@ -8997,21 +10312,24 @@ export const schema: Schema = {
         "id": {
           "canBeNull": true,
           "description": "answer id",
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
         "label": {
           "canBeNull": true,
           "description": "answer choice string",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": true,
           "description": "answer choice value",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
@@ -9027,21 +10345,6 @@ export const schema: Schema = {
       "id": "ProblemTypeEnum",
       "namespace": "xdsl.lineDiagnostic"
     },
-    "xdsl.lineDiagnostic.ProviderEnum": {
-      "description": "The providers for xdsl access",
-      "enum": [
-        "axione",
-        "ft",
-        "ftBySfr",
-        "kosc",
-        "koscDeg",
-        "ovh",
-        "sfr"
-      ],
-      "enumType": "string",
-      "id": "ProviderEnum",
-      "namespace": "xdsl.lineDiagnostic"
-    },
     "xdsl.lineDiagnostic.Question": {
       "description": "Question to customer",
       "id": "Question",
@@ -9050,49 +10353,56 @@ export const schema: Schema = {
         "defaultValue": {
           "canBeNull": true,
           "description": "question description",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "description": {
           "canBeNull": false,
           "description": "question description",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "enumValues": {
           "canBeNull": true,
           "description": "available values for enum",
-          "readOnly": false,
+          "fullType": "string[]",
+          "readOnly": true,
           "required": false,
           "type": "string[]"
         },
         "name": {
           "canBeNull": false,
-          "description": "question name",
-          "readOnly": false,
+          "description": "Possible customer questions",
+          "fullType": "xdsl.lineDiagnostic.QuestionsEnum",
+          "readOnly": true,
           "required": false,
           "type": "xdsl.lineDiagnostic.QuestionsEnum"
         },
         "possibleValues": {
           "canBeNull": true,
           "description": "list of possible values",
-          "readOnly": false,
+          "fullType": "xdsl.lineDiagnostic.PossibleValue[]",
+          "readOnly": true,
           "required": false,
           "type": "xdsl.lineDiagnostic.PossibleValue[]"
         },
         "required": {
           "canBeNull": true,
           "description": "is a required question",
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "type": {
           "canBeNull": false,
           "description": "answer type",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
@@ -9172,14 +10482,16 @@ export const schema: Schema = {
         "length": {
           "canBeNull": false,
           "description": "cables length in meters",
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
         "section": {
           "canBeNull": false,
           "description": "cables section in millimeters",
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         }
@@ -9205,35 +10517,40 @@ export const schema: Schema = {
         "date": {
           "canBeNull": true,
           "description": "SELT test running date",
-          "readOnly": false,
+          "fullType": "datetime",
+          "readOnly": true,
           "required": false,
           "type": "datetime"
         },
         "distance": {
           "canBeNull": true,
           "description": "Distance of the problem identified on the line (by SELT test), from NRA to customer",
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
         "preloc": {
           "canBeNull": true,
           "description": "Prelocalization of the problem",
-          "readOnly": false,
+          "fullType": "xdsl.lineDiagnostic.SeltPrelocEnum",
+          "readOnly": true,
           "required": false,
           "type": "xdsl.lineDiagnostic.SeltPrelocEnum"
         },
         "state": {
           "canBeNull": true,
           "description": "Problem type identified by SELT test",
-          "readOnly": false,
+          "fullType": "xdsl.lineDiagnostic.SeltStateEnum",
+          "readOnly": true,
           "required": false,
           "type": "xdsl.lineDiagnostic.SeltStateEnum"
         },
         "status": {
           "canBeNull": true,
           "description": "SELT test status",
-          "readOnly": false,
+          "fullType": "xdsl.lineDiagnostic.SeltStatusEnum",
+          "readOnly": true,
           "required": false,
           "type": "xdsl.lineDiagnostic.SeltStatusEnum"
         }
@@ -9262,6 +10579,335 @@ export const schema: Schema = {
       "id": "SeltStatusEnum",
       "namespace": "xdsl.lineDiagnostic"
     },
+    "xdsl.lines.diagnostic.run.post": {
+      "description": "xdsl.lines.diagnostic.run.post",
+      "id": "post",
+      "namespace": "xdsl.lines.diagnostic.run",
+      "properties": {
+        "actionsDone": {
+          "canBeNull": false,
+          "description": "Customer possible actions",
+          "fullType": "xdsl.lineDiagnostic.CustomerActionsEnum[]",
+          "readOnly": false,
+          "required": false,
+          "type": "xdsl.lineDiagnostic.CustomerActionsEnum[]"
+        },
+        "answers": {
+          "canBeNull": false,
+          "description": "Customer answers for line diagnostic",
+          "fullType": "xdsl.lineDiagnostic.Answers",
+          "readOnly": false,
+          "required": false,
+          "type": "xdsl.lineDiagnostic.Answers"
+        },
+        "faultType": {
+          "canBeNull": false,
+          "description": "Line diagnostic fault type",
+          "fullType": "xdsl.lineDiagnostic.FaultTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.lineDiagnostic.FaultTypeEnum"
+        }
+      }
+    },
+    "xdsl.lines.dslamPort.changeProfile.post": {
+      "description": "xdsl.lines.dslamPort.changeProfile.post",
+      "id": "post",
+      "namespace": "xdsl.lines.dslamPort.changeProfile",
+      "properties": {
+        "dslamProfileId": {
+          "canBeNull": false,
+          "description": "The id of the xdsl.DslamLineProfile",
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
+        }
+      }
+    },
+    "xdsl.modem.blocIp.post": {
+      "description": "xdsl.modem.blocIp.post",
+      "id": "post",
+      "namespace": "xdsl.modem.blocIp",
+      "properties": {
+        "status": {
+          "canBeNull": false,
+          "description": "Status of the service",
+          "fullType": "xdsl.ServiceStatusEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.ServiceStatusEnum"
+        }
+      }
+    },
+    "xdsl.modem.callWaiting.post": {
+      "description": "xdsl.modem.callWaiting.post",
+      "id": "post",
+      "namespace": "xdsl.modem.callWaiting",
+      "properties": {
+        "callWaiting": {
+          "canBeNull": false,
+          "description": "Status of the service",
+          "fullType": "xdsl.ServiceStatusEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.ServiceStatusEnum"
+        }
+      }
+    },
+    "xdsl.modem.comfortExchange.post": {
+      "description": "xdsl.modem.comfortExchange.post",
+      "id": "post",
+      "namespace": "xdsl.modem.comfortExchange",
+      "properties": {
+        "contactShipping": {
+          "canBeNull": false,
+          "description": "Customer identifier for shipping address. By default Internet access address will be used. Allowed values are nichandle or «/me/contact/xyz»",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "xdsl.modem.contentSharing.post": {
+      "description": "xdsl.modem.contentSharing.post",
+      "id": "post",
+      "namespace": "xdsl.modem.contentSharing",
+      "properties": {
+        "contentSharing": {
+          "canBeNull": false,
+          "description": "Status of the service",
+          "fullType": "xdsl.ServiceStatusEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.ServiceStatusEnum"
+        }
+      }
+    },
+    "xdsl.modem.firmware.post": {
+      "description": "xdsl.modem.firmware.post",
+      "id": "post",
+      "namespace": "xdsl.modem.firmware",
+      "properties": {
+        "firmware": {
+          "canBeNull": false,
+          "description": "The firmware version to upgrade to",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "todoDate": {
+          "canBeNull": false,
+          "description": "Date of execution, default is now",
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
+        }
+      }
+    },
+    "xdsl.modem.ftp.post": {
+      "description": "xdsl.modem.ftp.post",
+      "id": "post",
+      "namespace": "xdsl.modem.ftp",
+      "properties": {
+        "ftp": {
+          "canBeNull": false,
+          "description": "Status of the service",
+          "fullType": "xdsl.ServiceStatusEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.ServiceStatusEnum"
+        }
+      }
+    },
+    "xdsl.modem.ipsecAlg.post": {
+      "description": "xdsl.modem.ipsecAlg.post",
+      "id": "post",
+      "namespace": "xdsl.modem.ipsecAlg",
+      "properties": {
+        "ipsecAlg": {
+          "canBeNull": false,
+          "description": "Status of the service",
+          "fullType": "xdsl.ServiceStatusEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.ServiceStatusEnum"
+        }
+      }
+    },
+    "xdsl.modem.lan.dhcp.DHCPStaticAddresses.post": {
+      "description": "xdsl.modem.lan.dhcp.DHCPStaticAddresses.post",
+      "id": "post",
+      "namespace": "xdsl.modem.lan.dhcp.DHCPStaticAddresses",
+      "properties": {
+        "IPAddress": {
+          "canBeNull": false,
+          "description": "IP address (e.g., 192.0.2.0)",
+          "fullType": "ip",
+          "readOnly": false,
+          "required": true,
+          "type": "ip"
+        },
+        "MACAddress": {
+          "canBeNull": false,
+          "description": "The MAC address of the device",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the DHCP static lease",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "xdsl.modem.portMappings.post": {
+      "description": "xdsl.modem.portMappings.post",
+      "id": "post",
+      "namespace": "xdsl.modem.portMappings",
+      "properties": {
+        "allowedRemoteIp": {
+          "canBeNull": false,
+          "description": "IPv4 address (e.g., 192.0.2.0)",
+          "fullType": "ipv4",
+          "readOnly": false,
+          "required": false,
+          "type": "ipv4"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "Description of the Port Mapping",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "externalPortEnd": {
+          "canBeNull": false,
+          "description": "The last port of the interval on the External Client that will get the connections",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "externalPortStart": {
+          "canBeNull": false,
+          "description": "External Port that the modem will listen on",
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
+        },
+        "internalClient": {
+          "canBeNull": false,
+          "description": "IP address (e.g., 192.0.2.0)",
+          "fullType": "ip",
+          "readOnly": false,
+          "required": true,
+          "type": "ip"
+        },
+        "internalPort": {
+          "canBeNull": false,
+          "description": "The port on the Internal Client that will get the connections",
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
+        },
+        "internalPortEnd": {
+          "canBeNull": false,
+          "description": "The last port of the interval on the Internal Client that will get the connections",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the port mapping entry",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "protocol": {
+          "canBeNull": false,
+          "description": "Type of protocol for the Port Mapping",
+          "fullType": "xdsl.xdslModemConfig.ProtocolTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.xdslModemConfig.ProtocolTypeEnum"
+        }
+      }
+    },
+    "xdsl.modem.reboot.post": {
+      "description": "xdsl.modem.reboot.post",
+      "id": "post",
+      "namespace": "xdsl.modem.reboot",
+      "properties": {
+        "todoDate": {
+          "canBeNull": false,
+          "description": "Date when the reboot will start",
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
+        }
+      }
+    },
+    "xdsl.modem.reset.post": {
+      "description": "xdsl.modem.reset.post",
+      "id": "post",
+      "namespace": "xdsl.modem.reset",
+      "properties": {
+        "resetOvhConfig": {
+          "canBeNull": false,
+          "description": "Reset configuration stored in OVH databases",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
+    "xdsl.modem.sipAlg.post": {
+      "description": "xdsl.modem.sipAlg.post",
+      "id": "post",
+      "namespace": "xdsl.modem.sipAlg",
+      "properties": {
+        "sipAlg": {
+          "canBeNull": false,
+          "description": "Status of the service",
+          "fullType": "xdsl.ServiceStatusEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.ServiceStatusEnum"
+        }
+      }
+    },
+    "xdsl.modem.upnp.post": {
+      "description": "xdsl.modem.upnp.post",
+      "id": "post",
+      "namespace": "xdsl.modem.upnp",
+      "properties": {
+        "upnp": {
+          "canBeNull": false,
+          "description": "Status of the service",
+          "fullType": "xdsl.ServiceStatusEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.ServiceStatusEnum"
+        }
+      }
+    },
     "xdsl.monitoringNotifications.FrequencyEnum": {
       "description": "Frequency between notifications.",
       "enum": [
@@ -9284,6 +10930,69 @@ export const schema: Schema = {
       "id": "TypeEnum",
       "namespace": "xdsl.monitoringNotifications"
     },
+    "xdsl.monitoringNotifications.post": {
+      "description": "xdsl.monitoringNotifications.post",
+      "id": "post",
+      "namespace": "xdsl.monitoringNotifications",
+      "properties": {
+        "allowIncident": {
+          "canBeNull": false,
+          "description": "Whether or not to allow notifications concerning generic incidents",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "downThreshold": {
+          "canBeNull": false,
+          "description": "The number of seconds the access has to be down to trigger the alert",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "email": {
+          "canBeNull": false,
+          "description": "The e-mail address, if type is mail",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "frequency": {
+          "canBeNull": false,
+          "description": "Frequency between notifications.",
+          "fullType": "xdsl.monitoringNotifications.FrequencyEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.monitoringNotifications.FrequencyEnum"
+        },
+        "phone": {
+          "canBeNull": false,
+          "description": "The phone number, if type is sms",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "smsAccount": {
+          "canBeNull": false,
+          "description": "The SMS account which will be debited for each sent SMS, if the type is sms",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Type of notification.",
+          "fullType": "xdsl.monitoringNotifications.TypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.monitoringNotifications.TypeEnum"
+        }
+      }
+    },
     "xdsl.orderFollowup.DurationUnitEnum": {
       "description": "The duration units",
       "enum": [
@@ -9302,37 +11011,46 @@ export const schema: Schema = {
       "properties": {
         "comments": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "string[]",
+          "readOnly": true,
           "required": false,
           "type": "string[]"
         },
         "doneDate": {
           "canBeNull": true,
-          "readOnly": false,
+          "fullType": "datetime",
+          "readOnly": true,
           "required": false,
           "type": "datetime"
         },
         "durationUnit": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "The duration units",
+          "fullType": "xdsl.orderFollowup.DurationUnitEnum",
+          "readOnly": true,
           "required": false,
           "type": "xdsl.orderFollowup.DurationUnitEnum"
         },
         "expectedDuration": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
         "name": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "The status of an order step",
+          "fullType": "xdsl.orderFollowup.StepNameEnum",
+          "readOnly": true,
           "required": false,
           "type": "xdsl.orderFollowup.StepNameEnum"
         },
         "status": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "The status of an order step",
+          "fullType": "xdsl.orderFollowup.StepStatusEnum",
+          "readOnly": true,
           "required": false,
           "type": "xdsl.orderFollowup.StepStatusEnum"
         }
@@ -9370,6 +11088,113 @@ export const schema: Schema = {
       "id": "StepStatusEnum",
       "namespace": "xdsl.orderFollowup"
     },
+    "xdsl.orderMeeting.post": {
+      "description": "xdsl.orderMeeting.post",
+      "id": "post",
+      "namespace": "xdsl.orderMeeting",
+      "properties": {
+        "endDate": {
+          "canBeNull": false,
+          "description": "Meeting end date",
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": true,
+          "type": "datetime"
+        },
+        "startDate": {
+          "canBeNull": false,
+          "description": "Meeting start date",
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": true,
+          "type": "datetime"
+        },
+        "uiCode": {
+          "canBeNull": false,
+          "description": "Meeting ui code ( code linked to the meeting returned by POST /xdsl/{serviceName}/orderMeetings )",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "xdsl.requestTotalDeconsolidation.post": {
+      "description": "xdsl.requestTotalDeconsolidation.post",
+      "id": "post",
+      "namespace": "xdsl.requestTotalDeconsolidation",
+      "properties": {
+        "noPortability": {
+          "canBeNull": false,
+          "description": "Do not port the number",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "rio": {
+          "canBeNull": false,
+          "description": "A token to prove the ownership of the line number, needed to port the number",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "xdsl.resiliate.post": {
+      "description": "xdsl.resiliate.post",
+      "id": "post",
+      "namespace": "xdsl.resiliate",
+      "properties": {
+        "resiliationDate": {
+          "canBeNull": false,
+          "description": "The desired resiliation date",
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
+        },
+        "resiliationSurvey": {
+          "canBeNull": false,
+          "description": "Information about the reason for the resiliation",
+          "fullType": "xdsl.ResiliationSurvey",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.ResiliationSurvey"
+        }
+      }
+    },
+    "xdsl.rma.changeType.post": {
+      "description": "xdsl.rma.changeType.post",
+      "id": "post",
+      "namespace": "xdsl.rma.changeType",
+      "properties": {
+        "type": {
+          "canBeNull": false,
+          "description": "Types of return merchandise authorisation you can change to",
+          "fullType": "telephony.RmaChangeTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "telephony.RmaChangeTypeEnum"
+        }
+      }
+    },
+    "xdsl.spare.replace.post": {
+      "description": "xdsl.spare.replace.post",
+      "id": "post",
+      "namespace": "xdsl.spare.replace",
+      "properties": {
+        "domain": {
+          "canBeNull": false,
+          "description": "The modem to replace by the spare",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
     "xdsl.templateModem.DHCP": {
       "description": "DHCP Configuration for Modem Template",
       "id": "DHCP",
@@ -9377,71 +11202,81 @@ export const schema: Schema = {
       "properties": {
         "defaultGateway": {
           "canBeNull": false,
-          "description": "The default gateway to be given to the clients",
-          "readOnly": false,
+          "description": "IP address (e.g., 192.0.2.0)",
+          "fullType": "ip",
+          "readOnly": true,
           "required": false,
           "type": "ip"
         },
         "dhcpName": {
           "canBeNull": false,
           "description": "Name of the DHCP",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "domainName": {
           "canBeNull": false,
           "description": "Domain name provided to the clients",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "endAddress": {
           "canBeNull": false,
-          "description": "Last address of the pool assigned by the DHCP",
-          "readOnly": false,
+          "description": "IP address (e.g., 192.0.2.0)",
+          "fullType": "ip",
+          "readOnly": true,
           "required": false,
           "type": "ip"
         },
         "leaseTime": {
           "canBeNull": false,
           "description": "Lease time in seconds of client assigned address (-1 means infinite)",
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
         "primaryDNS": {
           "canBeNull": false,
-          "description": "Primary DNS servers to be given to the clients",
-          "readOnly": false,
+          "description": "IP address (e.g., 192.0.2.0)",
+          "fullType": "ip",
+          "readOnly": true,
           "required": false,
           "type": "ip"
         },
         "secondaryDNS": {
           "canBeNull": true,
           "description": "Secondary DNS servers to be given to the clients",
-          "readOnly": false,
+          "fullType": "ip",
+          "readOnly": true,
           "required": false,
           "type": "ip"
         },
         "serverEnabled": {
           "canBeNull": false,
           "description": "State of the DHCP server of the modem",
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "startAddress": {
           "canBeNull": false,
-          "description": "First address of the pool assigned by the DHCP",
-          "readOnly": false,
+          "description": "IP address (e.g., 192.0.2.0)",
+          "fullType": "ip",
+          "readOnly": true,
           "required": false,
           "type": "ip"
         },
         "subnetMask": {
           "canBeNull": false,
-          "description": "The subnet mask given to the clients",
-          "readOnly": false,
+          "description": "IP address (e.g., 192.0.2.0)",
+          "fullType": "ip",
+          "readOnly": true,
           "required": false,
           "type": "ip"
         }
@@ -9454,29 +11289,33 @@ export const schema: Schema = {
       "properties": {
         "IPAddress": {
           "canBeNull": false,
-          "description": "The IP address of the LAN interface of the modem",
-          "readOnly": false,
+          "description": "IP address (e.g., 192.0.2.0)",
+          "fullType": "ip",
+          "readOnly": true,
           "required": false,
           "type": "ip"
         },
         "addressingType": {
           "canBeNull": false,
-          "description": "How the LAN interface of the modem is getting its address",
-          "readOnly": false,
+          "description": "How the modem gets its LAN IP Address",
+          "fullType": "xdsl.xdslModemConfig.AddressingTypeEnum",
+          "readOnly": true,
           "required": false,
           "type": "xdsl.xdslModemConfig.AddressingTypeEnum"
         },
         "lanName": {
           "canBeNull": false,
           "description": "Name of the LAN",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "subnetMask": {
           "canBeNull": false,
-          "description": "The subnet mask of the LAN interface of the modem",
-          "readOnly": false,
+          "description": "IP address (e.g., 192.0.2.0)",
+          "fullType": "ip",
+          "readOnly": true,
           "required": false,
           "type": "ip"
         }
@@ -9490,6 +11329,7 @@ export const schema: Schema = {
         "LANandDHCP": {
           "canBeNull": true,
           "description": "Ignore LAN and DHCP configurations",
+          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -9497,6 +11337,7 @@ export const schema: Schema = {
         "WLANList": {
           "canBeNull": true,
           "description": "WLAN names list to ignore. Ignore only listed WLAN",
+          "fullType": "string[]",
           "readOnly": false,
           "required": false,
           "type": "string[]"
@@ -9504,6 +11345,7 @@ export const schema: Schema = {
         "dmzIP": {
           "canBeNull": true,
           "description": "Ignore DMZ configuration",
+          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -9511,6 +11353,7 @@ export const schema: Schema = {
         "mtuSize": {
           "canBeNull": true,
           "description": "Ignore MTU Size value",
+          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -9518,6 +11361,7 @@ export const schema: Schema = {
         "portMappingList": {
           "canBeNull": true,
           "description": "PortMapping names list to ignore. Ignore only listed portMapping",
+          "fullType": "string[]",
           "readOnly": false,
           "required": false,
           "type": "string[]"
@@ -9532,56 +11376,64 @@ export const schema: Schema = {
         "allowedRemoteIp": {
           "canBeNull": true,
           "description": "An ip which will access to the defined rule. Default : no restriction applied",
-          "readOnly": false,
+          "fullType": "ipv4",
+          "readOnly": true,
           "required": false,
           "type": "ipv4"
         },
         "description": {
           "canBeNull": true,
           "description": "Description of the Port Mapping",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "externalPortEnd": {
           "canBeNull": true,
           "description": "The last port of the interval on the External Client that will get the connections",
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
         "externalPortStart": {
           "canBeNull": false,
           "description": "External Port that the modem will listen on. List of externalPorts not available for now in the API : 8, 21, 68, 5060, 21800-21805, 51005",
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
         "internalClient": {
           "canBeNull": false,
-          "description": "The IP address of the destination of the packets",
-          "readOnly": false,
+          "description": "IP address (e.g., 192.0.2.0)",
+          "fullType": "ip",
+          "readOnly": true,
           "required": false,
           "type": "ip"
         },
         "internalPort": {
           "canBeNull": false,
           "description": "The port on the Internal Client that will get the connections",
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
         "name": {
           "canBeNull": false,
           "description": "Name of the port mapping entry",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "protocol": {
           "canBeNull": false,
-          "description": "Protocol of the port mapping (TCP / UDP)",
-          "readOnly": false,
+          "description": "Type of protocol for the Port Mapping",
+          "fullType": "xdsl.xdslModemConfig.ProtocolTypeEnum",
+          "readOnly": true,
           "required": false,
           "type": "xdsl.xdslModemConfig.ProtocolTypeEnum"
         }
@@ -9609,76 +11461,133 @@ export const schema: Schema = {
         "SSID": {
           "canBeNull": false,
           "description": "Service Set Identifier of the WLAN interface",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "SSIDAdvertisementEnabled": {
           "canBeNull": false,
           "description": "Control if Wifi is discoverable or hidden",
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "bandSteering": {
           "canBeNull": false,
           "description": "Indicate if frequencies 2.4GHz and 5GHz are agregated",
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "channel": {
           "canBeNull": false,
           "description": "Channel number (Useless if channelMode is set to Auto)",
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
         "channelMode": {
           "canBeNull": false,
-          "description": "How the channel is chosen (Auto / Manual)",
-          "readOnly": false,
+          "description": "How the WiFi channel is selected",
+          "fullType": "xdsl.xdslModemConfig.ChannelModeEnum",
+          "readOnly": true,
           "required": false,
           "type": "xdsl.xdslModemConfig.ChannelModeEnum"
         },
         "enabled": {
           "canBeNull": false,
           "description": "Wifi state",
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "frequency": {
           "canBeNull": false,
-          "description": "Frequency (2.4GHz | 5GHz)",
-          "readOnly": false,
+          "description": "Modem frequency",
+          "fullType": "xdsl.xdslModemConfig.FrequencyEnum",
+          "readOnly": true,
           "required": false,
           "type": "xdsl.xdslModemConfig.FrequencyEnum"
         },
         "guest": {
           "canBeNull": false,
           "description": "Indicate if it is normal access wifi or guest wifi",
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "securityKey": {
           "canBeNull": false,
           "description": "Encrypted WLAN passphrase",
-          "readOnly": false,
+          "fullType": "password",
+          "readOnly": true,
           "required": false,
           "type": "password"
         },
         "securityType": {
           "canBeNull": false,
-          "description": "WLAN security mode",
-          "readOnly": false,
+          "description": "Type of WLAN security protection",
+          "fullType": "xdsl.templateModem.SecurityTypeEnum",
+          "readOnly": true,
           "required": false,
           "type": "xdsl.templateModem.SecurityTypeEnum"
         },
         "wifiName": {
           "canBeNull": false,
           "description": "Wifi Name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "xdsl.templateModem.post": {
+      "description": "xdsl.templateModem.post",
+      "id": "post",
+      "namespace": "xdsl.templateModem",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "Modem Template name (only alphanumeric characters)",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "serviceName": {
+          "canBeNull": false,
+          "description": "The access name with the config you want to duplicate",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "xdsl.updateInvalidOrMissingRio.post": {
+      "description": "xdsl.updateInvalidOrMissingRio.post",
+      "id": "post",
+      "namespace": "xdsl.updateInvalidOrMissingRio",
+      "properties": {
+        "relaunchWithoutPortability": {
+          "canBeNull": false,
+          "description": "Do not set RIO, and relaunch order without portability",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
+        },
+        "rio": {
+          "canBeNull": false,
+          "description": "RIO number for portability",
+          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -9693,10 +11602,10 @@ export const schema: Schema = {
         "currentUsage": {
           "canBeNull": false,
           "description": "Mailbox usage",
-          "fullType": "complexType.UnitAndValue<double>",
+          "fullType": "complexType.UnitAndValue_double",
           "readOnly": true,
           "required": false,
-          "type": "complexType.UnitAndValue<double>"
+          "type": "complexType.UnitAndValue_double"
         },
         "displayName": {
           "canBeNull": true,
@@ -9789,10 +11698,144 @@ export const schema: Schema = {
         "quota": {
           "canBeNull": false,
           "description": "Account maximum size",
-          "fullType": "complexType.UnitAndValue<long>",
+          "fullType": "complexType.UnitAndValue_long",
           "readOnly": true,
           "required": false,
-          "type": "complexType.UnitAndValue<long>"
+          "type": "complexType.UnitAndValue_long"
+        },
+        "state": {
+          "canBeNull": false,
+          "description": "Account state",
+          "fullType": "email.pro.ObjectStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "email.pro.ObjectStateEnum"
+        },
+        "taskPendingId": {
+          "canBeNull": true,
+          "description": "Pending tasks for this account",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "xdsl.xdslEmailProWithIAM": {
+      "description": "XDSL Email Pro",
+      "id": "xdslEmailPro",
+      "namespace": "xdsl",
+      "properties": {
+        "currentUsage": {
+          "canBeNull": false,
+          "description": "Mailbox usage",
+          "fullType": "complexType.UnitAndValue_double",
+          "readOnly": true,
+          "required": false,
+          "type": "complexType.UnitAndValue_double"
+        },
+        "displayName": {
+          "canBeNull": true,
+          "description": "Account display name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "domain": {
+          "canBeNull": false,
+          "description": "Email domain",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "firstName": {
+          "canBeNull": true,
+          "description": "Account first name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "iam": {
+          "canBeNull": true,
+          "description": "IAM resource metadata",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.ResourceMetadata"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Account id",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "initial": {
+          "canBeNull": true,
+          "description": "Account initials",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "lastLogoffDate": {
+          "canBeNull": true,
+          "description": "Last logoff",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "lastLogonDate": {
+          "canBeNull": true,
+          "description": "Last logon",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "lastName": {
+          "canBeNull": true,
+          "description": "Account last name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "login": {
+          "canBeNull": false,
+          "description": "Account login",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "passwordLastUpdate": {
+          "canBeNull": true,
+          "description": "Time of account's password last update",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "primaryEmailAddress": {
+          "canBeNull": false,
+          "description": "Default email for this mailbox",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "quota": {
+          "canBeNull": false,
+          "description": "Account maximum size",
+          "fullType": "complexType.UnitAndValue_long",
+          "readOnly": true,
+          "required": false,
+          "type": "complexType.UnitAndValue_long"
         },
         "state": {
           "canBeNull": false,
@@ -9878,9 +11921,9 @@ export const schema: Schema = {
     "xdsl.xdslModemConfig.MTUSizeEnum": {
       "description": "Size of the Maximum Transmission Unit on the modem's interfaces",
       "enum": [
-        "1432",
-        "1456",
-        "1492"
+        1432,
+        1456,
+        1492
       ],
       "enumType": "long",
       "id": "MTUSizeEnum",

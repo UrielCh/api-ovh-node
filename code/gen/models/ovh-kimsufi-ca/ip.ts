@@ -16,7 +16,10 @@ export const schema: Schema = {
           "description": "Your OVH IPs",
           "httpMethod": "GET",
           "iamActions": [
-            "ip:apiovh:get"
+            {
+              "name": "ip:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -93,7 +96,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "ip:apiovh:get"
+            {
+              "name": "ip:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -116,7 +122,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "ip:apiovh:edit"
+            {
+              "name": "ip:apiovh:edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -152,7 +161,10 @@ export const schema: Schema = {
           "description": "Anti-Hack blocked IP",
           "httpMethod": "GET",
           "iamActions": [
-            "ip:apiovh:antihack/get"
+            {
+              "name": "ip:apiovh:antihack/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -189,7 +201,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "ip:apiovh:antihack/get"
+            {
+              "name": "ip:apiovh:antihack/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -226,7 +241,10 @@ export const schema: Schema = {
           "description": "Unblock this IP",
           "httpMethod": "POST",
           "iamActions": [
-            "ip:apiovh:antihack/unblock"
+            {
+              "name": "ip:apiovh:antihack/unblock",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -263,7 +281,10 @@ export const schema: Schema = {
           "description": "ARP blocked IP",
           "httpMethod": "GET",
           "iamActions": [
-            "ip:apiovh:arp/get"
+            {
+              "name": "ip:apiovh:arp/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -300,7 +321,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "ip:apiovh:arp/get"
+            {
+              "name": "ip:apiovh:arp/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -337,7 +361,10 @@ export const schema: Schema = {
           "description": "Unblock this IP",
           "httpMethod": "POST",
           "iamActions": [
-            "ip:apiovh:arp/unblock"
+            {
+              "name": "ip:apiovh:arp/unblock",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -374,7 +401,10 @@ export const schema: Schema = {
           "description": "Ip under game anti-ddos",
           "httpMethod": "GET",
           "iamActions": [
-            "ip:apiovh:game/get"
+            {
+              "name": "ip:apiovh:game/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -403,7 +433,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "ip:apiovh:game/get"
+            {
+              "name": "ip:apiovh:game/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -434,7 +467,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "ip:apiovh:game/edit"
+            {
+              "name": "ip:apiovh:game/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -478,7 +514,10 @@ export const schema: Schema = {
           "description": "IDs of rules configured for this IP",
           "httpMethod": "GET",
           "iamActions": [
-            "ip:apiovh:game/rule/get"
+            {
+              "name": "ip:apiovh:game/rule/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -509,7 +548,10 @@ export const schema: Schema = {
           "description": "Add new rule on your IP",
           "httpMethod": "POST",
           "iamActions": [
-            "ip:apiovh:game/rule/create"
+            {
+              "name": "ip:apiovh:game/rule/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -523,7 +565,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "ip.GameMitigationRuleProtocolEnum",
-              "description": "The protocol running behind the given port",
+              "description": "The protocol running behind the given port(s). See supportedProtocols on the IP to know which values are valid here",
               "fullType": "ip.GameMitigationRuleProtocolEnum",
               "name": "protocol",
               "paramType": "body",
@@ -562,7 +604,10 @@ export const schema: Schema = {
           "description": "Delete rule",
           "httpMethod": "DELETE",
           "iamActions": [
-            "ip:apiovh:game/rule/delete"
+            {
+              "name": "ip:apiovh:game/rule/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -601,7 +646,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "ip:apiovh:game/rule/get"
+            {
+              "name": "ip:apiovh:game/rule/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -646,7 +694,10 @@ export const schema: Schema = {
           "description": "Cloud Linux licenses associated to this IP",
           "httpMethod": "GET",
           "iamActions": [
-            "ip:apiovh:license/cloudLinux/get"
+            {
+              "name": "ip:apiovh:license/cloudLinux/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -683,7 +734,10 @@ export const schema: Schema = {
           "description": "SQL Server licenses associated to this IP",
           "httpMethod": "GET",
           "iamActions": [
-            "ip:apiovh:license/sqlserver/get"
+            {
+              "name": "ip:apiovh:license/sqlserver/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -720,7 +774,10 @@ export const schema: Schema = {
           "description": "Ip under anti-phishing",
           "httpMethod": "GET",
           "iamActions": [
-            "ip:apiovh:phishing/get"
+            {
+              "name": "ip:apiovh:phishing/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -765,7 +822,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "ip:apiovh:phishing/get"
+            {
+              "name": "ip:apiovh:phishing/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -802,7 +862,10 @@ export const schema: Schema = {
           "description": "Reverse on your ip",
           "httpMethod": "GET",
           "iamActions": [
-            "ip:apiovh:reverse/get"
+            {
+              "name": "ip:apiovh:reverse/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -825,7 +888,10 @@ export const schema: Schema = {
           "description": "Add reverse on an ip",
           "httpMethod": "POST",
           "iamActions": [
-            "ip:apiovh:reverse/create"
+            {
+              "name": "ip:apiovh:reverse/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -870,7 +936,10 @@ export const schema: Schema = {
           "description": "Delete a reverse on one IP",
           "httpMethod": "DELETE",
           "iamActions": [
-            "ip:apiovh:reverse/delete"
+            {
+              "name": "ip:apiovh:reverse/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -901,7 +970,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "ip:apiovh:reverse/get"
+            {
+              "name": "ip:apiovh:reverse/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -938,7 +1010,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "ip:apiovh:ripe/get"
+            {
+              "name": "ip:apiovh:ripe/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -961,7 +1036,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "ip:apiovh:ripe/edit"
+            {
+              "name": "ip:apiovh:ripe/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -997,7 +1075,10 @@ export const schema: Schema = {
           "description": "Ip spamming",
           "httpMethod": "GET",
           "iamActions": [
-            "ip:apiovh:spam/get"
+            {
+              "name": "ip:apiovh:spam/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1034,7 +1115,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "ip:apiovh:spam/get"
+            {
+              "name": "ip:apiovh:spam/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1071,7 +1155,10 @@ export const schema: Schema = {
           "description": "Get statistics about the email traffic",
           "httpMethod": "GET",
           "iamActions": [
-            "ip:apiovh:spam/stats/get"
+            {
+              "name": "ip:apiovh:spam/stats/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1124,7 +1211,10 @@ export const schema: Schema = {
           "description": "Release the ip from anti-spam system",
           "httpMethod": "POST",
           "iamActions": [
-            "ip:apiovh:spam/unblock"
+            {
+              "name": "ip:apiovh:spam/unblock",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1161,7 +1251,10 @@ export const schema: Schema = {
           "description": "IP tasks",
           "httpMethod": "GET",
           "iamActions": [
-            "ip:apiovh:task/get"
+            {
+              "name": "ip:apiovh:task/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1206,7 +1299,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "ip:apiovh:task/get"
+            {
+              "name": "ip:apiovh:task/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1240,13 +1336,24 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "List available services",
+          "description": "Your ip services",
           "httpMethod": "GET",
           "iamActions": [
-            "ip:apiovh:service/get"
+            {
+              "name": "ip:apiovh:service/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
-          "parameters": [],
+          "parameters": [
+            {
+              "dataType": "map[string][]iam.resource.TagFilter",
+              "description": "Filter resources on IAM tags",
+              "name": "iamTags",
+              "paramType": "query",
+              "required": false
+            }
+          ],
           "responseType": "string[]"
         }
       ],
@@ -1263,7 +1370,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "ip:apiovh:service/get"
+            {
+              "name": "ip:apiovh:service/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1276,7 +1386,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "ip.ServiceIp"
+          "responseType": "ip.ServiceIpWithIAM"
         },
         {
           "apiStatus": {
@@ -1286,7 +1396,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "ip:apiovh:service/edit"
+            {
+              "name": "ip:apiovh:service/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1312,17 +1425,20 @@ export const schema: Schema = {
       "path": "/ip/service/{serviceName}"
     },
     {
-      "description": "Confirm termination of your service",
+      "description": "Confirm service termination",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Confirm termination of your service",
+          "description": "Confirm service termination",
           "httpMethod": "POST",
           "iamActions": [
-            "ip:apiovh:service/confirmTermination"
+            {
+              "name": "ip:apiovh:service/confirmTermination",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1352,7 +1468,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The termination token sent by mail to the admin contact",
+              "description": "The termination token sent by email to the admin contact",
               "fullType": "string",
               "name": "token",
               "paramType": "body",
@@ -1380,10 +1496,13 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Get this object properties",
+          "description": "Get service information",
           "httpMethod": "GET",
           "iamActions": [
-            "ip:apiovh:service/serviceInfos/get"
+            {
+              "name": "ip:apiovh:service/serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1403,10 +1522,13 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Alter this object properties",
+          "description": "Update service information",
           "httpMethod": "PUT",
           "iamActions": [
-            "ip:apiovh:service/serviceInfos/edit"
+            {
+              "name": "ip:apiovh:service/serviceInfos/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1432,18 +1554,22 @@ export const schema: Schema = {
       "path": "/ip/service/{serviceName}/serviceInfos"
     },
     {
-      "description": "Terminate your service",
+      "description": "Ask for the termination of your service. Admin contact of this service will receive a termination token in order to confirm its termination with /confirmTermination endpoint.",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Terminate your service",
+          "description": "Ask for the termination of your service",
           "httpMethod": "POST",
           "iamActions": [
-            "ip:apiovh:service/terminate"
+            {
+              "name": "ip:apiovh:service/terminate",
+              "required": true
+            }
           ],
+          "longDescription": "Ask for the termination of your service. Admin contact of this service will receive a termination token by email in order to confirm its termination with /confirmTermination endpoint.",
           "noAuthentication": false,
           "parameters": [
             {
@@ -1464,6 +1590,30 @@ export const schema: Schema = {
   "basePath": "https://ca.api.kimsufi.com/1.0",
   "models": {
     "complexType.Range<T>": {
+      "description": "Start and end points (inclusive) of a range",
+      "generics": [
+        "T"
+      ],
+      "id": "Range",
+      "namespace": "complexType",
+      "properties": {
+        "from": {
+          "canBeNull": false,
+          "description": "Start point of the range",
+          "readOnly": false,
+          "required": false,
+          "type": "T"
+        },
+        "to": {
+          "canBeNull": false,
+          "description": "End point of the range",
+          "readOnly": false,
+          "required": false,
+          "type": "T"
+        }
+      }
+    },
+    "complexType.Range<long>": {
       "description": "Start and end points (inclusive) of a range",
       "generics": [
         "T"
@@ -1755,6 +1905,99 @@ export const schema: Schema = {
       "id": "CountryEnum",
       "namespace": "coreTypes"
     },
+    "coreTypes.RegionCodenameEnum": {
+      "description": "Region names",
+      "enum": [
+        "ap-south-mum",
+        "ap-southeast-sgp",
+        "ap-southeast-syd",
+        "ca-east-bhs",
+        "ca-east-tor",
+        "eu-central-waw",
+        "eu-west-eri",
+        "eu-west-gra",
+        "eu-west-lim",
+        "eu-west-par",
+        "eu-west-rbx",
+        "eu-west-sbg",
+        "us-east-vin",
+        "us-west-hil"
+      ],
+      "enumType": "string",
+      "id": "RegionCodenameEnum",
+      "namespace": "coreTypes"
+    },
+    "iam.ResourceMetadata": {
+      "description": "IAM resource metadata embedded in services models",
+      "id": "ResourceMetadata",
+      "namespace": "iam",
+      "properties": {
+        "displayName": {
+          "canBeNull": true,
+          "description": "Resource display name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Unique identifier of the resource",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "tags": {
+          "canBeNull": true,
+          "description": "Resource tags. Tags that were internally computed are prefixed with ovh:",
+          "fullType": "map[string]string",
+          "readOnly": true,
+          "required": false,
+          "type": "map[string]string"
+        },
+        "urn": {
+          "canBeNull": false,
+          "description": "Unique resource name used in policies",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter": {
+      "description": "Resource tag filter",
+      "id": "TagFilter",
+      "namespace": "iam.resource",
+      "properties": {
+        "operator": {
+          "canBeNull": true,
+          "description": "Operator to use in order to filter on the value (defaults to 'EQ')",
+          "fullType": "iam.resource.TagFilter.OperatorEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.resource.TagFilter.OperatorEnum"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value to use in order to filter tags",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter.OperatorEnum": {
+      "description": "Operator that can be used in order to filter resources tags",
+      "enum": [
+        "EQ"
+      ],
+      "enumType": "string",
+      "id": "OperatorEnum",
+      "namespace": "iam.resource.TagFilter"
+    },
     "ip.Antiphishing": {
       "description": "Phishing URLs hosted on your IP",
       "id": "Antiphishing",
@@ -1948,12 +2191,28 @@ export const schema: Schema = {
           "required": false,
           "type": "ipv4"
         },
+        "maxRules": {
+          "canBeNull": false,
+          "description": "Maximum number of rules for this IP",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
         "state": {
           "canBeNull": false,
           "fullType": "ip.GameMitigationStateEnum",
           "readOnly": true,
           "required": false,
           "type": "ip.GameMitigationStateEnum"
+        },
+        "supportedProtocols": {
+          "canBeNull": false,
+          "description": "List of protocols available on this IP",
+          "fullType": "ip.GameMitigationRuleProtocolEnum[]",
+          "readOnly": true,
+          "required": false,
+          "type": "ip.GameMitigationRuleProtocolEnum[]"
         }
       }
     },
@@ -2029,6 +2288,7 @@ export const schema: Schema = {
     "ip.GameMitigationStateEnum": {
       "description": "Possible values for udp mitigation rule state",
       "enum": [
+        "cleanRulesPending",
         "firewallModeDisablePending",
         "firewallModeEnablePending",
         "ok"
@@ -2102,6 +2362,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        },
+        "regions": {
+          "canBeNull": true,
+          "description": "Where is the IP used/usable, in the form of region codenames (alpha)",
+          "fullType": "coreTypes.RegionCodenameEnum[]",
+          "readOnly": true,
+          "required": false,
+          "type": "coreTypes.RegionCodenameEnum[]"
         },
         "rir": {
           "canBeNull": true,
@@ -2241,94 +2509,6 @@ export const schema: Schema = {
       "id": "IpVersionEnum",
       "namespace": "ip"
     },
-    "ip.MitigationAttack": {
-      "description": "Mitigation attack on your ip",
-      "id": "MitigationAttack",
-      "namespace": "ip",
-      "properties": {
-        "endDate": {
-          "canBeNull": true,
-          "description": "End of the attack",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        },
-        "idAttack": {
-          "canBeNull": false,
-          "description": "Internal id of your attack",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "ipAttack": {
-          "canBeNull": false,
-          "description": "Your ip",
-          "fullType": "ipv4",
-          "readOnly": true,
-          "required": false,
-          "type": "ipv4"
-        },
-        "startDate": {
-          "canBeNull": false,
-          "description": "Start of the attack",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        }
-      }
-    },
-    "ip.MitigationStats": {
-      "description": "Traffic statistics in and out on a mitigated ip",
-      "id": "MitigationStats",
-      "namespace": "ip",
-      "properties": {
-        "in": {
-          "canBeNull": true,
-          "description": "Traffic in",
-          "readOnly": false,
-          "required": false,
-          "type": "ip.MitigationTraffic"
-        },
-        "out": {
-          "canBeNull": true,
-          "description": "Traffic out",
-          "readOnly": false,
-          "required": false,
-          "type": "ip.MitigationTraffic"
-        },
-        "timestamp": {
-          "canBeNull": false,
-          "description": "Traffic timestamp",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        }
-      }
-    },
-    "ip.MitigationTraffic": {
-      "description": "Traffic on mitigation",
-      "id": "MitigationTraffic",
-      "namespace": "ip",
-      "properties": {
-        "bps": {
-          "canBeNull": false,
-          "description": "Bits per second",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "pps": {
-          "canBeNull": false,
-          "description": "Paquets per second",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        }
-      }
-    },
     "ip.ReverseIp": {
       "description": "Your reverse records on IP",
       "id": "ReverseIp",
@@ -2411,6 +2591,72 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string"
+        },
+        "ip": {
+          "canBeNull": false,
+          "fullType": "ipBlock",
+          "readOnly": true,
+          "required": false,
+          "type": "ipBlock"
+        },
+        "organisationId": {
+          "canBeNull": true,
+          "description": "IP block organisation Id",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "routedTo": {
+          "canBeNull": true,
+          "description": "Routage information",
+          "fullType": "ip.RoutedTo",
+          "readOnly": true,
+          "required": false,
+          "type": "ip.RoutedTo"
+        },
+        "type": {
+          "canBeNull": false,
+          "fullType": "ip.IpTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "ip.IpTypeEnum"
+        }
+      }
+    },
+    "ip.ServiceIpWithIAM": {
+      "description": "Your IP linked to service",
+      "id": "ServiceIp",
+      "namespace": "ip",
+      "properties": {
+        "canBeTerminated": {
+          "canBeNull": false,
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "country": {
+          "canBeNull": true,
+          "fullType": "coreTypes.CountryEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "coreTypes.CountryEnum"
+        },
+        "description": {
+          "canBeNull": true,
+          "description": "Custom description on your ip",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "iam": {
+          "canBeNull": true,
+          "description": "IAM resource metadata",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.ResourceMetadata"
         },
         "ip": {
           "canBeNull": false,
@@ -2577,7 +2823,8 @@ export const schema: Schema = {
         "arinBlockReassign",
         "changeRipeOrg",
         "checkAndReleaseIp",
-        "genericMoveFloatingIp"
+        "genericMoveFloatingIp",
+        "supernetByoipFailoverPartitioning"
       ],
       "enumType": "string",
       "id": "TaskFunctionEnum",

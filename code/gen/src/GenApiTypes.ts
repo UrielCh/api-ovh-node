@@ -207,7 +207,7 @@ export default class GenApiTypes {
                         op.responseFullType = filterReservedKw(op.responseFullType || '');
                         op.parameters.forEach(p => {
                             p.dataType = filterReservedKw(p.dataType);
-                            p.fullType = filterReservedKw(p.fullType);
+                            p.fullType = filterReservedKw(p.fullType || 'any');
                         })
                     })
                     let apiPath = api.path.split('/');

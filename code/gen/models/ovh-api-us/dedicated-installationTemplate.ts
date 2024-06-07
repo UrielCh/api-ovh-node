@@ -59,7 +59,10 @@ export const schema: Schema = {
           "description": "Partitioning schemes available on this template",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:dedicatedInstallationTemplate/partitionScheme/get"
+            {
+              "name": "account:apiovh:dedicatedInstallationTemplate/partitionScheme/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -88,7 +91,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:dedicatedInstallationTemplate/partitionScheme/get"
+            {
+              "name": "account:apiovh:dedicatedInstallationTemplate/partitionScheme/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -125,7 +131,10 @@ export const schema: Schema = {
           "description": "Hardware RAIDs defined in this partitioning scheme",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:dedicatedInstallationTemplate/partitionScheme/hardwareRaid/get"
+            {
+              "name": "account:apiovh:dedicatedInstallationTemplate/partitionScheme/hardwareRaid/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -162,7 +171,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:dedicatedInstallationTemplate/partitionScheme/hardwareRaid/get"
+            {
+              "name": "account:apiovh:dedicatedInstallationTemplate/partitionScheme/hardwareRaid/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -207,7 +219,10 @@ export const schema: Schema = {
           "description": "Partitions defined in this partitioning scheme",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:dedicatedInstallationTemplate/partitionScheme/partition/get"
+            {
+              "name": "account:apiovh:dedicatedInstallationTemplate/partitionScheme/partition/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -244,7 +259,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:dedicatedInstallationTemplate/partitionScheme/partition/get"
+            {
+              "name": "account:apiovh:dedicatedInstallationTemplate/partitionScheme/partition/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -299,6 +317,28 @@ export const schema: Schema = {
   "basePath": "https://api.us.ovhcloud.com/1.0",
   "models": {
     "complexType.UnitAndValue<T>": {
+      "description": "A numeric value tagged with its unit",
+      "generics": [
+        "T"
+      ],
+      "id": "UnitAndValue",
+      "namespace": "complexType",
+      "properties": {
+        "unit": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "T"
+        }
+      }
+    },
+    "complexType.UnitAndValue<long>": {
       "description": "A numeric value tagged with its unit",
       "generics": [
         "T"
@@ -905,6 +945,13 @@ export const schema: Schema = {
           "required": false,
           "type": "string[]"
         },
+        "name": {
+          "canBeNull": true,
+          "description": "OS template project item name",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
         "releaseNotes": {
           "canBeNull": true,
           "description": "OS template project item release notes",
@@ -988,6 +1035,7 @@ export const schema: Schema = {
         "ip",
         "keyValue",
         "number",
+        "sshPubKey",
         "string",
         "text",
         "time",
@@ -996,50 +1044,6 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "TemplateOsInputTypeEnum",
-      "namespace": "dedicated"
-    },
-    "dedicated.TemplateOsLanguageEnum": {
-      "description": "all language available",
-      "enum": [
-        "ar",
-        "bg",
-        "cs",
-        "da",
-        "de",
-        "el",
-        "en",
-        "es",
-        "et",
-        "fi",
-        "fr",
-        "he",
-        "hr",
-        "hu",
-        "it",
-        "ja",
-        "ko",
-        "lt",
-        "lv",
-        "nb",
-        "nl",
-        "no",
-        "pl",
-        "pt",
-        "ro",
-        "ru",
-        "sk",
-        "sl",
-        "sr",
-        "sv",
-        "th",
-        "tr",
-        "tu",
-        "uk",
-        "zh-Hans-CN",
-        "zh-Hans-HK"
-      ],
-      "enumType": "string",
-      "id": "TemplateOsLanguageEnum",
       "namespace": "dedicated"
     },
     "dedicated.TemplateOsProperties": {
@@ -1074,13 +1078,6 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string"
-        },
-        "useDistributionKernel": {
-          "canBeNull": true,
-          "description": "Use the distribution's native kernel instead of the recommended OVH Kernel",
-          "readOnly": false,
-          "required": false,
-          "type": "boolean"
         }
       }
     },
@@ -1091,6 +1088,7 @@ export const schema: Schema = {
         "aos",
         "arch",
         "byoi",
+        "byolinux",
         "centos",
         "cloudlinux",
         "coreos",
@@ -1143,6 +1141,7 @@ export const schema: Schema = {
     "dedicated.TemplateOsUsageEnum": {
       "description": "Os usage definition",
       "enum": [
+        "backup",
         "basic",
         "customer",
         "database",
@@ -1174,14 +1173,6 @@ export const schema: Schema = {
       "id": "Templates",
       "namespace": "dedicated.installationTemplate",
       "properties": {
-        "availableLanguages": {
-          "canBeNull": false,
-          "description": "list of all language available for this template",
-          "fullType": "dedicated.TemplateOsLanguageEnum[]",
-          "readOnly": true,
-          "required": false,
-          "type": "dedicated.TemplateOsLanguageEnum[]"
-        },
         "bitFormat": {
           "canBeNull": false,
           "description": "this template bit format",
@@ -1205,14 +1196,6 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "dedicated.TemplateOsProperties"
-        },
-        "defaultLanguage": {
-          "canBeNull": false,
-          "description": "the default language of this template",
-          "fullType": "dedicated.TemplateOsLanguageEnum",
-          "readOnly": false,
-          "required": false,
-          "type": "dedicated.TemplateOsLanguageEnum"
         },
         "description": {
           "canBeNull": false,
@@ -1317,38 +1300,6 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "dedicated.TemplateOsSubfamilyEnum"
-        },
-        "supportsDistributionKernel": {
-          "canBeNull": true,
-          "description": "This distribution supports installation using the distribution's native kernel instead of the recommended OVH kernel",
-          "fullType": "boolean",
-          "readOnly": true,
-          "required": false,
-          "type": "boolean"
-        },
-        "supportsGptLabel": {
-          "canBeNull": true,
-          "description": "This distribution supports the GUID Partition Table (GPT), providing up to 128 partitions that can have more than 2 TB",
-          "fullType": "boolean",
-          "readOnly": true,
-          "required": false,
-          "type": "boolean"
-        },
-        "supportsRTM": {
-          "canBeNull": false,
-          "description": "This distribution supports RTM software",
-          "fullType": "boolean",
-          "readOnly": true,
-          "required": false,
-          "type": "boolean"
-        },
-        "supportsSqlServer": {
-          "canBeNull": true,
-          "description": "This distribution supports the microsoft SQL server",
-          "fullType": "boolean",
-          "readOnly": true,
-          "required": false,
-          "type": "boolean"
         },
         "templateName": {
           "canBeNull": false,

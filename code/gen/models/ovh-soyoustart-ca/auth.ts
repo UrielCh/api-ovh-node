@@ -389,6 +389,14 @@ export const schema: Schema = {
           "required": true,
           "type": "auth.AccessRuleRequest[]"
         },
+        "allowedIPs": {
+          "canBeNull": false,
+          "description": "If defined, list of IP blocks that can use the credential",
+          "fullType": "ipBlock[]",
+          "readOnly": false,
+          "required": false,
+          "type": "ipBlock[]"
+        },
         "redirection": {
           "canBeNull": true,
           "description": "Address where the customer will be redirected after authentication",
@@ -453,6 +461,14 @@ export const schema: Schema = {
       "id": "Details",
       "namespace": "auth",
       "properties": {
+        "account": {
+          "canBeNull": false,
+          "description": "Customer identifier",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
         "allowedRoutes": {
           "canBeNull": true,
           "description": "Allowed API routes, null means everything",
@@ -463,11 +479,19 @@ export const schema: Schema = {
         },
         "description": {
           "canBeNull": true,
-          "description": "Description of the connected user",
+          "description": "Description of the authenticated identity",
           "fullType": "string",
           "readOnly": true,
           "required": false,
           "type": "string"
+        },
+        "identities": {
+          "canBeNull": false,
+          "description": "Identities of the current session: corresponds to all the authentication provider identities that could be used to match IAM policies",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
         },
         "method": {
           "canBeNull": false,
@@ -479,7 +503,7 @@ export const schema: Schema = {
         },
         "roles": {
           "canBeNull": true,
-          "description": "Roles of the authenticated user",
+          "description": "Roles of the authenticated identity",
           "fullType": "string[]",
           "readOnly": true,
           "required": false,
@@ -487,7 +511,7 @@ export const schema: Schema = {
         },
         "user": {
           "canBeNull": true,
-          "description": "Connected username",
+          "description": "Username of the authenticated identity",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -511,6 +535,7 @@ export const schema: Schema = {
       "description": "All authentication methods available",
       "enum": [
         "account",
+        "oauth2_client_credentials",
         "provider",
         "user"
       ],

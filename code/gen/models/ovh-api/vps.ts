@@ -6,7 +6,7 @@ export const schema: Schema = {
   "apiVersion": "1.0",
   "apis": [
     {
-      "description": "Operations about the VPS service",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -16,17 +16,28 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:get"
+            {
+              "name": "vps:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
-          "parameters": [],
+          "parameters": [
+            {
+              "dataType": "map[string][]iam.resource.TagFilter",
+              "description": "Filter resources on IAM tags",
+              "name": "iamTags",
+              "paramType": "query",
+              "required": false
+            }
+          ],
           "responseType": "string[]"
         }
       ],
       "path": "/vps"
     },
     {
-      "description": "VPS Virtual Machine",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -36,20 +47,23 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:get"
+            {
+              "name": "vps:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "vps.VPS"
+          "responseType": "vps.VPSWithIAM"
         },
         {
           "apiStatus": {
@@ -59,20 +73,23 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "vps:apiovh:put"
+            {
+              "name": "vps:apiovh:put",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "vps.VPS",
-              "description": "New object properties",
+              "description": "Request Body",
               "fullType": "vps.VPS",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -85,26 +102,61 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}"
     },
     {
-      "description": "activeOptions operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2013-11-23 10:00:00 +0100 CET",
-            "deprecatedDate": "2013-10-23 10:00:00 +0100 +0100",
-            "description": "Deprecated, will be removed",
-            "replacement": "/vps/{serviceName}/option",
-            "value": "DEPRECATED"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
-          "description": "Return all active options for the virtual server",
-          "httpMethod": "GET",
+          "description": "Abort ongoing snapshot or autobackup",
+          "httpMethod": "POST",
           "iamActions": [
-            "vps:apiovh:activeOptions/get"
+            {
+              "name": "vps:apiovh:abortSnapshot",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/vps/{serviceName}/abortSnapshot"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "deletionDate": "2013-11-23T00:00:00Z",
+            "deprecatedDate": "2013-10-23T00:00:00Z",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/vps/{serviceName}/option",
+            "value": "DEPRECATED"
+          },
+          "description": "Return all active options for the virtual server",
+          "httpMethod": "GET",
+          "iamActions": [
+            {
+              "name": "vps:apiovh:activeOptions/get",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -117,7 +169,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/activeOptions"
     },
     {
-      "description": "Backup your VPS",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -127,13 +179,16 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:automatedBackup/get"
+            {
+              "name": "vps:apiovh:automatedBackup/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -146,7 +201,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/automatedBackup"
     },
     {
-      "description": "attachedBackup operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -156,13 +211,16 @@ export const schema: Schema = {
           "description": "Backup attached to your VPS",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:automatedBackup/attachedBackup/get"
+            {
+              "name": "vps:apiovh:automatedBackup/attachedBackup/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -175,7 +233,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/automatedBackup/attachedBackup"
     },
     {
-      "description": "detachBackup operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -185,21 +243,23 @@ export const schema: Schema = {
           "description": "Create a VPS.Task that will umount a restored backup on your VPS",
           "httpMethod": "POST",
           "iamActions": [
-            "vps:apiovh:automatedBackup/detachBackup"
+            {
+              "name": "vps:apiovh:automatedBackup/detachBackup",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "datetime",
-              "description": "restorePoint fetched in /vps/{serviceName}/automatedBackup/attachedBackup",
-              "fullType": "datetime",
-              "name": "restorePoint",
+              "dataType": "vps.automatedBackup.detachBackup.post",
+              "description": "Request Body",
+              "fullType": "vps.automatedBackup.detachBackup.post",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -212,7 +272,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/automatedBackup/detachBackup"
     },
     {
-      "description": "reschedule operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -222,21 +282,23 @@ export const schema: Schema = {
           "description": "Change the scheduled time of your daily backup",
           "httpMethod": "POST",
           "iamActions": [
-            "vps:apiovh:automatedBackup/reschedule"
+            {
+              "name": "vps:apiovh:automatedBackup/reschedule",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "time",
-              "description": "New scheduled time of your daily backup",
-              "fullType": "time",
-              "name": "schedule",
+              "dataType": "vps.automatedBackup.reschedule.post",
+              "description": "Request Body",
+              "fullType": "vps.automatedBackup.reschedule.post",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -249,7 +311,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/automatedBackup/reschedule"
     },
     {
-      "description": "restore operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -259,37 +321,23 @@ export const schema: Schema = {
           "description": "Creates a VPS.Task that will restore the given restorePoint",
           "httpMethod": "POST",
           "iamActions": [
-            "vps:apiovh:automatedBackup/restore"
+            {
+              "name": "vps:apiovh:automatedBackup/restore",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "boolean",
-              "description": "Only with restore full on VPS Cloud 2014",
-              "fullType": "boolean",
-              "name": "changePassword",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "datetime",
-              "description": "Restore Point fetched in /automatedBackup/restorePoints",
-              "fullType": "datetime",
-              "name": "restorePoint",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "vps.RestoreTypeEnum",
-              "description": "file: Attach/export restored disk to your current VPS - full: Replace your current VPS by the given restorePoint",
-              "fullType": "vps.RestoreTypeEnum",
-              "name": "type",
+              "dataType": "vps.automatedBackup.restore.post",
+              "description": "Request Body",
+              "fullType": "vps.automatedBackup.restore.post",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -302,7 +350,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/automatedBackup/restore"
     },
     {
-      "description": "restorePoints operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -312,13 +360,16 @@ export const schema: Schema = {
           "description": "Get available Restore Points",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:automatedBackup/restorePoints/get"
+            {
+              "name": "vps:apiovh:automatedBackup/restorePoints/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -339,7 +390,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/automatedBackup/restorePoints"
     },
     {
-      "description": "availableUpgrade operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -349,13 +400,16 @@ export const schema: Schema = {
           "description": "Return all models the virtual server can be upgraded to",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:availableUpgrade/get"
+            {
+              "name": "vps:apiovh:availableUpgrade/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -368,7 +422,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/availableUpgrade"
     },
     {
-      "description": "Backup Ftp assigned to this VPS",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -378,13 +432,16 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:backupftp/get"
+            {
+              "name": "vps:apiovh:backupftp/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -397,7 +454,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/backupftp"
     },
     {
-      "description": "List the dedicated.server.BackupFtpAcl objects",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -407,13 +464,16 @@ export const schema: Schema = {
           "description": "List of IP blocks (and protocols to allow on these blocks) authorized on your backup FTP",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:backupftp/access/get"
+            {
+              "name": "vps:apiovh:backupftp/access/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -430,45 +490,23 @@ export const schema: Schema = {
           "description": "Create a new Backup FTP ACL",
           "httpMethod": "POST",
           "iamActions": [
-            "vps:apiovh:backupftp/access/create"
+            {
+              "name": "vps:apiovh:backupftp/access/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "boolean",
-              "description": "Whether to allow the CIFS (SMB) protocol for this ACL",
-              "fullType": "boolean",
-              "name": "cifs",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "boolean",
-              "description": "Whether to allow the FTP protocol for this ACL",
-              "fullType": "boolean",
-              "name": "ftp",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "ipBlock",
-              "description": "The IP Block specific to this ACL. It musts belong to your server.",
-              "fullType": "ipBlock",
-              "name": "ipBlock",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "boolean",
-              "description": "Whether to allow the NFS protocol for this ACL",
-              "fullType": "boolean",
-              "name": "nfs",
+              "dataType": "vps.backupftp.access.post",
+              "description": "Request Body",
+              "fullType": "vps.backupftp.access.post",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -481,7 +519,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/backupftp/access"
     },
     {
-      "description": "Backup Ftp ACL for this server and Backup Ftp",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -491,13 +529,16 @@ export const schema: Schema = {
           "description": "Revoke this ACL",
           "httpMethod": "DELETE",
           "iamActions": [
-            "vps:apiovh:backupftp/access/delete"
+            {
+              "name": "vps:apiovh:backupftp/access/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "ipBlock",
-              "description": "The IP Block specific to this ACL",
+              "description": "Ip block",
               "fullType": "ipBlock",
               "name": "ipBlock",
               "paramType": "path",
@@ -505,7 +546,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -522,13 +563,16 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:backupftp/access/get"
+            {
+              "name": "vps:apiovh:backupftp/access/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "ipBlock",
-              "description": "The IP Block specific to this ACL",
+              "description": "Ip block",
               "fullType": "ipBlock",
               "name": "ipBlock",
               "paramType": "path",
@@ -536,7 +580,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -553,20 +597,23 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "vps:apiovh:backupftp/access/edit"
+            {
+              "name": "vps:apiovh:backupftp/access/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dedicated.server.BackupFtpAcl",
-              "description": "New object properties",
+              "description": "Request Body",
               "fullType": "dedicated.server.BackupFtpAcl",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "ipBlock",
-              "description": "The IP Block specific to this ACL",
+              "description": "Ip block",
               "fullType": "ipBlock",
               "name": "ipBlock",
               "paramType": "path",
@@ -574,7 +621,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -587,7 +634,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/backupftp/access/{ipBlock}"
     },
     {
-      "description": "authorizableBlocks operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -597,13 +644,16 @@ export const schema: Schema = {
           "description": "Get all IP blocks that can be used in the ACL",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:backupftp/authorizableBlocks/get"
+            {
+              "name": "vps:apiovh:backupftp/authorizableBlocks/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -616,7 +666,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/backupftp/authorizableBlocks"
     },
     {
-      "description": "password operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -626,13 +676,16 @@ export const schema: Schema = {
           "description": "Change your Backup FTP password",
           "httpMethod": "POST",
           "iamActions": [
-            "vps:apiovh:backupftp/password/set"
+            {
+              "name": "vps:apiovh:backupftp/password/set",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -645,7 +698,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/backupftp/password"
     },
     {
-      "description": "Change the contacts of this service",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -655,37 +708,23 @@ export const schema: Schema = {
           "description": "Launch a contact change procedure",
           "httpMethod": "POST",
           "iamActions": [
-            "vps:apiovh:changeContact/create"
+            {
+              "name": "vps:apiovh:changeContact/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The contact to set as admin contact",
-              "fullType": "coreTypes.AccountId:string",
-              "name": "contactAdmin",
+              "dataType": "vps.changeContact.post",
+              "description": "Request Body",
+              "fullType": "vps.changeContact.post",
               "paramType": "body",
-              "required": false
+              "required": true
             },
             {
               "dataType": "string",
-              "description": "The contact to set as billing contact",
-              "fullType": "coreTypes.AccountId:string",
-              "name": "contactBilling",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The contact to set as tech contact",
-              "fullType": "coreTypes.AccountId:string",
-              "name": "contactTech",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -698,55 +737,33 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/changeContact"
     },
     {
-      "description": "Confirm termination of your service",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Confirm termination of your service",
+          "description": "Confirm service termination",
           "httpMethod": "POST",
           "iamActions": [
-            "vps:apiovh:confirmTermination"
+            {
+              "name": "vps:apiovh:confirmTermination",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Commentary about your termination request",
-              "fullType": "string",
-              "name": "commentary",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "service.TerminationFutureUseEnum",
-              "description": "What next after your termination request",
-              "fullType": "service.TerminationFutureUseEnum",
-              "name": "futureUse",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "service.TerminationReasonEnum",
-              "description": "Reason of your termination request",
-              "fullType": "service.TerminationReasonEnum",
-              "name": "reason",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The termination token sent by mail to the admin contact",
-              "fullType": "string",
-              "name": "token",
+              "dataType": "vps.confirmTermination.post",
+              "description": "Request Body",
+              "fullType": "vps.confirmTermination.post",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -759,7 +776,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/confirmTermination"
     },
     {
-      "description": "createSnapshot operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -769,21 +786,23 @@ export const schema: Schema = {
           "description": "Create a snapshot of the Virtual Server if the snapshot option is enabled and if there is no existing snapshot",
           "httpMethod": "POST",
           "iamActions": [
-            "vps:apiovh:snapshot/create"
+            {
+              "name": "vps:apiovh:snapshot/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "A textual description for your snapshot",
-              "fullType": "string",
-              "name": "description",
+              "dataType": "vps.createSnapshot.post",
+              "description": "Request Body",
+              "fullType": "vps.createSnapshot.post",
               "paramType": "body",
-              "required": false
+              "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -796,7 +815,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/createSnapshot"
     },
     {
-      "description": "Information about a datacenter of a VPS Virtual Machine",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -806,13 +825,16 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:datacenter/get"
+            {
+              "name": "vps:apiovh:datacenter/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -825,7 +847,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/datacenter"
     },
     {
-      "description": "List the vps.Disk objects",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -835,13 +857,16 @@ export const schema: Schema = {
           "description": "Disks associated to this virtual server",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:disks/get"
+            {
+              "name": "vps:apiovh:disks/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -854,7 +879,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/disks"
     },
     {
-      "description": "Information about a disk of a VPS Virtual Machine",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -864,13 +889,16 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:disks/get"
+            {
+              "name": "vps:apiovh:disks/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -878,7 +906,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -895,20 +923,23 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "vps:apiovh:disks/edit"
+            {
+              "name": "vps:apiovh:disks/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "vps.Disk",
-              "description": "New object properties",
+              "description": "Request Body",
               "fullType": "vps.Disk",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -916,7 +947,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -929,7 +960,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/disks/{id}"
     },
     {
-      "description": "monitoring operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -939,13 +970,16 @@ export const schema: Schema = {
           "description": "Return many statistics about the disk for a given period",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:disks/monitoring/get"
+            {
+              "name": "vps:apiovh:disks/monitoring/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -953,7 +987,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -976,13 +1010,13 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "complexType.UnitAndValues<vps.VpsTimestampValue>"
+          "responseType": "complexType.UnitAndValues_vps.VpsTimestampValue"
         }
       ],
       "path": "/vps/{serviceName}/disks/{id}/monitoring"
     },
     {
-      "description": "use operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -992,13 +1026,16 @@ export const schema: Schema = {
           "description": "Return many statistics about the disk at that time",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:disks/use/get"
+            {
+              "name": "vps:apiovh:disks/use/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -1006,7 +1043,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1021,13 +1058,13 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "complexType.UnitAndValue<double>"
+          "responseType": "complexType.UnitAndValue_double"
         }
       ],
       "path": "/vps/{serviceName}/disks/{id}/use"
     },
     {
-      "description": "Installation template for a VPS Virtual Machine",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1037,13 +1074,16 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:distribution/get"
+            {
+              "name": "vps:apiovh:distribution/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1056,7 +1096,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/distribution"
     },
     {
-      "description": "List the vps.Software objects",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1066,13 +1106,16 @@ export const schema: Schema = {
           "description": "List available softwares for this template Id",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:distribution/software/get"
+            {
+              "name": "vps:apiovh:distribution/software/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1085,7 +1128,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/distribution/software"
     },
     {
-      "description": "Available softwares on a Template",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1095,13 +1138,16 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:distribution/software/get"
+            {
+              "name": "vps:apiovh:distribution/software/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1109,7 +1155,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "",
+              "description": "Software ID",
               "fullType": "long",
               "name": "softwareId",
               "paramType": "path",
@@ -1122,7 +1168,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/distribution/software/{softwareId}"
     },
     {
-      "description": "getConsoleUrl operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1132,13 +1178,16 @@ export const schema: Schema = {
           "description": "Return the VPS console URL",
           "httpMethod": "POST",
           "iamActions": [
-            "vps:apiovh:getConsoleUrl"
+            {
+              "name": "vps:apiovh:getConsoleUrl",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1151,7 +1200,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/getConsoleUrl"
     },
     {
-      "description": "List the vps.Image objects",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1161,13 +1210,16 @@ export const schema: Schema = {
           "description": "Images available for this virtual server",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:images/available/get"
+            {
+              "name": "vps:apiovh:images/available/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1180,7 +1232,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/images/available"
     },
     {
-      "description": "Installation image for a VPS",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1190,13 +1242,16 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:images/available/get"
+            {
+              "name": "vps:apiovh:images/available/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "string",
               "name": "id",
               "paramType": "path",
@@ -1204,7 +1259,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1217,7 +1272,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/images/available/{id}"
     },
     {
-      "description": "Installation image for a VPS",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1227,13 +1282,16 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:images/current/get"
+            {
+              "name": "vps:apiovh:images/current/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1246,7 +1304,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/images/current"
     },
     {
-      "description": "ipCountryAvailable operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1256,13 +1314,16 @@ export const schema: Schema = {
           "description": "Get the countries you can select for your IPs geolocation",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:ipCountryAvailable/get"
+            {
+              "name": "vps:apiovh:ipCountryAvailable/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1275,7 +1336,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/ipCountryAvailable"
     },
     {
-      "description": "List the vps.Ip objects",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1285,13 +1346,16 @@ export const schema: Schema = {
           "description": "Ips associated to this virtual server",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:ips/get"
+            {
+              "name": "vps:apiovh:ips/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1304,7 +1368,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/ips"
     },
     {
-      "description": "Information about an IP address for a VPS Virtual Machine",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1314,13 +1378,16 @@ export const schema: Schema = {
           "description": "Release a given Ip (Additional Ip)",
           "httpMethod": "DELETE",
           "iamActions": [
-            "vps:apiovh:ips/delete"
+            {
+              "name": "vps:apiovh:ips/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "ip",
-              "description": "The effective ip address of the Ip object",
+              "description": "Ip address",
               "fullType": "ip",
               "name": "ipAddress",
               "paramType": "path",
@@ -1328,7 +1395,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1345,13 +1412,16 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:ips/get"
+            {
+              "name": "vps:apiovh:ips/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "ip",
-              "description": "The effective ip address of the Ip object",
+              "description": "Ip address",
               "fullType": "ip",
               "name": "ipAddress",
               "paramType": "path",
@@ -1359,7 +1429,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1376,20 +1446,23 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "vps:apiovh:ips/edit"
+            {
+              "name": "vps:apiovh:ips/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "vps.Ip",
-              "description": "New object properties",
+              "description": "Request Body",
               "fullType": "vps.Ip",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "ip",
-              "description": "The effective ip address of the Ip object",
+              "description": "Ip address",
               "fullType": "ip",
               "name": "ipAddress",
               "paramType": "path",
@@ -1397,7 +1470,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1410,26 +1483,29 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/ips/{ipAddress}"
     },
     {
-      "description": "migration2016 operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2022-05-01 10:00:00 +0100 +0100",
-            "deprecatedDate": "2022-04-01 10:00:00 +0100 +0100",
+            "deletionDate": "2022-05-01T00:00:00Z",
+            "deprecatedDate": "2022-04-01T00:00:00Z",
             "description": "Deprecated, will be removed",
-            "replacement": "/vps/{serviceName}/migration2018",
+            "replacement": "/1.0/vps/{serviceName}/migration2018",
             "value": "DEPRECATED"
           },
           "description": "Get information on a possible migration of a VPS 2016 to VPS 2020",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:migration2016/get"
+            {
+              "name": "vps:apiovh:migration2016/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1440,22 +1516,25 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2022-05-01 10:00:00 +0100 +0100",
-            "deprecatedDate": "2022-04-01 10:00:00 +0100 +0100",
+            "deletionDate": "2022-05-01T00:00:00Z",
+            "deprecatedDate": "2022-04-01T00:00:00Z",
             "description": "Deprecated, will be removed",
-            "replacement": "/vps/{serviceName}/migration2018",
+            "replacement": "/1.0/vps/{serviceName}/migration2018",
             "value": "DEPRECATED"
           },
           "description": "Schedule the migration of a VPS 2016 to VPS 2020",
           "httpMethod": "POST",
           "iamActions": [
-            "vps:apiovh:migration2016/create"
+            {
+              "name": "vps:apiovh:migration2016/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1468,7 +1547,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/migration2016"
     },
     {
-      "description": "migration2018 operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1478,13 +1557,16 @@ export const schema: Schema = {
           "description": "Get information on a possible migration of a VPS 2016/2018 to VPS 2020",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:migration2018/get"
+            {
+              "name": "vps:apiovh:migration2018/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1501,21 +1583,23 @@ export const schema: Schema = {
           "description": "Schedule the migration of a VPS 2016/2018 to VPS 2020",
           "httpMethod": "POST",
           "iamActions": [
-            "vps:apiovh:migration2018/create"
+            {
+              "name": "vps:apiovh:migration2018/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Choosen plan for migration",
-              "fullType": "string",
-              "name": "newPlan",
+              "dataType": "vps.migration2018.post",
+              "description": "Request Body",
+              "fullType": "vps.migration2018.post",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1528,7 +1612,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/migration2018"
     },
     {
-      "description": "models operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1538,13 +1622,16 @@ export const schema: Schema = {
           "description": "Return all models for the range of the virtual server",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:models/get"
+            {
+              "name": "vps:apiovh:models/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1557,7 +1644,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/models"
     },
     {
-      "description": "monitoring operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1567,13 +1654,16 @@ export const schema: Schema = {
           "description": "Return many statistics about the virtual machine for a given period",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:monitoring/get"
+            {
+              "name": "vps:apiovh:monitoring/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1596,13 +1686,13 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "complexType.UnitAndValues<vps.VpsTimestampValue>"
+          "responseType": "complexType.UnitAndValues_vps.VpsTimestampValue"
         }
       ],
       "path": "/vps/{serviceName}/monitoring"
     },
     {
-      "description": "openConsoleAccess operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1612,21 +1702,23 @@ export const schema: Schema = {
           "description": "Return the necessary informations to open a VNC connection to your VPS",
           "httpMethod": "POST",
           "iamActions": [
-            "vps:apiovh:openConsoleAccess"
+            {
+              "name": "vps:apiovh:openConsoleAccess",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "vps.VncProtocolEnum",
-              "description": "The console protocol you want",
-              "fullType": "vps.VncProtocolEnum",
-              "name": "protocol",
+              "dataType": "vps.openConsoleAccess.post",
+              "description": "Request Body",
+              "fullType": "vps.openConsoleAccess.post",
               "paramType": "body",
-              "required": false
+              "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1639,7 +1731,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/openConsoleAccess"
     },
     {
-      "description": "List the vps.Option objects",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1649,13 +1741,16 @@ export const schema: Schema = {
           "description": "List of VPS options",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:option/get"
+            {
+              "name": "vps:apiovh:option/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1668,23 +1763,28 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/option"
     },
     {
-      "description": "Information about the options of a VPS Virtual Machine",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2024-06-01T00:00:00Z",
+            "deprecatedDate": "2023-12-22T00:00:00Z",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Release a given option",
           "httpMethod": "DELETE",
           "iamActions": [
-            "vps:apiovh:option/delete"
+            {
+              "name": "vps:apiovh:option/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "vps.VpsOptionEnum",
-              "description": "The option name",
+              "description": "Option",
               "fullType": "vps.VpsOptionEnum",
               "name": "option",
               "paramType": "path",
@@ -1692,7 +1792,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1717,13 +1817,16 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:option/get"
+            {
+              "name": "vps:apiovh:option/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "vps.VpsOptionEnum",
-              "description": "The option name",
+              "description": "Option",
               "fullType": "vps.VpsOptionEnum",
               "name": "option",
               "paramType": "path",
@@ -1731,7 +1834,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1744,7 +1847,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/option/{option}"
     },
     {
-      "description": "reboot operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1754,13 +1857,16 @@ export const schema: Schema = {
           "description": "Request a reboot of the machine",
           "httpMethod": "POST",
           "iamActions": [
-            "vps:apiovh:reboot"
+            {
+              "name": "vps:apiovh:reboot",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1773,7 +1879,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/reboot"
     },
     {
-      "description": "rebuild operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1783,45 +1889,23 @@ export const schema: Schema = {
           "description": "Reinstall the virtual server",
           "httpMethod": "POST",
           "iamActions": [
-            "vps:apiovh:rebuild"
+            {
+              "name": "vps:apiovh:rebuild",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "boolean",
-              "description": "If asked, the installation password will NOT be sent (only if sshKey defined)",
-              "fullType": "boolean",
-              "name": "doNotSendPassword",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Id of the vps.Image fetched in /images list",
-              "fullType": "string",
-              "name": "imageId",
+              "dataType": "vps.rebuild.post",
+              "description": "Request Body",
+              "fullType": "vps.rebuild.post",
               "paramType": "body",
               "required": true
             },
             {
-              "dataType": "boolean",
-              "description": "If asked, RTM will be installed on your VPS",
-              "fullType": "boolean",
-              "name": "installRTM",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "string",
-              "description": "SSH key name to pre-install on your VPS (name from /me/sshKey)",
-              "fullType": "string",
-              "name": "sshKey",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1834,7 +1918,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/rebuild"
     },
     {
-      "description": "reinstall operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1844,53 +1928,23 @@ export const schema: Schema = {
           "description": "Reinstall the virtual server",
           "httpMethod": "POST",
           "iamActions": [
-            "vps:apiovh:reinstall"
+            {
+              "name": "vps:apiovh:reinstall",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "boolean",
-              "description": "If asked, the installation password will NOT be sent (only if sshKey defined)",
-              "fullType": "boolean",
-              "name": "doNotSendPassword",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Distribution language. default : en",
-              "fullType": "string",
-              "name": "language",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "long[]",
-              "description": "Id of the vps.Software type fetched in /template/{id}/software",
-              "fullType": "long[]",
-              "name": "softwareId",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string[]",
-              "description": "SSH key names to pre-install on your VPS (name from /me/sshKey)",
-              "fullType": "string[]",
-              "name": "sshKey",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "long",
-              "description": "Id of the vps.Template fetched in /templates list",
-              "fullType": "long",
-              "name": "templateId",
+              "dataType": "vps.reinstall.post",
+              "description": "Request Body",
+              "fullType": "vps.reinstall.post",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1903,7 +1957,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/reinstall"
     },
     {
-      "description": "List the secondaryDns.SecondaryDNS objects",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1913,13 +1967,16 @@ export const schema: Schema = {
           "description": "List of secondary dns domain name",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:secondaryDnsDomains/get"
+            {
+              "name": "vps:apiovh:secondaryDnsDomains/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1936,29 +1993,23 @@ export const schema: Schema = {
           "description": "add a domain on secondary dns",
           "httpMethod": "POST",
           "iamActions": [
-            "vps:apiovh:secondaryDnsDomains/create"
+            {
+              "name": "vps:apiovh:secondaryDnsDomains/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The domain to add",
-              "fullType": "string",
-              "name": "domain",
+              "dataType": "vps.secondaryDnsDomains.post",
+              "description": "Request Body",
+              "fullType": "vps.secondaryDnsDomains.post",
               "paramType": "body",
               "required": true
             },
             {
-              "dataType": "ipv4",
-              "description": "",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1971,7 +2022,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/secondaryDnsDomains"
     },
     {
-      "description": "Secondary dns infos",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1981,13 +2032,16 @@ export const schema: Schema = {
           "description": "remove this domain",
           "httpMethod": "DELETE",
           "iamActions": [
-            "vps:apiovh:secondaryDnsDomains/delete"
+            {
+              "name": "vps:apiovh:secondaryDnsDomains/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "domain on slave server",
+              "description": "Domain",
               "fullType": "string",
               "name": "domain",
               "paramType": "path",
@@ -1995,7 +2049,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2012,13 +2066,16 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:secondaryDnsDomains/get"
+            {
+              "name": "vps:apiovh:secondaryDnsDomains/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "domain on slave server",
+              "description": "Domain",
               "fullType": "string",
               "name": "domain",
               "paramType": "path",
@@ -2026,7 +2083,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2043,20 +2100,23 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "vps:apiovh:secondaryDnsDomains/edit"
+            {
+              "name": "vps:apiovh:secondaryDnsDomains/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "secondaryDns.SecondaryDNS",
-              "description": "New object properties",
+              "description": "Request Body",
               "fullType": "secondaryDns.SecondaryDNS",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "domain on slave server",
+              "description": "Domain",
               "fullType": "string",
               "name": "domain",
               "paramType": "path",
@@ -2064,7 +2124,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2077,7 +2137,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/secondaryDnsDomains/{domain}"
     },
     {
-      "description": "dnsServer operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -2087,13 +2147,16 @@ export const schema: Schema = {
           "description": "domain name server informations",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:secondaryDnsDomains/dnsServer/get"
+            {
+              "name": "vps:apiovh:secondaryDnsDomains/dnsServer/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "domain on slave server",
+              "description": "Domain",
               "fullType": "string",
               "name": "domain",
               "paramType": "path",
@@ -2101,7 +2164,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2114,7 +2177,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/secondaryDnsDomains/{domain}/dnsServer"
     },
     {
-      "description": "secondaryDnsNameServerAvailable operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -2124,13 +2187,16 @@ export const schema: Schema = {
           "description": "Secondary nameServer available for your Server",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:secondaryDnsNameServerAvailable/get"
+            {
+              "name": "vps:apiovh:secondaryDnsNameServerAvailable/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2143,23 +2209,26 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/secondaryDnsNameServerAvailable"
     },
     {
-      "description": "Details about a Service",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get service information",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:serviceInfos/get"
+            {
+              "name": "vps:apiovh:serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2173,23 +2242,26 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Update service information",
           "httpMethod": "PUT",
           "iamActions": [
-            "vps:apiovh:serviceInfos/edit"
+            {
+              "name": "vps:apiovh:serviceInfos/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "services.Service",
-              "description": "New object properties",
+              "description": "Request Body",
               "fullType": "services.Service",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2202,23 +2274,26 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/serviceInfos"
     },
     {
-      "description": "setPassword operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Start the process in order to set the root password of the virtual machine. Be careful, in case of Cloud model, a reboot is mandatory.",
+          "description": "Start the process in order to set the root password of the virtual machine",
           "httpMethod": "POST",
           "iamActions": [
-            "vps:apiovh:setPassword"
+            {
+              "name": "vps:apiovh:setPassword",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2231,7 +2306,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/setPassword"
     },
     {
-      "description": "Information about the snapshot of a VPS Virtual Machine",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -2241,13 +2316,16 @@ export const schema: Schema = {
           "description": "Creates a vps.Task that will delete the Snapshot",
           "httpMethod": "DELETE",
           "iamActions": [
-            "vps:apiovh:snapshot/delete"
+            {
+              "name": "vps:apiovh:snapshot/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2264,13 +2342,16 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:snapshot/get"
+            {
+              "name": "vps:apiovh:snapshot/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2287,20 +2368,23 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "vps:apiovh:snapshot/edit"
+            {
+              "name": "vps:apiovh:snapshot/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "vps.Snapshot",
-              "description": "New object properties",
+              "description": "Request Body",
               "fullType": "vps.Snapshot",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2313,7 +2397,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/snapshot"
     },
     {
-      "description": "download operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -2323,13 +2407,16 @@ export const schema: Schema = {
           "description": "Download the snapshot",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:snapshot/download/get"
+            {
+              "name": "vps:apiovh:snapshot/download/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2342,7 +2429,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/snapshot/download"
     },
     {
-      "description": "revert operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -2352,13 +2439,16 @@ export const schema: Schema = {
           "description": "Revert the Virtual Server to this snapshot",
           "httpMethod": "POST",
           "iamActions": [
-            "vps:apiovh:snapshot/revert"
+            {
+              "name": "vps:apiovh:snapshot/revert",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2371,7 +2461,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/snapshot/revert"
     },
     {
-      "description": "start operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -2381,13 +2471,16 @@ export const schema: Schema = {
           "description": "Request the machine to start",
           "httpMethod": "POST",
           "iamActions": [
-            "vps:apiovh:start"
+            {
+              "name": "vps:apiovh:start",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2400,23 +2493,28 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/start"
     },
     {
-      "description": "statistics operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2024-01-07T00:00:00Z",
+            "deprecatedDate": "2023-11-07T00:00:00Z",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Return monitoring statistics about the virtual machine",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:statistics/get"
+            {
+              "name": "vps:apiovh:statistics/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2429,7 +2527,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/statistics"
     },
     {
-      "description": "status operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -2439,13 +2537,16 @@ export const schema: Schema = {
           "description": "Give the status of the services of the main IP",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:status/get"
+            {
+              "name": "vps:apiovh:status/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2458,7 +2559,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/status"
     },
     {
-      "description": "stop operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -2468,13 +2569,16 @@ export const schema: Schema = {
           "description": "Request the machine to stop",
           "httpMethod": "POST",
           "iamActions": [
-            "vps:apiovh:stop"
+            {
+              "name": "vps:apiovh:stop",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2487,7 +2591,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/stop"
     },
     {
-      "description": "List the vps.Task objects",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -2497,13 +2601,16 @@ export const schema: Schema = {
           "description": "Tasks associated to this virtual server",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:tasks/get"
+            {
+              "name": "vps:apiovh:tasks/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2532,7 +2639,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/tasks"
     },
     {
-      "description": "Operation on a VPS Virtual Machine",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -2542,13 +2649,16 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:tasks/get"
+            {
+              "name": "vps:apiovh:tasks/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -2556,7 +2666,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2569,7 +2679,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/tasks/{id}"
     },
     {
-      "description": "List the vps.Template objects",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -2579,13 +2689,16 @@ export const schema: Schema = {
           "description": "Templates available for this virtual server",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:templates/get"
+            {
+              "name": "vps:apiovh:templates/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2598,7 +2711,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/templates"
     },
     {
-      "description": "Installation template for a VPS Virtual Machine",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -2608,13 +2721,16 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:templates/get"
+            {
+              "name": "vps:apiovh:templates/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -2622,7 +2738,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2635,7 +2751,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/templates/{id}"
     },
     {
-      "description": "List the vps.Software objects",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -2645,13 +2761,16 @@ export const schema: Schema = {
           "description": "List available softwares for this template Id",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:templates/software/get"
+            {
+              "name": "vps:apiovh:templates/software/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -2659,7 +2778,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2672,7 +2791,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/templates/{id}/software"
     },
     {
-      "description": "Available softwares on a Template",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -2682,13 +2801,16 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:templates/software/get"
+            {
+              "name": "vps:apiovh:templates/software/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -2696,7 +2818,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2704,7 +2826,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "",
+              "description": "Software ID",
               "fullType": "long",
               "name": "softwareId",
               "paramType": "path",
@@ -2717,23 +2839,26 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/templates/{id}/software/{softwareId}"
     },
     {
-      "description": "Terminate your service",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Terminate your service",
+          "description": "Ask for the termination of your service",
           "httpMethod": "POST",
           "iamActions": [
-            "vps:apiovh:terminate"
+            {
+              "name": "vps:apiovh:terminate",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2746,23 +2871,29 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/terminate"
     },
     {
-      "description": "use operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-10-01T00:00:00Z",
+            "deprecatedDate": "2023-07-31T00:00:00Z",
+            "description": "Deprecated, will be removed",
+            "replacement": "/1.0/vps/{serviceName}/monitoring",
+            "value": "DEPRECATED"
           },
           "description": "Return many statistics about the virtual machine at that time",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:use/get"
+            {
+              "name": "vps:apiovh:use/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2777,13 +2908,13 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "complexType.UnitAndValue<double>"
+          "responseType": "complexType.UnitAndValue_double"
         }
       ],
       "path": "/vps/{serviceName}/use"
     },
     {
-      "description": "Informations about a VPS Veeam backups",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -2793,13 +2924,16 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:veeam/get"
+            {
+              "name": "vps:apiovh:veeam/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2812,7 +2946,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/veeam"
     },
     {
-      "description": "Currently restored backup",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -2822,13 +2956,16 @@ export const schema: Schema = {
           "description": "Creates a VPS.Task that will unmount the backup",
           "httpMethod": "DELETE",
           "iamActions": [
-            "vps:apiovh:veeam/restoredBackup/delete"
+            {
+              "name": "vps:apiovh:veeam/restoredBackup/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2845,13 +2982,16 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:veeam/restoredBackup/get"
+            {
+              "name": "vps:apiovh:veeam/restoredBackup/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2864,7 +3004,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/veeam/restoredBackup"
     },
     {
-      "description": "List the vps.veeam.RestorePoint objects",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -2874,13 +3014,16 @@ export const schema: Schema = {
           "description": "Veeam restore points for the VPS",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:veeam/restorePoints/get"
+            {
+              "name": "vps:apiovh:veeam/restorePoints/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2901,7 +3044,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/veeam/restorePoints"
     },
     {
-      "description": "Informations about a VPS Veeam restore points",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -2911,13 +3054,16 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "vps:apiovh:veeam/restorePoints/get"
+            {
+              "name": "vps:apiovh:veeam/restorePoints/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -2925,7 +3071,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2938,7 +3084,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/veeam/restorePoints/{id}"
     },
     {
-      "description": "restore operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -2948,37 +3094,23 @@ export const schema: Schema = {
           "description": "Creates a VPS.Task that will restore the given restorePoint",
           "httpMethod": "POST",
           "iamActions": [
-            "vps:apiovh:veeam/restorePoints/restore"
+            {
+              "name": "vps:apiovh:veeam/restorePoints/restore",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "boolean",
-              "description": "(Full only) Change the restored VPS root password when done",
-              "fullType": "boolean",
-              "name": "changePassword",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "vps.veeam.ExportTypeEnum",
-              "description": "(Except full) The export method for your restore - defaults to both",
-              "fullType": "vps.veeam.ExportTypeEnum",
-              "name": "export",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "Replace your current VPS by the restorePoint",
-              "fullType": "boolean",
-              "name": "full",
+              "dataType": "vps.veeam.restorePoints.restore.post",
+              "description": "Request Body",
+              "fullType": "vps.veeam.restorePoints.restore.post",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -2986,7 +3118,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2999,7 +3131,7 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/veeam/restorePoints/{id}/restore"
     },
     {
-      "description": "Missing description",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -3016,7 +3148,7 @@ export const schema: Schema = {
               "fullType": "nichandle.CountryEnum",
               "name": "country",
               "paramType": "query",
-              "required": true
+              "required": false
             }
           ],
           "responseType": "string[]"
@@ -3103,69 +3235,87 @@ export const schema: Schema = {
   ],
   "basePath": "https://eu.api.ovh.com/1.0",
   "models": {
-    "complexType.SafeKeyValueCanBeNull<T>": {
-      "description": "Key and value, with proper key strings",
-      "generics": [
-        "T"
-      ],
-      "id": "SafeKeyValueCanBeNull",
+    "complexType.SafeKeyValueCanBeNull_string": {
+      "description": "complexType.SafeKeyValueCanBeNull_string",
+      "id": "SafeKeyValueCanBeNull_string",
       "namespace": "complexType",
       "properties": {
         "key": {
           "canBeNull": true,
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "value": {
-          "canBeNull": true,
-          "readOnly": false,
-          "required": false,
-          "type": "T"
-        }
-      }
-    },
-    "complexType.UnitAndValue<T>": {
-      "description": "A numeric value tagged with its unit",
-      "generics": [
-        "T"
-      ],
-      "id": "UnitAndValue",
-      "namespace": "complexType",
-      "properties": {
-        "unit": {
-          "canBeNull": false,
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
-          "type": "T"
+          "type": "string"
         }
       }
     },
-    "complexType.UnitAndValues<T>": {
-      "description": "A value set tagged with its unit",
-      "generics": [
-        "T"
-      ],
-      "id": "UnitAndValues",
+    "complexType.UnitAndValue_double": {
+      "description": "complexType.UnitAndValue_double",
+      "id": "UnitAndValue_double",
       "namespace": "complexType",
       "properties": {
         "unit": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        }
+      }
+    },
+    "complexType.UnitAndValue_long": {
+      "description": "complexType.UnitAndValue_long",
+      "id": "UnitAndValue_long",
+      "namespace": "complexType",
+      "properties": {
+        "unit": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "complexType.UnitAndValues_vps.VpsTimestampValue": {
+      "description": "complexType.UnitAndValues_vps.VpsTimestampValue",
+      "id": "VpsTimestampValue",
+      "namespace": "complexType.UnitAndValues_vps",
+      "properties": {
+        "unit": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "values": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "vps.VpsTimestampValue[]",
+          "readOnly": true,
           "required": false,
-          "type": "T[]"
+          "type": "vps.VpsTimestampValue[]"
         }
       }
     },
@@ -3453,6 +3603,8 @@ export const schema: Schema = {
         "INFRA_002_VirtualNetworkInterface",
         "INFRA_002_VirtualNetworkInterface_group",
         "INFRA_002_VirtualNetworkInterface_ungroup",
+        "INFRA_ONE_NETWORK_ONEAPI_VirtualNetworkInterface_group",
+        "INFRA_ONE_NETWORK_ONEAPI_VirtualNetworkInterface_ungroup",
         "INFRA_ONE_NETWORK_VirtualNetworkInterface_group",
         "INFRA_ONE_NETWORK_VirtualNetworkInterface_ungroup",
         "addVirtualMac",
@@ -3644,10 +3796,10 @@ export const schema: Schema = {
         "tags": {
           "canBeNull": true,
           "description": "Task result tags output",
-          "fullType": "complexType.SafeKeyValueCanBeNull<string>[]",
+          "fullType": "complexType.SafeKeyValueCanBeNull_string[]",
           "readOnly": true,
           "required": false,
-          "type": "complexType.SafeKeyValueCanBeNull<string>[]"
+          "type": "complexType.SafeKeyValueCanBeNull_string[]"
         },
         "taskId": {
           "canBeNull": false,
@@ -3666,6 +3818,77 @@ export const schema: Schema = {
           "type": "string"
         }
       }
+    },
+    "iam.ResourceMetadata": {
+      "description": "IAM resource metadata embedded in services models",
+      "id": "ResourceMetadata",
+      "namespace": "iam",
+      "properties": {
+        "displayName": {
+          "canBeNull": true,
+          "description": "Resource display name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Unique identifier of the resource",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "tags": {
+          "canBeNull": true,
+          "description": "Resource tags. Tags that were internally computed are prefixed with ovh:",
+          "fullType": "map[string]string",
+          "readOnly": true,
+          "required": false,
+          "type": "map[string]string"
+        },
+        "urn": {
+          "canBeNull": false,
+          "description": "Unique resource name used in policies",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter": {
+      "description": "Resource tag filter",
+      "id": "TagFilter",
+      "namespace": "iam.resource",
+      "properties": {
+        "operator": {
+          "canBeNull": true,
+          "description": "Operator to use in order to filter on the value (defaults to 'EQ')",
+          "fullType": "iam.resource.TagFilter.OperatorEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.resource.TagFilter.OperatorEnum"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value to use in order to filter tags",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter.OperatorEnum": {
+      "description": "Operator that can be used in order to filter resources tags",
+      "enum": [
+        "EQ"
+      ],
+      "enumType": "string",
+      "id": "OperatorEnum",
+      "namespace": "iam.resource.TagFilter"
     },
     "nichandle.CountryEnum": {
       "description": "Countries a nichandle can choose",
@@ -3983,7 +4206,7 @@ export const schema: Schema = {
         },
         "ipMaster": {
           "canBeNull": false,
-          "description": "master ip",
+          "description": "IPv4 address (e.g., 192.0.2.0)",
           "fullType": "ipv4",
           "readOnly": false,
           "required": false,
@@ -3999,19 +4222,23 @@ export const schema: Schema = {
         "hostname": {
           "canBeNull": false,
           "description": "the name server",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "ip": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "IPv4 address (e.g., 192.0.2.0)",
+          "fullType": "ipv4",
+          "readOnly": true,
           "required": false,
           "type": "ipv4"
         },
         "ipv6": {
           "canBeNull": true,
-          "readOnly": false,
+          "fullType": "ipv6",
+          "readOnly": true,
           "required": false,
           "type": "ipv6"
         }
@@ -4025,6 +4252,7 @@ export const schema: Schema = {
         "automatic": {
           "canBeNull": false,
           "description": "The service is automatically renewed",
+          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -4032,6 +4260,7 @@ export const schema: Schema = {
         "deleteAtExpiration": {
           "canBeNull": false,
           "description": "The service will be deleted at expiration",
+          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -4039,6 +4268,7 @@ export const schema: Schema = {
         "forced": {
           "canBeNull": false,
           "description": "The service forced to be renewed",
+          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -4046,6 +4276,7 @@ export const schema: Schema = {
         "manualPayment": {
           "canBeNull": true,
           "description": "The service needs to be manually renewed and paid",
+          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -4053,6 +4284,7 @@ export const schema: Schema = {
         "period": {
           "canBeNull": true,
           "description": "period of renew in month",
+          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -4075,6 +4307,7 @@ export const schema: Schema = {
       "namespace": "service"
     },
     "service.StateEnum": {
+      "description": "service.StateEnum",
       "enum": [
         "expired",
         "inCreation",
@@ -4136,21 +4369,21 @@ export const schema: Schema = {
         },
         "contactAdmin": {
           "canBeNull": false,
-          "fullType": "coreTypes.AccountId:string",
+          "fullType": "string",
           "readOnly": true,
           "required": false,
           "type": "string"
         },
         "contactBilling": {
           "canBeNull": false,
-          "fullType": "coreTypes.AccountId:string",
+          "fullType": "string",
           "readOnly": true,
           "required": false,
           "type": "string"
         },
         "contactTech": {
           "canBeNull": false,
-          "fullType": "coreTypes.AccountId:string",
+          "fullType": "string",
           "readOnly": true,
           "required": false,
           "type": "string"
@@ -4208,7 +4441,7 @@ export const schema: Schema = {
         },
         "serviceId": {
           "canBeNull": false,
-          "fullType": "coreTypes.ServiceId:long",
+          "fullType": "long",
           "readOnly": true,
           "required": false,
           "type": "long"
@@ -4261,10 +4494,10 @@ export const schema: Schema = {
         "quota": {
           "canBeNull": true,
           "description": "The disk space available on your backup FTP",
-          "fullType": "complexType.UnitAndValue<long>",
+          "fullType": "complexType.UnitAndValue_long",
           "readOnly": true,
           "required": false,
-          "type": "complexType.UnitAndValue<long>"
+          "type": "complexType.UnitAndValue_long"
         },
         "readOnlyDate": {
           "canBeNull": true,
@@ -4285,10 +4518,10 @@ export const schema: Schema = {
         "usage": {
           "canBeNull": true,
           "description": "The disk space currently used on your backup FTP",
-          "fullType": "complexType.UnitAndValue<long>",
+          "fullType": "complexType.UnitAndValue_long",
           "readOnly": true,
           "required": false,
-          "type": "complexType.UnitAndValue<long>"
+          "type": "complexType.UnitAndValue_long"
         }
       }
     },
@@ -4407,14 +4640,16 @@ export const schema: Schema = {
         "size": {
           "canBeNull": false,
           "description": "Snapshot size (bytes)",
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
         "url": {
           "canBeNull": false,
           "description": "URL to download the snapshot",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
@@ -4505,54 +4740,64 @@ export const schema: Schema = {
       "properties": {
         "availableOptions": {
           "canBeNull": false,
+          "fullType": "vps.VpsOptionEnum[]",
           "readOnly": false,
           "required": false,
           "type": "vps.VpsOptionEnum[]"
         },
         "datacenter": {
           "canBeNull": false,
+          "fullType": "string[]",
           "readOnly": false,
           "required": false,
           "type": "string[]"
         },
         "disk": {
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
         },
         "maximumAdditionnalIp": {
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
         },
         "memory": {
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
         },
         "name": {
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
         },
         "offer": {
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
         },
         "vcore": {
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
         },
         "version": {
           "canBeNull": false,
+          "description": "All versions that VPS can have",
+          "fullType": "vps.VpsVersionEnum",
           "readOnly": false,
           "required": false,
           "type": "vps.VpsVersionEnum"
@@ -4619,6 +4864,20 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "region": {
+          "canBeNull": true,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
@@ -4823,8 +5082,8 @@ export const schema: Schema = {
     "vps.TemplateBitFormatEnum": {
       "description": "Bitness of a VPS template",
       "enum": [
-        "32",
-        "64"
+        32,
+        64
       ],
       "enumType": "long",
       "id": "TemplateBitFormatEnum",
@@ -4889,7 +5148,116 @@ export const schema: Schema = {
         },
         "netbootMode": {
           "canBeNull": false,
-          "description": "Reboot your VPS 'Cloud' after change, VPS 'Classic/LowLat' will reboot automatically. Credentials for rescue mode will be sent by mail",
+          "description": "All values a VPS netboot mode can be in",
+          "fullType": "vps.VpsNetbootEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "vps.VpsNetbootEnum"
+        },
+        "offerType": {
+          "canBeNull": false,
+          "fullType": "vps.VpsOfferEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "vps.VpsOfferEnum"
+        },
+        "slaMonitoring": {
+          "canBeNull": true,
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "state": {
+          "canBeNull": false,
+          "fullType": "vps.VpsStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "vps.VpsStateEnum"
+        },
+        "vcore": {
+          "canBeNull": false,
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "zone": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "vps.VPSWithIAM": {
+      "description": "VPS Virtual Machine",
+      "id": "VPS",
+      "namespace": "vps",
+      "properties": {
+        "cluster": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "displayName": {
+          "canBeNull": true,
+          "description": "Set the name displayed in ManagerV6 for your VPS (max 50 chars)",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "iam": {
+          "canBeNull": true,
+          "description": "IAM resource metadata",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.ResourceMetadata"
+        },
+        "keymap": {
+          "canBeNull": true,
+          "description": "Set KVM keyboard layout on VPS Cloud. Reboot your VPS after change",
+          "fullType": "vps.VpsKeymapEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "vps.VpsKeymapEnum"
+        },
+        "memoryLimit": {
+          "canBeNull": false,
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "model": {
+          "canBeNull": false,
+          "fullType": "vps.Model",
+          "readOnly": true,
+          "required": false,
+          "type": "vps.Model"
+        },
+        "monitoringIpBlocks": {
+          "canBeNull": false,
+          "description": "Ip blocks for OVH monitoring servers",
+          "fullType": "ipBlock[]",
+          "readOnly": true,
+          "required": false,
+          "type": "ipBlock[]"
+        },
+        "name": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "netbootMode": {
+          "canBeNull": false,
+          "description": "All values a VPS netboot mode can be in",
           "fullType": "vps.VpsNetbootEnum",
           "readOnly": false,
           "required": false,
@@ -4954,19 +5322,22 @@ export const schema: Schema = {
       "properties": {
         "host": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "password": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "password",
+          "readOnly": true,
           "required": false,
           "type": "password"
         },
         "port": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         }
@@ -4989,7 +5360,8 @@ export const schema: Schema = {
       "properties": {
         "version": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         }
@@ -5026,21 +5398,24 @@ export const schema: Schema = {
         "cpu": {
           "canBeNull": false,
           "description": "Average CPU usage in percentage over the last 24 hours",
-          "readOnly": false,
+          "fullType": "double",
+          "readOnly": true,
           "required": false,
           "type": "double"
         },
         "disk": {
           "canBeNull": false,
           "description": "Current disk usage in percentage",
-          "readOnly": false,
+          "fullType": "double",
+          "readOnly": true,
           "required": false,
           "type": "double"
         },
         "memory": {
           "canBeNull": false,
           "description": "Average memory usage in percentage over the last 24 hours",
-          "readOnly": false,
+          "fullType": "double",
+          "readOnly": true,
           "required": false,
           "type": "double"
         }
@@ -5139,13 +5514,15 @@ export const schema: Schema = {
       "properties": {
         "timestamp": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
         "value": {
           "canBeNull": true,
-          "readOnly": false,
+          "fullType": "double",
+          "readOnly": true,
           "required": false,
           "type": "double"
         }
@@ -5175,13 +5552,16 @@ export const schema: Schema = {
       "properties": {
         "access": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "A structure describing a backup's access informations",
+          "fullType": "vps.automatedBackup.attached.Infos",
+          "readOnly": true,
           "required": false,
           "type": "vps.automatedBackup.attached.Infos"
         },
         "restorePoint": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "datetime",
+          "readOnly": true,
           "required": false,
           "type": "datetime"
         }
@@ -5195,20 +5575,208 @@ export const schema: Schema = {
         "additionalDisk": {
           "canBeNull": true,
           "description": "Additional Disk details",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "nfs": {
           "canBeNull": true,
           "description": "NFS URL of the backup",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "smb": {
           "canBeNull": true,
           "description": "SMB URL of the backup",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "vps.automatedBackup.detachBackup.post": {
+      "description": "vps.automatedBackup.detachBackup.post",
+      "id": "post",
+      "namespace": "vps.automatedBackup.detachBackup",
+      "properties": {
+        "restorePoint": {
+          "canBeNull": false,
+          "description": "restorePoint fetched in /vps/{serviceName}/automatedBackup/attachedBackup",
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": true,
+          "type": "datetime"
+        }
+      }
+    },
+    "vps.automatedBackup.reschedule.post": {
+      "description": "vps.automatedBackup.reschedule.post",
+      "id": "post",
+      "namespace": "vps.automatedBackup.reschedule",
+      "properties": {
+        "schedule": {
+          "canBeNull": false,
+          "description": "Time (e.g., 15:04:05)",
+          "fullType": "time",
+          "readOnly": false,
+          "required": true,
+          "type": "time"
+        }
+      }
+    },
+    "vps.automatedBackup.restore.post": {
+      "description": "vps.automatedBackup.restore.post",
+      "id": "post",
+      "namespace": "vps.automatedBackup.restore",
+      "properties": {
+        "changePassword": {
+          "canBeNull": false,
+          "description": "Only with restore full on VPS Cloud 2014",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "restorePoint": {
+          "canBeNull": false,
+          "description": "Restore Point fetched in /automatedBackup/restorePoints",
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": true,
+          "type": "datetime"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Available restore types",
+          "fullType": "vps.RestoreTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "vps.RestoreTypeEnum"
+        }
+      }
+    },
+    "vps.backupftp.access.post": {
+      "description": "vps.backupftp.access.post",
+      "id": "post",
+      "namespace": "vps.backupftp.access",
+      "properties": {
+        "cifs": {
+          "canBeNull": false,
+          "description": "Whether to allow the CIFS (SMB) protocol for this ACL",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
+        },
+        "ftp": {
+          "canBeNull": false,
+          "description": "Whether to allow the FTP protocol for this ACL",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "ipBlock": {
+          "canBeNull": false,
+          "description": "IP CIDR notation (e.g., 192.0.2.0/24)",
+          "fullType": "ipBlock",
+          "readOnly": false,
+          "required": true,
+          "type": "ipBlock"
+        },
+        "nfs": {
+          "canBeNull": false,
+          "description": "Whether to allow the NFS protocol for this ACL",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
+        }
+      }
+    },
+    "vps.changeContact.post": {
+      "description": "vps.changeContact.post",
+      "id": "post",
+      "namespace": "vps.changeContact",
+      "properties": {
+        "contactAdmin": {
+          "canBeNull": false,
+          "description": "The contact to set as admin contact",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "contactBilling": {
+          "canBeNull": false,
+          "description": "The contact to set as billing contact",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "contactTech": {
+          "canBeNull": false,
+          "description": "The contact to set as tech contact",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "vps.confirmTermination.post": {
+      "description": "vps.confirmTermination.post",
+      "id": "post",
+      "namespace": "vps.confirmTermination",
+      "properties": {
+        "commentary": {
+          "canBeNull": false,
+          "description": "Commentary about your termination request",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "futureUse": {
+          "canBeNull": false,
+          "description": "All future uses you can provide for a service termination",
+          "fullType": "service.TerminationFutureUseEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "service.TerminationFutureUseEnum"
+        },
+        "reason": {
+          "canBeNull": false,
+          "description": "All reasons you can provide for a service termination",
+          "fullType": "service.TerminationReasonEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "service.TerminationReasonEnum"
+        },
+        "token": {
+          "canBeNull": false,
+          "description": "The termination token sent by email to the admin contact",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "vps.createSnapshot.post": {
+      "description": "vps.createSnapshot.post",
+      "id": "post",
+      "namespace": "vps.createSnapshot",
+      "properties": {
+        "description": {
+          "canBeNull": false,
+          "description": "A textual description for your snapshot",
+          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -5268,7 +5836,7 @@ export const schema: Schema = {
         "uk",
         "us"
       ],
-      "enumType": "coreTypes.CountryEnum",
+      "enumType": "string",
       "id": "GeolocationEnum",
       "namespace": "vps.ip"
     },
@@ -5279,43 +5847,56 @@ export const schema: Schema = {
       "properties": {
         "dns": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Port and state of a service on an IP",
+          "fullType": "vps.ip.ServiceStatusService",
+          "readOnly": true,
           "required": false,
           "type": "vps.ip.ServiceStatusService"
         },
         "http": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Port and state of a service on an IP",
+          "fullType": "vps.ip.ServiceStatusService",
+          "readOnly": true,
           "required": false,
           "type": "vps.ip.ServiceStatusService"
         },
         "https": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Port and state of a service on an IP",
+          "fullType": "vps.ip.ServiceStatusService",
+          "readOnly": true,
           "required": false,
           "type": "vps.ip.ServiceStatusService"
         },
         "ping": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Possible states of a service (ping, port)",
+          "fullType": "vps.ip.ServiceStatusStateEnum",
+          "readOnly": true,
           "required": false,
           "type": "vps.ip.ServiceStatusStateEnum"
         },
         "smtp": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Port and state of a service on an IP",
+          "fullType": "vps.ip.ServiceStatusService",
+          "readOnly": true,
           "required": false,
           "type": "vps.ip.ServiceStatusService"
         },
         "ssh": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Port and state of a service on an IP",
+          "fullType": "vps.ip.ServiceStatusService",
+          "readOnly": true,
           "required": false,
           "type": "vps.ip.ServiceStatusService"
         },
         "tools": {
           "canBeNull": true,
-          "readOnly": false,
+          "fullType": "vps.ip.ServiceStatusStateEnum",
+          "readOnly": true,
           "required": false,
           "type": "vps.ip.ServiceStatusStateEnum"
         }
@@ -5328,13 +5909,16 @@ export const schema: Schema = {
       "properties": {
         "port": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
         "state": {
           "canBeNull": false,
-          "readOnly": false,
+          "description": "Possible states of a service (ping, port)",
+          "fullType": "vps.ip.ServiceStatusStateEnum",
+          "readOnly": true,
           "required": false,
           "type": "vps.ip.ServiceStatusStateEnum"
         }
@@ -5376,29 +5960,6 @@ export const schema: Schema = {
       "id": "DatacenterEnum",
       "namespace": "vps.migration"
     },
-    "vps.migration.Migration": {
-      "description": "Description not available",
-      "id": "Migration",
-      "namespace": "vps.migration",
-      "properties": {
-        "date": {
-          "canBeNull": false,
-          "description": "The planned date of the migration",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        },
-        "id": {
-          "canBeNull": false,
-          "description": "Migration Id",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
     "vps.migration.OptionMapping2016": {
       "description": "Mapping between a VPS 2016 option code and a VPS 2020 option code",
       "id": "OptionMapping2016",
@@ -5407,28 +5968,32 @@ export const schema: Schema = {
         "currentPlan": {
           "canBeNull": false,
           "description": "VPS option current plan code",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "newPlan": {
           "canBeNull": false,
           "description": "New VPS option plan code after migration",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "options": {
           "canBeNull": false,
           "description": "Mapping of VPS options of option from VPS 2016 to VPS 2020",
-          "readOnly": false,
+          "fullType": "vps.migration.OptionOptionMapping2016[]",
+          "readOnly": true,
           "required": false,
           "type": "vps.migration.OptionOptionMapping2016[]"
         },
         "product": {
           "canBeNull": false,
           "description": "VPS option product",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
@@ -5442,21 +6007,24 @@ export const schema: Schema = {
         "currentPlan": {
           "canBeNull": false,
           "description": "VPS option current plan code",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "newPlan": {
           "canBeNull": false,
           "description": "New VPS option plan code after migration",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "product": {
           "canBeNull": false,
           "description": "VPS option product",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
@@ -5483,49 +6051,56 @@ export const schema: Schema = {
         "currentPlan": {
           "canBeNull": false,
           "description": "VPS current plan code",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "datacenter": {
           "canBeNull": false,
-          "description": "Datacenter of the migration",
-          "readOnly": false,
+          "description": "All datacenter of vps migration",
+          "fullType": "vps.migration.DatacenterEnum",
+          "readOnly": true,
           "required": false,
           "type": "vps.migration.DatacenterEnum"
         },
         "date": {
           "canBeNull": true,
           "description": "Migration start date",
-          "readOnly": false,
+          "fullType": "datetime",
+          "readOnly": true,
           "required": false,
           "type": "datetime"
         },
         "newPlan": {
           "canBeNull": false,
           "description": "New VPS plan code after migration",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "options": {
           "canBeNull": false,
           "description": "Mapping of VPS options from VPS 2016 to VPS 2020",
-          "readOnly": false,
+          "fullType": "vps.migration.OptionMapping2016[]",
+          "readOnly": true,
           "required": false,
           "type": "vps.migration.OptionMapping2016[]"
         },
         "product": {
           "canBeNull": false,
           "description": "VPS product",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "status": {
           "canBeNull": false,
-          "description": "Status of the migration task",
-          "readOnly": false,
+          "description": "All status a migration task can be in",
+          "fullType": "vps.migration.StatusEnum",
+          "readOnly": true,
           "required": false,
           "type": "vps.migration.StatusEnum"
         }
@@ -5538,29 +6113,33 @@ export const schema: Schema = {
       "properties": {
         "datacenter": {
           "canBeNull": false,
-          "description": "Datacenter of the migration",
-          "readOnly": false,
+          "description": "All datacenter of vps migration",
+          "fullType": "vps.migration.DatacenterEnum",
+          "readOnly": true,
           "required": false,
           "type": "vps.migration.DatacenterEnum"
         },
         "date": {
           "canBeNull": true,
           "description": "Migration start date",
-          "readOnly": false,
+          "fullType": "datetime",
+          "readOnly": true,
           "required": false,
           "type": "datetime"
         },
         "plans": {
           "canBeNull": false,
           "description": "List of available plans to migrate",
-          "readOnly": false,
+          "fullType": "vps.migration.VPS2018to2020Plan[]",
+          "readOnly": true,
           "required": false,
           "type": "vps.migration.VPS2018to2020Plan[]"
         },
         "status": {
           "canBeNull": false,
-          "description": "Status of the migration task",
-          "readOnly": false,
+          "description": "All status a migration task can be in",
+          "fullType": "vps.migration.StatusEnum",
+          "readOnly": true,
           "required": false,
           "type": "vps.migration.StatusEnum"
         }
@@ -5574,30 +6153,64 @@ export const schema: Schema = {
         "currentPlan": {
           "canBeNull": false,
           "description": "VPS current plan code",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "newPlan": {
           "canBeNull": false,
           "description": "New VPS plan code after migration",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "options": {
           "canBeNull": false,
           "description": "Mapping of VPS options from VPS 2016 to VPS 2020",
-          "readOnly": false,
+          "fullType": "vps.migration.OptionMapping2016[]",
+          "readOnly": true,
           "required": false,
           "type": "vps.migration.OptionMapping2016[]"
         },
         "product": {
           "canBeNull": false,
           "description": "VPS product",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
+        }
+      }
+    },
+    "vps.migration2018.post": {
+      "description": "vps.migration2018.post",
+      "id": "post",
+      "namespace": "vps.migration2018",
+      "properties": {
+        "newPlan": {
+          "canBeNull": false,
+          "description": "Choosen plan for migration",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "vps.openConsoleAccess.post": {
+      "description": "vps.openConsoleAccess.post",
+      "id": "post",
+      "namespace": "vps.openConsoleAccess",
+      "properties": {
+        "protocol": {
+          "canBeNull": false,
+          "description": "All supported VNC protocols by VPS",
+          "fullType": "vps.VncProtocolEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "vps.VncProtocolEnum"
         }
       }
     },
@@ -5692,6 +6305,131 @@ export const schema: Schema = {
         }
       }
     },
+    "vps.rebuild.post": {
+      "description": "vps.rebuild.post",
+      "id": "post",
+      "namespace": "vps.rebuild",
+      "properties": {
+        "doNotSendPassword": {
+          "canBeNull": false,
+          "description": "If asked, the installation password will NOT be sent (only if sshKey defined)",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "imageId": {
+          "canBeNull": false,
+          "description": "Id of the vps.Image fetched in /images list",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "installRTM": {
+          "canBeNull": false,
+          "description": "If asked, RTM will be installed on your VPS",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "publicSshKey": {
+          "canBeNull": false,
+          "description": "Public SSH key to pre-install on your VPS",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "sshKey": {
+          "canBeNull": false,
+          "description": "SSH key name to pre-install on your VPS (name from /me/sshKey)",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "vps.reinstall.post": {
+      "description": "vps.reinstall.post",
+      "id": "post",
+      "namespace": "vps.reinstall",
+      "properties": {
+        "doNotSendPassword": {
+          "canBeNull": false,
+          "description": "If asked, the installation password will NOT be sent (only if sshKey defined)",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "language": {
+          "canBeNull": false,
+          "description": "Distribution language. default : en",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "publicSshKey": {
+          "canBeNull": false,
+          "description": "Public SSH key to pre-install on your VPS",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "softwareId": {
+          "canBeNull": false,
+          "description": "Id of the vps.Software type fetched in /template/{id}/software",
+          "fullType": "long[]",
+          "readOnly": false,
+          "required": false,
+          "type": "long[]"
+        },
+        "sshKey": {
+          "canBeNull": false,
+          "description": "SSH key names to pre-install on your VPS (name from /me/sshKey)",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        },
+        "templateId": {
+          "canBeNull": false,
+          "description": "Id of the vps.Template fetched in /templates list",
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
+        }
+      }
+    },
+    "vps.secondaryDnsDomains.post": {
+      "description": "vps.secondaryDnsDomains.post",
+      "id": "post",
+      "namespace": "vps.secondaryDnsDomains",
+      "properties": {
+        "domain": {
+          "canBeNull": false,
+          "description": "The domain to add",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "ip": {
+          "canBeNull": false,
+          "description": "IPv4 address (e.g., 192.0.2.0)",
+          "fullType": "ipv4",
+          "readOnly": false,
+          "required": false,
+          "type": "ipv4"
+        }
+      }
+    },
     "vps.veeam.ExportTypeEnum": {
       "description": "A structure describing a Veeam backup's export options",
       "enum": [
@@ -5710,14 +6448,16 @@ export const schema: Schema = {
         "nfs": {
           "canBeNull": false,
           "description": "NFS URL of the backup",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "smb": {
           "canBeNull": false,
           "description": "SMB URL of the backup",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
@@ -5788,6 +6528,37 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "StateEnum",
       "namespace": "vps.veeam"
+    },
+    "vps.veeam.restorePoints.restore.post": {
+      "description": "vps.veeam.restorePoints.restore.post",
+      "id": "post",
+      "namespace": "vps.veeam.restorePoints.restore",
+      "properties": {
+        "changePassword": {
+          "canBeNull": false,
+          "description": "(Full only) Change the restored VPS root password when done",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "export": {
+          "canBeNull": false,
+          "description": "A structure describing a Veeam backup's export options",
+          "fullType": "vps.veeam.ExportTypeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "vps.veeam.ExportTypeEnum"
+        },
+        "full": {
+          "canBeNull": false,
+          "description": "Replace your current VPS by the restorePoint",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
+        }
+      }
     }
   },
   "resourcePath": "/vps"

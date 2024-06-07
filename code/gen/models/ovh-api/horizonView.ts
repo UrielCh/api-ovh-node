@@ -13,13 +13,24 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "List available services",
+          "description": "Horizon View as a Service",
           "httpMethod": "GET",
           "iamActions": [
-            "horizonView:apiovh:get"
+            {
+              "name": "horizonView:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
-          "parameters": [],
+          "parameters": [
+            {
+              "dataType": "map[string][]iam.resource.TagFilter",
+              "description": "Filter resources on IAM tags",
+              "name": "iamTags",
+              "paramType": "query",
+              "required": false
+            }
+          ],
           "responseType": "string[]"
         }
       ],
@@ -36,7 +47,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "horizonView:apiovh:get"
+            {
+              "name": "horizonView:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -49,7 +63,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "horizonView.Datacenter"
+          "responseType": "horizonView.DatacenterWithIAM"
         }
       ],
       "path": "/horizonView/{serviceName}"
@@ -65,7 +79,10 @@ export const schema: Schema = {
           "description": "Pool associated with this Datacenter",
           "httpMethod": "GET",
           "iamActions": [
-            "horizonView:apiovh:accessPoint/get"
+            {
+              "name": "horizonView:apiovh:accessPoint/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -88,7 +105,10 @@ export const schema: Schema = {
           "description": "Add new access point to create a new network",
           "httpMethod": "POST",
           "iamActions": [
-            "horizonView:apiovh:accessPoint/create"
+            {
+              "name": "horizonView:apiovh:accessPoint/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -149,7 +169,10 @@ export const schema: Schema = {
           "description": "Delete this access point ",
           "httpMethod": "DELETE",
           "iamActions": [
-            "horizonView:apiovh:accessPoint/delete"
+            {
+              "name": "horizonView:apiovh:accessPoint/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -180,7 +203,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "horizonView:apiovh:accessPoint/get"
+            {
+              "name": "horizonView:apiovh:accessPoint/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -217,7 +243,10 @@ export const schema: Schema = {
           "description": "Manage your session Timeout on Unified Access Gateway",
           "httpMethod": "POST",
           "iamActions": [
-            "horizonView:apiovh:accessPoint/changeSessionTimeout"
+            {
+              "name": "horizonView:apiovh:accessPoint/changeSessionTimeout",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -270,7 +299,10 @@ export const schema: Schema = {
           "description": "You can reach from the Desktops your private network",
           "httpMethod": "GET",
           "iamActions": [
-            "horizonView:apiovh:accessPoint/customerNetwork/get"
+            {
+              "name": "horizonView:apiovh:accessPoint/customerNetwork/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -301,7 +333,10 @@ export const schema: Schema = {
           "description": "Add a new network ",
           "httpMethod": "POST",
           "iamActions": [
-            "horizonView:apiovh:accessPoint/customerNetwork/create"
+            {
+              "name": "horizonView:apiovh:accessPoint/customerNetwork/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -346,7 +381,10 @@ export const schema: Schema = {
           "description": "Delete this Customer Network",
           "httpMethod": "DELETE",
           "iamActions": [
-            "horizonView:apiovh:accessPoint/customerNetwork/delete"
+            {
+              "name": "horizonView:apiovh:accessPoint/customerNetwork/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -385,7 +423,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "horizonView:apiovh:accessPoint/customerNetwork/get"
+            {
+              "name": "horizonView:apiovh:accessPoint/customerNetwork/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -430,7 +471,10 @@ export const schema: Schema = {
           "description": "Disable two factor authentication on your pool",
           "httpMethod": "POST",
           "iamActions": [
-            "horizonView:apiovh:accessPoint/disableTwoFA/create"
+            {
+              "name": "horizonView:apiovh:accessPoint/disableTwoFA/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -467,7 +511,10 @@ export const schema: Schema = {
           "description": "Disable windows Username option on Unified Access Gateway",
           "httpMethod": "POST",
           "iamActions": [
-            "horizonView:apiovh:accessPoint/disableWindowsUsernameOption"
+            {
+              "name": "horizonView:apiovh:accessPoint/disableWindowsUsernameOption",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -512,7 +559,10 @@ export const schema: Schema = {
           "description": "Enable two factor authentication on your pool",
           "httpMethod": "POST",
           "iamActions": [
-            "horizonView:apiovh:accessPoint/enableTwoFA"
+            {
+              "name": "horizonView:apiovh:accessPoint/enableTwoFA",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -573,7 +623,10 @@ export const schema: Schema = {
           "description": "Enable windows Username option on Unified Access Gateway",
           "httpMethod": "POST",
           "iamActions": [
-            "horizonView:apiovh:accessPoint/enableWindowsUsernameOption"
+            {
+              "name": "horizonView:apiovh:accessPoint/enableWindowsUsernameOption",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -608,17 +661,20 @@ export const schema: Schema = {
       "path": "/horizonView/{serviceName}/accessPoint/{accessPointId}/enableWindowsUsernameOption"
     },
     {
-      "description": "Confirm termination of your service",
+      "description": "Confirm service termination",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Confirm termination of your service",
+          "description": "Confirm service termination",
           "httpMethod": "POST",
           "iamActions": [
-            "horizonView:apiovh:confirmTermination"
+            {
+              "name": "horizonView:apiovh:confirmTermination",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -648,7 +704,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The termination token sent by mail to the admin contact",
+              "description": "The termination token sent by email to the admin contact",
               "fullType": "string",
               "name": "token",
               "paramType": "body",
@@ -679,7 +735,10 @@ export const schema: Schema = {
           "description": "You can reach from the Desktops your private network",
           "httpMethod": "GET",
           "iamActions": [
-            "horizonView:apiovh:customerNetwork/get"
+            {
+              "name": "horizonView:apiovh:customerNetwork/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -702,7 +761,10 @@ export const schema: Schema = {
           "description": "Add a new network ",
           "httpMethod": "POST",
           "iamActions": [
-            "horizonView:apiovh:customerNetwork/create"
+            {
+              "name": "horizonView:apiovh:customerNetwork/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -747,7 +809,10 @@ export const schema: Schema = {
           "description": "Delete this Customer Network",
           "httpMethod": "DELETE",
           "iamActions": [
-            "horizonView:apiovh:customerNetwork/delete"
+            {
+              "name": "horizonView:apiovh:customerNetwork/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -778,7 +843,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "horizonView:apiovh:customerNetwork/get"
+            {
+              "name": "horizonView:apiovh:customerNetwork/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -815,7 +883,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "horizonView:apiovh:dedicatedHorizon/get"
+            {
+              "name": "horizonView:apiovh:dedicatedHorizon/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -844,7 +915,10 @@ export const schema: Schema = {
           "description": "Account to access to your pool",
           "httpMethod": "GET",
           "iamActions": [
-            "horizonView:apiovh:dedicatedHorizon/customerUser/get"
+            {
+              "name": "horizonView:apiovh:dedicatedHorizon/customerUser/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -867,7 +941,10 @@ export const schema: Schema = {
           "description": "Create a new customer user ",
           "httpMethod": "POST",
           "iamActions": [
-            "horizonView:apiovh:dedicatedHorizon/customerUser/create"
+            {
+              "name": "horizonView:apiovh:dedicatedHorizon/customerUser/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -920,7 +997,10 @@ export const schema: Schema = {
           "description": "Delete this Customer User",
           "httpMethod": "DELETE",
           "iamActions": [
-            "horizonView:apiovh:dedicatedHorizon/customerUser/delete"
+            {
+              "name": "horizonView:apiovh:dedicatedHorizon/customerUser/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -951,7 +1031,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "horizonView:apiovh:dedicatedHorizon/customerUser/get"
+            {
+              "name": "horizonView:apiovh:dedicatedHorizon/customerUser/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -988,7 +1071,10 @@ export const schema: Schema = {
           "description": "Change Horizon View Customer  user password",
           "httpMethod": "POST",
           "iamActions": [
-            "horizonView:apiovh:dedicatedHorizon/customerUser/changePassword"
+            {
+              "name": "horizonView:apiovh:dedicatedHorizon/customerUser/changePassword",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1033,7 +1119,10 @@ export const schema: Schema = {
           "description": "Disable the View Storage Accelerator option on VCenter",
           "httpMethod": "POST",
           "iamActions": [
-            "horizonView:apiovh:dedicatedHorizon/disableStorageAccelerator"
+            {
+              "name": "horizonView:apiovh:dedicatedHorizon/disableStorageAccelerator",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1062,7 +1151,10 @@ export const schema: Schema = {
           "description": "Enable the View Storage Accelerator option on VCenter",
           "httpMethod": "POST",
           "iamActions": [
-            "horizonView:apiovh:dedicatedHorizon/enableStorageAccelerator"
+            {
+              "name": "horizonView:apiovh:dedicatedHorizon/enableStorageAccelerator",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1091,7 +1183,10 @@ export const schema: Schema = {
           "description": "Tasks associated with this Dedicated Horizon",
           "httpMethod": "GET",
           "iamActions": [
-            "horizonView:apiovh:dedicatedHorizon/task/get"
+            {
+              "name": "horizonView:apiovh:dedicatedHorizon/task/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1128,7 +1223,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "horizonView:apiovh:dedicatedHorizon/task/get"
+            {
+              "name": "horizonView:apiovh:dedicatedHorizon/task/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1165,7 +1263,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "horizonView:apiovh:dedicatedHorizon/user/get"
+            {
+              "name": "horizonView:apiovh:dedicatedHorizon/user/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1194,7 +1295,10 @@ export const schema: Schema = {
           "description": "Change Horizon View user password",
           "httpMethod": "POST",
           "iamActions": [
-            "horizonView:apiovh:dedicatedHorizon/user/changePassword"
+            {
+              "name": "horizonView:apiovh:dedicatedHorizon/user/changePassword",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1231,7 +1335,10 @@ export const schema: Schema = {
           "description": "Change horizon view user properties",
           "httpMethod": "POST",
           "iamActions": [
-            "horizonView:apiovh:dedicatedHorizon/user/changeProperties"
+            {
+              "name": "horizonView:apiovh:dedicatedHorizon/user/changeProperties",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1268,7 +1375,10 @@ export const schema: Schema = {
           "description": "List all Active Directories linked to your CDI Active Directory",
           "httpMethod": "GET",
           "iamActions": [
-            "horizonView:apiovh:domainTrust/get"
+            {
+              "name": "horizonView:apiovh:domainTrust/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1291,7 +1401,10 @@ export const schema: Schema = {
           "description": "Link your Active Directory to your CDI Active Directory",
           "httpMethod": "POST",
           "iamActions": [
-            "horizonView:apiovh:domainTrust/create"
+            {
+              "name": "horizonView:apiovh:domainTrust/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1352,7 +1465,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "horizonView:apiovh:domainTrust/get"
+            {
+              "name": "horizonView:apiovh:domainTrust/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1389,7 +1505,10 @@ export const schema: Schema = {
           "description": "Add a child domain for this domain.",
           "httpMethod": "POST",
           "iamActions": [
-            "horizonView:apiovh:domainTrust/addChildDomain"
+            {
+              "name": "horizonView:apiovh:domainTrust/addChildDomain",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1458,7 +1577,10 @@ export const schema: Schema = {
           "description": "Add a Domain Controller for this domain.",
           "httpMethod": "POST",
           "iamActions": [
-            "horizonView:apiovh:domainTrust/addDomainController"
+            {
+              "name": "horizonView:apiovh:domainTrust/addDomainController",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1511,7 +1633,10 @@ export const schema: Schema = {
           "description": "Add a domain user to add your desktop in your Active Directory",
           "httpMethod": "POST",
           "iamActions": [
-            "horizonView:apiovh:domainTrust/addDomainUserOnComposer"
+            {
+              "name": "horizonView:apiovh:domainTrust/addDomainUserOnComposer",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1572,7 +1697,10 @@ export const schema: Schema = {
           "description": "Change Horizon View user password",
           "httpMethod": "POST",
           "iamActions": [
-            "horizonView:apiovh:domainTrust/createTrust"
+            {
+              "name": "horizonView:apiovh:domainTrust/createTrust",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1622,10 +1750,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get service information",
           "httpMethod": "GET",
           "iamActions": [
-            "horizonView:apiovh:serviceInfos/get"
+            {
+              "name": "horizonView:apiovh:serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1645,10 +1776,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Update service information",
           "httpMethod": "PUT",
           "iamActions": [
-            "horizonView:apiovh:serviceInfos/edit"
+            {
+              "name": "horizonView:apiovh:serviceInfos/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1674,18 +1808,22 @@ export const schema: Schema = {
       "path": "/horizonView/{serviceName}/serviceInfos"
     },
     {
-      "description": "Terminate your service",
+      "description": "Ask for the termination of your service. Admin contact of this service will receive a termination token in order to confirm its termination with /confirmTermination endpoint.",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Terminate your service",
+          "description": "Ask for the termination of your service",
           "httpMethod": "POST",
           "iamActions": [
-            "horizonView:apiovh:terminate"
+            {
+              "name": "horizonView:apiovh:terminate",
+              "required": true
+            }
           ],
+          "longDescription": "Ask for the termination of your service. Admin contact of this service will receive a termination token by email in order to confirm its termination with /confirmTermination endpoint.",
           "noAuthentication": false,
           "parameters": [
             {
@@ -1876,6 +2014,100 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "long"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the datacenter",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "serviceName": {
+          "canBeNull": false,
+          "description": "Domain of your Horizon",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "horizonView.DatacenterWithIAM": {
+      "description": "Cloud Desktop Infrastructure Datacenter",
+      "id": "Datacenter",
+      "namespace": "horizonView",
+      "properties": {
+        "activeDirectoryIP": {
+          "canBeNull": false,
+          "description": "IP of the VDI Active Directory",
+          "fullType": "ip",
+          "readOnly": true,
+          "required": false,
+          "type": "ip"
+        },
+        "adminDomain": {
+          "canBeNull": false,
+          "description": "Domain of the admin infrastructure",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "adminNetworkNextHop": {
+          "canBeNull": false,
+          "description": "Next hop to contact the private admin network",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "adminPrivateNetwork": {
+          "canBeNull": false,
+          "description": "Private network of the admin infrastructure",
+          "fullType": "ipBlock",
+          "readOnly": true,
+          "required": false,
+          "type": "ipBlock"
+        },
+        "customerIntercoIP": {
+          "canBeNull": false,
+          "description": "Customer interco IP allows you to communicate between your private infrastructure and your CDI infrastructure throw the vrack.",
+          "fullType": "ip",
+          "readOnly": true,
+          "required": false,
+          "type": "ip"
+        },
+        "customerIntercoMask": {
+          "canBeNull": false,
+          "description": "Customer interco netmask allows you to communicate between your private infrastructure and your CDI infrastructure throw the vrack.",
+          "fullType": "ip",
+          "readOnly": true,
+          "required": false,
+          "type": "ip"
+        },
+        "customerIntercoVlanId": {
+          "canBeNull": false,
+          "description": "Customer interco vlan allows you to communicate between your private infrastructure and your CDI infrastructure throw the vrack.",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "datacenterId": {
+          "canBeNull": false,
+          "description": "Datacenter ids",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "iam": {
+          "canBeNull": true,
+          "description": "IAM resource metadata",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.ResourceMetadata"
         },
         "name": {
           "canBeNull": false,
@@ -2216,6 +2448,77 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "Zone",
       "namespace": "horizonView"
+    },
+    "iam.ResourceMetadata": {
+      "description": "IAM resource metadata embedded in services models",
+      "id": "ResourceMetadata",
+      "namespace": "iam",
+      "properties": {
+        "displayName": {
+          "canBeNull": true,
+          "description": "Resource display name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Unique identifier of the resource",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "tags": {
+          "canBeNull": true,
+          "description": "Resource tags. Tags that were internally computed are prefixed with ovh:",
+          "fullType": "map[string]string",
+          "readOnly": true,
+          "required": false,
+          "type": "map[string]string"
+        },
+        "urn": {
+          "canBeNull": false,
+          "description": "Unique resource name used in policies",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter": {
+      "description": "Resource tag filter",
+      "id": "TagFilter",
+      "namespace": "iam.resource",
+      "properties": {
+        "operator": {
+          "canBeNull": true,
+          "description": "Operator to use in order to filter on the value (defaults to 'EQ')",
+          "fullType": "iam.resource.TagFilter.OperatorEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.resource.TagFilter.OperatorEnum"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value to use in order to filter tags",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter.OperatorEnum": {
+      "description": "Operator that can be used in order to filter resources tags",
+      "enum": [
+        "EQ"
+      ],
+      "enumType": "string",
+      "id": "OperatorEnum",
+      "namespace": "iam.resource.TagFilter"
     },
     "service.RenewType": {
       "description": "Map a possible renew for a specific service",

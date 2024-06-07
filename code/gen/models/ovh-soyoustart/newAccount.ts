@@ -186,6 +186,22 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "nichandle.PhoneTypeEnum",
+              "description": "",
+              "fullType": "nichandle.PhoneTypeEnum",
+              "name": "phoneType",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "purposeOfPurchase",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "nichandle.GenderEnum",
               "description": "",
               "fullType": "nichandle.GenderEnum",
@@ -608,6 +624,22 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "nichandle.PhoneTypeEnum",
+              "description": "",
+              "fullType": "nichandle.PhoneTypeEnum",
+              "name": "phoneType",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "purposeOfPurchase",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "nichandle.GenderEnum",
               "description": "",
               "fullType": "nichandle.GenderEnum",
@@ -950,6 +982,20 @@ export const schema: Schema = {
           "required": false,
           "type": "boolean"
         },
+        "maxLength": {
+          "canBeNull": true,
+          "description": "Maximum length of the field",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "minLength": {
+          "canBeNull": true,
+          "description": "Minimum length of the field",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
         "prefix": {
           "canBeNull": true,
           "description": "Prefix of the field value",
@@ -1092,6 +1138,18 @@ export const schema: Schema = {
           "type": "nichandle.CreationRule"
         },
         "phoneCountry": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "nichandle.CreationRule"
+        },
+        "phoneType": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "nichandle.CreationRule"
+        },
+        "purposeOfPurchase": {
           "canBeNull": false,
           "readOnly": false,
           "required": false,
@@ -1245,6 +1303,16 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "OvhSubsidiaryEnum",
+      "namespace": "nichandle"
+    },
+    "nichandle.PhoneTypeEnum": {
+      "description": "Phone Type a nichandle can have",
+      "enum": [
+        "landline",
+        "mobile"
+      ],
+      "enumType": "string",
+      "id": "PhoneTypeEnum",
       "namespace": "nichandle"
     },
     "order.Contract": {

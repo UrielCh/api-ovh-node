@@ -13,13 +13,24 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "List available services",
+          "description": "Your telephony billing accounts",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:get"
+            {
+              "name": "voip:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
-          "parameters": [],
+          "parameters": [
+            {
+              "dataType": "map[string][]iam.resource.TagFilter",
+              "description": "Filter resources on IAM tags",
+              "name": "iamTags",
+              "paramType": "query",
+              "required": false
+            }
+          ],
           "responseType": "string[]"
         }
       ],
@@ -36,7 +47,10 @@ export const schema: Schema = {
           "description": "Ask for a billing account termination.",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:delete"
+            {
+              "name": "voip:apiovh:delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -75,7 +89,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:get"
+            {
+              "name": "voip:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -88,7 +105,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.BillingAccount"
+          "responseType": "telephony.BillingAccountWithIAM"
         },
         {
           "apiStatus": {
@@ -98,7 +115,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:put"
+            {
+              "name": "voip:apiovh:put",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -134,7 +154,10 @@ export const schema: Schema = {
           "description": "Abbreviated numbers for the billing account",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:abbreviatedNumber/get"
+            {
+              "name": "voip:apiovh:abbreviatedNumber/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -157,7 +180,10 @@ export const schema: Schema = {
           "description": "Create a new abbreviated number for the billing account",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:abbreviatedNumber/create"
+            {
+              "name": "voip:apiovh:abbreviatedNumber/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -218,7 +244,10 @@ export const schema: Schema = {
           "description": "Delete the given abbreviated number",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:abbreviatedNumber/delete"
+            {
+              "name": "voip:apiovh:abbreviatedNumber/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -249,7 +278,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:abbreviatedNumber/get"
+            {
+              "name": "voip:apiovh:abbreviatedNumber/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -280,7 +312,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:abbreviatedNumber/edit"
+            {
+              "name": "voip:apiovh:abbreviatedNumber/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -324,7 +359,10 @@ export const schema: Schema = {
           "description": "Get the allowed creditThreshold for this billing account",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:allowedCreditThreshold/get"
+            {
+              "name": "voip:apiovh:allowedCreditThreshold/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -353,7 +391,10 @@ export const schema: Schema = {
           "description": "Give all amounts availables for your billing account",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:amountSecurityDeposit/get"
+            {
+              "name": "voip:apiovh:amountSecurityDeposit/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -382,7 +423,10 @@ export const schema: Schema = {
           "description": "Current billing account site (billing account features are overwritten by the site)",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:billingAccountSite/get"
+            {
+              "name": "voip:apiovh:billingAccountSite/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -405,7 +449,10 @@ export const schema: Schema = {
           "description": "Used to overwrite current billing account feature by the billing account site",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:billingAccountSite/create"
+            {
+              "name": "voip:apiovh:billingAccountSite/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -442,7 +489,10 @@ export const schema: Schema = {
           "description": "Cancel the billing account termination",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:cancelTermination"
+            {
+              "name": "voip:apiovh:cancelTermination",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -471,7 +521,10 @@ export const schema: Schema = {
           "description": "Check if security deposit transfer is possible between two billing accounts",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:canTransferSecurityDeposit/create"
+            {
+              "name": "voip:apiovh:canTransferSecurityDeposit/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -508,7 +561,10 @@ export const schema: Schema = {
           "description": "Carrier SIP trunks associated with this billing account",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:carrierSip/get"
+            {
+              "name": "voip:apiovh:carrierSip/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -537,7 +593,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:carrierSip/get"
+            {
+              "name": "voip:apiovh:carrierSip/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -574,7 +633,10 @@ export const schema: Schema = {
           "description": "Get the Call Detail Records of your Carrier SIP service",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:carrierSip/cdrs/get"
+            {
+              "name": "voip:apiovh:carrierSip/cdrs/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -619,7 +681,10 @@ export const schema: Schema = {
           "description": "Get details about the carrier sip cluster of your stack",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:carrierSip/clusterDetails/get"
+            {
+              "name": "voip:apiovh:carrierSip/clusterDetails/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -656,7 +721,10 @@ export const schema: Schema = {
           "description": "List of your remote sip endpoints (ips, ports, protocol) of your carrier sip trunk service",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:carrierSip/endpoints/get"
+            {
+              "name": "voip:apiovh:carrierSip/endpoints/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -693,7 +761,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:carrierSip/endpoints/get"
+            {
+              "name": "voip:apiovh:carrierSip/endpoints/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -738,7 +809,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:carrierSip/settings/get"
+            {
+              "name": "voip:apiovh:carrierSip/settings/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -769,7 +843,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:carrierSip/settings/edit"
+            {
+              "name": "voip:apiovh:carrierSip/settings/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -803,6 +880,255 @@ export const schema: Schema = {
       "path": "/telephony/{billingAccount}/carrierSip/{serviceName}/settings"
     },
     {
+      "description": "List the telephony.CarrierSipVnoMandate objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List of your VNO mandates",
+          "httpMethod": "GET",
+          "iamActions": [
+            {
+              "name": "voip:apiovh:carrierSip/vno/mandates/get",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/telephony/{billingAccount}/carrierSip/{serviceName}/vno"
+    },
+    {
+      "description": "Carrier SIP VNO mandate",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "iamActions": [
+            {
+              "name": "voip:apiovh:carrierSip/vno/mandates/get",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The reference written on your VNO contract.",
+              "fullType": "string",
+              "name": "contractReference",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "telephony.CarrierSipVnoMandate"
+        }
+      ],
+      "path": "/telephony/{billingAccount}/carrierSip/{serviceName}/vno/{contractReference}"
+    },
+    {
+      "description": "List the telephony.CarrierSipVnoRange objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Number ranges associated with you mandate.",
+          "httpMethod": "GET",
+          "iamActions": [
+            {
+              "name": "voip:apiovh:carrierSip/vno/ranges/get",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The reference written on your VNO contract.",
+              "fullType": "string",
+              "name": "contractReference",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/telephony/{billingAccount}/carrierSip/{serviceName}/vno/{contractReference}/ranges"
+    },
+    {
+      "description": "Carrier SIP VNO range",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "iamActions": [
+            {
+              "name": "voip:apiovh:carrierSip/vno/ranges/get",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The reference written on your VNO contract.",
+              "fullType": "string",
+              "name": "contractReference",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The phone range prefix.",
+              "fullType": "string",
+              "name": "prefix",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "telephony.CarrierSipVnoRange"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "iamActions": [
+            {
+              "name": "voip:apiovh:carrierSip/vno/ranges/edit",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "telephony.CarrierSipVnoRange",
+              "description": "New object properties",
+              "fullType": "telephony.CarrierSipVnoRange",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The reference written on your VNO contract.",
+              "fullType": "string",
+              "name": "contractReference",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The phone range prefix.",
+              "fullType": "string",
+              "name": "prefix",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/telephony/{billingAccount}/carrierSip/{serviceName}/vno/{contractReference}/ranges/{prefix}"
+    },
+    {
       "description": "Change the contacts of this service",
       "operations": [
         {
@@ -813,7 +1139,10 @@ export const schema: Schema = {
           "description": "Launch a contact change procedure",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:changeContact"
+            {
+              "name": "voip:apiovh:changeContact",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -866,7 +1195,10 @@ export const schema: Schema = {
           "description": "Conferences associated with this billing account",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:conference/get"
+            {
+              "name": "voip:apiovh:conference/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -895,7 +1227,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:conference/get"
+            {
+              "name": "voip:apiovh:conference/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -932,7 +1267,10 @@ export const schema: Schema = {
           "description": "Change the sound played at the beginning of the conference",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:conference/announceUpload"
+            {
+              "name": "voip:apiovh:conference/announceUpload",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -977,7 +1315,10 @@ export const schema: Schema = {
           "description": "List your past conferences for this number",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:conference/histories/get"
+            {
+              "name": "voip:apiovh:conference/histories/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1030,7 +1371,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:conference/histories/get"
+            {
+              "name": "voip:apiovh:conference/histories/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1075,7 +1419,10 @@ export const schema: Schema = {
           "description": "Get realtime conference informations",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:conference/informations/get"
+            {
+              "name": "voip:apiovh:conference/informations/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1112,7 +1459,10 @@ export const schema: Schema = {
           "description": "Lock the conference room",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:conference/lock"
+            {
+              "name": "voip:apiovh:conference/lock",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1149,7 +1499,10 @@ export const schema: Schema = {
           "description": "Current participants of the associate conference",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:conference/participants/get"
+            {
+              "name": "voip:apiovh:conference/participants/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1186,7 +1539,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:conference/participants/get"
+            {
+              "name": "voip:apiovh:conference/participants/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1231,7 +1587,10 @@ export const schema: Schema = {
           "description": "Make a participant deaf in your conference room",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:conference/participants/deaf"
+            {
+              "name": "voip:apiovh:conference/participants/deaf",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1276,7 +1635,10 @@ export const schema: Schema = {
           "description": "Change a participant level of audio transmission",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:conference/participants/energy/create"
+            {
+              "name": "voip:apiovh:conference/participants/energy/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1329,7 +1691,10 @@ export const schema: Schema = {
           "description": "Eject a participant from your conference room",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:conference/participants/kick"
+            {
+              "name": "voip:apiovh:conference/participants/kick",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1374,7 +1739,10 @@ export const schema: Schema = {
           "description": "Mute a participant in your conference room",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:conference/participants/mute"
+            {
+              "name": "voip:apiovh:conference/participants/mute",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1419,7 +1787,10 @@ export const schema: Schema = {
           "description": "Make a participant undeaf your conference room",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:conference/participants/undeaf"
+            {
+              "name": "voip:apiovh:conference/participants/undeaf",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1464,7 +1835,10 @@ export const schema: Schema = {
           "description": "Unmute a participant in your conference room",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:conference/participants/unmute"
+            {
+              "name": "voip:apiovh:conference/participants/unmute",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1509,7 +1883,10 @@ export const schema: Schema = {
           "description": "List your conferences rooms for this number",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:conference/rooms/get"
+            {
+              "name": "voip:apiovh:conference/rooms/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1540,7 +1917,10 @@ export const schema: Schema = {
           "description": "Create a new conference room on your conference service",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:conference/rooms/create"
+            {
+              "name": "voip:apiovh:conference/rooms/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1585,7 +1965,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:conference/rooms/get"
+            {
+              "name": "voip:apiovh:conference/rooms/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1624,7 +2007,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:conference/rooms/edit"
+            {
+              "name": "voip:apiovh:conference/rooms/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1676,7 +2062,10 @@ export const schema: Schema = {
           "description": "List your past conferences for this room",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:conference/rooms/histories/get"
+            {
+              "name": "voip:apiovh:conference/rooms/histories/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1737,7 +2126,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:conference/rooms/histories/get"
+            {
+              "name": "voip:apiovh:conference/rooms/histories/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1790,7 +2182,10 @@ export const schema: Schema = {
           "description": "Lock the conference room",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:conference/rooms/lock"
+            {
+              "name": "voip:apiovh:conference/rooms/lock",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1835,7 +2230,10 @@ export const schema: Schema = {
           "description": "Current participants of the conference room",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:conference/rooms/participants/get"
+            {
+              "name": "voip:apiovh:conference/rooms/participants/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1880,7 +2278,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:conference/rooms/participants/get"
+            {
+              "name": "voip:apiovh:conference/rooms/participants/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1933,7 +2334,10 @@ export const schema: Schema = {
           "description": "Make a participant deaf in your conference room",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:conference/rooms/participants/deaf"
+            {
+              "name": "voip:apiovh:conference/rooms/participants/deaf",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1986,7 +2390,10 @@ export const schema: Schema = {
           "description": "Change a participant level of audio transmission",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:conference/rooms/participants/energy/create"
+            {
+              "name": "voip:apiovh:conference/rooms/participants/energy/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2047,7 +2454,10 @@ export const schema: Schema = {
           "description": "Eject a participant from your conference room",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:conference/rooms/participants/kick"
+            {
+              "name": "voip:apiovh:conference/rooms/participants/kick",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2100,7 +2510,10 @@ export const schema: Schema = {
           "description": "Mute a participant in your conference room",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:conference/rooms/participants/mute"
+            {
+              "name": "voip:apiovh:conference/rooms/participants/mute",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2153,7 +2566,10 @@ export const schema: Schema = {
           "description": "Make a participant undeaf your conference room",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:conference/rooms/participants/undeaf"
+            {
+              "name": "voip:apiovh:conference/rooms/participants/undeaf",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2206,7 +2622,10 @@ export const schema: Schema = {
           "description": "Unmute a participant in your conference room",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:conference/rooms/participants/unmute"
+            {
+              "name": "voip:apiovh:conference/rooms/participants/unmute",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2259,7 +2678,10 @@ export const schema: Schema = {
           "description": "Unlock the conference room",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:conference/rooms/unlock"
+            {
+              "name": "voip:apiovh:conference/rooms/unlock",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2304,7 +2726,10 @@ export const schema: Schema = {
           "description": "List your conference room  web access",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:conference/rooms/webAccess/get"
+            {
+              "name": "voip:apiovh:conference/rooms/webAccess/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2343,7 +2768,10 @@ export const schema: Schema = {
           "description": "Add a public web access to your conference",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:conference/rooms/webAccess/create"
+            {
+              "name": "voip:apiovh:conference/rooms/webAccess/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2396,7 +2824,10 @@ export const schema: Schema = {
           "description": "Delete a public web access to your conference",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:conference/rooms/webAccess/delete"
+            {
+              "name": "voip:apiovh:conference/rooms/webAccess/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2443,7 +2874,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:conference/rooms/webAccess/get"
+            {
+              "name": "voip:apiovh:conference/rooms/webAccess/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2496,7 +2930,10 @@ export const schema: Schema = {
           "description": "Get realtime statistics about all rooms of your conference number",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:conference/roomsStats/get"
+            {
+              "name": "voip:apiovh:conference/roomsStats/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2533,7 +2970,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:conference/settings/get"
+            {
+              "name": "voip:apiovh:conference/settings/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2564,7 +3004,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:conference/settings/edit"
+            {
+              "name": "voip:apiovh:conference/settings/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2608,7 +3051,10 @@ export const schema: Schema = {
           "description": "Unlock the conference room",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:conference/unlock"
+            {
+              "name": "voip:apiovh:conference/unlock",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2645,7 +3091,10 @@ export const schema: Schema = {
           "description": "List your conference web access",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:conference/webAccess/get"
+            {
+              "name": "voip:apiovh:conference/webAccess/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2676,7 +3125,10 @@ export const schema: Schema = {
           "description": "Add a public web access to your conference",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:conference/webAccess/create"
+            {
+              "name": "voip:apiovh:conference/webAccess/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2721,7 +3173,10 @@ export const schema: Schema = {
           "description": "Delete a public web access to your conference",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:conference/webAccess/delete"
+            {
+              "name": "voip:apiovh:conference/webAccess/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2760,7 +3215,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:conference/webAccess/get"
+            {
+              "name": "voip:apiovh:conference/webAccess/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2805,7 +3263,10 @@ export const schema: Schema = {
           "description": "DDIs (direct dial-in) associated with this billing account",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:ddi/get"
+            {
+              "name": "voip:apiovh:ddi/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2834,7 +3295,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:ddi/get"
+            {
+              "name": "voip:apiovh:ddi/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2865,7 +3329,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:ddi/edit"
+            {
+              "name": "voip:apiovh:ddi/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2909,7 +3376,10 @@ export const schema: Schema = {
           "description": "Change the destination of the DDI",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:ddi/changeDestination"
+            {
+              "name": "voip:apiovh:ddi/changeDestination",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2954,7 +3424,10 @@ export const schema: Schema = {
           "description": "OVH easy calls queues associated with this billing account",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:easyHunting/get"
+            {
+              "name": "voip:apiovh:easyHunting/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2983,7 +3456,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:easyHunting/get"
+            {
+              "name": "voip:apiovh:easyHunting/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3014,7 +3490,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:easyHunting/edit"
+            {
+              "name": "voip:apiovh:easyHunting/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3058,7 +3537,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/get"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3089,7 +3571,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/edit"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3133,7 +3618,10 @@ export const schema: Schema = {
           "description": "Calls agents",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/agent/get"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/agent/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3164,7 +3652,10 @@ export const schema: Schema = {
           "description": "Create a new agent",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/agent/create"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/agent/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3249,7 +3740,10 @@ export const schema: Schema = {
           "description": "Delete the given agent",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/agent/delete"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/agent/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3288,7 +3782,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/agent/get"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/agent/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3327,7 +3824,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/agent/edit"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/agent/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3379,7 +3879,10 @@ export const schema: Schema = {
           "description": "Delete the given web access",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/agent/bannerAccess/delete"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/agent/bannerAccess/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3418,7 +3921,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/agent/bannerAccess/get"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/agent/bannerAccess/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3457,7 +3963,10 @@ export const schema: Schema = {
           "description": "Create a new web access for this ressource",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/agent/bannerAccess/create"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/agent/bannerAccess/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3502,7 +4011,10 @@ export const schema: Schema = {
           "description": "Current calls of the callcenter agent",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/agent/calls/get"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/agent/calls/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3547,7 +4059,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/agent/calls/get"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/agent/calls/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3600,7 +4115,10 @@ export const schema: Schema = {
           "description": "Eavesdrop on a call",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/agent/calls/eavesdrop/create"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/agent/calls/eavesdrop/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3661,7 +4179,10 @@ export const schema: Schema = {
           "description": "Hangup a call",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/agent/calls/hangup"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/agent/calls/hangup",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3714,7 +4235,10 @@ export const schema: Schema = {
           "description": "Toogle hold on call",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/agent/calls/hold"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/agent/calls/hold",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3767,7 +4291,10 @@ export const schema: Schema = {
           "description": "Intercept a non answered call",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/agent/calls/intercept"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/agent/calls/intercept",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3828,7 +4355,10 @@ export const schema: Schema = {
           "description": "Transfer an answered call",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/agent/calls/transfer"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/agent/calls/transfer",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3889,7 +4419,10 @@ export const schema: Schema = {
           "description": "Whisper on a call",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/agent/calls/whisper"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/agent/calls/whisper",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3958,7 +4491,10 @@ export const schema: Schema = {
           "description": "Delete the given token",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/agent/eventToken/delete"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/agent/eventToken/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3997,7 +4533,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/agent/eventToken/get"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/agent/eventToken/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4036,7 +4575,10 @@ export const schema: Schema = {
           "description": "Create a new token",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/agent/eventToken/create"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/agent/eventToken/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4089,7 +4631,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/agent/liveStatus/get"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/agent/liveStatus/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4134,7 +4679,10 @@ export const schema: Schema = {
           "description": "Agent assigned to the queues",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/agent/queue/get"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/agent/queue/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4173,7 +4721,10 @@ export const schema: Schema = {
           "description": "Create a new skill for an agent (it adds the agent in a queue)",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/agent/queue/create"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/agent/queue/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4234,7 +4785,10 @@ export const schema: Schema = {
           "description": "Delete the given skill",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/agent/queue/delete"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/agent/queue/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4281,7 +4835,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/agent/queue/get"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/agent/queue/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4328,7 +4885,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/agent/queue/edit"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/agent/queue/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4388,7 +4948,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/agent/queue/liveStatus/get"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/agent/queue/liveStatus/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4441,7 +5004,10 @@ export const schema: Schema = {
           "description": "Custom statuses of your agents",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/customStatus/get"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/customStatus/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4472,7 +5038,10 @@ export const schema: Schema = {
           "description": "Create a new custom status",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/customStatus/create"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/customStatus/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4533,7 +5102,10 @@ export const schema: Schema = {
           "description": "Delete the given custom status",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/customStatus/delete"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/customStatus/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4572,7 +5144,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/customStatus/get"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/customStatus/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4617,7 +5192,10 @@ export const schema: Schema = {
           "description": "Delete the given token",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/eventToken/delete"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/eventToken/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4648,7 +5226,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/eventToken/get"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/eventToken/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4679,7 +5260,10 @@ export const schema: Schema = {
           "description": "Create a new token",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/eventToken/create"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/eventToken/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4724,7 +5308,10 @@ export const schema: Schema = {
           "description": "Calls queues",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/queue/get"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/queue/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4755,7 +5342,10 @@ export const schema: Schema = {
           "description": "Create a new queue",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/queue/create"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/queue/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4896,7 +5486,10 @@ export const schema: Schema = {
           "description": "Delete the given queue",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/queue/delete"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/queue/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4935,7 +5528,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/queue/get"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/queue/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4974,7 +5570,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/queue/edit"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/queue/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5026,7 +5625,10 @@ export const schema: Schema = {
           "description": "Agent assigned to the queue",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/queue/agent/get"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/queue/agent/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5065,7 +5667,10 @@ export const schema: Schema = {
           "description": "Create a new skill for an agent (it adds the agent in a queue)",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/queue/agent/create"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/queue/agent/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5118,7 +5723,10 @@ export const schema: Schema = {
           "description": "Delete the given skill",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/queue/agent/delete"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/queue/agent/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5165,7 +5773,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/queue/agent/get"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/queue/agent/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5212,7 +5823,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/queue/agent/edit"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/queue/agent/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5272,7 +5886,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/queue/agent/liveStatus/get"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/queue/agent/liveStatus/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5325,7 +5942,10 @@ export const schema: Schema = {
           "description": "Live calls of the queue",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/queue/liveCalls/get"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/queue/liveCalls/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5370,7 +5990,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/queue/liveCalls/get"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/queue/liveCalls/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5423,7 +6046,10 @@ export const schema: Schema = {
           "description": "Eavesdrop on a call",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/queue/liveCalls/eavesdrop"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/queue/liveCalls/eavesdrop",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5484,7 +6110,10 @@ export const schema: Schema = {
           "description": "Hangup a call",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/queue/liveCalls/hangup"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/queue/liveCalls/hangup",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5537,7 +6166,10 @@ export const schema: Schema = {
           "description": "Toogle hold on call",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/queue/liveCalls/hold"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/queue/liveCalls/hold",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5590,7 +6222,10 @@ export const schema: Schema = {
           "description": "Intercept a non answered call",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/queue/liveCalls/intercept"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/queue/liveCalls/intercept",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5651,7 +6286,10 @@ export const schema: Schema = {
           "description": "Transfer an answered call",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/queue/liveCalls/transfer"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/queue/liveCalls/transfer",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5712,7 +6350,10 @@ export const schema: Schema = {
           "description": "Whisper on a call",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/queue/liveCalls/whisper"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/queue/liveCalls/whisper",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5781,7 +6422,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:easyHunting/hunting/queue/liveStatistics/get"
+            {
+              "name": "voip:apiovh:easyHunting/hunting/queue/liveStatistics/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5826,7 +6470,10 @@ export const schema: Schema = {
           "description": "Records associated with this PABX",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:easyHunting/records/get"
+            {
+              "name": "voip:apiovh:easyHunting/records/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5863,7 +6510,10 @@ export const schema: Schema = {
           "description": "Delete the given record",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:easyHunting/records/delete"
+            {
+              "name": "voip:apiovh:easyHunting/records/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5902,7 +6552,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:easyHunting/records/get"
+            {
+              "name": "voip:apiovh:easyHunting/records/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5947,7 +6600,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:easyHunting/screenListConditions/get"
+            {
+              "name": "voip:apiovh:easyHunting/screenListConditions/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5978,7 +6634,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:easyHunting/screenListConditions/edit"
+            {
+              "name": "voip:apiovh:easyHunting/screenListConditions/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6022,7 +6681,10 @@ export const schema: Schema = {
           "description": "Screen lists conditions checked when a call is received",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:easyHunting/screenListConditions/conditions/get"
+            {
+              "name": "voip:apiovh:easyHunting/screenListConditions/conditions/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6061,7 +6723,10 @@ export const schema: Schema = {
           "description": "Create a new screenlist condition for an extension",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:easyHunting/screenListConditions/conditions/create"
+            {
+              "name": "voip:apiovh:easyHunting/screenListConditions/conditions/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6122,7 +6787,10 @@ export const schema: Schema = {
           "description": "Delete the given condition",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:easyHunting/screenListConditions/conditions/delete"
+            {
+              "name": "voip:apiovh:easyHunting/screenListConditions/conditions/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6161,7 +6829,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:easyHunting/screenListConditions/conditions/get"
+            {
+              "name": "voip:apiovh:easyHunting/screenListConditions/conditions/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6200,7 +6871,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:easyHunting/screenListConditions/conditions/edit"
+            {
+              "name": "voip:apiovh:easyHunting/screenListConditions/conditions/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6252,7 +6926,10 @@ export const schema: Schema = {
           "description": "Sounds associated with this PABX",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:easyHunting/sound/get"
+            {
+              "name": "voip:apiovh:easyHunting/sound/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6289,7 +6966,10 @@ export const schema: Schema = {
           "description": "Delete the given sound",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:easyHunting/sound/delete"
+            {
+              "name": "voip:apiovh:easyHunting/sound/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6328,7 +7008,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:easyHunting/sound/get"
+            {
+              "name": "voip:apiovh:easyHunting/sound/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6373,7 +7056,10 @@ export const schema: Schema = {
           "description": "Upload new sound file",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:easyHunting/soundUpload"
+            {
+              "name": "voip:apiovh:easyHunting/soundUpload",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6434,7 +7120,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:easyHunting/timeConditions/get"
+            {
+              "name": "voip:apiovh:easyHunting/timeConditions/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6465,7 +7154,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:easyHunting/timeConditions/edit"
+            {
+              "name": "voip:apiovh:easyHunting/timeConditions/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6509,7 +7201,10 @@ export const schema: Schema = {
           "description": "Time conditions checked when a call is received",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:easyHunting/timeConditions/conditions/get"
+            {
+              "name": "voip:apiovh:easyHunting/timeConditions/conditions/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6548,7 +7243,10 @@ export const schema: Schema = {
           "description": "Create a new time condition",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:easyHunting/timeConditions/conditions/create"
+            {
+              "name": "voip:apiovh:easyHunting/timeConditions/conditions/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6617,7 +7315,10 @@ export const schema: Schema = {
           "description": "Delete the given condition",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:easyHunting/timeConditions/conditions/delete"
+            {
+              "name": "voip:apiovh:easyHunting/timeConditions/conditions/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6656,7 +7357,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:easyHunting/timeConditions/conditions/get"
+            {
+              "name": "voip:apiovh:easyHunting/timeConditions/conditions/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6695,7 +7399,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:easyHunting/timeConditions/conditions/edit"
+            {
+              "name": "voip:apiovh:easyHunting/timeConditions/conditions/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6741,13 +7448,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2024-03-15T00:00:00+01:00",
+            "deprecatedDate": "2024-01-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "EasyPabx associated with this billing account",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:easyPabx/get"
+            {
+              "name": "voip:apiovh:easyPabx/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6770,13 +7482,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2024-03-15T00:00:00+01:00",
+            "deprecatedDate": "2024-01-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:easyPabx/get"
+            {
+              "name": "voip:apiovh:easyPabx/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6801,13 +7518,18 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2024-03-15T00:00:00+01:00",
+            "deprecatedDate": "2024-01-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:easyPabx/edit"
+            {
+              "name": "voip:apiovh:easyPabx/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6845,13 +7567,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2024-03-15T00:00:00+01:00",
+            "deprecatedDate": "2024-01-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:easyPabx/hunting/get"
+            {
+              "name": "voip:apiovh:easyPabx/hunting/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6876,13 +7603,18 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2024-03-15T00:00:00+01:00",
+            "deprecatedDate": "2024-01-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:easyPabx/hunting/edit"
+            {
+              "name": "voip:apiovh:easyPabx/hunting/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6920,13 +7652,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2024-03-15T00:00:00+01:00",
+            "deprecatedDate": "2024-01-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Hunting agents",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:easyPabx/hunting/agent/get"
+            {
+              "name": "voip:apiovh:easyPabx/hunting/agent/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6951,13 +7688,18 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2024-03-15T00:00:00+01:00",
+            "deprecatedDate": "2024-01-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Create a new agent",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:easyPabx/hunting/agent/create"
+            {
+              "name": "voip:apiovh:easyPabx/hunting/agent/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7020,13 +7762,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2024-03-15T00:00:00+01:00",
+            "deprecatedDate": "2024-01-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Delete the agent",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:easyPabx/hunting/agent/delete"
+            {
+              "name": "voip:apiovh:easyPabx/hunting/agent/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7059,13 +7806,18 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2024-03-15T00:00:00+01:00",
+            "deprecatedDate": "2024-01-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:easyPabx/hunting/agent/get"
+            {
+              "name": "voip:apiovh:easyPabx/hunting/agent/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7098,13 +7850,18 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2024-03-15T00:00:00+01:00",
+            "deprecatedDate": "2024-01-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:easyPabx/hunting/agent/edit"
+            {
+              "name": "voip:apiovh:easyPabx/hunting/agent/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7150,13 +7907,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2024-03-15T00:00:00+01:00",
+            "deprecatedDate": "2024-01-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:easyPabx/hunting/tones/get"
+            {
+              "name": "voip:apiovh:easyPabx/hunting/tones/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7181,13 +7943,18 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2024-03-15T00:00:00+01:00",
+            "deprecatedDate": "2024-01-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:easyPabx/hunting/tones/edit"
+            {
+              "name": "voip:apiovh:easyPabx/hunting/tones/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7225,13 +7992,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2024-03-15T00:00:00+01:00",
+            "deprecatedDate": "2024-01-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Upload new tone file",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:easyPabx/hunting/tones/toneUpload"
+            {
+              "name": "voip:apiovh:easyPabx/hunting/tones/toneUpload",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7292,7 +8064,10 @@ export const schema: Schema = {
           "description": "Delete the given token",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:eventToken/delete"
+            {
+              "name": "voip:apiovh:eventToken/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7315,7 +8090,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:eventToken/get"
+            {
+              "name": "voip:apiovh:eventToken/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7338,7 +8116,10 @@ export const schema: Schema = {
           "description": "Create a new token",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:eventToken/create"
+            {
+              "name": "voip:apiovh:eventToken/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7375,7 +8156,10 @@ export const schema: Schema = {
           "description": "Faxes associated with this billing account",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:fax/get"
+            {
+              "name": "voip:apiovh:fax/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7404,7 +8188,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:fax/get"
+            {
+              "name": "voip:apiovh:fax/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7435,7 +8222,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:fax/edit"
+            {
+              "name": "voip:apiovh:fax/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7479,7 +8269,10 @@ export const schema: Schema = {
           "description": "Fax campaigns of the associate fax",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:fax/campaigns/get"
+            {
+              "name": "voip:apiovh:fax/campaigns/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7510,7 +8303,10 @@ export const schema: Schema = {
           "description": "Create a new fax campaign",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:fax/campaigns/create"
+            {
+              "name": "voip:apiovh:fax/campaigns/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7611,7 +8407,10 @@ export const schema: Schema = {
           "description": "Delete a fax campaign",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:fax/campaigns/delete"
+            {
+              "name": "voip:apiovh:fax/campaigns/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7650,7 +8449,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:fax/campaigns/get"
+            {
+              "name": "voip:apiovh:fax/campaigns/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7695,7 +8497,10 @@ export const schema: Schema = {
           "description": "Detail of the fax recipients by status",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:fax/campaigns/detail/get"
+            {
+              "name": "voip:apiovh:fax/campaigns/detail/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7740,7 +8545,10 @@ export const schema: Schema = {
           "description": "Start a fax campaign",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:fax/campaigns/start"
+            {
+              "name": "voip:apiovh:fax/campaigns/start",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7785,7 +8593,10 @@ export const schema: Schema = {
           "description": "Stop a fax campaign",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:fax/campaigns/stop"
+            {
+              "name": "voip:apiovh:fax/campaigns/stop",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7830,7 +8641,10 @@ export const schema: Schema = {
           "description": "Delete all fax screenLists",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:fax/screenLists/delete"
+            {
+              "name": "voip:apiovh:fax/screenLists/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7861,7 +8675,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:fax/screenLists/get"
+            {
+              "name": "voip:apiovh:fax/screenLists/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7892,7 +8709,10 @@ export const schema: Schema = {
           "description": "Create a new fax ScreenLists",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:fax/screenLists/create"
+            {
+              "name": "voip:apiovh:fax/screenLists/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7963,7 +8783,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:fax/screenLists/edit"
+            {
+              "name": "voip:apiovh:fax/screenLists/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8007,7 +8830,10 @@ export const schema: Schema = {
           "description": "Reset a specifical fax screenList",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:fax/screenLists/reset"
+            {
+              "name": "voip:apiovh:fax/screenLists/reset",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8076,7 +8902,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:fax/settings/get"
+            {
+              "name": "voip:apiovh:fax/settings/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8107,7 +8936,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:fax/settings/edit"
+            {
+              "name": "voip:apiovh:fax/settings/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8151,7 +8983,10 @@ export const schema: Schema = {
           "description": "Generates a new password for your fax account",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:fax/settings/changePassword"
+            {
+              "name": "voip:apiovh:fax/settings/changePassword",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8196,7 +9031,10 @@ export const schema: Schema = {
           "description": "Send a fax",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:fax/settings/sendFax"
+            {
+              "name": "voip:apiovh:fax/settings/sendFax",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8257,7 +9095,10 @@ export const schema: Schema = {
           "description": "Check if the billing account contains at least one special number",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:hasSpecialNumbers/get"
+            {
+              "name": "voip:apiovh:hasSpecialNumbers/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8286,7 +9127,10 @@ export const schema: Schema = {
           "description": "Previous billed consumptions",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:historyConsumption/get"
+            {
+              "name": "voip:apiovh:historyConsumption/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8315,7 +9159,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:historyConsumption/get"
+            {
+              "name": "voip:apiovh:historyConsumption/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8352,7 +9199,10 @@ export const schema: Schema = {
           "description": "Previous billed consumption files",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:historyConsumption/file/get"
+            {
+              "name": "voip:apiovh:historyConsumption/file/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8397,7 +9247,10 @@ export const schema: Schema = {
           "description": "Previous repayment bill",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:historyRepaymentConsumption/get"
+            {
+              "name": "voip:apiovh:historyRepaymentConsumption/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8420,7 +9273,10 @@ export const schema: Schema = {
           "description": "Ask for a new repayment",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:historyRepaymentConsumption/create"
+            {
+              "name": "voip:apiovh:historyRepaymentConsumption/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8457,7 +9313,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:historyRepaymentConsumption/get"
+            {
+              "name": "voip:apiovh:historyRepaymentConsumption/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8494,7 +9353,10 @@ export const schema: Schema = {
           "description": "Get the csv document",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:historyRepaymentConsumption/document/get"
+            {
+              "name": "voip:apiovh:historyRepaymentConsumption/document/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8531,7 +9393,10 @@ export const schema: Schema = {
           "description": "Previous tollfree bill",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:historyTollfreeConsumption/get"
+            {
+              "name": "voip:apiovh:historyTollfreeConsumption/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8560,7 +9425,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:historyTollfreeConsumption/get"
+            {
+              "name": "voip:apiovh:historyTollfreeConsumption/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8597,7 +9465,10 @@ export const schema: Schema = {
           "description": "Get the csv document",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:historyTollfreeConsumption/document/get"
+            {
+              "name": "voip:apiovh:historyTollfreeConsumption/document/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8634,7 +9505,10 @@ export const schema: Schema = {
           "description": "Lines associated with this billing account",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:line/get"
+            {
+              "name": "voip:apiovh:line/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8663,7 +9537,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:line/get"
+            {
+              "name": "voip:apiovh:line/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8694,7 +9571,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:line/edit"
+            {
+              "name": "voip:apiovh:line/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8738,7 +9618,10 @@ export const schema: Schema = {
           "description": "Abbreviated numbers for the line",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:line/abbreviatedNumber/get"
+            {
+              "name": "voip:apiovh:line/abbreviatedNumber/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8769,7 +9652,10 @@ export const schema: Schema = {
           "description": "Create a new abbreviated number for the line",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:line/abbreviatedNumber/create"
+            {
+              "name": "voip:apiovh:line/abbreviatedNumber/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8838,7 +9724,10 @@ export const schema: Schema = {
           "description": "Delete the given abbreviated number",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:line/abbreviatedNumber/delete"
+            {
+              "name": "voip:apiovh:line/abbreviatedNumber/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8877,7 +9766,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:line/abbreviatedNumber/get"
+            {
+              "name": "voip:apiovh:line/abbreviatedNumber/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8916,7 +9808,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:line/abbreviatedNumber/edit"
+            {
+              "name": "voip:apiovh:line/abbreviatedNumber/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8968,7 +9863,10 @@ export const schema: Schema = {
           "description": "Check if there is a new phone to activate and if it's possible, in case of phone switch",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:line/activateNewPhone/get"
+            {
+              "name": "voip:apiovh:line/activateNewPhone/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8999,7 +9897,10 @@ export const schema: Schema = {
           "description": "Allow to activate new phone, in case of phone switch",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:line/activateNewPhone/create"
+            {
+              "name": "voip:apiovh:line/activateNewPhone/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9036,7 +9937,10 @@ export const schema: Schema = {
           "description": "Current list of numbers or short code numbers restricted by an auto antihack",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:line/antihack/get"
+            {
+              "name": "voip:apiovh:line/antihack/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9067,7 +9971,10 @@ export const schema: Schema = {
           "description": "Clean the antihack or add it on active filter screen list",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:line/antihack/create"
+            {
+              "name": "voip:apiovh:line/antihack/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9120,7 +10027,10 @@ export const schema: Schema = {
           "description": "Associate a device to the current line with the device mac address",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:line/associateDevice/create"
+            {
+              "name": "voip:apiovh:line/associateDevice/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9181,7 +10091,10 @@ export const schema: Schema = {
           "description": "Automatic Calls made by Calls Generator on this line",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:line/automaticCall/get"
+            {
+              "name": "voip:apiovh:line/automaticCall/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9212,7 +10125,10 @@ export const schema: Schema = {
           "description": "Make an automatic phone call. Return generated call identifier",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:line/automaticCall/create"
+            {
+              "name": "voip:apiovh:line/automaticCall/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9313,7 +10229,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:line/automaticCall/get"
+            {
+              "name": "voip:apiovh:line/automaticCall/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9358,7 +10277,10 @@ export const schema: Schema = {
           "description": "Listing of domains Sip availables",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:line/availableSipDomains/get"
+            {
+              "name": "voip:apiovh:line/availableSipDomains/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9395,7 +10317,10 @@ export const schema: Schema = {
           "description": "Block the line. By default it will block incoming and outgoing calls (except for emergency numbers)",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:line/block"
+            {
+              "name": "voip:apiovh:line/block",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9434,15 +10359,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2022-06-23 10:00:00 +0100 +0100",
-            "deprecatedDate": "2022-03-23 10:00:00 +0100 CET",
+            "deletionDate": "2022-06-23T10:00:00+01:00",
+            "deprecatedDate": "2022-03-23T10:00:00+01:00",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
           "description": "The active calls of your line as a call center agent",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:line/calls/get"
+            {
+              "name": "voip:apiovh:line/calls/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9473,15 +10401,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2022-06-23 10:00:00 +0100 +0100",
-            "deprecatedDate": "2022-03-23 10:00:00 +0100 CET",
+            "deletionDate": "2022-06-23T10:00:00+01:00",
+            "deprecatedDate": "2022-03-23T10:00:00+01:00",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:line/calls/get"
+            {
+              "name": "voip:apiovh:line/calls/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9520,15 +10451,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2022-06-23 10:00:00 +0100 +0100",
-            "deprecatedDate": "2022-03-23 10:00:00 +0100 CET",
+            "deletionDate": "2022-06-23T10:00:00+01:00",
+            "deprecatedDate": "2022-03-23T10:00:00+01:00",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
           "description": "Eavesdrop on a call",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:line/calls/eavesdrop"
+            {
+              "name": "voip:apiovh:line/calls/eavesdrop",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9575,15 +10509,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2022-06-23 10:00:00 +0100 +0100",
-            "deprecatedDate": "2022-03-23 10:00:00 +0100 CET",
+            "deletionDate": "2022-06-23T10:00:00+01:00",
+            "deprecatedDate": "2022-03-23T10:00:00+01:00",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
           "description": "Hangup a call",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:line/calls/hangup"
+            {
+              "name": "voip:apiovh:line/calls/hangup",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9622,15 +10559,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2022-06-23 10:00:00 +0100 +0100",
-            "deprecatedDate": "2022-03-23 10:00:00 +0100 CET",
+            "deletionDate": "2022-06-23T10:00:00+01:00",
+            "deprecatedDate": "2022-03-23T10:00:00+01:00",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
           "description": "Toogle hold on call",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:line/calls/hold"
+            {
+              "name": "voip:apiovh:line/calls/hold",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9669,15 +10609,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2022-06-23 10:00:00 +0100 +0100",
-            "deprecatedDate": "2022-03-23 10:00:00 +0100 CET",
+            "deletionDate": "2022-06-23T10:00:00+01:00",
+            "deprecatedDate": "2022-03-23T10:00:00+01:00",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
           "description": "Intercept a non answered call",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:line/calls/intercept"
+            {
+              "name": "voip:apiovh:line/calls/intercept",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9724,15 +10667,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2022-06-23 10:00:00 +0100 +0100",
-            "deprecatedDate": "2022-03-23 10:00:00 +0100 CET",
+            "deletionDate": "2022-06-23T10:00:00+01:00",
+            "deprecatedDate": "2022-03-23T10:00:00+01:00",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
           "description": "Transfer an answered call",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:line/calls/transfer"
+            {
+              "name": "voip:apiovh:line/calls/transfer",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9779,15 +10725,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2022-06-23 10:00:00 +0100 +0100",
-            "deprecatedDate": "2022-03-23 10:00:00 +0100 CET",
+            "deletionDate": "2022-06-23T10:00:00+01:00",
+            "deprecatedDate": "2022-03-23T10:00:00+01:00",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
           "description": "Whisper on a call",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:line/calls/whisper"
+            {
+              "name": "voip:apiovh:line/calls/whisper",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9848,7 +10797,10 @@ export const schema: Schema = {
           "description": "Cancel a scheduled conversion to number",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:line/cancelConvertToNumber"
+            {
+              "name": "voip:apiovh:line/cancelConvertToNumber",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9879,8 +10831,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2018-04-01 10:00:00 +0100 +0100",
-            "deprecatedDate": "2018-03-01 10:00:00 +0100 CET",
+            "deletionDate": "2018-04-01T10:00:00+01:00",
+            "deprecatedDate": "2018-03-01T10:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/telephony/{billingAccount}/line/{serviceName}/",
             "value": "DEPRECATED"
@@ -9888,7 +10840,10 @@ export const schema: Schema = {
           "description": "Ability to manage SIP password on this service",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:line/canChangePassword/get"
+            {
+              "name": "voip:apiovh:line/canChangePassword/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9922,11 +10877,15 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Change the SIP account password. It must be more than 7 and less than 21 alpha and numerical characters.",
+          "description": "Change the SIP account password",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:line/changePassword"
+            {
+              "name": "voip:apiovh:line/changePassword",
+              "required": true
+            }
           ],
+          "longDescription": "Change the SIP account password. It must be more than 7 and less than 21 alpha and numerical characters.",
           "noAuthentication": false,
           "parameters": [
             {
@@ -9970,7 +10929,10 @@ export const schema: Schema = {
           "description": "Make a phone call from the current line",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:line/click2Call/create"
+            {
+              "name": "voip:apiovh:line/click2Call/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10031,7 +10993,10 @@ export const schema: Schema = {
           "description": "User which can use click 2 call on the line",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:line/click2CallUser/get"
+            {
+              "name": "voip:apiovh:line/click2CallUser/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10062,7 +11027,10 @@ export const schema: Schema = {
           "description": "Create a new user for click 2 call",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:line/click2CallUser/create"
+            {
+              "name": "voip:apiovh:line/click2CallUser/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10115,7 +11083,10 @@ export const schema: Schema = {
           "description": "Delete a click 2 call user",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:line/click2CallUser/delete"
+            {
+              "name": "voip:apiovh:line/click2CallUser/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10154,7 +11125,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:line/click2CallUser/get"
+            {
+              "name": "voip:apiovh:line/click2CallUser/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10199,7 +11173,10 @@ export const schema: Schema = {
           "description": "Change the password of the click2call user",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:line/click2CallUser/changePassword"
+            {
+              "name": "voip:apiovh:line/click2CallUser/changePassword",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10252,7 +11229,10 @@ export const schema: Schema = {
           "description": "Make a phone call from the current line",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:line/click2CallUser/click2Call/create"
+            {
+              "name": "voip:apiovh:line/click2CallUser/click2Call/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10313,7 +11293,10 @@ export const schema: Schema = {
           "description": "Schedule a conversion to number",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:line/convertToNumber"
+            {
+              "name": "voip:apiovh:line/convertToNumber",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10350,7 +11333,10 @@ export const schema: Schema = {
           "description": "Dissociate a device from the current line with the device mac address",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:line/dissociateDevice/create"
+            {
+              "name": "voip:apiovh:line/dissociateDevice/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10403,7 +11389,10 @@ export const schema: Schema = {
           "description": "Listing of last ips registry",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:line/ips/get"
+            {
+              "name": "voip:apiovh:line/ips/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10440,7 +11429,10 @@ export const schema: Schema = {
           "description": "List the informations about the last registrations (i.e. IP, port, User-Agent...)",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:line/lastRegistrations/get"
+            {
+              "name": "voip:apiovh:line/lastRegistrations/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10477,7 +11469,10 @@ export const schema: Schema = {
           "description": "List phones with available slots where this line can be attached",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:line/listAssociablePhones/get"
+            {
+              "name": "voip:apiovh:line/listAssociablePhones/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10514,7 +11509,10 @@ export const schema: Schema = {
           "description": "Get the maximum available simultaneous lines for this line",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:line/maximumAvailableSimultaneousLines/get"
+            {
+              "name": "voip:apiovh:line/maximumAvailableSimultaneousLines/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10551,7 +11549,10 @@ export const schema: Schema = {
           "description": "Return public offer property",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:line/offer/get"
+            {
+              "name": "voip:apiovh:line/offer/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10588,7 +11589,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:line/options/get"
+            {
+              "name": "voip:apiovh:line/options/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10619,7 +11623,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:line/options/edit"
+            {
+              "name": "voip:apiovh:line/options/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10663,7 +11670,10 @@ export const schema: Schema = {
           "description": "List of codecs combinaisons available for this line",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:line/options/availableCodecs/get"
+            {
+              "name": "voip:apiovh:line/options/availableCodecs/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10700,7 +11710,10 @@ export const schema: Schema = {
           "description": "Get the default codecs for this line if none are set",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:line/options/defaultCodecs/get"
+            {
+              "name": "voip:apiovh:line/options/defaultCodecs/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10737,7 +11750,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:line/phone/get"
+            {
+              "name": "voip:apiovh:line/phone/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10768,7 +11784,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:line/phone/edit"
+            {
+              "name": "voip:apiovh:line/phone/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10812,7 +11831,10 @@ export const schema: Schema = {
           "description": "Returns the administration user and password of the phone if you are a VIP",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:line/phone/adminCredentials/get"
+            {
+              "name": "voip:apiovh:line/phone/adminCredentials/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10849,7 +11871,10 @@ export const schema: Schema = {
           "description": "Edit configuration of the phone remotely by provisioning",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:line/phone/changePhoneConfiguration"
+            {
+              "name": "voip:apiovh:line/phone/changePhoneConfiguration",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10902,7 +11927,10 @@ export const schema: Schema = {
           "description": "Plug & Phone function keys",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:line/phone/functionKey/get"
+            {
+              "name": "voip:apiovh:line/phone/functionKey/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10939,7 +11967,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:line/phone/functionKey/get"
+            {
+              "name": "voip:apiovh:line/phone/functionKey/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10978,7 +12009,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:line/phone/functionKey/edit"
+            {
+              "name": "voip:apiovh:line/phone/functionKey/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11030,7 +12064,10 @@ export const schema: Schema = {
           "description": "List the available functions for the key",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:line/phone/functionKey/availableFunction/get"
+            {
+              "name": "voip:apiovh:line/phone/functionKey/availableFunction/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11075,7 +12112,10 @@ export const schema: Schema = {
           "description": "List of available exchange merchandise brand",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:line/phone/merchandiseAvailable/get"
+            {
+              "name": "voip:apiovh:line/phone/merchandiseAvailable/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11112,7 +12152,10 @@ export const schema: Schema = {
           "description": "Return phonebooks associated",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:line/phone/phonebook/get"
+            {
+              "name": "voip:apiovh:line/phone/phonebook/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11143,7 +12186,10 @@ export const schema: Schema = {
           "description": "Add a phonebook. Return the bookKey.",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:line/phone/phonebook/create"
+            {
+              "name": "voip:apiovh:line/phone/phonebook/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11188,7 +12234,10 @@ export const schema: Schema = {
           "description": "Delete a phonebook",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:line/phone/phonebook/delete"
+            {
+              "name": "voip:apiovh:line/phone/phonebook/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11227,7 +12276,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:line/phone/phonebook/get"
+            {
+              "name": "voip:apiovh:line/phone/phonebook/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11266,7 +12318,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:line/phone/phonebook/edit"
+            {
+              "name": "voip:apiovh:line/phone/phonebook/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11318,7 +12373,10 @@ export const schema: Schema = {
           "description": "Export the phonebook's contacts",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:line/phone/phonebook/export/get"
+            {
+              "name": "voip:apiovh:line/phone/phonebook/export/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11371,7 +12429,10 @@ export const schema: Schema = {
           "description": "Import a contacts file. Supported formats are Excel (.xls and .xlsx) and CSV",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:line/phone/phonebook/import"
+            {
+              "name": "voip:apiovh:line/phone/phonebook/import",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11424,7 +12485,10 @@ export const schema: Schema = {
           "description": "Phonebook contacts",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:line/phone/phonebook/phonebookContact/get"
+            {
+              "name": "voip:apiovh:line/phone/phonebook/phonebookContact/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11463,7 +12527,10 @@ export const schema: Schema = {
           "description": "Create a phonebook contact. Return identifier of the phonebook contact.",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:line/phone/phonebook/phonebookContact/create"
+            {
+              "name": "voip:apiovh:line/phone/phonebook/phonebookContact/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11564,7 +12631,10 @@ export const schema: Schema = {
           "description": "Delete a phonebook contact",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:line/phone/phonebook/phonebookContact/delete"
+            {
+              "name": "voip:apiovh:line/phone/phonebook/phonebookContact/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11611,7 +12681,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:line/phone/phonebook/phonebookContact/get"
+            {
+              "name": "voip:apiovh:line/phone/phonebook/phonebookContact/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11658,7 +12731,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:line/phone/phonebook/phonebookContact/edit"
+            {
+              "name": "voip:apiovh:line/phone/phonebook/phonebookContact/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11718,7 +12794,10 @@ export const schema: Schema = {
           "description": "Create a task to reboot the phone",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:line/phone/reboot"
+            {
+              "name": "voip:apiovh:line/phone/reboot",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11755,7 +12834,10 @@ export const schema: Schema = {
           "description": "Create a task to refresh the screen of the MGCP phone",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:line/phone/refreshScreen"
+            {
+              "name": "voip:apiovh:line/phone/refreshScreen",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11792,7 +12874,10 @@ export const schema: Schema = {
           "description": "Reinitialize the phone configuration",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:line/phone/resetConfig"
+            {
+              "name": "voip:apiovh:line/phone/resetConfig",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11837,7 +12922,10 @@ export const schema: Schema = {
           "description": "Return Merchandise Authorisation associated",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:line/phone/rma/get"
+            {
+              "name": "voip:apiovh:line/phone/rma/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11868,7 +12956,10 @@ export const schema: Schema = {
           "description": "Create a specific rma",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:line/phone/rma/create"
+            {
+              "name": "voip:apiovh:line/phone/rma/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11937,7 +13028,10 @@ export const schema: Schema = {
           "description": "Cancel the rma",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:line/phone/rma/delete"
+            {
+              "name": "voip:apiovh:line/phone/rma/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -11976,7 +13070,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:line/phone/rma/get"
+            {
+              "name": "voip:apiovh:line/phone/rma/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -12015,7 +13112,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:line/phone/rma/edit"
+            {
+              "name": "voip:apiovh:line/phone/rma/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -12067,7 +13167,10 @@ export const schema: Schema = {
           "description": "Change RMA type",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:line/phone/rma/changeType"
+            {
+              "name": "voip:apiovh:line/phone/rma/changeType",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -12120,7 +13223,10 @@ export const schema: Schema = {
           "description": "Does the phone manages phonebooks?",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:line/phone/supportsPhonebook/get"
+            {
+              "name": "voip:apiovh:line/phone/supportsPhonebook/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -12151,8 +13257,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2016-11-09 10:00:00 +0100 CET",
-            "deprecatedDate": "2017-05-09 10:00:00 +0100 +0100",
+            "deletionDate": "2016-11-09T10:00:00+01:00",
+            "deprecatedDate": "2017-05-09T10:00:00+01:00",
             "description": "Deprecated, will be removed",
             "replacement": "/telephony/{billingAccount}/line/{serviceName}/listAssociablePhones",
             "value": "DEPRECATED"
@@ -12160,7 +13266,10 @@ export const schema: Schema = {
           "description": "List the phones with Sip slot available",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:line/phoneCanBeAssociable/get"
+            {
+              "name": "voip:apiovh:line/phoneCanBeAssociable/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -12197,7 +13306,10 @@ export const schema: Schema = {
           "description": "The recordings of your line outgoing calls",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:line/records/get"
+            {
+              "name": "voip:apiovh:line/records/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -12234,7 +13346,10 @@ export const schema: Schema = {
           "description": "Delete the given record",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:line/records/delete"
+            {
+              "name": "voip:apiovh:line/records/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -12273,7 +13388,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:line/records/get"
+            {
+              "name": "voip:apiovh:line/records/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -12318,7 +13436,10 @@ export const schema: Schema = {
           "description": "Remove extra simultaneous lines",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:line/removeSimultaneousLines"
+            {
+              "name": "voip:apiovh:line/removeSimultaneousLines",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -12363,7 +13484,10 @@ export const schema: Schema = {
           "description": "Details about simultaneous channels of this line.",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:line/simultaneousChannelsDetails/get"
+            {
+              "name": "voip:apiovh:line/simultaneousChannelsDetails/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -12390,19 +13514,143 @@ export const schema: Schema = {
       "path": "/telephony/{billingAccount}/line/{serviceName}/simultaneousChannelsDetails"
     },
     {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get beta status for line softphone",
+          "httpMethod": "GET",
+          "iamActions": [
+            {
+              "name": "voip:apiovh:line/softphone/beta/get",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "telephony.SoftphoneBetaStatus"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Enable or disable beta statuses for line softphone",
+          "httpMethod": "PUT",
+          "iamActions": [
+            {
+              "name": "voip:apiovh:line/softphone/beta/edit",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "telephony.SoftphoneBetaStatus",
+              "description": "Request Body",
+              "fullType": "telephony.SoftphoneBetaStatus",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "telephony.SoftphoneBetaStatus"
+        }
+      ],
+      "path": "/telephony/{billingAccount}/line/{serviceName}/softphone/beta"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Regenerate softphone token for registration",
+          "httpMethod": "POST",
+          "iamActions": [
+            {
+              "name": "voip:apiovh:line/softphone/beta/regenerateToken",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/telephony/{billingAccount}/line/{serviceName}/softphone/beta/regenerateToken"
+    },
+    {
       "description": "statistics operations",
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2022-06-17 10:00:00 +0100 +0100",
-            "deprecatedDate": "2022-03-17 10:00:00 +0100 CET",
+            "deletionDate": "2022-06-17T10:00:00+01:00",
+            "deprecatedDate": "2022-03-17T10:00:00+01:00",
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
           "description": "Get statistics of the current line",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:line/statistics/get"
+            {
+              "name": "voip:apiovh:line/statistics/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -12455,7 +13703,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:line/tones/get"
+            {
+              "name": "voip:apiovh:line/tones/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -12486,7 +13737,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:line/tones/edit"
+            {
+              "name": "voip:apiovh:line/tones/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -12530,7 +13784,10 @@ export const schema: Schema = {
           "description": "Upload new tone file",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:line/tones/toneUpload"
+            {
+              "name": "voip:apiovh:line/tones/toneUpload",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -12591,7 +13848,10 @@ export const schema: Schema = {
           "description": "The traffic extracts (SIP only) of your line",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:line/trafficExtracts/get"
+            {
+              "name": "voip:apiovh:line/trafficExtracts/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -12622,7 +13882,10 @@ export const schema: Schema = {
           "description": "Launch a traffic extract on your line",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:line/trafficExtracts/create"
+            {
+              "name": "voip:apiovh:line/trafficExtracts/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -12675,7 +13938,10 @@ export const schema: Schema = {
           "description": "Delete a traffic extract",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:line/trafficExtracts/delete"
+            {
+              "name": "voip:apiovh:line/trafficExtracts/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -12714,7 +13980,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:line/trafficExtracts/get"
+            {
+              "name": "voip:apiovh:line/trafficExtracts/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -12759,7 +14028,10 @@ export const schema: Schema = {
           "description": "Unblock the line. It will remove any incoming and outboing block made earlier",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:line/unblock"
+            {
+              "name": "voip:apiovh:line/unblock",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -12790,13 +14062,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2024-03-15T00:00:00+01:00",
+            "deprecatedDate": "2024-01-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Miniabx associated with this billing account",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:miniPabx/get"
+            {
+              "name": "voip:apiovh:miniPabx/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -12819,13 +14096,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2024-03-15T00:00:00+01:00",
+            "deprecatedDate": "2024-01-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:miniPabx/get"
+            {
+              "name": "voip:apiovh:miniPabx/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -12850,13 +14132,18 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2024-03-15T00:00:00+01:00",
+            "deprecatedDate": "2024-01-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:miniPabx/edit"
+            {
+              "name": "voip:apiovh:miniPabx/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -12894,13 +14181,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2024-03-15T00:00:00+01:00",
+            "deprecatedDate": "2024-01-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:miniPabx/hunting/get"
+            {
+              "name": "voip:apiovh:miniPabx/hunting/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -12925,13 +14217,18 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2024-03-15T00:00:00+01:00",
+            "deprecatedDate": "2024-01-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:miniPabx/hunting/edit"
+            {
+              "name": "voip:apiovh:miniPabx/hunting/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -12969,13 +14266,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2024-03-15T00:00:00+01:00",
+            "deprecatedDate": "2024-01-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Hunting agents",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:miniPabx/hunting/agent/get"
+            {
+              "name": "voip:apiovh:miniPabx/hunting/agent/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -13000,13 +14302,18 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2024-03-15T00:00:00+01:00",
+            "deprecatedDate": "2024-01-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Create a new agent",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:miniPabx/hunting/agent/create"
+            {
+              "name": "voip:apiovh:miniPabx/hunting/agent/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -13069,13 +14376,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2024-03-15T00:00:00+01:00",
+            "deprecatedDate": "2024-01-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Delete the agent",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:miniPabx/hunting/agent/delete"
+            {
+              "name": "voip:apiovh:miniPabx/hunting/agent/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -13108,13 +14420,18 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2024-03-15T00:00:00+01:00",
+            "deprecatedDate": "2024-01-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:miniPabx/hunting/agent/get"
+            {
+              "name": "voip:apiovh:miniPabx/hunting/agent/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -13147,13 +14464,18 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2024-03-15T00:00:00+01:00",
+            "deprecatedDate": "2024-01-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:miniPabx/hunting/agent/edit"
+            {
+              "name": "voip:apiovh:miniPabx/hunting/agent/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -13199,13 +14521,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2024-03-15T00:00:00+01:00",
+            "deprecatedDate": "2024-01-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:miniPabx/tones/get"
+            {
+              "name": "voip:apiovh:miniPabx/tones/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -13230,13 +14557,18 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2024-03-15T00:00:00+01:00",
+            "deprecatedDate": "2024-01-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:miniPabx/tones/edit"
+            {
+              "name": "voip:apiovh:miniPabx/tones/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -13274,13 +14606,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2024-03-15T00:00:00+01:00",
+            "deprecatedDate": "2024-01-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Upload new tone file",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:miniPabx/tones/toneUpload"
+            {
+              "name": "voip:apiovh:miniPabx/tones/toneUpload",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -13341,7 +14678,10 @@ export const schema: Schema = {
           "description": "Additional numbers associated with this billing account",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:number/get"
+            {
+              "name": "voip:apiovh:number/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -13370,7 +14710,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:number/get"
+            {
+              "name": "voip:apiovh:number/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -13401,7 +14744,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:number/edit"
+            {
+              "name": "voip:apiovh:number/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -13445,7 +14791,10 @@ export const schema: Schema = {
           "description": "Cancel a scheduled conversion to line",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:number/cancelConvertToLine"
+            {
+              "name": "voip:apiovh:number/cancelConvertToLine",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -13482,7 +14831,10 @@ export const schema: Schema = {
           "description": "Change the feature type of the phone number",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:number/changeFeatureType"
+            {
+              "name": "voip:apiovh:number/changeFeatureType",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -13527,7 +14879,10 @@ export const schema: Schema = {
           "description": "Schedule a conversion to line",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:number/convertToLine"
+            {
+              "name": "voip:apiovh:number/convertToLine",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -13572,7 +14927,10 @@ export const schema: Schema = {
           "description": "Get the available line offers to schedule a conversion to line",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:number/convertToLineAvailableOffers/get"
+            {
+              "name": "voip:apiovh:number/convertToLineAvailableOffers/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -13609,7 +14967,10 @@ export const schema: Schema = {
           "description": "Operations on a telephony service's offer",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:offerTask/get"
+            {
+              "name": "voip:apiovh:offerTask/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -13662,7 +15023,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:offerTask/get"
+            {
+              "name": "voip:apiovh:offerTask/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -13690,10 +15054,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Update the given pending action",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:offerTask/edit"
+            {
+              "name": "voip:apiovh:offerTask/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -13737,7 +15104,10 @@ export const schema: Schema = {
           "description": "List old phones archived as they were not returned after an RMA",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:oldPhone/get"
+            {
+              "name": "voip:apiovh:oldPhone/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -13766,7 +15136,10 @@ export const schema: Schema = {
           "description": "Outplan notifications configured for this billing account",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:outplanNotification/get"
+            {
+              "name": "voip:apiovh:outplanNotification/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -13789,7 +15162,10 @@ export const schema: Schema = {
           "description": "Add an outplan notification on the billing account",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:outplanNotification/create"
+            {
+              "name": "voip:apiovh:outplanNotification/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -13842,7 +15218,10 @@ export const schema: Schema = {
           "description": "Delete an outplan notification",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:outplanNotification/delete"
+            {
+              "name": "voip:apiovh:outplanNotification/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -13873,7 +15252,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:outplanNotification/get"
+            {
+              "name": "voip:apiovh:outplanNotification/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -13910,7 +15292,10 @@ export const schema: Schema = {
           "description": "OVH calls queues and OVH IVRs (Interactive Voice Response) associated with this billing account",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:ovhPabx/get"
+            {
+              "name": "voip:apiovh:ovhPabx/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -13939,7 +15324,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:ovhPabx/get"
+            {
+              "name": "voip:apiovh:ovhPabx/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -13970,7 +15358,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:ovhPabx/edit"
+            {
+              "name": "voip:apiovh:ovhPabx/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -14014,7 +15405,10 @@ export const schema: Schema = {
           "description": "Dialplans associated with this PABX",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:ovhPabx/dialplan/get"
+            {
+              "name": "voip:apiovh:ovhPabx/dialplan/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -14045,7 +15439,10 @@ export const schema: Schema = {
           "description": "Create a new dialplan",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:ovhPabx/dialplan/create"
+            {
+              "name": "voip:apiovh:ovhPabx/dialplan/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -14114,7 +15511,10 @@ export const schema: Schema = {
           "description": "Delete the given dialplan",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:ovhPabx/dialplan/delete"
+            {
+              "name": "voip:apiovh:ovhPabx/dialplan/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -14153,7 +15553,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:ovhPabx/dialplan/get"
+            {
+              "name": "voip:apiovh:ovhPabx/dialplan/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -14192,7 +15595,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:ovhPabx/dialplan/edit"
+            {
+              "name": "voip:apiovh:ovhPabx/dialplan/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -14244,7 +15650,10 @@ export const schema: Schema = {
           "description": "Extensions contained in the dialplan",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:ovhPabx/dialplan/extension/get"
+            {
+              "name": "voip:apiovh:ovhPabx/dialplan/extension/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -14283,7 +15692,10 @@ export const schema: Schema = {
           "description": "Create a new extension for a dialplan",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:ovhPabx/dialplan/extension/create"
+            {
+              "name": "voip:apiovh:ovhPabx/dialplan/extension/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -14360,7 +15772,10 @@ export const schema: Schema = {
           "description": "Delete the given extension",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:ovhPabx/dialplan/extension/delete"
+            {
+              "name": "voip:apiovh:ovhPabx/dialplan/extension/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -14407,7 +15822,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:ovhPabx/dialplan/extension/get"
+            {
+              "name": "voip:apiovh:ovhPabx/dialplan/extension/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -14454,7 +15872,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:ovhPabx/dialplan/extension/edit"
+            {
+              "name": "voip:apiovh:ovhPabx/dialplan/extension/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -14514,7 +15935,10 @@ export const schema: Schema = {
           "description": "Screenlist conditions checked when executing the extension",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:ovhPabx/dialplan/extension/conditionScreenList/get"
+            {
+              "name": "voip:apiovh:ovhPabx/dialplan/extension/conditionScreenList/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -14561,7 +15985,10 @@ export const schema: Schema = {
           "description": "Create a new screenlist condition for an extension",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:ovhPabx/dialplan/extension/conditionScreenList/create"
+            {
+              "name": "voip:apiovh:ovhPabx/dialplan/extension/conditionScreenList/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -14638,7 +16065,10 @@ export const schema: Schema = {
           "description": "Delete the given condition",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:ovhPabx/dialplan/extension/conditionScreenList/delete"
+            {
+              "name": "voip:apiovh:ovhPabx/dialplan/extension/conditionScreenList/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -14693,7 +16123,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:ovhPabx/dialplan/extension/conditionScreenList/get"
+            {
+              "name": "voip:apiovh:ovhPabx/dialplan/extension/conditionScreenList/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -14754,7 +16187,10 @@ export const schema: Schema = {
           "description": "Time conditions checked when executing the extension",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:ovhPabx/dialplan/extension/conditionTime/get"
+            {
+              "name": "voip:apiovh:ovhPabx/dialplan/extension/conditionTime/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -14801,7 +16237,10 @@ export const schema: Schema = {
           "description": "Create a new time condition for an extension",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:ovhPabx/dialplan/extension/conditionTime/create"
+            {
+              "name": "voip:apiovh:ovhPabx/dialplan/extension/conditionTime/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -14878,7 +16317,10 @@ export const schema: Schema = {
           "description": "Delete the given condition",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:ovhPabx/dialplan/extension/conditionTime/delete"
+            {
+              "name": "voip:apiovh:ovhPabx/dialplan/extension/conditionTime/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -14933,7 +16375,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:ovhPabx/dialplan/extension/conditionTime/get"
+            {
+              "name": "voip:apiovh:ovhPabx/dialplan/extension/conditionTime/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -14988,7 +16433,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:ovhPabx/dialplan/extension/conditionTime/edit"
+            {
+              "name": "voip:apiovh:ovhPabx/dialplan/extension/conditionTime/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -15056,7 +16504,10 @@ export const schema: Schema = {
           "description": "Rules contained in the extension",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:ovhPabx/dialplan/extension/rule/get"
+            {
+              "name": "voip:apiovh:ovhPabx/dialplan/extension/rule/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -15103,7 +16554,10 @@ export const schema: Schema = {
           "description": "Create a new rule for an extension",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:ovhPabx/dialplan/extension/rule/create"
+            {
+              "name": "voip:apiovh:ovhPabx/dialplan/extension/rule/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -15188,7 +16642,10 @@ export const schema: Schema = {
           "description": "Delete the given rule",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:ovhPabx/dialplan/extension/rule/delete"
+            {
+              "name": "voip:apiovh:ovhPabx/dialplan/extension/rule/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -15243,7 +16700,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:ovhPabx/dialplan/extension/rule/get"
+            {
+              "name": "voip:apiovh:ovhPabx/dialplan/extension/rule/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -15298,7 +16758,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:ovhPabx/dialplan/extension/rule/edit"
+            {
+              "name": "voip:apiovh:ovhPabx/dialplan/extension/rule/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -15366,7 +16829,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/get"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -15397,7 +16863,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/edit"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -15441,7 +16910,10 @@ export const schema: Schema = {
           "description": "Calls agents",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/agent/get"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/agent/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -15472,7 +16944,10 @@ export const schema: Schema = {
           "description": "Create a new agent",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/agent/create"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/agent/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -15557,7 +17032,10 @@ export const schema: Schema = {
           "description": "Delete the given agent",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/agent/delete"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/agent/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -15596,7 +17074,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/agent/get"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/agent/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -15635,7 +17116,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/agent/edit"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/agent/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -15687,7 +17171,10 @@ export const schema: Schema = {
           "description": "Delete the given web access",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/agent/bannerAccess/delete"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/agent/bannerAccess/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -15726,7 +17213,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/agent/bannerAccess/get"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/agent/bannerAccess/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -15765,7 +17255,10 @@ export const schema: Schema = {
           "description": "Create a new web access for this ressource",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/agent/bannerAccess/create"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/agent/bannerAccess/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -15810,7 +17303,10 @@ export const schema: Schema = {
           "description": "Current calls of the callcenter agent",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/agent/calls/get"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/agent/calls/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -15855,7 +17351,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/agent/calls/get"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/agent/calls/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -15908,7 +17407,10 @@ export const schema: Schema = {
           "description": "Eavesdrop on a call",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/agent/calls/eavesdrop"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/agent/calls/eavesdrop",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -15969,7 +17471,10 @@ export const schema: Schema = {
           "description": "Hangup a call",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/agent/calls/hangup"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/agent/calls/hangup",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -16022,7 +17527,10 @@ export const schema: Schema = {
           "description": "Toogle hold on call",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/agent/calls/hold"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/agent/calls/hold",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -16075,7 +17583,10 @@ export const schema: Schema = {
           "description": "Intercept a non answered call",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/agent/calls/intercept"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/agent/calls/intercept",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -16136,7 +17647,10 @@ export const schema: Schema = {
           "description": "Transfer an answered call",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/agent/calls/transfer"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/agent/calls/transfer",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -16197,7 +17711,10 @@ export const schema: Schema = {
           "description": "Whisper on a call",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/agent/calls/whisper"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/agent/calls/whisper",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -16266,7 +17783,10 @@ export const schema: Schema = {
           "description": "Delete the given token",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/agent/eventToken/delete"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/agent/eventToken/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -16305,7 +17825,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/agent/eventToken/get"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/agent/eventToken/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -16344,7 +17867,10 @@ export const schema: Schema = {
           "description": "Create a new token",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/agent/eventToken/create"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/agent/eventToken/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -16397,7 +17923,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/agent/liveStatus/get"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/agent/liveStatus/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -16442,7 +17971,10 @@ export const schema: Schema = {
           "description": "Agent assigned to the queues",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/agent/queue/get"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/agent/queue/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -16481,7 +18013,10 @@ export const schema: Schema = {
           "description": "Create a new skill for an agent (it adds the agent in a queue)",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/agent/queue/create"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/agent/queue/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -16542,7 +18077,10 @@ export const schema: Schema = {
           "description": "Delete the given skill",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/agent/queue/delete"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/agent/queue/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -16589,7 +18127,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/agent/queue/get"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/agent/queue/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -16636,7 +18177,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/agent/queue/edit"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/agent/queue/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -16696,7 +18240,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/agent/queue/liveStatus/get"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/agent/queue/liveStatus/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -16749,7 +18296,10 @@ export const schema: Schema = {
           "description": "Custom statuses of your agents",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/customStatus/get"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/customStatus/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -16780,7 +18330,10 @@ export const schema: Schema = {
           "description": "Create a new custom status",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/customStatus/create"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/customStatus/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -16841,7 +18394,10 @@ export const schema: Schema = {
           "description": "Delete the given custom status",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/customStatus/delete"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/customStatus/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -16880,7 +18436,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/customStatus/get"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/customStatus/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -16925,7 +18484,10 @@ export const schema: Schema = {
           "description": "Delete the given token",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/eventToken/delete"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/eventToken/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -16956,7 +18518,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/eventToken/get"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/eventToken/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -16987,7 +18552,10 @@ export const schema: Schema = {
           "description": "Create a new token",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/eventToken/create"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/eventToken/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -17032,7 +18600,10 @@ export const schema: Schema = {
           "description": "Calls queues",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/queue/get"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/queue/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -17063,7 +18634,10 @@ export const schema: Schema = {
           "description": "Create a new queue",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/queue/create"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/queue/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -17204,7 +18778,10 @@ export const schema: Schema = {
           "description": "Delete the given queue",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/queue/delete"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/queue/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -17243,7 +18820,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/queue/get"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/queue/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -17282,7 +18862,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/queue/edit"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/queue/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -17334,7 +18917,10 @@ export const schema: Schema = {
           "description": "Agent assigned to the queue",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/queue/agent/get"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/queue/agent/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -17373,7 +18959,10 @@ export const schema: Schema = {
           "description": "Create a new skill for an agent (it adds the agent in a queue)",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/queue/agent/create"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/queue/agent/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -17426,7 +19015,10 @@ export const schema: Schema = {
           "description": "Delete the given skill",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/queue/agent/delete"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/queue/agent/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -17473,7 +19065,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/queue/agent/get"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/queue/agent/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -17520,7 +19115,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/queue/agent/edit"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/queue/agent/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -17580,7 +19178,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/queue/agent/liveStatus/get"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/queue/agent/liveStatus/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -17633,7 +19234,10 @@ export const schema: Schema = {
           "description": "Live calls of the queue",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/queue/liveCalls/get"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/queue/liveCalls/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -17678,7 +19282,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/queue/liveCalls/get"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/queue/liveCalls/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -17731,7 +19338,10 @@ export const schema: Schema = {
           "description": "Eavesdrop on a call",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/queue/liveCalls/eavesdrop"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/queue/liveCalls/eavesdrop",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -17792,7 +19402,10 @@ export const schema: Schema = {
           "description": "Hangup a call",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/queue/liveCalls/hangup"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/queue/liveCalls/hangup",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -17845,7 +19458,10 @@ export const schema: Schema = {
           "description": "Toogle hold on call",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/queue/liveCalls/hold"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/queue/liveCalls/hold",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -17898,7 +19514,10 @@ export const schema: Schema = {
           "description": "Intercept a non answered call",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/queue/liveCalls/intercept"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/queue/liveCalls/intercept",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -17959,7 +19578,10 @@ export const schema: Schema = {
           "description": "Transfer an answered call",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/queue/liveCalls/transfer"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/queue/liveCalls/transfer",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -18020,7 +19642,10 @@ export const schema: Schema = {
           "description": "Whisper on a call",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/queue/liveCalls/whisper"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/queue/liveCalls/whisper",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -18089,7 +19714,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:ovhPabx/hunting/queue/liveStatistics/get"
+            {
+              "name": "voip:apiovh:ovhPabx/hunting/queue/liveStatistics/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -18134,7 +19762,10 @@ export const schema: Schema = {
           "description": "Menus associated with this PABX",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:ovhPabx/menu/get"
+            {
+              "name": "voip:apiovh:ovhPabx/menu/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -18165,7 +19796,10 @@ export const schema: Schema = {
           "description": "Create a new menu",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:ovhPabx/menu/create"
+            {
+              "name": "voip:apiovh:ovhPabx/menu/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -18258,7 +19892,10 @@ export const schema: Schema = {
           "description": "Delete the given menu",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:ovhPabx/menu/delete"
+            {
+              "name": "voip:apiovh:ovhPabx/menu/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -18297,7 +19934,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:ovhPabx/menu/get"
+            {
+              "name": "voip:apiovh:ovhPabx/menu/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -18336,7 +19976,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:ovhPabx/menu/edit"
+            {
+              "name": "voip:apiovh:ovhPabx/menu/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -18388,7 +20031,10 @@ export const schema: Schema = {
           "description": "Menu entry",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:ovhPabx/menu/entry/get"
+            {
+              "name": "voip:apiovh:ovhPabx/menu/entry/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -18427,7 +20073,10 @@ export const schema: Schema = {
           "description": "Create a new menu entry",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:ovhPabx/menu/entry/create"
+            {
+              "name": "voip:apiovh:ovhPabx/menu/entry/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -18504,7 +20153,10 @@ export const schema: Schema = {
           "description": "Delete the given menu entry",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:ovhPabx/menu/entry/delete"
+            {
+              "name": "voip:apiovh:ovhPabx/menu/entry/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -18551,7 +20203,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:ovhPabx/menu/entry/get"
+            {
+              "name": "voip:apiovh:ovhPabx/menu/entry/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -18598,7 +20253,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:ovhPabx/menu/entry/edit"
+            {
+              "name": "voip:apiovh:ovhPabx/menu/entry/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -18658,7 +20316,10 @@ export const schema: Schema = {
           "description": "Records associated with this PABX",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:ovhPabx/records/get"
+            {
+              "name": "voip:apiovh:ovhPabx/records/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -18695,7 +20356,10 @@ export const schema: Schema = {
           "description": "Delete the given record",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:ovhPabx/records/delete"
+            {
+              "name": "voip:apiovh:ovhPabx/records/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -18734,7 +20398,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:ovhPabx/records/get"
+            {
+              "name": "voip:apiovh:ovhPabx/records/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -18779,7 +20446,10 @@ export const schema: Schema = {
           "description": "Sounds associated with this PABX",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:ovhPabx/sound/get"
+            {
+              "name": "voip:apiovh:ovhPabx/sound/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -18816,7 +20486,10 @@ export const schema: Schema = {
           "description": "Delete the given sound",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:ovhPabx/sound/delete"
+            {
+              "name": "voip:apiovh:ovhPabx/sound/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -18855,7 +20528,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:ovhPabx/sound/get"
+            {
+              "name": "voip:apiovh:ovhPabx/sound/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -18900,7 +20576,10 @@ export const schema: Schema = {
           "description": "Upload new sound file",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:ovhPabx/soundUpload"
+            {
+              "name": "voip:apiovh:ovhPabx/soundUpload",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -18961,7 +20640,10 @@ export const schema: Schema = {
           "description": "Text to Speech associated with this PABX",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:ovhPabx/tts/get"
+            {
+              "name": "voip:apiovh:ovhPabx/tts/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -18992,7 +20674,10 @@ export const schema: Schema = {
           "description": "Create a new text to speech",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:ovhPabx/tts/create"
+            {
+              "name": "voip:apiovh:ovhPabx/tts/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -19045,7 +20730,10 @@ export const schema: Schema = {
           "description": "Delete the given text to speech",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:ovhPabx/tts/delete"
+            {
+              "name": "voip:apiovh:ovhPabx/tts/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -19084,7 +20772,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:ovhPabx/tts/get"
+            {
+              "name": "voip:apiovh:ovhPabx/tts/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -19123,7 +20814,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:ovhPabx/tts/edit"
+            {
+              "name": "voip:apiovh:ovhPabx/tts/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -19175,7 +20869,10 @@ export const schema: Schema = {
           "description": "Return phonebooks associated to this group",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:phonebook/get"
+            {
+              "name": "voip:apiovh:phonebook/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -19198,7 +20895,10 @@ export const schema: Schema = {
           "description": "Add a phonebook on group. Return the bookKey.",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:phonebook/create"
+            {
+              "name": "voip:apiovh:phonebook/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -19235,7 +20935,10 @@ export const schema: Schema = {
           "description": "Delete a phonebook",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:phonebook/delete"
+            {
+              "name": "voip:apiovh:phonebook/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -19266,7 +20969,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:phonebook/get"
+            {
+              "name": "voip:apiovh:phonebook/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -19297,7 +21003,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:phonebook/edit"
+            {
+              "name": "voip:apiovh:phonebook/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -19341,7 +21050,10 @@ export const schema: Schema = {
           "description": "Export the phonebook's contacts",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:phonebook/export/get"
+            {
+              "name": "voip:apiovh:phonebook/export/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -19386,7 +21098,10 @@ export const schema: Schema = {
           "description": "Import a contacts file. Supported formats are Excel (.xls and .xlsx) and CSV",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:phonebook/import"
+            {
+              "name": "voip:apiovh:phonebook/import",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -19431,7 +21146,10 @@ export const schema: Schema = {
           "description": "Phonebook contacts",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:phonebook/phonebookContact/get"
+            {
+              "name": "voip:apiovh:phonebook/phonebookContact/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -19462,7 +21180,10 @@ export const schema: Schema = {
           "description": "Create a phonebook contact. Return identifier of the phonebook contact.",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:phonebook/phonebookContact/create"
+            {
+              "name": "voip:apiovh:phonebook/phonebookContact/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -19555,7 +21276,10 @@ export const schema: Schema = {
           "description": "Delete a phonebook contact",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:phonebook/phonebookContact/delete"
+            {
+              "name": "voip:apiovh:phonebook/phonebookContact/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -19594,7 +21318,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:phonebook/phonebookContact/get"
+            {
+              "name": "voip:apiovh:phonebook/phonebookContact/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -19633,7 +21360,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:phonebook/phonebookContact/edit"
+            {
+              "name": "voip:apiovh:phonebook/phonebookContact/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -19685,7 +21415,10 @@ export const schema: Schema = {
           "description": "Current number portabilities for this billing account",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:portability/get"
+            {
+              "name": "voip:apiovh:portability/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -19714,7 +21447,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:portability/get"
+            {
+              "name": "voip:apiovh:portability/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -19751,7 +21487,10 @@ export const schema: Schema = {
           "description": "Indicates whether or not the portability can be cancelled",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:portability/canBeCancelled/get"
+            {
+              "name": "voip:apiovh:portability/canBeCancelled/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -19788,7 +21527,10 @@ export const schema: Schema = {
           "description": "Indicates whether or not the portability can be executed",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:portability/canBeExecuted/get"
+            {
+              "name": "voip:apiovh:portability/canBeExecuted/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -19825,7 +21567,10 @@ export const schema: Schema = {
           "description": "Ask to cancel the portability",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:portability/cancel"
+            {
+              "name": "voip:apiovh:portability/cancel",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -19870,7 +21615,10 @@ export const schema: Schema = {
           "description": "Ask to change the portability date",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:portability/changeDate"
+            {
+              "name": "voip:apiovh:portability/changeDate",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -19915,7 +21663,10 @@ export const schema: Schema = {
           "description": "Indicates whether or not the portability date can be changed",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:portability/dateCanBeChanged/get"
+            {
+              "name": "voip:apiovh:portability/dateCanBeChanged/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -19952,7 +21703,10 @@ export const schema: Schema = {
           "description": "Document linked to this portability",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:portability/document/get"
+            {
+              "name": "voip:apiovh:portability/document/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -19983,7 +21737,10 @@ export const schema: Schema = {
           "description": "Create a portability document",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:portability/document/create"
+            {
+              "name": "voip:apiovh:portability/document/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20036,7 +21793,10 @@ export const schema: Schema = {
           "description": "Delete the document",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:portability/document/delete"
+            {
+              "name": "voip:apiovh:portability/document/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20075,7 +21835,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:portability/document/get"
+            {
+              "name": "voip:apiovh:portability/document/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20114,7 +21877,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:portability/document/edit"
+            {
+              "name": "voip:apiovh:portability/document/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20166,7 +21932,10 @@ export const schema: Schema = {
           "description": "Ask to execute the portability",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:portability/execute"
+            {
+              "name": "voip:apiovh:portability/execute",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20203,7 +21972,10 @@ export const schema: Schema = {
           "description": "Indicates whether or not error can be fixed and portability can be relaunched",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:portability/relaunch/get"
+            {
+              "name": "voip:apiovh:portability/relaunch/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20234,7 +22006,10 @@ export const schema: Schema = {
           "description": "Fix error and relaunch portability",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:portability/relaunch/create"
+            {
+              "name": "voip:apiovh:portability/relaunch/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20279,7 +22054,10 @@ export const schema: Schema = {
           "description": "Indicates the current status of the portability, with a list of steps",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:portability/status/get"
+            {
+              "name": "voip:apiovh:portability/status/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20316,7 +22094,10 @@ export const schema: Schema = {
           "description": "Redirects associated with this billing account",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:redirect/get"
+            {
+              "name": "voip:apiovh:redirect/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20345,7 +22126,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:redirect/get"
+            {
+              "name": "voip:apiovh:redirect/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20376,7 +22160,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:redirect/edit"
+            {
+              "name": "voip:apiovh:redirect/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20420,7 +22207,10 @@ export const schema: Schema = {
           "description": "Change the destination of the redirect",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:redirect/changeDestination"
+            {
+              "name": "voip:apiovh:redirect/changeDestination",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20465,7 +22255,10 @@ export const schema: Schema = {
           "description": "Service concerned by the french RSVA reform",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:rsva/get"
+            {
+              "name": "voip:apiovh:rsva/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20494,7 +22287,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:rsva/get"
+            {
+              "name": "voip:apiovh:rsva/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20525,7 +22321,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:rsva/edit"
+            {
+              "name": "voip:apiovh:rsva/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20569,7 +22368,10 @@ export const schema: Schema = {
           "description": "Compatible rate codes related to this value added service",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:rsva/allowedRateCodes/get"
+            {
+              "name": "voip:apiovh:rsva/allowedRateCodes/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20606,7 +22408,10 @@ export const schema: Schema = {
           "description": "Cancel a scheduled rate code update",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:rsva/cancelScheduledRateCode"
+            {
+              "name": "voip:apiovh:rsva/cancelScheduledRateCode",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20643,7 +22448,10 @@ export const schema: Schema = {
           "description": "Current rate code related to this sva",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:rsva/currentRateCode/get"
+            {
+              "name": "voip:apiovh:rsva/currentRateCode/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20680,7 +22488,10 @@ export const schema: Schema = {
           "description": "New scheduled rate code related to this sva",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:rsva/scheduledRateCode/get"
+            {
+              "name": "voip:apiovh:rsva/scheduledRateCode/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20717,7 +22528,10 @@ export const schema: Schema = {
           "description": "Schedule a new rate code for this sva",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:rsva/scheduleRateCode/create"
+            {
+              "name": "voip:apiovh:rsva/scheduleRateCode/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20762,7 +22576,10 @@ export const schema: Schema = {
           "description": "Scheduled events",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:scheduler/get"
+            {
+              "name": "voip:apiovh:scheduler/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20791,7 +22608,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:scheduler/get"
+            {
+              "name": "voip:apiovh:scheduler/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20822,7 +22642,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:scheduler/edit"
+            {
+              "name": "voip:apiovh:scheduler/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20866,7 +22689,10 @@ export const schema: Schema = {
           "description": "Custom events scheduled",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:scheduler/events/get"
+            {
+              "name": "voip:apiovh:scheduler/events/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -20937,7 +22763,10 @@ export const schema: Schema = {
           "description": "Add a scheduler event",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:scheduler/events/create"
+            {
+              "name": "voip:apiovh:scheduler/events/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -21022,7 +22851,10 @@ export const schema: Schema = {
           "description": "Delete the given scheduler event",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:scheduler/events/delete"
+            {
+              "name": "voip:apiovh:scheduler/events/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -21061,7 +22893,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:scheduler/events/get"
+            {
+              "name": "voip:apiovh:scheduler/events/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -21100,7 +22935,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:scheduler/events/edit"
+            {
+              "name": "voip:apiovh:scheduler/events/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -21152,7 +22990,10 @@ export const schema: Schema = {
           "description": "Add scheduler events in ICS format",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:scheduler/importIcsCalendar"
+            {
+              "name": "voip:apiovh:scheduler/importIcsCalendar",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -21197,7 +23038,10 @@ export const schema: Schema = {
           "description": "Screenlist compatible numbers associated with this billing account",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:screen/get"
+            {
+              "name": "voip:apiovh:screen/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -21226,7 +23070,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:screen/get"
+            {
+              "name": "voip:apiovh:screen/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -21257,7 +23104,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:screen/edit"
+            {
+              "name": "voip:apiovh:screen/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -21301,7 +23151,10 @@ export const schema: Schema = {
           "description": "Rules for call filtering for this service",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:screen/screenLists/get"
+            {
+              "name": "voip:apiovh:screen/screenLists/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -21332,7 +23185,10 @@ export const schema: Schema = {
           "description": "Create a new screen list rule",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:screen/screenLists/create"
+            {
+              "name": "voip:apiovh:screen/screenLists/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -21393,7 +23249,10 @@ export const schema: Schema = {
           "description": "Delete the given screen list",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:screen/screenLists/delete"
+            {
+              "name": "voip:apiovh:screen/screenLists/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -21432,7 +23291,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:screen/screenLists/get"
+            {
+              "name": "voip:apiovh:screen/screenLists/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -21477,7 +23339,10 @@ export const schema: Schema = {
           "description": "Services associated with this billing account",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:service/get"
+            {
+              "name": "voip:apiovh:service/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -21506,7 +23371,10 @@ export const schema: Schema = {
           "description": "Ask for a service termination.",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:service/delete"
+            {
+              "name": "voip:apiovh:service/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -21553,7 +23421,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:service/get"
+            {
+              "name": "voip:apiovh:service/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -21584,7 +23455,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:service/edit"
+            {
+              "name": "voip:apiovh:service/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -21628,7 +23502,10 @@ export const schema: Schema = {
           "description": "Cancel the service termination",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:service/cancelTermination"
+            {
+              "name": "voip:apiovh:service/cancelTermination",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -21665,7 +23542,10 @@ export const schema: Schema = {
           "description": "Move a service of billing account. Source and destination nics should be the same.",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:service/changeOfBillingAccount"
+            {
+              "name": "voip:apiovh:service/changeOfBillingAccount",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -21704,13 +23584,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2024-02-01T00:00:00+01:00",
+            "deprecatedDate": "2024-01-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Get Relevant informations of the service detected from the MOS or the signal leg in SIP/MGCP protocol.",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:service/diagnosticReports/get"
+            {
+              "name": "voip:apiovh:service/diagnosticReports/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -21755,7 +23640,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:service/directory/get"
+            {
+              "name": "voip:apiovh:service/directory/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -21786,7 +23674,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:service/directory/edit"
+            {
+              "name": "voip:apiovh:service/directory/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -21830,7 +23721,10 @@ export const schema: Schema = {
           "description": "Get company entreprise informations by providing entreprise number",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:service/directory/fetchEntrepriseInformations"
+            {
+              "name": "voip:apiovh:service/directory/fetchEntrepriseInformations",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -21875,7 +23769,10 @@ export const schema: Schema = {
           "description": "Get directory service code from an APE code ( principal activity of the firm code )",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:service/directory/getDirectoryServiceCode/get"
+            {
+              "name": "voip:apiovh:service/directory/getDirectoryServiceCode/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -21920,7 +23817,10 @@ export const schema: Schema = {
           "description": "Get all the way types availables",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:service/directory/getWayTypes/get"
+            {
+              "name": "voip:apiovh:service/directory/getWayTypes/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -21957,7 +23857,10 @@ export const schema: Schema = {
           "description": "Delete the given token",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:service/eventToken/delete"
+            {
+              "name": "voip:apiovh:service/eventToken/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -21988,7 +23891,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:service/eventToken/get"
+            {
+              "name": "voip:apiovh:service/eventToken/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -22019,7 +23925,10 @@ export const schema: Schema = {
           "description": "Create a new token",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:service/eventToken/create"
+            {
+              "name": "voip:apiovh:service/eventToken/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -22064,7 +23973,10 @@ export const schema: Schema = {
           "description": "Fax delivery records.",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:service/faxConsumption/get"
+            {
+              "name": "voip:apiovh:service/faxConsumption/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -22125,7 +24037,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:service/faxConsumption/get"
+            {
+              "name": "voip:apiovh:service/faxConsumption/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -22170,7 +24085,10 @@ export const schema: Schema = {
           "description": "Delete the replacement offer scheduling",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:service/offerChange/delete"
+            {
+              "name": "voip:apiovh:service/offerChange/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -22201,7 +24119,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:service/offerChange/get"
+            {
+              "name": "voip:apiovh:service/offerChange/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -22232,7 +24153,10 @@ export const schema: Schema = {
           "description": "Add a new offer change",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:service/offerChange/create"
+            {
+              "name": "voip:apiovh:service/offerChange/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -22277,7 +24201,10 @@ export const schema: Schema = {
           "description": "List all available offer changes compatibilities",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:service/offerChanges/get"
+            {
+              "name": "voip:apiovh:service/offerChanges/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -22314,7 +24241,10 @@ export const schema: Schema = {
           "description": "Operations on a telephony service's offer",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:service/offerTask/get"
+            {
+              "name": "voip:apiovh:service/offerTask/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -22375,7 +24305,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:service/offerTask/get"
+            {
+              "name": "voip:apiovh:service/offerTask/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -22411,10 +24344,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Update the given pending action",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:service/offerTask/edit"
+            {
+              "name": "voip:apiovh:service/offerTask/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -22466,7 +24402,10 @@ export const schema: Schema = {
           "description": "Call delivery records of the previous month.",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:service/previousVoiceConsumption/get"
+            {
+              "name": "voip:apiovh:service/previousVoiceConsumption/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -22543,7 +24482,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:service/previousVoiceConsumption/get"
+            {
+              "name": "voip:apiovh:service/previousVoiceConsumption/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -22588,7 +24530,10 @@ export const schema: Schema = {
           "description": "Call which could be repayable",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:service/repaymentConsumption/get"
+            {
+              "name": "voip:apiovh:service/repaymentConsumption/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -22641,7 +24586,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:service/repaymentConsumption/get"
+            {
+              "name": "voip:apiovh:service/repaymentConsumption/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -22686,7 +24634,10 @@ export const schema: Schema = {
           "description": "Operations on a telephony service",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:service/task/get"
+            {
+              "name": "voip:apiovh:service/task/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -22747,7 +24698,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:service/task/get"
+            {
+              "name": "voip:apiovh:service/task/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -22792,7 +24746,10 @@ export const schema: Schema = {
           "description": "Call delivery records.",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:service/voiceConsumption/get"
+            {
+              "name": "voip:apiovh:service/voiceConsumption/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -22869,7 +24826,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:service/voiceConsumption/get"
+            {
+              "name": "voip:apiovh:service/voiceConsumption/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -22904,51 +24864,6 @@ export const schema: Schema = {
       "path": "/telephony/{billingAccount}/service/{serviceName}/voiceConsumption/{consumptionId}"
     },
     {
-      "description": "Advanced diagnostic of the voice call",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "iamActions": [
-            "voip:apiovh:service/voiceConsumption/callDiagnostics/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The name of your billingAccount",
-              "fullType": "string",
-              "name": "billingAccount",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "",
-              "fullType": "long",
-              "name": "consumptionId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "telephony.CallDiagnostics"
-        }
-      ],
-      "path": "/telephony/{billingAccount}/service/{serviceName}/voiceConsumption/{consumptionId}/callDiagnostics"
-    },
-    {
       "description": "Details about a Service",
       "operations": [
         {
@@ -22956,10 +24871,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get service information",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:serviceInfos/get"
+            {
+              "name": "voip:apiovh:serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -22979,10 +24897,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Update service information",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:serviceInfos/edit"
+            {
+              "name": "voip:apiovh:serviceInfos/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -23018,7 +24939,10 @@ export const schema: Schema = {
           "description": "Operations on a telephony billing account",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:task/get"
+            {
+              "name": "voip:apiovh:task/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -23071,7 +24995,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:task/get"
+            {
+              "name": "voip:apiovh:task/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -23108,7 +25035,10 @@ export const schema: Schema = {
           "description": "Time conditions compatible numbers associated with this billing account",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:timeCondition/get"
+            {
+              "name": "voip:apiovh:timeCondition/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -23137,7 +25067,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:timeCondition/get"
+            {
+              "name": "voip:apiovh:timeCondition/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -23174,7 +25107,10 @@ export const schema: Schema = {
           "description": "Rules for time conditions for this service",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:timeCondition/condition/get"
+            {
+              "name": "voip:apiovh:timeCondition/condition/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -23205,7 +25141,10 @@ export const schema: Schema = {
           "description": "Create a new time condition rule",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:timeCondition/condition/create"
+            {
+              "name": "voip:apiovh:timeCondition/condition/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -23274,7 +25213,10 @@ export const schema: Schema = {
           "description": "Delete the given screen list",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:timeCondition/condition/delete"
+            {
+              "name": "voip:apiovh:timeCondition/condition/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -23313,7 +25255,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:timeCondition/condition/get"
+            {
+              "name": "voip:apiovh:timeCondition/condition/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -23352,7 +25297,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:timeCondition/condition/edit"
+            {
+              "name": "voip:apiovh:timeCondition/condition/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -23404,7 +25352,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:timeCondition/options/get"
+            {
+              "name": "voip:apiovh:timeCondition/options/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -23435,7 +25386,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:timeCondition/options/edit"
+            {
+              "name": "voip:apiovh:timeCondition/options/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -23479,7 +25433,10 @@ export const schema: Schema = {
           "description": "Transfer security deposit between two billing accounts",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:transferSecurityDeposit"
+            {
+              "name": "voip:apiovh:transferSecurityDeposit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -23524,7 +25481,10 @@ export const schema: Schema = {
           "description": "Trunk associated with this billing account",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:trunk/get"
+            {
+              "name": "voip:apiovh:trunk/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -23553,7 +25513,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:trunk/get"
+            {
+              "name": "voip:apiovh:trunk/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -23590,7 +25553,10 @@ export const schema: Schema = {
           "description": "Determine the best channels packs combination for a given channel quantity",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:trunk/channelsPacksRepartition/get"
+            {
+              "name": "voip:apiovh:trunk/channelsPacksRepartition/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -23635,7 +25601,10 @@ export const schema: Schema = {
           "description": "External displayed number linked to this trunk",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:trunk/externalDisplayedNumber/get"
+            {
+              "name": "voip:apiovh:trunk/externalDisplayedNumber/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -23666,7 +25635,10 @@ export const schema: Schema = {
           "description": "External displayed number creation for a given trunk",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:trunk/externalDisplayedNumber/create"
+            {
+              "name": "voip:apiovh:trunk/externalDisplayedNumber/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -23719,7 +25691,10 @@ export const schema: Schema = {
           "description": "Delete an external displayed number for a given trunk",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:trunk/externalDisplayedNumber/delete"
+            {
+              "name": "voip:apiovh:trunk/externalDisplayedNumber/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -23758,7 +25733,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:trunk/externalDisplayedNumber/get"
+            {
+              "name": "voip:apiovh:trunk/externalDisplayedNumber/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -23803,7 +25781,10 @@ export const schema: Schema = {
           "description": "Generate a phone call for validation. Returned validation code should be typed when asked.",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:trunk/externalDisplayedNumber/validate/create"
+            {
+              "name": "voip:apiovh:trunk/externalDisplayedNumber/validate/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -23848,7 +25829,10 @@ export const schema: Schema = {
           "description": "Voicemails associated with this billing account",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:voicemail/get"
+            {
+              "name": "voip:apiovh:voicemail/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -23877,7 +25861,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:voicemail/get"
+            {
+              "name": "voip:apiovh:voicemail/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -23908,7 +25895,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:voicemail/edit"
+            {
+              "name": "voip:apiovh:voicemail/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -23952,7 +25942,10 @@ export const schema: Schema = {
           "description": "Voicemail directory messages",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:voicemail/directories/get"
+            {
+              "name": "voip:apiovh:voicemail/directories/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -23997,7 +25990,10 @@ export const schema: Schema = {
           "description": "Delete the given voicemail message",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:voicemail/directories/delete"
+            {
+              "name": "voip:apiovh:voicemail/directories/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -24036,7 +26032,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:voicemail/directories/get"
+            {
+              "name": "voip:apiovh:voicemail/directories/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -24081,7 +26080,10 @@ export const schema: Schema = {
           "description": "Get a url to download the sound file",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:voicemail/directories/download/get"
+            {
+              "name": "voip:apiovh:voicemail/directories/download/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -24134,7 +26136,10 @@ export const schema: Schema = {
           "description": "Move the message to another directory",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:voicemail/directories/move"
+            {
+              "name": "voip:apiovh:voicemail/directories/move",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -24187,7 +26192,10 @@ export const schema: Schema = {
           "description": "Voicemail greeting message properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:voicemail/greetings/get"
+            {
+              "name": "voip:apiovh:voicemail/greetings/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -24226,7 +26234,10 @@ export const schema: Schema = {
           "description": "Upload a new sound for a specific greeting. Return a task id.",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:voicemail/greetings/create"
+            {
+              "name": "voip:apiovh:voicemail/greetings/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -24279,7 +26290,10 @@ export const schema: Schema = {
           "description": "Delete the customized greeting",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:voicemail/greetings/delete"
+            {
+              "name": "voip:apiovh:voicemail/greetings/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -24318,7 +26332,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:voicemail/greetings/get"
+            {
+              "name": "voip:apiovh:voicemail/greetings/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -24363,7 +26380,10 @@ export const schema: Schema = {
           "description": "Get a url to download the sound file",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:voicemail/greetings/download/get"
+            {
+              "name": "voip:apiovh:voicemail/greetings/download/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -24416,7 +26436,10 @@ export const schema: Schema = {
           "description": "Move the message to another directory",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:voicemail/greetings/move"
+            {
+              "name": "voip:apiovh:voicemail/greetings/move",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -24469,7 +26492,10 @@ export const schema: Schema = {
           "description": "Change the voicemail on a new version to manager greetings, directories and extra settings.",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:voicemail/migrateOnNewVersion"
+            {
+              "name": "voip:apiovh:voicemail/migrateOnNewVersion",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -24506,7 +26532,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:voicemail/settings/get"
+            {
+              "name": "voip:apiovh:voicemail/settings/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -24537,7 +26566,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:voicemail/settings/edit"
+            {
+              "name": "voip:apiovh:voicemail/settings/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -24581,7 +26613,10 @@ export const schema: Schema = {
           "description": "Change the voicemail password. It must be 4 digit",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:voicemail/settings/changePassword"
+            {
+              "name": "voip:apiovh:voicemail/settings/changePassword",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -24626,7 +26661,10 @@ export const schema: Schema = {
           "description": "Disable/Enable voicemail. Available only if the line has fax capabilities",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:voicemail/settings/changeRouting"
+            {
+              "name": "voip:apiovh:voicemail/settings/changeRouting",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -24671,7 +26709,10 @@ export const schema: Schema = {
           "description": "Get the status of the voicemail. Available only if the line has fax capabilities",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:voicemail/settings/routing/get"
+            {
+              "name": "voip:apiovh:voicemail/settings/routing/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -24708,7 +26749,10 @@ export const schema: Schema = {
           "description": "Get number for internal and external voicemail",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:voicemail/settings/voicemailNumbers/get"
+            {
+              "name": "voip:apiovh:voicemail/settings/voicemailNumbers/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -24745,7 +26789,10 @@ export const schema: Schema = {
           "description": "Vxml numbers associated with this billing account",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:vxml/get"
+            {
+              "name": "voip:apiovh:vxml/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -24774,7 +26821,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:vxml/get"
+            {
+              "name": "voip:apiovh:vxml/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -24811,7 +26861,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:vxml/settings/get"
+            {
+              "name": "voip:apiovh:vxml/settings/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -24842,7 +26895,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:vxml/settings/edit"
+            {
+              "name": "voip:apiovh:vxml/settings/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -24886,7 +26942,10 @@ export const schema: Schema = {
           "description": "Generate a temporary url to retrieve device logs",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:vxml/settings/logs/create"
+            {
+              "name": "voip:apiovh:vxml/settings/logs/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -24954,13 +27013,24 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "List available services",
+          "description": "Your telephony billing accounts",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:aliases/get"
+            {
+              "name": "voip:apiovh:aliases/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
-          "parameters": [],
+          "parameters": [
+            {
+              "dataType": "map[string][]iam.resource.TagFilter",
+              "description": "Filter resources on IAM tags",
+              "name": "iamTags",
+              "paramType": "query",
+              "required": false
+            }
+          ],
           "responseType": "string[]"
         }
       ],
@@ -24977,7 +27047,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:aliases/get"
+            {
+              "name": "voip:apiovh:aliases/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -24990,7 +27063,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.TelephonyGenericService"
+          "responseType": "telephony.TelephonyGenericServiceWithIAM"
         }
       ],
       "path": "/telephony/aliases/{serviceName}"
@@ -25006,7 +27079,10 @@ export const schema: Schema = {
           "description": "Launch a contact change procedure",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:aliases/changeContact"
+            {
+              "name": "voip:apiovh:aliases/changeContact",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -25056,10 +27132,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get service information",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:aliases/serviceInfos/get"
+            {
+              "name": "voip:apiovh:aliases/serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -25079,10 +27158,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Update service information",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:aliases/serviceInfos/edit"
+            {
+              "name": "voip:apiovh:aliases/serviceInfos/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -25144,7 +27226,10 @@ export const schema: Schema = {
           "description": "Get current order ids",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:voip/currentOrderIds/get"
+            {
+              "name": "account:apiovh:voip/currentOrderIds/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -25315,13 +27400,24 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "List available services",
+          "description": "Your telephony billing accounts",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:lines/get"
+            {
+              "name": "voip:apiovh:lines/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
-          "parameters": [],
+          "parameters": [
+            {
+              "dataType": "map[string][]iam.resource.TagFilter",
+              "description": "Filter resources on IAM tags",
+              "name": "iamTags",
+              "paramType": "query",
+              "required": false
+            }
+          ],
           "responseType": "string[]"
         }
       ],
@@ -25338,7 +27434,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:lines/get"
+            {
+              "name": "voip:apiovh:lines/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -25351,7 +27450,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.TelephonyGenericService"
+          "responseType": "telephony.TelephonyGenericServiceWithIAM"
         }
       ],
       "path": "/telephony/lines/{serviceName}"
@@ -25367,7 +27466,10 @@ export const schema: Schema = {
           "description": "Launch a contact change procedure",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:lines/changeContact"
+            {
+              "name": "voip:apiovh:lines/changeContact",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -25417,10 +27519,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get service information",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:lines/serviceInfos/get"
+            {
+              "name": "voip:apiovh:lines/serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -25440,10 +27545,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Update service information",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:lines/serviceInfos/edit"
+            {
+              "name": "voip:apiovh:lines/serviceInfos/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -25623,7 +27731,10 @@ export const schema: Schema = {
           "description": "Procedures linked to your nichandle",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:voip/procedure/get"
+            {
+              "name": "account:apiovh:voip/procedure/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -25637,7 +27748,10 @@ export const schema: Schema = {
           "description": "Create a telephony procedure",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:voip/procedure/create"
+            {
+              "name": "account:apiovh:voip/procedure/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -25698,7 +27812,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:voip/procedure/get"
+            {
+              "name": "account:apiovh:voip/procedure/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -25727,7 +27844,10 @@ export const schema: Schema = {
           "description": "Cancel the given procedure.",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:voip/procedure/cancel"
+            {
+              "name": "account:apiovh:voip/procedure/cancel",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -25756,7 +27876,10 @@ export const schema: Schema = {
           "description": "Tells whether the procedure is necessary to order telephony products or not",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:voip/procedure/required/get"
+            {
+              "name": "account:apiovh:voip/procedure/required/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -25776,7 +27899,10 @@ export const schema: Schema = {
           "description": "Generate a new password for the reseller panel",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:voip/resellerPanel/generatePassword"
+            {
+              "name": "account:apiovh:voip/resellerPanel/generatePassword",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -25796,7 +27922,10 @@ export const schema: Schema = {
           "description": "Status of customer reseller panel",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:voip/resellerPanel/status/get"
+            {
+              "name": "account:apiovh:voip/resellerPanel/status/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -25816,7 +27945,10 @@ export const schema: Schema = {
           "description": "Search a service with its domain, to get its billing account and type",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:voip/searchServices/get"
+            {
+              "name": "account:apiovh:voip/searchServices/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -25845,7 +27977,10 @@ export const schema: Schema = {
           "description": "Get all available SIP domains by country",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:voip/setDefaultSipDomain"
+            {
+              "name": "account:apiovh:voip/setDefaultSipDomain",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -25880,6 +28015,29 @@ export const schema: Schema = {
       "path": "/telephony/setDefaultSipDomain"
     },
     {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get the Softphone beta eligibility status of the account",
+          "httpMethod": "GET",
+          "iamActions": [
+            {
+              "name": "account:apiovh:telephony/softphoneBetaEligibility/get",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "telephony.SoftphoneBetaEligibility"
+        }
+      ],
+      "path": "/telephony/softphoneBetaEligibility"
+    },
+    {
       "description": "List the telephony.Sound objects",
       "operations": [
         {
@@ -25890,7 +28048,10 @@ export const schema: Schema = {
           "description": "Sounds attached to this telephony account",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:voip/sounds/get"
+            {
+              "name": "account:apiovh:voip/sounds/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -25904,7 +28065,10 @@ export const schema: Schema = {
           "description": "Create a new sound",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:voip/sounds/create"
+            {
+              "name": "account:apiovh:voip/sounds/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -25941,7 +28105,10 @@ export const schema: Schema = {
           "description": "Delete the sound",
           "httpMethod": "DELETE",
           "iamActions": [
-            "account:apiovh:voip/sounds/delete"
+            {
+              "name": "account:apiovh:voip/sounds/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -25964,7 +28131,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:voip/sounds/get"
+            {
+              "name": "account:apiovh:voip/sounds/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -25987,7 +28157,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "account:apiovh:voip/sounds/edit"
+            {
+              "name": "account:apiovh:voip/sounds/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -26023,10 +28196,21 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:spare/get"
+            {
+              "name": "voip:apiovh:spare/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
-          "parameters": [],
+          "parameters": [
+            {
+              "dataType": "map[string][]iam.resource.TagFilter",
+              "description": "Filter resources on IAM tags",
+              "name": "iamTags",
+              "paramType": "query",
+              "required": false
+            }
+          ],
           "responseType": "string[]"
         }
       ],
@@ -26043,7 +28227,10 @@ export const schema: Schema = {
           "description": "Delete the spare as if it was not belonging to OVH anymore",
           "httpMethod": "DELETE",
           "iamActions": [
-            "voip:apiovh:spare/delete"
+            {
+              "name": "voip:apiovh:spare/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -26066,7 +28253,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:spare/get"
+            {
+              "name": "voip:apiovh:spare/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -26079,7 +28269,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "spare.telephony.TelephonySpare"
+          "responseType": "spare.telephony.TelephonySpareWithIAM"
         }
       ],
       "path": "/telephony/spare/{spare}"
@@ -26095,7 +28285,10 @@ export const schema: Schema = {
           "description": "Return the list of phone domains compatible to be replaced",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:spare/compatibleReplacement/get"
+            {
+              "name": "voip:apiovh:spare/compatibleReplacement/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -26121,11 +28314,15 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Replace the phone by its spare. The broken phone became a spare if it was bought. An RMA is created if the broken phone is under securitydeposit.",
+          "description": "Replace the phone by its spare",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:spare/replace"
+            {
+              "name": "voip:apiovh:spare/replace",
+              "required": true
+            }
           ],
+          "longDescription": "Replace the phone by its spare. The broken phone became a spare if it was bought. An RMA is created if the broken phone is under securitydeposit.",
           "noAuthentication": false,
           "parameters": [
             {
@@ -26166,10 +28363,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get service information",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:spare/serviceInfos/get"
+            {
+              "name": "voip:apiovh:spare/serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -26189,10 +28389,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Update service information",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:spare/serviceInfos/edit"
+            {
+              "name": "voip:apiovh:spare/serviceInfos/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -26242,13 +28445,24 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "List available services",
+          "description": "Your telephony trunks",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:trunks/get"
+            {
+              "name": "voip:apiovh:trunks/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
-          "parameters": [],
+          "parameters": [
+            {
+              "dataType": "map[string][]iam.resource.TagFilter",
+              "description": "Filter resources on IAM tags",
+              "name": "iamTags",
+              "paramType": "query",
+              "required": false
+            }
+          ],
           "responseType": "string[]"
         }
       ],
@@ -26265,7 +28479,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:trunks/get"
+            {
+              "name": "voip:apiovh:trunks/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -26278,7 +28495,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "telephony.TelephonyGenericService"
+          "responseType": "telephony.TelephonyGenericServiceWithIAM"
         }
       ],
       "path": "/telephony/trunks/{serviceName}"
@@ -26294,7 +28511,10 @@ export const schema: Schema = {
           "description": "Launch a contact change procedure",
           "httpMethod": "POST",
           "iamActions": [
-            "voip:apiovh:trunks/changeContact"
+            {
+              "name": "voip:apiovh:trunks/changeContact",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -26344,10 +28564,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get service information",
           "httpMethod": "GET",
           "iamActions": [
-            "voip:apiovh:trunks/serviceInfos/get"
+            {
+              "name": "voip:apiovh:trunks/serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -26367,10 +28590,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Update service information",
           "httpMethod": "PUT",
           "iamActions": [
-            "voip:apiovh:trunks/serviceInfos/edit"
+            {
+              "name": "voip:apiovh:trunks/serviceInfos/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -26399,6 +28625,30 @@ export const schema: Schema = {
   "basePath": "https://eu.api.ovh.com/1.0",
   "models": {
     "complexType.Range<T>": {
+      "description": "Start and end points (inclusive) of a range",
+      "generics": [
+        "T"
+      ],
+      "id": "Range",
+      "namespace": "complexType",
+      "properties": {
+        "from": {
+          "canBeNull": false,
+          "description": "Start point of the range",
+          "readOnly": false,
+          "required": false,
+          "type": "T"
+        },
+        "to": {
+          "canBeNull": false,
+          "description": "End point of the range",
+          "readOnly": false,
+          "required": false,
+          "type": "T"
+        }
+      }
+    },
+    "complexType.Range<long>": {
       "description": "Start and end points (inclusive) of a range",
       "generics": [
         "T"
@@ -26734,429 +28984,76 @@ export const schema: Schema = {
       "id": "CountryEnum",
       "namespace": "coreTypes"
     },
-    "coreTypes.TimeZoneEnum": {
-      "description": "IANA TimeZone names",
+    "iam.ResourceMetadata": {
+      "description": "IAM resource metadata embedded in services models",
+      "id": "ResourceMetadata",
+      "namespace": "iam",
+      "properties": {
+        "displayName": {
+          "canBeNull": true,
+          "description": "Resource display name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Unique identifier of the resource",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "tags": {
+          "canBeNull": true,
+          "description": "Resource tags. Tags that were internally computed are prefixed with ovh:",
+          "fullType": "map[string]string",
+          "readOnly": true,
+          "required": false,
+          "type": "map[string]string"
+        },
+        "urn": {
+          "canBeNull": false,
+          "description": "Unique resource name used in policies",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter": {
+      "description": "Resource tag filter",
+      "id": "TagFilter",
+      "namespace": "iam.resource",
+      "properties": {
+        "operator": {
+          "canBeNull": true,
+          "description": "Operator to use in order to filter on the value (defaults to 'EQ')",
+          "fullType": "iam.resource.TagFilter.OperatorEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.resource.TagFilter.OperatorEnum"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value to use in order to filter tags",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter.OperatorEnum": {
+      "description": "Operator that can be used in order to filter resources tags",
       "enum": [
-        "Africa/Abidjan",
-        "Africa/Accra",
-        "Africa/Addis_Ababa",
-        "Africa/Algiers",
-        "Africa/Asmara",
-        "Africa/Bamako",
-        "Africa/Bangui",
-        "Africa/Banjul",
-        "Africa/Bissau",
-        "Africa/Blantyre",
-        "Africa/Brazzaville",
-        "Africa/Bujumbura",
-        "Africa/Cairo",
-        "Africa/Casablanca",
-        "Africa/Ceuta",
-        "Africa/Conakry",
-        "Africa/Dakar",
-        "Africa/Dar_es_Salaam",
-        "Africa/Djibouti",
-        "Africa/Douala",
-        "Africa/El_Aaiun",
-        "Africa/Freetown",
-        "Africa/Gaborone",
-        "Africa/Harare",
-        "Africa/Johannesburg",
-        "Africa/Juba",
-        "Africa/Kampala",
-        "Africa/Khartoum",
-        "Africa/Kigali",
-        "Africa/Kinshasa",
-        "Africa/Lagos",
-        "Africa/Libreville",
-        "Africa/Lome",
-        "Africa/Luanda",
-        "Africa/Lubumbashi",
-        "Africa/Lusaka",
-        "Africa/Malabo",
-        "Africa/Maputo",
-        "Africa/Maseru",
-        "Africa/Mbabane",
-        "Africa/Mogadishu",
-        "Africa/Monrovia",
-        "Africa/Nairobi",
-        "Africa/Ndjamena",
-        "Africa/Niamey",
-        "Africa/Nouakchott",
-        "Africa/Ouagadougou",
-        "Africa/Porto-Novo",
-        "Africa/Sao_Tome",
-        "Africa/Tripoli",
-        "Africa/Tunis",
-        "Africa/Windhoek",
-        "America/Adak",
-        "America/Anchorage",
-        "America/Anguilla",
-        "America/Antigua",
-        "America/Araguaina",
-        "America/Argentina/Buenos_Aires",
-        "America/Argentina/Catamarca",
-        "America/Argentina/Cordoba",
-        "America/Argentina/Jujuy",
-        "America/Argentina/La_Rioja",
-        "America/Argentina/Mendoza",
-        "America/Argentina/Rio_Gallegos",
-        "America/Argentina/Salta",
-        "America/Argentina/San_Juan",
-        "America/Argentina/San_Luis",
-        "America/Argentina/Tucuman",
-        "America/Argentina/Ushuaia",
-        "America/Aruba",
-        "America/Asuncion",
-        "America/Atikokan",
-        "America/Bahia",
-        "America/Bahia_Banderas",
-        "America/Barbados",
-        "America/Belem",
-        "America/Belize",
-        "America/Blanc-Sablon",
-        "America/Boa_Vista",
-        "America/Bogota",
-        "America/Boise",
-        "America/Cambridge_Bay",
-        "America/Campo_Grande",
-        "America/Cancun",
-        "America/Caracas",
-        "America/Cayenne",
-        "America/Cayman",
-        "America/Chicago",
-        "America/Chihuahua",
-        "America/Costa_Rica",
-        "America/Creston",
-        "America/Cuiaba",
-        "America/Curacao",
-        "America/Danmarkshavn",
-        "America/Dawson",
-        "America/Dawson_Creek",
-        "America/Denver",
-        "America/Detroit",
-        "America/Dominica",
-        "America/Edmonton",
-        "America/Eirunepe",
-        "America/El_Salvador",
-        "America/Fortaleza",
-        "America/Glace_Bay",
-        "America/Godthab",
-        "America/Goose_Bay",
-        "America/Grand_Turk",
-        "America/Grenada",
-        "America/Guadeloupe",
-        "America/Guatemala",
-        "America/Guayaquil",
-        "America/Guyana",
-        "America/Halifax",
-        "America/Havana",
-        "America/Hermosillo",
-        "America/Indiana/Indianapolis",
-        "America/Indiana/Knox",
-        "America/Indiana/Marengo",
-        "America/Indiana/Petersburg",
-        "America/Indiana/Tell_City",
-        "America/Indiana/Vevay",
-        "America/Indiana/Vincennes",
-        "America/Indiana/Winamac",
-        "America/Inuvik",
-        "America/Iqaluit",
-        "America/Jamaica",
-        "America/Juneau",
-        "America/Kentucky/Louisville",
-        "America/Kentucky/Monticello",
-        "America/Kralendijk",
-        "America/La_Paz",
-        "America/Lima",
-        "America/Los_Angeles",
-        "America/Lower_Princes",
-        "America/Maceio",
-        "America/Managua",
-        "America/Manaus",
-        "America/Marigot",
-        "America/Martinique",
-        "America/Matamoros",
-        "America/Mazatlan",
-        "America/Menominee",
-        "America/Merida",
-        "America/Metlakatla",
-        "America/Mexico_City",
-        "America/Miquelon",
-        "America/Moncton",
-        "America/Monterrey",
-        "America/Montevideo",
-        "America/Montserrat",
-        "America/Nassau",
-        "America/New_York",
-        "America/Nipigon",
-        "America/Nome",
-        "America/Noronha",
-        "America/North_Dakota/Beulah",
-        "America/North_Dakota/Center",
-        "America/North_Dakota/New_Salem",
-        "America/Ojinaga",
-        "America/Panama",
-        "America/Pangnirtung",
-        "America/Paramaribo",
-        "America/Phoenix",
-        "America/Port-au-Prince",
-        "America/Port_of_Spain",
-        "America/Porto_Velho",
-        "America/Puerto_Rico",
-        "America/Rainy_River",
-        "America/Rankin_Inlet",
-        "America/Recife",
-        "America/Regina",
-        "America/Resolute",
-        "America/Rio_Branco",
-        "America/Santa_Isabel",
-        "America/Santarem",
-        "America/Santiago",
-        "America/Santo_Domingo",
-        "America/Sao_Paulo",
-        "America/Scoresbysund",
-        "America/Sitka",
-        "America/St_Barthelemy",
-        "America/St_Johns",
-        "America/St_Kitts",
-        "America/St_Lucia",
-        "America/St_Thomas",
-        "America/St_Vincent",
-        "America/Swift_Current",
-        "America/Tegucigalpa",
-        "America/Thule",
-        "America/Thunder_Bay",
-        "America/Tijuana",
-        "America/Toronto",
-        "America/Tortola",
-        "America/Vancouver",
-        "America/Whitehorse",
-        "America/Winnipeg",
-        "America/Yakutat",
-        "America/Yellowknife",
-        "Antarctica/Casey",
-        "Antarctica/Davis",
-        "Antarctica/DumontDUrville",
-        "Antarctica/Macquarie",
-        "Antarctica/Mawson",
-        "Antarctica/McMurdo",
-        "Antarctica/Palmer",
-        "Antarctica/Rothera",
-        "Antarctica/Syowa",
-        "Antarctica/Troll",
-        "Antarctica/Vostok",
-        "Arctic/Longyearbyen",
-        "Asia/Aden",
-        "Asia/Almaty",
-        "Asia/Amman",
-        "Asia/Anadyr",
-        "Asia/Aqtau",
-        "Asia/Aqtobe",
-        "Asia/Ashgabat",
-        "Asia/Baghdad",
-        "Asia/Bahrain",
-        "Asia/Baku",
-        "Asia/Bangkok",
-        "Asia/Beirut",
-        "Asia/Bishkek",
-        "Asia/Brunei",
-        "Asia/Chita",
-        "Asia/Choibalsan",
-        "Asia/Colombo",
-        "Asia/Damascus",
-        "Asia/Dhaka",
-        "Asia/Dili",
-        "Asia/Dubai",
-        "Asia/Dushanbe",
-        "Asia/Gaza",
-        "Asia/Hebron",
-        "Asia/Ho_Chi_Minh",
-        "Asia/Hong_Kong",
-        "Asia/Hovd",
-        "Asia/Irkutsk",
-        "Asia/Jakarta",
-        "Asia/Jayapura",
-        "Asia/Jerusalem",
-        "Asia/Kabul",
-        "Asia/Kamchatka",
-        "Asia/Karachi",
-        "Asia/Kathmandu",
-        "Asia/Khandyga",
-        "Asia/Kolkata",
-        "Asia/Krasnoyarsk",
-        "Asia/Kuala_Lumpur",
-        "Asia/Kuching",
-        "Asia/Kuwait",
-        "Asia/Macau",
-        "Asia/Magadan",
-        "Asia/Makassar",
-        "Asia/Manila",
-        "Asia/Muscat",
-        "Asia/Nicosia",
-        "Asia/Novokuznetsk",
-        "Asia/Novosibirsk",
-        "Asia/Omsk",
-        "Asia/Oral",
-        "Asia/Phnom_Penh",
-        "Asia/Pontianak",
-        "Asia/Pyongyang",
-        "Asia/Qatar",
-        "Asia/Qyzylorda",
-        "Asia/Rangoon",
-        "Asia/Riyadh",
-        "Asia/Sakhalin",
-        "Asia/Samarkand",
-        "Asia/Seoul",
-        "Asia/Shanghai",
-        "Asia/Singapore",
-        "Asia/Srednekolymsk",
-        "Asia/Taipei",
-        "Asia/Tashkent",
-        "Asia/Tbilisi",
-        "Asia/Tehran",
-        "Asia/Thimphu",
-        "Asia/Tokyo",
-        "Asia/Ulaanbaatar",
-        "Asia/Urumqi",
-        "Asia/Ust-Nera",
-        "Asia/Vientiane",
-        "Asia/Vladivostok",
-        "Asia/Yakutsk",
-        "Asia/Yekaterinburg",
-        "Asia/Yerevan",
-        "Atlantic/Azores",
-        "Atlantic/Bermuda",
-        "Atlantic/Canary",
-        "Atlantic/Cape_Verde",
-        "Atlantic/Faroe",
-        "Atlantic/Madeira",
-        "Atlantic/Reykjavik",
-        "Atlantic/South_Georgia",
-        "Atlantic/St_Helena",
-        "Atlantic/Stanley",
-        "Australia/Adelaide",
-        "Australia/Brisbane",
-        "Australia/Broken_Hill",
-        "Australia/Currie",
-        "Australia/Darwin",
-        "Australia/Eucla",
-        "Australia/Hobart",
-        "Australia/Lindeman",
-        "Australia/Lord_Howe",
-        "Australia/Melbourne",
-        "Australia/Perth",
-        "Australia/Sydney",
-        "Europe/Amsterdam",
-        "Europe/Andorra",
-        "Europe/Athens",
-        "Europe/Belgrade",
-        "Europe/Berlin",
-        "Europe/Bratislava",
-        "Europe/Brussels",
-        "Europe/Bucharest",
-        "Europe/Budapest",
-        "Europe/Busingen",
-        "Europe/Chisinau",
-        "Europe/Copenhagen",
-        "Europe/Dublin",
-        "Europe/Gibraltar",
-        "Europe/Guernsey",
-        "Europe/Helsinki",
-        "Europe/Isle_of_Man",
-        "Europe/Istanbul",
-        "Europe/Jersey",
-        "Europe/Kaliningrad",
-        "Europe/Kiev",
-        "Europe/Lisbon",
-        "Europe/Ljubljana",
-        "Europe/London",
-        "Europe/Luxembourg",
-        "Europe/Madrid",
-        "Europe/Malta",
-        "Europe/Mariehamn",
-        "Europe/Minsk",
-        "Europe/Monaco",
-        "Europe/Moscow",
-        "Europe/Oslo",
-        "Europe/Paris",
-        "Europe/Podgorica",
-        "Europe/Prague",
-        "Europe/Riga",
-        "Europe/Rome",
-        "Europe/Samara",
-        "Europe/San_Marino",
-        "Europe/Sarajevo",
-        "Europe/Simferopol",
-        "Europe/Skopje",
-        "Europe/Sofia",
-        "Europe/Stockholm",
-        "Europe/Tallinn",
-        "Europe/Tirane",
-        "Europe/Uzhgorod",
-        "Europe/Vaduz",
-        "Europe/Vatican",
-        "Europe/Vienna",
-        "Europe/Vilnius",
-        "Europe/Volgograd",
-        "Europe/Warsaw",
-        "Europe/Zagreb",
-        "Europe/Zaporozhye",
-        "Europe/Zurich",
-        "Indian/Antananarivo",
-        "Indian/Chagos",
-        "Indian/Christmas",
-        "Indian/Cocos",
-        "Indian/Comoro",
-        "Indian/Kerguelen",
-        "Indian/Mahe",
-        "Indian/Maldives",
-        "Indian/Mauritius",
-        "Indian/Mayotte",
-        "Indian/Reunion",
-        "Pacific/Apia",
-        "Pacific/Auckland",
-        "Pacific/Bougainville",
-        "Pacific/Chatham",
-        "Pacific/Chuuk",
-        "Pacific/Easter",
-        "Pacific/Efate",
-        "Pacific/Enderbury",
-        "Pacific/Fakaofo",
-        "Pacific/Fiji",
-        "Pacific/Funafuti",
-        "Pacific/Galapagos",
-        "Pacific/Gambier",
-        "Pacific/Guadalcanal",
-        "Pacific/Guam",
-        "Pacific/Honolulu",
-        "Pacific/Johnston",
-        "Pacific/Kiritimati",
-        "Pacific/Kosrae",
-        "Pacific/Kwajalein",
-        "Pacific/Majuro",
-        "Pacific/Marquesas",
-        "Pacific/Midway",
-        "Pacific/Nauru",
-        "Pacific/Niue",
-        "Pacific/Norfolk",
-        "Pacific/Noumea",
-        "Pacific/Pago_Pago",
-        "Pacific/Palau",
-        "Pacific/Pitcairn",
-        "Pacific/Pohnpei",
-        "Pacific/Port_Moresby",
-        "Pacific/Rarotonga",
-        "Pacific/Saipan",
-        "Pacific/Tahiti",
-        "Pacific/Tarawa",
-        "Pacific/Tongatapu",
-        "Pacific/Wake",
-        "Pacific/Wallis"
+        "EQ"
       ],
       "enumType": "string",
-      "id": "TimeZoneEnum",
-      "namespace": "coreTypes"
+      "id": "OperatorEnum",
+      "namespace": "iam.resource.TagFilter"
     },
     "nichandle.GenderEnum": {
       "description": "All genders a person can choose",
@@ -27422,6 +29319,44 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        },
+        "macAddress": {
+          "canBeNull": false,
+          "description": "Mac address",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "protocol": {
+          "canBeNull": false,
+          "description": "Phone protocol",
+          "fullType": "telephony.ProtocolEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "telephony.ProtocolEnum"
+        }
+      }
+    },
+    "spare.telephony.TelephonySpareWithIAM": {
+      "description": "Spare properties",
+      "id": "TelephonySpare",
+      "namespace": "spare.telephony",
+      "properties": {
+        "brand": {
+          "canBeNull": false,
+          "description": "Phone brand model",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "iam": {
+          "canBeNull": true,
+          "description": "IAM resource metadata",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.ResourceMetadata"
         },
         "macAddress": {
           "canBeNull": false,
@@ -27723,345 +29658,105 @@ export const schema: Schema = {
       "id": "BillingAccountStatusEnum",
       "namespace": "telephony"
     },
-    "telephony.CallDiagnosticCallQuality": {
-      "description": "Call diagnostic analyze structure on metric performance values",
-      "id": "CallDiagnosticCallQuality",
+    "telephony.BillingAccountWithIAM": {
+      "description": "Billing Account",
+      "id": "BillingAccount",
       "namespace": "telephony",
       "properties": {
-        "callId": {
+        "allowedOutplan": {
           "canBeNull": false,
-          "description": "Call identifier of the sip signal leg",
+          "description": "Allowed outplan",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "billingAccount": {
+          "canBeNull": false,
+          "description": "Name of the billing account",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "creditThreshold": {
+          "canBeNull": false,
+          "description": "Allowed threshold credit",
+          "fullType": "order.Price",
+          "readOnly": false,
+          "required": false,
+          "type": "order.Price"
+        },
+        "currentOutplan": {
+          "canBeNull": false,
+          "description": "Current outplan",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "Description of the billing account",
+          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
         },
-        "codec": {
+        "hasSpecialNumbers": {
           "canBeNull": false,
-          "description": "Codec used in this direction flow",
-          "readOnly": false,
+          "description": "Check if the billing account contains at least one special number",
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
-          "type": "telephony.CallDiagnosticCodecEnum"
+          "type": "boolean"
         },
-        "flowId": {
+        "hiddenExternalNumber": {
           "canBeNull": false,
-          "description": "Identifier of the metric performance value",
+          "description": "Hide called numbers in end-of-month call details CSV",
+          "fullType": "boolean",
           "readOnly": false,
           "required": false,
-          "type": "long"
+          "type": "boolean"
         },
-        "ipDst": {
-          "canBeNull": false,
-          "description": "The ip address destination",
-          "readOnly": false,
-          "required": false,
-          "type": "ip"
-        },
-        "ipSrc": {
-          "canBeNull": false,
-          "description": "The ip address source",
-          "readOnly": false,
-          "required": false,
-          "type": "ip"
-        },
-        "maxDelay": {
-          "canBeNull": false,
-          "description": "The max delay between two packet in the given direction flow",
-          "readOnly": false,
-          "required": false,
-          "type": "double"
-        },
-        "maxJitter": {
-          "canBeNull": false,
-          "description": "Variation in the delay of received packets. Smaller is better and less is more",
-          "readOnly": false,
-          "required": false,
-          "type": "double"
-        },
-        "mos": {
-          "canBeNull": false,
-          "description": "Mean Opinion Score expressed in one number, from 1 to 5, 1 being the worst and 5 the best.",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "packets": {
-          "canBeNull": false,
-          "description": "The number of packet sent in the given direction flow",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "portDst": {
-          "canBeNull": false,
-          "description": "Destination port",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "portSrc": {
-          "canBeNull": false,
-          "description": "The port source",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "rtpLost": {
-          "canBeNull": false,
-          "description": "Number of packet RTP lost in the direction flow",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "timestamp": {
-          "canBeNull": false,
-          "description": "The creation timestamp of the given direction flow",
-          "readOnly": false,
-          "required": false,
-          "type": "datetime"
-        }
-      }
-    },
-    "telephony.CallDiagnosticCauseEnum": {
-      "description": "SS7 ISUP cause codes",
-      "enum": [
-        "1",
-        "10",
-        "11",
-        "12",
-        "13",
-        "14",
-        "15",
-        "16",
-        "1a",
-        "1b",
-        "1c",
-        "1d",
-        "1e",
-        "1f",
-        "2",
-        "22",
-        "26",
-        "27",
-        "28",
-        "29",
-        "2a",
-        "2b",
-        "2c",
-        "2e",
-        "2f",
-        "3",
-        "30",
-        "31",
-        "32",
-        "33",
-        "34",
-        "35",
-        "37",
-        "39",
-        "3a",
-        "3e",
-        "3f",
-        "4",
-        "41",
-        "42",
-        "45",
-        "46",
-        "4f",
-        "5",
-        "51",
-        "52",
-        "53",
-        "54",
-        "55",
-        "56",
-        "57",
-        "58",
-        "5a",
-        "5b",
-        "5f",
-        "6",
-        "60",
-        "61",
-        "62",
-        "63",
-        "64",
-        "65",
-        "66",
-        "67",
-        "6e",
-        "6f",
-        "7",
-        "7f",
-        "8",
-        "9"
-      ],
-      "enumType": "string",
-      "id": "CallDiagnosticCauseEnum",
-      "namespace": "telephony"
-    },
-    "telephony.CallDiagnosticCdrs": {
-      "description": "Call diagnostic analyze structure call cdrs",
-      "id": "CallDiagnosticCdrs",
-      "namespace": "telephony",
-      "properties": {
-        "basic": {
-          "canBeNull": false,
-          "description": "Basic information about call details record",
-          "readOnly": false,
-          "required": false,
-          "type": "telephony.CallDiagnosticCdrsBasic"
-        },
-        "timestamp": {
-          "canBeNull": false,
-          "description": "The timestamp of the call details record capture",
-          "readOnly": false,
-          "required": false,
-          "type": "datetime"
-        }
-      }
-    },
-    "telephony.CallDiagnosticCdrsBasic": {
-      "description": "Call diagnostic analyze structure call cdrs",
-      "id": "CallDiagnosticCdrsBasic",
-      "namespace": "telephony",
-      "properties": {
-        "cause": {
-          "canBeNull": false,
-          "description": "Hexadecimal SIP-to-SS7 ISUP cause codes",
-          "readOnly": false,
-          "required": false,
-          "type": "telephony.CallDiagnosticCauseEnum"
-        },
-        "causeDescription": {
-          "canBeNull": false,
-          "description": "SS7 ISUP cause codes",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "releaseLocation": {
-          "canBeNull": false,
-          "description": "Release location type : forward if the calling hangup, backward if the caller hangup, else local",
-          "readOnly": false,
-          "required": false,
-          "type": "telephony.ReleaseLocationEnum"
-        }
-      }
-    },
-    "telephony.CallDiagnosticCodecEnum": {
-      "description": "Enumeration providing payload type to Name of RTP audio video profile",
-      "enum": [
-        "G722",
-        "G729",
-        "PCMA",
-        "PCMU"
-      ],
-      "enumType": "string",
-      "id": "CallDiagnosticCodecEnum",
-      "namespace": "telephony"
-    },
-    "telephony.CallDiagnosticReporting": {
-      "description": "Reporting of the current diagnostic",
-      "id": "CallDiagnosticReporting",
-      "namespace": "telephony",
-      "properties": {
-        "message": {
-          "canBeNull": false,
-          "description": "The relevant informations in anormal behaviors",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "telephony.CallDiagnosticSip": {
-      "description": "Call diagnostic analyze structure on sip signal",
-      "id": "CallDiagnosticSip",
-      "namespace": "telephony",
-      "properties": {
-        "headers": {
-          "canBeNull": false,
-          "description": "Encoded json headers",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "requestMethod": {
+        "iam": {
           "canBeNull": true,
+          "description": "IAM resource metadata",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.ResourceMetadata"
+        },
+        "overrideDisplayedNumber": {
+          "canBeNull": false,
+          "description": "Override number display for calls between services of your billing account",
+          "fullType": "boolean",
           "readOnly": false,
           "required": false,
-          "type": "string"
+          "type": "boolean"
         },
-        "response": {
-          "canBeNull": true,
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "timestamp": {
+        "securityDeposit": {
           "canBeNull": false,
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "telephony.CallDiagnosticStatusEnum": {
-      "description": "Information extraction status",
-      "enum": [
-        "doing",
-        "done",
-        "error",
-        "todo"
-      ],
-      "enumType": "string",
-      "id": "CallDiagnosticStatusEnum",
-      "namespace": "telephony"
-    },
-    "telephony.CallDiagnostics": {
-      "description": "Advanced diagnostic of the voice call",
-      "id": "CallDiagnostics",
-      "namespace": "telephony",
-      "properties": {
-        "callQuality": {
-          "canBeNull": false,
-          "description": "The MOS call quality report",
-          "fullType": "telephony.CallDiagnosticCallQuality[]",
+          "description": "Security deposit amount",
+          "fullType": "order.Price",
           "readOnly": true,
           "required": false,
-          "type": "telephony.CallDiagnosticCallQuality[]"
-        },
-        "cdrs": {
-          "canBeNull": false,
-          "description": "The Call details records information",
-          "fullType": "telephony.CallDiagnosticCdrs[]",
-          "readOnly": true,
-          "required": false,
-          "type": "telephony.CallDiagnosticCdrs[]"
-        },
-        "reporting": {
-          "canBeNull": false,
-          "description": "The relevant informations in anormal behaviors",
-          "fullType": "telephony.CallDiagnosticReporting[]",
-          "readOnly": true,
-          "required": false,
-          "type": "telephony.CallDiagnosticReporting[]"
-        },
-        "sip": {
-          "canBeNull": false,
-          "description": "Sip signal packets during the call and last registers",
-          "fullType": "telephony.CallDiagnosticSip[]",
-          "readOnly": true,
-          "required": false,
-          "type": "telephony.CallDiagnosticSip[]"
+          "type": "order.Price"
         },
         "status": {
           "canBeNull": false,
-          "description": "Todo if datas are being to be loaded in cache. done when datas are available",
-          "fullType": "telephony.CallDiagnosticStatusEnum",
+          "description": "Current status of billing account",
+          "fullType": "telephony.BillingAccountStatusEnum",
           "readOnly": true,
           "required": false,
-          "type": "telephony.CallDiagnosticStatusEnum"
+          "type": "telephony.BillingAccountStatusEnum"
+        },
+        "trusted": {
+          "canBeNull": false,
+          "description": "Is the billing account trusted",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         }
       }
     },
@@ -28452,6 +30147,52 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "CarrierSipEndpointProtocolEnum",
       "namespace": "telephony"
+    },
+    "telephony.CarrierSipVnoMandate": {
+      "description": "Carrier SIP VNO mandate",
+      "id": "CarrierSipVnoMandate",
+      "namespace": "telephony",
+      "properties": {
+        "applicationDate": {
+          "canBeNull": false,
+          "description": "Date at which the associated ranges will be routed.",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "contractReference": {
+          "canBeNull": false,
+          "description": "The reference written on your VNO contract.",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "telephony.CarrierSipVnoRange": {
+      "description": "Carrier SIP VNO range",
+      "id": "CarrierSipVnoRange",
+      "namespace": "telephony",
+      "properties": {
+        "description": {
+          "canBeNull": false,
+          "description": "The carrier SIP trunk description.",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "prefix": {
+          "canBeNull": false,
+          "description": "The phone range prefix.",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
     },
     "telephony.City": {
       "description": "Represents a city",
@@ -33230,6 +34971,7 @@ export const schema: Schema = {
       "enum": [
         "#",
         "*",
+        "0",
         "1",
         "2",
         "3",
@@ -34658,17 +36400,6 @@ export const schema: Schema = {
         }
       }
     },
-    "telephony.ReleaseLocationEnum": {
-      "description": "Release location type : forward if the calling hangup, backward if the caller hangup, else local",
-      "enum": [
-        "backward",
-        "forward",
-        "local"
-      ],
-      "enumType": "string",
-      "id": "ReleaseLocationEnum",
-      "namespace": "telephony"
-    },
     "telephony.RepaymentConsumption": {
       "description": "Call which are repayable",
       "id": "RepaymentConsumption",
@@ -35433,6 +37164,36 @@ export const schema: Schema = {
       "id": "SipDomainProductTypeEnum",
       "namespace": "telephony"
     },
+    "telephony.SoftphoneBetaEligibility": {
+      "description": "Softphone beta eligibility",
+      "id": "SoftphoneBetaEligibility",
+      "namespace": "telephony",
+      "properties": {
+        "eligibility": {
+          "canBeNull": false,
+          "description": "Whether the account is eligible to the Softphone beta offer",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
+    "telephony.SoftphoneBetaStatus": {
+      "description": "Beta status of softphone",
+      "id": "SoftphoneBetaStatus",
+      "namespace": "telephony",
+      "properties": {
+        "enabled": {
+          "canBeNull": false,
+          "description": "Whether Softphone beta is enabled or disabled",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
+        }
+      }
+    },
     "telephony.Sound": {
       "description": "Sounds attached to this telephony account",
       "id": "Sound",
@@ -35601,6 +37362,27 @@ export const schema: Schema = {
       "id": "TelephonyGenericService",
       "namespace": "telephony",
       "properties": {
+        "serviceName": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "telephony.TelephonyGenericServiceWithIAM": {
+      "description": "Telephony service",
+      "id": "TelephonyGenericService",
+      "namespace": "telephony",
+      "properties": {
+        "iam": {
+          "canBeNull": true,
+          "description": "IAM resource metadata",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.ResourceMetadata"
+        },
         "serviceName": {
           "canBeNull": false,
           "fullType": "string",
@@ -35996,6 +37778,7 @@ export const schema: Schema = {
     "telephony.TimeConditionsTimeoutEnum": {
       "description": "Timeout before unavailable action is triggered",
       "enum": [
+        "5",
         "10",
         "15",
         "20",
@@ -36004,7 +37787,6 @@ export const schema: Schema = {
         "35",
         "40",
         "45",
-        "5",
         "50",
         "55",
         "60",
@@ -36832,7 +38614,6 @@ export const schema: Schema = {
       "description": "Special number category",
       "enum": [
         "access",
-        "adults",
         "announced",
         "conferencing",
         "contentsAuto",
@@ -36857,7 +38638,7 @@ export const schema: Schema = {
         "Europe/Paris",
         "Europe/Zurich"
       ],
-      "enumType": "coreTypes.TimeZoneEnum",
+      "enumType": "string",
       "id": "timeZone",
       "namespace": "telephony"
     },

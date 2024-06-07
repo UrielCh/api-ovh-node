@@ -16,10 +16,21 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "emailPro:apiovh:get"
+            {
+              "name": "emailPro:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
-          "parameters": [],
+          "parameters": [
+            {
+              "dataType": "map[string][]iam.resource.TagFilter",
+              "description": "Filter resources on IAM tags",
+              "name": "iamTags",
+              "paramType": "query",
+              "required": false
+            }
+          ],
           "responseType": "string[]"
         }
       ],
@@ -36,7 +47,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "emailPro:apiovh:get"
+            {
+              "name": "emailPro:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -49,7 +63,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "email.pro.ServiceNative"
+          "responseType": "email.pro.ServiceNativeWithIAM"
         },
         {
           "apiStatus": {
@@ -59,7 +73,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "emailPro:apiovh:put"
+            {
+              "name": "emailPro:apiovh:put",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -95,7 +112,10 @@ export const schema: Schema = {
           "description": "Accounts associated to this pro service",
           "httpMethod": "GET",
           "iamActions": [
-            "emailPro:apiovh:account/get"
+            {
+              "name": "emailPro:apiovh:account/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -140,7 +160,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "emailPro:apiovh:account/get"
+            {
+              "name": "emailPro:apiovh:account/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -171,7 +194,10 @@ export const schema: Schema = {
           "description": "Delete existing mailbox in pro server",
           "httpMethod": "DELETE",
           "iamActions": [
-            "emailPro:apiovh:account/delete"
+            {
+              "name": "emailPro:apiovh:account/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -202,7 +228,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "emailPro:apiovh:account/edit"
+            {
+              "name": "emailPro:apiovh:account/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -246,7 +275,10 @@ export const schema: Schema = {
           "description": "Aliases associated to this mailbox",
           "httpMethod": "GET",
           "iamActions": [
-            "emailPro:apiovh:account/alias/get"
+            {
+              "name": "emailPro:apiovh:account/alias/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -277,7 +309,10 @@ export const schema: Schema = {
           "description": "Create new alias",
           "httpMethod": "POST",
           "iamActions": [
-            "emailPro:apiovh:account/alias/create"
+            {
+              "name": "emailPro:apiovh:account/alias/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -322,7 +357,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "emailPro:apiovh:account/alias/get"
+            {
+              "name": "emailPro:apiovh:account/alias/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -361,7 +399,10 @@ export const schema: Schema = {
           "description": "Delete existing alias",
           "httpMethod": "DELETE",
           "iamActions": [
-            "emailPro:apiovh:account/alias/delete"
+            {
+              "name": "emailPro:apiovh:account/alias/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -406,7 +447,10 @@ export const schema: Schema = {
           "description": "Change mailbox password",
           "httpMethod": "POST",
           "iamActions": [
-            "emailPro:apiovh:account/changePassword"
+            {
+              "name": "emailPro:apiovh:account/changePassword",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -451,7 +495,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "emailPro:apiovh:account/diagnostics/get"
+            {
+              "name": "emailPro:apiovh:account/diagnostics/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -482,7 +529,10 @@ export const schema: Schema = {
           "description": "Create new diagnosis request",
           "httpMethod": "POST",
           "iamActions": [
-            "emailPro:apiovh:account/diagnostics/create"
+            {
+              "name": "emailPro:apiovh:account/diagnostics/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -527,7 +577,10 @@ export const schema: Schema = {
           "description": "Full access granted users for this mailbox",
           "httpMethod": "GET",
           "iamActions": [
-            "emailPro:apiovh:account/fullAccess/get"
+            {
+              "name": "emailPro:apiovh:account/fullAccess/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -558,7 +611,10 @@ export const schema: Schema = {
           "description": "Allow full access to a user",
           "httpMethod": "POST",
           "iamActions": [
-            "emailPro:apiovh:account/fullAccess/grant"
+            {
+              "name": "emailPro:apiovh:account/fullAccess/grant",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -603,7 +659,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "emailPro:apiovh:account/fullAccess/get"
+            {
+              "name": "emailPro:apiovh:account/fullAccess/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -642,7 +701,10 @@ export const schema: Schema = {
           "description": "Revoke full access",
           "httpMethod": "DELETE",
           "iamActions": [
-            "emailPro:apiovh:account/fullAccess/revoke"
+            {
+              "name": "emailPro:apiovh:account/fullAccess/revoke",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -687,7 +749,10 @@ export const schema: Schema = {
           "description": "Send as granted users for this mailbox",
           "httpMethod": "GET",
           "iamActions": [
-            "emailPro:apiovh:account/sendAs/get"
+            {
+              "name": "emailPro:apiovh:account/sendAs/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -718,7 +783,10 @@ export const schema: Schema = {
           "description": "Allow another user to send mails from this mailbox",
           "httpMethod": "POST",
           "iamActions": [
-            "emailPro:apiovh:account/sendAs/grant"
+            {
+              "name": "emailPro:apiovh:account/sendAs/grant",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -763,7 +831,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "emailPro:apiovh:account/sendAs/get"
+            {
+              "name": "emailPro:apiovh:account/sendAs/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -802,7 +873,10 @@ export const schema: Schema = {
           "description": "Delete allowed user for sendAs",
           "httpMethod": "DELETE",
           "iamActions": [
-            "emailPro:apiovh:account/sendAs/revoke"
+            {
+              "name": "emailPro:apiovh:account/sendAs/revoke",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -847,7 +921,10 @@ export const schema: Schema = {
           "description": "SendOnBehalfTo granted users for this mailbox",
           "httpMethod": "GET",
           "iamActions": [
-            "emailPro:apiovh:account/sendOnBehalfTo/get"
+            {
+              "name": "emailPro:apiovh:account/sendOnBehalfTo/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -878,7 +955,10 @@ export const schema: Schema = {
           "description": "Allow another user to Send On Behalf To mails from this mailbox",
           "httpMethod": "POST",
           "iamActions": [
-            "emailPro:apiovh:account/sendOnBehalfTo/grant"
+            {
+              "name": "emailPro:apiovh:account/sendOnBehalfTo/grant",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -923,7 +1003,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "emailPro:apiovh:account/sendOnBehalfTo/get"
+            {
+              "name": "emailPro:apiovh:account/sendOnBehalfTo/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -962,7 +1045,10 @@ export const schema: Schema = {
           "description": "Delete allowed user for SendOnBehalfTo",
           "httpMethod": "DELETE",
           "iamActions": [
-            "emailPro:apiovh:account/sendOnBehalfTo/revoke"
+            {
+              "name": "emailPro:apiovh:account/sendOnBehalfTo/revoke",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1007,7 +1093,10 @@ export const schema: Schema = {
           "description": "Pending task for this mailbox",
           "httpMethod": "GET",
           "iamActions": [
-            "emailPro:apiovh:account/tasks/get"
+            {
+              "name": "emailPro:apiovh:account/tasks/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1044,7 +1133,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "emailPro:apiovh:account/tasks/get"
+            {
+              "name": "emailPro:apiovh:account/tasks/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1089,7 +1181,10 @@ export const schema: Schema = {
           "description": "Terminate account at expiration date",
           "httpMethod": "POST",
           "iamActions": [
-            "emailPro:apiovh:account/terminate"
+            {
+              "name": "emailPro:apiovh:account/terminate",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1126,7 +1221,10 @@ export const schema: Schema = {
           "description": "Detects billing transition status for the service",
           "httpMethod": "GET",
           "iamActions": [
-            "emailPro:apiovh:billingMigrated/get"
+            {
+              "name": "emailPro:apiovh:billingMigrated/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1155,7 +1253,10 @@ export const schema: Schema = {
           "description": "Emailpro billing plan",
           "httpMethod": "GET",
           "iamActions": [
-            "emailPro:apiovh:billingPlan/get"
+            {
+              "name": "emailPro:apiovh:billingPlan/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1184,7 +1285,10 @@ export const schema: Schema = {
           "description": "Launch a contact change procedure",
           "httpMethod": "POST",
           "iamActions": [
-            "emailPro:apiovh:changeContact"
+            {
+              "name": "emailPro:apiovh:changeContact",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1237,7 +1341,10 @@ export const schema: Schema = {
           "description": "Domains associated to this service",
           "httpMethod": "GET",
           "iamActions": [
-            "emailPro:apiovh:domain/get"
+            {
+              "name": "emailPro:apiovh:domain/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1268,7 +1375,10 @@ export const schema: Schema = {
           "description": "Create new domain in pro services",
           "httpMethod": "POST",
           "iamActions": [
-            "emailPro:apiovh:domain/create"
+            {
+              "name": "emailPro:apiovh:domain/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1301,6 +1411,14 @@ export const schema: Schema = {
               "description": "If you host domain in OVH we can configure mx record automatically",
               "fullType": "boolean",
               "name": "configureMx",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "Enable automatic SPF record (only for domains hosted by OVHcloud)",
+              "fullType": "boolean",
+              "name": "configureSPF",
               "paramType": "body",
               "required": false
             },
@@ -1353,7 +1471,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "emailPro:apiovh:domain/get"
+            {
+              "name": "emailPro:apiovh:domain/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1384,7 +1505,10 @@ export const schema: Schema = {
           "description": "Delete existing domain in pro services",
           "httpMethod": "DELETE",
           "iamActions": [
-            "emailPro:apiovh:domain/delete"
+            {
+              "name": "emailPro:apiovh:domain/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1415,7 +1539,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "emailPro:apiovh:domain/edit"
+            {
+              "name": "emailPro:apiovh:domain/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1459,7 +1586,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "emailPro:apiovh:domain/disclaimer/get"
+            {
+              "name": "emailPro:apiovh:domain/disclaimer/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1490,7 +1620,10 @@ export const schema: Schema = {
           "description": "Delete existing organization disclaimer",
           "httpMethod": "DELETE",
           "iamActions": [
-            "emailPro:apiovh:domain/disclaimer/delete"
+            {
+              "name": "emailPro:apiovh:domain/disclaimer/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1521,7 +1654,10 @@ export const schema: Schema = {
           "description": "Create organization disclaimer of each email",
           "httpMethod": "POST",
           "iamActions": [
-            "emailPro:apiovh:domain/disclaimer/create"
+            {
+              "name": "emailPro:apiovh:domain/disclaimer/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1568,7 +1704,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "emailPro:apiovh:domain/disclaimer/edit"
+            {
+              "name": "emailPro:apiovh:domain/disclaimer/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1612,7 +1751,10 @@ export const schema: Schema = {
           "description": "Get diclaimer attributes to substitute with Active Directory properties",
           "httpMethod": "GET",
           "iamActions": [
-            "emailPro:apiovh:domain/disclaimerAttribute/get"
+            {
+              "name": "emailPro:apiovh:domain/disclaimerAttribute/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1649,7 +1791,10 @@ export const schema: Schema = {
           "description": "DKIM associated to this domain",
           "httpMethod": "GET",
           "iamActions": [
-            "emailPro:apiovh:domain/dkim/get"
+            {
+              "name": "emailPro:apiovh:domain/dkim/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1680,7 +1825,10 @@ export const schema: Schema = {
           "description": "Create DKIM selector on this domain",
           "httpMethod": "POST",
           "iamActions": [
-            "emailPro:apiovh:domain/dkim/create"
+            {
+              "name": "emailPro:apiovh:domain/dkim/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1741,7 +1889,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "emailPro:apiovh:domain/dkim/get"
+            {
+              "name": "emailPro:apiovh:domain/dkim/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1780,7 +1931,10 @@ export const schema: Schema = {
           "description": "Delete DKIM selector on this domain",
           "httpMethod": "DELETE",
           "iamActions": [
-            "emailPro:apiovh:domain/dkim/delete"
+            {
+              "name": "emailPro:apiovh:domain/dkim/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1825,7 +1979,10 @@ export const schema: Schema = {
           "description": "disable dkim signing",
           "httpMethod": "POST",
           "iamActions": [
-            "emailPro:apiovh:domain/dkim/disable"
+            {
+              "name": "emailPro:apiovh:domain/dkim/disable",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1870,7 +2027,10 @@ export const schema: Schema = {
           "description": "enable dkim signing or switch selector used",
           "httpMethod": "POST",
           "iamActions": [
-            "emailPro:apiovh:domain/dkim/enable"
+            {
+              "name": "emailPro:apiovh:domain/dkim/enable",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1915,7 +2075,10 @@ export const schema: Schema = {
           "description": "Get dkim selector list",
           "httpMethod": "GET",
           "iamActions": [
-            "emailPro:apiovh:domain/dkimSelector/get"
+            {
+              "name": "emailPro:apiovh:domain/dkimSelector/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1952,7 +2115,10 @@ export const schema: Schema = {
           "description": "External contacts for this service",
           "httpMethod": "GET",
           "iamActions": [
-            "emailPro:apiovh:externalContact/get"
+            {
+              "name": "emailPro:apiovh:externalContact/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2015,7 +2181,10 @@ export const schema: Schema = {
           "description": "create new external contact",
           "httpMethod": "POST",
           "iamActions": [
-            "emailPro:apiovh:externalContact/create"
+            {
+              "name": "emailPro:apiovh:externalContact/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2092,7 +2261,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "emailPro:apiovh:externalContact/get"
+            {
+              "name": "emailPro:apiovh:externalContact/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2123,7 +2295,10 @@ export const schema: Schema = {
           "description": "delete external contact",
           "httpMethod": "DELETE",
           "iamActions": [
-            "emailPro:apiovh:externalContact/delete"
+            {
+              "name": "emailPro:apiovh:externalContact/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2154,7 +2329,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "emailPro:apiovh:externalContact/edit"
+            {
+              "name": "emailPro:apiovh:externalContact/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2198,7 +2376,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "emailPro:apiovh:server/get"
+            {
+              "name": "emailPro:apiovh:server/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2224,10 +2405,13 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Get this object properties",
+          "description": "Get service information",
           "httpMethod": "GET",
           "iamActions": [
-            "emailPro:apiovh:serviceInfos/get"
+            {
+              "name": "emailPro:apiovh:serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2247,10 +2431,13 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Alter this object properties",
+          "description": "Update service information",
           "httpMethod": "PUT",
           "iamActions": [
-            "emailPro:apiovh:serviceInfos/edit"
+            {
+              "name": "emailPro:apiovh:serviceInfos/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2286,7 +2473,10 @@ export const schema: Schema = {
           "description": "Pending actions",
           "httpMethod": "GET",
           "iamActions": [
-            "emailPro:apiovh:task/get"
+            {
+              "name": "emailPro:apiovh:task/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2315,7 +2505,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "emailPro:apiovh:task/get"
+            {
+              "name": "emailPro:apiovh:task/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2352,7 +2545,10 @@ export const schema: Schema = {
           "description": "Update spam and virus flags on all active accounts",
           "httpMethod": "POST",
           "iamActions": [
-            "emailPro:apiovh:updateFlagsOnAllAccounts"
+            {
+              "name": "emailPro:apiovh:updateFlagsOnAllAccounts",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3076,6 +3272,14 @@ export const schema: Schema = {
       "id": "Dkim",
       "namespace": "email.pro",
       "properties": {
+        "cnameIsValid": {
+          "canBeNull": false,
+          "description": "DNS CNAME validation passed",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
         "customerRecord": {
           "canBeNull": false,
           "description": "Customer DNS record",
@@ -3277,6 +3481,50 @@ export const schema: Schema = {
         }
       }
     },
+    "email.pro.DomainDkimDiagnostics": {
+      "description": "Dkim selectors and DNS configuration state",
+      "id": "DomainDkimDiagnostics",
+      "namespace": "email.pro",
+      "properties": {
+        "errorCode": {
+          "canBeNull": true,
+          "description": "Error code related to misconfiguration of DKIM, if exists",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "message": {
+          "canBeNull": true,
+          "description": "DKIM misconfiguration description, if exists",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "state": {
+          "canBeNull": true,
+          "description": "State of DKIM selectors",
+          "fullType": "email.pro.DomainDkimDiagnosticsStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "email.pro.DomainDkimDiagnosticsStateEnum"
+        }
+      }
+    },
+    "email.pro.DomainDkimDiagnosticsStateEnum": {
+      "description": "DKIM status",
+      "enum": [
+        "active",
+        "disabled",
+        "error",
+        "inProgress",
+        "toConfigure"
+      ],
+      "enumType": "string",
+      "id": "DomainDkimDiagnosticsStateEnum",
+      "namespace": "email.pro"
+    },
     "email.pro.DomainNative": {
       "description": "Domain",
       "id": "DomainNative",
@@ -3289,6 +3537,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        },
+        "dkimDiagnostics": {
+          "canBeNull": true,
+          "description": "Dkim selectors and DNS configuration state",
+          "fullType": "email.pro.DomainDkimDiagnostics",
+          "readOnly": true,
+          "required": false,
+          "type": "email.pro.DomainDkimDiagnostics"
         },
         "domainAliases": {
           "canBeNull": false,
@@ -3305,6 +3561,30 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "boolean"
+        },
+        "expectedAutodiscoverSRV": {
+          "canBeNull": false,
+          "description": "Expected SRV record on this domain",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "expectedMX": {
+          "canBeNull": false,
+          "description": "Expected MX record(s) on this domain",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "expectedSPF": {
+          "canBeNull": false,
+          "description": "Expected SPF record on this domain",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "isAliasDomain": {
           "canBeNull": false,
@@ -3346,6 +3626,22 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "spfIsValid": {
+          "canBeNull": false,
+          "description": "SPF record validation passed",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "spfRecord": {
+          "canBeNull": true,
+          "description": "Domain's SPF record configured in the DNS",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
         "srvIsValid": {
           "canBeNull": false,
           "description": "If true your DNS SRV record is valid",
@@ -3372,7 +3668,7 @@ export const schema: Schema = {
         },
         "taskPendingId": {
           "canBeNull": false,
-          "description": "Pending taks id",
+          "description": "Pending tasks id",
           "fullType": "long",
           "readOnly": true,
           "required": false,
@@ -4004,6 +4300,164 @@ export const schema: Schema = {
         }
       }
     },
+    "email.pro.ServiceNativeWithIAM": {
+      "description": "Email pro service",
+      "id": "ServiceNative",
+      "namespace": "email.pro",
+      "properties": {
+        "complexityEnabled": {
+          "canBeNull": false,
+          "description": "enable policy for strong and secure passwords",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "displayName": {
+          "canBeNull": true,
+          "description": "service displayName",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "domain": {
+          "canBeNull": false,
+          "description": "Domain name of your service",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "hostname": {
+          "canBeNull": true,
+          "description": "Hostname of your service",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "iam": {
+          "canBeNull": true,
+          "description": "IAM resource metadata",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.ResourceMetadata"
+        },
+        "lastUpdateDate": {
+          "canBeNull": true,
+          "description": "Update date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "lockoutDuration": {
+          "canBeNull": false,
+          "description": "number of minutes account will remain locked if it occurs",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "lockoutObservationWindow": {
+          "canBeNull": false,
+          "description": "number of minutes that must elapse after a failed logon to reset lockout trigger",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "lockoutThreshold": {
+          "canBeNull": true,
+          "description": "number of attempts before account to be locked",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "maxPasswordAge": {
+          "canBeNull": true,
+          "description": "maximum number of days that account's password is valid before expiration",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "maxReceiveSize": {
+          "canBeNull": false,
+          "description": "Maximum message size that You can receive in MB",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "maxSendSize": {
+          "canBeNull": false,
+          "description": "Maximum message size that You can send in MB",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "minPasswordAge": {
+          "canBeNull": true,
+          "description": "minimum number of days before able to change account's password",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "minPasswordLength": {
+          "canBeNull": true,
+          "description": "minimum number of characters password must contain",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "offer": {
+          "canBeNull": false,
+          "description": "Type of your offer",
+          "fullType": "email.pro.ServiceOfferEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "email.pro.ServiceOfferEnum"
+        },
+        "spamAndVirusConfiguration": {
+          "canBeNull": false,
+          "description": "Spam and Antivirus configuration",
+          "fullType": "email.pro.spamAndVirusConfiguration",
+          "readOnly": true,
+          "required": false,
+          "type": "email.pro.spamAndVirusConfiguration"
+        },
+        "state": {
+          "canBeNull": false,
+          "description": "State of your service",
+          "fullType": "email.pro.ServiceStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "email.pro.ServiceStateEnum"
+        },
+        "taskPendingId": {
+          "canBeNull": false,
+          "description": "Task pending id",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "webUrl": {
+          "canBeNull": true,
+          "description": "URL for web interface",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
     "email.pro.ServiceOfferEnum": {
       "description": "Service Offer name",
       "enum": [
@@ -4027,6 +4481,164 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "ServiceStateEnum",
       "namespace": "email.pro"
+    },
+    "email.pro.ServiceWithIAM": {
+      "description": "Email pro service",
+      "id": "Service",
+      "namespace": "email.pro",
+      "properties": {
+        "complexityEnabled": {
+          "canBeNull": false,
+          "description": "enable policy for strong and secure passwords",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "displayName": {
+          "canBeNull": true,
+          "description": "service displayName",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "domain": {
+          "canBeNull": false,
+          "description": "Domain name of your service",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "hostname": {
+          "canBeNull": true,
+          "description": "Hostname of your service",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "iam": {
+          "canBeNull": true,
+          "description": "IAM resource metadata",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.ResourceMetadata"
+        },
+        "lastUpdateDate": {
+          "canBeNull": true,
+          "description": "Update date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "lockoutDuration": {
+          "canBeNull": false,
+          "description": "number of minutes account will remain locked if it occurs",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "lockoutObservationWindow": {
+          "canBeNull": false,
+          "description": "number of minutes that must elapse after a failed logon to reset lockout trigger",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "lockoutThreshold": {
+          "canBeNull": true,
+          "description": "number of attempts before account to be locked",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "maxPasswordAge": {
+          "canBeNull": true,
+          "description": "maximum number of days that account's password is valid before expiration",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "maxReceiveSize": {
+          "canBeNull": false,
+          "description": "Maximum message size that You can receive in MB",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "maxSendSize": {
+          "canBeNull": false,
+          "description": "Maximum message size that You can send in MB",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "minPasswordAge": {
+          "canBeNull": true,
+          "description": "minimum number of days before able to change account's password",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "minPasswordLength": {
+          "canBeNull": true,
+          "description": "minimum number of characters password must contain",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "offer": {
+          "canBeNull": false,
+          "description": "Type of your offer",
+          "fullType": "email.pro.ServiceOfferEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "email.pro.ServiceOfferEnum"
+        },
+        "spamAndVirusConfiguration": {
+          "canBeNull": false,
+          "description": "Spam and Antivirus configuration",
+          "fullType": "email.pro.spamAndVirusConfiguration",
+          "readOnly": false,
+          "required": false,
+          "type": "email.pro.spamAndVirusConfiguration"
+        },
+        "state": {
+          "canBeNull": false,
+          "description": "State of your service",
+          "fullType": "email.pro.ServiceStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "email.pro.ServiceStateEnum"
+        },
+        "taskPendingId": {
+          "canBeNull": false,
+          "description": "Task pending id",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "webUrl": {
+          "canBeNull": true,
+          "description": "URL for web interface",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
     },
     "email.pro.Task": {
       "description": "Organization task details",
@@ -4406,6 +5018,77 @@ export const schema: Schema = {
           "type": "boolean"
         }
       }
+    },
+    "iam.ResourceMetadata": {
+      "description": "IAM resource metadata embedded in services models",
+      "id": "ResourceMetadata",
+      "namespace": "iam",
+      "properties": {
+        "displayName": {
+          "canBeNull": true,
+          "description": "Resource display name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Unique identifier of the resource",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "tags": {
+          "canBeNull": true,
+          "description": "Resource tags. Tags that were internally computed are prefixed with ovh:",
+          "fullType": "map[string]string",
+          "readOnly": true,
+          "required": false,
+          "type": "map[string]string"
+        },
+        "urn": {
+          "canBeNull": false,
+          "description": "Unique resource name used in policies",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter": {
+      "description": "Resource tag filter",
+      "id": "TagFilter",
+      "namespace": "iam.resource",
+      "properties": {
+        "operator": {
+          "canBeNull": true,
+          "description": "Operator to use in order to filter on the value (defaults to 'EQ')",
+          "fullType": "iam.resource.TagFilter.OperatorEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.resource.TagFilter.OperatorEnum"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value to use in order to filter tags",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter.OperatorEnum": {
+      "description": "Operator that can be used in order to filter resources tags",
+      "enum": [
+        "EQ"
+      ],
+      "enumType": "string",
+      "id": "OperatorEnum",
+      "namespace": "iam.resource.TagFilter"
     },
     "service.RenewType": {
       "description": "Map a possible renew for a specific service",

@@ -16,10 +16,21 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseSqlServer:apiovh:get"
+            {
+              "name": "licenseSqlServer:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
-          "parameters": [],
+          "parameters": [
+            {
+              "dataType": "map[string][]iam.resource.TagFilter",
+              "description": "Filter resources on IAM tags",
+              "name": "iamTags",
+              "paramType": "query",
+              "required": false
+            }
+          ],
           "responseType": "string[]"
         }
       ],
@@ -36,7 +47,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseSqlServer:apiovh:get"
+            {
+              "name": "licenseSqlServer:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -49,23 +63,26 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "license.sqlserver.SqlServer"
+          "responseType": "license.sqlserver.SqlServerWithIAM"
         }
       ],
       "path": "/license/sqlserver/{serviceName}"
     },
     {
-      "description": "Confirm termination of your service",
+      "description": "Confirm service termination",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Confirm termination of your service",
+          "description": "Confirm service termination",
           "httpMethod": "POST",
           "iamActions": [
-            "licenseSqlServer:apiovh:confirmTermination"
+            {
+              "name": "licenseSqlServer:apiovh:confirmTermination",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -95,7 +112,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The termination token sent by mail to the admin contact",
+              "description": "The termination token sent by email to the admin contact",
               "fullType": "string",
               "name": "token",
               "paramType": "body",
@@ -123,10 +140,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get service information",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseSqlServer:apiovh:serviceInfos/get"
+            {
+              "name": "licenseSqlServer:apiovh:serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -146,10 +166,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Update service information",
           "httpMethod": "PUT",
           "iamActions": [
-            "licenseSqlServer:apiovh:serviceInfos/edit"
+            {
+              "name": "licenseSqlServer:apiovh:serviceInfos/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -185,7 +208,10 @@ export const schema: Schema = {
           "description": "Tasks linked to this license",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseSqlServer:apiovh:tasks/get"
+            {
+              "name": "licenseSqlServer:apiovh:tasks/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -230,7 +256,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseSqlServer:apiovh:tasks/get"
+            {
+              "name": "licenseSqlServer:apiovh:tasks/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -257,18 +286,22 @@ export const schema: Schema = {
       "path": "/license/sqlserver/{serviceName}/tasks/{taskId}"
     },
     {
-      "description": "Terminate your service",
+      "description": "Ask for the termination of your service. Admin contact of this service will receive a termination token in order to confirm its termination with /confirmTermination endpoint.",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Terminate your service",
+          "description": "Ask for the termination of your service",
           "httpMethod": "POST",
           "iamActions": [
-            "licenseSqlServer:apiovh:terminate"
+            {
+              "name": "licenseSqlServer:apiovh:terminate",
+              "required": true
+            }
           ],
+          "longDescription": "Ask for the termination of your service. Admin contact of this service will receive a termination token by email in order to confirm its termination with /confirmTermination endpoint.",
           "noAuthentication": false,
           "parameters": [
             {
@@ -296,7 +329,10 @@ export const schema: Schema = {
           "description": "Get the orderable Sql Server versions",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:licenseSqlServer/orderableVersions/get"
+            {
+              "name": "account:apiovh:licenseSqlServer/orderableVersions/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -317,6 +353,77 @@ export const schema: Schema = {
   ],
   "basePath": "https://api.us.ovhcloud.com/1.0",
   "models": {
+    "iam.ResourceMetadata": {
+      "description": "IAM resource metadata embedded in services models",
+      "id": "ResourceMetadata",
+      "namespace": "iam",
+      "properties": {
+        "displayName": {
+          "canBeNull": true,
+          "description": "Resource display name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Unique identifier of the resource",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "tags": {
+          "canBeNull": true,
+          "description": "Resource tags. Tags that were internally computed are prefixed with ovh:",
+          "fullType": "map[string]string",
+          "readOnly": true,
+          "required": false,
+          "type": "map[string]string"
+        },
+        "urn": {
+          "canBeNull": false,
+          "description": "Unique resource name used in policies",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter": {
+      "description": "Resource tag filter",
+      "id": "TagFilter",
+      "namespace": "iam.resource",
+      "properties": {
+        "operator": {
+          "canBeNull": true,
+          "description": "Operator to use in order to filter on the value (defaults to 'EQ')",
+          "fullType": "iam.resource.TagFilter.OperatorEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.resource.TagFilter.OperatorEnum"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value to use in order to filter tags",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter.OperatorEnum": {
+      "description": "Operator that can be used in order to filter resources tags",
+      "enum": [
+        "EQ"
+      ],
+      "enumType": "string",
+      "id": "OperatorEnum",
+      "namespace": "iam.resource.TagFilter"
+    },
     "license.ActionType": {
       "description": "A short description of what does the Task on your license",
       "enum": [
@@ -475,6 +582,7 @@ export const schema: Schema = {
         "sql-server-2017-license-web-edition-8-cores",
         "sql-server-2019-license-enterprise-edition-10-cores",
         "sql-server-2019-license-enterprise-edition-12-cores",
+        "sql-server-2019-license-enterprise-edition-128-cores",
         "sql-server-2019-license-enterprise-edition-14-cores",
         "sql-server-2019-license-enterprise-edition-16-cores",
         "sql-server-2019-license-enterprise-edition-18-cores",
@@ -504,8 +612,10 @@ export const schema: Schema = {
         "sql-server-2019-license-enterprise-edition-62-cores",
         "sql-server-2019-license-enterprise-edition-64-cores",
         "sql-server-2019-license-enterprise-edition-8-cores",
+        "sql-server-2019-license-enterprise-edition-96-cores",
         "sql-server-2019-license-standard-edition-10-cores",
         "sql-server-2019-license-standard-edition-12-cores",
+        "sql-server-2019-license-standard-edition-128-cores",
         "sql-server-2019-license-standard-edition-14-cores",
         "sql-server-2019-license-standard-edition-16-cores",
         "sql-server-2019-license-standard-edition-18-cores",
@@ -535,8 +645,10 @@ export const schema: Schema = {
         "sql-server-2019-license-standard-edition-62-cores",
         "sql-server-2019-license-standard-edition-64-cores",
         "sql-server-2019-license-standard-edition-8-cores",
+        "sql-server-2019-license-standard-edition-96-cores",
         "sql-server-2019-license-web-edition-10-cores",
         "sql-server-2019-license-web-edition-12-cores",
+        "sql-server-2019-license-web-edition-128-cores",
         "sql-server-2019-license-web-edition-14-cores",
         "sql-server-2019-license-web-edition-16-cores",
         "sql-server-2019-license-web-edition-18-cores",
@@ -565,7 +677,107 @@ export const schema: Schema = {
         "sql-server-2019-license-web-edition-60-cores",
         "sql-server-2019-license-web-edition-62-cores",
         "sql-server-2019-license-web-edition-64-cores",
-        "sql-server-2019-license-web-edition-8-cores"
+        "sql-server-2019-license-web-edition-8-cores",
+        "sql-server-2019-license-web-edition-96-cores",
+        "sql-server-2022-license-enterprise-edition-10-cores",
+        "sql-server-2022-license-enterprise-edition-12-cores",
+        "sql-server-2022-license-enterprise-edition-128-cores",
+        "sql-server-2022-license-enterprise-edition-14-cores",
+        "sql-server-2022-license-enterprise-edition-16-cores",
+        "sql-server-2022-license-enterprise-edition-18-cores",
+        "sql-server-2022-license-enterprise-edition-20-cores",
+        "sql-server-2022-license-enterprise-edition-22-cores",
+        "sql-server-2022-license-enterprise-edition-24-cores",
+        "sql-server-2022-license-enterprise-edition-26-cores",
+        "sql-server-2022-license-enterprise-edition-28-cores",
+        "sql-server-2022-license-enterprise-edition-30-cores",
+        "sql-server-2022-license-enterprise-edition-32-cores",
+        "sql-server-2022-license-enterprise-edition-34-cores",
+        "sql-server-2022-license-enterprise-edition-36-cores",
+        "sql-server-2022-license-enterprise-edition-38-cores",
+        "sql-server-2022-license-enterprise-edition-4-cores",
+        "sql-server-2022-license-enterprise-edition-40-cores",
+        "sql-server-2022-license-enterprise-edition-42-cores",
+        "sql-server-2022-license-enterprise-edition-44-cores",
+        "sql-server-2022-license-enterprise-edition-46-cores",
+        "sql-server-2022-license-enterprise-edition-48-cores",
+        "sql-server-2022-license-enterprise-edition-50-cores",
+        "sql-server-2022-license-enterprise-edition-52-cores",
+        "sql-server-2022-license-enterprise-edition-54-cores",
+        "sql-server-2022-license-enterprise-edition-56-cores",
+        "sql-server-2022-license-enterprise-edition-58-cores",
+        "sql-server-2022-license-enterprise-edition-6-cores",
+        "sql-server-2022-license-enterprise-edition-60-cores",
+        "sql-server-2022-license-enterprise-edition-62-cores",
+        "sql-server-2022-license-enterprise-edition-64-cores",
+        "sql-server-2022-license-enterprise-edition-8-cores",
+        "sql-server-2022-license-enterprise-edition-96-cores",
+        "sql-server-2022-license-standard-edition-10-cores",
+        "sql-server-2022-license-standard-edition-12-cores",
+        "sql-server-2022-license-standard-edition-128-cores",
+        "sql-server-2022-license-standard-edition-14-cores",
+        "sql-server-2022-license-standard-edition-16-cores",
+        "sql-server-2022-license-standard-edition-18-cores",
+        "sql-server-2022-license-standard-edition-20-cores",
+        "sql-server-2022-license-standard-edition-22-cores",
+        "sql-server-2022-license-standard-edition-24-cores",
+        "sql-server-2022-license-standard-edition-26-cores",
+        "sql-server-2022-license-standard-edition-28-cores",
+        "sql-server-2022-license-standard-edition-30-cores",
+        "sql-server-2022-license-standard-edition-32-cores",
+        "sql-server-2022-license-standard-edition-34-cores",
+        "sql-server-2022-license-standard-edition-36-cores",
+        "sql-server-2022-license-standard-edition-38-cores",
+        "sql-server-2022-license-standard-edition-4-cores",
+        "sql-server-2022-license-standard-edition-40-cores",
+        "sql-server-2022-license-standard-edition-42-cores",
+        "sql-server-2022-license-standard-edition-44-cores",
+        "sql-server-2022-license-standard-edition-46-cores",
+        "sql-server-2022-license-standard-edition-48-cores",
+        "sql-server-2022-license-standard-edition-50-cores",
+        "sql-server-2022-license-standard-edition-52-cores",
+        "sql-server-2022-license-standard-edition-54-cores",
+        "sql-server-2022-license-standard-edition-56-cores",
+        "sql-server-2022-license-standard-edition-58-cores",
+        "sql-server-2022-license-standard-edition-6-cores",
+        "sql-server-2022-license-standard-edition-60-cores",
+        "sql-server-2022-license-standard-edition-62-cores",
+        "sql-server-2022-license-standard-edition-64-cores",
+        "sql-server-2022-license-standard-edition-8-cores",
+        "sql-server-2022-license-standard-edition-96-cores",
+        "sql-server-2022-license-web-edition-10-cores",
+        "sql-server-2022-license-web-edition-12-cores",
+        "sql-server-2022-license-web-edition-128-cores",
+        "sql-server-2022-license-web-edition-14-cores",
+        "sql-server-2022-license-web-edition-16-cores",
+        "sql-server-2022-license-web-edition-18-cores",
+        "sql-server-2022-license-web-edition-20-cores",
+        "sql-server-2022-license-web-edition-22-cores",
+        "sql-server-2022-license-web-edition-24-cores",
+        "sql-server-2022-license-web-edition-26-cores",
+        "sql-server-2022-license-web-edition-28-cores",
+        "sql-server-2022-license-web-edition-30-cores",
+        "sql-server-2022-license-web-edition-32-cores",
+        "sql-server-2022-license-web-edition-34-cores",
+        "sql-server-2022-license-web-edition-36-cores",
+        "sql-server-2022-license-web-edition-38-cores",
+        "sql-server-2022-license-web-edition-4-cores",
+        "sql-server-2022-license-web-edition-40-cores",
+        "sql-server-2022-license-web-edition-42-cores",
+        "sql-server-2022-license-web-edition-44-cores",
+        "sql-server-2022-license-web-edition-46-cores",
+        "sql-server-2022-license-web-edition-48-cores",
+        "sql-server-2022-license-web-edition-50-cores",
+        "sql-server-2022-license-web-edition-52-cores",
+        "sql-server-2022-license-web-edition-54-cores",
+        "sql-server-2022-license-web-edition-56-cores",
+        "sql-server-2022-license-web-edition-58-cores",
+        "sql-server-2022-license-web-edition-6-cores",
+        "sql-server-2022-license-web-edition-60-cores",
+        "sql-server-2022-license-web-edition-62-cores",
+        "sql-server-2022-license-web-edition-64-cores",
+        "sql-server-2022-license-web-edition-8-cores",
+        "sql-server-2022-license-web-edition-96-cores"
       ],
       "enumType": "string",
       "id": "SqlServerVersionEnum",
@@ -679,6 +891,68 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        },
+        "ip": {
+          "canBeNull": false,
+          "description": "The ip on which this license is attached",
+          "fullType": "ipv4",
+          "readOnly": true,
+          "required": false,
+          "type": "ipv4"
+        },
+        "licenseId": {
+          "canBeNull": false,
+          "description": "The license id on license provider side",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "This license state",
+          "fullType": "license.StateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "license.StateEnum"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": "This license version",
+          "fullType": "license.SqlServerVersionEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "license.SqlServerVersionEnum"
+        }
+      }
+    },
+    "license.sqlserver.SqlServerWithIAM": {
+      "description": "Your SQL Server license",
+      "id": "SqlServer",
+      "namespace": "license.sqlserver",
+      "properties": {
+        "creation": {
+          "canBeNull": false,
+          "description": "This license creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "domain": {
+          "canBeNull": false,
+          "description": "The internal name of your license",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "iam": {
+          "canBeNull": true,
+          "description": "IAM resource metadata",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.ResourceMetadata"
         },
         "ip": {
           "canBeNull": false,

@@ -21,7 +21,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:partner/get"
+            {
+              "name": "account:apiovh:partner/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -35,7 +38,10 @@ export const schema: Schema = {
           "description": "Register as a partner",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:partner/create"
+            {
+              "name": "account:apiovh:partner/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [

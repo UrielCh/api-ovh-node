@@ -16,17 +16,29 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "metrics:apiovh:get"
+            {
+              "name": "metrics:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
-          "parameters": [],
+          "operationId": "listMetricsServices",
+          "parameters": [
+            {
+              "dataType": "map[string][]iam.resource.TagFilter",
+              "description": "Filter resources on IAM tags",
+              "name": "iamTags",
+              "paramType": "query",
+              "required": false
+            }
+          ],
           "responseType": "string[]"
         }
       ],
       "path": "/metrics"
     },
     {
-      "description": "Missing description",
+      "description": "Operations about the METRICS service",
       "operations": [
         {
           "apiStatus": {
@@ -36,20 +48,24 @@ export const schema: Schema = {
           "description": "Get service",
           "httpMethod": "GET",
           "iamActions": [
-            "metrics:apiovh:get"
+            {
+              "name": "metrics:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "getMetricsService",
           "parameters": [
             {
               "dataType": "string",
-              "description": "Name of your service",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "metrics.api.Service"
+          "responseType": "metrics.api.ServiceWithIAM"
         },
         {
           "apiStatus": {
@@ -59,21 +75,24 @@ export const schema: Schema = {
           "description": "Modify service",
           "httpMethod": "PUT",
           "iamActions": [
-            "metrics:apiovh:put"
+            {
+              "name": "metrics:apiovh:put",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "editMetricsService",
           "parameters": [
             {
-              "dataType": "string",
-              "description": "New description for your service",
-              "fullType": "string",
-              "name": "description",
+              "dataType": "metrics.Update",
+              "description": "Request Body",
+              "fullType": "metrics.Update",
               "paramType": "body",
-              "required": false
+              "required": true
             },
             {
               "dataType": "string",
-              "description": "Name of your service",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -86,17 +105,20 @@ export const schema: Schema = {
       "path": "/metrics/{serviceName}"
     },
     {
-      "description": "Confirm termination of your service",
+      "description": "Confirm service termination",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Confirm termination of your service",
+          "description": "Confirm service termination",
           "httpMethod": "POST",
           "iamActions": [
-            "metrics:apiovh:confirmTermination"
+            {
+              "name": "metrics:apiovh:confirmTermination",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -126,7 +148,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The termination token sent by mail to the admin contact",
+              "description": "The termination token sent by email to the admin contact",
               "fullType": "string",
               "name": "token",
               "paramType": "body",
@@ -147,7 +169,7 @@ export const schema: Schema = {
       "path": "/metrics/{serviceName}/confirmTermination"
     },
     {
-      "description": "Missing description",
+      "description": "Metrics service consumption",
       "operations": [
         {
           "apiStatus": {
@@ -157,13 +179,17 @@ export const schema: Schema = {
           "description": "Get consumption for your service",
           "httpMethod": "GET",
           "iamActions": [
-            "metrics:apiovh:consumption/get"
+            {
+              "name": "metrics:apiovh:consumption/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "getMetricsServiceConsumption",
           "parameters": [
             {
               "dataType": "string",
-              "description": "Name of your service",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -184,7 +210,7 @@ export const schema: Schema = {
       "path": "/metrics/{serviceName}/consumption"
     },
     {
-      "description": "Missing description",
+      "description": "Look for service/token",
       "operations": [
         {
           "apiStatus": {
@@ -194,21 +220,24 @@ export const schema: Schema = {
           "description": "Find TokenID for a specific token",
           "httpMethod": "POST",
           "iamActions": [
-            "metrics:apiovh:lookup/token/create"
+            {
+              "name": "metrics:apiovh:lookup/token/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "lookupMetricsToken",
           "parameters": [
             {
-              "dataType": "string",
-              "description": "access token",
-              "fullType": "string",
-              "name": "accessToken",
+              "dataType": "metrics.LookupTokenCreation",
+              "description": "Request Body",
+              "fullType": "metrics.LookupTokenCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Name of your service",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -221,7 +250,7 @@ export const schema: Schema = {
       "path": "/metrics/{serviceName}/lookup/token"
     },
     {
-      "description": "Missing description",
+      "description": "Metrics service quota management",
       "operations": [
         {
           "apiStatus": {
@@ -231,21 +260,24 @@ export const schema: Schema = {
           "description": "Set overquota",
           "httpMethod": "PUT",
           "iamActions": [
-            "metrics:apiovh:quota/edit"
+            {
+              "name": "metrics:apiovh:quota/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "setMetricsServiceQuota",
           "parameters": [
             {
-              "dataType": "long",
-              "description": "New value for overquota",
-              "fullType": "long",
-              "name": "quota",
+              "dataType": "metrics.QuotaUpdate",
+              "description": "Request Body",
+              "fullType": "metrics.QuotaUpdate",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Name of your service",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -265,10 +297,13 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Get this object properties",
+          "description": "Get service information",
           "httpMethod": "GET",
           "iamActions": [
-            "metrics:apiovh:serviceInfos/get"
+            {
+              "name": "metrics:apiovh:serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -288,10 +323,13 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Alter this object properties",
+          "description": "Update service information",
           "httpMethod": "PUT",
           "iamActions": [
-            "metrics:apiovh:serviceInfos/edit"
+            {
+              "name": "metrics:apiovh:serviceInfos/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -317,18 +355,22 @@ export const schema: Schema = {
       "path": "/metrics/{serviceName}/serviceInfos"
     },
     {
-      "description": "Terminate your service",
+      "description": "Ask for the termination of your service. Admin contact of this service will receive a termination token in order to confirm its termination with /confirmTermination endpoint.",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Terminate your service",
+          "description": "Ask for the termination of your service",
           "httpMethod": "POST",
           "iamActions": [
-            "metrics:apiovh:terminate"
+            {
+              "name": "metrics:apiovh:terminate",
+              "required": true
+            }
           ],
+          "longDescription": "Ask for the termination of your service. Admin contact of this service will receive a termination token by email in order to confirm its termination with /confirmTermination endpoint.",
           "noAuthentication": false,
           "parameters": [
             {
@@ -346,7 +388,7 @@ export const schema: Schema = {
       "path": "/metrics/{serviceName}/terminate"
     },
     {
-      "description": "Missing description",
+      "description": "Metrics service token operations",
       "operations": [
         {
           "apiStatus": {
@@ -356,13 +398,17 @@ export const schema: Schema = {
           "description": "Get list of tokens",
           "httpMethod": "GET",
           "iamActions": [
-            "metrics:apiovh:token/get"
+            {
+              "name": "metrics:apiovh:token/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "listMetricsTokens",
           "parameters": [
             {
               "dataType": "string",
-              "description": "Name of your service",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -379,37 +425,24 @@ export const schema: Schema = {
           "description": "Create a token",
           "httpMethod": "POST",
           "iamActions": [
-            "metrics:apiovh:token/create"
+            {
+              "name": "metrics:apiovh:token/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "createMetricsToken",
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Description for the new token",
-              "fullType": "string",
-              "name": "description",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "metrics.api.Label[]",
-              "description": "Labels for the new token",
-              "fullType": "metrics.api.Label[]",
-              "name": "labels",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "metrics.api.PermissionEnum",
-              "description": "Type of the new token. Read or Write",
-              "fullType": "metrics.api.PermissionEnum",
-              "name": "permission",
+              "dataType": "metrics.TokenCreation",
+              "description": "Request Body",
+              "fullType": "metrics.TokenCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Name of your service",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -422,7 +455,7 @@ export const schema: Schema = {
       "path": "/metrics/{serviceName}/token"
     },
     {
-      "description": "Missing description",
+      "description": "Metrics service token operations",
       "operations": [
         {
           "apiStatus": {
@@ -432,13 +465,17 @@ export const schema: Schema = {
           "description": "Revoke a token",
           "httpMethod": "DELETE",
           "iamActions": [
-            "metrics:apiovh:token/delete"
+            {
+              "name": "metrics:apiovh:token/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "deleteMetricsToken",
           "parameters": [
             {
               "dataType": "string",
-              "description": "Name of your service",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -446,7 +483,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "ID of the desired token",
+              "description": "Token ID",
               "fullType": "string",
               "name": "tokenId",
               "paramType": "path",
@@ -463,13 +500,17 @@ export const schema: Schema = {
           "description": "Get a specific token",
           "httpMethod": "GET",
           "iamActions": [
-            "metrics:apiovh:token/get"
+            {
+              "name": "metrics:apiovh:token/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "getMetricsToken",
           "parameters": [
             {
               "dataType": "string",
-              "description": "Name of your service",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -477,7 +518,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "ID of the desired token",
+              "description": "Token ID",
               "fullType": "string",
               "name": "tokenId",
               "paramType": "path",
@@ -494,21 +535,24 @@ export const schema: Schema = {
           "description": "Modify a token",
           "httpMethod": "PUT",
           "iamActions": [
-            "metrics:apiovh:token/edit"
+            {
+              "name": "metrics:apiovh:token/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "editMetricsToken",
           "parameters": [
             {
-              "dataType": "string",
-              "description": "New description for your token",
-              "fullType": "string",
-              "name": "description",
+              "dataType": "metrics.TokenUpdate",
+              "description": "Request Body",
+              "fullType": "metrics.TokenUpdate",
               "paramType": "body",
-              "required": false
+              "required": true
             },
             {
               "dataType": "string",
-              "description": "Name of your service",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -516,7 +560,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "ID of the desired token",
+              "description": "Token ID",
               "fullType": "string",
               "name": "tokenId",
               "paramType": "path",
@@ -531,6 +575,168 @@ export const schema: Schema = {
   ],
   "basePath": "https://api.us.ovhcloud.com/1.0",
   "models": {
+    "iam.ResourceMetadata": {
+      "description": "IAM resource metadata embedded in services models",
+      "id": "ResourceMetadata",
+      "namespace": "iam",
+      "properties": {
+        "displayName": {
+          "canBeNull": true,
+          "description": "Resource display name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Unique identifier of the resource",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "tags": {
+          "canBeNull": true,
+          "description": "Resource tags. Tags that were internally computed are prefixed with ovh:",
+          "fullType": "map[string]string",
+          "readOnly": true,
+          "required": false,
+          "type": "map[string]string"
+        },
+        "urn": {
+          "canBeNull": false,
+          "description": "Unique resource name used in policies",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter": {
+      "description": "Resource tag filter",
+      "id": "TagFilter",
+      "namespace": "iam.resource",
+      "properties": {
+        "operator": {
+          "canBeNull": true,
+          "description": "Operator to use in order to filter on the value (defaults to 'EQ')",
+          "fullType": "iam.resource.TagFilter.OperatorEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.resource.TagFilter.OperatorEnum"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value to use in order to filter tags",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter.OperatorEnum": {
+      "description": "Operator that can be used in order to filter resources tags",
+      "enum": [
+        "EQ"
+      ],
+      "enumType": "string",
+      "id": "OperatorEnum",
+      "namespace": "iam.resource.TagFilter"
+    },
+    "metrics.LookupTokenCreation": {
+      "description": "Missing description",
+      "id": "LookupTokenCreation",
+      "namespace": "metrics",
+      "properties": {
+        "accessToken": {
+          "canBeNull": false,
+          "description": "access token",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "metrics.QuotaUpdate": {
+      "description": "Missing description",
+      "id": "QuotaUpdate",
+      "namespace": "metrics",
+      "properties": {
+        "quota": {
+          "canBeNull": false,
+          "description": "New value for overquota",
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
+        }
+      }
+    },
+    "metrics.TokenCreation": {
+      "description": "Missing description",
+      "id": "TokenCreation",
+      "namespace": "metrics",
+      "properties": {
+        "description": {
+          "canBeNull": true,
+          "description": "Description for the new token",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "labels": {
+          "canBeNull": true,
+          "description": "Labels for the new token",
+          "fullType": "metrics.api.Label[]",
+          "readOnly": false,
+          "required": false,
+          "type": "metrics.api.Label[]"
+        },
+        "permission": {
+          "canBeNull": false,
+          "description": "Type of the new token. Read or Write",
+          "fullType": "metrics.api.PermissionEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "metrics.api.PermissionEnum"
+        }
+      }
+    },
+    "metrics.TokenUpdate": {
+      "description": "Missing description",
+      "id": "TokenUpdate",
+      "namespace": "metrics",
+      "properties": {
+        "description": {
+          "canBeNull": true,
+          "description": "New description for your token",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "metrics.Update": {
+      "description": "Missing description",
+      "id": "Update",
+      "namespace": "metrics",
+      "properties": {
+        "description": {
+          "canBeNull": true,
+          "description": "New description for your service",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
     "metrics.api.Consumption": {
       "description": "Structure holding the consumption",
       "id": "Consumption",
@@ -604,7 +810,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Time of last modification",
           "fullType": "datetime",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "datetime"
         },
@@ -619,7 +825,7 @@ export const schema: Schema = {
       }
     },
     "metrics.api.PermissionEnum": {
-      "description": "Description not available",
+      "description": "Metrics service token permissions",
       "enum": [
         "read",
         "write"
@@ -660,7 +866,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Description of a service",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -676,7 +882,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Offer used for the service",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -684,7 +890,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Quota used for the service",
           "fullType": "metrics.api.Option",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "metrics.api.Option"
         },
@@ -708,7 +914,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Status of a service",
           "fullType": "metrics.api.ServiceStatusEnum",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "metrics.api.ServiceStatusEnum"
         },
@@ -725,14 +931,92 @@ export const schema: Schema = {
     "metrics.api.ServiceStatusEnum": {
       "description": "Status of of the service",
       "enum": [
-        "new",
         "alive",
+        "dead",
         "disabled",
-        "dead"
+        "new"
       ],
       "enumType": "string",
       "id": "ServiceStatusEnum",
       "namespace": "metrics.api"
+    },
+    "metrics.api.ServiceWithIAM": {
+      "description": "Structure holding the elements about a service",
+      "id": "Service",
+      "namespace": "metrics.api",
+      "properties": {
+        "description": {
+          "canBeNull": false,
+          "description": "Description of a service",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "iam": {
+          "canBeNull": true,
+          "description": "IAM resource metadata",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.ResourceMetadata"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of a service",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "offer": {
+          "canBeNull": false,
+          "description": "Offer used for the service",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "quota": {
+          "canBeNull": false,
+          "description": "Quota used for the service",
+          "fullType": "metrics.api.Option",
+          "readOnly": true,
+          "required": false,
+          "type": "metrics.api.Option"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Region holding the service",
+          "fullType": "metrics.api.Region",
+          "readOnly": true,
+          "required": false,
+          "type": "metrics.api.Region"
+        },
+        "shouldUpgrade": {
+          "canBeNull": false,
+          "description": "Indicator if the service should be upgraded based on current quota and offer",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Status of a service",
+          "fullType": "metrics.api.ServiceStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "metrics.api.ServiceStatusEnum"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Type of the service: cloud or live",
+          "fullType": "metrics.api.OfferTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "metrics.api.OfferTypeEnum"
+        }
+      }
     },
     "metrics.api.Token": {
       "description": "Structure holding the elements about a token",
@@ -759,11 +1043,11 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Description of the token",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
-        "expiredAt": {
+        "expiryAt": {
           "canBeNull": false,
           "description": "Token expiration date",
           "fullType": "datetime",
@@ -795,9 +1079,9 @@ export const schema: Schema = {
           "required": false,
           "type": "metrics.api.Label[]"
         },
-        "type": {
+        "permission": {
           "canBeNull": false,
-          "description": "Token type: read or write",
+          "description": "Token permission: read or write",
           "fullType": "metrics.api.PermissionEnum",
           "readOnly": true,
           "required": false,

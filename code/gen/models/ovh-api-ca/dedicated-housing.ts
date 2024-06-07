@@ -16,10 +16,21 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedHousing:apiovh:get"
+            {
+              "name": "dedicatedHousing:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
-          "parameters": [],
+          "parameters": [
+            {
+              "dataType": "map[string][]iam.resource.TagFilter",
+              "description": "Filter resources on IAM tags",
+              "name": "iamTags",
+              "paramType": "query",
+              "required": false
+            }
+          ],
           "responseType": "string[]"
         }
       ],
@@ -36,7 +47,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedHousing:apiovh:get"
+            {
+              "name": "dedicatedHousing:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -49,7 +63,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.housing.Housing"
+          "responseType": "dedicated.housing.HousingWithIAM"
         }
       ],
       "path": "/dedicated/housing/{serviceName}"
@@ -65,7 +79,10 @@ export const schema: Schema = {
           "description": "Terminate your Backup FTP service, ALL DATA WILL BE PERMANENTLY DELETED",
           "httpMethod": "DELETE",
           "iamActions": [
-            "dedicatedHousing:apiovh:features/backupFTP/delete"
+            {
+              "name": "dedicatedHousing:apiovh:features/backupFTP/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -88,7 +105,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedHousing:apiovh:features/backupFTP/get"
+            {
+              "name": "dedicatedHousing:apiovh:features/backupFTP/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -111,7 +131,10 @@ export const schema: Schema = {
           "description": "Create a new Backup FTP space",
           "httpMethod": "POST",
           "iamActions": [
-            "dedicatedHousing:apiovh:features/backupFTP/create"
+            {
+              "name": "dedicatedHousing:apiovh:features/backupFTP/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -140,7 +163,10 @@ export const schema: Schema = {
           "description": "List of IP blocks (and protocols to allow on these blocks) authorized on your backup FTP",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedHousing:apiovh:features/backupFTP/access/get"
+            {
+              "name": "dedicatedHousing:apiovh:features/backupFTP/access/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -163,7 +189,10 @@ export const schema: Schema = {
           "description": "Create a new Backup FTP ACL",
           "httpMethod": "POST",
           "iamActions": [
-            "dedicatedHousing:apiovh:features/backupFTP/access/create"
+            {
+              "name": "dedicatedHousing:apiovh:features/backupFTP/access/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -224,7 +253,10 @@ export const schema: Schema = {
           "description": "Revoke this ACL",
           "httpMethod": "DELETE",
           "iamActions": [
-            "dedicatedHousing:apiovh:features/backupFTP/access/delete"
+            {
+              "name": "dedicatedHousing:apiovh:features/backupFTP/access/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -255,7 +287,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedHousing:apiovh:features/backupFTP/access/get"
+            {
+              "name": "dedicatedHousing:apiovh:features/backupFTP/access/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -286,7 +321,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "dedicatedHousing:apiovh:features/backupFTP/access/edit"
+            {
+              "name": "dedicatedHousing:apiovh:features/backupFTP/access/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -330,7 +368,10 @@ export const schema: Schema = {
           "description": "Get all IP blocks that can be used in the ACL",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedHousing:apiovh:features/backupFTP/authorizableBlocks/get"
+            {
+              "name": "dedicatedHousing:apiovh:features/backupFTP/authorizableBlocks/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -359,7 +400,10 @@ export const schema: Schema = {
           "description": "Change your Backup FTP password",
           "httpMethod": "POST",
           "iamActions": [
-            "dedicatedHousing:apiovh:features/backupFTP/password/create"
+            {
+              "name": "dedicatedHousing:apiovh:features/backupFTP/password/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -388,7 +432,10 @@ export const schema: Schema = {
           "description": "Is an APC orderable for this housing bay",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedHousing:apiovh:orderable/APC/get"
+            {
+              "name": "dedicatedHousing:apiovh:orderable/APC/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -414,10 +461,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get service information",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedHousing:apiovh:serviceInfos/get"
+            {
+              "name": "dedicatedHousing:apiovh:serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -437,10 +487,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Update service information",
           "httpMethod": "PUT",
           "iamActions": [
-            "dedicatedHousing:apiovh:serviceInfos/edit"
+            {
+              "name": "dedicatedHousing:apiovh:serviceInfos/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -476,7 +529,10 @@ export const schema: Schema = {
           "description": "View task list",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedHousing:apiovh:task/get"
+            {
+              "name": "dedicatedHousing:apiovh:task/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -521,7 +577,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedHousing:apiovh:task/get"
+            {
+              "name": "dedicatedHousing:apiovh:task/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -558,7 +617,10 @@ export const schema: Schema = {
           "description": "this action stop the task progression if it's possible",
           "httpMethod": "POST",
           "iamActions": [
-            "dedicatedHousing:apiovh:task/cancel"
+            {
+              "name": "dedicatedHousing:apiovh:task/cancel",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -609,7 +671,72 @@ export const schema: Schema = {
         }
       }
     },
+    "complexType.SafeKeyValueCanBeNull<string>": {
+      "description": "Key and value, with proper key strings",
+      "generics": [
+        "T"
+      ],
+      "id": "SafeKeyValueCanBeNull",
+      "namespace": "complexType",
+      "properties": {
+        "key": {
+          "canBeNull": true,
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": true,
+          "readOnly": false,
+          "required": false,
+          "type": "T"
+        }
+      }
+    },
+    "complexType.SafeKeyValueCanBeNull_string": {
+      "description": "complexType.SafeKeyValueCanBeNull_string",
+      "id": "SafeKeyValueCanBeNull_string",
+      "namespace": "complexType",
+      "properties": {
+        "key": {
+          "canBeNull": true,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
     "complexType.UnitAndValue<T>": {
+      "description": "A numeric value tagged with its unit",
+      "generics": [
+        "T"
+      ],
+      "id": "UnitAndValue",
+      "namespace": "complexType",
+      "properties": {
+        "unit": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "T"
+        }
+      }
+    },
+    "complexType.UnitAndValue<long>": {
       "description": "A numeric value tagged with its unit",
       "generics": [
         "T"
@@ -637,6 +764,8 @@ export const schema: Schema = {
         "INFRA_002_VirtualNetworkInterface",
         "INFRA_002_VirtualNetworkInterface_group",
         "INFRA_002_VirtualNetworkInterface_ungroup",
+        "INFRA_ONE_NETWORK_ONEAPI_VirtualNetworkInterface_group",
+        "INFRA_ONE_NETWORK_ONEAPI_VirtualNetworkInterface_ungroup",
         "INFRA_ONE_NETWORK_VirtualNetworkInterface_group",
         "INFRA_ONE_NETWORK_VirtualNetworkInterface_ungroup",
         "addVirtualMac",
@@ -767,6 +896,68 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "dedicated.housing.DatacenterEnum"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "The name you give to the bay",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "network": {
+          "canBeNull": false,
+          "description": "Housing bay network",
+          "fullType": "dedicated.housing.NetworkInfo[]",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicated.housing.NetworkInfo[]"
+        },
+        "options": {
+          "canBeNull": false,
+          "description": "Housing bay options",
+          "fullType": "dedicated.housing.Options",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicated.housing.Options"
+        },
+        "rack": {
+          "canBeNull": false,
+          "description": "The bay's description",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "securityCode": {
+          "canBeNull": false,
+          "description": "Bay Security code",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "dedicated.housing.HousingWithIAM": {
+      "description": "Housing bay",
+      "id": "Housing",
+      "namespace": "dedicated.housing",
+      "properties": {
+        "datacenter": {
+          "canBeNull": true,
+          "description": "Housing bay datacenter",
+          "fullType": "dedicated.housing.DatacenterEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicated.housing.DatacenterEnum"
+        },
+        "iam": {
+          "canBeNull": true,
+          "description": "IAM resource metadata",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.ResourceMetadata"
         },
         "name": {
           "canBeNull": false,
@@ -1206,6 +1397,77 @@ export const schema: Schema = {
           "type": "string"
         }
       }
+    },
+    "iam.ResourceMetadata": {
+      "description": "IAM resource metadata embedded in services models",
+      "id": "ResourceMetadata",
+      "namespace": "iam",
+      "properties": {
+        "displayName": {
+          "canBeNull": true,
+          "description": "Resource display name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Unique identifier of the resource",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "tags": {
+          "canBeNull": true,
+          "description": "Resource tags. Tags that were internally computed are prefixed with ovh:",
+          "fullType": "map[string]string",
+          "readOnly": true,
+          "required": false,
+          "type": "map[string]string"
+        },
+        "urn": {
+          "canBeNull": false,
+          "description": "Unique resource name used in policies",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter": {
+      "description": "Resource tag filter",
+      "id": "TagFilter",
+      "namespace": "iam.resource",
+      "properties": {
+        "operator": {
+          "canBeNull": true,
+          "description": "Operator to use in order to filter on the value (defaults to 'EQ')",
+          "fullType": "iam.resource.TagFilter.OperatorEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.resource.TagFilter.OperatorEnum"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value to use in order to filter tags",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter.OperatorEnum": {
+      "description": "Operator that can be used in order to filter resources tags",
+      "enum": [
+        "EQ"
+      ],
+      "enumType": "string",
+      "id": "OperatorEnum",
+      "namespace": "iam.resource.TagFilter"
     },
     "service.RenewType": {
       "description": "Map a possible renew for a specific service",

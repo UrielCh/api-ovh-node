@@ -6,74 +6,91 @@ export const schema: Schema = {
   "apiVersion": "1.0",
   "apis": [
     {
-      "description": "Operations about the VOIP service",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "List available services",
+          "description": "List Freefax line accounts",
           "httpMethod": "GET",
           "iamActions": [
-            "freefax:apiovh:get"
+            {
+              "name": "freefax:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
-          "parameters": [],
-          "responseType": "string[]"
+          "parameters": [
+            {
+              "dataType": "map[string][]iam.resource.TagFilter",
+              "description": "Filter resources on IAM tags",
+              "name": "iamTags",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "phoneNumber[]"
         }
       ],
       "path": "/freefax"
     },
     {
-      "description": "Freefax properties",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get Freefax information",
           "httpMethod": "GET",
           "iamActions": [
-            "freefax:apiovh:get"
+            {
+              "name": "freefax:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Freefax number",
-              "fullType": "string",
+              "dataType": "phoneNumber",
+              "description": "Service name",
+              "fullType": "phoneNumber",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "freefax.FreefaxProperties"
+          "responseType": "freefax.FreefaxPropertiesWithIAM"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Edit the Freefax properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "freefax:apiovh:put"
+            {
+              "name": "freefax:apiovh:put",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "freefax.FreefaxProperties",
-              "description": "New object properties",
+              "description": "Request Body",
               "fullType": "freefax.FreefaxProperties",
               "paramType": "body",
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Freefax number",
-              "fullType": "string",
+              "dataType": "phoneNumber",
+              "description": "Service name",
+              "fullType": "phoneNumber",
               "name": "serviceName",
               "paramType": "path",
               "required": true
@@ -85,7 +102,7 @@ export const schema: Schema = {
       "path": "/freefax/{serviceName}"
     },
     {
-      "description": "changePassword operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -95,14 +112,17 @@ export const schema: Schema = {
           "description": "Generates a new password for your fax account",
           "httpMethod": "POST",
           "iamActions": [
-            "freefax:apiovh:changePassword"
+            {
+              "name": "freefax:apiovh:changePassword",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Freefax number",
-              "fullType": "string",
+              "dataType": "phoneNumber",
+              "description": "Service name",
+              "fullType": "phoneNumber",
               "name": "serviceName",
               "paramType": "path",
               "required": true
@@ -114,24 +134,27 @@ export const schema: Schema = {
       "path": "/freefax/{serviceName}/changePassword"
     },
     {
-      "description": "Directory Informations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get Freefax directory information",
           "httpMethod": "GET",
           "iamActions": [
-            "freefax:apiovh:directory/get"
+            {
+              "name": "freefax:apiovh:directory/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Freefax number",
-              "fullType": "string",
+              "dataType": "phoneNumber",
+              "description": "Service name",
+              "fullType": "phoneNumber",
               "name": "serviceName",
               "paramType": "path",
               "required": true
@@ -144,24 +167,27 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Edit Freefax directory information",
           "httpMethod": "PUT",
           "iamActions": [
-            "freefax:apiovh:directory/edit"
+            {
+              "name": "freefax:apiovh:directory/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "telephony.DirectoryInfo",
-              "description": "New object properties",
+              "description": "Request Body",
               "fullType": "telephony.DirectoryInfo",
               "paramType": "body",
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Freefax number",
-              "fullType": "string",
+              "dataType": "phoneNumber",
+              "description": "Service name",
+              "fullType": "phoneNumber",
               "name": "serviceName",
               "paramType": "path",
               "required": true
@@ -173,32 +199,34 @@ export const schema: Schema = {
       "path": "/freefax/{serviceName}/directory"
     },
     {
-      "description": "fetchEntrepriseInformations operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get company entreprise informations by providing entreprise number",
+          "description": "Get enterprise information by providing enterprise number",
           "httpMethod": "POST",
           "iamActions": [
-            "freefax:apiovh:directory/fetchEntrepriseInformations"
+            {
+              "name": "freefax:apiovh:directory/fetchEntrepriseInformations",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Entreprise number to fetch informations from",
-              "fullType": "string",
-              "name": "entrepriseNumber",
+              "dataType": "telephony.EntrepriseNumber",
+              "description": "Request Body",
+              "fullType": "telephony.EntrepriseNumber",
               "paramType": "body",
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Freefax number",
-              "fullType": "string",
+              "dataType": "phoneNumber",
+              "description": "Service name",
+              "fullType": "phoneNumber",
               "name": "serviceName",
               "paramType": "path",
               "required": true
@@ -210,24 +238,27 @@ export const schema: Schema = {
       "path": "/freefax/{serviceName}/directory/fetchEntrepriseInformations"
     },
     {
-      "description": "getDirectoryServiceCode operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get directory service code from an APE code ( principal activity of the firm code )",
+          "description": "Get directory service code from an APE code (principal activity of the firm code)",
           "httpMethod": "GET",
           "iamActions": [
-            "freefax:apiovh:directory/getDirectoryServiceCode"
+            {
+              "name": "freefax:apiovh:directory/getDirectoryServiceCode",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Freefax number",
-              "fullType": "string",
+              "dataType": "phoneNumber",
+              "description": "Service name",
+              "fullType": "phoneNumber",
               "name": "serviceName",
               "paramType": "path",
               "required": true
@@ -247,24 +278,27 @@ export const schema: Schema = {
       "path": "/freefax/{serviceName}/directory/getDirectoryServiceCode"
     },
     {
-      "description": "getWayTypes operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get all the way types availables",
+          "description": "Get all the way types available",
           "httpMethod": "GET",
           "iamActions": [
-            "freefax:apiovh:directory/getWayTypes"
+            {
+              "name": "freefax:apiovh:directory/getWayTypes",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Freefax number",
-              "fullType": "string",
+              "dataType": "phoneNumber",
+              "description": "Service name",
+              "fullType": "phoneNumber",
               "name": "serviceName",
               "paramType": "path",
               "required": true
@@ -276,24 +310,27 @@ export const schema: Schema = {
       "path": "/freefax/{serviceName}/directory/getWayTypes"
     },
     {
-      "description": "mainService operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Main service attached to freefax",
+          "description": "Get main service attached to the Freefax",
           "httpMethod": "GET",
           "iamActions": [
-            "freefax:apiovh:mainService/get"
+            {
+              "name": "freefax:apiovh:mainService/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Freefax number",
-              "fullType": "string",
+              "dataType": "phoneNumber",
+              "description": "Service name",
+              "fullType": "phoneNumber",
               "name": "serviceName",
               "paramType": "path",
               "required": true
@@ -305,24 +342,27 @@ export const schema: Schema = {
       "path": "/freefax/{serviceName}/mainService"
     },
     {
-      "description": "Details about a Service",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get service information",
           "httpMethod": "GET",
           "iamActions": [
-            "freefax:apiovh:serviceInfos/get"
+            {
+              "name": "freefax:apiovh:serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Freefax number",
-              "fullType": "string",
+              "dataType": "phoneNumber",
+              "description": "Service name",
+              "fullType": "phoneNumber",
               "name": "serviceName",
               "paramType": "path",
               "required": true
@@ -335,24 +375,27 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Update service information",
           "httpMethod": "PUT",
           "iamActions": [
-            "freefax:apiovh:serviceInfos/edit"
+            {
+              "name": "freefax:apiovh:serviceInfos/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "services.Service",
-              "description": "New object properties",
+              "description": "Request Body",
               "fullType": "services.Service",
               "paramType": "body",
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Freefax number",
-              "fullType": "string",
+              "dataType": "phoneNumber",
+              "description": "Service name",
+              "fullType": "phoneNumber",
               "name": "serviceName",
               "paramType": "path",
               "required": true
@@ -364,24 +407,27 @@ export const schema: Schema = {
       "path": "/freefax/{serviceName}/serviceInfos"
     },
     {
-      "description": "Voicemail Properties",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get the Freefax voicemail information",
           "httpMethod": "GET",
           "iamActions": [
-            "freefax:apiovh:voicemail/get"
+            {
+              "name": "freefax:apiovh:voicemail/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Freefax number",
-              "fullType": "string",
+              "dataType": "phoneNumber",
+              "description": "Service name",
+              "fullType": "phoneNumber",
               "name": "serviceName",
               "paramType": "path",
               "required": true
@@ -394,24 +440,27 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Edit the Freefax voicemail",
           "httpMethod": "PUT",
           "iamActions": [
-            "freefax:apiovh:voicemail/edit"
+            {
+              "name": "freefax:apiovh:voicemail/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "telephony.VoicemailProperties",
-              "description": "New object properties",
+              "description": "Request Body",
               "fullType": "telephony.VoicemailProperties",
               "paramType": "body",
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Freefax number",
-              "fullType": "string",
+              "dataType": "phoneNumber",
+              "description": "Service name",
+              "fullType": "phoneNumber",
               "name": "serviceName",
               "paramType": "path",
               "required": true
@@ -423,7 +472,7 @@ export const schema: Schema = {
       "path": "/freefax/{serviceName}/voicemail"
     },
     {
-      "description": "changePassword operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -433,22 +482,24 @@ export const schema: Schema = {
           "description": "Change the voicemail password. It must be 4 digit",
           "httpMethod": "POST",
           "iamActions": [
-            "freefax:apiovh:voicemail/changePassword"
+            {
+              "name": "freefax:apiovh:voicemail/changePassword",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "password",
-              "description": "The password",
-              "fullType": "password",
-              "name": "password",
+              "dataType": "telephony.voicemail.ChangePassword",
+              "description": "Request Body",
+              "fullType": "telephony.voicemail.ChangePassword",
               "paramType": "body",
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Freefax number",
-              "fullType": "string",
+              "dataType": "phoneNumber",
+              "description": "Service name",
+              "fullType": "phoneNumber",
               "name": "serviceName",
               "paramType": "path",
               "required": true
@@ -460,7 +511,7 @@ export const schema: Schema = {
       "path": "/freefax/{serviceName}/voicemail/changePassword"
     },
     {
-      "description": "changeRouting operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -470,22 +521,24 @@ export const schema: Schema = {
           "description": "Disable/Enable voicemail. Available only if the line has fax capabilities",
           "httpMethod": "POST",
           "iamActions": [
-            "freefax:apiovh:voicemail/changeRouting"
+            {
+              "name": "freefax:apiovh:voicemail/changeRouting",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "telephony.VoicefaxRoutingEnum",
-              "description": "Activate or Desactivate voicemail on the line",
-              "fullType": "telephony.VoicefaxRoutingEnum",
-              "name": "routing",
+              "dataType": "telephony.voicemail.ChangeRouting",
+              "description": "Request Body",
+              "fullType": "telephony.voicemail.ChangeRouting",
               "paramType": "body",
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Freefax number",
-              "fullType": "string",
+              "dataType": "phoneNumber",
+              "description": "Service name",
+              "fullType": "phoneNumber",
               "name": "serviceName",
               "paramType": "path",
               "required": true
@@ -497,7 +550,7 @@ export const schema: Schema = {
       "path": "/freefax/{serviceName}/voicemail/changeRouting"
     },
     {
-      "description": "routing operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -507,14 +560,17 @@ export const schema: Schema = {
           "description": "Get the status of the voicemail. Available only if the line has fax capabilities",
           "httpMethod": "GET",
           "iamActions": [
-            "freefax:apiovh:voicemail/routing/get"
+            {
+              "name": "freefax:apiovh:voicemail/routing/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Freefax number",
-              "fullType": "string",
+              "dataType": "phoneNumber",
+              "description": "Service name",
+              "fullType": "phoneNumber",
               "name": "serviceName",
               "paramType": "path",
               "required": true
@@ -526,7 +582,7 @@ export const schema: Schema = {
       "path": "/freefax/{serviceName}/voicemail/routing"
     },
     {
-      "description": "voicemailNumbers operations",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -536,14 +592,17 @@ export const schema: Schema = {
           "description": "Get number for internal and external voicemail",
           "httpMethod": "GET",
           "iamActions": [
-            "freefax:apiovh:voicemail/voicemailNumbers/get"
+            {
+              "name": "freefax:apiovh:voicemail/voicemailNumbers/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Freefax number",
-              "fullType": "string",
+              "dataType": "phoneNumber",
+              "description": "Service name",
+              "fullType": "phoneNumber",
               "name": "serviceName",
               "paramType": "path",
               "required": true
@@ -555,7 +614,7 @@ export const schema: Schema = {
       "path": "/freefax/{serviceName}/voicemail/voicemailNumbers"
     },
     {
-      "description": "Get the credit balance and the remaining pages available for all our freefax",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -565,7 +624,10 @@ export const schema: Schema = {
           "description": "Get the credit balance and the remaining pages available for all our freefax",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:freefax/credits/get"
+            {
+              "name": "account:apiovh:freefax/credits/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -578,21 +640,23 @@ export const schema: Schema = {
   "basePath": "https://eu.api.ovh.com/1.0",
   "models": {
     "freefax.BalanceInformations": {
-      "description": "Return credit balance informations structure",
+      "description": "Return credit balance information structure",
       "id": "BalanceInformations",
       "namespace": "freefax",
       "properties": {
         "faxs": {
           "canBeNull": false,
           "description": "The number of equivalement remaining french faxs",
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
         "points": {
           "canBeNull": false,
           "description": "Total balance available in points",
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         }
@@ -605,15 +669,15 @@ export const schema: Schema = {
       "properties": {
         "faxMaxCall": {
           "canBeNull": false,
-          "description": "Number of max tentative of fax sending",
-          "fullType": "telephony.FaxSendingTries",
+          "description": "Number of tries when sending a fax",
+          "fullType": "telephony.FaxSendingTriesEnum",
           "readOnly": false,
           "required": false,
-          "type": "telephony.FaxSendingTries"
+          "type": "telephony.FaxSendingTriesEnum"
         },
         "faxQuality": {
           "canBeNull": false,
-          "description": "Quality of fax sending",
+          "description": "Available quality for fax documents",
           "fullType": "telephony.FaxQualityEnum",
           "readOnly": false,
           "required": false,
@@ -645,7 +709,7 @@ export const schema: Schema = {
         },
         "number": {
           "canBeNull": false,
-          "description": "Freefax number in international format",
+          "description": "Phone number",
           "fullType": "phoneNumber",
           "readOnly": true,
           "required": false,
@@ -660,6 +724,147 @@ export const schema: Schema = {
           "type": "string[]"
         }
       }
+    },
+    "freefax.FreefaxPropertiesWithIAM": {
+      "description": "Freefax properties",
+      "id": "FreefaxProperties",
+      "namespace": "freefax",
+      "properties": {
+        "faxMaxCall": {
+          "canBeNull": false,
+          "description": "Number of tries when sending a fax",
+          "fullType": "telephony.FaxSendingTriesEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "telephony.FaxSendingTriesEnum"
+        },
+        "faxQuality": {
+          "canBeNull": false,
+          "description": "Available quality for fax documents",
+          "fullType": "telephony.FaxQualityEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "telephony.FaxQualityEnum"
+        },
+        "faxTagLine": {
+          "canBeNull": false,
+          "description": "Customised freefax header",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "fromEmail": {
+          "canBeNull": false,
+          "description": "FROM email header",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "fromName": {
+          "canBeNull": false,
+          "description": "Name of the sender of the email",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "iam": {
+          "canBeNull": true,
+          "description": "IAM resource metadata",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.ResourceMetadata"
+        },
+        "number": {
+          "canBeNull": false,
+          "description": "Phone number",
+          "fullType": "phoneNumber",
+          "readOnly": true,
+          "required": false,
+          "type": "phoneNumber"
+        },
+        "redirectionEmail": {
+          "canBeNull": false,
+          "description": "Email address to redirect fax response.",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        }
+      }
+    },
+    "iam.ResourceMetadata": {
+      "description": "IAM resource metadata embedded in services models",
+      "id": "ResourceMetadata",
+      "namespace": "iam",
+      "properties": {
+        "displayName": {
+          "canBeNull": true,
+          "description": "Resource display name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Unique identifier of the resource",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "tags": {
+          "canBeNull": true,
+          "description": "Resource tags. Tags that were internally computed are prefixed with ovh:",
+          "fullType": "map[string]string",
+          "readOnly": true,
+          "required": false,
+          "type": "map[string]string"
+        },
+        "urn": {
+          "canBeNull": false,
+          "description": "Unique resource name used in policies",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter": {
+      "description": "Resource tag filter",
+      "id": "TagFilter",
+      "namespace": "iam.resource",
+      "properties": {
+        "operator": {
+          "canBeNull": true,
+          "description": "Operator to use in order to filter on the value (defaults to 'EQ')",
+          "fullType": "iam.resource.TagFilter.OperatorEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.resource.TagFilter.OperatorEnum"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value to use in order to filter tags",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter.OperatorEnum": {
+      "description": "Operator that can be used in order to filter resources tags",
+      "enum": [
+        "EQ"
+      ],
+      "enumType": "string",
+      "id": "OperatorEnum",
+      "namespace": "iam.resource.TagFilter"
     },
     "nichandle.GenderEnum": {
       "description": "All genders a person can choose",
@@ -679,6 +884,7 @@ export const schema: Schema = {
         "automatic": {
           "canBeNull": false,
           "description": "The service is automatically renewed",
+          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -686,6 +892,7 @@ export const schema: Schema = {
         "deleteAtExpiration": {
           "canBeNull": false,
           "description": "The service will be deleted at expiration",
+          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -693,6 +900,7 @@ export const schema: Schema = {
         "forced": {
           "canBeNull": false,
           "description": "The service forced to be renewed",
+          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -700,6 +908,7 @@ export const schema: Schema = {
         "manualPayment": {
           "canBeNull": true,
           "description": "The service needs to be manually renewed and paid",
+          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -707,6 +916,7 @@ export const schema: Schema = {
         "period": {
           "canBeNull": true,
           "description": "period of renew in month",
+          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -729,6 +939,7 @@ export const schema: Schema = {
       "namespace": "service"
     },
     "service.StateEnum": {
+      "description": "service.StateEnum",
       "enum": [
         "expired",
         "inCreation",
@@ -755,21 +966,21 @@ export const schema: Schema = {
         },
         "contactAdmin": {
           "canBeNull": false,
-          "fullType": "coreTypes.AccountId:string",
+          "fullType": "string",
           "readOnly": true,
           "required": false,
           "type": "string"
         },
         "contactBilling": {
           "canBeNull": false,
-          "fullType": "coreTypes.AccountId:string",
+          "fullType": "string",
           "readOnly": true,
           "required": false,
           "type": "string"
         },
         "contactTech": {
           "canBeNull": false,
-          "fullType": "coreTypes.AccountId:string",
+          "fullType": "string",
           "readOnly": true,
           "required": false,
           "type": "string"
@@ -827,7 +1038,7 @@ export const schema: Schema = {
         },
         "serviceId": {
           "canBeNull": false,
-          "fullType": "coreTypes.ServiceId:long",
+          "fullType": "long",
           "readOnly": true,
           "required": false,
           "type": "long"
@@ -842,7 +1053,7 @@ export const schema: Schema = {
       }
     },
     "telephony.DirectoryHeadingPJ": {
-      "description": "Directory Informations",
+      "description": "Directory information",
       "id": "DirectoryHeadingPJ",
       "namespace": "telephony",
       "properties": {
@@ -884,7 +1095,7 @@ export const schema: Schema = {
       }
     },
     "telephony.DirectoryInfo": {
-      "description": "Directory Informations",
+      "description": "Directory information",
       "id": "DirectoryInfo",
       "namespace": "telephony",
       "properties": {
@@ -1008,7 +1219,8 @@ export const schema: Schema = {
           "type": "string"
         },
         "gender": {
-          "canBeNull": true,
+          "canBeNull": false,
+          "description": "All genders a person can choose",
           "fullType": "nichandle.GenderEnum",
           "readOnly": false,
           "required": false,
@@ -1177,78 +1389,102 @@ export const schema: Schema = {
         }
       }
     },
+    "telephony.EntrepriseNumber": {
+      "description": "Enterprise number",
+      "id": "EntrepriseNumber",
+      "namespace": "telephony",
+      "properties": {
+        "entrepriseNumber": {
+          "canBeNull": false,
+          "description": "Entreprise number to fetch information from",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
     "telephony.EntrepriseNumberInformations": {
-      "description": "Task informations about an entreprise",
+      "description": "Task information about an entreprise",
       "id": "EntrepriseNumberInformations",
       "namespace": "telephony",
       "properties": {
         "address": {
           "canBeNull": true,
           "description": "Address of the entreprise",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "ape": {
           "canBeNull": true,
           "description": "Entreprise's category code for directory services",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "brand": {
           "canBeNull": true,
           "description": "Brand of the entreprise",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "entrepriseNumber": {
           "canBeNull": false,
           "description": "Entreprise number",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "isValid": {
           "canBeNull": false,
           "description": "Is this a valid entreprise number?",
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "name": {
           "canBeNull": false,
           "description": "Name of the entreprise",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "siren": {
           "canBeNull": true,
           "description": "Short version of the entreprise number (FR only)",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
       }
     },
     "telephony.EntrepriseNumberInformationsTask": {
-      "description": "Task about getting entreprise informations",
+      "description": "Task about getting entreprise information",
       "id": "EntrepriseNumberInformationsTask",
       "namespace": "telephony",
       "properties": {
         "informations": {
           "canBeNull": false,
-          "description": "Informations about the enterprise",
-          "readOnly": false,
+          "description": "Task information about an entreprise",
+          "fullType": "telephony.EntrepriseNumberInformations",
+          "readOnly": true,
           "required": false,
           "type": "telephony.EntrepriseNumberInformations"
         },
         "status": {
           "canBeNull": false,
           "description": "Task status",
-          "readOnly": false,
+          "fullType": "telephony.TaskStatusEnum",
+          "readOnly": true,
           "required": false,
           "type": "telephony.TaskStatusEnum"
         }
@@ -1282,6 +1518,23 @@ export const schema: Schema = {
       "id": "FaxSendingTries",
       "namespace": "telephony"
     },
+    "telephony.FaxSendingTriesEnum": {
+      "description": "Number of tries when sending a fax",
+      "enum": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "enumType": "long",
+      "id": "FaxSendingTriesEnum",
+      "namespace": "telephony"
+    },
     "telephony.ServiceVoicemailAudioFormatEnum": {
       "description": "Voicemail audio format",
       "enum": [
@@ -1313,12 +1566,15 @@ export const schema: Schema = {
       "properties": {
         "email": {
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
         },
         "type": {
           "canBeNull": false,
+          "description": "Voicemail configuration",
+          "fullType": "telephony.ServiceVoicemailMailOptionEnum",
           "readOnly": false,
           "required": false,
           "type": "telephony.ServiceVoicemailMailOptionEnum"
@@ -1367,14 +1623,16 @@ export const schema: Schema = {
         "external": {
           "canBeNull": false,
           "description": "The external voicemail number",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "internal": {
           "canBeNull": false,
           "description": "The internal voicemail number",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
@@ -1395,7 +1653,7 @@ export const schema: Schema = {
         },
         "audioFormat": {
           "canBeNull": false,
-          "description": "Format of the voicemail audio file attached to emails",
+          "description": "Voicemail audio format",
           "fullType": "telephony.ServiceVoicemailAudioFormatEnum",
           "readOnly": false,
           "required": false,
@@ -1443,7 +1701,7 @@ export const schema: Schema = {
         },
         "greetingType": {
           "canBeNull": false,
-          "description": "Type of the greeting to play",
+          "description": "Greeting type",
           "fullType": "telephony.VoicemailGreetingEnum",
           "readOnly": false,
           "required": false,
@@ -1504,6 +1762,36 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "long"
+        }
+      }
+    },
+    "telephony.voicemail.ChangePassword": {
+      "description": "Change voicemail password",
+      "id": "ChangePassword",
+      "namespace": "telephony.voicemail",
+      "properties": {
+        "password": {
+          "canBeNull": false,
+          "description": "The password",
+          "fullType": "password",
+          "readOnly": false,
+          "required": true,
+          "type": "password"
+        }
+      }
+    },
+    "telephony.voicemail.ChangeRouting": {
+      "description": "Change voicemail routing",
+      "id": "ChangeRouting",
+      "namespace": "telephony.voicemail",
+      "properties": {
+        "routing": {
+          "canBeNull": false,
+          "description": "All existing type of routing for a voicemail",
+          "fullType": "telephony.VoicefaxRoutingEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "telephony.VoicefaxRoutingEnum"
         }
       }
     }

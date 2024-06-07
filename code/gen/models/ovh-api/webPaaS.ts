@@ -16,7 +16,10 @@ export const schema: Schema = {
           "description": "List available regions and templates",
           "httpMethod": "GET",
           "iamActions": [
-            "webPaaS:apiovh:capabilities/get"
+            {
+              "name": "webPaaS:apiovh:capabilities/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -45,10 +48,21 @@ export const schema: Schema = {
           "description": "List your subscriptions",
           "httpMethod": "GET",
           "iamActions": [
-            "webPaaS:apiovh:subscription/get"
+            {
+              "name": "webPaaS:apiovh:subscription/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
-          "parameters": [],
+          "parameters": [
+            {
+              "dataType": "map[string][]iam.resource.TagFilter",
+              "description": "Filter resources on IAM tags",
+              "name": "iamTags",
+              "paramType": "query",
+              "required": false
+            }
+          ],
           "responseType": "string[]"
         }
       ],
@@ -65,7 +79,10 @@ export const schema: Schema = {
           "description": "Get information about your subscription",
           "httpMethod": "GET",
           "iamActions": [
-            "webPaaS:apiovh:subscription/get"
+            {
+              "name": "webPaaS:apiovh:subscription/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -78,23 +95,26 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "webPaaS.Subscription"
+          "responseType": "webPaaS.SubscriptionWithIAM"
         }
       ],
       "path": "/webPaaS/subscription/{serviceName}"
     },
     {
-      "description": "Confirm termination of your service",
+      "description": "Confirm service termination",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Confirm termination of your service",
+          "description": "Confirm service termination",
           "httpMethod": "POST",
           "iamActions": [
-            "webPaaS:apiovh:subscription/confirmTermination"
+            {
+              "name": "webPaaS:apiovh:subscription/confirmTermination",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -124,7 +144,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The termination token sent by mail to the admin contact",
+              "description": "The termination token sent by email to the admin contact",
               "fullType": "string",
               "name": "token",
               "paramType": "body",
@@ -155,7 +175,10 @@ export const schema: Schema = {
           "description": "List customers added to a project",
           "httpMethod": "GET",
           "iamActions": [
-            "webPaaS:apiovh:subscription/customer/get"
+            {
+              "name": "webPaaS:apiovh:subscription/customer/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -178,7 +201,10 @@ export const schema: Schema = {
           "description": "Add customer to the project",
           "httpMethod": "POST",
           "iamActions": [
-            "webPaaS:apiovh:subscription/customer/create"
+            {
+              "name": "webPaaS:apiovh:subscription/customer/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -214,7 +240,10 @@ export const schema: Schema = {
           "description": "Remove customer from the project",
           "httpMethod": "DELETE",
           "iamActions": [
-            "webPaaS:apiovh:subscription/customer/delete"
+            {
+              "name": "webPaaS:apiovh:subscription/customer/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -245,7 +274,10 @@ export const schema: Schema = {
           "description": "Get the customer details",
           "httpMethod": "GET",
           "iamActions": [
-            "webPaaS:apiovh:subscription/customer/get"
+            {
+              "name": "webPaaS:apiovh:subscription/customer/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -279,10 +311,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get service information",
           "httpMethod": "GET",
           "iamActions": [
-            "webPaaS:apiovh:subscription/serviceInfos/get"
+            {
+              "name": "webPaaS:apiovh:subscription/serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -302,10 +337,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Update service information",
           "httpMethod": "PUT",
           "iamActions": [
-            "webPaaS:apiovh:subscription/serviceInfos/edit"
+            {
+              "name": "webPaaS:apiovh:subscription/serviceInfos/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -331,18 +369,22 @@ export const schema: Schema = {
       "path": "/webPaaS/subscription/{serviceName}/serviceInfos"
     },
     {
-      "description": "Terminate your service",
+      "description": "Ask for the termination of your service. Admin contact of this service will receive a termination token in order to confirm its termination with /confirmTermination endpoint.",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Terminate your service",
+          "description": "Ask for the termination of your service",
           "httpMethod": "POST",
           "iamActions": [
-            "webPaaS:apiovh:subscription/terminate"
+            {
+              "name": "webPaaS:apiovh:subscription/terminate",
+              "required": true
+            }
           ],
+          "longDescription": "Ask for the termination of your service. Admin contact of this service will receive a termination token by email in order to confirm its termination with /confirmTermination endpoint.",
           "noAuthentication": false,
           "parameters": [
             {
@@ -362,6 +404,77 @@ export const schema: Schema = {
   ],
   "basePath": "https://eu.api.ovh.com/1.0",
   "models": {
+    "iam.ResourceMetadata": {
+      "description": "IAM resource metadata embedded in services models",
+      "id": "ResourceMetadata",
+      "namespace": "iam",
+      "properties": {
+        "displayName": {
+          "canBeNull": true,
+          "description": "Resource display name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Unique identifier of the resource",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "tags": {
+          "canBeNull": true,
+          "description": "Resource tags. Tags that were internally computed are prefixed with ovh:",
+          "fullType": "map[string]string",
+          "readOnly": true,
+          "required": false,
+          "type": "map[string]string"
+        },
+        "urn": {
+          "canBeNull": false,
+          "description": "Unique resource name used in policies",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter": {
+      "description": "Resource tag filter",
+      "id": "TagFilter",
+      "namespace": "iam.resource",
+      "properties": {
+        "operator": {
+          "canBeNull": true,
+          "description": "Operator to use in order to filter on the value (defaults to 'EQ')",
+          "fullType": "iam.resource.TagFilter.OperatorEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.resource.TagFilter.OperatorEnum"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value to use in order to filter tags",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter.OperatorEnum": {
+      "description": "Operator that can be used in order to filter resources tags",
+      "enum": [
+        "EQ"
+      ],
+      "enumType": "string",
+      "id": "OperatorEnum",
+      "namespace": "iam.resource.TagFilter"
+    },
     "service.RenewType": {
       "description": "Map a possible renew for a specific service",
       "id": "RenewType",
@@ -857,6 +970,100 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "webPaaS.subscriptionMetadata.Project"
+        }
+      }
+    },
+    "webPaaS.SubscriptionWithIAM": {
+      "description": "Partner subscription",
+      "id": "Subscription",
+      "namespace": "webPaaS",
+      "properties": {
+        "addons": {
+          "canBeNull": false,
+          "description": "Subscription addons",
+          "fullType": "webPaaS.SubscriptionAddon[]",
+          "readOnly": true,
+          "required": false,
+          "type": "webPaaS.SubscriptionAddon[]"
+        },
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Creation date of subscription",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "endDate": {
+          "canBeNull": true,
+          "description": "End date of current subscription period. May be null if subscription is not started yet.",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "iam": {
+          "canBeNull": true,
+          "description": "IAM resource metadata",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.ResourceMetadata"
+        },
+        "metadata": {
+          "canBeNull": false,
+          "description": "Subscription metadata",
+          "fullType": "webPaaS.SubscriptionMetadata",
+          "readOnly": true,
+          "required": false,
+          "type": "webPaaS.SubscriptionMetadata"
+        },
+        "offer": {
+          "canBeNull": false,
+          "description": "Partner offer linked to this subscription",
+          "fullType": "webPaaS.OfferEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "webPaaS.OfferEnum"
+        },
+        "partnerProjectId": {
+          "canBeNull": true,
+          "description": "Partner Project Id",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "projectName": {
+          "canBeNull": false,
+          "description": "Project Name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "serviceId": {
+          "canBeNull": false,
+          "description": "Service Id",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "startDate": {
+          "canBeNull": true,
+          "description": "Start date of current subscription",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Current status of subscription",
+          "fullType": "webPaaS.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "webPaaS.StatusEnum"
         }
       }
     },

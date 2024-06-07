@@ -6,17 +6,20 @@ export const schema: Schema = {
   "apiVersion": "1.0",
   "apis": [
     {
-      "description": "Details about your OVH identifier",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get details about your nichandle",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/get"
+            {
+              "name": "account:apiovh:me/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -27,16 +30,19 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Update details of your nichandle",
           "httpMethod": "PUT",
           "iamActions": [
-            "account:apiovh:me/edit"
+            {
+              "name": "account:apiovh:me/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "nichandle.Nichandle",
-              "description": "New object properties",
+              "description": "Request Body",
               "fullType": "nichandle.Nichandle",
               "paramType": "body",
               "required": true
@@ -57,9 +63,6 @@ export const schema: Schema = {
           },
           "description": "Delete this Two-Factor",
           "httpMethod": "DELETE",
-          "iamActions": [
-            "account:apiovh:me/accessRestriction/backupCode/delete"
-          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "void"
@@ -71,9 +74,6 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:me/accessRestriction/backupCode/get"
-          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "nichandle.accessRestriction.SOTPAccount"
@@ -85,9 +85,6 @@ export const schema: Schema = {
           },
           "description": "Add a SOTP access restriction",
           "httpMethod": "POST",
-          "iamActions": [
-            "account:apiovh:me/accessRestriction/backupCode/create"
-          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "nichandle.accessRestriction.SOTPSecret"
@@ -105,9 +102,6 @@ export const schema: Schema = {
           },
           "description": "Disable this SOTP account",
           "httpMethod": "POST",
-          "iamActions": [
-            "account:apiovh:me/accessRestriction/backupCode/disable"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -134,9 +128,6 @@ export const schema: Schema = {
           },
           "description": "Enable this SOTP account",
           "httpMethod": "POST",
-          "iamActions": [
-            "account:apiovh:me/accessRestriction/backupCode/enable"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -163,9 +154,6 @@ export const schema: Schema = {
           },
           "description": "Validate your SOTP account",
           "httpMethod": "POST",
-          "iamActions": [
-            "account:apiovh:me/accessRestriction/backupCode/validate"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -193,7 +181,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/accessRestriction/developerMode/get"
+            {
+              "name": "account:apiovh:me/accessRestriction/developerMode/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -207,7 +198,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "account:apiovh:me/accessRestriction/developerMode/edit"
+            {
+              "name": "account:apiovh:me/accessRestriction/developerMode/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -235,7 +229,10 @@ export const schema: Schema = {
           "description": "List of IP restrictions",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/accessRestriction/ip/get"
+            {
+              "name": "account:apiovh:me/accessRestriction/ip/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -249,7 +246,10 @@ export const schema: Schema = {
           "description": "Add an IP access restriction",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/accessRestriction/ip/create"
+            {
+              "name": "account:apiovh:me/accessRestriction/ip/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -294,7 +294,10 @@ export const schema: Schema = {
           "description": "Delete this restriction rule",
           "httpMethod": "DELETE",
           "iamActions": [
-            "account:apiovh:me/accessRestriction/ip/delete"
+            {
+              "name": "account:apiovh:me/accessRestriction/ip/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -317,7 +320,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/accessRestriction/ip/get"
+            {
+              "name": "account:apiovh:me/accessRestriction/ip/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -340,7 +346,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "account:apiovh:me/accessRestriction/ip/edit"
+            {
+              "name": "account:apiovh:me/accessRestriction/ip/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -376,7 +385,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/accessRestriction/ipDefaultRule/get"
+            {
+              "name": "account:apiovh:me/accessRestriction/ipDefaultRule/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -390,7 +402,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "account:apiovh:me/accessRestriction/ipDefaultRule/edit"
+            {
+              "name": "account:apiovh:me/accessRestriction/ipDefaultRule/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -417,9 +432,6 @@ export const schema: Schema = {
           },
           "description": "List of Sms accounts",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:me/accessRestriction/sms/get"
-          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "long[]"
@@ -431,9 +443,6 @@ export const schema: Schema = {
           },
           "description": "Add a SMS access restriction",
           "httpMethod": "POST",
-          "iamActions": [
-            "account:apiovh:me/accessRestriction/sms/create"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -460,9 +469,6 @@ export const schema: Schema = {
           },
           "description": "Delete this Two-Factor",
           "httpMethod": "DELETE",
-          "iamActions": [
-            "account:apiovh:me/accessRestriction/sms/delete"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -483,9 +489,6 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:me/accessRestriction/sms/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -506,9 +509,6 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
-          "iamActions": [
-            "account:apiovh:me/accessRestriction/sms/edit"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -542,9 +542,6 @@ export const schema: Schema = {
           },
           "description": "Disable this SMS account",
           "httpMethod": "POST",
-          "iamActions": [
-            "account:apiovh:me/accessRestriction/sms/disable"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -579,9 +576,6 @@ export const schema: Schema = {
           },
           "description": "Enable this SMS account",
           "httpMethod": "POST",
-          "iamActions": [
-            "account:apiovh:me/accessRestriction/sms/enable"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -616,9 +610,6 @@ export const schema: Schema = {
           },
           "description": "Send a SMS to this account",
           "httpMethod": "POST",
-          "iamActions": [
-            "account:apiovh:me/accessRestriction/sms/sendCode"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -645,9 +636,6 @@ export const schema: Schema = {
           },
           "description": "Validate your SMS account",
           "httpMethod": "POST",
-          "iamActions": [
-            "account:apiovh:me/accessRestriction/sms/validate"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -682,9 +670,6 @@ export const schema: Schema = {
           },
           "description": "List of TOTP accounts",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:me/accessRestriction/totp/get"
-          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "long[]"
@@ -696,9 +681,6 @@ export const schema: Schema = {
           },
           "description": "Add a TOTP access restriction",
           "httpMethod": "POST",
-          "iamActions": [
-            "account:apiovh:me/accessRestriction/totp/create"
-          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "nichandle.accessRestriction.TOTPSecret"
@@ -716,9 +698,6 @@ export const schema: Schema = {
           },
           "description": "Delete this Two-Factor",
           "httpMethod": "DELETE",
-          "iamActions": [
-            "account:apiovh:me/accessRestriction/totp/delete"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -739,9 +718,6 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:me/accessRestriction/totp/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -762,9 +738,6 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
-          "iamActions": [
-            "account:apiovh:me/accessRestriction/totp/edit"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -798,9 +771,6 @@ export const schema: Schema = {
           },
           "description": "Disable this TOTP account",
           "httpMethod": "POST",
-          "iamActions": [
-            "account:apiovh:me/accessRestriction/totp/disable"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -835,9 +805,6 @@ export const schema: Schema = {
           },
           "description": "Enable this TOTP account",
           "httpMethod": "POST",
-          "iamActions": [
-            "account:apiovh:me/accessRestriction/totp/enable"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -872,9 +839,6 @@ export const schema: Schema = {
           },
           "description": "Validate your TOTP account",
           "httpMethod": "POST",
-          "iamActions": [
-            "account:apiovh:me/accessRestriction/totp/validate"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -909,9 +873,6 @@ export const schema: Schema = {
           },
           "description": "List of U2F accounts",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:me/accessRestriction/u2f/get"
-          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "long[]"
@@ -923,9 +884,6 @@ export const schema: Schema = {
           },
           "description": "Add a U2F access restriction",
           "httpMethod": "POST",
-          "iamActions": [
-            "account:apiovh:me/accessRestriction/u2f/create"
-          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "nichandle.accessRestriction.U2FRegisterChallenge"
@@ -943,9 +901,6 @@ export const schema: Schema = {
           },
           "description": "Delete this Two-Factor",
           "httpMethod": "DELETE",
-          "iamActions": [
-            "account:apiovh:me/accessRestriction/u2f/delete"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -966,9 +921,6 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:me/accessRestriction/u2f/get"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -989,9 +941,6 @@ export const schema: Schema = {
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
-          "iamActions": [
-            "account:apiovh:me/accessRestriction/u2f/edit"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
@@ -1016,35 +965,6 @@ export const schema: Schema = {
       "path": "/me/accessRestriction/u2f/{id}"
     },
     {
-      "description": "challenge operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get an U2F Challenge",
-          "httpMethod": "POST",
-          "iamActions": [
-            "account:apiovh:me/accessRestriction/u2f/challenge/create"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "The Id of the restriction",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "nichandle.accessRestriction.U2FSignChallenge"
-        }
-      ],
-      "path": "/me/accessRestriction/u2f/{id}/challenge"
-    },
-    {
       "description": "disable operations",
       "operations": [
         {
@@ -1054,27 +974,8 @@ export const schema: Schema = {
           },
           "description": "Disable this U2F account",
           "httpMethod": "POST",
-          "iamActions": [
-            "account:apiovh:me/accessRestriction/u2f/disable"
-          ],
           "noAuthentication": false,
           "parameters": [
-            {
-              "dataType": "string",
-              "description": "",
-              "fullType": "string",
-              "name": "clientData",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "password",
-              "description": "",
-              "fullType": "password",
-              "name": "signatureData",
-              "paramType": "body",
-              "required": true
-            },
             {
               "dataType": "long",
               "description": "The Id of the restriction",
@@ -1099,27 +1000,8 @@ export const schema: Schema = {
           },
           "description": "Enable this U2F account",
           "httpMethod": "POST",
-          "iamActions": [
-            "account:apiovh:me/accessRestriction/u2f/enable"
-          ],
           "noAuthentication": false,
           "parameters": [
-            {
-              "dataType": "string",
-              "description": "",
-              "fullType": "string",
-              "name": "clientData",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "password",
-              "description": "",
-              "fullType": "password",
-              "name": "signatureData",
-              "paramType": "body",
-              "required": true
-            },
             {
               "dataType": "long",
               "description": "The Id of the restriction",
@@ -1144,24 +1026,29 @@ export const schema: Schema = {
           },
           "description": "Validate your U2F account",
           "httpMethod": "POST",
-          "iamActions": [
-            "account:apiovh:me/accessRestriction/u2f/validate"
-          ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
               "description": "",
               "fullType": "string",
-              "name": "clientData",
+              "name": "attestationObject",
               "paramType": "body",
               "required": true
             },
             {
-              "dataType": "password",
+              "dataType": "string",
               "description": "",
-              "fullType": "password",
-              "name": "registrationData",
+              "fullType": "string",
+              "name": "clientDataJSON",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "rawId",
               "paramType": "body",
               "required": true
             },
@@ -1190,7 +1077,10 @@ export const schema: Schema = {
           "description": "List of contracts signed between you and OVH",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/agreements/get"
+            {
+              "name": "account:apiovh:me/agreements/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1227,7 +1117,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/agreements/get"
+            {
+              "name": "account:apiovh:me/agreements/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1256,7 +1149,10 @@ export const schema: Schema = {
           "description": "Accept this contract",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/agreements/accept"
+            {
+              "name": "account:apiovh:me/agreements/accept",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1285,7 +1181,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/agreements/contract/get"
+            {
+              "name": "account:apiovh:me/agreements/contract/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1308,13 +1207,16 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Alpha version",
-            "value": "ALPHA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Retrieve all applications",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/api/application/get"
+            {
+              "name": "account:apiovh:me/api/application/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -1328,13 +1230,16 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Alpha version",
-            "value": "ALPHA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Delete an application. It will revoke all credential belonging to this application",
           "httpMethod": "DELETE",
           "iamActions": [
-            "account:apiovh:me/api/application/delete"
+            {
+              "name": "account:apiovh:me/api/application/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1351,13 +1256,16 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Alpha version",
-            "value": "ALPHA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Retrieve information about an application",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/api/application/get"
+            {
+              "name": "account:apiovh:me/api/application/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1380,13 +1288,16 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Alpha version",
-            "value": "ALPHA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Retrieve all credentials",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/api/credential/get"
+            {
+              "name": "account:apiovh:me/api/credential/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1417,13 +1328,16 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Alpha version",
-            "value": "ALPHA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Delete a credential",
           "httpMethod": "DELETE",
           "iamActions": [
-            "account:apiovh:me/api/credential/delete"
+            {
+              "name": "account:apiovh:me/api/credential/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1440,13 +1354,16 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Alpha version",
-            "value": "ALPHA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Retrieve information about a credential",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/api/credential/get"
+            {
+              "name": "account:apiovh:me/api/credential/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1463,13 +1380,16 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Alpha version",
-            "value": "ALPHA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Edit a credential",
           "httpMethod": "PUT",
           "iamActions": [
-            "account:apiovh:me/api/credential/edit"
+            {
+              "name": "account:apiovh:me/api/credential/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1499,13 +1419,16 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Alpha version",
-            "value": "ALPHA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get associated application",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/api/credential/application/get"
+            {
+              "name": "account:apiovh:me/api/credential/application/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1534,7 +1457,10 @@ export const schema: Schema = {
           "description": "List of Api calls done with your account",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/api/logs/self/get"
+            {
+              "name": "account:apiovh:me/api/logs/self/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -1554,7 +1480,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/api/logs/self/get"
+            {
+              "name": "account:apiovh:me/api/logs/self/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1583,7 +1512,10 @@ export const schema: Schema = {
           "description": "List of Api calls done on services you have access to",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/api/logs/services/get"
+            {
+              "name": "account:apiovh:me/api/logs/services/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -1603,7 +1535,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/api/logs/services/get"
+            {
+              "name": "account:apiovh:me/api/logs/services/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1632,7 +1567,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/autorenew/get"
+            {
+              "name": "account:apiovh:me/autorenew/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -1646,7 +1584,10 @@ export const schema: Schema = {
           "description": "Activate auto renew for this nic",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/autorenew/create"
+            {
+              "name": "account:apiovh:me/autorenew/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1669,7 +1610,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "account:apiovh:me/autorenew/edit"
+            {
+              "name": "account:apiovh:me/autorenew/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1697,7 +1641,10 @@ export const schema: Schema = {
           "description": "List available payment methods in this Nic's country",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/availableAutomaticPaymentMeans/get"
+            {
+              "name": "account:apiovh:me/availableAutomaticPaymentMeans/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -1717,7 +1664,10 @@ export const schema: Schema = {
           "description": "List of all the bills the logged account has",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/bill/get"
+            {
+              "name": "account:apiovh:me/bill/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1770,7 +1720,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/bill/get"
+            {
+              "name": "account:apiovh:me/bill/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1799,7 +1752,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/bill/debt/get"
+            {
+              "name": "account:apiovh:me/bill/debt/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1828,7 +1784,10 @@ export const schema: Schema = {
           "description": "All operations related to these debts",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/bill/debt/operation/get"
+            {
+              "name": "account:apiovh:me/bill/debt/operation/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1865,7 +1824,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/bill/debt/operation/get"
+            {
+              "name": "account:apiovh:me/bill/debt/operation/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1902,7 +1864,10 @@ export const schema: Schema = {
           "description": "Return main data about the object related to this debt operation",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/bill/debt/operation/associatedObject/get"
+            {
+              "name": "account:apiovh:me/bill/debt/operation/associatedObject/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1939,7 +1904,10 @@ export const schema: Schema = {
           "description": "Create an order in order to pay this order's debt",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/bill/debt/pay"
+            {
+              "name": "account:apiovh:me/bill/debt/pay",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1968,7 +1936,10 @@ export const schema: Schema = {
           "description": "Give access to all entries of the bill",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/bill/details/get"
+            {
+              "name": "account:apiovh:me/bill/details/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1997,7 +1968,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/bill/details/get"
+            {
+              "name": "account:apiovh:me/bill/details/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2034,7 +2008,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/bill/payment/get"
+            {
+              "name": "account:apiovh:me/bill/payment/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2063,7 +2040,10 @@ export const schema: Schema = {
           "description": "Exports a bundle of invoices",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/bill/export"
+            {
+              "name": "account:apiovh:me/bill/export",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2116,7 +2096,10 @@ export const schema: Schema = {
           "description": "Send invoices through postal mail",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/billing/invoicesByPostalMail/get"
+            {
+              "name": "account:apiovh:me/billing/invoicesByPostalMail/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -2130,7 +2113,10 @@ export const schema: Schema = {
           "description": "Enable or disable invoices by postal mail",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/billing/invoicesByPostalMail/create"
+            {
+              "name": "account:apiovh:me/billing/invoicesByPostalMail/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2149,19 +2135,23 @@ export const schema: Schema = {
       "path": "/me/billing/invoicesByPostalMail"
     },
     {
-      "description": "Get all certificates of the account",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "Get all certificates of the account",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/certificates/get"
+            {
+              "name": "account:apiovh:me/certificates/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "getCertificates",
           "parameters": [
             {
               "dataType": "string",
@@ -2188,7 +2178,10 @@ export const schema: Schema = {
           "description": "Initiate an email change procedure",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/changeEmail"
+            {
+              "name": "account:apiovh:me/changeEmail",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2216,9 +2209,6 @@ export const schema: Schema = {
           },
           "description": "Initiate a password change procedure",
           "httpMethod": "POST",
-          "iamActions": [
-            "account:apiovh:me/changePassword"
-          ],
           "noAuthentication": false,
           "parameters": [],
           "responseType": "void"
@@ -2227,7 +2217,7 @@ export const schema: Schema = {
       "path": "/me/changePassword"
     },
     {
-      "description": "List all consent campaign available",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -2237,7 +2227,10 @@ export const schema: Schema = {
           "description": "List all consent campaign available",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/consent/get"
+            {
+              "name": "account:apiovh:me/consent/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -2247,7 +2240,7 @@ export const schema: Schema = {
       "path": "/me/consent"
     },
     {
-      "description": "Retrieve information about a consent campaign",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -2257,13 +2250,16 @@ export const schema: Schema = {
           "description": "Retrieve information about a consent campaign",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/consent/get"
+            {
+              "name": "account:apiovh:me/consent/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Consent campaign name",
+              "description": "Campaign name",
               "fullType": "string",
               "name": "campaignName",
               "paramType": "path",
@@ -2276,7 +2272,7 @@ export const schema: Schema = {
       "path": "/me/consent/{campaignName}"
     },
     {
-      "description": "Get decision value for a consent campaign",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -2286,13 +2282,16 @@ export const schema: Schema = {
           "description": "Get decision value for a consent campaign",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/consent/decision/get"
+            {
+              "name": "account:apiovh:me/consent/decision/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Consent campaign name",
+              "description": "Campaign name",
               "fullType": "string",
               "name": "campaignName",
               "paramType": "path",
@@ -2309,21 +2308,23 @@ export const schema: Schema = {
           "description": "Update decision of a consent campaign",
           "httpMethod": "PUT",
           "iamActions": [
-            "account:apiovh:me/consent/decision/edit"
+            {
+              "name": "account:apiovh:me/consent/decision/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "boolean",
-              "description": "Decision value",
-              "fullType": "boolean",
-              "name": "value",
+              "dataType": "me.consent.Decision",
+              "description": "Request Body",
+              "fullType": "me.consent.Decision",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Consent campaign name",
+              "description": "Campaign name",
               "fullType": "string",
               "name": "campaignName",
               "paramType": "path",
@@ -2336,17 +2337,20 @@ export const schema: Schema = {
       "path": "/me/consent/{campaignName}/decision"
     },
     {
-      "description": "Missing description",
+      "description": "Contact management",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Retrieve all contact that you created",
+          "description": "Retrieve every contact your created",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/contact/get"
+            {
+              "name": "account:apiovh:me/contact/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -2360,178 +2364,28 @@ export const schema: Schema = {
           "description": "Create a new contact",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/contact/create"
+            {
+              "name": "account:apiovh:me/contact/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "contact.Address",
-              "description": "Address of the contact",
-              "fullType": "contact.Address",
-              "name": "address",
+              "dataType": "me.contact.Contact",
+              "description": "Request Body",
+              "fullType": "me.contact.Contact",
               "paramType": "body",
               "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "City of birth",
-              "fullType": "string",
-              "name": "birthCity",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "nichandle.CountryEnum",
-              "description": "Birth Country",
-              "fullType": "nichandle.CountryEnum",
-              "name": "birthCountry",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "date",
-              "description": "Birthday date",
-              "fullType": "date",
-              "name": "birthDay",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Birth Zipcode",
-              "fullType": "string",
-              "name": "birthZip",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "phoneNumber",
-              "description": "Cellphone number",
-              "fullType": "phoneNumber",
-              "name": "cellPhone",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Company national identification number",
-              "fullType": "string",
-              "name": "companyNationalIdentificationNumber",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Email address",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "phoneNumber",
-              "description": "Fax phone number",
-              "fullType": "phoneNumber",
-              "name": "fax",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "First name",
-              "fullType": "string",
-              "name": "firstName",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "nichandle.GenderEnum",
-              "description": "Gender",
-              "fullType": "nichandle.GenderEnum",
-              "name": "gender",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "nichandle.LanguageEnum",
-              "description": "Language",
-              "fullType": "nichandle.LanguageEnum",
-              "name": "language",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Last name",
-              "fullType": "string",
-              "name": "lastName",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "nichandle.LegalFormEnum",
-              "description": "Legal form of the contact",
-              "fullType": "nichandle.LegalFormEnum",
-              "name": "legalForm",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "National identification number",
-              "fullType": "string",
-              "name": "nationalIdentificationNumber",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "nichandle.CountryEnum",
-              "description": "Nationality",
-              "fullType": "nichandle.CountryEnum",
-              "name": "nationality",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Name of your organisation",
-              "fullType": "string",
-              "name": "organisationName",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Type of your organisation",
-              "fullType": "string",
-              "name": "organisationType",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "phoneNumber",
-              "description": "Landline phone number",
-              "fullType": "phoneNumber",
-              "name": "phone",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "VAT number",
-              "fullType": "string",
-              "name": "vat",
-              "paramType": "body",
-              "required": false
             }
           ],
-          "responseType": "contact.Contact"
+          "responseType": "me.contact.Contact"
         }
       ],
       "path": "/me/contact"
     },
     {
-      "description": "Missing description",
+      "description": "Contact management",
       "operations": [
         {
           "apiStatus": {
@@ -2541,20 +2395,23 @@ export const schema: Schema = {
           "description": "Retrieve information about a contact",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/contact/get"
+            {
+              "name": "account:apiovh:me/contact/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "Contact Identifier",
+              "description": "Contact ID",
               "fullType": "long",
               "name": "contactId",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "contact.Contact"
+          "responseType": "me.contact.Contact"
         },
         {
           "apiStatus": {
@@ -2564,209 +2421,62 @@ export const schema: Schema = {
           "description": "Update an existing contact",
           "httpMethod": "PUT",
           "iamActions": [
-            "account:apiovh:me/contact/edit"
+            {
+              "name": "account:apiovh:me/contact/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "contact.Address",
-              "description": "Address of the contact",
-              "fullType": "contact.Address",
-              "name": "address",
+              "dataType": "me.contact.Contact",
+              "description": "Request Body",
+              "fullType": "me.contact.Contact",
               "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "City of birth",
-              "fullType": "string",
-              "name": "birthCity",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "nichandle.CountryEnum",
-              "description": "Birth Country",
-              "fullType": "nichandle.CountryEnum",
-              "name": "birthCountry",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "date",
-              "description": "Birthday date",
-              "fullType": "date",
-              "name": "birthDay",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Birth Zipcode",
-              "fullType": "string",
-              "name": "birthZip",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "phoneNumber",
-              "description": "Cellphone number",
-              "fullType": "phoneNumber",
-              "name": "cellPhone",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Company national identification number",
-              "fullType": "string",
-              "name": "companyNationalIdentificationNumber",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Email address",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "phoneNumber",
-              "description": "Fax phone number",
-              "fullType": "phoneNumber",
-              "name": "fax",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "First name",
-              "fullType": "string",
-              "name": "firstName",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "nichandle.GenderEnum",
-              "description": "Gender",
-              "fullType": "nichandle.GenderEnum",
-              "name": "gender",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "nichandle.LanguageEnum",
-              "description": "Language",
-              "fullType": "nichandle.LanguageEnum",
-              "name": "language",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Last name",
-              "fullType": "string",
-              "name": "lastName",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "nichandle.LegalFormEnum",
-              "description": "Legal form of the contact",
-              "fullType": "nichandle.LegalFormEnum",
-              "name": "legalForm",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "National identification number",
-              "fullType": "string",
-              "name": "nationalIdentificationNumber",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "nichandle.CountryEnum",
-              "description": "Nationality",
-              "fullType": "nichandle.CountryEnum",
-              "name": "nationality",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Name of your organisation",
-              "fullType": "string",
-              "name": "organisationName",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Type of your organisation",
-              "fullType": "string",
-              "name": "organisationType",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "phoneNumber",
-              "description": "Landline phone number",
-              "fullType": "phoneNumber",
-              "name": "phone",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "VAT number",
-              "fullType": "string",
-              "name": "vat",
-              "paramType": "body",
-              "required": false
+              "required": true
             },
             {
               "dataType": "long",
-              "description": "Contact Identifier",
+              "description": "Contact ID",
               "fullType": "long",
               "name": "contactId",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "contact.Contact"
+          "responseType": "me.contact.Contact"
         }
       ],
       "path": "/me/contact/{contactId}"
     },
     {
-      "description": "Missing description",
+      "description": "Contact fields information",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Display mandatory/read-only informations of a contact",
+          "description": "Get mandatory/read-only information about the fields of a contact",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/contact/fields/get"
+            {
+              "name": "account:apiovh:me/contact/fields/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "Contact Identifier",
+              "description": "Contact ID",
               "fullType": "long",
               "name": "contactId",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "contact.FieldInformation[]"
+          "responseType": "me.contact.FieldInformation[]"
         }
       ],
       "path": "/me/contact/{contactId}/fields"
@@ -2782,7 +2492,10 @@ export const schema: Schema = {
           "description": "Retrieve all credit balances",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/credit/balance/get"
+            {
+              "name": "account:apiovh:me/credit/balance/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2811,7 +2524,10 @@ export const schema: Schema = {
           "description": "Retrieve a credit balance",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/credit/balance/get"
+            {
+              "name": "account:apiovh:me/credit/balance/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2840,7 +2556,10 @@ export const schema: Schema = {
           "description": "Retrieve movements for a specific balance",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/credit/balance/movement/get"
+            {
+              "name": "account:apiovh:me/credit/balance/movement/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2869,7 +2588,10 @@ export const schema: Schema = {
           "description": "Retrieve a specific movement for a credit balance",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/credit/balance/movement/get"
+            {
+              "name": "account:apiovh:me/credit/balance/movement/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2906,7 +2628,10 @@ export const schema: Schema = {
           "description": "Validate a code to generate associated credit movement",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/credit/code/validate"
+            {
+              "name": "account:apiovh:me/credit/code/validate",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -2934,7 +2659,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/debtAccount/get"
+            {
+              "name": "account:apiovh:me/debtAccount/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -2954,7 +2682,10 @@ export const schema: Schema = {
           "description": "All debts related to your account",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/debtAccount/debt/get"
+            {
+              "name": "account:apiovh:me/debtAccount/debt/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -2974,7 +2705,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/debtAccount/debt/get"
+            {
+              "name": "account:apiovh:me/debtAccount/debt/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3003,7 +2737,10 @@ export const schema: Schema = {
           "description": "All operations related to these debts",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/debtAccount/debt/operation/get"
+            {
+              "name": "account:apiovh:me/debtAccount/debt/operation/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3040,7 +2777,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/debtAccount/debt/operation/get"
+            {
+              "name": "account:apiovh:me/debtAccount/debt/operation/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3077,7 +2817,10 @@ export const schema: Schema = {
           "description": "Return main data about the object related to this debt operation",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/debtAccount/debt/operation/associatedObject/get"
+            {
+              "name": "account:apiovh:me/debtAccount/debt/operation/associatedObject/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3114,7 +2857,10 @@ export const schema: Schema = {
           "description": "Create an order in order to pay this order's debt",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/debtAccount/debt/pay"
+            {
+              "name": "account:apiovh:me/debtAccount/debt/pay",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3143,7 +2889,10 @@ export const schema: Schema = {
           "description": "Create an order in order to pay all your due debts",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/debtAccount/pay"
+            {
+              "name": "account:apiovh:me/debtAccount/pay",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -3163,7 +2912,10 @@ export const schema: Schema = {
           "description": "List of all the deposits made to your prepaid account or debt account",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/deposit/get"
+            {
+              "name": "account:apiovh:me/deposit/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3208,7 +2960,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/deposit/get"
+            {
+              "name": "account:apiovh:me/deposit/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3237,7 +2992,10 @@ export const schema: Schema = {
           "description": "Give access to all entries of this deposit",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/deposit/details/get"
+            {
+              "name": "account:apiovh:me/deposit/details/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3266,7 +3024,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/deposit/details/get"
+            {
+              "name": "account:apiovh:me/deposit/details/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3303,7 +3064,10 @@ export const schema: Schema = {
           "description": "Get invoices paid by this deposit",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/deposit/paidBills/get"
+            {
+              "name": "account:apiovh:me/deposit/paidBills/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3332,7 +3096,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/deposit/paidBills/get"
+            {
+              "name": "account:apiovh:me/deposit/paidBills/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3369,7 +3136,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/deposit/paidBills/debt/get"
+            {
+              "name": "account:apiovh:me/deposit/paidBills/debt/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3406,7 +3176,10 @@ export const schema: Schema = {
           "description": "All operations related to these debts",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/deposit/paidBills/debt/operation/get"
+            {
+              "name": "account:apiovh:me/deposit/paidBills/debt/operation/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3451,7 +3224,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/deposit/paidBills/debt/operation/get"
+            {
+              "name": "account:apiovh:me/deposit/paidBills/debt/operation/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3496,7 +3272,10 @@ export const schema: Schema = {
           "description": "Return main data about the object related to this debt operation",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/deposit/paidBills/debt/operation/associatedObject/get"
+            {
+              "name": "account:apiovh:me/deposit/paidBills/debt/operation/associatedObject/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3541,7 +3320,10 @@ export const schema: Schema = {
           "description": "Create an order in order to pay this order's debt",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/deposit/paidBills/debt/pay"
+            {
+              "name": "account:apiovh:me/deposit/paidBills/debt/pay",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3578,7 +3360,10 @@ export const schema: Schema = {
           "description": "Give access to all entries of the bill",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/deposit/paidBills/details/get"
+            {
+              "name": "account:apiovh:me/deposit/paidBills/details/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3615,7 +3400,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/deposit/paidBills/details/get"
+            {
+              "name": "account:apiovh:me/deposit/paidBills/details/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3660,7 +3448,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/deposit/paidBills/payment/get"
+            {
+              "name": "account:apiovh:me/deposit/paidBills/payment/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3697,7 +3488,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/deposit/payment/get"
+            {
+              "name": "account:apiovh:me/deposit/payment/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3726,11 +3520,14 @@ export const schema: Schema = {
           "description": "List of documents added in your account",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/document/get"
+            {
+              "name": "account:apiovh:me/document/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]"
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
@@ -3740,7 +3537,10 @@ export const schema: Schema = {
           "description": "Create new document",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/document/create"
+            {
+              "name": "account:apiovh:me/document/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3777,14 +3577,17 @@ export const schema: Schema = {
           "description": "Delete a document",
           "httpMethod": "DELETE",
           "iamActions": [
-            "account:apiovh:me/document/delete"
+            {
+              "name": "account:apiovh:me/document/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
+              "dataType": "uuid",
               "description": "Document id",
-              "fullType": "string",
+              "fullType": "uuid",
               "name": "id",
               "paramType": "path",
               "required": true
@@ -3800,14 +3603,17 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/document/get"
+            {
+              "name": "account:apiovh:me/document/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
+              "dataType": "uuid",
               "description": "Document id",
-              "fullType": "string",
+              "fullType": "uuid",
               "name": "id",
               "paramType": "path",
               "required": true
@@ -3823,7 +3629,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "account:apiovh:me/document/edit"
+            {
+              "name": "account:apiovh:me/document/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3835,9 +3644,9 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
+              "dataType": "uuid",
               "description": "Document id",
-              "fullType": "string",
+              "fullType": "uuid",
               "name": "id",
               "paramType": "path",
               "required": true
@@ -3859,7 +3668,10 @@ export const schema: Schema = {
           "description": "Add CORS support on your container",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/document/cors/create"
+            {
+              "name": "account:apiovh:me/document/cors/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3888,7 +3700,10 @@ export const schema: Schema = {
           "description": "Get the fax custom domains linked to the customer account",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/fax/customDomains/get"
+            {
+              "name": "account:apiovh:me/fax/customDomains/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -3902,7 +3717,10 @@ export const schema: Schema = {
           "description": "Create a custom domain for your fax services",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/fax/customDomains/create"
+            {
+              "name": "account:apiovh:me/fax/customDomains/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3931,7 +3749,10 @@ export const schema: Schema = {
           "description": "Delete a custom domain of your fax services",
           "httpMethod": "DELETE",
           "iamActions": [
-            "account:apiovh:me/fax/customDomains/delete"
+            {
+              "name": "account:apiovh:me/fax/customDomains/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3954,7 +3775,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/fax/customDomains/get"
+            {
+              "name": "account:apiovh:me/fax/customDomains/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -3983,7 +3807,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/fidelityAccount/get"
+            {
+              "name": "account:apiovh:me/fidelityAccount/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -3997,7 +3824,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "account:apiovh:me/fidelityAccount/edit"
+            {
+              "name": "account:apiovh:me/fidelityAccount/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4025,7 +3855,10 @@ export const schema: Schema = {
           "description": "Generate an order that can be paid in order to credit the fidelity account",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/fidelityAccount/creditOrder"
+            {
+              "name": "account:apiovh:me/fidelityAccount/creditOrder",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4054,7 +3887,10 @@ export const schema: Schema = {
           "description": "List of entries of the fidelity account",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/fidelityAccount/movements/get"
+            {
+              "name": "account:apiovh:me/fidelityAccount/movements/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4091,7 +3927,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/fidelityAccount/movements/get"
+            {
+              "name": "account:apiovh:me/fidelityAccount/movements/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4127,492 +3966,6 @@ export const schema: Schema = {
       "path": "/me/geolocation"
     },
     {
-      "description": "Groups linked to this account",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Retrieve all groups of this account",
-          "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:me/identity/group/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "string[]"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Create a new group",
-          "httpMethod": "POST",
-          "iamActions": [
-            "account:apiovh:me/identity/group/create"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Group's description",
-              "fullType": "string",
-              "name": "description",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Group's name",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "nichandle.Authentication.RoleEnum",
-              "description": "Group's Role",
-              "fullType": "nichandle.Authentication.RoleEnum",
-              "name": "role",
-              "paramType": "body",
-              "required": false
-            }
-          ],
-          "responseType": "nichandle.Authentication.Group"
-        }
-      ],
-      "path": "/me/identity/group"
-    },
-    {
-      "description": "A group linked to this account",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Delete this object",
-          "httpMethod": "DELETE",
-          "iamActions": [
-            "account:apiovh:me/identity/group/delete"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Group's name",
-              "fullType": "string",
-              "name": "group",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:me/identity/group/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Group's name",
-              "fullType": "string",
-              "name": "group",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "nichandle.Authentication.Group"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter a group",
-          "httpMethod": "PUT",
-          "iamActions": [
-            "account:apiovh:me/identity/group/edit"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Group's description",
-              "fullType": "string",
-              "name": "description",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "nichandle.Authentication.RoleEnum",
-              "description": "Group's role",
-              "fullType": "nichandle.Authentication.RoleEnum",
-              "name": "role",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Group's name",
-              "fullType": "string",
-              "name": "group",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/identity/group/{group}"
-    },
-    {
-      "description": "Identity provider linked to this account",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Remove the identity provider",
-          "httpMethod": "DELETE",
-          "iamActions": [
-            "account:apiovh:me/identity/provider/delete"
-          ],
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "void"
-        },
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Identity provider linked to this account",
-          "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:me/identity/provider/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "nichandle.Authentication.Provider"
-        },
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Define an identity provider (SAML 2.0)",
-          "httpMethod": "POST",
-          "iamActions": [
-            "account:apiovh:me/identity/provider/create"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "nichandle.Authentication.ProviderExtensions",
-              "description": "A list of SAML 2.0 requested attribute that should be added to SAML requests",
-              "fullType": "nichandle.Authentication.ProviderExtensions",
-              "name": "extensions",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "SAML Group attribute name",
-              "fullType": "string",
-              "name": "groupAttributeName",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "text",
-              "description": "IDP's metadata in XML",
-              "fullType": "text",
-              "name": "metadata",
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "responseType": "nichandle.Authentication.Provider"
-        },
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Alter the provider",
-          "httpMethod": "PUT",
-          "iamActions": [
-            "account:apiovh:me/identity/provider/edit"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "nichandle.Authentication.ProviderExtensions",
-              "description": "A list of SAML 2.0 requested attribute that should be added to SAML requests",
-              "fullType": "nichandle.Authentication.ProviderExtensions",
-              "name": "extensions",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "SAML Group attribute name",
-              "fullType": "string",
-              "name": "groupAttributeName",
-              "paramType": "body",
-              "required": false
-            }
-          ],
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/identity/provider"
-    },
-    {
-      "description": "Users linked to this account",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Retrieve all users of this account",
-          "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:me/identity/user/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "string[]"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Create a new user",
-          "httpMethod": "POST",
-          "iamActions": [
-            "account:apiovh:me/identity/user/create"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "User's description",
-              "fullType": "string",
-              "name": "description",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "User's email",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "User's group",
-              "fullType": "string",
-              "name": "group",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "User's login",
-              "fullType": "string",
-              "name": "login",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "password",
-              "description": "User's password",
-              "fullType": "password",
-              "name": "password",
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/identity/user"
-    },
-    {
-      "description": "A user linked to this account",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Delete this object",
-          "httpMethod": "DELETE",
-          "iamActions": [
-            "account:apiovh:me/identity/user/delete"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "User's login",
-              "fullType": "string",
-              "name": "user",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "iamActions": [
-            "account:apiovh:me/identity/user/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "User's login",
-              "fullType": "string",
-              "name": "user",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "nichandle.User"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter a user",
-          "httpMethod": "PUT",
-          "iamActions": [
-            "account:apiovh:me/identity/user/edit"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "User's description",
-              "fullType": "string",
-              "name": "description",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "User's email",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "User's group",
-              "fullType": "string",
-              "name": "group",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "User's login",
-              "fullType": "string",
-              "name": "user",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/identity/user/{user}"
-    },
-    {
-      "description": "A user linked to this account",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Disable this user",
-          "httpMethod": "POST",
-          "iamActions": [
-            "account:apiovh:me/identity/user/disable"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "User's login",
-              "fullType": "string",
-              "name": "user",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/identity/user/{user}/disable"
-    },
-    {
-      "description": "A user linked to this account",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Enable this user",
-          "httpMethod": "POST",
-          "iamActions": [
-            "account:apiovh:me/identity/user/enable"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "User's login",
-              "fullType": "string",
-              "name": "user",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/identity/user/{user}/enable"
-    },
-    {
       "description": "Migrate your impacted services",
       "operations": [
         {
@@ -4623,7 +3976,10 @@ export const schema: Schema = {
           "description": "Get all services you can migrate",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/incident/sbg/migrateServices/get"
+            {
+              "name": "account:apiovh:me/incident/sbg/migrateServices/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -4637,7 +3993,10 @@ export const schema: Schema = {
           "description": "Ask for impacted services migration",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/incident/sbg/migrateServices/create"
+            {
+              "name": "account:apiovh:me/incident/sbg/migrateServices/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4665,7 +4024,10 @@ export const schema: Schema = {
           "description": "Your customized operating system installation templates",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/installationTemplate/get"
+            {
+              "name": "account:apiovh:me/installationTemplate/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -4679,7 +4041,10 @@ export const schema: Schema = {
           "description": "Create a template",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/installationTemplate/create"
+            {
+              "name": "account:apiovh:me/installationTemplate/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4688,14 +4053,6 @@ export const schema: Schema = {
               "description": "OVH template name yours will be based on, choose one among the list given by compatibleTemplates function",
               "fullType": "string",
               "name": "baseTemplateName",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.TemplateOsLanguageEnum",
-              "description": "",
-              "fullType": "dedicated.TemplateOsLanguageEnum",
-              "name": "defaultLanguage",
               "paramType": "body",
               "required": true
             },
@@ -4724,7 +4081,10 @@ export const schema: Schema = {
           "description": "Remove this template",
           "httpMethod": "DELETE",
           "iamActions": [
-            "account:apiovh:me/installationTemplate/delete"
+            {
+              "name": "account:apiovh:me/installationTemplate/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4747,7 +4107,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/installationTemplate/get"
+            {
+              "name": "account:apiovh:me/installationTemplate/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4767,10 +4130,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Alter this template",
           "httpMethod": "PUT",
           "iamActions": [
-            "account:apiovh:me/installationTemplate/edit"
+            {
+              "name": "account:apiovh:me/installationTemplate/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4806,7 +4172,10 @@ export const schema: Schema = {
           "description": "Check the integrity of this template",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/installationTemplate/checkIntegrity"
+            {
+              "name": "account:apiovh:me/installationTemplate/checkIntegrity",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4835,7 +4204,10 @@ export const schema: Schema = {
           "description": "Partitioning schemes available on this template",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/installationTemplate/partitionScheme/get"
+            {
+              "name": "account:apiovh:me/installationTemplate/partitionScheme/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4858,7 +4230,10 @@ export const schema: Schema = {
           "description": "Add a scheme of partition",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/installationTemplate/partitionScheme/create"
+            {
+              "name": "account:apiovh:me/installationTemplate/partitionScheme/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4903,7 +4278,10 @@ export const schema: Schema = {
           "description": "Remove this scheme of partition",
           "httpMethod": "DELETE",
           "iamActions": [
-            "account:apiovh:me/installationTemplate/partitionScheme/delete"
+            {
+              "name": "account:apiovh:me/installationTemplate/partitionScheme/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4934,7 +4312,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/installationTemplate/partitionScheme/get"
+            {
+              "name": "account:apiovh:me/installationTemplate/partitionScheme/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -4962,10 +4343,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Alter this scheme of partition",
           "httpMethod": "PUT",
           "iamActions": [
-            "account:apiovh:me/installationTemplate/partitionScheme/edit"
+            {
+              "name": "account:apiovh:me/installationTemplate/partitionScheme/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5009,7 +4393,10 @@ export const schema: Schema = {
           "description": "Hardware RAIDs defined in this partitioning scheme",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/installationTemplate/partitionScheme/hardwareRaid/get"
+            {
+              "name": "account:apiovh:me/installationTemplate/partitionScheme/hardwareRaid/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5040,7 +4427,10 @@ export const schema: Schema = {
           "description": "Add an hardware RAID in this partitioning scheme",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/installationTemplate/partitionScheme/hardwareRaid/create"
+            {
+              "name": "account:apiovh:me/installationTemplate/partitionScheme/hardwareRaid/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5109,7 +4499,10 @@ export const schema: Schema = {
           "description": "Remove this RAID",
           "httpMethod": "DELETE",
           "iamActions": [
-            "account:apiovh:me/installationTemplate/partitionScheme/hardwareRaid/delete"
+            {
+              "name": "account:apiovh:me/installationTemplate/partitionScheme/hardwareRaid/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5148,7 +4541,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/installationTemplate/partitionScheme/hardwareRaid/get"
+            {
+              "name": "account:apiovh:me/installationTemplate/partitionScheme/hardwareRaid/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5187,7 +4583,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "account:apiovh:me/installationTemplate/partitionScheme/hardwareRaid/edit"
+            {
+              "name": "account:apiovh:me/installationTemplate/partitionScheme/hardwareRaid/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5239,7 +4638,10 @@ export const schema: Schema = {
           "description": "Partitions defined in this partitioning scheme",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/installationTemplate/partitionScheme/partition/get"
+            {
+              "name": "account:apiovh:me/installationTemplate/partitionScheme/partition/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5270,7 +4672,10 @@ export const schema: Schema = {
           "description": "Add a partition in this partitioning scheme",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/installationTemplate/partitionScheme/partition/create"
+            {
+              "name": "account:apiovh:me/installationTemplate/partitionScheme/partition/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5363,7 +4768,10 @@ export const schema: Schema = {
           "description": "Remove this partition",
           "httpMethod": "DELETE",
           "iamActions": [
-            "account:apiovh:me/installationTemplate/partitionScheme/partition/delete"
+            {
+              "name": "account:apiovh:me/installationTemplate/partitionScheme/partition/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5402,7 +4810,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/installationTemplate/partitionScheme/partition/get"
+            {
+              "name": "account:apiovh:me/installationTemplate/partitionScheme/partition/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5438,10 +4849,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Alter this partition",
           "httpMethod": "PUT",
           "iamActions": [
-            "account:apiovh:me/installationTemplate/partitionScheme/partition/edit"
+            {
+              "name": "account:apiovh:me/installationTemplate/partitionScheme/partition/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5493,7 +4907,10 @@ export const schema: Schema = {
           "description": "List of organisations",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/ipOrganisation/get"
+            {
+              "name": "account:apiovh:me/ipOrganisation/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -5507,7 +4924,10 @@ export const schema: Schema = {
           "description": "Add an organisation",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/ipOrganisation/create"
+            {
+              "name": "account:apiovh:me/ipOrganisation/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5608,7 +5028,10 @@ export const schema: Schema = {
           "description": "Delete this organisation",
           "httpMethod": "DELETE",
           "iamActions": [
-            "account:apiovh:me/ipOrganisation/delete"
+            {
+              "name": "account:apiovh:me/ipOrganisation/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5631,7 +5054,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/ipOrganisation/get"
+            {
+              "name": "account:apiovh:me/ipOrganisation/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5654,7 +5080,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "account:apiovh:me/ipOrganisation/edit"
+            {
+              "name": "account:apiovh:me/ipOrganisation/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5684,56 +5113,23 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2024-07-09T08:30:00Z",
+            "deprecatedDate": "2024-04-24T08:30:00Z",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
-          "description": "List of all your IPXE scripts",
+          "description": "List of all your IPXE scripts - Use /dedicated/server/{serviceName} instead: see https://help.ovhcloud.com/csm/en-dedicated-servers-ipxe-scripts",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/ipxeScript/get"
-          ],
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "string[]"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Add an IPXE script",
-          "httpMethod": "POST",
-          "iamActions": [
-            "account:apiovh:me/ipxeScript/create"
-          ],
-          "noAuthentication": false,
-          "parameters": [
             {
-              "dataType": "string",
-              "description": "A personnal description of this script",
-              "fullType": "string",
-              "name": "description",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "name of your script",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "text",
-              "description": "Content of your IPXE script",
-              "fullType": "text",
-              "name": "script",
-              "paramType": "body",
+              "name": "account:apiovh:me/ipxeScript/get",
               "required": true
             }
           ],
-          "responseType": "nichandle.ipxe"
+          "longDescription": "List of all your IPXE scripts - Use /dedicated/server/{serviceName} instead: see https://help.ovhcloud.com/csm/en-dedicated-servers-ipxe-scripts?id=kb_article_view&sysparm_article=KB0058505 for more details",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "string[]"
         }
       ],
       "path": "/me/ipxeScript"
@@ -5743,13 +5139,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2024-07-09T08:30:00Z",
+            "deprecatedDate": "2024-04-24T08:30:00Z",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Remove this IPXE Script",
           "httpMethod": "DELETE",
           "iamActions": [
-            "account:apiovh:me/ipxeScript/delete"
+            {
+              "name": "account:apiovh:me/ipxeScript/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5766,13 +5167,18 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2024-07-09T08:30:00Z",
+            "deprecatedDate": "2024-04-24T08:30:00Z",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/ipxeScript/get"
+            {
+              "name": "account:apiovh:me/ipxeScript/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5786,36 +5192,6 @@ export const schema: Schema = {
             }
           ],
           "responseType": "nichandle.ipxe"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "iamActions": [
-            "account:apiovh:me/ipxeScript/edit"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "nichandle.ipxe",
-              "description": "New object properties",
-              "fullType": "nichandle.ipxe",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Name of this script",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
         }
       ],
       "path": "/me/ipxeScript/{name}"
@@ -5831,7 +5207,10 @@ export const schema: Schema = {
           "description": "List of mailing list you can subscribe",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/mailingList/availableLists/get"
+            {
+              "name": "account:apiovh:me/mailingList/availableLists/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -5851,7 +5230,10 @@ export const schema: Schema = {
           "description": "Subscribe an email to a restricted mailing list",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/mailingList/subscribe"
+            {
+              "name": "account:apiovh:me/mailingList/subscribe",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5888,7 +5270,10 @@ export const schema: Schema = {
           "description": "Retrieve every email sent to you",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/notification/email/history/get"
+            {
+              "name": "account:apiovh:me/notification/email/history/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -5908,7 +5293,10 @@ export const schema: Schema = {
           "description": "Retrieve information about an email",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/notification/email/history/get"
+            {
+              "name": "account:apiovh:me/notification/email/history/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5937,7 +5325,10 @@ export const schema: Schema = {
           "description": "List of all the orders the logged account has",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/order/get"
+            {
+              "name": "account:apiovh:me/order/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -5974,7 +5365,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/order/get"
+            {
+              "name": "account:apiovh:me/order/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6003,7 +5397,10 @@ export const schema: Schema = {
           "description": "Return main data about the object the processing of the order generated",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/order/associatedObject/get"
+            {
+              "name": "account:apiovh:me/order/associatedObject/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6032,7 +5429,10 @@ export const schema: Schema = {
           "description": "List of registered payment mean you can use to pay this order",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/order/availableRegisteredPaymentMean/get"
+            {
+              "name": "account:apiovh:me/order/availableRegisteredPaymentMean/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6061,7 +5461,10 @@ export const schema: Schema = {
           "description": "List credit balances applied on this Order",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/order/balance/get"
+            {
+              "name": "account:apiovh:me/order/balance/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6084,7 +5487,10 @@ export const schema: Schema = {
           "description": "Use a credit balance on this Order",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/order/balance/create"
+            {
+              "name": "account:apiovh:me/order/balance/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6121,7 +5527,10 @@ export const schema: Schema = {
           "description": "Remove a credit balance from this Order",
           "httpMethod": "DELETE",
           "iamActions": [
-            "account:apiovh:me/order/balance/delete"
+            {
+              "name": "account:apiovh:me/order/balance/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6152,7 +5561,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/order/balance/get"
+            {
+              "name": "account:apiovh:me/order/balance/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6189,7 +5601,10 @@ export const schema: Schema = {
           "description": "Retrieve order's detailed consumption information as a file",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/order/consumption/details/get"
+            {
+              "name": "account:apiovh:me/order/consumption/details/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6226,7 +5641,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/order/debt/get"
+            {
+              "name": "account:apiovh:me/order/debt/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6255,7 +5673,10 @@ export const schema: Schema = {
           "description": "All operations related to these debts",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/order/debt/operation/get"
+            {
+              "name": "account:apiovh:me/order/debt/operation/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6292,7 +5713,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/order/debt/operation/get"
+            {
+              "name": "account:apiovh:me/order/debt/operation/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6329,7 +5753,10 @@ export const schema: Schema = {
           "description": "Return main data about the object related to this debt operation",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/order/debt/operation/associatedObject/get"
+            {
+              "name": "account:apiovh:me/order/debt/operation/associatedObject/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6366,7 +5793,10 @@ export const schema: Schema = {
           "description": "Create an order in order to pay this order's debt",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/order/debt/pay"
+            {
+              "name": "account:apiovh:me/order/debt/pay",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6395,7 +5825,10 @@ export const schema: Schema = {
           "description": "Give access to all entries of the order",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/order/details/get"
+            {
+              "name": "account:apiovh:me/order/details/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6424,7 +5857,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/order/details/get"
+            {
+              "name": "account:apiovh:me/order/details/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6461,7 +5897,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/order/details/extension/get"
+            {
+              "name": "account:apiovh:me/order/details/extension/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6498,7 +5937,10 @@ export const schema: Schema = {
           "description": "Return tracking of the order",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/order/followUp/get"
+            {
+              "name": "account:apiovh:me/order/followUp/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6527,7 +5969,10 @@ export const schema: Schema = {
           "description": "Pay with a payment method reference",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/order/pay"
+            {
+              "name": "account:apiovh:me/order/pay",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6564,7 +6009,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/order/payment/get"
+            {
+              "name": "account:apiovh:me/order/payment/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6593,7 +6041,10 @@ export const schema: Schema = {
           "description": "Return main data about the object the processing of the order generated",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/order/paymentMeans/get"
+            {
+              "name": "account:apiovh:me/order/paymentMeans/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6622,7 +6073,10 @@ export const schema: Schema = {
           "description": "List of registered payment method you can use to pay this order",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/order/paymentMethods/get"
+            {
+              "name": "account:apiovh:me/order/paymentMethods/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6651,7 +6105,10 @@ export const schema: Schema = {
           "description": "Pay with an already registered payment mean",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/order/payWithRegisteredPaymentMean"
+            {
+              "name": "account:apiovh:me/order/payWithRegisteredPaymentMean",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6696,7 +6153,10 @@ export const schema: Schema = {
           "description": "Request retraction of order",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/order/retraction/create"
+            {
+              "name": "account:apiovh:me/order/retraction/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6741,7 +6201,10 @@ export const schema: Schema = {
           "description": "Return status of order",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/order/status/get"
+            {
+              "name": "account:apiovh:me/order/status/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6770,7 +6233,10 @@ export const schema: Schema = {
           "description": "Waive retraction period of order",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/order/waiveRetraction"
+            {
+              "name": "account:apiovh:me/order/waiveRetraction",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6799,7 +6265,10 @@ export const schema: Schema = {
           "description": "List of OVH accounts the logged account has",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/ovhAccount/get"
+            {
+              "name": "account:apiovh:me/ovhAccount/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -6819,7 +6288,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/ovhAccount/get"
+            {
+              "name": "account:apiovh:me/ovhAccount/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6842,7 +6314,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "account:apiovh:me/ovhAccount/edit"
+            {
+              "name": "account:apiovh:me/ovhAccount/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6878,7 +6353,10 @@ export const schema: Schema = {
           "description": "Generate an order that can be paid in order to credit the OVH account",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/ovhAccount/creditOrder/create"
+            {
+              "name": "account:apiovh:me/ovhAccount/creditOrder/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6915,7 +6393,10 @@ export const schema: Schema = {
           "description": "Details about an entry of the OVH account",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/ovhAccount/movements/get"
+            {
+              "name": "account:apiovh:me/ovhAccount/movements/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6960,7 +6441,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/ovhAccount/movements/get"
+            {
+              "name": "account:apiovh:me/ovhAccount/movements/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -6997,7 +6481,10 @@ export const schema: Schema = {
           "description": "request a refund of this credit note to your original payment method",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/ovhAccount/movements/requestRefund"
+            {
+              "name": "account:apiovh:me/ovhAccount/movements/requestRefund",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7042,7 +6529,10 @@ export const schema: Schema = {
           "description": "Transfer money from ovhAccount to your bank account",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/ovhAccount/retrieveMoney"
+            {
+              "name": "account:apiovh:me/ovhAccount/retrieveMoney",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7121,7 +6611,10 @@ export const schema: Schema = {
           "description": "Retrieve available payment method",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/payment/availableMethods/get"
+            {
+              "name": "account:apiovh:me/payment/availableMethods/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -7141,7 +6634,10 @@ export const schema: Schema = {
           "description": "Retrieve payment method list",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/payment/method/get"
+            {
+              "name": "account:apiovh:me/payment/method/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7180,7 +6676,10 @@ export const schema: Schema = {
           "description": "Register a new payment method",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/payment/method/create"
+            {
+              "name": "account:apiovh:me/payment/method/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7208,7 +6707,10 @@ export const schema: Schema = {
           "description": "Delete a payment method",
           "httpMethod": "DELETE",
           "iamActions": [
-            "account:apiovh:me/payment/method/delete"
+            {
+              "name": "account:apiovh:me/payment/method/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7231,7 +6733,10 @@ export const schema: Schema = {
           "description": "Retrieve a payment method",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/payment/method/get"
+            {
+              "name": "account:apiovh:me/payment/method/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7254,7 +6759,10 @@ export const schema: Schema = {
           "description": "Edit payment method",
           "httpMethod": "PUT",
           "iamActions": [
-            "account:apiovh:me/payment/method/edit"
+            {
+              "name": "account:apiovh:me/payment/method/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7290,7 +6798,10 @@ export const schema: Schema = {
           "description": "Challenge your payment method",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/payment/method/challenge"
+            {
+              "name": "account:apiovh:me/payment/method/challenge",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7326,7 +6837,10 @@ export const schema: Schema = {
           "description": "Add details to your payment method challenge",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/payment/method/details/create"
+            {
+              "name": "account:apiovh:me/payment/method/details/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7362,7 +6876,10 @@ export const schema: Schema = {
           "description": "Finalize a payment method registration",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/payment/method/finalize"
+            {
+              "name": "account:apiovh:me/payment/method/finalize",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7398,7 +6915,10 @@ export const schema: Schema = {
           "description": "Retrieve payment transaction list",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/payment/transaction/get"
+            {
+              "name": "account:apiovh:me/payment/transaction/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7435,7 +6955,10 @@ export const schema: Schema = {
           "description": "Retrieve a transaction",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/payment/transaction/get"
+            {
+              "name": "account:apiovh:me/payment/transaction/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7458,8 +6981,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-09-07 00:00:00 +0000 UTC",
-            "deprecatedDate": "2023-03-07 00:00:00 +0000 UTC",
+            "deletionDate": "2023-09-07T00:00:00Z",
+            "deprecatedDate": "2023-03-07T00:00:00Z",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
@@ -7467,7 +6990,10 @@ export const schema: Schema = {
           "description": "List of bank accounts",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/paymentMean/bankAccount/get"
+            {
+              "name": "account:apiovh:me/paymentMean/bankAccount/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7484,8 +7010,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-09-07 00:00:00 +0000 UTC",
-            "deprecatedDate": "2023-03-07 00:00:00 +0000 UTC",
+            "deletionDate": "2023-09-07T00:00:00Z",
+            "deprecatedDate": "2023-03-07T00:00:00Z",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
@@ -7493,7 +7019,10 @@ export const schema: Schema = {
           "description": "Add a new payment mean bank account",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/paymentMean/bankAccount/create"
+            {
+              "name": "account:apiovh:me/paymentMean/bankAccount/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7515,8 +7044,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-09-07 00:00:00 +0000 UTC",
-            "deprecatedDate": "2023-03-07 00:00:00 +0000 UTC",
+            "deletionDate": "2023-09-07T00:00:00Z",
+            "deprecatedDate": "2023-03-07T00:00:00Z",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
@@ -7524,7 +7053,10 @@ export const schema: Schema = {
           "description": "Disable payment through this account",
           "httpMethod": "DELETE",
           "iamActions": [
-            "account:apiovh:me/paymentMean/bankAccount/delete"
+            {
+              "name": "account:apiovh:me/paymentMean/bankAccount/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7541,8 +7073,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-09-07 00:00:00 +0000 UTC",
-            "deprecatedDate": "2023-03-07 00:00:00 +0000 UTC",
+            "deletionDate": "2023-09-07T00:00:00Z",
+            "deprecatedDate": "2023-03-07T00:00:00Z",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
@@ -7550,7 +7082,10 @@ export const schema: Schema = {
           "description": "Get bank account properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/paymentMean/bankAccount/get"
+            {
+              "name": "account:apiovh:me/paymentMean/bankAccount/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7567,8 +7102,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-09-07 00:00:00 +0000 UTC",
-            "deprecatedDate": "2023-03-07 00:00:00 +0000 UTC",
+            "deletionDate": "2023-09-07T00:00:00Z",
+            "deprecatedDate": "2023-03-07T00:00:00Z",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
@@ -7576,7 +7111,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "account:apiovh:me/paymentMean/bankAccount/edit"
+            {
+              "name": "account:apiovh:me/paymentMean/bankAccount/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7606,8 +7144,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-09-07 00:00:00 +0000 UTC",
-            "deprecatedDate": "2023-03-07 00:00:00 +0000 UTC",
+            "deletionDate": "2023-09-07T00:00:00Z",
+            "deprecatedDate": "2023-03-07T00:00:00Z",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
@@ -7615,7 +7153,10 @@ export const schema: Schema = {
           "description": "Challenge your bank account",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/paymentMean/bankAccount/challenge"
+            {
+              "name": "account:apiovh:me/paymentMean/bankAccount/challenge",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7645,8 +7186,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-09-07 00:00:00 +0000 UTC",
-            "deprecatedDate": "2023-03-07 00:00:00 +0000 UTC",
+            "deletionDate": "2023-09-07T00:00:00Z",
+            "deprecatedDate": "2023-03-07T00:00:00Z",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
@@ -7654,7 +7195,10 @@ export const schema: Schema = {
           "description": "Choose this bank account as your default payment mean. Will cancel the previous choice.",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/paymentMean/bankAccount/chooseAsDefaultPaymentMean"
+            {
+              "name": "account:apiovh:me/paymentMean/bankAccount/chooseAsDefaultPaymentMean",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7677,8 +7221,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-09-07 00:00:00 +0000 UTC",
-            "deprecatedDate": "2023-03-07 00:00:00 +0000 UTC",
+            "deletionDate": "2023-09-07T00:00:00Z",
+            "deprecatedDate": "2023-03-07T00:00:00Z",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
@@ -7686,7 +7230,10 @@ export const schema: Schema = {
           "description": "List of payment mean credit cards",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/paymentMean/creditCard/get"
+            {
+              "name": "account:apiovh:me/paymentMean/creditCard/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -7694,8 +7241,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-09-07 00:00:00 +0000 UTC",
-            "deprecatedDate": "2023-03-07 00:00:00 +0000 UTC",
+            "deletionDate": "2023-09-07T00:00:00Z",
+            "deprecatedDate": "2023-03-07T00:00:00Z",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
@@ -7703,7 +7250,10 @@ export const schema: Schema = {
           "description": "Add a new payment mean credit card",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/paymentMean/creditCard/create"
+            {
+              "name": "account:apiovh:me/paymentMean/creditCard/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7725,8 +7275,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-09-07 00:00:00 +0000 UTC",
-            "deprecatedDate": "2023-03-07 00:00:00 +0000 UTC",
+            "deletionDate": "2023-09-07T00:00:00Z",
+            "deprecatedDate": "2023-03-07T00:00:00Z",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
@@ -7734,7 +7284,10 @@ export const schema: Schema = {
           "description": "Disable payment through this credit card",
           "httpMethod": "DELETE",
           "iamActions": [
-            "account:apiovh:me/paymentMean/creditCard/delete"
+            {
+              "name": "account:apiovh:me/paymentMean/creditCard/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7751,8 +7304,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-09-07 00:00:00 +0000 UTC",
-            "deprecatedDate": "2023-03-07 00:00:00 +0000 UTC",
+            "deletionDate": "2023-09-07T00:00:00Z",
+            "deprecatedDate": "2023-03-07T00:00:00Z",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
@@ -7760,7 +7313,10 @@ export const schema: Schema = {
           "description": "Get credit card properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/paymentMean/creditCard/get"
+            {
+              "name": "account:apiovh:me/paymentMean/creditCard/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7777,8 +7333,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-09-07 00:00:00 +0000 UTC",
-            "deprecatedDate": "2023-03-07 00:00:00 +0000 UTC",
+            "deletionDate": "2023-09-07T00:00:00Z",
+            "deprecatedDate": "2023-03-07T00:00:00Z",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
@@ -7786,7 +7342,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "account:apiovh:me/paymentMean/creditCard/edit"
+            {
+              "name": "account:apiovh:me/paymentMean/creditCard/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7816,8 +7375,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-09-07 00:00:00 +0000 UTC",
-            "deprecatedDate": "2023-03-07 00:00:00 +0000 UTC",
+            "deletionDate": "2023-09-07T00:00:00Z",
+            "deprecatedDate": "2023-03-07T00:00:00Z",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
@@ -7825,7 +7384,10 @@ export const schema: Schema = {
           "description": "Challenge your credit card",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/paymentMean/creditCard/challenge"
+            {
+              "name": "account:apiovh:me/paymentMean/creditCard/challenge",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7855,8 +7417,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-09-07 00:00:00 +0000 UTC",
-            "deprecatedDate": "2023-03-07 00:00:00 +0000 UTC",
+            "deletionDate": "2023-09-07T00:00:00Z",
+            "deprecatedDate": "2023-03-07T00:00:00Z",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
@@ -7864,7 +7426,10 @@ export const schema: Schema = {
           "description": "Choose this credit card as your default payment mean. Will cancel the previous choice.",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/paymentMean/creditCard/chooseAsDefaultPaymentMean"
+            {
+              "name": "account:apiovh:me/paymentMean/creditCard/chooseAsDefaultPaymentMean",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7893,7 +7458,10 @@ export const schema: Schema = {
           "description": "List of payment mean deferred accounts",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/paymentMean/deferredPaymentAccount/get"
+            {
+              "name": "account:apiovh:me/paymentMean/deferredPaymentAccount/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -7913,7 +7481,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/paymentMean/deferredPaymentAccount/get"
+            {
+              "name": "account:apiovh:me/paymentMean/deferredPaymentAccount/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7936,7 +7507,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "account:apiovh:me/paymentMean/deferredPaymentAccount/edit"
+            {
+              "name": "account:apiovh:me/paymentMean/deferredPaymentAccount/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7972,7 +7546,10 @@ export const schema: Schema = {
           "description": "Choose this deferred account as your default payment mean. Will cancel the previous choice.",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/paymentMean/deferredPaymentAccount/chooseAsDefaultPaymentMean"
+            {
+              "name": "account:apiovh:me/paymentMean/deferredPaymentAccount/chooseAsDefaultPaymentMean",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -7995,8 +7572,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-09-07 00:00:00 +0000 UTC",
-            "deprecatedDate": "2023-03-07 00:00:00 +0000 UTC",
+            "deletionDate": "2023-09-07T00:00:00Z",
+            "deprecatedDate": "2023-03-07T00:00:00Z",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
@@ -8004,7 +7581,10 @@ export const schema: Schema = {
           "description": "List of payment mean paypals",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/paymentMean/paypal/get"
+            {
+              "name": "account:apiovh:me/paymentMean/paypal/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -8012,8 +7592,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-09-07 00:00:00 +0000 UTC",
-            "deprecatedDate": "2023-03-07 00:00:00 +0000 UTC",
+            "deletionDate": "2023-09-07T00:00:00Z",
+            "deprecatedDate": "2023-03-07T00:00:00Z",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
@@ -8021,7 +7601,10 @@ export const schema: Schema = {
           "description": "Add a new payment mean paypal",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/paymentMean/paypal/create"
+            {
+              "name": "account:apiovh:me/paymentMean/paypal/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8043,8 +7626,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-09-07 00:00:00 +0000 UTC",
-            "deprecatedDate": "2023-03-07 00:00:00 +0000 UTC",
+            "deletionDate": "2023-09-07T00:00:00Z",
+            "deprecatedDate": "2023-03-07T00:00:00Z",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
@@ -8052,7 +7635,10 @@ export const schema: Schema = {
           "description": "Disable payment through this paypal",
           "httpMethod": "DELETE",
           "iamActions": [
-            "account:apiovh:me/paymentMean/paypal/delete"
+            {
+              "name": "account:apiovh:me/paymentMean/paypal/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8069,8 +7655,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-09-07 00:00:00 +0000 UTC",
-            "deprecatedDate": "2023-03-07 00:00:00 +0000 UTC",
+            "deletionDate": "2023-09-07T00:00:00Z",
+            "deprecatedDate": "2023-03-07T00:00:00Z",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
@@ -8078,7 +7664,10 @@ export const schema: Schema = {
           "description": "Get paypal properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/paymentMean/paypal/get"
+            {
+              "name": "account:apiovh:me/paymentMean/paypal/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8095,8 +7684,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "deletionDate": "2023-09-07 00:00:00 +0000 UTC",
-            "deprecatedDate": "2023-03-07 00:00:00 +0000 UTC",
+            "deletionDate": "2023-09-07T00:00:00Z",
+            "deprecatedDate": "2023-03-07T00:00:00Z",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
@@ -8104,7 +7693,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "account:apiovh:me/paymentMean/paypal/edit"
+            {
+              "name": "account:apiovh:me/paymentMean/paypal/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8134,8 +7726,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-09-07 00:00:00 +0000 UTC",
-            "deprecatedDate": "2023-03-07 00:00:00 +0000 UTC",
+            "deletionDate": "2023-09-07T00:00:00Z",
+            "deprecatedDate": "2023-03-07T00:00:00Z",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
@@ -8143,7 +7735,10 @@ export const schema: Schema = {
           "description": "Challenge your paypal",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/paymentMean/paypal/challenge"
+            {
+              "name": "account:apiovh:me/paymentMean/paypal/challenge",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8173,8 +7768,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2023-09-07 00:00:00 +0000 UTC",
-            "deprecatedDate": "2023-03-07 00:00:00 +0000 UTC",
+            "deletionDate": "2023-09-07T00:00:00Z",
+            "deprecatedDate": "2023-03-07T00:00:00Z",
             "description": "Deprecated, will be removed",
             "replacement": "/me/payment/method",
             "value": "DEPRECATED"
@@ -8182,7 +7777,10 @@ export const schema: Schema = {
           "description": "Choose this paypal as your default payment mean. Will cancel the previous choice.",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/paymentMean/paypal/chooseAsDefaultPaymentMean"
+            {
+              "name": "account:apiovh:me/paymentMean/paypal/chooseAsDefaultPaymentMean",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8211,7 +7809,10 @@ export const schema: Schema = {
           "description": "List of all the refunds the logged account has",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/refund/get"
+            {
+              "name": "account:apiovh:me/refund/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8256,7 +7857,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/refund/get"
+            {
+              "name": "account:apiovh:me/refund/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8285,7 +7889,10 @@ export const schema: Schema = {
           "description": "Give access to all entries of the refund",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/refund/details/get"
+            {
+              "name": "account:apiovh:me/refund/details/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8314,7 +7921,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/refund/details/get"
+            {
+              "name": "account:apiovh:me/refund/details/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8351,7 +7961,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/refund/payment/get"
+            {
+              "name": "account:apiovh:me/refund/payment/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8380,7 +7993,10 @@ export const schema: Schema = {
           "description": "Exports a bundle of refunds",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/refund/export"
+            {
+              "name": "account:apiovh:me/refund/export",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8433,7 +8049,10 @@ export const schema: Schema = {
           "description": "List all the bills sent by the current account",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/reverseBill/get"
+            {
+              "name": "account:apiovh:me/reverseBill/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8478,7 +8097,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/reverseBill/get"
+            {
+              "name": "account:apiovh:me/reverseBill/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8507,7 +8129,10 @@ export const schema: Schema = {
           "description": "Give access to all entries of this withdrawal",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/reverseBill/details/get"
+            {
+              "name": "account:apiovh:me/reverseBill/details/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8536,7 +8161,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/reverseBill/details/get"
+            {
+              "name": "account:apiovh:me/reverseBill/details/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8573,7 +8201,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/reverseBill/payment/get"
+            {
+              "name": "account:apiovh:me/reverseBill/payment/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8602,7 +8233,10 @@ export const schema: Schema = {
           "description": "List active SLA",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/sla/get"
+            {
+              "name": "account:apiovh:me/sla/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -8622,7 +8256,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/sla/get"
+            {
+              "name": "account:apiovh:me/sla/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8651,7 +8288,10 @@ export const schema: Schema = {
           "description": "Ask for SLA application",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/sla/apply"
+            {
+              "name": "account:apiovh:me/sla/apply",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8680,7 +8320,10 @@ export const schema: Schema = {
           "description": "Check whether this SLA can be applied on your services",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/sla/canBeApplied/get"
+            {
+              "name": "account:apiovh:me/sla/canBeApplied/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8709,7 +8352,10 @@ export const schema: Schema = {
           "description": "Get services impacted by this SLA",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/sla/services/get"
+            {
+              "name": "account:apiovh:me/sla/services/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8738,7 +8384,10 @@ export const schema: Schema = {
           "description": "Get the status request of this SLA",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/sla/status/get"
+            {
+              "name": "account:apiovh:me/sla/status/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8767,7 +8416,10 @@ export const schema: Schema = {
           "description": "List of your public SSH keys",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/sshKey/get"
+            {
+              "name": "account:apiovh:me/sshKey/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -8781,7 +8433,10 @@ export const schema: Schema = {
           "description": "Add a new public SSH key",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/sshKey/create"
+            {
+              "name": "account:apiovh:me/sshKey/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8818,7 +8473,10 @@ export const schema: Schema = {
           "description": "Remove this public SSH key",
           "httpMethod": "DELETE",
           "iamActions": [
-            "account:apiovh:me/sshKey/delete"
+            {
+              "name": "account:apiovh:me/sshKey/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8841,7 +8499,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/sshKey/get"
+            {
+              "name": "account:apiovh:me/sshKey/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8855,36 +8516,6 @@ export const schema: Schema = {
             }
           ],
           "responseType": "nichandle.sshKey"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "iamActions": [
-            "account:apiovh:me/sshKey/edit"
-          ],
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "nichandle.sshKey",
-              "description": "New object properties",
-              "fullType": "nichandle.sshKey",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Name of this public SSH key",
-              "fullType": "string",
-              "name": "keyName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
         }
       ],
       "path": "/me/sshKey/{keyName}"
@@ -8900,7 +8531,10 @@ export const schema: Schema = {
           "description": "List of sub-accounts",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/subAccount/get"
+            {
+              "name": "account:apiovh:me/subAccount/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -8914,7 +8548,10 @@ export const schema: Schema = {
           "description": "Create a new sub-account",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/subAccount/create"
+            {
+              "name": "account:apiovh:me/subAccount/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8943,7 +8580,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/subAccount/get"
+            {
+              "name": "account:apiovh:me/subAccount/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -8966,7 +8606,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "account:apiovh:me/subAccount/edit"
+            {
+              "name": "account:apiovh:me/subAccount/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9002,7 +8645,10 @@ export const schema: Schema = {
           "description": "Create a consumer key for the current application",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/subAccount/createConsumerKey"
+            {
+              "name": "account:apiovh:me/subAccount/createConsumerKey",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9025,13 +8671,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-07-15T00:00:00Z",
+            "deprecatedDate": "2023-06-15T00:00:00Z",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "List of all OVH things you can subscribe to",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/subscription/get"
+            {
+              "name": "account:apiovh:me/subscription/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -9045,13 +8696,18 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-07-15T00:00:00Z",
+            "deprecatedDate": "2023-06-15T00:00:00Z",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/subscription/get"
+            {
+              "name": "account:apiovh:me/subscription/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9068,13 +8724,18 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2023-07-15T00:00:00Z",
+            "deprecatedDate": "2023-06-15T00:00:00Z",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "account:apiovh:me/subscription/edit"
+            {
+              "name": "account:apiovh:me/subscription/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9110,7 +8771,10 @@ export const schema: Schema = {
           "description": "List of service contact change tasks you are involved in",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/task/contactChange/get"
+            {
+              "name": "account:apiovh:me/task/contactChange/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9155,7 +8819,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/task/contactChange/get"
+            {
+              "name": "account:apiovh:me/task/contactChange/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9184,7 +8851,10 @@ export const schema: Schema = {
           "description": "Accept this change request",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/task/contactChange/accept"
+            {
+              "name": "account:apiovh:me/task/contactChange/accept",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9221,7 +8891,10 @@ export const schema: Schema = {
           "description": "Refuse this change request",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/task/contactChange/refuse"
+            {
+              "name": "account:apiovh:me/task/contactChange/refuse",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9258,7 +8931,10 @@ export const schema: Schema = {
           "description": "This call will send you a new email, containing a new token",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/task/contactChange/resendEmail"
+            {
+              "name": "account:apiovh:me/task/contactChange/resendEmail",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9287,7 +8963,10 @@ export const schema: Schema = {
           "description": "List of email change tasks you are involved in",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/task/emailChange/get"
+            {
+              "name": "account:apiovh:me/task/emailChange/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9316,7 +8995,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/task/emailChange/get"
+            {
+              "name": "account:apiovh:me/task/emailChange/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9345,7 +9027,10 @@ export const schema: Schema = {
           "description": "Accept this change request",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/task/emailChange/accept"
+            {
+              "name": "account:apiovh:me/task/emailChange/accept",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9382,7 +9067,10 @@ export const schema: Schema = {
           "description": "Refuse this change request",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/task/emailChange/refuse"
+            {
+              "name": "account:apiovh:me/task/emailChange/refuse",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9419,7 +9107,10 @@ export const schema: Schema = {
           "description": "The default SIP IP restictions for your future VoIP lines",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/telephony/defaultIpRestriction/get"
+            {
+              "name": "account:apiovh:me/telephony/defaultIpRestriction/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -9433,7 +9124,10 @@ export const schema: Schema = {
           "description": "Create a default IP restriction for your future VoIP lines",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/telephony/defaultIpRestriction/create"
+            {
+              "name": "account:apiovh:me/telephony/defaultIpRestriction/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9470,7 +9164,10 @@ export const schema: Schema = {
           "description": "Delete a default IP restriction for your future VoIP lines",
           "httpMethod": "DELETE",
           "iamActions": [
-            "account:apiovh:me/telephony/defaultIpRestriction/delete"
+            {
+              "name": "account:apiovh:me/telephony/defaultIpRestriction/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9493,7 +9190,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/telephony/defaultIpRestriction/get"
+            {
+              "name": "account:apiovh:me/telephony/defaultIpRestriction/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9522,7 +9222,10 @@ export const schema: Schema = {
           "description": "Get the telephony settings linked to the customer account",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/telephony/settings/get"
+            {
+              "name": "account:apiovh:me/telephony/settings/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -9536,7 +9239,10 @@ export const schema: Schema = {
           "description": "Change the telephony settings linked to the customer account",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/telephony/settings/create"
+            {
+              "name": "account:apiovh:me/telephony/settings/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9565,7 +9271,10 @@ export const schema: Schema = {
           "description": "Verify existing voucher",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/voucher/checkValidity"
+            {
+              "name": "account:apiovh:me/voucher/checkValidity",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9594,7 +9303,10 @@ export const schema: Schema = {
           "description": "List of all the withdrawals made from your prepaid account",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/withdrawal/get"
+            {
+              "name": "account:apiovh:me/withdrawal/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9639,7 +9351,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/withdrawal/get"
+            {
+              "name": "account:apiovh:me/withdrawal/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9668,7 +9383,10 @@ export const schema: Schema = {
           "description": "Give access to all entries of this withdrawal",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/withdrawal/details/get"
+            {
+              "name": "account:apiovh:me/withdrawal/details/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9697,7 +9415,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/withdrawal/details/get"
+            {
+              "name": "account:apiovh:me/withdrawal/details/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9734,7 +9455,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/withdrawal/payment/get"
+            {
+              "name": "account:apiovh:me/withdrawal/payment/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -9763,7 +9487,10 @@ export const schema: Schema = {
           "description": "Get xdsl settings linked to the nichandle",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:me/xdsl/setting/get"
+            {
+              "name": "account:apiovh:me/xdsl/setting/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -9777,7 +9504,10 @@ export const schema: Schema = {
           "description": "Change xdsl settings linked to the nichandle",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:me/xdsl/setting/create"
+            {
+              "name": "account:apiovh:me/xdsl/setting/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -10455,10 +10185,10 @@ export const schema: Schema = {
         },
         "unitPrice": {
           "canBeNull": false,
-          "fullType": "order.Price",
+          "fullType": "order.LongPrice",
           "readOnly": true,
           "required": false,
-          "type": "order.Price"
+          "type": "order.LongPrice"
         }
       }
     },
@@ -11833,300 +11563,6 @@ export const schema: Schema = {
         }
       }
     },
-    "billing.credit.Balance": {
-      "description": "Credit balance",
-      "id": "Balance",
-      "namespace": "billing.credit",
-      "properties": {
-        "amount": {
-          "canBeNull": false,
-          "description": "Balance amount",
-          "fullType": "order.Price",
-          "readOnly": true,
-          "required": false,
-          "type": "order.Price"
-        },
-        "balanceDetails": {
-          "canBeNull": false,
-          "description": "Balance details, amounts by serviceID",
-          "fullType": "billing.credit.balance.BalanceDetail[]",
-          "readOnly": true,
-          "required": false,
-          "type": "billing.credit.balance.BalanceDetail[]"
-        },
-        "balanceName": {
-          "canBeNull": false,
-          "description": "Balance name",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "booked": {
-          "canBeNull": false,
-          "description": "Movement already booked on orders",
-          "fullType": "billing.credit.balance.BookedMovement[]",
-          "readOnly": true,
-          "required": false,
-          "type": "billing.credit.balance.BookedMovement[]"
-        },
-        "creationDate": {
-          "canBeNull": false,
-          "description": "Balance creation date",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        },
-        "expiring": {
-          "canBeNull": false,
-          "description": "Movement expiring soon",
-          "fullType": "billing.credit.balance.ExpiringMovement[]",
-          "readOnly": true,
-          "required": false,
-          "type": "billing.credit.balance.ExpiringMovement[]"
-        },
-        "expiringSummary": {
-          "canBeNull": false,
-          "description": "Movement expiring soon",
-          "fullType": "billing.credit.balance.ExpiringMovement[]",
-          "readOnly": true,
-          "required": false,
-          "type": "billing.credit.balance.ExpiringMovement[]"
-        },
-        "lastUpdate": {
-          "canBeNull": false,
-          "description": "Balance last update",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        },
-        "type": {
-          "canBeNull": false,
-          "description": "Balance type",
-          "fullType": "billing.credit.balance.Type",
-          "readOnly": true,
-          "required": false,
-          "type": "billing.credit.balance.Type"
-        }
-      }
-    },
-    "billing.credit.balance.BalanceDetail": {
-      "description": "Part of a balance",
-      "id": "BalanceDetail",
-      "namespace": "billing.credit.balance",
-      "properties": {
-        "amount": {
-          "canBeNull": false,
-          "description": "Balance part amount",
-          "fullType": "order.Price",
-          "readOnly": true,
-          "required": false,
-          "type": "order.Price"
-        },
-        "serviceId": {
-          "canBeNull": true,
-          "description": "Service ID of this balance part",
-          "fullType": "coreTypes.ServiceId:long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        }
-      }
-    },
-    "billing.credit.balance.BookedMovement": {
-      "description": "Movement already booked on orders",
-      "id": "BookedMovement",
-      "namespace": "billing.credit.balance",
-      "properties": {
-        "amount": {
-          "canBeNull": false,
-          "description": "Movement amount",
-          "fullType": "order.Price",
-          "readOnly": true,
-          "required": false,
-          "type": "order.Price"
-        },
-        "orderId": {
-          "canBeNull": false,
-          "description": "Order ID",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        }
-      }
-    },
-    "billing.credit.balance.ExpiringMovement": {
-      "description": "Movement expiring soon",
-      "id": "ExpiringMovement",
-      "namespace": "billing.credit.balance",
-      "properties": {
-        "amount": {
-          "canBeNull": false,
-          "description": "Movement amount",
-          "fullType": "order.Price",
-          "readOnly": true,
-          "required": false,
-          "type": "order.Price"
-        },
-        "creationDate": {
-          "canBeNull": false,
-          "description": "Movement creation date",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        },
-        "expirationDate": {
-          "canBeNull": false,
-          "description": "Movement expiration date",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        },
-        "lastUpdate": {
-          "canBeNull": false,
-          "description": "Movement last update",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        },
-        "sourceObject": {
-          "canBeNull": false,
-          "description": "Object source of this credit movement",
-          "fullType": "billing.credit.balance.movement.SubObject",
-          "readOnly": true,
-          "required": false,
-          "type": "billing.credit.balance.movement.SubObject"
-        }
-      }
-    },
-    "billing.credit.balance.Movement": {
-      "description": "Credit balance",
-      "id": "Movement",
-      "namespace": "billing.credit.balance",
-      "properties": {
-        "amount": {
-          "canBeNull": false,
-          "description": "Movement amount",
-          "fullType": "order.Price",
-          "readOnly": true,
-          "required": false,
-          "type": "order.Price"
-        },
-        "balanceName": {
-          "canBeNull": false,
-          "description": "Balance name",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "creationDate": {
-          "canBeNull": false,
-          "description": "Movement creation date",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        },
-        "destinationObject": {
-          "canBeNull": true,
-          "description": "Object destination of this credit movement",
-          "fullType": "billing.credit.balance.movement.SubObject",
-          "readOnly": true,
-          "required": false,
-          "type": "billing.credit.balance.movement.SubObject"
-        },
-        "expirationDate": {
-          "canBeNull": true,
-          "description": "Movement expiration date",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        },
-        "lastUpdate": {
-          "canBeNull": false,
-          "description": "Movement last update",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        },
-        "movementId": {
-          "canBeNull": false,
-          "description": "Movement ID",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "orderId": {
-          "canBeNull": true,
-          "description": "Order ID associated to this credit movement",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "sourceObject": {
-          "canBeNull": false,
-          "description": "Object source of this credit movement",
-          "fullType": "billing.credit.balance.movement.SubObject",
-          "readOnly": true,
-          "required": false,
-          "type": "billing.credit.balance.movement.SubObject"
-        },
-        "type": {
-          "canBeNull": false,
-          "description": "Movement type",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "billing.credit.balance.Type": {
-      "description": "Balance type",
-      "enum": [
-        "PREPAID_ACCOUNT",
-        "VOUCHER",
-        "DEPOSIT",
-        "BONUS"
-      ],
-      "enumType": "string",
-      "id": "Type",
-      "namespace": "billing.credit.balance"
-    },
-    "billing.credit.balance.movement.SubObject": {
-      "description": "Movement sub object",
-      "id": "SubObject",
-      "namespace": "billing.credit.balance.movement",
-      "properties": {
-        "id": {
-          "canBeNull": true,
-          "description": "Sub object ID",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "name": {
-          "canBeNull": true,
-          "description": "Sub object name",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
     "billing.fidelityAccount.OperationEnum": {
       "description": "Operations a fidelity account movement can represent",
       "enum": [
@@ -12691,7 +12127,53 @@ export const schema: Schema = {
         }
       }
     },
+    "complexType.SafeKeyValue<string>": {
+      "description": "Key and value, with proper key strings",
+      "generics": [
+        "T"
+      ],
+      "id": "SafeKeyValue",
+      "namespace": "complexType",
+      "properties": {
+        "key": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "fullType": "T",
+          "readOnly": true,
+          "required": false,
+          "type": "T"
+        }
+      }
+    },
     "complexType.UnitAndValue<T>": {
+      "description": "A numeric value tagged with its unit",
+      "generics": [
+        "T"
+      ],
+      "id": "UnitAndValue",
+      "namespace": "complexType",
+      "properties": {
+        "unit": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "T"
+        }
+      }
+    },
+    "complexType.UnitAndValue<long>": {
       "description": "A numeric value tagged with its unit",
       "generics": [
         "T"
@@ -13366,7 +12848,8 @@ export const schema: Schema = {
         "REFUNDED",
         "TO_BE_PAID",
         "UNMATURED",
-        "UNPAID"
+        "UNPAID",
+        "WRITE_OFF"
       ],
       "enumType": "string",
       "id": "StatusDebtOrderEnum",
@@ -13908,6 +13391,13 @@ export const schema: Schema = {
           "required": false,
           "type": "string[]"
         },
+        "name": {
+          "canBeNull": true,
+          "description": "OS template project item name",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
         "releaseNotes": {
           "canBeNull": true,
           "description": "OS template project item release notes",
@@ -13991,6 +13481,7 @@ export const schema: Schema = {
         "ip",
         "keyValue",
         "number",
+        "sshPubKey",
         "string",
         "text",
         "time",
@@ -13999,50 +13490,6 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "TemplateOsInputTypeEnum",
-      "namespace": "dedicated"
-    },
-    "dedicated.TemplateOsLanguageEnum": {
-      "description": "all language available",
-      "enum": [
-        "ar",
-        "bg",
-        "cs",
-        "da",
-        "de",
-        "el",
-        "en",
-        "es",
-        "et",
-        "fi",
-        "fr",
-        "he",
-        "hr",
-        "hu",
-        "it",
-        "ja",
-        "ko",
-        "lt",
-        "lv",
-        "nb",
-        "nl",
-        "no",
-        "pl",
-        "pt",
-        "ro",
-        "ru",
-        "sk",
-        "sl",
-        "sr",
-        "sv",
-        "th",
-        "tr",
-        "tu",
-        "uk",
-        "zh-Hans-CN",
-        "zh-Hans-HK"
-      ],
-      "enumType": "string",
-      "id": "TemplateOsLanguageEnum",
       "namespace": "dedicated"
     },
     "dedicated.TemplateOsProperties": {
@@ -14077,13 +13524,6 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string"
-        },
-        "useDistributionKernel": {
-          "canBeNull": true,
-          "description": "Use the distribution's native kernel instead of the recommended OVH Kernel",
-          "readOnly": false,
-          "required": false,
-          "type": "boolean"
         }
       }
     },
@@ -14094,6 +13534,7 @@ export const schema: Schema = {
         "aos",
         "arch",
         "byoi",
+        "byolinux",
         "centos",
         "cloudlinux",
         "coreos",
@@ -14146,6 +13587,7 @@ export const schema: Schema = {
     "dedicated.TemplateOsUsageEnum": {
       "description": "Os usage definition",
       "enum": [
+        "backup",
         "basic",
         "customer",
         "database",
@@ -14177,14 +13619,6 @@ export const schema: Schema = {
       "id": "Templates",
       "namespace": "dedicated.installationTemplate",
       "properties": {
-        "availableLanguages": {
-          "canBeNull": false,
-          "description": "list of all language available for this template",
-          "fullType": "dedicated.TemplateOsLanguageEnum[]",
-          "readOnly": true,
-          "required": false,
-          "type": "dedicated.TemplateOsLanguageEnum[]"
-        },
         "bitFormat": {
           "canBeNull": false,
           "description": "this template bit format",
@@ -14208,14 +13642,6 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "dedicated.TemplateOsProperties"
-        },
-        "defaultLanguage": {
-          "canBeNull": false,
-          "description": "the default language of this template",
-          "fullType": "dedicated.TemplateOsLanguageEnum",
-          "readOnly": false,
-          "required": false,
-          "type": "dedicated.TemplateOsLanguageEnum"
         },
         "description": {
           "canBeNull": false,
@@ -14320,38 +13746,6 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "dedicated.TemplateOsSubfamilyEnum"
-        },
-        "supportsDistributionKernel": {
-          "canBeNull": true,
-          "description": "This distribution supports installation using the distribution's native kernel instead of the recommended OVH kernel",
-          "fullType": "boolean",
-          "readOnly": true,
-          "required": false,
-          "type": "boolean"
-        },
-        "supportsGptLabel": {
-          "canBeNull": true,
-          "description": "This distribution supports the GUID Partition Table (GPT), providing up to 128 partitions that can have more than 2 TB",
-          "fullType": "boolean",
-          "readOnly": true,
-          "required": false,
-          "type": "boolean"
-        },
-        "supportsRTM": {
-          "canBeNull": false,
-          "description": "This distribution supports RTM software",
-          "fullType": "boolean",
-          "readOnly": true,
-          "required": false,
-          "type": "boolean"
-        },
-        "supportsSqlServer": {
-          "canBeNull": true,
-          "description": "This distribution supports the microsoft SQL server",
-          "fullType": "boolean",
-          "readOnly": true,
-          "required": false,
-          "type": "boolean"
         },
         "templateName": {
           "canBeNull": false,
@@ -14642,6 +14036,291 @@ export const schema: Schema = {
         "value": {
           "canBeNull": false,
           "description": "Consent decision value",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
+        }
+      }
+    },
+    "me.contact.Address": {
+      "description": "Representation of a Contact",
+      "id": "Address",
+      "namespace": "me.contact",
+      "properties": {
+        "city": {
+          "canBeNull": false,
+          "description": "City",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "country": {
+          "canBeNull": false,
+          "description": "Country",
+          "fullType": "nichandle.CountryEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "nichandle.CountryEnum"
+        },
+        "line1": {
+          "canBeNull": false,
+          "description": "First line of the address",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "line2": {
+          "canBeNull": true,
+          "description": "Second line of the address",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "line3": {
+          "canBeNull": true,
+          "description": "Third line of the address",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "otherDetails": {
+          "canBeNull": true,
+          "description": "Other details",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "province": {
+          "canBeNull": true,
+          "description": "Province name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "zip": {
+          "canBeNull": true,
+          "description": "Zipcode",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "me.contact.Contact": {
+      "description": "Contact definition",
+      "id": "Contact",
+      "namespace": "me.contact",
+      "properties": {
+        "address": {
+          "canBeNull": false,
+          "description": "Address for this contact",
+          "fullType": "me.contact.Address",
+          "readOnly": false,
+          "required": false,
+          "type": "me.contact.Address"
+        },
+        "birthCity": {
+          "canBeNull": true,
+          "description": "Birth city",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "birthCountry": {
+          "canBeNull": true,
+          "description": "Birth Country",
+          "fullType": "nichandle.CountryEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "nichandle.CountryEnum"
+        },
+        "birthDay": {
+          "canBeNull": true,
+          "description": "Birth date",
+          "fullType": "date",
+          "readOnly": false,
+          "required": false,
+          "type": "date"
+        },
+        "birthZip": {
+          "canBeNull": true,
+          "description": "Birth Zipcode",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "cellPhone": {
+          "canBeNull": true,
+          "description": "Cellphone number",
+          "fullType": "phoneNumber",
+          "readOnly": false,
+          "required": false,
+          "type": "phoneNumber"
+        },
+        "companyNationalIdentificationNumber": {
+          "canBeNull": true,
+          "description": "National identification number of your company",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "email": {
+          "canBeNull": false,
+          "description": "Email address",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "fax": {
+          "canBeNull": true,
+          "description": "Fax number",
+          "fullType": "phoneNumber",
+          "readOnly": false,
+          "required": false,
+          "type": "phoneNumber"
+        },
+        "firstName": {
+          "canBeNull": false,
+          "description": "First name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "gender": {
+          "canBeNull": true,
+          "description": "Gender",
+          "fullType": "nichandle.GenderEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "nichandle.GenderEnum"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Contact Identifier",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "language": {
+          "canBeNull": false,
+          "description": "Language",
+          "fullType": "nichandle.LanguageEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "nichandle.LanguageEnum"
+        },
+        "lastName": {
+          "canBeNull": false,
+          "description": "Last name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "legalForm": {
+          "canBeNull": false,
+          "description": "Legal form of the contact",
+          "fullType": "nichandle.LegalFormEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "nichandle.LegalFormEnum"
+        },
+        "nationalIdentificationNumber": {
+          "canBeNull": true,
+          "description": "National identification number of the contact",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "nationality": {
+          "canBeNull": true,
+          "description": "Nationality",
+          "fullType": "nichandle.CountryEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "nichandle.CountryEnum"
+        },
+        "organisationName": {
+          "canBeNull": true,
+          "description": "Organisation name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "organisationType": {
+          "canBeNull": true,
+          "description": "Organisation type",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "phone": {
+          "canBeNull": true,
+          "description": "Telephone number",
+          "fullType": "phoneNumber",
+          "readOnly": false,
+          "required": false,
+          "type": "phoneNumber"
+        },
+        "spareEmail": {
+          "canBeNull": true,
+          "description": "Spare email address",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "vat": {
+          "canBeNull": true,
+          "description": "VAT number",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "me.contact.FieldInformation": {
+      "description": "Extras information about a field",
+      "id": "FieldInformation",
+      "namespace": "me.contact",
+      "properties": {
+        "fieldName": {
+          "canBeNull": false,
+          "description": "Name of the field concerned by restrictions",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "mandatory": {
+          "canBeNull": false,
+          "description": "Indicates if the field is mandatory when editing",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "readOnly": {
+          "canBeNull": false,
+          "description": "Indicates if the field can't be edited",
           "fullType": "boolean",
           "readOnly": true,
           "required": false,
@@ -15628,6 +15307,7 @@ export const schema: Schema = {
         "MAESTRO",
         "MASTERCARD",
         "NONE",
+        "RUPAY",
         "VISA"
       ],
       "enumType": "string",
@@ -15678,6 +15358,7 @@ export const schema: Schema = {
     "me.payment.IntegrationEnum": {
       "description": "Register integration type enum",
       "enum": [
+        "BANK_TRANSFER",
         "COMPONENT",
         "IFRAME_VANTIV",
         "IN_CONTEXT",
@@ -16209,7 +15890,7 @@ export const schema: Schema = {
       "namespace": "me.payment.transaction"
     },
     "me.paymentMean.BankAccount": {
-      "description": "Credit card informations",
+      "description": "Credit card information",
       "id": "BankAccount",
       "namespace": "me.paymentMean",
       "properties": {
@@ -16432,7 +16113,7 @@ export const schema: Schema = {
       }
     },
     "me.paymentMean.CreditCard": {
-      "description": "Credit card informations",
+      "description": "Credit card information",
       "id": "CreditCard",
       "namespace": "me.paymentMean",
       "properties": {
@@ -16603,7 +16284,7 @@ export const schema: Schema = {
       }
     },
     "me.paymentMean.Deferred": {
-      "description": "Deferred account informations",
+      "description": "Deferred account information",
       "id": "Deferred",
       "namespace": "me.paymentMean",
       "properties": {
@@ -16706,7 +16387,7 @@ export const schema: Schema = {
       }
     },
     "me.paymentMean.Paypal": {
-      "description": "Paypal informations",
+      "description": "Paypal information",
       "id": "Paypal",
       "namespace": "me.paymentMean",
       "properties": {
@@ -16879,205 +16560,6 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "ValidationTypeEnum",
       "namespace": "me.paymentMean"
-    },
-    "nichandle.Authentication.Certificate": {
-      "description": "X509 Certificate",
-      "id": "Certificate",
-      "namespace": "nichandle.Authentication",
-      "properties": {
-        "expiration": {
-          "canBeNull": false,
-          "description": "Certificate's expiration",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        },
-        "subject": {
-          "canBeNull": false,
-          "description": "Certificate's subject",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "nichandle.Authentication.Group": {
-      "description": "A group",
-      "id": "Group",
-      "namespace": "nichandle.Authentication",
-      "properties": {
-        "creation": {
-          "canBeNull": false,
-          "description": "Creation date of this group",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        },
-        "defaultGroup": {
-          "canBeNull": false,
-          "description": "True if it is an default group. This kind of group can't be edited or deleted",
-          "fullType": "boolean",
-          "readOnly": false,
-          "required": false,
-          "type": "boolean"
-        },
-        "description": {
-          "canBeNull": false,
-          "description": "Group's description",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "lastUpdate": {
-          "canBeNull": false,
-          "description": "Last update of this group",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        },
-        "name": {
-          "canBeNull": false,
-          "description": "Group's name",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "role": {
-          "canBeNull": false,
-          "description": "Group's role",
-          "fullType": "nichandle.Authentication.RoleEnum",
-          "readOnly": false,
-          "required": false,
-          "type": "nichandle.Authentication.RoleEnum"
-        }
-      }
-    },
-    "nichandle.Authentication.Provider": {
-      "description": "A SAML 2.0 provider",
-      "id": "Provider",
-      "namespace": "nichandle.Authentication",
-      "properties": {
-        "creation": {
-          "canBeNull": false,
-          "description": "Creation date of the identity provider",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        },
-        "extensions": {
-          "canBeNull": true,
-          "description": "SAML Extensions to embed inside the SAML requests",
-          "fullType": "nichandle.Authentication.ProviderExtensions",
-          "readOnly": false,
-          "required": false,
-          "type": "nichandle.Authentication.ProviderExtensions"
-        },
-        "groupAttributeName": {
-          "canBeNull": false,
-          "description": "SAML Group attribute name",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "idpSigningCertificates": {
-          "canBeNull": false,
-          "description": "IdP's signing certificate",
-          "fullType": "nichandle.Authentication.Certificate[]",
-          "readOnly": true,
-          "required": false,
-          "type": "nichandle.Authentication.Certificate[]"
-        },
-        "lastUpdate": {
-          "canBeNull": false,
-          "description": "Last update of the identity provider",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        },
-        "ssoServiceUrl": {
-          "canBeNull": false,
-          "description": "IdP's Single Sign On Service Url",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "nichandle.Authentication.ProviderExtensions": {
-      "description": "A SAML 2.0 Extension that should be added to SAML requests when using this provider",
-      "id": "ProviderExtensions",
-      "namespace": "nichandle.Authentication",
-      "properties": {
-        "requestedAttributes": {
-          "canBeNull": true,
-          "description": "List of SAML RequestedAttribute to add to SAML requestes",
-          "fullType": "nichandle.Authentication.RequestedAttribute[]",
-          "readOnly": false,
-          "required": false,
-          "type": "nichandle.Authentication.RequestedAttribute[]"
-        }
-      }
-    },
-    "nichandle.Authentication.RequestedAttribute": {
-      "description": "A SAML 2.0 requested attribute that should be added to SAML requests when using this provider",
-      "id": "RequestedAttribute",
-      "namespace": "nichandle.Authentication",
-      "properties": {
-        "isRequired": {
-          "canBeNull": false,
-          "description": "Expresses that this RequestedAttribute is mandatory (remains advisory)",
-          "fullType": "boolean",
-          "readOnly": false,
-          "required": false,
-          "type": "boolean"
-        },
-        "name": {
-          "canBeNull": false,
-          "description": "Name of the SAML RequestedAttribute",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "nameFormat": {
-          "canBeNull": true,
-          "description": "NameFormat of the SAML RequestedAttribute",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "values": {
-          "canBeNull": true,
-          "description": "List of AttributeValues allowed for this RequestedAttribute",
-          "fullType": "string[]",
-          "readOnly": false,
-          "required": false,
-          "type": "string[]"
-        }
-      }
-    },
-    "nichandle.Authentication.RoleEnum": {
-      "description": "Permission given on the account",
-      "enum": [
-        "REGULAR",
-        "ADMIN",
-        "UNPRIVILEGED",
-        "NONE"
-      ],
-      "enumType": "string",
-      "id": "RoleEnum",
-      "namespace": "nichandle"
     },
     "nichandle.CountryEnum": {
       "description": "Countries a nichandle can choose",
@@ -17349,6 +16831,7 @@ export const schema: Schema = {
         "code": {
           "canBeNull": false,
           "description": "Currency code",
+          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -17356,6 +16839,7 @@ export const schema: Schema = {
         "symbol": {
           "canBeNull": false,
           "description": "Currency symbol",
+          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -17684,6 +17168,7 @@ export const schema: Schema = {
       "properties": {
         "address": {
           "canBeNull": true,
+          "description": "Address of nichandle",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -17691,6 +17176,7 @@ export const schema: Schema = {
         },
         "area": {
           "canBeNull": true,
+          "description": "Area of nichandle",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -17698,6 +17184,7 @@ export const schema: Schema = {
         },
         "birthCity": {
           "canBeNull": true,
+          "description": "City of birth",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -17705,6 +17192,7 @@ export const schema: Schema = {
         },
         "birthDay": {
           "canBeNull": true,
+          "description": "Birth date",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -17712,6 +17200,7 @@ export const schema: Schema = {
         },
         "city": {
           "canBeNull": true,
+          "description": "City of nichandle",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -17719,6 +17208,15 @@ export const schema: Schema = {
         },
         "companyNationalIdentificationNumber": {
           "canBeNull": true,
+          "description": "Company National Identification Number",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "complementaryAddress": {
+          "canBeNull": true,
+          "description": "Complementary Address",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -17726,6 +17224,7 @@ export const schema: Schema = {
         },
         "corporationType": {
           "canBeNull": true,
+          "description": "Corporation type",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -17733,6 +17232,7 @@ export const schema: Schema = {
         },
         "country": {
           "canBeNull": false,
+          "description": "Customer country",
           "fullType": "nichandle.CountryEnum",
           "readOnly": false,
           "required": false,
@@ -17756,6 +17256,7 @@ export const schema: Schema = {
         },
         "email": {
           "canBeNull": false,
+          "description": "Email address",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -17763,6 +17264,7 @@ export const schema: Schema = {
         },
         "fax": {
           "canBeNull": true,
+          "description": "Fax number",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -17770,6 +17272,7 @@ export const schema: Schema = {
         },
         "firstname": {
           "canBeNull": true,
+          "description": "First name",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -17777,13 +17280,23 @@ export const schema: Schema = {
         },
         "italianSDI": {
           "canBeNull": true,
+          "description": "Italian SDI",
           "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
         },
+        "kycValidated": {
+          "canBeNull": true,
+          "description": "KYC validation state",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
         "language": {
           "canBeNull": true,
+          "description": "Language",
           "fullType": "nichandle.LanguageEnum",
           "readOnly": false,
           "required": false,
@@ -17791,6 +17304,7 @@ export const schema: Schema = {
         },
         "legalform": {
           "canBeNull": false,
+          "description": "Customer legal form",
           "fullType": "nichandle.LegalFormEnum",
           "readOnly": false,
           "required": false,
@@ -17798,6 +17312,7 @@ export const schema: Schema = {
         },
         "name": {
           "canBeNull": true,
+          "description": "Customer name",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -17805,6 +17320,7 @@ export const schema: Schema = {
         },
         "nationalIdentificationNumber": {
           "canBeNull": true,
+          "description": "National Identification Number",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -17812,13 +17328,15 @@ export const schema: Schema = {
         },
         "nichandle": {
           "canBeNull": false,
-          "fullType": "coreTypes.AccountId:string",
+          "description": "Customer identifier",
+          "fullType": "string",
           "readOnly": true,
           "required": false,
           "type": "string"
         },
         "organisation": {
           "canBeNull": true,
+          "description": "Name of organisation",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -17826,6 +17344,7 @@ export const schema: Schema = {
         },
         "ovhCompany": {
           "canBeNull": false,
+          "description": "OVH company",
           "fullType": "nichandle.OvhCompanyEnum",
           "readOnly": true,
           "required": false,
@@ -17833,6 +17352,7 @@ export const schema: Schema = {
         },
         "ovhSubsidiary": {
           "canBeNull": false,
+          "description": "OVH subsidiary",
           "fullType": "nichandle.OvhSubsidiaryEnum",
           "readOnly": true,
           "required": false,
@@ -17840,6 +17360,7 @@ export const schema: Schema = {
         },
         "phone": {
           "canBeNull": true,
+          "description": "Phone number",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -17852,8 +17373,25 @@ export const schema: Schema = {
           "required": false,
           "type": "nichandle.CountryEnum"
         },
+        "phoneType": {
+          "canBeNull": true,
+          "description": "Type of phone(mobile, landline)",
+          "fullType": "nichandle.PhoneTypeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "nichandle.PhoneTypeEnum"
+        },
+        "purposeOfPurchase": {
+          "canBeNull": true,
+          "description": "Customer purpose of purchase",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
         "sex": {
           "canBeNull": true,
+          "description": "Gender",
           "fullType": "nichandle.GenderEnum",
           "readOnly": false,
           "required": false,
@@ -17861,6 +17399,7 @@ export const schema: Schema = {
         },
         "spareEmail": {
           "canBeNull": true,
+          "description": "Spare email",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -17868,6 +17407,7 @@ export const schema: Schema = {
         },
         "state": {
           "canBeNull": false,
+          "description": "Nichandle state",
           "fullType": "nichandle.StateEnum",
           "readOnly": true,
           "required": false,
@@ -17875,6 +17415,7 @@ export const schema: Schema = {
         },
         "vat": {
           "canBeNull": true,
+          "description": "VAT number",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -17882,6 +17423,7 @@ export const schema: Schema = {
         },
         "zip": {
           "canBeNull": true,
+          "description": "Zipcode",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -17990,6 +17532,16 @@ export const schema: Schema = {
       "id": "OvhSubsidiaryEnum",
       "namespace": "nichandle"
     },
+    "nichandle.PhoneTypeEnum": {
+      "description": "All phone type a person can choose",
+      "enum": [
+        "landline",
+        "mobile"
+      ],
+      "enumType": "string",
+      "id": "PhoneTypeEnum",
+      "namespace": "nichandle"
+    },
     "nichandle.StateEnum": {
       "description": "States a nichandle can be in",
       "enum": [
@@ -18067,88 +17619,6 @@ export const schema: Schema = {
           "type": "string"
         }
       }
-    },
-    "nichandle.User": {
-      "description": "A user",
-      "id": "User",
-      "namespace": "nichandle",
-      "properties": {
-        "creation": {
-          "canBeNull": false,
-          "description": "Creation date of this user",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        },
-        "description": {
-          "canBeNull": false,
-          "description": "User's description",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "email": {
-          "canBeNull": false,
-          "description": "User's email",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "group": {
-          "canBeNull": false,
-          "description": "User's group",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "lastUpdate": {
-          "canBeNull": false,
-          "description": "Last update of this user",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        },
-        "login": {
-          "canBeNull": false,
-          "description": "User's login suffix",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "passwordLastUpdate": {
-          "canBeNull": false,
-          "description": "When the user changed his password for the last time",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        },
-        "status": {
-          "canBeNull": false,
-          "description": "Current user's status",
-          "fullType": "nichandle.UserStatus",
-          "readOnly": true,
-          "required": false,
-          "type": "nichandle.UserStatus"
-        }
-      }
-    },
-    "nichandle.UserStatus": {
-      "description": "Status of a User",
-      "enum": [
-        "OK",
-        "DISABLED",
-        "PASSWORD_CHANGE_REQUIRED"
-      ],
-      "enumType": "string",
-      "id": "UserStatus",
-      "namespace": "nichandle"
     },
     "nichandle.VoucherStatus": {
       "description": "Voucher Status and Information",
@@ -18486,7 +17956,7 @@ export const schema: Schema = {
       "id": "U2FRegisterChallenge",
       "namespace": "nichandle.accessRestriction",
       "properties": {
-        "applicationId": {
+        "challenge": {
           "canBeNull": false,
           "readOnly": false,
           "required": false,
@@ -18498,70 +17968,31 @@ export const schema: Schema = {
           "required": false,
           "type": "long"
         },
-        "request": {
-          "canBeNull": false,
-          "readOnly": false,
-          "required": false,
-          "type": "nichandle.accessRestriction.U2FRegistrationRequest"
-        }
-      }
-    },
-    "nichandle.accessRestriction.U2FRegistrationRequest": {
-      "description": "Describe U2F RegistrationRequest",
-      "id": "U2FRegistrationRequest",
-      "namespace": "nichandle.accessRestriction",
-      "properties": {
-        "challenge": {
+        "rpId": {
           "canBeNull": false,
           "readOnly": false,
           "required": false,
           "type": "string"
         },
-        "version": {
-          "canBeNull": false,
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "nichandle.accessRestriction.U2FSignChallenge": {
-      "description": "U2F Register Request",
-      "id": "U2FSignChallenge",
-      "namespace": "nichandle.accessRestriction",
-      "properties": {
-        "applicationId": {
+        "rpName": {
           "canBeNull": false,
           "readOnly": false,
           "required": false,
           "type": "string"
         },
-        "request": {
-          "canBeNull": false,
-          "readOnly": false,
-          "required": false,
-          "type": "nichandle.accessRestriction.U2FSignRequest"
-        }
-      }
-    },
-    "nichandle.accessRestriction.U2FSignRequest": {
-      "description": "Describe U2F SignRequest",
-      "id": "U2FSignRequest",
-      "namespace": "nichandle.accessRestriction",
-      "properties": {
-        "challenge": {
+        "userDisplayName": {
           "canBeNull": false,
           "readOnly": false,
           "required": false,
           "type": "string"
         },
-        "keyHandle": {
+        "userId": {
           "canBeNull": false,
           "readOnly": false,
           "required": false,
           "type": "string"
         },
-        "version": {
+        "userName": {
           "canBeNull": false,
           "readOnly": false,
           "required": false,
@@ -18730,10 +18161,10 @@ export const schema: Schema = {
         "id": {
           "canBeNull": false,
           "description": "Document id",
-          "fullType": "string",
+          "fullType": "uuid",
           "readOnly": true,
           "required": false,
-          "type": "string"
+          "type": "uuid"
         },
         "name": {
           "canBeNull": false,
@@ -18879,7 +18310,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Content of your IPXE script",
           "fullType": "text",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "text"
         }
@@ -18890,14 +18321,6 @@ export const schema: Schema = {
       "id": "sshKey",
       "namespace": "nichandle",
       "properties": {
-        "default": {
-          "canBeNull": false,
-          "description": "True when this public SSH key is used for rescue mode and reinstallations",
-          "fullType": "boolean",
-          "readOnly": false,
-          "required": false,
-          "type": "boolean"
-        },
         "key": {
           "canBeNull": false,
           "description": "ASCII encoded public SSH key",
@@ -18969,6 +18392,31 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "CurrencyCodeEnum",
       "namespace": "order"
+    },
+    "order.LongPrice": {
+      "description": "LongPrice with all digits and its currency and a textual representation",
+      "id": "LongPrice",
+      "namespace": "order",
+      "properties": {
+        "currencyCode": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "order.CurrencyCodeEnum"
+        },
+        "text": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "double"
+        }
+      }
     },
     "order.Order": {
       "description": "An order",
@@ -19191,6 +18639,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "order.CurrencyCodeEnum"
+        },
+        "priceInUcents": {
+          "canBeNull": true,
+          "description": "Price in microcents",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "text": {
           "canBeNull": false,
@@ -19578,6 +19034,7 @@ export const schema: Schema = {
     "payment.method.IntegrationType": {
       "description": "Payment method integration type",
       "enum": [
+        "BANK_TRANSFER",
         "COMPONENT",
         "DONE",
         "IFRAME_VANTIV",
@@ -19754,6 +19211,7 @@ export const schema: Schema = {
         "MAESTRO",
         "MASTERCARD",
         "NONE",
+        "RUPAY",
         "VISA"
       ],
       "enumType": "string",

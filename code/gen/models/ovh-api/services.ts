@@ -16,7 +16,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:services/get"
+            {
+              "name": "account:apiovh:services/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -25,6 +28,14 @@ export const schema: Schema = {
               "description": "Order services by services.expanded.Service properties",
               "fullType": "string",
               "name": "orderBy",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Filter services by their resourceName (resource.name)",
+              "fullType": "string",
+              "name": "resourceName",
               "paramType": "query",
               "required": false
             },
@@ -61,7 +72,10 @@ export const schema: Schema = {
           "description": "Get details about a service",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:services/get"
+            {
+              "name": "account:apiovh:services/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -84,7 +98,10 @@ export const schema: Schema = {
           "description": "Update service information",
           "httpMethod": "PUT",
           "iamActions": [
-            "account:apiovh:services/edit"
+            {
+              "name": "account:apiovh:services/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -120,7 +137,10 @@ export const schema: Schema = {
           "description": "Get engagement details",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:services/billing/engagement/get"
+            {
+              "name": "account:apiovh:services/billing/engagement/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -149,7 +169,10 @@ export const schema: Schema = {
           "description": "List all available engagements a given service can subscribe to",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:services/billing/engagement/available/get"
+            {
+              "name": "account:apiovh:services/billing/engagement/available/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -178,7 +201,10 @@ export const schema: Schema = {
           "description": "Change your Engagement end rules",
           "httpMethod": "PUT",
           "iamActions": [
-            "account:apiovh:services/billing/engagement/endRule"
+            {
+              "name": "account:apiovh:services/billing/engagement/endRule",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -214,7 +240,10 @@ export const schema: Schema = {
           "description": "Flush the engagement of this service",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:services/billing/engagement/flush"
+            {
+              "name": "account:apiovh:services/billing/engagement/flush",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -250,7 +279,10 @@ export const schema: Schema = {
           "description": "Delete the ongoing Engagement request on this Service",
           "httpMethod": "DELETE",
           "iamActions": [
-            "account:apiovh:services/billing/engagement/request/delete"
+            {
+              "name": "account:apiovh:services/billing/engagement/request/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -273,7 +305,10 @@ export const schema: Schema = {
           "description": "Get the ongoing Engagement request on this Service",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:services/billing/engagement/request/get"
+            {
+              "name": "account:apiovh:services/billing/engagement/request/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -296,7 +331,10 @@ export const schema: Schema = {
           "description": "Request an Engagement on this Service",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:services/billing/engagement/request/create"
+            {
+              "name": "account:apiovh:services/billing/engagement/request/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -332,7 +370,10 @@ export const schema: Schema = {
           "description": "Get a summary of the ongoing consumption of your service",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:services/consumption/get"
+            {
+              "name": "account:apiovh:services/consumption/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -361,7 +402,10 @@ export const schema: Schema = {
           "description": "Get each resource consumed by your service",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:services/consumption/element/get"
+            {
+              "name": "account:apiovh:services/consumption/element/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -406,7 +450,10 @@ export const schema: Schema = {
           "description": "Get a summary of the forecasted consumption of your service",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:services/consumption/forecast/get"
+            {
+              "name": "account:apiovh:services/consumption/forecast/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -435,7 +482,10 @@ export const schema: Schema = {
           "description": "Get each resource forecasted consumption of your service",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:services/consumption/forecast/element/get"
+            {
+              "name": "account:apiovh:services/consumption/forecast/element/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -480,7 +530,10 @@ export const schema: Schema = {
           "description": "List consumption history of your service",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:services/consumption/history/get"
+            {
+              "name": "account:apiovh:services/consumption/history/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -525,7 +578,10 @@ export const schema: Schema = {
           "description": "Get a summary of the past consumption of your service",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:services/consumption/history/get"
+            {
+              "name": "account:apiovh:services/consumption/history/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -562,7 +618,10 @@ export const schema: Schema = {
           "description": "Get each resource consumed for the given history",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:services/consumption/history/element/get"
+            {
+              "name": "account:apiovh:services/consumption/history/element/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -615,7 +674,10 @@ export const schema: Schema = {
           "description": "List offers this option can be converted to",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:services/detach/get"
+            {
+              "name": "account:apiovh:services/detach/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -644,7 +706,10 @@ export const schema: Schema = {
           "description": "View an offer this option can be converted to",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:services/detach/get"
+            {
+              "name": "account:apiovh:services/detach/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -681,7 +746,10 @@ export const schema: Schema = {
           "description": "Perform the migration to a standalone offer. May require you to pay an Order",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:services/detach/execute"
+            {
+              "name": "account:apiovh:services/detach/execute",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -725,7 +793,10 @@ export const schema: Schema = {
           "description": "View all offers compatible for the detachment for the given option offer",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:services/detach/options/get"
+            {
+              "name": "account:apiovh:services/detach/options/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -759,11 +830,15 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Simulate the migration to a standalone offer. It won't generate any Order or issue any changes to your Service",
+          "description": "Simulate the migration to a standalone offer",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:services/detach/simulate"
+            {
+              "name": "account:apiovh:services/detach/simulate",
+              "required": true
+            }
           ],
+          "longDescription": "Simulate the migration to a standalone offer. It won't generate any Order or issue any changes to your Service.",
           "noAuthentication": false,
           "parameters": [
             {
@@ -806,7 +881,10 @@ export const schema: Schema = {
           "description": "List available forms for service",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:services/form/get"
+            {
+              "name": "account:apiovh:services/form/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -835,7 +913,10 @@ export const schema: Schema = {
           "description": "Get specified form description for service",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:services/form/get"
+            {
+              "name": "account:apiovh:services/form/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -872,7 +953,10 @@ export const schema: Schema = {
           "description": "Post answers to the form for your service",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:services/form/answer"
+            {
+              "name": "account:apiovh:services/form/answer",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -916,7 +1000,10 @@ export const schema: Schema = {
           "description": "Get options of a service",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:services/options/get"
+            {
+              "name": "account:apiovh:services/options/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -945,7 +1032,10 @@ export const schema: Schema = {
           "description": "Get possible renew periods of a service",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:services/renewPeriodCapacities/get"
+            {
+              "name": "account:apiovh:services/renewPeriodCapacities/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -974,7 +1064,10 @@ export const schema: Schema = {
           "description": "View the technical details of the service",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:services/technicalDetails/get"
+            {
+              "name": "account:apiovh:services/technicalDetails/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1003,7 +1096,10 @@ export const schema: Schema = {
           "description": "Request service termination",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:services/terminate"
+            {
+              "name": "account:apiovh:services/terminate",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1032,7 +1128,10 @@ export const schema: Schema = {
           "description": "Confirm service termination",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:services/terminate/confirm"
+            {
+              "name": "account:apiovh:services/terminate/confirm",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1068,7 +1167,10 @@ export const schema: Schema = {
           "description": "List offers this option can be converted to",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:services/upgrade/get"
+            {
+              "name": "account:apiovh:services/upgrade/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1097,7 +1199,10 @@ export const schema: Schema = {
           "description": "View an offer this option can be converted to",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:services/upgrade/get"
+            {
+              "name": "account:apiovh:services/upgrade/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1134,7 +1239,10 @@ export const schema: Schema = {
           "description": "Perform the migration to another offer. May require you to pay an Order",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:services/upgrade/execute"
+            {
+              "name": "account:apiovh:services/upgrade/execute",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -1175,11 +1283,15 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Simulate the conversion to another offer. It won't generate any Order or issue any changes to your Service",
+          "description": "Simulate the conversion to another offer",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:services/upgrade/simulate"
+            {
+              "name": "account:apiovh:services/upgrade/simulate",
+              "required": true
+            }
           ],
+          "longDescription": "Simulate the conversion to another offer. It won't generate any Order or issue any changes to your Service.",
           "noAuthentication": false,
           "parameters": [
             {
@@ -1215,6 +1327,30 @@ export const schema: Schema = {
   "basePath": "https://eu.api.ovh.com/1.0",
   "models": {
     "complexType.SafeKeyValue<T>": {
+      "description": "Key and value, with proper key strings",
+      "generics": [
+        "T"
+      ],
+      "id": "SafeKeyValue",
+      "namespace": "complexType",
+      "properties": {
+        "key": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "fullType": "T",
+          "readOnly": true,
+          "required": false,
+          "type": "T"
+        }
+      }
+    },
+    "complexType.SafeKeyValue<string>": {
       "description": "Key and value, with proper key strings",
       "generics": [
         "T"
@@ -1514,6 +1650,14 @@ export const schema: Schema = {
           "required": false,
           "type": "order.CurrencyCodeEnum"
         },
+        "priceInUcents": {
+          "canBeNull": true,
+          "description": "Price in microcents",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
         "text": {
           "canBeNull": false,
           "description": "Textual representation",
@@ -1791,6 +1935,182 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "GenericProductTypeEnum",
       "namespace": "order.cart"
+    },
+    "service.RenewType": {
+      "description": "Map a possible renew for a specific service",
+      "id": "RenewType",
+      "namespace": "service",
+      "properties": {
+        "automatic": {
+          "canBeNull": false,
+          "description": "The service is automatically renewed",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "deleteAtExpiration": {
+          "canBeNull": false,
+          "description": "The service will be deleted at expiration",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "forced": {
+          "canBeNull": false,
+          "description": "The service forced to be renewed",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "manualPayment": {
+          "canBeNull": true,
+          "description": "The service needs to be manually renewed and paid",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "period": {
+          "canBeNull": true,
+          "description": "period of renew in month",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "service.RenewalTypeEnum": {
+      "description": "Detailed renewal type of a service",
+      "enum": [
+        "automaticForcedProduct",
+        "automaticV2012",
+        "automaticV2014",
+        "automaticV2016",
+        "manual",
+        "oneShot",
+        "option"
+      ],
+      "enumType": "string",
+      "id": "RenewalTypeEnum",
+      "namespace": "service"
+    },
+    "service.StateEnum": {
+      "description": "service.StateEnum",
+      "enum": [
+        "expired",
+        "inCreation",
+        "ok",
+        "pendingDebt",
+        "unPaid"
+      ],
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "service"
+    },
+    "services.Service": {
+      "description": "Details about a Service",
+      "id": "Service",
+      "namespace": "services",
+      "properties": {
+        "canDeleteAtExpiration": {
+          "canBeNull": false,
+          "description": "Indicates that the service can be set up to be deleted at expiration",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "contactAdmin": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "contactBilling": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "contactTech": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "creation": {
+          "canBeNull": false,
+          "fullType": "date",
+          "readOnly": true,
+          "required": false,
+          "type": "date"
+        },
+        "domain": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "engagedUpTo": {
+          "canBeNull": true,
+          "fullType": "date",
+          "readOnly": true,
+          "required": false,
+          "type": "date"
+        },
+        "expiration": {
+          "canBeNull": false,
+          "fullType": "date",
+          "readOnly": true,
+          "required": false,
+          "type": "date"
+        },
+        "possibleRenewPeriod": {
+          "canBeNull": true,
+          "description": "All the possible renew period of your service in month",
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
+        },
+        "renew": {
+          "canBeNull": true,
+          "description": "Way of handling the renew",
+          "fullType": "service.RenewType",
+          "readOnly": false,
+          "required": false,
+          "type": "service.RenewType"
+        },
+        "renewalType": {
+          "canBeNull": false,
+          "fullType": "service.RenewalTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "service.RenewalTypeEnum"
+        },
+        "serviceId": {
+          "canBeNull": false,
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "status": {
+          "canBeNull": false,
+          "fullType": "service.StateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "service.StateEnum"
+        }
+      }
     },
     "services.billing.Invoice": {
       "description": "Description of an invoice",
@@ -2529,7 +2849,7 @@ export const schema: Schema = {
       }
     },
     "services.expanded.Billing": {
-      "description": "Billing informations of the service",
+      "description": "Billing information of the service",
       "id": "Billing",
       "namespace": "services.expanded",
       "properties": {
@@ -2559,7 +2879,7 @@ export const schema: Schema = {
         },
         "group": {
           "canBeNull": true,
-          "description": "Group informations",
+          "description": "Group information",
           "fullType": "services.expanded.Group",
           "readOnly": true,
           "required": false,
@@ -2608,7 +2928,7 @@ export const schema: Schema = {
       }
     },
     "services.expanded.Customer": {
-      "description": "Customer service relative informations",
+      "description": "Customer service relative information",
       "id": "Customer",
       "namespace": "services.expanded",
       "properties": {
@@ -2623,7 +2943,7 @@ export const schema: Schema = {
       }
     },
     "services.expanded.Customer.Contact": {
-      "description": "Customer contact service relative informations",
+      "description": "Customer contact service relative information",
       "id": "Contact",
       "namespace": "services.expanded.Customer",
       "properties": {
@@ -2868,7 +3188,7 @@ export const schema: Schema = {
       }
     },
     "services.expanded.Renew": {
-      "description": "Service renew informations",
+      "description": "Service renew information",
       "id": "Renew",
       "namespace": "services.expanded",
       "properties": {
@@ -4237,7 +4557,7 @@ export const schema: Schema = {
       "properties": {
         "addons": {
           "canBeNull": true,
-          "description": "Addons informations for the operation execution",
+          "description": "Addons information for the operation execution",
           "fullType": "services.operation.AddonDetachExecutionRequest[]",
           "readOnly": false,
           "required": false,

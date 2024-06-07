@@ -16,7 +16,10 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseCpanel:apiovh:get"
+            {
+              "name": "licenseCpanel:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -36,7 +39,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseCpanel:apiovh:get"
+            {
+              "name": "licenseCpanel:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -59,7 +65,10 @@ export const schema: Schema = {
           "description": "Alter this object properties",
           "httpMethod": "PUT",
           "iamActions": [
-            "licenseCpanel:apiovh:put"
+            {
+              "name": "licenseCpanel:apiovh:put",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -95,7 +104,10 @@ export const schema: Schema = {
           "description": "Returns an array of ips where the license can be moved to",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseCpanel:apiovh:allowedDestinationIp/get"
+            {
+              "name": "licenseCpanel:apiovh:allowedDestinationIp/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -124,7 +136,10 @@ export const schema: Schema = {
           "description": "Will tell if the ip can accept the license",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseCpanel:apiovh:canLicenseBeMovedTo/get"
+            {
+              "name": "licenseCpanel:apiovh:canLicenseBeMovedTo/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -161,7 +176,10 @@ export const schema: Schema = {
           "description": "Move this license to another Ip",
           "httpMethod": "POST",
           "iamActions": [
-            "licenseCpanel:apiovh:changeIp"
+            {
+              "name": "licenseCpanel:apiovh:changeIp",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -188,17 +206,20 @@ export const schema: Schema = {
       "path": "/license/cpanel/{serviceName}/changeIp"
     },
     {
-      "description": "Confirm termination of your service",
+      "description": "Confirm service termination",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Confirm termination of your service",
+          "description": "Confirm service termination",
           "httpMethod": "POST",
           "iamActions": [
-            "licenseCpanel:apiovh:confirmTermination"
+            {
+              "name": "licenseCpanel:apiovh:confirmTermination",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -228,7 +249,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The termination token sent by mail to the admin contact",
+              "description": "The termination token sent by email to the admin contact",
               "fullType": "string",
               "name": "token",
               "paramType": "body",
@@ -256,10 +277,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get service information",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseCpanel:apiovh:serviceInfos/get"
+            {
+              "name": "licenseCpanel:apiovh:serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -279,10 +303,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Update service information",
           "httpMethod": "PUT",
           "iamActions": [
-            "licenseCpanel:apiovh:serviceInfos/edit"
+            {
+              "name": "licenseCpanel:apiovh:serviceInfos/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -318,7 +345,10 @@ export const schema: Schema = {
           "description": "tasks linked to this license",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseCpanel:apiovh:tasks/get"
+            {
+              "name": "licenseCpanel:apiovh:tasks/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -363,7 +393,10 @@ export const schema: Schema = {
           "description": "Get this object properties",
           "httpMethod": "GET",
           "iamActions": [
-            "licenseCpanel:apiovh:tasks/get"
+            {
+              "name": "licenseCpanel:apiovh:tasks/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -390,18 +423,22 @@ export const schema: Schema = {
       "path": "/license/cpanel/{serviceName}/tasks/{taskId}"
     },
     {
-      "description": "Terminate your service",
+      "description": "Ask for the termination of your service. Admin contact of this service will receive a termination token in order to confirm its termination with /confirmTermination endpoint.",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Terminate your service",
+          "description": "Ask for the termination of your service",
           "httpMethod": "POST",
           "iamActions": [
-            "licenseCpanel:apiovh:terminate"
+            {
+              "name": "licenseCpanel:apiovh:terminate",
+              "required": true
+            }
           ],
+          "longDescription": "Ask for the termination of your service. Admin contact of this service will receive a termination token by email in order to confirm its termination with /confirmTermination endpoint.",
           "noAuthentication": false,
           "parameters": [
             {
@@ -429,7 +466,10 @@ export const schema: Schema = {
           "description": "Get the orderable CPanel versions",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:licenseCpanel/orderableVersions/get"
+            {
+              "name": "account:apiovh:licenseCpanel/orderableVersions/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -779,8 +819,8 @@ export const schema: Schema = {
         "VERSION_11_FOR_LINUX",
         "VERSION_11_FOR_VIRTUOZZO",
         "VERSION_11_FOR_VPS",
-        "cpanel-license-admin-cloud-accounts",
-        "cpanel-license-plus-cloud-accounts",
+        "cpanel-license-admin-cloud",
+        "cpanel-license-plus-cloud",
         "cpanel-license-premier-cloud-100-accounts",
         "cpanel-license-premier-cloud-1000-accounts",
         "cpanel-license-premier-cloud-10000-accounts",
@@ -985,9 +1025,9 @@ export const schema: Schema = {
         "cpanel-license-premier-metal-9700-accounts",
         "cpanel-license-premier-metal-9800-accounts",
         "cpanel-license-premier-metal-9900-accounts",
-        "cpanel-license-pro-cloud-accounts",
-        "cpanel-license-solo-cloud-accounts",
-        "cpanel-license-solo-metal-accounts",
+        "cpanel-license-pro-cloud",
+        "cpanel-license-solo-cloud",
+        "cpanel-license-solo-metal",
         "cpanel-license-version-11",
         "cpanel-license-version-11-for-virtuozzo",
         "cpanel-license-version-11-for-vps",

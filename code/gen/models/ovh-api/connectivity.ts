@@ -6,7 +6,7 @@ export const schema: Schema = {
   "apiVersion": "1.0",
   "apis": [
     {
-      "description": "Get the details for a building",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -16,57 +16,49 @@ export const schema: Schema = {
           "description": "Get the details for a building",
           "httpMethod": "POST",
           "noAuthentication": true,
+          "operationId": "getBuildingDetails",
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Building identifier, that can be found using /connectivity/eligibility/search/building* methods",
-              "fullType": "string",
-              "name": "building",
+              "dataType": "connectivity.eligibility.search.buildingDetails.post",
+              "description": "Request Body",
+              "fullType": "connectivity.eligibility.search.buildingDetails.post",
               "paramType": "body",
               "required": true
             }
           ],
-          "responseType": "xdsl.AsyncTask<connectivity.eligibility.Building>"
+          "responseType": "xdsl.AsyncTask_connectivity.eligibility.Building"
         }
       ],
       "path": "/connectivity/eligibility/search/buildingDetails"
     },
     {
-      "description": "Get all buildings for a specific address",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get all buildings for a specific address",
+          "description": "Get all buildings for a specific address (require at least a couple streetCode/streetNumber or an hexacle)",
           "httpMethod": "POST",
           "noAuthentication": true,
+          "operationId": "getBuildings",
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Unique identifier of the street (you can get it with POST /connectivity/eligibility/search/streets)",
-              "fullType": "string",
-              "name": "streetCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Street number",
-              "fullType": "string",
-              "name": "streetNumber",
+              "dataType": "connectivity.eligibility.search.buildings.post",
+              "description": "Request Body",
+              "fullType": "connectivity.eligibility.search.buildings.post",
               "paramType": "body",
               "required": true
             }
           ],
-          "responseType": "xdsl.AsyncTaskArray<connectivity.eligibility.Building>"
+          "responseType": "xdsl.AsyncTaskArray_connectivity.eligibility.Building"
         }
       ],
       "path": "/connectivity/eligibility/search/buildings"
     },
     {
-      "description": "Get building references from a given line number",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -76,31 +68,23 @@ export const schema: Schema = {
           "description": "Get building references from a given line number",
           "httpMethod": "POST",
           "noAuthentication": true,
+          "operationId": "getBuildingsByLine",
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Line number",
-              "fullType": "string",
-              "name": "lineNumber",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "connectivity.eligibility.LineStatusEnum",
-              "description": "Status of the line number",
-              "fullType": "connectivity.eligibility.LineStatusEnum",
-              "name": "status",
+              "dataType": "connectivity.eligibility.search.buildingsByLine.post",
+              "description": "Request Body",
+              "fullType": "connectivity.eligibility.search.buildingsByLine.post",
               "paramType": "body",
               "required": true
             }
           ],
-          "responseType": "xdsl.AsyncTaskArray<connectivity.eligibility.Building>"
+          "responseType": "xdsl.AsyncTaskArray_connectivity.eligibility.Building"
         }
       ],
       "path": "/connectivity/eligibility/search/buildingsByLine"
     },
     {
-      "description": "Get all localities linked to a zip code",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -110,65 +94,49 @@ export const schema: Schema = {
           "description": "Get all localities linked to a zip code",
           "httpMethod": "POST",
           "noAuthentication": true,
+          "operationId": "getCities",
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Zip code",
-              "fullType": "string",
-              "name": "zipCode",
+              "dataType": "connectivity.eligibility.search.Cities",
+              "description": "Request Body",
+              "fullType": "connectivity.eligibility.search.Cities",
               "paramType": "body",
               "required": true
             }
           ],
-          "responseType": "xdsl.AsyncTaskArray<connectivity.eligibility.City>"
+          "responseType": "xdsl.AsyncTaskArray_connectivity.eligibility.City"
         }
       ],
       "path": "/connectivity/eligibility/search/cities"
     },
     {
-      "description": "Search for active and inactive lines at an address. It will search for active lines only if the owner name is specified",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Search for active and inactive lines at an address. It will search for active lines only if the owner name is specified",
+          "description": "Search for active and inactive lines at an address",
           "httpMethod": "POST",
           "noAuthentication": true,
+          "operationId": "getLines",
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Owner name, at least the first three chars",
-              "fullType": "string",
-              "name": "ownerName",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Street code, that can be found using /connectivity/eligibility/search/streets method",
-              "fullType": "string",
-              "name": "streetCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Street number, that can be found using /connectivity/eligibility/search/streetNumbers method",
-              "fullType": "string",
-              "name": "streetNumber",
+              "dataType": "connectivity.eligibility.search.lines.post",
+              "description": "Request Body",
+              "fullType": "connectivity.eligibility.search.lines.post",
               "paramType": "body",
               "required": true
             }
           ],
-          "responseType": "xdsl.AsyncTaskArray<connectivity.eligibility.Line>"
+          "responseType": "xdsl.AsyncTaskArray_connectivity.eligibility.Line"
         }
       ],
       "path": "/connectivity/eligibility/search/lines"
     },
     {
-      "description": "Search for available copper line creation or fiber installation meeting time slots",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -178,81 +146,75 @@ export const schema: Schema = {
           "description": "Search for available copper line creation or fiber installation meeting time slots",
           "httpMethod": "POST",
           "noAuthentication": true,
+          "operationId": "getMeetings",
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Eligibility test reference",
-              "fullType": "string",
-              "name": "eligibilityReference",
+              "dataType": "connectivity.eligibility.search.meetings.post",
+              "description": "Request Body",
+              "fullType": "connectivity.eligibility.search.meetings.post",
               "paramType": "body",
               "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Offer plan code",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Choosen offer product code",
-              "fullType": "string",
-              "name": "productCode",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "connectivity.eligibility.OfferProductTypeEnum",
-              "description": "Access type",
-              "fullType": "connectivity.eligibility.OfferProductTypeEnum",
-              "name": "type",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "connectivity.eligibility.OfferProductUnbundlingTypeEnum",
-              "description": "Unbundling type",
-              "fullType": "connectivity.eligibility.OfferProductUnbundlingTypeEnum",
-              "name": "unbundlingType",
-              "paramType": "body",
-              "required": false
             }
           ],
-          "responseType": "xdsl.AsyncTask<connectivity.eligibility.Meetings>"
+          "responseType": "xdsl.AsyncTask_connectivity.eligibility.Meetings"
         }
       ],
       "path": "/connectivity/eligibility/search/meetings"
     },
     {
-      "description": "Get the available street numbers for a given street code (unique identifier of a street you can get with the method POST /connectivity/eligibility/search/streets)",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get the available street numbers for a given street code (unique identifier of a street you can get with the method POST /connectivity/eligibility/search/streets)",
+          "description": "Get the available street numbers for a given street code (you can get the unique identifier of a street using the method POST /connectivity/eligibility/search/streets)",
           "httpMethod": "POST",
           "noAuthentication": true,
+          "operationId": "getStreetNumbers",
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Street code",
-              "fullType": "string",
-              "name": "streetCode",
+              "dataType": "connectivity.eligibility.search.streetNumbers.post",
+              "description": "Request Body",
+              "fullType": "connectivity.eligibility.search.streetNumbers.post",
               "paramType": "body",
               "required": true
             }
           ],
-          "responseType": "xdsl.AsyncTaskArray<string>"
+          "responseType": "xdsl.AsyncTaskArray_string"
         }
       ],
       "path": "/connectivity/eligibility/search/streetNumbers"
     },
     {
-      "description": "Get all street linked to a locality",
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get the available street numbers and their details for a given street code (you can get the unique identifier of a street you can get using the method POST /connectivity/eligibility/search/streets)",
+          "httpMethod": "POST",
+          "noAuthentication": true,
+          "operationId": "getStreetNumbersDetails",
+          "parameters": [
+            {
+              "dataType": "connectivity.eligibility.search.streetNumbers.details.post",
+              "description": "Request Body",
+              "fullType": "connectivity.eligibility.search.streetNumbers.details.post",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "responseType": "xdsl.AsyncTaskArray_connectivity.eligibility.StreetNumberDetails"
+        }
+      ],
+      "path": "/connectivity/eligibility/search/streetNumbers/details"
+    },
+    {
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -262,23 +224,23 @@ export const schema: Schema = {
           "description": "Get all street linked to a locality",
           "httpMethod": "POST",
           "noAuthentication": true,
+          "operationId": "getStreets",
           "parameters": [
             {
-              "dataType": "string",
-              "description": "French INSEE identifier (you can get it with POST /connectivity/eligibility/search/cities)",
-              "fullType": "string",
-              "name": "inseeCode",
+              "dataType": "connectivity.eligibility.search.streets.post",
+              "description": "Request Body",
+              "fullType": "connectivity.eligibility.search.streets.post",
               "paramType": "body",
               "required": true
             }
           ],
-          "responseType": "xdsl.AsyncTaskArray<connectivity.eligibility.Street>"
+          "responseType": "xdsl.AsyncTaskArray_connectivity.eligibility.Street"
         }
       ],
       "path": "/connectivity/eligibility/search/streets"
     },
     {
-      "description": "Get an eligibility by its reference",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -288,6 +250,7 @@ export const schema: Schema = {
           "description": "Get an eligibility by its reference",
           "httpMethod": "GET",
           "noAuthentication": true,
+          "operationId": "getEligibility",
           "parameters": [
             {
               "dataType": "string",
@@ -304,7 +267,7 @@ export const schema: Schema = {
       "path": "/connectivity/eligibility/test"
     },
     {
-      "description": "Do an eligibility for an address, if no line exist",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -314,31 +277,23 @@ export const schema: Schema = {
           "description": "Do an eligibility for an address, if no line exist",
           "httpMethod": "POST",
           "noAuthentication": true,
+          "operationId": "testAddressEligibility",
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Unique identifier of the street (you can get it with POST /connectivity/eligibility/search/streets)",
-              "fullType": "string",
-              "name": "streetCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Street number",
-              "fullType": "string",
-              "name": "streetNumber",
+              "dataType": "connectivity.eligibility.test.address.post",
+              "description": "Request Body",
+              "fullType": "connectivity.eligibility.test.address.post",
               "paramType": "body",
               "required": true
             }
           ],
-          "responseType": "xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>"
+          "responseType": "xdsl.AsyncTask_connectivity.eligibility.EligibilityTest"
         }
       ],
       "path": "/connectivity/eligibility/test/address"
     },
     {
-      "description": "Do an eligibility for an address, if no line exist. Partners only.",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -348,34 +303,29 @@ export const schema: Schema = {
           "description": "Do an eligibility for an address, if no line exist. Partners only.",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:connectivity/eligibility/test/address/partners/create"
+            {
+              "name": "account:apiovh:connectivity/eligibility/test/address/partners/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "testPartnersAddressEligibility",
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Unique identifier of the street (you can get it with POST /connectivity/eligibility/search/streets)",
-              "fullType": "string",
-              "name": "streetCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Street number",
-              "fullType": "string",
-              "name": "streetNumber",
+              "dataType": "connectivity.eligibility.test.address.partners.post",
+              "description": "Request Body",
+              "fullType": "connectivity.eligibility.test.address.partners.post",
               "paramType": "body",
               "required": true
             }
           ],
-          "responseType": "xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>"
+          "responseType": "xdsl.AsyncTask_connectivity.eligibility.EligibilityTest"
         }
       ],
       "path": "/connectivity/eligibility/test/address/partners"
     },
     {
-      "description": "Do an eligibility test on a building, for fiber only",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -385,23 +335,23 @@ export const schema: Schema = {
           "description": "Do an eligibility test on a building, for fiber only",
           "httpMethod": "POST",
           "noAuthentication": true,
+          "operationId": "testBuildingEligibility",
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Building identifier, that can be found using /connectivity/eligibility/search/building* methods",
-              "fullType": "string",
-              "name": "building",
+              "dataType": "connectivity.eligibility.test.building.post",
+              "description": "Request Body",
+              "fullType": "connectivity.eligibility.test.building.post",
               "paramType": "body",
               "required": true
             }
           ],
-          "responseType": "xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>"
+          "responseType": "xdsl.AsyncTask_connectivity.eligibility.EligibilityTest"
         }
       ],
       "path": "/connectivity/eligibility/test/building"
     },
     {
-      "description": "Do an eligibility test on a line number, for copper only",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -411,47 +361,23 @@ export const schema: Schema = {
           "description": "Do an eligibility test on a line number, for copper only",
           "httpMethod": "POST",
           "noAuthentication": true,
+          "operationId": "testLineEligibility",
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Line number",
-              "fullType": "string",
-              "name": "lineNumber",
+              "dataType": "connectivity.eligibility.test.line.post",
+              "description": "Request Body",
+              "fullType": "connectivity.eligibility.test.line.post",
               "paramType": "body",
               "required": true
-            },
-            {
-              "dataType": "connectivity.eligibility.LineStatusEnum",
-              "description": "Status of the line number",
-              "fullType": "connectivity.eligibility.LineStatusEnum",
-              "name": "status",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Unique identifier of the street (you can get it with POST /connectivity/eligibility/search/streets)",
-              "fullType": "string",
-              "name": "streetCode",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Street number",
-              "fullType": "string",
-              "name": "streetNumber",
-              "paramType": "body",
-              "required": false
             }
           ],
-          "responseType": "xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>"
+          "responseType": "xdsl.AsyncTask_connectivity.eligibility.EligibilityTest"
         }
       ],
       "path": "/connectivity/eligibility/test/line"
     },
     {
-      "description": "Do an eligibility test on a line number, for copper only. Partners only.",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -461,50 +387,29 @@ export const schema: Schema = {
           "description": "Do an eligibility test on a line number, for copper only. Partners only.",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:connectivity/eligibility/test/line/partners/create"
-          ],
-          "noAuthentication": false,
-          "parameters": [
             {
-              "dataType": "string",
-              "description": "Line number",
-              "fullType": "string",
-              "name": "lineNumber",
-              "paramType": "body",
+              "name": "account:apiovh:connectivity/eligibility/test/line/partners/create",
               "required": true
-            },
-            {
-              "dataType": "connectivity.eligibility.LineStatusEnum",
-              "description": "Status of the line number",
-              "fullType": "connectivity.eligibility.LineStatusEnum",
-              "name": "status",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Unique identifier of the street (you can get it with POST /connectivity/eligibility/search/streets)",
-              "fullType": "string",
-              "name": "streetCode",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Street number",
-              "fullType": "string",
-              "name": "streetNumber",
-              "paramType": "body",
-              "required": false
             }
           ],
-          "responseType": "xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>"
+          "noAuthentication": false,
+          "operationId": "testPartnersLineEligibility",
+          "parameters": [
+            {
+              "dataType": "connectivity.eligibility.test.line.partners.post",
+              "description": "Request Body",
+              "fullType": "connectivity.eligibility.test.line.partners.post",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "responseType": "xdsl.AsyncTask_connectivity.eligibility.EligibilityTest"
         }
       ],
       "path": "/connectivity/eligibility/test/line/partners"
     },
     {
-      "description": "Do an eligibility test on an OTP (Optical Termination Panel), for fiber only",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -514,23 +419,23 @@ export const schema: Schema = {
           "description": "Do an eligibility test on an OTP (Optical Termination Panel), for fiber only",
           "httpMethod": "POST",
           "noAuthentication": true,
+          "operationId": "testOTPEligibility",
           "parameters": [
             {
-              "dataType": "string",
-              "description": "OTP (Optical Termination Panel) identifier",
-              "fullType": "string",
-              "name": "otp",
+              "dataType": "connectivity.eligibility.test.otp.post",
+              "description": "Request Body",
+              "fullType": "connectivity.eligibility.test.otp.post",
               "paramType": "body",
               "required": true
             }
           ],
-          "responseType": "xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>"
+          "responseType": "xdsl.AsyncTask_connectivity.eligibility.EligibilityTest"
         }
       ],
       "path": "/connectivity/eligibility/test/otp"
     },
     {
-      "description": "Missing description",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -540,9 +445,13 @@ export const schema: Schema = {
           "description": "List work planned by operators. For partners only",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:connectivity/maintenance/workPlanned/partners/get"
+            {
+              "name": "account:apiovh:connectivity/maintenance/workPlanned/partners/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "getPartnersPlannedWork",
           "parameters": [],
           "responseType": "connectivity.maintenance.WorkPlanned[]"
         }
@@ -550,7 +459,7 @@ export const schema: Schema = {
       "path": "/connectivity/maintenance/workPlanned/partners"
     },
     {
-      "description": "Missing description",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -560,6 +469,7 @@ export const schema: Schema = {
           "description": "List work planned by operators",
           "httpMethod": "GET",
           "noAuthentication": true,
+          "operationId": "getPlannedWork",
           "parameters": [
             {
               "dataType": "datetime",
@@ -584,7 +494,7 @@ export const schema: Schema = {
       "path": "/connectivity/maintenance/workPlanned/public"
     },
     {
-      "description": "Missing description",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -594,9 +504,13 @@ export const schema: Schema = {
           "description": "List detected, validated and recently closed generic incidents. For partners only",
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:connectivity/monitoring/genericIncident/partners/get"
+            {
+              "name": "account:apiovh:connectivity/monitoring/genericIncident/partners/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
+          "operationId": "getPartnersGenericIncident",
           "parameters": [
             {
               "dataType": "datetime",
@@ -629,7 +543,7 @@ export const schema: Schema = {
       "path": "/connectivity/monitoring/genericIncident/partners"
     },
     {
-      "description": "Missing description",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -639,6 +553,7 @@ export const schema: Schema = {
           "description": "List validated and recently closed generic incidents",
           "httpMethod": "GET",
           "noAuthentication": true,
+          "operationId": "getGenericIncident",
           "parameters": [
             {
               "dataType": "datetime",
@@ -676,11 +591,12 @@ export const schema: Schema = {
     "connectivity.OperatorEnum": {
       "description": "Operator",
       "enum": [
-        "OVH",
+        "AXIONE",
+        "BOUYGUES",
         "KOSC",
-        "SFR",
         "ORANGE",
-        "AXIONE"
+        "OVH",
+        "SFR"
       ],
       "enumType": "string",
       "id": "OperatorEnum",
@@ -705,84 +621,96 @@ export const schema: Schema = {
         "building": {
           "canBeNull": true,
           "description": "Name of the building, if any",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "city": {
           "canBeNull": false,
           "description": "City name",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "door": {
           "canBeNull": true,
           "description": "Identifier of the door, if any",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "floor": {
           "canBeNull": true,
           "description": "Identifier of the floor, if any",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "housingComplex": {
           "canBeNull": true,
           "description": "Name of the housing complex, if any",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "inseeCode": {
           "canBeNull": false,
           "description": "INSEE code",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "ownerName": {
           "canBeNull": true,
           "description": "Owner name, this information can be restricted",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "stairs": {
           "canBeNull": true,
           "description": "Identifier of the stair, if any",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "streetCode": {
           "canBeNull": true,
           "description": "Street code, an unique identifier of the street, hidden for unlisted number",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "streetName": {
           "canBeNull": true,
           "description": "Street name, hidden for unlisted number",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "streetNumber": {
           "canBeNull": true,
           "description": "Street number, usually a number and an indication if applicable (B for bis, T for ter, etc...) and hidden for unlisted number",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "zipCode": {
           "canBeNull": false,
           "description": "ZIP code",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
@@ -796,35 +724,40 @@ export const schema: Schema = {
         "name": {
           "canBeNull": false,
           "description": "Building name",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "nro": {
           "canBeNull": true,
           "description": "Building NRO (Optical main distribution frame)",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "reference": {
           "canBeNull": false,
           "description": "Identifier which refer to a building uniquely",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "stairs": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Stairs for this building",
-          "readOnly": false,
+          "fullType": "connectivity.eligibility.BuildingStair[]",
+          "readOnly": true,
           "required": false,
           "type": "connectivity.eligibility.BuildingStair[]"
         },
         "type": {
           "canBeNull": false,
           "description": "Building type",
-          "readOnly": false,
+          "fullType": "connectivity.eligibility.BuildingTypeEnum",
+          "readOnly": true,
           "required": false,
           "type": "connectivity.eligibility.BuildingTypeEnum"
         }
@@ -838,14 +771,16 @@ export const schema: Schema = {
         "floors": {
           "canBeNull": false,
           "description": "List of floor indentifier, \"_NA_\" if no identifier is available",
-          "readOnly": false,
+          "fullType": "string[]",
+          "readOnly": true,
           "required": false,
           "type": "string[]"
         },
         "stair": {
           "canBeNull": false,
           "description": "Stair identifier, \"_NA_\" if no identifier is available",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
@@ -869,84 +804,95 @@ export const schema: Schema = {
         "city": {
           "canBeNull": false,
           "description": "Name of the city",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "inseeCode": {
           "canBeNull": false,
           "description": "INSEE code of the city",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "locality": {
           "canBeNull": true,
           "description": "Locality (subset of a city)",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "zipCode": {
           "canBeNull": false,
           "description": "Zip code of the city",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
       }
     },
     "connectivity.eligibility.CopperInfo": {
-      "description": "Copper informations",
+      "description": "Copper information",
       "id": "CopperInfo",
       "namespace": "connectivity.eligibility",
       "properties": {
         "availablePairs": {
           "canBeNull": true,
           "description": "Number of available pairs. This is given only for an eligibility test.",
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
         "maxAvailablePairs": {
           "canBeNull": true,
           "description": "Number of maximun available pairs using desaturation. This is given only for an eligibility test.",
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
         "nra": {
           "canBeNull": true,
           "description": "NRA (\"Nœud de raccordement abonné\" in french) is an identifier of the building where is the Main Distribution Frames for the copper line. This is given only for an eligibility test.",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "sectionsLengths": {
           "canBeNull": false,
           "description": "Sections lengths of the copper line. This is given only for an eligibility test.",
-          "readOnly": false,
+          "fullType": "connectivity.eligibility.SectionLength[]",
+          "readOnly": true,
           "required": false,
           "type": "connectivity.eligibility.SectionLength[]"
         },
         "status": {
           "canBeNull": false,
-          "description": "Status of the copper line",
-          "readOnly": false,
+          "description": "Line status",
+          "fullType": "connectivity.eligibility.LineStatusEnum",
+          "readOnly": true,
           "required": false,
           "type": "connectivity.eligibility.LineStatusEnum"
         },
         "underConstruction": {
           "canBeNull": true,
           "description": "Is the line under construction ? This is given only for an eligibility test.",
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "unlistedNumber": {
           "canBeNull": false,
           "description": "Is the number unlisted ? (\"sur liste rouge\" in french)",
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         }
@@ -960,70 +906,79 @@ export const schema: Schema = {
         "eligibilityReference": {
           "canBeNull": false,
           "description": "Eligibility unique reference",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "endpoint": {
           "canBeNull": false,
-          "description": "Endpoint informations",
-          "readOnly": false,
+          "description": "Endpoint information",
+          "fullType": "connectivity.eligibility.Endpoint",
+          "readOnly": true,
           "required": false,
           "type": "connectivity.eligibility.Endpoint"
         },
         "offers": {
           "canBeNull": false,
-          "description": "Offers informations",
-          "readOnly": false,
+          "description": "Offers information",
+          "fullType": "connectivity.eligibility.Offer[]",
+          "readOnly": true,
           "required": false,
           "type": "connectivity.eligibility.Offer[]"
         }
       }
     },
     "connectivity.eligibility.Endpoint": {
-      "description": "Endpoint informations",
+      "description": "Endpoint information",
       "id": "Endpoint",
       "namespace": "connectivity.eligibility",
       "properties": {
         "address": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Address",
-          "readOnly": false,
+          "fullType": "connectivity.eligibility.Address",
+          "readOnly": true,
           "required": false,
           "type": "connectivity.eligibility.Address"
         },
         "copperInfo": {
           "canBeNull": true,
-          "description": "Copper informations, if any",
-          "readOnly": false,
+          "description": "Copper information",
+          "fullType": "connectivity.eligibility.CopperInfo",
+          "readOnly": true,
           "required": false,
           "type": "connectivity.eligibility.CopperInfo"
         },
         "fiberInfo": {
           "canBeNull": true,
-          "description": "Fiber informations, if any",
-          "readOnly": false,
+          "description": "Fiber information",
+          "fullType": "connectivity.eligibility.FiberInfo",
+          "readOnly": true,
           "required": false,
           "type": "connectivity.eligibility.FiberInfo"
         },
         "portability": {
           "canBeNull": true,
-          "description": "Portability informations, for copper only",
-          "readOnly": false,
+          "description": "Portability details of the line number",
+          "fullType": "connectivity.eligibility.Portability",
+          "readOnly": true,
           "required": false,
           "type": "connectivity.eligibility.Portability"
         },
         "reference": {
           "canBeNull": false,
           "description": "Reference of the endpoint",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "referenceType": {
           "canBeNull": false,
-          "description": "Reference type",
-          "readOnly": false,
+          "description": "Endpoint reference type",
+          "fullType": "connectivity.eligibility.EndpointReferenceTypeEnum",
+          "readOnly": true,
           "required": false,
           "type": "connectivity.eligibility.EndpointReferenceTypeEnum"
         }
@@ -1041,53 +996,71 @@ export const schema: Schema = {
       "namespace": "connectivity.eligibility"
     },
     "connectivity.eligibility.FiberInfo": {
-      "description": "Fiber informations",
+      "description": "Fiber information",
       "id": "FiberInfo",
       "namespace": "connectivity.eligibility",
       "properties": {
         "buildingName": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Building name",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "buildingReference": {
           "canBeNull": false,
           "description": "Building unique identifier",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "buildingType": {
           "canBeNull": false,
           "description": "Building type",
-          "readOnly": false,
+          "fullType": "connectivity.eligibility.BuildingTypeEnum",
+          "readOnly": true,
           "required": false,
           "type": "connectivity.eligibility.BuildingTypeEnum"
         },
         "nro": {
           "canBeNull": true,
           "description": "NRO (\"Nœud de raccordement optique\" in french) is an identifier of the building where is the Optical Distribution Frame (ODF) of the fiber",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "operatorCode": {
           "canBeNull": false,
           "description": "Operator code",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "operatorName": {
           "canBeNull": false,
           "description": "Operator name",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
       }
+    },
+    "connectivity.eligibility.InstallationTypeEnum": {
+      "description": "Installation type, for fiber only",
+      "enum": [
+        "activate",
+        "activate_undefined",
+        "create",
+        "multiOtp"
+      ],
+      "enumType": "string",
+      "id": "InstallationTypeEnum",
+      "namespace": "connectivity.eligibility"
     },
     "connectivity.eligibility.Line": {
       "description": "Copper line details",
@@ -1096,22 +1069,25 @@ export const schema: Schema = {
       "properties": {
         "address": {
           "canBeNull": false,
-          "description": "Line address",
-          "readOnly": false,
+          "description": "Address",
+          "fullType": "connectivity.eligibility.Address",
+          "readOnly": true,
           "required": false,
           "type": "connectivity.eligibility.Address"
         },
         "copperInfo": {
           "canBeNull": false,
-          "description": "Copper informations",
-          "readOnly": false,
+          "description": "Copper information",
+          "fullType": "connectivity.eligibility.CopperInfo",
+          "readOnly": true,
           "required": false,
           "type": "connectivity.eligibility.CopperInfo"
         },
         "lineNumber": {
           "canBeNull": false,
           "description": "Line number",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
@@ -1127,6 +1103,29 @@ export const schema: Schema = {
       "id": "LineStatusEnum",
       "namespace": "connectivity.eligibility"
     },
+    "connectivity.eligibility.MeetingCapacities": {
+      "description": "Represents meeting booking options",
+      "id": "MeetingCapacities",
+      "namespace": "connectivity.eligibility",
+      "properties": {
+        "eRdv": {
+          "canBeNull": false,
+          "description": "Whether or not it is possible to book a meeting online",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "phoneCall": {
+          "canBeNull": false,
+          "description": "Whether or not it is possible to be be called by phone to book a meeting",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
     "connectivity.eligibility.MeetingSlot": {
       "description": "Represents a time slot for a meeting",
       "id": "MeetingSlot",
@@ -1135,28 +1134,32 @@ export const schema: Schema = {
         "endDate": {
           "canBeNull": false,
           "description": "End date",
-          "readOnly": false,
+          "fullType": "datetime",
+          "readOnly": true,
           "required": false,
           "type": "datetime"
         },
         "slotId": {
           "canBeNull": true,
           "description": "Represent a meeting id for a fiber collect operator",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "startDate": {
           "canBeNull": false,
           "description": "Start date",
-          "readOnly": false,
+          "fullType": "datetime",
+          "readOnly": true,
           "required": false,
           "type": "datetime"
         },
         "uiCode": {
           "canBeNull": true,
           "description": "An opaque string that represents an intervention unit",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
@@ -1170,14 +1173,24 @@ export const schema: Schema = {
         "canBookFakeMeeting": {
           "canBeNull": false,
           "description": "Whether or not it is possible to book a fake meeting",
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
+        },
+        "capacities": {
+          "canBeNull": false,
+          "description": "Represents meeting booking options",
+          "fullType": "connectivity.eligibility.MeetingCapacities",
+          "readOnly": true,
+          "required": false,
+          "type": "connectivity.eligibility.MeetingCapacities"
         },
         "meetingSlots": {
           "canBeNull": false,
           "description": "A time slot",
-          "readOnly": false,
+          "fullType": "connectivity.eligibility.MeetingSlot[]",
+          "readOnly": true,
           "required": false,
           "type": "connectivity.eligibility.MeetingSlot[]"
         }
@@ -1191,21 +1204,24 @@ export const schema: Schema = {
         "availabilityDate": {
           "canBeNull": true,
           "description": "Availability date of the offer (if code of non eligibility is COPPER_NOT_YET_AVAILABLE, FIBER_NOT_YET_AVAILABLE or PRODUCT_NOT_YET_AVAILABLE)",
-          "readOnly": false,
+          "fullType": "datetime",
+          "readOnly": true,
           "required": false,
           "type": "datetime"
         },
         "code": {
           "canBeNull": false,
-          "description": "Code of the message",
-          "readOnly": false,
+          "description": "Message codes",
+          "fullType": "connectivity.eligibility.MessageCodeEnum",
+          "readOnly": true,
           "required": false,
           "type": "connectivity.eligibility.MessageCodeEnum"
         },
         "message": {
           "canBeNull": false,
           "description": "Message",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
@@ -1267,15 +1283,17 @@ export const schema: Schema = {
       "properties": {
         "eligibility": {
           "canBeNull": false,
-          "description": "Eligibility result for the offer",
-          "readOnly": false,
+          "description": "Offer eligibility",
+          "fullType": "connectivity.eligibility.OfferEligibility",
+          "readOnly": true,
           "required": false,
           "type": "connectivity.eligibility.OfferEligibility"
         },
         "product": {
           "canBeNull": false,
-          "description": "Product informations",
-          "readOnly": false,
+          "description": "Offer product",
+          "fullType": "connectivity.eligibility.OfferProduct",
+          "readOnly": true,
           "required": false,
           "type": "connectivity.eligibility.OfferProduct"
         }
@@ -1289,42 +1307,56 @@ export const schema: Schema = {
         "activationTypes": {
           "canBeNull": false,
           "description": "Activation type list, for copper only",
-          "readOnly": false,
+          "fullType": "connectivity.eligibility.ActivationTypeEnum[]",
+          "readOnly": true,
           "required": false,
           "type": "connectivity.eligibility.ActivationTypeEnum[]"
         },
         "eligible": {
           "canBeNull": false,
           "description": "Is the endpoint eligible to this offer ?",
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "estimatedDownloadRate": {
           "canBeNull": true,
           "description": "Estimated download rate, for copper and non guaranteed offers only",
-          "readOnly": false,
+          "fullType": "double",
+          "readOnly": true,
           "required": false,
           "type": "double"
         },
         "estimatedUploadRate": {
           "canBeNull": true,
           "description": "Estimated upload rate, for copper and non guaranteed offers only",
-          "readOnly": false,
+          "fullType": "double",
+          "readOnly": true,
           "required": false,
           "type": "double"
+        },
+        "multiOtp": {
+          "canBeNull": true,
+          "description": "Is eligible to multiple Optical Termination Points (OTP) ? For fiber only",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "reasons": {
           "canBeNull": false,
           "description": "Reasons when not eligible, if any",
-          "readOnly": false,
+          "fullType": "connectivity.eligibility.Message[]",
+          "readOnly": true,
           "required": false,
           "type": "connectivity.eligibility.Message[]"
         },
         "underConditions": {
           "canBeNull": false,
           "description": "Warnings to consider when eligible, if any",
-          "readOnly": false,
+          "fullType": "connectivity.eligibility.Message[]",
+          "readOnly": true,
           "required": false,
           "type": "connectivity.eligibility.Message[]"
         }
@@ -1338,70 +1370,88 @@ export const schema: Schema = {
         "code": {
           "canBeNull": false,
           "description": "Product code, an unique identifier for the product",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "downloadRate": {
           "canBeNull": false,
           "description": "Download rate in Mb",
-          "readOnly": false,
+          "fullType": "double",
+          "readOnly": true,
           "required": false,
           "type": "double"
         },
         "grt": {
           "canBeNull": false,
           "description": "GRT (Guaranteed Restoration Time) available list",
-          "readOnly": false,
+          "fullType": "string[]",
+          "readOnly": true,
           "required": false,
           "type": "string[]"
         },
         "guaranteed": {
           "canBeNull": false,
           "description": "Is the rates guaranteed ?",
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "name": {
           "canBeNull": false,
           "description": "Name",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
+        },
+        "operator": {
+          "canBeNull": false,
+          "description": "Offer product provider",
+          "fullType": "connectivity.eligibility.OfferProductProviderEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "connectivity.eligibility.OfferProductProviderEnum"
         },
         "pairs": {
           "canBeNull": true,
           "description": "Number of copper pairs required, for copper only",
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
         "provider": {
           "canBeNull": false,
-          "description": "Provider",
-          "readOnly": false,
+          "description": "Offer product provider",
+          "fullType": "connectivity.eligibility.OfferProductProviderEnum",
+          "readOnly": true,
           "required": false,
           "type": "connectivity.eligibility.OfferProductProviderEnum"
         },
         "type": {
           "canBeNull": false,
-          "description": "Type of the product",
-          "readOnly": false,
+          "description": "Offer product type",
+          "fullType": "connectivity.eligibility.OfferProductTypeEnum",
+          "readOnly": true,
           "required": false,
           "type": "connectivity.eligibility.OfferProductTypeEnum"
         },
         "unbundlingType": {
           "canBeNull": true,
-          "description": "Unbundling type : full or partial, for copper only",
-          "readOnly": false,
+          "description": "Offer product unbundling type",
+          "fullType": "connectivity.eligibility.OfferProductUnbundlingTypeEnum",
+          "readOnly": true,
           "required": false,
           "type": "connectivity.eligibility.OfferProductUnbundlingTypeEnum"
         },
         "uploadRate": {
           "canBeNull": false,
           "description": "Upload rate in Mb",
-          "readOnly": false,
+          "fullType": "double",
+          "readOnly": true,
           "required": false,
           "type": "double"
         }
@@ -1412,14 +1462,18 @@ export const schema: Schema = {
       "enum": [
         "AI",
         "ALTERNATIVE",
+        "AX",
         "AXIONE",
+        "BOUYGUES",
+        "COVAGE",
         "FI",
         "KOSC",
         "OR",
         "ORANGE",
         "OS",
         "REFERENCE",
-        "SFR"
+        "SFR",
+        "TF"
       ],
       "enumType": "string",
       "id": "OfferProductProviderEnum",
@@ -1455,22 +1509,25 @@ export const schema: Schema = {
       "properties": {
         "eligibility": {
           "canBeNull": false,
-          "description": "Eligibility informations",
-          "readOnly": false,
+          "description": "Portability eligibility",
+          "fullType": "connectivity.eligibility.PortabilityEligibility",
+          "readOnly": true,
           "required": false,
           "type": "connectivity.eligibility.PortabilityEligibility"
         },
         "quarantineEndDate": {
           "canBeNull": true,
           "description": "Date of the end of quarantine, if any",
-          "readOnly": false,
+          "fullType": "datetime",
+          "readOnly": true,
           "required": false,
           "type": "datetime"
         },
         "type": {
           "canBeNull": true,
-          "description": "Portability type, if a portability is ongoing",
-          "readOnly": false,
+          "description": "Portability type",
+          "fullType": "connectivity.eligibility.PortabilityTypeEnum",
+          "readOnly": true,
           "required": false,
           "type": "connectivity.eligibility.PortabilityTypeEnum"
         }
@@ -1484,21 +1541,24 @@ export const schema: Schema = {
         "eligible": {
           "canBeNull": false,
           "description": "Is the portability eligible for this line ?",
-          "readOnly": false,
+          "fullType": "boolean",
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
         "reasons": {
           "canBeNull": false,
           "description": "Reasons when not eligible, if any",
-          "readOnly": false,
+          "fullType": "connectivity.eligibility.Message[]",
+          "readOnly": true,
           "required": false,
           "type": "connectivity.eligibility.Message[]"
         },
         "underConditions": {
           "canBeNull": false,
           "description": "Warnings to consider when eligible, if any",
-          "readOnly": false,
+          "fullType": "connectivity.eligibility.Message[]",
+          "readOnly": true,
           "required": false,
           "type": "connectivity.eligibility.Message[]"
         }
@@ -1525,14 +1585,16 @@ export const schema: Schema = {
         "diameter": {
           "canBeNull": false,
           "description": "Diameter in millimeters of the copper line section",
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
         "length": {
           "canBeNull": false,
           "description": "Lenght in meters of the copper line section",
-          "readOnly": false,
+          "fullType": "long",
+          "readOnly": true,
           "required": false,
           "type": "long"
         }
@@ -1546,15 +1608,417 @@ export const schema: Schema = {
         "streetCode": {
           "canBeNull": false,
           "description": "Identifier which refer to a street uniquely",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "streetName": {
           "canBeNull": false,
           "description": "Street name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "connectivity.eligibility.StreetNumberDetails": {
+      "description": "Details of a street number struct",
+      "id": "StreetNumberDetails",
+      "namespace": "connectivity.eligibility",
+      "properties": {
+        "hexacle": {
+          "canBeNull": true,
+          "description": "Hexacle is a French unique identifier of the address",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "number": {
+          "canBeNull": false,
+          "description": "Street number",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "connectivity.eligibility.search.Cities": {
+      "description": "Search cities",
+      "id": "Cities",
+      "namespace": "connectivity.eligibility.search",
+      "properties": {
+        "zipCode": {
+          "canBeNull": false,
+          "description": "Zip code",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "connectivity.eligibility.search.buildingDetails.post": {
+      "description": "Building details",
+      "id": "post",
+      "namespace": "connectivity.eligibility.search.buildingDetails",
+      "properties": {
+        "building": {
+          "canBeNull": false,
+          "description": "Building identifier, that can be found using /connectivity/eligibility/search/building* methods",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "connectivity.eligibility.search.buildings.post": {
+      "description": "connectivity.eligibility.search.buildings.post",
+      "id": "post",
+      "namespace": "connectivity.eligibility.search.buildings",
+      "properties": {
+        "hexacle": {
+          "canBeNull": false,
+          "description": "Hexacle is a French unique identifier of the address (you can get it with POST /connectivity/eligibility/search/streetNumbers/details)",
+          "fullType": "string",
           "readOnly": false,
           "required": false,
+          "type": "string"
+        },
+        "streetCode": {
+          "canBeNull": false,
+          "description": "Unique identifier of the street (you can get it with POST /connectivity/eligibility/search/streets)",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "streetNumber": {
+          "canBeNull": false,
+          "description": "Street number",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "connectivity.eligibility.search.buildingsByLine.post": {
+      "description": "connectivity.eligibility.search.buildingsByLine.post",
+      "id": "post",
+      "namespace": "connectivity.eligibility.search.buildingsByLine",
+      "properties": {
+        "lineNumber": {
+          "canBeNull": false,
+          "description": "Line number",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Line status",
+          "fullType": "connectivity.eligibility.LineStatusEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "connectivity.eligibility.LineStatusEnum"
+        }
+      }
+    },
+    "connectivity.eligibility.search.lines.post": {
+      "description": "connectivity.eligibility.search.lines.post",
+      "id": "post",
+      "namespace": "connectivity.eligibility.search.lines",
+      "properties": {
+        "ownerName": {
+          "canBeNull": false,
+          "description": "Owner name, at least the first three chars",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "streetCode": {
+          "canBeNull": false,
+          "description": "Street code, that can be found using /connectivity/eligibility/search/streets method",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "streetNumber": {
+          "canBeNull": false,
+          "description": "Street number, that can be found using /connectivity/eligibility/search/streetNumbers method",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "connectivity.eligibility.search.meetings.post": {
+      "description": "connectivity.eligibility.search.meetings.post",
+      "id": "post",
+      "namespace": "connectivity.eligibility.search.meetings",
+      "properties": {
+        "eligibilityReference": {
+          "canBeNull": false,
+          "description": "Eligibility test reference",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "installationType": {
+          "canBeNull": false,
+          "description": "Installation type, for fiber only",
+          "fullType": "connectivity.eligibility.InstallationTypeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "connectivity.eligibility.InstallationTypeEnum"
+        },
+        "planCode": {
+          "canBeNull": false,
+          "description": "Offer plan code",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "productCode": {
+          "canBeNull": false,
+          "description": "Choosen offer product code",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "siteCompanyName": {
+          "canBeNull": false,
+          "description": "Site company name, please use the name and firstname for an individual",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Offer product type",
+          "fullType": "connectivity.eligibility.OfferProductTypeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "connectivity.eligibility.OfferProductTypeEnum"
+        },
+        "unbundlingType": {
+          "canBeNull": false,
+          "description": "Offer product unbundling type",
+          "fullType": "connectivity.eligibility.OfferProductUnbundlingTypeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "connectivity.eligibility.OfferProductUnbundlingTypeEnum"
+        }
+      }
+    },
+    "connectivity.eligibility.search.streetNumbers.details.post": {
+      "description": "connectivity.eligibility.search.streetNumbers.details.post",
+      "id": "post",
+      "namespace": "connectivity.eligibility.search.streetNumbers.details",
+      "properties": {
+        "streetCode": {
+          "canBeNull": false,
+          "description": "Street code",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "connectivity.eligibility.search.streetNumbers.post": {
+      "description": "connectivity.eligibility.search.streetNumbers.post",
+      "id": "post",
+      "namespace": "connectivity.eligibility.search.streetNumbers",
+      "properties": {
+        "streetCode": {
+          "canBeNull": false,
+          "description": "Street code",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "connectivity.eligibility.search.streets.post": {
+      "description": "connectivity.eligibility.search.streets.post",
+      "id": "post",
+      "namespace": "connectivity.eligibility.search.streets",
+      "properties": {
+        "inseeCode": {
+          "canBeNull": false,
+          "description": "French INSEE identifier (you can get it with POST /connectivity/eligibility/search/cities)",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "connectivity.eligibility.test.address.partners.post": {
+      "description": "connectivity.eligibility.test.address.partners.post",
+      "id": "post",
+      "namespace": "connectivity.eligibility.test.address.partners",
+      "properties": {
+        "streetCode": {
+          "canBeNull": false,
+          "description": "Unique identifier of the street (you can get it with POST /connectivity/eligibility/search/streets)",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "streetNumber": {
+          "canBeNull": false,
+          "description": "Street number",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "connectivity.eligibility.test.address.post": {
+      "description": "connectivity.eligibility.test.address.post",
+      "id": "post",
+      "namespace": "connectivity.eligibility.test.address",
+      "properties": {
+        "streetCode": {
+          "canBeNull": false,
+          "description": "Unique identifier of the street (you can get it with POST /connectivity/eligibility/search/streets)",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "streetNumber": {
+          "canBeNull": false,
+          "description": "Street number",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "connectivity.eligibility.test.building.post": {
+      "description": "connectivity.eligibility.test.building.post",
+      "id": "post",
+      "namespace": "connectivity.eligibility.test.building",
+      "properties": {
+        "building": {
+          "canBeNull": false,
+          "description": "Building identifier, that can be found using /connectivity/eligibility/search/building* methods",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "connectivity.eligibility.test.line.partners.post": {
+      "description": "connectivity.eligibility.test.line.partners.post",
+      "id": "post",
+      "namespace": "connectivity.eligibility.test.line.partners",
+      "properties": {
+        "lineNumber": {
+          "canBeNull": false,
+          "description": "Line number",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Line status",
+          "fullType": "connectivity.eligibility.LineStatusEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "connectivity.eligibility.LineStatusEnum"
+        },
+        "streetCode": {
+          "canBeNull": false,
+          "description": "Unique identifier of the street (you can get it with POST /connectivity/eligibility/search/streets)",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "streetNumber": {
+          "canBeNull": false,
+          "description": "Street number",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "connectivity.eligibility.test.line.post": {
+      "description": "connectivity.eligibility.test.line.post",
+      "id": "post",
+      "namespace": "connectivity.eligibility.test.line",
+      "properties": {
+        "lineNumber": {
+          "canBeNull": false,
+          "description": "Line number",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Line status",
+          "fullType": "connectivity.eligibility.LineStatusEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "connectivity.eligibility.LineStatusEnum"
+        },
+        "streetCode": {
+          "canBeNull": false,
+          "description": "Unique identifier of the street (you can get it with POST /connectivity/eligibility/search/streets)",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "streetNumber": {
+          "canBeNull": false,
+          "description": "Street number",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "connectivity.eligibility.test.otp.post": {
+      "description": "connectivity.eligibility.test.otp.post",
+      "id": "post",
+      "namespace": "connectivity.eligibility.test.otp",
+      "properties": {
+        "otp": {
+          "canBeNull": false,
+          "description": "OTP (Optical Termination Panel) identifier",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
           "type": "string"
         }
       }
@@ -1606,18 +2070,18 @@ export const schema: Schema = {
         "dateBegin": {
           "canBeNull": false,
           "description": "Begin date, the work planned operation starts at this time",
-          "fullType": "datetime",
+          "fullType": "string",
           "readOnly": true,
           "required": false,
-          "type": "datetime"
+          "type": "string"
         },
         "dateEnd": {
           "canBeNull": false,
           "description": "End date, the work planned operation finishes at the time",
-          "fullType": "datetime",
+          "fullType": "string",
           "readOnly": true,
           "required": false,
-          "type": "datetime"
+          "type": "string"
         },
         "departments": {
           "canBeNull": true,
@@ -1685,7 +2149,7 @@ export const schema: Schema = {
         },
         "interventionType": {
           "canBeNull": false,
-          "description": "Full description of the work planned operation",
+          "description": "Intervention type",
           "fullType": "connectivity.maintenance.InterventionTypeEnum",
           "readOnly": true,
           "required": false,
@@ -1701,7 +2165,7 @@ export const schema: Schema = {
         },
         "operator": {
           "canBeNull": false,
-          "description": "Concerned operator by work planned operation",
+          "description": "Operator",
           "fullType": "connectivity.OperatorEnum",
           "readOnly": true,
           "required": false,
@@ -1732,19 +2196,19 @@ export const schema: Schema = {
       "properties": {
         "comment": {
           "canBeNull": true,
-          "description": "Optional comment, that contains some informations and updates about the generic incident",
-          "fullType": "text",
+          "description": "Optional comment, that contains some information and updates about the generic incident",
+          "fullType": "string",
           "readOnly": true,
           "required": false,
-          "type": "text"
+          "type": "string"
         },
         "creationDate": {
           "canBeNull": false,
           "description": "Creation date, the generic incident has been detected",
-          "fullType": "datetime",
+          "fullType": "string",
           "readOnly": true,
           "required": false,
-          "type": "datetime"
+          "type": "string"
         },
         "departments": {
           "canBeNull": false,
@@ -1757,10 +2221,18 @@ export const schema: Schema = {
         "endDate": {
           "canBeNull": true,
           "description": "End date, the generic incident is resolved and closed",
-          "fullType": "datetime",
+          "fullType": "string",
           "readOnly": true,
           "required": false,
-          "type": "datetime"
+          "type": "string"
+        },
+        "estimatedResolutionDate": {
+          "canBeNull": true,
+          "description": "Estimated resolution date for generic incident",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "id": {
           "canBeNull": false,
@@ -1770,8 +2242,8 @@ export const schema: Schema = {
           "required": false,
           "type": "long"
         },
-        "national": {
-          "canBeNull": false,
+        "isNational": {
+          "canBeNull": true,
           "description": "Identify a national generic incident",
           "fullType": "boolean",
           "readOnly": true,
@@ -1796,7 +2268,7 @@ export const schema: Schema = {
         },
         "status": {
           "canBeNull": false,
-          "description": "Status (detected: we detected a potential generic incident, validated: the operators or our tech teams have confirmed the generic incident, closed: the generic incident is resolved and closed)",
+          "description": "Generic incident status",
           "fullType": "connectivity.monitoring.GenericIncidentStatusEnum",
           "readOnly": true,
           "required": false,
@@ -1823,71 +2295,182 @@ export const schema: Schema = {
     "connectivity.monitoring.GenericIncidentStatusEnum": {
       "description": "Generic incident status",
       "enum": [
+        "closed",
         "detected",
-        "validated",
-        "closed"
+        "validated"
       ],
       "enumType": "string",
       "id": "GenericIncidentStatusEnum",
       "namespace": "connectivity.monitoring"
     },
-    "xdsl.AsyncTask<T>": {
-      "description": "Async task",
-      "generics": [
-        "T"
-      ],
-      "id": "AsyncTask",
-      "namespace": "xdsl",
+    "xdsl.AsyncTaskArray_connectivity.eligibility.Building": {
+      "description": "xdsl.AsyncTaskArray_connectivity.eligibility.Building",
+      "id": "Building",
+      "namespace": "xdsl.AsyncTaskArray_connectivity.eligibility",
       "properties": {
         "error": {
           "canBeNull": true,
-          "description": "Error",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "result": {
           "canBeNull": true,
-          "description": "Result of the call",
-          "readOnly": false,
+          "fullType": "connectivity.eligibility.Building[]",
+          "readOnly": true,
           "required": false,
-          "type": "T"
+          "type": "connectivity.eligibility.Building[]"
         },
         "status": {
           "canBeNull": false,
-          "description": "Status of the call",
-          "readOnly": false,
+          "description": "AsyncTask status",
+          "fullType": "xdsl.AsyncTaskStatusEnum",
+          "readOnly": true,
           "required": false,
           "type": "xdsl.AsyncTaskStatusEnum"
         }
       }
     },
-    "xdsl.AsyncTaskArray<T>": {
-      "description": "Async task array",
-      "generics": [
-        "T"
-      ],
-      "id": "AsyncTaskArray",
-      "namespace": "xdsl",
+    "xdsl.AsyncTaskArray_connectivity.eligibility.City": {
+      "description": "xdsl.AsyncTaskArray_connectivity.eligibility.City",
+      "id": "City",
+      "namespace": "xdsl.AsyncTaskArray_connectivity.eligibility",
       "properties": {
         "error": {
           "canBeNull": true,
-          "description": "Error",
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "result": {
           "canBeNull": true,
-          "description": "Result of the call",
-          "readOnly": false,
+          "fullType": "connectivity.eligibility.City[]",
+          "readOnly": true,
           "required": false,
-          "type": "T[]"
+          "type": "connectivity.eligibility.City[]"
         },
         "status": {
           "canBeNull": false,
-          "description": "Status of the call",
-          "readOnly": false,
+          "fullType": "xdsl.AsyncTaskStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "xdsl.AsyncTaskStatusEnum"
+        }
+      }
+    },
+    "xdsl.AsyncTaskArray_connectivity.eligibility.Line": {
+      "description": "xdsl.AsyncTaskArray_connectivity.eligibility.Line",
+      "id": "Line",
+      "namespace": "xdsl.AsyncTaskArray_connectivity.eligibility",
+      "properties": {
+        "error": {
+          "canBeNull": true,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "result": {
+          "canBeNull": true,
+          "fullType": "connectivity.eligibility.Line[]",
+          "readOnly": true,
+          "required": false,
+          "type": "connectivity.eligibility.Line[]"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "AsyncTask status",
+          "fullType": "xdsl.AsyncTaskStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "xdsl.AsyncTaskStatusEnum"
+        }
+      }
+    },
+    "xdsl.AsyncTaskArray_connectivity.eligibility.Street": {
+      "description": "xdsl.AsyncTaskArray_connectivity.eligibility.Street",
+      "id": "Street",
+      "namespace": "xdsl.AsyncTaskArray_connectivity.eligibility",
+      "properties": {
+        "error": {
+          "canBeNull": true,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "result": {
+          "canBeNull": true,
+          "fullType": "connectivity.eligibility.Street[]",
+          "readOnly": true,
+          "required": false,
+          "type": "connectivity.eligibility.Street[]"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "AsyncTask status",
+          "fullType": "xdsl.AsyncTaskStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "xdsl.AsyncTaskStatusEnum"
+        }
+      }
+    },
+    "xdsl.AsyncTaskArray_connectivity.eligibility.StreetNumberDetails": {
+      "description": "xdsl.AsyncTaskArray_connectivity.eligibility.StreetNumberDetails",
+      "id": "StreetNumberDetails",
+      "namespace": "xdsl.AsyncTaskArray_connectivity.eligibility",
+      "properties": {
+        "error": {
+          "canBeNull": true,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "result": {
+          "canBeNull": true,
+          "fullType": "connectivity.eligibility.StreetNumberDetails[]",
+          "readOnly": true,
+          "required": false,
+          "type": "connectivity.eligibility.StreetNumberDetails[]"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "AsyncTask status",
+          "fullType": "xdsl.AsyncTaskStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "xdsl.AsyncTaskStatusEnum"
+        }
+      }
+    },
+    "xdsl.AsyncTaskArray_string": {
+      "description": "xdsl.AsyncTaskArray_string",
+      "id": "AsyncTaskArray_string",
+      "namespace": "xdsl",
+      "properties": {
+        "error": {
+          "canBeNull": true,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "result": {
+          "canBeNull": true,
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "AsyncTask status",
+          "fullType": "xdsl.AsyncTaskStatusEnum",
+          "readOnly": true,
           "required": false,
           "type": "xdsl.AsyncTaskStatusEnum"
         }
@@ -1903,6 +2486,96 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "AsyncTaskStatusEnum",
       "namespace": "xdsl"
+    },
+    "xdsl.AsyncTask_connectivity.eligibility.Building": {
+      "description": "xdsl.AsyncTask_connectivity.eligibility.Building",
+      "id": "Building",
+      "namespace": "xdsl.AsyncTask_connectivity.eligibility",
+      "properties": {
+        "error": {
+          "canBeNull": true,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "result": {
+          "canBeNull": true,
+          "description": "Details of a Building",
+          "fullType": "connectivity.eligibility.Building",
+          "readOnly": true,
+          "required": false,
+          "type": "connectivity.eligibility.Building"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "AsyncTask status",
+          "fullType": "xdsl.AsyncTaskStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "xdsl.AsyncTaskStatusEnum"
+        }
+      }
+    },
+    "xdsl.AsyncTask_connectivity.eligibility.EligibilityTest": {
+      "description": "xdsl.AsyncTask_connectivity.eligibility.EligibilityTest",
+      "id": "EligibilityTest",
+      "namespace": "xdsl.AsyncTask_connectivity.eligibility",
+      "properties": {
+        "error": {
+          "canBeNull": true,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "result": {
+          "canBeNull": true,
+          "description": "Eligibility test results",
+          "fullType": "connectivity.eligibility.EligibilityTest",
+          "readOnly": true,
+          "required": false,
+          "type": "connectivity.eligibility.EligibilityTest"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "AsyncTask status",
+          "fullType": "xdsl.AsyncTaskStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "xdsl.AsyncTaskStatusEnum"
+        }
+      }
+    },
+    "xdsl.AsyncTask_connectivity.eligibility.Meetings": {
+      "description": "xdsl.AsyncTask_connectivity.eligibility.Meetings",
+      "id": "Meetings",
+      "namespace": "xdsl.AsyncTask_connectivity.eligibility",
+      "properties": {
+        "error": {
+          "canBeNull": true,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "result": {
+          "canBeNull": false,
+          "description": "List of available meeting time slots",
+          "fullType": "connectivity.eligibility.Meetings",
+          "readOnly": true,
+          "required": false,
+          "type": "connectivity.eligibility.Meetings"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "AsyncTask status",
+          "fullType": "xdsl.AsyncTaskStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "xdsl.AsyncTaskStatusEnum"
+        }
+      }
     }
   },
   "resourcePath": "/connectivity"

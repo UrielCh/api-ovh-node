@@ -6,7 +6,7 @@ export const schema: Schema = {
   "apiVersion": "1.0",
   "apis": [
     {
-      "description": "Operations about the CEPH service",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -16,17 +16,28 @@ export const schema: Schema = {
           "description": "List available services",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedCeph:apiovh:get"
+            {
+              "name": "dedicatedCeph:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
-          "parameters": [],
+          "parameters": [
+            {
+              "dataType": "map[string][]iam.resource.TagFilter",
+              "description": "Filter resources on IAM tags",
+              "name": "iamTags",
+              "paramType": "query",
+              "required": false
+            }
+          ],
           "responseType": "string[]"
         }
       ],
       "path": "/dedicated/ceph"
     },
     {
-      "description": "dedicated.ceph.clusterGet",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -36,20 +47,23 @@ export const schema: Schema = {
           "description": "Get cluster details",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedCeph:apiovh:get"
+            {
+              "name": "dedicatedCeph:apiovh:get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "ID of cluster",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "dedicated.ceph.clusterGet.response"
+          "responseType": "dedicated.ceph.clusterGet.responseWithIAM"
         },
         {
           "apiStatus": {
@@ -59,29 +73,23 @@ export const schema: Schema = {
           "description": "Update cluster details",
           "httpMethod": "PUT",
           "iamActions": [
-            "dedicatedCeph:apiovh:put"
+            {
+              "name": "dedicatedCeph:apiovh:put",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "dedicated.ceph.clusterUpdate.crushTunablesEnum",
-              "description": "Tunables of cluster",
-              "fullType": "dedicated.ceph.clusterUpdate.crushTunablesEnum",
-              "name": "crushTunables",
+              "dataType": "dedicated.ceph.UpdateClusterDetails",
+              "description": "Request Body",
+              "fullType": "dedicated.ceph.UpdateClusterDetails",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Name of the cluster",
-              "fullType": "string",
-              "name": "label",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "ID of cluster",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -94,7 +102,7 @@ export const schema: Schema = {
       "path": "/dedicated/ceph/{serviceName}"
     },
     {
-      "description": "dedicated.ceph.aclCreate",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -104,20 +112,23 @@ export const schema: Schema = {
           "description": "Get list of all IP ACLs in a cluster",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedCeph:apiovh:acl/get"
+            {
+              "name": "dedicatedCeph:apiovh:acl/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "ID of cluster",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "dedicated.ceph.aclList.response[]"
+          "responseType": "dedicated.ceph.aclGet.response[]"
         },
         {
           "apiStatus": {
@@ -127,21 +138,23 @@ export const schema: Schema = {
           "description": "Create one or more new IP ACLs",
           "httpMethod": "POST",
           "iamActions": [
-            "dedicatedCeph:apiovh:acl/create"
+            {
+              "name": "dedicatedCeph:apiovh:acl/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "ip[]",
-              "description": "List of new ACLs",
-              "fullType": "ip[]",
-              "name": "aclList",
+              "dataType": "dedicated.ceph.acl.Create",
+              "description": "Request Body",
+              "fullType": "dedicated.ceph.acl.Create",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "ID of cluster",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -154,7 +167,7 @@ export const schema: Schema = {
       "path": "/dedicated/ceph/{serviceName}/acl"
     },
     {
-      "description": "dedicated.ceph.aclDeleteSingle",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -164,21 +177,24 @@ export const schema: Schema = {
           "description": "Delete single IP ACL",
           "httpMethod": "DELETE",
           "iamActions": [
-            "dedicatedCeph:apiovh:acl/delete"
+            {
+              "name": "dedicatedCeph:apiovh:acl/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "ID of ACL",
-              "fullType": "string",
+              "dataType": "long",
+              "description": "Acl ID",
+              "fullType": "long",
               "name": "aclId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "ID of cluster",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -195,21 +211,24 @@ export const schema: Schema = {
           "description": "Get details about IP ACL",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedCeph:apiovh:acl/get"
+            {
+              "name": "dedicatedCeph:apiovh:acl/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "ID of ACL",
-              "fullType": "string",
+              "dataType": "long",
+              "description": "Acl ID",
+              "fullType": "long",
               "name": "aclId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "ID of cluster",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -222,36 +241,39 @@ export const schema: Schema = {
       "path": "/dedicated/ceph/{serviceName}/acl/{aclId}"
     },
     {
-      "description": "dedicated.ceph.cephfsList",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "List CephFS filestystems",
+          "description": "List CephFS filesystems",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedCeph:apiovh:cephfs/get"
+            {
+              "name": "dedicatedCeph:apiovh:cephfs/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "ID of cluster",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "dedicated.ceph.cephfsList.response[]"
+          "responseType": "dedicated.ceph.cephfsGet.response[]"
         }
       ],
       "path": "/dedicated/ceph/{serviceName}/cephfs"
     },
     {
-      "description": "dedicated.ceph.cephfsGet",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -261,13 +283,16 @@ export const schema: Schema = {
           "description": "Purge CephFS filesystem",
           "httpMethod": "DELETE",
           "iamActions": [
-            "dedicatedCeph:apiovh:cephfs/delete"
+            {
+              "name": "dedicatedCeph:apiovh:cephfs/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "CephFS filesystem name",
+              "description": "Fs name",
               "fullType": "string",
               "name": "fsName",
               "paramType": "path",
@@ -275,7 +300,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "ID of cluster",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -289,16 +314,19 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Get CephFS filestystem information",
+          "description": "Get CephFS filesystem information",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedCeph:apiovh:cephfs/get"
+            {
+              "name": "dedicatedCeph:apiovh:cephfs/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "CephFS filesystem name",
+              "description": "Fs name",
               "fullType": "string",
               "name": "fsName",
               "paramType": "path",
@@ -306,7 +334,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "ID of cluster",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -319,7 +347,7 @@ export const schema: Schema = {
       "path": "/dedicated/ceph/{serviceName}/cephfs/{fsName}"
     },
     {
-      "description": "dedicated.ceph.cephfsDisable",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -329,13 +357,16 @@ export const schema: Schema = {
           "description": "Disable CephFS filesystem",
           "httpMethod": "POST",
           "iamActions": [
-            "dedicatedCeph:apiovh:cephfs/disable"
+            {
+              "name": "dedicatedCeph:apiovh:cephfs/disable",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "CephFS filesystem name",
+              "description": "Fs name",
               "fullType": "string",
               "name": "fsName",
               "paramType": "path",
@@ -343,7 +374,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "ID of cluster",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -356,7 +387,7 @@ export const schema: Schema = {
       "path": "/dedicated/ceph/{serviceName}/cephfs/{fsName}/disable"
     },
     {
-      "description": "dedicated.ceph.cephfsEnable",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -366,13 +397,16 @@ export const schema: Schema = {
           "description": "Enable CephFS filesystem",
           "httpMethod": "POST",
           "iamActions": [
-            "dedicatedCeph:apiovh:cephfs/enable"
+            {
+              "name": "dedicatedCeph:apiovh:cephfs/enable",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "CephFS filesystem name",
+              "description": "Fs name",
               "fullType": "string",
               "name": "fsName",
               "paramType": "path",
@@ -380,7 +414,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "ID of cluster",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -393,17 +427,20 @@ export const schema: Schema = {
       "path": "/dedicated/ceph/{serviceName}/cephfs/{fsName}/enable"
     },
     {
-      "description": "Confirm termination of your service",
+      "description": "Confirm service termination",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Confirm termination of your service",
+          "description": "Confirm service termination",
           "httpMethod": "POST",
           "iamActions": [
-            "dedicatedCeph:apiovh:confirmTermination"
+            {
+              "name": "dedicatedCeph:apiovh:confirmTermination",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -433,7 +470,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The termination token sent by mail to the admin contact",
+              "description": "The termination token sent by email to the admin contact",
               "fullType": "string",
               "name": "token",
               "paramType": "body",
@@ -454,7 +491,7 @@ export const schema: Schema = {
       "path": "/dedicated/ceph/{serviceName}/confirmTermination"
     },
     {
-      "description": "dedicated.ceph.clusterHealth",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -464,13 +501,16 @@ export const schema: Schema = {
           "description": "Get cluster health",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedCeph:apiovh:health/get"
+            {
+              "name": "dedicatedCeph:apiovh:health/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "ID of cluster",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -483,7 +523,7 @@ export const schema: Schema = {
       "path": "/dedicated/ceph/{serviceName}/health"
     },
     {
-      "description": "dedicated.ceph.poolCreate",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -493,20 +533,23 @@ export const schema: Schema = {
           "description": "Get list of all pools in a cluster",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedCeph:apiovh:pool/get"
+            {
+              "name": "dedicatedCeph:apiovh:pool/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "ID of cluster",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "dedicated.ceph.poolList.response[]"
+          "responseType": "dedicated.ceph.poolGet.response[]"
         },
         {
           "apiStatus": {
@@ -516,21 +559,23 @@ export const schema: Schema = {
           "description": "Create a new ceph pool",
           "httpMethod": "POST",
           "iamActions": [
-            "dedicatedCeph:apiovh:pool/create"
+            {
+              "name": "dedicatedCeph:apiovh:pool/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Name of new pool",
-              "fullType": "string",
-              "name": "poolName",
+              "dataType": "dedicated.ceph.pool.Create",
+              "description": "Request Body",
+              "fullType": "dedicated.ceph.pool.Create",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "ID of cluster",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -543,7 +588,7 @@ export const schema: Schema = {
       "path": "/dedicated/ceph/{serviceName}/pool"
     },
     {
-      "description": "dedicated.ceph.poolDelete",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -553,13 +598,16 @@ export const schema: Schema = {
           "description": "Delete a single ceph pool",
           "httpMethod": "DELETE",
           "iamActions": [
-            "dedicatedCeph:apiovh:pool/delete"
+            {
+              "name": "dedicatedCeph:apiovh:pool/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "name of ceph pool",
+              "description": "Pool name",
               "fullType": "string",
               "name": "poolName",
               "paramType": "path",
@@ -567,7 +615,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "ID of cluster",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -584,13 +632,16 @@ export const schema: Schema = {
           "description": "Get details about an existing ceph pool",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedCeph:apiovh:pool/get"
+            {
+              "name": "dedicatedCeph:apiovh:pool/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "name of pool",
+              "description": "Pool name",
               "fullType": "string",
               "name": "poolName",
               "paramType": "path",
@@ -598,7 +649,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "ID of cluster",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -611,6 +662,46 @@ export const schema: Schema = {
       "path": "/dedicated/ceph/{serviceName}/pool/{poolName}"
     },
     {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Open 5 minutes window for deleting single ceph pool",
+          "httpMethod": "PUT",
+          "iamActions": [
+            {
+              "name": "dedicatedCeph:apiovh:pool/allowDeletion",
+              "required": true
+            }
+          ],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Pool name",
+              "fullType": "string",
+              "name": "poolName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string"
+        }
+      ],
+      "path": "/dedicated/ceph/{serviceName}/pool/{poolName}/allowDeletion"
+    },
+    {
       "description": "Details about a Service",
       "operations": [
         {
@@ -618,10 +709,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get service information",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedCeph:apiovh:serviceInfos/get"
+            {
+              "name": "dedicatedCeph:apiovh:serviceInfos/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -641,10 +735,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
+          "description": "Update service information",
           "httpMethod": "PUT",
           "iamActions": [
-            "dedicatedCeph:apiovh:serviceInfos/edit"
+            {
+              "name": "dedicatedCeph:apiovh:serviceInfos/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
@@ -670,7 +767,7 @@ export const schema: Schema = {
       "path": "/dedicated/ceph/{serviceName}/serviceInfos"
     },
     {
-      "description": "dedicated.ceph.taskList",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -680,13 +777,16 @@ export const schema: Schema = {
           "description": "List tasks in progress",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedCeph:apiovh:task/get"
+            {
+              "name": "dedicatedCeph:apiovh:task/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "ID of cluster",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -699,7 +799,7 @@ export const schema: Schema = {
       "path": "/dedicated/ceph/{serviceName}/task"
     },
     {
-      "description": "dedicated.ceph.taskGet",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -709,13 +809,16 @@ export const schema: Schema = {
           "description": "Get task details",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedCeph:apiovh:task/get"
+            {
+              "name": "dedicatedCeph:apiovh:task/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "ID of cluster",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -723,7 +826,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "ID of task",
+              "description": "Task ID",
               "fullType": "string",
               "name": "taskId",
               "paramType": "path",
@@ -736,18 +839,22 @@ export const schema: Schema = {
       "path": "/dedicated/ceph/{serviceName}/task/{taskId}"
     },
     {
-      "description": "Terminate your service",
+      "description": "Ask for the termination of your service. Admin contact of this service will receive a termination token in order to confirm its termination with /confirmTermination endpoint.",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Terminate your service",
+          "description": "Ask for the termination of your service",
           "httpMethod": "POST",
           "iamActions": [
-            "dedicatedCeph:apiovh:terminate"
+            {
+              "name": "dedicatedCeph:apiovh:terminate",
+              "required": true
+            }
           ],
+          "longDescription": "Ask for the termination of your service. Admin contact of this service will receive a termination token by email in order to confirm its termination with /confirmTermination endpoint.",
           "noAuthentication": false,
           "parameters": [
             {
@@ -765,7 +872,7 @@ export const schema: Schema = {
       "path": "/dedicated/ceph/{serviceName}/terminate"
     },
     {
-      "description": "dedicated.ceph.userCreate",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -775,20 +882,23 @@ export const schema: Schema = {
           "description": "Get list of all users in a cluster",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedCeph:apiovh:user/get"
+            {
+              "name": "dedicatedCeph:apiovh:user/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "ID of cluster",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "dedicated.ceph.userList.response[]"
+          "responseType": "dedicated.ceph.userGet.response[]"
         },
         {
           "apiStatus": {
@@ -798,21 +908,23 @@ export const schema: Schema = {
           "description": "Create a new ceph user",
           "httpMethod": "POST",
           "iamActions": [
-            "dedicatedCeph:apiovh:user/create"
+            {
+              "name": "dedicatedCeph:apiovh:user/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Name of new user",
-              "fullType": "string",
-              "name": "userName",
+              "dataType": "dedicated.ceph.user.Create",
+              "description": "Request Body",
+              "fullType": "dedicated.ceph.user.Create",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "ID of cluster",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -825,7 +937,7 @@ export const schema: Schema = {
       "path": "/dedicated/ceph/{serviceName}/user"
     },
     {
-      "description": "dedicated.ceph.userDelete",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -835,13 +947,16 @@ export const schema: Schema = {
           "description": "Delete an existing single ceph user",
           "httpMethod": "DELETE",
           "iamActions": [
-            "dedicatedCeph:apiovh:user/delete"
+            {
+              "name": "dedicatedCeph:apiovh:user/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "ID of cluster",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -849,7 +964,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Name of ceph user",
+              "description": "User name",
               "fullType": "string",
               "name": "userName",
               "paramType": "path",
@@ -866,13 +981,16 @@ export const schema: Schema = {
           "description": "Get details about a ceph user",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedCeph:apiovh:user/get"
+            {
+              "name": "dedicatedCeph:apiovh:user/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "ID of cluster",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -880,7 +998,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Name of ceph user",
+              "description": "User name",
               "fullType": "string",
               "name": "userName",
               "paramType": "path",
@@ -893,7 +1011,7 @@ export const schema: Schema = {
       "path": "/dedicated/ceph/{serviceName}/user/{userName}"
     },
     {
-      "description": "dedicated.ceph.userPoolPermList",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -903,13 +1021,16 @@ export const schema: Schema = {
           "description": "List user-pool permissions",
           "httpMethod": "GET",
           "iamActions": [
-            "dedicatedCeph:apiovh:user/pool/get"
+            {
+              "name": "dedicatedCeph:apiovh:user/pool/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "ID of cluster",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -917,7 +1038,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Name of ceph user",
+              "description": "User name",
               "fullType": "string",
               "name": "userName",
               "paramType": "path",
@@ -934,21 +1055,23 @@ export const schema: Schema = {
           "description": "Create new user-pool permissions. All old permissions will be cleared",
           "httpMethod": "POST",
           "iamActions": [
-            "dedicatedCeph:apiovh:user/pool/create"
+            {
+              "name": "dedicatedCeph:apiovh:user/pool/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "dedicated.ceph.userPoolPermSetAll.permissions[]",
-              "description": "Permissions",
-              "fullType": "dedicated.ceph.userPoolPermSetAll.permissions[]",
-              "name": "permissions",
+              "dataType": "dedicated.ceph.user.pool.CreatePermissions",
+              "description": "Request Body",
+              "fullType": "dedicated.ceph.user.pool.CreatePermissions",
               "paramType": "body",
-              "required": false
+              "required": true
             },
             {
               "dataType": "string",
-              "description": "ID of cluster",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -956,7 +1079,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Name of ceph user",
+              "description": "User name",
               "fullType": "string",
               "name": "userName",
               "paramType": "path",
@@ -973,61 +1096,23 @@ export const schema: Schema = {
           "description": "Update user-pool permission for single pool",
           "httpMethod": "PUT",
           "iamActions": [
-            "dedicatedCeph:apiovh:user/pool/edit"
+            {
+              "name": "dedicatedCeph:apiovh:user/pool/edit",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "boolean",
-              "description": "Class read permission",
-              "fullType": "boolean",
-              "name": "classRead",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "boolean",
-              "description": "Class write permission",
-              "fullType": "boolean",
-              "name": "classWrite",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "boolean",
-              "description": "Execute permission",
-              "fullType": "boolean",
-              "name": "execute",
+              "dataType": "dedicated.ceph.user.pool.UpdatePermission",
+              "description": "Request Body",
+              "fullType": "dedicated.ceph.user.pool.UpdatePermission",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Name of Ceph pool",
-              "fullType": "string",
-              "name": "poolName",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "boolean",
-              "description": "Read permission",
-              "fullType": "boolean",
-              "name": "read",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "boolean",
-              "description": "Write permission",
-              "fullType": "boolean",
-              "name": "write",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "ID of cluster",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1035,7 +1120,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Name of ceph user",
+              "description": "User name",
               "fullType": "string",
               "name": "userName",
               "paramType": "path",
@@ -1048,7 +1133,7 @@ export const schema: Schema = {
       "path": "/dedicated/ceph/{serviceName}/user/{userName}/pool"
     },
     {
-      "description": "dedicated.ceph.userPoolPermDelete",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
@@ -1058,13 +1143,16 @@ export const schema: Schema = {
           "description": "Clear user-pool permission for single pool",
           "httpMethod": "DELETE",
           "iamActions": [
-            "dedicatedCeph:apiovh:user/pool/delete"
+            {
+              "name": "dedicatedCeph:apiovh:user/pool/delete",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Name of Ceph pool",
+              "description": "Pool name",
               "fullType": "string",
               "name": "poolName",
               "paramType": "path",
@@ -1072,7 +1160,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "ID of cluster",
+              "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1080,7 +1168,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Name of ceph user",
+              "description": "User name",
               "fullType": "string",
               "name": "userName",
               "paramType": "path",
@@ -1095,6 +1183,44 @@ export const schema: Schema = {
   ],
   "basePath": "https://api.us.ovhcloud.com/1.0",
   "models": {
+    "dedicated.ceph.UpdateClusterDetails": {
+      "description": "Update cluster details",
+      "id": "UpdateClusterDetails",
+      "namespace": "dedicated.ceph",
+      "properties": {
+        "crushTunables": {
+          "canBeNull": false,
+          "description": "Tunables of cluster",
+          "fullType": "dedicated.ceph.clusterUpdate.crushTunablesEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "dedicated.ceph.clusterUpdate.crushTunablesEnum"
+        },
+        "label": {
+          "canBeNull": false,
+          "description": "Name of the cluster",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "dedicated.ceph.acl.Create": {
+      "description": "Create one or more new IP ACLs",
+      "id": "Create",
+      "namespace": "dedicated.ceph.acl",
+      "properties": {
+        "aclList": {
+          "canBeNull": false,
+          "description": "List of new ACLs",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": true,
+          "type": "string[]"
+        }
+      }
+    },
     "dedicated.ceph.aclGet.response": {
       "description": "IP ACL",
       "id": "response",
@@ -1104,7 +1230,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Family of IP ACL",
           "fullType": "dedicated.ceph.aclGet.response.familyEnum",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "dedicated.ceph.aclGet.response.familyEnum"
         },
@@ -1112,23 +1238,23 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "ID of IP ACL",
           "fullType": "long",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
         "netmask": {
           "canBeNull": false,
-          "description": "Netmask of IP ACL",
+          "description": "IP address (e.g., 192.0.2.0)",
           "fullType": "ip",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "ip"
         },
         "network": {
           "canBeNull": false,
-          "description": "Network of IP ACL",
+          "description": "IP address (e.g., 192.0.2.0)",
           "fullType": "ip",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "ip"
         }
@@ -1144,55 +1270,6 @@ export const schema: Schema = {
       "id": "familyEnum",
       "namespace": "dedicated.ceph.aclGet.response"
     },
-    "dedicated.ceph.aclList.response": {
-      "description": "Structure holding IP ACLs",
-      "id": "response",
-      "namespace": "dedicated.ceph.aclList",
-      "properties": {
-        "family": {
-          "canBeNull": false,
-          "description": "Family of IP ACL",
-          "fullType": "dedicated.ceph.aclList.response.familyEnum",
-          "readOnly": false,
-          "required": false,
-          "type": "dedicated.ceph.aclList.response.familyEnum"
-        },
-        "id": {
-          "canBeNull": false,
-          "description": "ID of IP ACL",
-          "fullType": "long",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "netmask": {
-          "canBeNull": false,
-          "description": "Netmask of IP ACL",
-          "fullType": "ip",
-          "readOnly": false,
-          "required": false,
-          "type": "ip"
-        },
-        "network": {
-          "canBeNull": false,
-          "description": "Network of IP ACL",
-          "fullType": "ip",
-          "readOnly": false,
-          "required": false,
-          "type": "ip"
-        }
-      }
-    },
-    "dedicated.ceph.aclList.response.familyEnum": {
-      "description": "Family of IP ACL",
-      "enum": [
-        "IPV4",
-        "IPV6"
-      ],
-      "enumType": "string",
-      "id": "familyEnum",
-      "namespace": "dedicated.ceph.aclList.response"
-    },
     "dedicated.ceph.cephfsGet.response": {
       "description": "CephFS filesystem data",
       "id": "response",
@@ -1202,7 +1279,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Filesystem state",
           "fullType": "boolean",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
@@ -1210,30 +1287,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Filesystem name",
           "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "dedicated.ceph.cephfsList.response": {
-      "description": "List of CephFS filesystems",
-      "id": "response",
-      "namespace": "dedicated.ceph.cephfsList",
-      "properties": {
-        "enabled": {
-          "canBeNull": false,
-          "description": "Filesystem state",
-          "fullType": "boolean",
-          "readOnly": false,
-          "required": false,
-          "type": "boolean"
-        },
-        "fsName": {
-          "canBeNull": false,
-          "description": "Filesystem name",
-          "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
@@ -1247,16 +1301,16 @@ export const schema: Schema = {
         "cephMons": {
           "canBeNull": false,
           "description": "List of CEPH monitor IPs",
-          "fullType": "ip[]",
-          "readOnly": false,
+          "fullType": "string[]",
+          "readOnly": true,
           "required": false,
-          "type": "ip[]"
+          "type": "string[]"
         },
         "cephVersion": {
           "canBeNull": false,
           "description": "Used version of ceph",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -1264,7 +1318,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Creation date",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -1272,7 +1326,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Tunables of cluster",
           "fullType": "dedicated.ceph.clusterGet.response.crushTunablesEnum",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "dedicated.ceph.clusterGet.response.crushTunablesEnum"
         },
@@ -1280,7 +1334,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Name of cluster",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -1288,7 +1342,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Name of region where cluster is located",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -1296,7 +1350,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "ID of cluster",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -1304,7 +1358,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Size of cluster in TB",
           "fullType": "long",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
@@ -1312,7 +1366,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "State of cluster",
           "fullType": "dedicated.ceph.clusterGet.response.stateEnum",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "dedicated.ceph.clusterGet.response.stateEnum"
         },
@@ -1320,7 +1374,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Status of cluster",
           "fullType": "dedicated.ceph.clusterGet.response.statusEnum",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "dedicated.ceph.clusterGet.response.statusEnum"
         },
@@ -1328,7 +1382,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Last update date",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
@@ -1337,14 +1391,14 @@ export const schema: Schema = {
     "dedicated.ceph.clusterGet.response.crushTunablesEnum": {
       "description": "Tunables of cluster",
       "enum": [
-        "OPTIMAL",
-        "DEFAULT",
-        "LEGACY",
-        "BOBTAIL",
         "ARGONAUT",
+        "BOBTAIL",
+        "DEFAULT",
         "FIREFLY",
         "HAMMER",
-        "JEWEL"
+        "JEWEL",
+        "LEGACY",
+        "OPTIMAL"
       ],
       "enumType": "string",
       "id": "crushTunablesEnum",
@@ -1364,14 +1418,116 @@ export const schema: Schema = {
       "description": "Status of cluster",
       "enum": [
         "CREATING",
-        "INSTALLED",
-        "DELETING",
         "DELETED",
+        "DELETING",
+        "INSTALLED",
         "TASK_IN_PROGRESS"
       ],
       "enumType": "string",
       "id": "statusEnum",
       "namespace": "dedicated.ceph.clusterGet.response"
+    },
+    "dedicated.ceph.clusterGet.responseWithIAM": {
+      "description": "Details about ceph cluster",
+      "id": "response",
+      "namespace": "dedicated.ceph.clusterGet",
+      "properties": {
+        "cephMons": {
+          "canBeNull": false,
+          "description": "List of CEPH monitor IPs",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "cephVersion": {
+          "canBeNull": false,
+          "description": "Used version of ceph",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "createDate": {
+          "canBeNull": false,
+          "description": "Creation date",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "crushTunables": {
+          "canBeNull": false,
+          "description": "Tunables of cluster",
+          "fullType": "dedicated.ceph.clusterGet.response.crushTunablesEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicated.ceph.clusterGet.response.crushTunablesEnum"
+        },
+        "iam": {
+          "canBeNull": true,
+          "description": "IAM resource metadata",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.ResourceMetadata"
+        },
+        "label": {
+          "canBeNull": false,
+          "description": "Name of cluster",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Name of region where cluster is located",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "serviceName": {
+          "canBeNull": false,
+          "description": "ID of cluster",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "size": {
+          "canBeNull": false,
+          "description": "Size of cluster in TB",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "state": {
+          "canBeNull": false,
+          "description": "State of cluster",
+          "fullType": "dedicated.ceph.clusterGet.response.stateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicated.ceph.clusterGet.response.stateEnum"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Status of cluster",
+          "fullType": "dedicated.ceph.clusterGet.response.statusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicated.ceph.clusterGet.response.statusEnum"
+        },
+        "updateDate": {
+          "canBeNull": false,
+          "description": "Last update date",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
     },
     "dedicated.ceph.clusterHealth.response": {
       "description": "Health of ceph cluster",
@@ -1382,7 +1538,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "All available space in bytes",
           "fullType": "long",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
@@ -1390,7 +1546,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "True or False",
           "fullType": "boolean",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
@@ -1398,7 +1554,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "ID of cluster",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -1406,7 +1562,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Status of ceph cluster",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -1414,7 +1570,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Total cluster space in bytes",
           "fullType": "long",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
@@ -1422,7 +1578,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Used cluster space in bytes",
           "fullType": "long",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "long"
         }
@@ -1431,18 +1587,48 @@ export const schema: Schema = {
     "dedicated.ceph.clusterUpdate.crushTunablesEnum": {
       "description": "Tunables of cluster",
       "enum": [
-        "OPTIMAL",
-        "DEFAULT",
-        "LEGACY",
-        "BOBTAIL",
         "ARGONAUT",
+        "BOBTAIL",
+        "DEFAULT",
         "FIREFLY",
         "HAMMER",
-        "JEWEL"
+        "JEWEL",
+        "LEGACY",
+        "OPTIMAL"
       ],
       "enumType": "string",
       "id": "crushTunablesEnum",
       "namespace": "dedicated.ceph.clusterUpdate"
+    },
+    "dedicated.ceph.pool.Create": {
+      "description": "Create a new ceph pool",
+      "id": "Create",
+      "namespace": "dedicated.ceph.pool",
+      "properties": {
+        "poolName": {
+          "canBeNull": false,
+          "description": "Name of the new pool",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "dedicated.ceph.poolErasure.Create": {
+      "description": "Create a new ceph erasure pool",
+      "id": "Create",
+      "namespace": "dedicated.ceph.poolErasure",
+      "properties": {
+        "poolName": {
+          "canBeNull": false,
+          "description": "Name of the new pool erasure",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
     },
     "dedicated.ceph.poolGet.response": {
       "description": "Ceph pool",
@@ -1453,7 +1639,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Determine if pool should be backuped",
           "fullType": "boolean",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
@@ -1461,15 +1647,15 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Minimum active replicas",
           "fullType": "long",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
         "name": {
           "canBeNull": false,
-          "description": "Name of ceph user",
+          "description": "Name of the pool",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -1477,7 +1663,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Type of pool",
           "fullType": "dedicated.ceph.poolGet.response.poolTypeEnum",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "dedicated.ceph.poolGet.response.poolTypeEnum"
         },
@@ -1485,7 +1671,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Number of replica",
           "fullType": "long",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
@@ -1493,7 +1679,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "ID of cluster",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
@@ -1502,120 +1688,55 @@ export const schema: Schema = {
     "dedicated.ceph.poolGet.response.poolTypeEnum": {
       "description": "Type of pool",
       "enum": [
-        "REPLICATED",
-        "ERASURE_CODED"
+        "ERASURE_CODED",
+        "REPLICATED"
       ],
       "enumType": "string",
       "id": "poolTypeEnum",
       "namespace": "dedicated.ceph.poolGet.response"
     },
-    "dedicated.ceph.poolList.response": {
-      "description": "List of cluster pools",
-      "id": "response",
-      "namespace": "dedicated.ceph.poolList",
-      "properties": {
-        "backup": {
-          "canBeNull": false,
-          "description": "Determine if pool should be backuped",
-          "fullType": "boolean",
-          "readOnly": false,
-          "required": false,
-          "type": "boolean"
-        },
-        "minActiveReplicas": {
-          "canBeNull": false,
-          "description": "Minimum active replicas",
-          "fullType": "long",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "name": {
-          "canBeNull": false,
-          "description": "Name of ceph user",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "poolType": {
-          "canBeNull": false,
-          "description": "Type of pool",
-          "fullType": "dedicated.ceph.poolList.response.poolTypeEnum",
-          "readOnly": false,
-          "required": false,
-          "type": "dedicated.ceph.poolList.response.poolTypeEnum"
-        },
-        "replicaCount": {
-          "canBeNull": false,
-          "description": "Number of replica",
-          "fullType": "long",
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
-        "serviceName": {
-          "canBeNull": false,
-          "description": "ID of cluster",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "dedicated.ceph.poolList.response.poolTypeEnum": {
-      "description": "Type of pool",
-      "enum": [
-        "REPLICATED",
-        "ERASURE_CODED"
-      ],
-      "enumType": "string",
-      "id": "poolTypeEnum",
-      "namespace": "dedicated.ceph.poolList.response"
-    },
     "dedicated.ceph.taskGet.response": {
-      "description": "list of task subtasks",
+      "description": "List of task subtasks",
       "id": "response",
       "namespace": "dedicated.ceph.taskGet",
       "properties": {
         "createDate": {
           "canBeNull": false,
-          "description": "Creation date of task",
+          "description": "Creation date of the task",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "finishDate": {
           "canBeNull": true,
-          "description": "Finish date of task",
+          "description": "Finish date of the task",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "name": {
           "canBeNull": false,
-          "description": "Name of task",
+          "description": "Name of the task",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "state": {
-          "canBeNull": true,
-          "description": "State of task",
+          "canBeNull": false,
+          "description": "State of the task",
           "fullType": "dedicated.ceph.taskGet.response.stateEnum",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "dedicated.ceph.taskGet.response.stateEnum"
         },
         "type": {
           "canBeNull": false,
-          "description": "Type of task",
+          "description": "Type of the task",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
@@ -1624,9 +1745,9 @@ export const schema: Schema = {
     "dedicated.ceph.taskGet.response.stateEnum": {
       "description": "State of task",
       "enum": [
-        "IN PROGRESS",
         "DONE",
-        "FAILED"
+        "FAILED",
+        "IN PROGRESS"
       ],
       "enumType": "string",
       "id": "stateEnum",
@@ -1641,7 +1762,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "ID of task",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -1649,9 +1770,94 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Name of task",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
+        }
+      }
+    },
+    "dedicated.ceph.user.Create": {
+      "description": "Create a new ceph user",
+      "id": "Create",
+      "namespace": "dedicated.ceph.user",
+      "properties": {
+        "userName": {
+          "canBeNull": false,
+          "description": "Name of the new user",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "dedicated.ceph.user.pool.CreatePermissions": {
+      "description": "Create new user-pool permissions",
+      "id": "CreatePermissions",
+      "namespace": "dedicated.ceph.user.pool",
+      "properties": {
+        "permissions": {
+          "canBeNull": false,
+          "description": "Permissions",
+          "fullType": "dedicated.ceph.userPoolPermSetAll.permissions[]",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.ceph.userPoolPermSetAll.permissions[]"
+        }
+      }
+    },
+    "dedicated.ceph.user.pool.UpdatePermission": {
+      "description": "Update user-pool permission for single pool",
+      "id": "UpdatePermission",
+      "namespace": "dedicated.ceph.user.pool",
+      "properties": {
+        "classRead": {
+          "canBeNull": false,
+          "description": "Class read permission",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
+        },
+        "classWrite": {
+          "canBeNull": false,
+          "description": "Class write permission",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
+        },
+        "execute": {
+          "canBeNull": false,
+          "description": "Execute permission",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
+        },
+        "poolName": {
+          "canBeNull": false,
+          "description": "Name of Ceph pool",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "read": {
+          "canBeNull": false,
+          "description": "Read permission",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
+        },
+        "write": {
+          "canBeNull": false,
+          "description": "Write permission",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
@@ -1664,15 +1870,15 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Key of user to connect into cluster",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "mdsCaps": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Capabilities of user on MDS",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -1680,7 +1886,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Capabilities of user on MON",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -1688,7 +1894,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Name of ceph user",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -1696,7 +1902,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Capabilities of user on OSD",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -1704,62 +1910,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "ID of cluster",
           "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "dedicated.ceph.userList.response": {
-      "description": "List of cluster users",
-      "id": "response",
-      "namespace": "dedicated.ceph.userList",
-      "properties": {
-        "key": {
-          "canBeNull": false,
-          "description": "Key of user to connect into cluster",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "mdsCaps": {
-          "canBeNull": false,
-          "description": "Capabilities of user on MDS",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "monCaps": {
-          "canBeNull": false,
-          "description": "Capabilities of user on MON",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "name": {
-          "canBeNull": false,
-          "description": "Name of ceph user",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "osdCaps": {
-          "canBeNull": false,
-          "description": "Capabilities of user on OSD",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "serviceName": {
-          "canBeNull": false,
-          "description": "ID of cluster",
-          "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
@@ -1774,7 +1925,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Class read permission",
           "fullType": "boolean",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
@@ -1782,7 +1933,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Class write permission",
           "fullType": "boolean",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
@@ -1790,7 +1941,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Execute permission",
           "fullType": "boolean",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
@@ -1798,7 +1949,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Name of Ceph pool",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
@@ -1806,7 +1957,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Read permission",
           "fullType": "boolean",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         },
@@ -1814,7 +1965,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Write permission",
           "fullType": "boolean",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "boolean"
         }
@@ -1874,6 +2025,77 @@ export const schema: Schema = {
           "type": "boolean"
         }
       }
+    },
+    "iam.ResourceMetadata": {
+      "description": "IAM resource metadata embedded in services models",
+      "id": "ResourceMetadata",
+      "namespace": "iam",
+      "properties": {
+        "displayName": {
+          "canBeNull": true,
+          "description": "Resource display name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Unique identifier of the resource",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "tags": {
+          "canBeNull": true,
+          "description": "Resource tags. Tags that were internally computed are prefixed with ovh:",
+          "fullType": "map[string]string",
+          "readOnly": true,
+          "required": false,
+          "type": "map[string]string"
+        },
+        "urn": {
+          "canBeNull": false,
+          "description": "Unique resource name used in policies",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter": {
+      "description": "Resource tag filter",
+      "id": "TagFilter",
+      "namespace": "iam.resource",
+      "properties": {
+        "operator": {
+          "canBeNull": true,
+          "description": "Operator to use in order to filter on the value (defaults to 'EQ')",
+          "fullType": "iam.resource.TagFilter.OperatorEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "iam.resource.TagFilter.OperatorEnum"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value to use in order to filter tags",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "iam.resource.TagFilter.OperatorEnum": {
+      "description": "Operator that can be used in order to filter resources tags",
+      "enum": [
+        "EQ"
+      ],
+      "enumType": "string",
+      "id": "OperatorEnum",
+      "namespace": "iam.resource.TagFilter"
     },
     "service.RenewType": {
       "description": "Map a possible renew for a specific service",

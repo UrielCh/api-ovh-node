@@ -20,7 +20,10 @@ export const schema: Schema = {
           ],
           "httpMethod": "GET",
           "iamActions": [
-            "account:apiovh:startup/get"
+            {
+              "name": "account:apiovh:startup/get",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [],
@@ -34,7 +37,10 @@ export const schema: Schema = {
           "description": "Register a startup",
           "httpMethod": "POST",
           "iamActions": [
-            "account:apiovh:startup/create"
+            {
+              "name": "account:apiovh:startup/create",
+              "required": true
+            }
           ],
           "noAuthentication": false,
           "parameters": [
