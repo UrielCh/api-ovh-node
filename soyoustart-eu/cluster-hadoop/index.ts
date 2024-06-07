@@ -464,12 +464,12 @@ export interface Cluster {
             }
             serviceInfos: {
                 /**
-                 * Get this object properties
+                 * Get service information
                  * GET /cluster/hadoop/{serviceName}/serviceInfos
                  */
                 $get(): Promise<services.Service>;
                 /**
-                 * Alter this object properties
+                 * Update service information
                  * PUT /cluster/hadoop/{serviceName}/serviceInfos
                  */
                 $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;

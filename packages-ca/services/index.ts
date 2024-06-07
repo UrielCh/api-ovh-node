@@ -78,6 +78,7 @@ export namespace order {
      */
     export interface Price {
         currencyCode: order.CurrencyCodeEnum;
+        priceInUcents?: number;
         text: string;
         value: number;
     }
@@ -149,7 +150,49 @@ export namespace order {
         export type GenericProductTypeEnum = "cloud_service" | "delivery" | "deposit" | "domain" | "implementation_services" | "saas_license" | "shipping" | "storage"
     }
 }
+export namespace service {
+    /**
+     * Map a possible renew for a specific service
+     * interface fullName: service.RenewType.RenewType
+     */
+    export interface RenewType {
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
+        manualPayment?: boolean;
+        period?: number;
+    }
+    /**
+     * Detailed renewal type of a service
+     * type fullname: service.RenewalTypeEnum
+     */
+    export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
+    /**
+     * service.StateEnum
+     * type fullname: service.StateEnum
+     */
+    export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
+}
 export namespace services {
+    /**
+     * Details about a Service
+     * interface fullName: services.Service.Service
+     */
+    export interface Service {
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
+        engagedUpTo?: string;
+        expiration: string;
+        possibleRenewPeriod?: number[];
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
+        serviceId: number;
+        status: service.StateEnum;
+    }
     export namespace billing {
         /**
          * Description of an invoice
@@ -342,7 +385,7 @@ export namespace services {
     }
     export namespace expanded {
         /**
-         * Billing informations of the service
+         * Billing information of the service
          * interface fullName: services.expanded.Billing.Billing
          */
         export interface Billing {
@@ -357,7 +400,7 @@ export namespace services {
             renew?: services.expanded.Renew;
         }
         /**
-         * Customer service relative informations
+         * Customer service relative information
          * interface fullName: services.expanded.Customer.Customer
          */
         export interface Customer {
@@ -365,7 +408,7 @@ export namespace services {
         }
         export namespace Customer {
             /**
-             * Customer contact service relative informations
+             * Customer contact service relative information
              * interface fullName: services.expanded.Customer.Contact.Contact
              */
             export interface Contact {
@@ -457,7 +500,7 @@ export namespace services {
             name: string;
         }
         /**
-         * Service renew informations
+         * Service renew information
          * interface fullName: services.expanded.Renew.Renew
          */
         export interface Renew {
@@ -953,7 +996,7 @@ export interface Services {
      * List available services
      * GET /services
      */
-    $get(params?: { orderBy?: string, routes?: string, sort?: string }): Promise<number[]>;
+    $get(params?: { orderBy?: string, resourceName?: string, routes?: string, sort?: string }): Promise<number[]>;
     /**
      * Controle cache
      */
@@ -1149,7 +1192,7 @@ export interface Services {
                 }
                 simulate: {
                     /**
-                     * Simulate the migration to a standalone offer. It won't generate any Order or issue any changes to your Service
+                     * Simulate the migration to a standalone offer
                      * POST /services/{serviceId}/detach/{planCode}/simulate
                      */
                     $post(params: { addons?: services.operation.AddonDetachExecutionRequest[], autoPayWithPreferredPaymentMethod?: boolean, duration: string, pricingMode: string, quantity: number }): Promise<services.operation.Order>;
@@ -1261,7 +1304,7 @@ export interface Services {
                 }
                 simulate: {
                     /**
-                     * Simulate the conversion to another offer. It won't generate any Order or issue any changes to your Service
+                     * Simulate the conversion to another offer
                      * POST /services/{serviceId}/upgrade/{planCode}/simulate
                      */
                     $post(params: { autoPayWithPreferredPaymentMethod?: boolean, duration: string, pricingMode: string, quantity: number }): Promise<services.operation.Order>;

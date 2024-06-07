@@ -59,7 +59,7 @@ export namespace services {
 }
 export namespace veeamCloudConnect {
     /**
-     * Veeam Cloud Connect account
+     * Veeam Cloud Connect
      * interface fullName: veeamCloudConnect.Account.Account
      */
     export interface Account {
@@ -69,7 +69,7 @@ export namespace veeamCloudConnect {
         vmCount?: number;
     }
     /**
-     * Veeam Backup Repository
+     * Veeam backup repository
      * interface fullName: veeamCloudConnect.BackupRepository.BackupRepository
      */
     export interface BackupRepository {
@@ -96,7 +96,7 @@ export namespace veeamCloudConnect {
      */
     export type Offer = "advanced" | "demo" | "starter"
     /**
-     * Operation with the Cloud Tenant Account
+     * Operation
      * interface fullName: veeamCloudConnect.Task.Task
      */
     export interface Task {
@@ -140,7 +140,7 @@ export default proxyVeeamCloudConnect;
  */
 export interface VeeamCloudConnect {
     /**
-     * List available services
+     * List Veeam Cloud Connect services
      * GET /veeamCloudConnect
      */
     $get(): Promise<string[]>;
@@ -150,7 +150,7 @@ export interface VeeamCloudConnect {
     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
     $(serviceName: string): {
         /**
-         * Get this object properties
+         * Get Veeam Cloud Connect
          * GET /veeamCloudConnect/{serviceName}
          */
         $get(): Promise<veeamCloudConnect.Account>;
@@ -160,12 +160,12 @@ export interface VeeamCloudConnect {
         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         backupRepository: {
             /**
-             * Veeam Backup Repository linked to this Veeam Cloud Connect account
+             * List Veeam backup repositories
              * GET /veeamCloudConnect/{serviceName}/backupRepository
              */
             $get(): Promise<string[]>;
             /**
-             * Add a new Backup Repository to your professional account
+             * Create backup repository
              * POST /veeamCloudConnect/{serviceName}/backupRepository
              */
             $post(): Promise<veeamCloudConnect.Task[]>;
@@ -175,12 +175,12 @@ export interface VeeamCloudConnect {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(inventoryName: string): {
                 /**
-                 * Delete this backup Repository. 
+                 * Delete backup repository
                  * DELETE /veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}
                  */
                 $delete(): Promise<veeamCloudConnect.Task[]>;
                 /**
-                 * Get this object properties
+                 * Get Veeam backup repository
                  * GET /veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}
                  */
                 $get(): Promise<veeamCloudConnect.BackupRepository>;
@@ -190,7 +190,7 @@ export interface VeeamCloudConnect {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 upgradeQuota: {
                     /**
-                     * Change your quota
+                     * Change quota
                      * POST /veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}/upgradeQuota
                      */
                     $post(params: { newQuota: number }): Promise<veeamCloudConnect.Task[]>;
@@ -199,7 +199,7 @@ export interface VeeamCloudConnect {
         }
         capabilities: {
             /**
-             * Show capabilities of your current offer
+             * Get capabilities
              * GET /veeamCloudConnect/{serviceName}/capabilities
              */
             $get(): Promise<veeamCloudConnect.offerCapabilities>;
@@ -210,7 +210,7 @@ export interface VeeamCloudConnect {
         }
         orderableUpgrade: {
             /**
-             * List the possible upgrades on your Veeam Cloud Connect account
+             * Get available offer upgrades
              * GET /veeamCloudConnect/{serviceName}/orderableUpgrade
              */
             $get(): Promise<veeamCloudConnect.Offer[]>;
@@ -221,19 +221,19 @@ export interface VeeamCloudConnect {
         }
         resetPassword: {
             /**
-             * Reset your Cloud Tenant Password
+             * Reset password
              * POST /veeamCloudConnect/{serviceName}/resetPassword
              */
             $post(): Promise<veeamCloudConnect.Task>;
         }
         serviceInfos: {
             /**
-             * Get this object properties
+             * Get service information
              * GET /veeamCloudConnect/{serviceName}/serviceInfos
              */
             $get(): Promise<services.Service>;
             /**
-             * Alter this object properties
+             * Update service information
              * PUT /veeamCloudConnect/{serviceName}/serviceInfos
              */
             $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
@@ -244,7 +244,7 @@ export interface VeeamCloudConnect {
         }
         task: {
             /**
-             * Tasks associated with Cloud Tenant
+             * List operations
              * GET /veeamCloudConnect/{serviceName}/task
              */
             $get(params?: { name?: string, state?: veeamCloudConnect.TaskStateEnum }): Promise<number[]>;
@@ -254,7 +254,7 @@ export interface VeeamCloudConnect {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(taskId: number): {
                 /**
-                 * Get this object properties
+                 * Get operation
                  * GET /veeamCloudConnect/{serviceName}/task/{taskId}
                  */
                 $get(): Promise<veeamCloudConnect.Task>;

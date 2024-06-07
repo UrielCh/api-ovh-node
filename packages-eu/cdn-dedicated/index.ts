@@ -21,6 +21,22 @@ export namespace cdnanycast {
         service: string;
     }
     /**
+     * Anycast IP of a CDN customer
+     * interface fullName: cdnanycast.AnycastWithIAM.AnycastWithIAM
+     */
+    export interface AnycastWithIAM {
+        anycast: string;
+        backendLimit: number;
+        backendUse: number;
+        cacheRuleLimitPerDomain: number;
+        iam?: iam.ResourceMetadata;
+        lastQuotaOrder?: string;
+        logUrl: string;
+        offer?: string;
+        quota: number;
+        service: string;
+    }
+    /**
      * Backend for a domain
      * interface fullName: cdnanycast.Backend.Backend
      */
@@ -160,6 +176,35 @@ export namespace cdnanycast {
      */
     export type TaskStateEnum = "cancelled" | "doing" | "done" | "error" | "todo"
 }
+export namespace iam {
+    /**
+     * IAM resource metadata embedded in services models
+     * interface fullName: iam.ResourceMetadata.ResourceMetadata
+     */
+    export interface ResourceMetadata {
+        displayName?: string;
+        id: string;
+        tags?: { [key: string]: string };
+        urn: string;
+    }
+    export namespace resource {
+        /**
+         * Resource tag filter
+         * interface fullName: iam.resource.TagFilter.TagFilter
+         */
+        export interface TagFilter {
+            operator?: iam.resource.TagFilter.OperatorEnum;
+            value: string;
+        }
+        export namespace TagFilter {
+            /**
+             * Operator that can be used in order to filter resources tags
+             * type fullname: iam.resource.TagFilter.OperatorEnum
+             */
+            export type OperatorEnum = "EQ"
+        }
+    }
+}
 export namespace service {
     /**
      * Map a possible renew for a specific service
@@ -220,7 +265,7 @@ export interface Cdn {
          * List available services
          * GET /cdn/dedicated
          */
-        $get(): Promise<string[]>;
+        $get(params?: { iamTags?: any }): Promise<string[]>;
         /**
          * Controle cache
          */
@@ -466,12 +511,12 @@ export interface Cdn {
             }
             serviceInfos: {
                 /**
-                 * Get this object properties
+                 * Get service information
                  * GET /cdn/dedicated/{serviceName}/serviceInfos
                  */
                 $get(): Promise<services.Service>;
                 /**
-                 * Alter this object properties
+                 * Update service information
                  * PUT /cdn/dedicated/{serviceName}/serviceInfos
                  */
                 $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;

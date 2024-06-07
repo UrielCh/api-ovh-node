@@ -36,6 +36,11 @@ export namespace nichandle {
 }
 export namespace order {
     /**
+     * Application context of a promotion
+     * type fullname: order.ContextTypeEnum
+     */
+    export type ContextTypeEnum = "discover" | "standard" | "welcome"
+    /**
      * A contract
      * interface fullName: order.Contract.Contract
      */
@@ -98,6 +103,7 @@ export namespace order {
      */
     export interface Price {
         currencyCode: order.CurrencyCodeEnum;
+        priceInUcents?: number;
         text: string;
         value: number;
     }
@@ -136,6 +142,14 @@ export namespace order {
             readOnly: boolean;
         }
         /**
+         * Missing description
+         * interface fullName: order.cart.Checkout.Checkout
+         */
+        export interface Checkout {
+            autoPayWithPreferredPaymentMethod: boolean;
+            waiveRetractationPeriod: boolean;
+        }
+        /**
          * Representation of a configuration item for personalizing product
          * interface fullName: order.cart.ConfigurationItem.ConfigurationItem
          */
@@ -155,6 +169,22 @@ export namespace order {
             type: string;
         }
         /**
+         * Missing description
+         * interface fullName: order.cart.CouponCreation.CouponCreation
+         */
+        export interface CouponCreation {
+            coupon: string;
+        }
+        /**
+         * Missing description
+         * interface fullName: order.cart.Creation.Creation
+         */
+        export interface Creation {
+            description: string;
+            expire: string;
+            ovhSubsidiary: nichandle.OvhSubsidiaryEnum;
+        }
+        /**
          * Representation of domain name order properties
          * interface fullName: order.cart.DomainSettings.DomainSettings
          */
@@ -162,10 +192,21 @@ export namespace order {
             domain: string;
         }
         /**
-         * Unit that correspond to a duration range
+         * Unit corresponding to a duration range
          * type fullname: order.cart.DurationUnitEnum
          */
-        export type DurationUnitEnum = "month" | "day" | "none"
+        export type DurationUnitEnum = "day" | "hour" | "month" | "none"
+        /**
+         * Missing description
+         * interface fullName: order.cart.GenericOptionCreation.GenericOptionCreation
+         */
+        export interface GenericOptionCreation {
+            duration: string;
+            itemId: number;
+            planCode: string;
+            pricingMode: string;
+            quantity: number;
+        }
         /**
          * Representation of a generic product option
          * interface fullName: order.cart.GenericOptionDefinition.GenericOptionDefinition
@@ -178,6 +219,16 @@ export namespace order {
             prices: order.cart.GenericProductPricing[];
             productName: string;
             productType: order.cart.GenericProductTypeEnum;
+        }
+        /**
+         * Missing description
+         * interface fullName: order.cart.GenericProductCreation.GenericProductCreation
+         */
+        export interface GenericProductCreation {
+            duration: string;
+            planCode: string;
+            pricingMode: string;
+            quantity: number;
         }
         /**
          * Representation of a generic product
@@ -216,7 +267,7 @@ export namespace order {
          * Strategy of a Pricing
          * type fullname: order.cart.GenericProductPricingStrategyEnum
          */
-        export type GenericProductPricingStrategyEnum = "stairstep" | "volume" | "tiered"
+        export type GenericProductPricingStrategyEnum = "stairstep" | "tiered" | "volume"
         /**
          * Type of a pricing
          * type fullname: order.cart.GenericProductPricingTypeEnum
@@ -236,26 +287,73 @@ export namespace order {
             configurations?: number[];
             duration?: string;
             itemId: number;
-            offerId: string;
+            offerId?: string;
             options: number[];
             parentItemId?: number;
             prices: order.cart.Price[];
             productId: string;
-            settings: order.cart.DomainSettings;
+            settings: order.cart.ItemSettings;
         }
         /**
-         * Price informations with label
+         * Missing description
+         * interface fullName: order.cart.ItemConfigurationCreation.ItemConfigurationCreation
+         */
+        export interface ItemConfigurationCreation {
+            label: string;
+            value: string;
+        }
+        /**
+         * Order item settings
+         * interface fullName: order.cart.ItemSettings.ItemSettings
+         */
+        export interface ItemSettings {
+            planCode?: string;
+            pricingMode?: string;
+            quantity?: number;
+        }
+        /**
+         * Missing description
+         * interface fullName: order.cart.ItemUpdate.ItemUpdate
+         */
+        export interface ItemUpdate {
+            duration: string;
+            quantity: number;
+        }
+        /**
+         * Price information with label
          * interface fullName: order.cart.Price.Price
          */
         export interface Price {
             label: order.cart.PriceLabelEnum;
             price: order.Price;
+            promotions?: order.cart.Promotion[];
         }
         /**
          * Label corresponding to different type of price
          * type fullname: order.cart.PriceLabelEnum
          */
-        export type PriceLabelEnum = "PRICE" | "DISCOUNT" | "FEE" | "TOTAL" | "RENEW"
+        export type PriceLabelEnum = "DISCOUNT" | "FEE" | "PRICE" | "RENEW" | "TOTAL"
+        /**
+         * Describes a promotion of a product
+         * interface fullName: order.cart.Promotion.Promotion
+         */
+        export interface Promotion {
+            bundleWithPlanCodes: string[];
+            endDate?: string;
+            name: string;
+            price: order.Price;
+            startDate: string;
+            tags?: string[];
+            type: string;
+        }
+        /**
+         * Missing description
+         * interface fullName: order.cart.Update.Update
+         */
+        export interface Update {
+            description: string;
+            expire: string;
+        }
     }
     export namespace catalog {
         /**
@@ -286,7 +384,7 @@ export namespace order {
         export interface Catalog {
             catalogId: number;
             merchantCode: string;
-            plansFamily: order.catalog.PlansItem[];
+            plans?: order.catalog.ProductPlan[];
         }
         /**
          * Composition of a configuration
@@ -374,7 +472,7 @@ export namespace order {
         }
         export namespace cloud {
             /**
-             * Describe extra informations of product offer
+             * Describe extra information of product offer
              * interface fullName: order.catalog.cloud.Blob.Blob
              */
             export interface Blob {
@@ -410,13 +508,267 @@ export namespace order {
                 }
             }
         }
+        export namespace dedicated {
+            /**
+             * Describes a dedicated Catalog
+             * interface fullName: order.catalog.dedicated.Catalog.Catalog
+             */
+            export interface Catalog {
+                families: order.catalog.dedicated.Family[];
+                metadatas: order.catalog.dedicated.Metadata;
+                products: order.catalog.dedicated.Product[];
+                techDetails: order.catalog.dedicated.TechDetails[];
+            }
+            /**
+             * Describes a Family
+             * interface fullName: order.catalog.dedicated.Family.Family
+             */
+            export interface Family {
+                name: string;
+                products: string[];
+            }
+            /**
+             * Describes a Metadata
+             * interface fullName: order.catalog.dedicated.Metadata.Metadata
+             */
+            export interface Metadata {
+                catalog: number;
+                core: order.catalog.dedicated.Metadata.Capacities;
+                currency: order.catalog.dedicated.Metadata.Currency;
+                datacenters: string[];
+                frequency: order.catalog.dedicated.Metadata.Frequency;
+                merchant: nichandle.OvhSubsidiaryEnum;
+                price: order.catalog.dedicated.Metadata.Price;
+                ram: order.catalog.dedicated.Metadata.Capacities;
+                thread: order.catalog.dedicated.Metadata.Capacities;
+                timestamp: number;
+            }
+            export namespace Metadata {
+                /**
+                 * Describes a Capacity
+                 * interface fullName: order.catalog.dedicated.Metadata.Capacities.Capacities
+                 */
+                export interface Capacities {
+                    max: number;
+                    min: number;
+                }
+                /**
+                 * Describes a Currency
+                 * interface fullName: order.catalog.dedicated.Metadata.Currency.Currency
+                 */
+                export interface Currency {
+                    code: order.CurrencyCodeEnum;
+                    description: string;
+                    symbol: string;
+                }
+                /**
+                 * Describes a Frequency
+                 * interface fullName: order.catalog.dedicated.Metadata.Frequency.Frequency
+                 */
+                export interface Frequency {
+                    max: number;
+                    min: number;
+                }
+                /**
+                 * Describes a Price
+                 * interface fullName: order.catalog.dedicated.Metadata.Price.Price
+                 */
+                export interface Price {
+                    max: number;
+                    min: number;
+                }
+            }
+            /**
+             * Describes a product
+             * interface fullName: order.catalog.dedicated.Product.Product
+             */
+            export interface Product {
+                addonsFamily: order.catalog.dedicated.Product.AddonFamily[];
+                code: string;
+                compatibilities?: order.catalog.dedicated.Product.Compatibility[];
+                datacenters: string[];
+                derivatives?: order.catalog.dedicated.Product.AddonItem[];
+                family: string;
+                invoiceName: string;
+                isChildOf?: string;
+                isParentOf?: string[];
+                prices: order.catalog.dedicated.Product.Price;
+                specifications: order.catalog.dedicated.Product.Specification;
+            }
+            export namespace Product {
+                /**
+                 * Describes an addon family
+                 * interface fullName: order.catalog.dedicated.Product.AddonFamily.AddonFamily
+                 */
+                export interface AddonFamily {
+                    addons: order.catalog.dedicated.Product.AddonItem[];
+                    family: string;
+                }
+                /**
+                 * Describes an addon
+                 * interface fullName: order.catalog.dedicated.Product.AddonItem.AddonItem
+                 */
+                export interface AddonItem {
+                    code: string;
+                    datacenters?: string[];
+                    name: string;
+                    options?: string;
+                    price: order.Price;
+                }
+                /**
+                 * Describes a Compatibility
+                 * interface fullName: order.catalog.dedicated.Product.Compatibility.Compatibility
+                 */
+                export interface Compatibility {
+                    plan: string;
+                    restrictions?: order.catalog.dedicated.Product.Compatibility.Restriction[];
+                    specificities?: order.catalog.dedicated.TechDetails.Plan.Specificity[];
+                }
+                export namespace Compatibility {
+                    /**
+                     * Describes a Restriction
+                     * interface fullName: order.catalog.dedicated.Product.Compatibility.Restriction.Restriction
+                     */
+                    export interface Restriction {
+                        name: string;
+                        sections: order.catalog.dedicated.Product.Compatibility.Restriction.Section[];
+                    }
+                    export namespace Restriction {
+                        /**
+                         * Describes a Section
+                         * interface fullName: order.catalog.dedicated.Product.Compatibility.Restriction.Section.Section
+                         */
+                        export interface Section {
+                            comment: string;
+                            plans: string[];
+                            type: string;
+                        }
+                    }
+                }
+                /**
+                 * Describes a Prices
+                 * interface fullName: order.catalog.dedicated.Product.Price.Price
+                 */
+                export interface Price {
+                    default: order.catalog.dedicated.Product.Price.Default;
+                    hardzone?: string;
+                    week?: string;
+                }
+                export namespace Price {
+                    /**
+                     * Describes a Default price
+                     * interface fullName: order.catalog.dedicated.Product.Price.Default.Default
+                     */
+                    export interface Default {
+                        installation?: order.Price;
+                        renew?: order.Price;
+                    }
+                }
+                /**
+                 * Describes a Specification for a product
+                 * interface fullName: order.catalog.dedicated.Product.Specification.Specification
+                 */
+                export interface Specification {
+                    cpu?: order.catalog.dedicated.Product.Specification.CPU;
+                    disks?: order.catalog.dedicated.Product.Specification.Disk[];
+                    gpu?: order.catalog.dedicated.Product.Specification.GPU;
+                    memory?: order.catalog.dedicated.Product.Specification.Memory;
+                    network: order.catalog.dedicated.Product.Specification.Network;
+                }
+                export namespace Specification {
+                    /**
+                     * Describes a CPU
+                     * interface fullName: order.catalog.dedicated.Product.Specification.CPU.CPU
+                     */
+                    export interface CPU {
+                        boost?: number;
+                        brand?: string;
+                        cores?: number;
+                        frequency?: number;
+                        model?: string;
+                        planCode?: string;
+                        threads?: number;
+                    }
+                    /**
+                     * Describes a Disk
+                     * interface fullName: order.catalog.dedicated.Product.Specification.Disk.Disk
+                     */
+                    export interface Disk {
+                        number: number;
+                        planCode?: string;
+                        raid: string;
+                        size: number;
+                        type: string;
+                    }
+                    /**
+                     * Describes a GPU
+                     * interface fullName: order.catalog.dedicated.Product.Specification.GPU.GPU
+                     */
+                    export interface GPU {
+                        model?: string;
+                        number?: number;
+                        planCode?: string;
+                    }
+                    /**
+                     * Describes a Memory
+                     * interface fullName: order.catalog.dedicated.Product.Specification.Memory.Memory
+                     */
+                    export interface Memory {
+                        planCode?: string;
+                        size?: number;
+                        type?: string;
+                    }
+                    /**
+                     * Describes a Network
+                     * interface fullName: order.catalog.dedicated.Product.Specification.Network.Network
+                     */
+                    export interface Network {
+                        failover: number;
+                        internal: number;
+                        ip: number;
+                        outgoing: number;
+                        private: number;
+                        privateBandwidth: number;
+                    }
+                }
+            }
+            /**
+             * Describes technical details
+             * interface fullName: order.catalog.dedicated.TechDetails.TechDetails
+             */
+            export interface TechDetails {
+                plans: order.catalog.dedicated.TechDetails.Plan[];
+                type: string;
+            }
+            export namespace TechDetails {
+                /**
+                 * Describes a Plan
+                 * interface fullName: order.catalog.dedicated.TechDetails.Plan.Plan
+                 */
+                export interface Plan {
+                    code: string;
+                    specificities: order.catalog.dedicated.TechDetails.Plan.Specificity[];
+                }
+                export namespace Plan {
+                    /**
+                     * Describes a Specificity for a plan
+                     * interface fullName: order.catalog.dedicated.TechDetails.Plan.Specificity.Specificity
+                     */
+                    export interface Specificity {
+                        key: string;
+                        value: number;
+                    }
+                }
+            }
+        }
         export namespace pcc {
             /**
              * Describe a Dedicated Cloud commercial catalog
              * interface fullName: order.catalog.pcc.Catalog.Catalog
              */
             export interface Catalog {
-                catalogId: number;
+                active: boolean;
+                catalogId: string;
                 catalogName: string;
                 commercialRanges: order.catalog.pcc.CommercialRange[];
                 merchantCode: string;
@@ -437,7 +789,7 @@ export namespace order {
              */
             export interface Datacenter {
                 cityCode: string;
-                cityName: string;
+                cityName?: string;
                 countryCode: nichandle.CountryEnum;
                 defaultHypervisor: string;
                 hypervisors: order.catalog.pcc.Hypervisor[];
@@ -460,7 +812,7 @@ export namespace order {
                 onUpgradeOrder: boolean;
                 planCode: string;
                 specifications: order.catalog.pcc.HostSpecifications;
-                storagesPack: string[];
+                storagesPack?: string[];
             }
             /**
              * Describes a Dedicated Cloud Host CPU
@@ -497,6 +849,15 @@ export namespace order {
                 cpu: order.catalog.pcc.HostCpuSpecifications;
                 memory: order.catalog.pcc.HostMemorySpecifications;
                 network: order.catalog.pcc.HostNetworkSpecifications[];
+                storage: order.catalog.pcc.HostStorageSpecifications;
+            }
+            /**
+             * Describes a Dedicated Cloud Host Storage
+             * interface fullName: order.catalog.pcc.HostStorageSpecifications.HostStorageSpecifications
+             */
+            export interface HostStorageSpecifications {
+                size: order.catalog.pcc.PccUnitAndValue;
+                type: string;
             }
             /**
              * Describes a Dedicated Cloud Hypervisor
@@ -522,16 +883,27 @@ export namespace order {
                 onInitialOrder: boolean;
                 onUpgradeOrder: boolean;
                 planCode: string;
+                showInOrderFunnel?: boolean;
                 type: string;
+            }
+            /**
+             * Describes unit and value for a Private Cloud
+             * interface fullName: order.catalog.pcc.PccUnitAndValue.PccUnitAndValue
+             */
+            export interface PccUnitAndValue {
+                unit: string;
+                value: number;
             }
             /**
              * Describes a Dedicated Cloud Service Pack
              * interface fullName: order.catalog.pcc.ServicePack.ServicePack
              */
             export interface ServicePack {
+                disabledElementForOrderType?: string[];
                 name: string;
                 options: order.catalog.pcc.ServicePackOption[];
                 planCode: string;
+                showInOrderFunnel?: boolean;
                 upgradableTo: string[];
             }
             /**
@@ -567,6 +939,7 @@ export namespace order {
              * interface fullName: order.catalog.pcc.managementFees.managementFees
              */
             export interface managementFees {
+                disabledElementForOrderType?: string[];
                 planCode: string;
                 upgradableTo: string[];
             }
@@ -577,17 +950,17 @@ export namespace order {
              * interface fullName: order.catalog.publik.AddonFamily.AddonFamily
              */
             export interface AddonFamily {
-                addons: string[];
+                addons?: string[];
                 default?: string;
-                exclusive: boolean;
-                mandatory: boolean;
+                exclusive?: boolean;
+                mandatory?: boolean;
                 name: string;
             }
             /**
              * Enum values for Billing Strategy
              * type fullname: order.catalog.publik.BillingStrategyEnum
              */
-            export type BillingStrategyEnum = "max" | "sum" | "max_retain" | "diff" | "ping" | "custom"
+            export type BillingStrategyEnum = "custom" | "diff" | "max" | "max_retain" | "ping" | "sum"
             /**
              * Describes a Catalog inside a Subsidiary
              * interface fullName: order.catalog.publik.Catalog.Catalog
@@ -608,7 +981,7 @@ export namespace order {
                 isCustom: boolean;
                 isMandatory: boolean;
                 name: string;
-                values: string[];
+                values?: string[];
             }
             /**
              * Describes consumption configuration for a Plan
@@ -636,7 +1009,8 @@ export namespace order {
              * interface fullName: order.catalog.publik.DedicatedServerProduct.DedicatedServerProduct
              */
             export interface DedicatedServerProduct {
-                blobs?: order.catalog.publik.DedicatedServerProductBlob;
+                blobs?: order.catalog.publik.ProductBlob;
+                configurations: order.catalog.publik.Configuration[];
                 description: string;
                 name: string;
             }
@@ -750,7 +1124,7 @@ export namespace order {
                  * Strategy applicable at the end of the Engagement
                  * type fullname: order.catalog.publik.EngagementConfiguration.EndStrategyEnum
                  */
-                export type EndStrategyEnum = "STOP_ENGAGEMENT_FALLBACK_DEFAULT_PRICE" | "REACTIVATE_ENGAGEMENT" | "CANCEL_SERVICE" | "STOP_ENGAGEMENT_KEEP_PRICE"
+                export type EndStrategyEnum = "CANCEL_SERVICE" | "REACTIVATE_ENGAGEMENT" | "STOP_ENGAGEMENT_FALLBACK_DEFAULT_PRICE" | "STOP_ENGAGEMENT_KEEP_PRICE"
                 /**
                  * Engagement's type, either fully pre-paid (upfront) or periodically paid up to engagement duration (periodic)
                  * type fullname: order.catalog.publik.EngagementConfiguration.TypeEnum
@@ -770,13 +1144,14 @@ export namespace order {
              * Enum values for Ping End Policy
              * type fullname: order.catalog.publik.PingEndPolicyEnum
              */
-            export type PingEndPolicyEnum = "prorata" | "full"
+            export type PingEndPolicyEnum = "full" | "prorata"
             /**
              * Describes a Commercial offer inside a Catalog
              * interface fullName: order.catalog.publik.Plan.Plan
              */
             export interface Plan {
                 addonFamilies: order.catalog.publik.AddonFamily[];
+                blobs?: order.catalog.publik.ProductBlob;
                 configurations: order.catalog.publik.Configuration[];
                 consumptionConfiguration?: order.catalog.publik.ConsumptionConfiguration;
                 family?: string;
@@ -808,6 +1183,7 @@ export namespace order {
                 mustBeCompleted: boolean;
                 phase: number;
                 price: number;
+                promotions?: order.catalog.publik.Promotion[];
                 quantity: order.catalog.publik.PricingMinMax;
                 repeat: order.catalog.publik.PricingMinMax;
                 strategy: order.cart.GenericProductPricingStrategyEnum;
@@ -827,6 +1203,8 @@ export namespace order {
              * interface fullName: order.catalog.publik.Product.Product
              */
             export interface Product {
+                blobs?: order.catalog.publik.ProductBlob;
+                configurations?: order.catalog.publik.Configuration[];
                 description: string;
                 name: string;
             }
@@ -953,6 +1331,7 @@ export namespace order {
                 nodes?: order.catalog.publik.ProductBlobTechnicalNodes;
                 nvme?: order.catalog.publik.ProductBlobTechnicalNvme;
                 os?: order.catalog.publik.ProductBlobTechnicalOS;
+                provider?: order.catalog.publik.ProductBlobTechnicalProvider;
                 requestPerSeconds?: order.catalog.publik.ProductBlobTechnicalPerSeconds;
                 server?: order.catalog.publik.ProductBlobTechnicalServer;
                 storage?: order.catalog.publik.ProductBlobTechnicalStorage;
@@ -971,10 +1350,12 @@ export namespace order {
                 cores?: number;
                 customizable?: boolean;
                 frequency?: number;
+                maxFrequency?: number;
                 model?: string;
                 number?: number;
                 score?: number;
                 threads?: number;
+                type?: string;
             }
             /**
              * Describes a Datacenter for a technical Blob
@@ -995,6 +1376,7 @@ export namespace order {
                 capacity: number;
                 interface?: string;
                 iops?: number;
+                maximumCapacity: number;
                 number?: number;
                 sizeUnit?: string;
                 specs?: string;
@@ -1079,8 +1461,11 @@ export namespace order {
                 isMax?: boolean;
                 level?: number;
                 limit?: number;
+                max: number;
+                maxUnit: string;
                 shared?: boolean;
                 traffic?: number;
+                unit: string;
                 unlimited?: boolean;
             }
             /**
@@ -1116,6 +1501,14 @@ export namespace order {
                 unit?: string;
             }
             /**
+             * Describes a provider for a technical blob
+             * interface fullName: order.catalog.publik.ProductBlobTechnicalProvider.ProductBlobTechnicalProvider
+             */
+            export interface ProductBlobTechnicalProvider {
+                pointsOfPresence: number;
+                reference?: boolean;
+            }
+            /**
              * Describes a Raid for a technical blob
              * interface fullName: order.catalog.publik.ProductBlobTechnicalRaid.ProductBlobTechnicalRaid
              */
@@ -1125,7 +1518,7 @@ export namespace order {
                 type: string;
             }
             /**
-             * Describes some technicals informations for a technical blob
+             * Describes some technicals information for a technical blob
              * interface fullName: order.catalog.publik.ProductBlobTechnicalServer.ProductBlobTechnicalServer
              */
             export interface ProductBlobTechnicalServer {
@@ -1136,12 +1529,12 @@ export namespace order {
                 services: order.catalog.publik.ProductBlobTechnicalServices;
             }
             /**
-             * Describes some technicals informations
+             * Describes some technicals information
              * interface fullName: order.catalog.publik.ProductBlobTechnicalServices.ProductBlobTechnicalServices
              */
             export interface ProductBlobTechnicalServices {
                 antiddos: string;
-                includedBackup: number;
+                includedBackup?: number;
                 sla: number;
             }
             /**
@@ -1190,12 +1583,40 @@ export namespace order {
             export interface ProductBlobTechnicalVolumeIops {
                 guaranteed: boolean;
                 level: number;
+                max: number;
+                maxUnit: string;
+                unit: string;
+            }
+            /**
+             * Describes a Promotion inside a Catalog
+             * interface fullName: order.catalog.publik.Promotion.Promotion
+             */
+            export interface Promotion {
+                description: string;
+                discount: order.catalog.publik.PromotionDiscountTotal;
+                duration?: number;
+                endDate?: string;
+                isGlobalQuantityLimited: boolean;
+                name: string;
+                quantity?: number;
+                startDate: string;
+                total: order.catalog.publik.PromotionDiscountTotal;
+                type: order.ReductionTypeEnum;
+                value: number;
+            }
+            /**
+             * Describes a Promotion discount or total inside a Catalog
+             * interface fullName: order.catalog.publik.PromotionDiscountTotal.PromotionDiscountTotal
+             */
+            export interface PromotionDiscountTotal {
+                tax: number;
+                value: number;
             }
             /**
              * Enum values for Prorata Unit
              * type fullname: order.catalog.publik.ProrataUnitEnum
              */
-            export type ProrataUnitEnum = "hour" | "day"
+            export type ProrataUnitEnum = "day" | "hour" | "month"
         }
     }
     export namespace upgrade {
@@ -1221,7 +1642,7 @@ export namespace order {
          * Unit that represent the status of an operation
          * type fullname: order.upgrade.OperationStatusEnum
          */
-        export type OperationStatusEnum = "TODO" | "DOING" | "DONE" | "ERROR" | "DELAYED" | "CANCELLED" | "SCHEDULED"
+        export type OperationStatusEnum = "CANCELLED" | "DELAYED" | "DOING" | "DONE" | "ERROR" | "SCHEDULED" | "TODO"
         /**
          * Unit that represent the type of an operation
          * type fullname: order.upgrade.OperationTypeEnum
@@ -1293,7 +1714,7 @@ export interface Order {
             }
             baremetalServers: {
                 /**
-                 * Get informations about a baremetal server
+                 * Get information about a baremetal server
                  * GET /order/cart/{cartId}/baremetalServers
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -1308,7 +1729,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about baremetal server options
+                     * Get information about baremetal server options
                      * GET /order/cart/{cartId}/baremetalServers/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -1341,7 +1762,7 @@ export interface Order {
             }
             cephaas: {
                 /**
-                 * Get informations about Ceph as a Service offers
+                 * Get information about Ceph as a Service offers
                  * GET /order/cart/{cartId}/cephaas
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -1373,7 +1794,7 @@ export interface Order {
             }
             cloud: {
                 /**
-                 * Get informations about Public Cloud offers
+                 * Get information about Public Cloud offers
                  * GET /order/cart/{cartId}/cloud
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -1388,7 +1809,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about Public Cloud options
+                     * Get information about Public Cloud options
                      * GET /order/cart/{cartId}/cloud/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -1426,7 +1847,7 @@ export interface Order {
             }
             dedicated: {
                 /**
-                 * Get informations about a dedicated server
+                 * Get information about a dedicated server
                  * GET /order/cart/{cartId}/dedicated
                  */
                 $get(params?: { family?: string, planCode?: string }): Promise<order.cart.GenericProductDefinition[]>;
@@ -1441,7 +1862,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about dedicated server options
+                     * Get information about dedicated server options
                      * GET /order/cart/{cartId}/dedicated/options
                      */
                     $get(params: { family?: string, planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -1458,7 +1879,7 @@ export interface Order {
             }
             discover: {
                 /**
-                 * Get informations about Dedicated Discover server offers
+                 * Get information about Dedicated Discover server offers
                  * GET /order/cart/{cartId}/discover
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -1473,7 +1894,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about Dedicated Discover server options
+                     * Get information about Dedicated Discover server options
                      * GET /order/cart/{cartId}/discover/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -1490,10 +1911,10 @@ export interface Order {
             }
             eco: {
                 /**
-                 * Get informations about a eco
+                 * Get information about a eco
                  * GET /order/cart/{cartId}/eco
                  */
-                $get(params?: { family?: string, planCode?: string }): Promise<order.cart.GenericProductDefinition[]>;
+                $get(): Promise<order.cart.GenericProductDefinition[]>;
                 /**
                  * Post a new eco item in your cart
                  * POST /order/cart/{cartId}/eco
@@ -1505,12 +1926,12 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about eco options
+                     * Get information about the options of a Eco
                      * GET /order/cart/{cartId}/eco/options
                      */
-                    $get(params: { family?: string, planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
                     /**
-                     * Post a new eco option in your cart
+                     * Post a new Eco option in your cart
                      * POST /order/cart/{cartId}/eco/options
                      */
                     $post(params: { duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
@@ -1554,7 +1975,7 @@ export interface Order {
             }
             ipLoadbalancing: {
                 /**
-                 * Get informations about IP Load-Balancing offers
+                 * Get information about IP Load-Balancing offers
                  * GET /order/cart/{cartId}/ipLoadbalancing
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -1569,7 +1990,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about IP Load-Balancing options
+                     * Get information about IP Load-Balancing options
                      * GET /order/cart/{cartId}/ipLoadbalancing/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -1661,7 +2082,7 @@ export interface Order {
             }
             licenseCloudLinux: {
                 /**
-                 * Get informations about CloudLinux licenses offers
+                 * Get information about CloudLinux licenses offers
                  * GET /order/cart/{cartId}/licenseCloudLinux
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -1677,7 +2098,7 @@ export interface Order {
             }
             licenseDirectadmin: {
                 /**
-                 * Get informations about Directadmin licenses offers
+                 * Get information about Directadmin licenses offers
                  * GET /order/cart/{cartId}/licenseDirectadmin
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -1693,7 +2114,7 @@ export interface Order {
             }
             licensePlesk: {
                 /**
-                 * Get informations about Plesk licenses offers
+                 * Get information about Plesk licenses offers
                  * GET /order/cart/{cartId}/licensePlesk
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -1708,7 +2129,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about Plesk license options
+                     * Get information about Plesk license options
                      * GET /order/cart/{cartId}/licensePlesk/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -1725,7 +2146,7 @@ export interface Order {
             }
             licenseSqlServer: {
                 /**
-                 * Get informations about SqlServer licenses offers
+                 * Get information about SqlServer licenses offers
                  * GET /order/cart/{cartId}/licenseSqlServer
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -1741,7 +2162,7 @@ export interface Order {
             }
             licenseVirtuozzo: {
                 /**
-                 * Get informations about Virtuozzo licenses offers
+                 * Get information about Virtuozzo licenses offers
                  * GET /order/cart/{cartId}/licenseVirtuozzo
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -1756,12 +2177,12 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about Virtuozzo license options
+                     * Get information about Virtuozzo license options
                      * GET /order/cart/{cartId}/licenseVirtuozzo/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
                     /**
-                     * Post a new Virtuozzo license option in your cart
+                     * Add a new Virtuozzo license option in your cart
                      * POST /order/cart/{cartId}/licenseVirtuozzo/options
                      */
                     $post(params: { duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
@@ -1773,7 +2194,7 @@ export interface Order {
             }
             licenseWindows: {
                 /**
-                 * Get informations about Windows licenses offers
+                 * Get information about Windows licenses offers
                  * GET /order/cart/{cartId}/licenseWindows
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -1789,7 +2210,7 @@ export interface Order {
             }
             licenseWorklight: {
                 /**
-                 * Get informations about Worklight licenses offers
+                 * Get information about Worklight licenses offers
                  * GET /order/cart/{cartId}/licenseWorklight
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -1805,7 +2226,7 @@ export interface Order {
             }
             licensecPanel: {
                 /**
-                 * Get informations about cPanel licenses offers
+                 * Get information about cPanel licenses offers
                  * GET /order/cart/{cartId}/licensecPanel
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -1819,9 +2240,41 @@ export interface Order {
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
+            nutanix: {
+                /**
+                 * Get information about a Nutanix
+                 * GET /order/cart/{cartId}/nutanix
+                 */
+                $get(): Promise<order.cart.GenericProductDefinition[]>;
+                /**
+                 * Post a new Nutanix item in your cart
+                 * POST /order/cart/{cartId}/nutanix
+                 */
+                $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                options: {
+                    /**
+                     * Get information about the options of a Nutanix
+                     * GET /order/cart/{cartId}/nutanix/options
+                     */
+                    $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
+                    /**
+                     * Post a new Nutanix option in your cart
+                     * POST /order/cart/{cartId}/nutanix/options
+                     */
+                    $post(params: { duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+            }
             ovhCloudConnect: {
                 /**
-                 * Get informations about OVHcloud Connect offers
+                 * Get information about OVHcloud Connect offers
                  * GET /order/cart/{cartId}/ovhCloudConnect
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -1837,12 +2290,12 @@ export interface Order {
             }
             privateCloud: {
                 /**
-                 * Get informations about Hosted Dedicated Cloud offers
+                 * Get information about Hosted Private Cloud offers
                  * GET /order/cart/{cartId}/privateCloud
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 /**
-                 * Post a new Hosted Dedicated Cloud item in your cart
+                 * Post a new Hosted Private Cloud item in your cart
                  * POST /order/cart/{cartId}/privateCloud
                  */
                 $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
@@ -1852,12 +2305,12 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about Hosted Dedicated Cloud options
+                     * Get information about Hosted Private Cloud options
                      * GET /order/cart/{cartId}/privateCloud/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
                     /**
-                     * Post a new Hosted Dedicated Cloud option in your cart
+                     * Post a new Hosted Private Cloud option in your cart
                      * POST /order/cart/{cartId}/privateCloud/options
                      */
                     $post(params: { duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
@@ -1869,7 +2322,7 @@ export interface Order {
             }
             sslComodo: {
                 /**
-                 * Get informations about SSL Comodo offers
+                 * Get information about SSL Comodo offers
                  * GET /order/cart/{cartId}/sslComodo
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -1884,7 +2337,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about SSL Comodo options
+                     * Get information about SSL Comodo options
                      * GET /order/cart/{cartId}/sslComodo/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -1912,7 +2365,7 @@ export interface Order {
             }
             veeamEnterprise: {
                 /**
-                 * Get informations about Veeam Enterprise offers
+                 * Get information about Veeam Enterprise offers
                  * GET /order/cart/{cartId}/veeamEnterprise
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -1927,7 +2380,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about Veeam Enterprise options
+                     * Get information about Veeam Enterprise options
                      * GET /order/cart/{cartId}/veeamEnterprise/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -1944,7 +2397,7 @@ export interface Order {
             }
             veeamcc: {
                 /**
-                 * Get informations about Veeam Cloud Connect offers
+                 * Get information about Veeam Cloud Connect offers
                  * GET /order/cart/{cartId}/veeamcc
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -1959,7 +2412,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about Veeam Cloud Connect options
+                     * Get information about Veeam Cloud Connect options
                      * GET /order/cart/{cartId}/veeamcc/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -1976,7 +2429,7 @@ export interface Order {
             }
             vps: {
                 /**
-                 * Get informations about VPS offers
+                 * Get information about VPS offers
                  * GET /order/cart/{cartId}/vps
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -1991,7 +2444,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about VPS options
+                     * Get information about VPS options
                      * GET /order/cart/{cartId}/vps/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -2008,7 +2461,7 @@ export interface Order {
             }
             vrack: {
                 /**
-                 * Get informations about vRack offers
+                 * Get information about vRack offers
                  * GET /order/cart/{cartId}/vrack
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -2152,6 +2605,33 @@ export interface Order {
                 /**
                  * Post an additional Logs option in your cart
                  * POST /order/cartServiceOption/logs/{serviceName}
+                 */
+                $post(params: { cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            };
+        }
+        nutanix: {
+            /**
+             * List available services
+             * GET /order/cartServiceOption/nutanix
+             */
+            $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $(serviceName: string): {
+                /**
+                 * Get informations about additional Nutanix offer for your service
+                 * GET /order/cartServiceOption/nutanix/{serviceName}
+                 */
+                $get(): Promise<order.cart.GenericOptionDefinition[]>;
+                /**
+                 * Post an additional nutanix option in your cart
+                 * POST /order/cartServiceOption/nutanix/{serviceName}
                  */
                 $post(params: { cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
                 /**
@@ -2361,7 +2841,7 @@ export interface Order {
                  * Retrieve information of dedicated server catalog
                  * GET /order/catalog/formatted/dedicated
                  */
-                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.Catalog>;
+                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.dedicated.Catalog>;
                 /**
                  * Controle cache
                  */
@@ -2372,7 +2852,7 @@ export interface Order {
                  * Retrieve information of dedicated discover offer server catalog
                  * GET /order/catalog/formatted/discover
                  */
-                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.Catalog>;
+                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.dedicated.Catalog>;
                 /**
                  * Controle cache
                  */
@@ -2514,17 +2994,6 @@ export interface Order {
             }
         }
         public: {
-            anthos: {
-                /**
-                 * Retrieve Anthos catalog
-                 * GET /order/catalog/public/anthos
-                 */
-                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            }
             baremetalServers: {
                 /**
                  * Retrieve bare-metal servers catalog
@@ -2591,10 +3060,10 @@ export interface Order {
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
-            kms: {
+            licensecPanel: {
                 /**
-                 * Retrieve KMS catalog
-                 * GET /order/catalog/public/kms
+                 * Retrieve License cPanel catalog
+                 * GET /order/catalog/public/licensecPanel
                  */
                 $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
                 /**
@@ -2602,10 +3071,10 @@ export interface Order {
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
-            licensecPanel: {
+            logs: {
                 /**
-                 * Retrieve License cPanel catalog
-                 * GET /order/catalog/public/licensecPanel
+                 * Retrieve Logs catalog
+                 * GET /order/catalog/public/logs
                  */
                 $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
                 /**

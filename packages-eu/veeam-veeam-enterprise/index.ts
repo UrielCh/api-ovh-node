@@ -4,6 +4,35 @@ import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-
  * START API /veeam/veeamEnterprise Models
  * Source: https://eu.api.ovh.com/1.0/veeam/veeamEnterprise.json
  */
+export namespace iam {
+    /**
+     * IAM resource metadata embedded in services models
+     * interface fullName: iam.ResourceMetadata.ResourceMetadata
+     */
+    export interface ResourceMetadata {
+        displayName?: string;
+        id: string;
+        tags?: { [key: string]: string };
+        urn: string;
+    }
+    export namespace resource {
+        /**
+         * Resource tag filter
+         * interface fullName: iam.resource.TagFilter.TagFilter
+         */
+        export interface TagFilter {
+            operator?: iam.resource.TagFilter.OperatorEnum;
+            value: string;
+        }
+        export namespace TagFilter {
+            /**
+             * Operator that can be used in order to filter resources tags
+             * type fullname: iam.resource.TagFilter.OperatorEnum
+             */
+            export type OperatorEnum = "EQ"
+        }
+    }
+}
 export namespace service {
     /**
      * Map a possible renew for a specific service
@@ -60,13 +89,23 @@ export namespace services {
 export namespace veeam {
     export namespace veeamEnterprise {
         /**
-         * Veeeam Enterprise offer
+         * Veeam Enterprise Plus
          * interface fullName: veeam.veeamEnterprise.Account.Account
          */
         export interface Account {
             activationStatus: veeamEnterpriseActivationStatusEnum;
             ip?: string;
-            port?: number;
+            serviceName: string;
+            sourceIp: string;
+        }
+        /**
+         * Veeam Enterprise Plus
+         * interface fullName: veeam.veeamEnterprise.AccountWithIAM.AccountWithIAM
+         */
+        export interface AccountWithIAM {
+            activationStatus: veeamEnterpriseActivationStatusEnum;
+            iam?: iam.ResourceMetadata;
+            ip?: string;
             serviceName: string;
             sourceIp: string;
         }
@@ -110,17 +149,17 @@ export default proxyVeeamVeeamEnterprise;
 export interface Veeam {
     veeamEnterprise: {
         /**
-         * List available services
+         * List Veeam Enterprise Plus services
          * GET /veeam/veeamEnterprise
          */
-        $get(): Promise<string[]>;
+        $get(params?: { iamTags?: any }): Promise<string[]>;
         /**
          * Controle cache
          */
         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         $(serviceName: string): {
             /**
-             * Get this object properties
+             * Get Veeam Enterprise Plus
              * GET /veeam/veeamEnterprise/{serviceName}
              */
             $get(): Promise<veeam.veeamEnterprise.Account>;
@@ -130,26 +169,26 @@ export interface Veeam {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             confirmTermination: {
                 /**
-                 * Confirm termination of your service
+                 * Confirm service termination
                  * POST /veeam/veeamEnterprise/{serviceName}/confirmTermination
                  */
                 $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
             }
             register: {
                 /**
-                 * Register Veeam Backup Server to Veeam Enterprise
+                 * Register Veeam backup server
                  * POST /veeam/veeamEnterprise/{serviceName}/register
                  */
-                $post(params: { ip: string, password: string, port: number, username: string }): Promise<veeam.veeamEnterprise.Task[]>;
+                $post(params: { ip: string, password: string, username: string }): Promise<veeam.veeamEnterprise.Task[]>;
             }
             serviceInfos: {
                 /**
-                 * Get this object properties
+                 * Get service information
                  * GET /veeam/veeamEnterprise/{serviceName}/serviceInfos
                  */
                 $get(): Promise<services.Service>;
                 /**
-                 * Alter this object properties
+                 * Update service information
                  * PUT /veeam/veeamEnterprise/{serviceName}/serviceInfos
                  */
                 $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
@@ -160,7 +199,7 @@ export interface Veeam {
             }
             task: {
                 /**
-                 * Tasks associated with Veeam Enterprise
+                 * List operations
                  * GET /veeam/veeamEnterprise/{serviceName}/task
                  */
                 $get(params?: { name?: string, state?: veeamEnterpriseTaskStateEnum }): Promise<number[]>;
@@ -170,7 +209,7 @@ export interface Veeam {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(taskId: number): {
                     /**
-                     * Get this object properties
+                     * Get operation
                      * GET /veeam/veeamEnterprise/{serviceName}/task/{taskId}
                      */
                     $get(): Promise<veeam.veeamEnterprise.Task>;
@@ -182,17 +221,17 @@ export interface Veeam {
             }
             terminate: {
                 /**
-                 * Terminate your service
+                 * Ask for the termination of your service
                  * POST /veeam/veeamEnterprise/{serviceName}/terminate
                  */
                 $post(): Promise<string>;
             }
             update: {
                 /**
-                 * Update Veeam enterprise configuration
+                 * Update Veeam Enterprise Plus configuration
                  * POST /veeam/veeamEnterprise/{serviceName}/update
                  */
-                $post(params: { ip: string, password: string, port: number, username: string }): Promise<veeam.veeamEnterprise.Task[]>;
+                $post(params: { ip: string, password: string, username: string }): Promise<veeam.veeamEnterprise.Task[]>;
             }
         };
     }

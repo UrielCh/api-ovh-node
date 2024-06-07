@@ -112,6 +112,7 @@ export namespace email {
          */
         export interface Domain {
             cnameToCheck?: string;
+            dkimDiagnostics: email.exchange.DomainDkimDiagnostics;
             domainAliases: string[];
             domainValidated: boolean;
             expectedAutodiscoverSRV: string;
@@ -135,6 +136,20 @@ export namespace email {
             type: email.exchange.DomainTypeEnum;
         }
         /**
+         * DKIM diagnostics information for domain
+         * interface fullName: email.exchange.DomainDkimDiagnostics.DomainDkimDiagnostics
+         */
+        export interface DomainDkimDiagnostics {
+            errorCode?: number;
+            message?: string;
+            state: email.exchange.DomainDkimDiagnosticsStateEnum;
+        }
+        /**
+         * Domain DKIM state
+         * type fullname: email.exchange.DomainDkimDiagnosticsStateEnum
+         */
+        export type DomainDkimDiagnosticsStateEnum = "active" | "disabled" | "error" | "inProgress" | "toConfigure"
+        /**
          * Domain type
          * type fullname: email.exchange.DomainTypeEnum
          */
@@ -149,6 +164,34 @@ export namespace email {
             displayName?: string;
             domain: string;
             hostname?: string;
+            lastUpdateDate?: string;
+            lockoutDuration: number;
+            lockoutObservationWindow: number;
+            lockoutThreshold?: number;
+            maxPasswordAge?: number;
+            maxReceiveSize: number;
+            maxSendSize: number;
+            minPasswordAge?: number;
+            minPasswordLength?: number;
+            offer: email.exchange.ServiceOfferEnum;
+            passwordHistoryCount?: number;
+            spamAndVirusConfiguration: email.exchange.spamAndVirusConfiguration;
+            sslExpirationDate?: string;
+            state: email.exchange.ServiceStateEnum;
+            taskPendingId: number;
+            webUrl?: string;
+        }
+        /**
+         * Exchange service
+         * interface fullName: email.exchange.ExchangeServiceWithIAM.ExchangeServiceWithIAM
+         */
+        export interface ExchangeServiceWithIAM {
+            adfsChangePassword: boolean;
+            complexityEnabled: boolean;
+            displayName?: string;
+            domain: string;
+            hostname?: string;
+            iam?: iam.ResourceMetadata;
             lastUpdateDate?: string;
             lockoutDuration: number;
             lockoutObservationWindow: number;
@@ -801,6 +844,35 @@ export namespace email {
         }
     }
 }
+export namespace iam {
+    /**
+     * IAM resource metadata embedded in services models
+     * interface fullName: iam.ResourceMetadata.ResourceMetadata
+     */
+    export interface ResourceMetadata {
+        displayName?: string;
+        id: string;
+        tags?: { [key: string]: string };
+        urn: string;
+    }
+    export namespace resource {
+        /**
+         * Resource tag filter
+         * interface fullName: iam.resource.TagFilter.TagFilter
+         */
+        export interface TagFilter {
+            operator?: iam.resource.TagFilter.OperatorEnum;
+            value: string;
+        }
+        export namespace TagFilter {
+            /**
+             * Operator that can be used in order to filter resources tags
+             * type fullname: iam.resource.TagFilter.OperatorEnum
+             */
+            export type OperatorEnum = "EQ"
+        }
+    }
+}
 export namespace service {
     /**
      * Map a possible renew for a specific service
@@ -872,7 +944,7 @@ export interface Email {
                  * List available services
                  * GET /email/exchange/{organizationName}/service
                  */
-                $get(): Promise<string[]>;
+                $get(params?: { iamTags?: any }): Promise<string[]>;
                 /**
                  * Controle cache
                  */
@@ -1325,7 +1397,7 @@ export interface Email {
                             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             clearDevice: {
                                 /**
-                                 * Executes a factory reset on the device. THIS OPERATION CANNOT BE REVERSED, ALL DATA ON THE DEVICE WILL BE LOST.
+                                 * Executes a factory reset on the device
                                  * POST /email/exchange/{organizationName}/service/{exchangeService}/device/{identity}/clearDevice
                                  */
                                 $post(): Promise<email.exchange.Task>;
@@ -1342,7 +1414,7 @@ export interface Email {
                          * Create new domain in exchange services
                          * POST /email/exchange/{organizationName}/service/{exchangeService}/domain
                          */
-                        $post(params: { autoEnableDKIM?: boolean, configureAutodiscover?: boolean, configureDKIM?: boolean, configureMx?: boolean, main?: boolean, mxRelay?: string, name: string, organization2010?: string, sbrDefault?: string, sendConnectorIdDefault?: number, type: email.exchange.DomainTypeEnum }): Promise<email.exchange.Task>;
+                        $post(params: { autoEnableDKIM?: boolean, configureAutodiscover?: boolean, configureDKIM?: boolean, configureMx?: boolean, configureSPF?: boolean, main?: boolean, mxRelay?: string, name: string, organization2010?: string, sbrDefault?: string, sendConnectorIdDefault?: number, type: email.exchange.DomainTypeEnum }): Promise<email.exchange.Task>;
                         /**
                          * Controle cache
                          */
@@ -1362,7 +1434,7 @@ export interface Email {
                              * Alter this object properties
                              * PUT /email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}
                              */
-                            $put(params?: { cnameToCheck?: string, domainAliases?: string[], domainValidated?: boolean, expectedAutodiscoverSRV?: string, expectedMX?: string[], expectedSPF?: string, isAliasDomain?: boolean, main?: boolean, mxIsValid?: boolean, mxRecord?: string[], mxRelay?: string, name?: string, organization2010?: string, sbrDefault?: string, sendConnectorIdDefault?: number, spfIsValid?: boolean, spfRecord?: string[], srvIsValid?: boolean, srvRecord?: string[], state?: email.exchange.ObjectStateEnum, taskPendingId?: number, type?: email.exchange.DomainTypeEnum }): Promise<void>;
+                            $put(params?: { cnameToCheck?: string, dkimDiagnostics?: email.exchange.DomainDkimDiagnostics, domainAliases?: string[], domainValidated?: boolean, expectedAutodiscoverSRV?: string, expectedMX?: string[], expectedSPF?: string, isAliasDomain?: boolean, main?: boolean, mxIsValid?: boolean, mxRecord?: string[], mxRelay?: string, name?: string, organization2010?: string, sbrDefault?: string, sendConnectorIdDefault?: number, spfIsValid?: boolean, spfRecord?: string[], srvIsValid?: boolean, srvRecord?: string[], state?: email.exchange.ObjectStateEnum, taskPendingId?: number, type?: email.exchange.DomainTypeEnum }): Promise<void>;
                             /**
                              * Controle cache
                              */
@@ -2072,12 +2144,12 @@ export interface Email {
                     }
                     serviceInfos: {
                         /**
-                         * Get this object properties
+                         * Get service information
                          * GET /email/exchange/{organizationName}/service/{exchangeService}/serviceInfos
                          */
                         $get(): Promise<services.Service>;
                         /**
-                         * Alter this object properties
+                         * Update service information
                          * PUT /email/exchange/{organizationName}/service/{exchangeService}/serviceInfos
                          */
                         $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;

@@ -4,6 +4,35 @@ import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-
  * START API /stack/mis Models
  * Source: https://eu.api.ovh.com/1.0/stack/mis.json
  */
+export namespace iam {
+    /**
+     * IAM resource metadata embedded in services models
+     * interface fullName: iam.ResourceMetadata.ResourceMetadata
+     */
+    export interface ResourceMetadata {
+        displayName?: string;
+        id: string;
+        tags?: { [key: string]: string };
+        urn: string;
+    }
+    export namespace resource {
+        /**
+         * Resource tag filter
+         * interface fullName: iam.resource.TagFilter.TagFilter
+         */
+        export interface TagFilter {
+            operator?: iam.resource.TagFilter.OperatorEnum;
+            value: string;
+        }
+        export namespace TagFilter {
+            /**
+             * Operator that can be used in order to filter resources tags
+             * type fullname: iam.resource.TagFilter.OperatorEnum
+             */
+            export type OperatorEnum = "EQ"
+        }
+    }
+}
 export namespace service {
     /**
      * Map a possible renew for a specific service
@@ -62,6 +91,15 @@ export namespace stack {
             domain: string;
             type: stack.StackTypeEnum;
         }
+        /**
+         * Stack MIS
+         * interface fullName: stack.mis.productWithIAM.productWithIAM
+         */
+        export interface productWithIAM {
+            domain: string;
+            iam?: iam.ResourceMetadata;
+            type: stack.StackTypeEnum;
+        }
     }
 }
 
@@ -81,7 +119,7 @@ export interface Stack {
          * List available services
          * GET /stack/mis
          */
-        $get(): Promise<string[]>;
+        $get(params?: { iamTags?: any }): Promise<string[]>;
         /**
          * Controle cache
          */
@@ -98,12 +136,12 @@ export interface Stack {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             serviceInfos: {
                 /**
-                 * Get this object properties
+                 * Get service information
                  * GET /stack/mis/{serviceName}/serviceInfos
                  */
                 $get(): Promise<services.Service>;
                 /**
-                 * Alter this object properties
+                 * Update service information
                  * PUT /stack/mis/{serviceName}/serviceInfos
                  */
                 $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;

@@ -79,6 +79,7 @@ export namespace auth {
      */
     export interface ApiCredentialRequestParams {
         accessRules: auth.AccessRuleRequest[];
+        allowedIPs: string[];
         redirection?: string;
     }
     /**
@@ -105,8 +106,10 @@ export namespace auth {
      * interface fullName: auth.Details.Details
      */
     export interface Details {
+        account: string;
         allowedRoutes?: auth.AccessRule[];
         description?: string;
+        identities: string[];
         method: auth.MethodEnum;
         roles?: string[];
         user?: string;
@@ -120,7 +123,7 @@ export namespace auth {
      * All authentication methods available
      * type fullname: auth.MethodEnum
      */
-    export type MethodEnum = "account" | "provider" | "user"
+    export type MethodEnum = "account" | "oauth2_client_credentials" | "provider" | "user"
 }
 export namespace http {
     /**
@@ -146,7 +149,7 @@ export interface Auth {
          * Request a new credential for your application
          * POST /auth/credential
          */
-        $post(params: { accessRules: auth.AccessRuleRequest[], redirection?: string }): Promise<auth.ApiCredentialRequest>;
+        $post(params: { accessRules: auth.AccessRuleRequest[], allowedIPs?: string[], redirection?: string }): Promise<auth.ApiCredentialRequest>;
     }
     currentCredential: {
         /**

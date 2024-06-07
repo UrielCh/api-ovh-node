@@ -4,6 +4,35 @@ import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-
  * START API /webPaaS Models
  * Source: https://eu.api.ovh.com/1.0/webPaaS.json
  */
+export namespace iam {
+    /**
+     * IAM resource metadata embedded in services models
+     * interface fullName: iam.ResourceMetadata.ResourceMetadata
+     */
+    export interface ResourceMetadata {
+        displayName?: string;
+        id: string;
+        tags?: { [key: string]: string };
+        urn: string;
+    }
+    export namespace resource {
+        /**
+         * Resource tag filter
+         * interface fullName: iam.resource.TagFilter.TagFilter
+         */
+        export interface TagFilter {
+            operator?: iam.resource.TagFilter.OperatorEnum;
+            value: string;
+        }
+        export namespace TagFilter {
+            /**
+             * Operator that can be used in order to filter resources tags
+             * type fullname: iam.resource.TagFilter.OperatorEnum
+             */
+            export type OperatorEnum = "EQ"
+        }
+    }
+}
 export namespace service {
     /**
      * Map a possible renew for a specific service
@@ -143,6 +172,23 @@ export namespace webPaaS {
         project?: webPaaS.subscriptionMetadata.Project;
     }
     /**
+     * Partner subscription
+     * interface fullName: webPaaS.SubscriptionWithIAM.SubscriptionWithIAM
+     */
+    export interface SubscriptionWithIAM {
+        addons: webPaaS.SubscriptionAddon[];
+        createdAt: string;
+        endDate?: string;
+        iam?: iam.ResourceMetadata;
+        metadata: webPaaS.SubscriptionMetadata;
+        offer: webPaaS.OfferEnum;
+        partnerProjectId?: string;
+        projectName: string;
+        serviceId: string;
+        startDate?: string;
+        status: webPaaS.StatusEnum;
+    }
+    /**
      * Template details
      * interface fullName: webPaaS.Template.Template
      */
@@ -220,7 +266,7 @@ export interface WebPaaS {
          * List your subscriptions
          * GET /webPaaS/subscription
          */
-        $get(): Promise<string[]>;
+        $get(params?: { iamTags?: any }): Promise<string[]>;
         /**
          * Controle cache
          */
@@ -237,7 +283,7 @@ export interface WebPaaS {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             confirmTermination: {
                 /**
-                 * Confirm termination of your service
+                 * Confirm service termination
                  * POST /webPaaS/subscription/{serviceName}/confirmTermination
                  */
                 $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
@@ -276,12 +322,12 @@ export interface WebPaaS {
             }
             serviceInfos: {
                 /**
-                 * Get this object properties
+                 * Get service information
                  * GET /webPaaS/subscription/{serviceName}/serviceInfos
                  */
                 $get(): Promise<services.Service>;
                 /**
-                 * Alter this object properties
+                 * Update service information
                  * PUT /webPaaS/subscription/{serviceName}/serviceInfos
                  */
                 $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
@@ -292,7 +338,7 @@ export interface WebPaaS {
             }
             terminate: {
                 /**
-                 * Terminate your service
+                 * Ask for the termination of your service
                  * POST /webPaaS/subscription/{serviceName}/terminate
                  */
                 $post(): Promise<string>;

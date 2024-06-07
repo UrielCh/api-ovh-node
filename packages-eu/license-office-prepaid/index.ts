@@ -11,6 +11,35 @@ export namespace coreTypes {
      */
     export type CountryEnum = "ac" | "ad" | "ae" | "af" | "ag" | "ai" | "al" | "am" | "an" | "ao" | "aq" | "ar" | "as" | "at" | "au" | "aw" | "ax" | "az" | "ba" | "bb" | "bd" | "be" | "bf" | "bg" | "bh" | "bi" | "bj" | "bl" | "bm" | "bn" | "bo" | "bq" | "br" | "bs" | "bt" | "bv" | "bw" | "by" | "bz" | "ca" | "cc" | "cd" | "cf" | "cg" | "ch" | "ci" | "ck" | "cl" | "cm" | "cn" | "co" | "cr" | "cs" | "cu" | "cv" | "cw" | "cx" | "cy" | "cz" | "de" | "dj" | "dk" | "dm" | "do" | "dz" | "ec" | "ee" | "eg" | "eh" | "er" | "es" | "et" | "fc" | "fd" | "fi" | "fj" | "fk" | "fm" | "fo" | "fr" | "fx" | "ga" | "gb" | "gd" | "ge" | "gf" | "gg" | "gh" | "gi" | "gl" | "gm" | "gn" | "gp" | "gq" | "gr" | "gs" | "gt" | "gu" | "gw" | "gy" | "hk" | "hm" | "hn" | "hr" | "ht" | "hu" | "id" | "ie" | "il" | "im" | "in" | "io" | "iq" | "ir" | "is" | "it" | "je" | "jm" | "jo" | "jp" | "ke" | "kg" | "kh" | "ki" | "km" | "kn" | "kp" | "kr" | "kw" | "ky" | "kz" | "la" | "lb" | "lc" | "li" | "lk" | "lr" | "ls" | "lt" | "lu" | "lv" | "ly" | "ma" | "mc" | "md" | "me" | "mf" | "mg" | "mh" | "mk" | "ml" | "mm" | "mn" | "mo" | "mp" | "mq" | "mr" | "ms" | "mt" | "mu" | "mv" | "mw" | "mx" | "my" | "mz" | "na" | "nc" | "ne" | "nf" | "ng" | "ni" | "nl" | "no" | "np" | "nr" | "nu" | "nz" | "om" | "pa" | "pe" | "pf" | "pg" | "ph" | "pk" | "pl" | "pm" | "pn" | "pr" | "ps" | "pt" | "pw" | "py" | "qa" | "qc" | "re" | "ro" | "rs" | "ru" | "rw" | "sa" | "sb" | "sc" | "sd" | "se" | "sg" | "sh" | "si" | "sj" | "sk" | "sl" | "sm" | "sn" | "so" | "sr" | "ss" | "st" | "sv" | "sx" | "sy" | "sz" | "tc" | "td" | "tf" | "tg" | "th" | "tj" | "tk" | "tl" | "tm" | "tn" | "to" | "tp" | "tr" | "tt" | "tv" | "tw" | "tz" | "ua" | "ug" | "uk" | "um" | "us" | "uy" | "uz" | "va" | "vc" | "ve" | "vg" | "vi" | "vn" | "vu" | "we" | "wf" | "ws" | "ye" | "yt" | "yu" | "za" | "zm" | "zw"
 }
+export namespace iam {
+    /**
+     * IAM resource metadata embedded in services models
+     * interface fullName: iam.ResourceMetadata.ResourceMetadata
+     */
+    export interface ResourceMetadata {
+        displayName?: string;
+        id: string;
+        tags?: { [key: string]: string };
+        urn: string;
+    }
+    export namespace resource {
+        /**
+         * Resource tag filter
+         * interface fullName: iam.resource.TagFilter.TagFilter
+         */
+        export interface TagFilter {
+            operator?: iam.resource.TagFilter.OperatorEnum;
+            value: string;
+        }
+        export namespace TagFilter {
+            /**
+             * Operator that can be used in order to filter resources tags
+             * type fullname: iam.resource.TagFilter.OperatorEnum
+             */
+            export type OperatorEnum = "EQ"
+        }
+    }
+}
 export namespace license {
     export namespace office {
         /**
@@ -86,6 +115,44 @@ export namespace license {
     }
     export namespace officePrepaid {
         /**
+         * ISO country codes
+         * type fullname: license.officePrepaid.CountryEnum
+         */
+        export type CountryEnum = "ac" | "ad" | "ae" | "af" | "ag" | "ai" | "al" | "am" | "an" | "ao" | "aq" | "ar" | "as" | "at" | "au" | "aw" | "ax" | "az" | "ba" | "bb" | "bd" | "be" | "bf" | "bg" | "bh" | "bi" | "bj" | "bl" | "bm" | "bn" | "bo" | "bq" | "br" | "bs" | "bt" | "bv" | "bw" | "by" | "bz" | "ca" | "cc" | "cd" | "cf" | "cg" | "ch" | "ci" | "ck" | "cl" | "cm" | "cn" | "co" | "cr" | "cs" | "cu" | "cv" | "cw" | "cx" | "cy" | "cz" | "de" | "dj" | "dk" | "dm" | "do" | "dz" | "ec" | "ee" | "eg" | "eh" | "er" | "es" | "et" | "fc" | "fd" | "fi" | "fj" | "fk" | "fm" | "fo" | "fr" | "fx" | "ga" | "gb" | "gd" | "ge" | "gf" | "gg" | "gh" | "gi" | "gl" | "gm" | "gn" | "gp" | "gq" | "gr" | "gs" | "gt" | "gu" | "gw" | "gy" | "hk" | "hm" | "hn" | "hr" | "ht" | "hu" | "id" | "ie" | "il" | "im" | "in" | "io" | "iq" | "ir" | "is" | "it" | "je" | "jm" | "jo" | "jp" | "ke" | "kg" | "kh" | "ki" | "km" | "kn" | "kp" | "kr" | "kw" | "ky" | "kz" | "la" | "lb" | "lc" | "li" | "lk" | "lr" | "ls" | "lt" | "lu" | "lv" | "ly" | "ma" | "mc" | "md" | "me" | "mf" | "mg" | "mh" | "mk" | "ml" | "mm" | "mn" | "mo" | "mp" | "mq" | "mr" | "ms" | "mt" | "mu" | "mv" | "mw" | "mx" | "my" | "mz" | "na" | "nc" | "ne" | "nf" | "ng" | "ni" | "nl" | "no" | "np" | "nr" | "nu" | "nz" | "om" | "pa" | "pe" | "pf" | "pg" | "ph" | "pk" | "pl" | "pm" | "pn" | "pr" | "ps" | "pt" | "pw" | "py" | "qa" | "qc" | "re" | "ro" | "rs" | "ru" | "rw" | "sa" | "sb" | "sc" | "sd" | "se" | "sg" | "sh" | "si" | "sj" | "sk" | "sl" | "sm" | "sn" | "so" | "sr" | "ss" | "st" | "sv" | "sx" | "sy" | "sz" | "tc" | "td" | "tf" | "tg" | "th" | "tj" | "tk" | "tl" | "tm" | "tn" | "to" | "tp" | "tr" | "tt" | "tv" | "tw" | "tz" | "ua" | "ug" | "uk" | "um" | "us" | "uy" | "uz" | "va" | "vc" | "ve" | "vg" | "vi" | "vn" | "vu" | "we" | "wf" | "ws" | "ye" | "yt" | "yu" | "za" | "zm" | "zw"
+        /**
+         * Office tenant type
+         * type fullname: license.officePrepaid.LicenseEnum
+         */
+        export type LicenseEnum = "officeBusiness" | "officeProPlus"
+        /**
+         * Office Current Statisitics
+         * interface fullName: license.officePrepaid.OfficeCurrentStatisticsNative.OfficeCurrentStatisticsNative
+         */
+        export interface OfficeCurrentStatisticsNative {
+            date: string;
+            lines: license.officePrepaid.StatisticsLineNative[];
+        }
+        /**
+         * Office tenant
+         * interface fullName: license.officePrepaid.OfficeTaskNative.OfficeTaskNative
+         */
+        export interface OfficeTaskNative {
+            finishDate?: string;
+            function: string;
+            id: number;
+            status: license.officePrepaid.TaskStatusEnum;
+            todoDate: string;
+        }
+        /**
+         * Office change password
+         * interface fullName: license.officePrepaid.OfficeTenantPostChangePassword.OfficeTenantPostChangePassword
+         */
+        export interface OfficeTenantPostChangePassword {
+            notifyEmail?: string;
+            password?: string;
+            shouldSendMail: boolean;
+        }
+        /**
          * Office user
          * interface fullName: license.officePrepaid.OfficeUser.OfficeUser
          */
@@ -101,6 +168,85 @@ export namespace license {
             tenantServiceName: string;
             usageLocation: coreTypes.CountryEnum;
         }
+        /**
+         * Office tenant
+         * interface fullName: license.officePrepaid.OfficeUserNative.OfficeUserNative
+         */
+        export interface OfficeUserNative {
+            activationEmail: string;
+            firstName: string;
+            isVirtual: boolean;
+            lastName: string;
+            licences: license.officePrepaid.LicenseEnum[];
+            serviceName: string;
+            status: license.officePrepaid.UserStateEnum;
+            taskPendingId: number;
+            tenantServiceName: string;
+            usageLocation: license.officePrepaid.CountryEnum;
+        }
+        /**
+         * Office tenant
+         * interface fullName: license.officePrepaid.OfficeUserNativeWithIAM.OfficeUserNativeWithIAM
+         */
+        export interface OfficeUserNativeWithIAM {
+            activationEmail: string;
+            firstName: string;
+            iam?: iam.ResourceMetadata;
+            isVirtual: boolean;
+            lastName: string;
+            licences: license.officePrepaid.LicenseEnum[];
+            serviceName: string;
+            status: license.officePrepaid.UserStateEnum;
+            taskPendingId: number;
+            tenantServiceName: string;
+            usageLocation: license.officePrepaid.CountryEnum;
+        }
+        /**
+         * Office user
+         * interface fullName: license.officePrepaid.OfficeUserWithIAM.OfficeUserWithIAM
+         */
+        export interface OfficeUserWithIAM {
+            activationEmail: string;
+            firstName: string;
+            iam?: iam.ResourceMetadata;
+            isVirtual: boolean;
+            lastName: string;
+            licences: license.office.LicenceEnum[];
+            serviceName: string;
+            status: license.office.UserStateEnum;
+            taskPendingId: number;
+            tenantServiceName: string;
+            usageLocation: coreTypes.CountryEnum;
+        }
+        /**
+         * Office tenant
+         * interface fullName: license.officePrepaid.PutOfficeUserNative.PutOfficeUserNative
+         */
+        export interface PutOfficeUserNative {
+            activationEmail: string;
+            firstName: string;
+            lastName: string;
+            usageLocation: license.officePrepaid.CountryEnum;
+        }
+        /**
+         * License usage statistics line.
+         * interface fullName: license.officePrepaid.StatisticsLineNative.StatisticsLineNative
+         */
+        export interface StatisticsLineNative {
+            endOfDayCount: number;
+            licenceType: license.officePrepaid.LicenseEnum;
+            peakCount: number;
+        }
+        /**
+         * Excahnge task status
+         * type fullname: license.officePrepaid.TaskStatusEnum
+         */
+        export type TaskStatusEnum = "cancelled" | "doing" | "done" | "error" | "todo"
+        /**
+         * Office tenant type
+         * type fullname: license.officePrepaid.UserStateEnum
+         */
+        export type UserStateEnum = "creating" | "deleting" | "ok" | "suspended" | "unspending"
     }
 }
 export namespace service {
@@ -173,7 +319,7 @@ export interface License {
          * List available services
          * GET /license/officePrepaid
          */
-        $get(): Promise<string[]>;
+        $get(params?: { iamTags?: any }): Promise<string[]>;
         /**
          * Controle cache
          */
@@ -183,26 +329,26 @@ export interface License {
              * Get this object properties
              * GET /license/officePrepaid/{serviceName}
              */
-            $get(): Promise<license.officePrepaid.OfficeUser>;
+            $get(): Promise<license.officePrepaid.OfficeUserNative>;
             /**
-             * Alter this object properties
+             * Modify the office user
              * PUT /license/officePrepaid/{serviceName}
              */
-            $put(params?: { activationEmail?: string, firstName?: string, isVirtual?: boolean, lastName?: string, licences?: license.office.LicenceEnum[], serviceName?: string, status?: license.office.UserStateEnum, taskPendingId?: number, tenantServiceName?: string, usageLocation?: coreTypes.CountryEnum }): Promise<void>;
+            $put(params?: { activationEmail?: string, firstName?: string, lastName?: string, usageLocation?: license.officePrepaid.CountryEnum }): Promise<void>;
             /**
              * Controle cache
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             changePassword: {
                 /**
-                 * Change or reset  user's password
+                 * Change password
                  * POST /license/officePrepaid/{serviceName}/changePassword
                  */
-                $post(params: { notifyEmail?: string, password?: string, shouldSendMail: boolean }): Promise<license.office.OfficeTask>;
+                $post(params: { notifyEmail?: string, password?: string, shouldSendMail: boolean }): Promise<license.officePrepaid.OfficeTaskNative>;
             }
             confirmTermination: {
                 /**
-                 * Confirm termination of your service
+                 * Confirm service termination
                  * POST /license/officePrepaid/{serviceName}/confirmTermination
                  */
                 $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
@@ -225,12 +371,12 @@ export interface License {
             }
             serviceInfos: {
                 /**
-                 * Get this object properties
+                 * Get service information
                  * GET /license/officePrepaid/{serviceName}/serviceInfos
                  */
                 $get(): Promise<services.Service>;
                 /**
-                 * Alter this object properties
+                 * Update service information
                  * PUT /license/officePrepaid/{serviceName}/serviceInfos
                  */
                 $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
@@ -241,7 +387,7 @@ export interface License {
             }
             tenantPendingTask: {
                 /**
-                 * Tasks associated to this user's tenant
+                 * List pending task
                  * GET /license/officePrepaid/{serviceName}/tenantPendingTask
                  */
                 $get(): Promise<number[]>;
@@ -254,7 +400,7 @@ export interface License {
                      * Get this object properties
                      * GET /license/officePrepaid/{serviceName}/tenantPendingTask/{id}
                      */
-                    $get(): Promise<license.office.OfficeTask>;
+                    $get(): Promise<license.officePrepaid.OfficeTaskNative>;
                     /**
                      * Controle cache
                      */
@@ -263,10 +409,10 @@ export interface License {
             }
             tenantUsageStatistics: {
                 /**
-                 * Shows the subscriptions' usage statistics for the given time period
+                 * Get day-to-day statistics of license usage and availability
                  * GET /license/officePrepaid/{serviceName}/tenantUsageStatistics
                  */
-                $get(params: { from: string, to: string }): Promise<license.office.Statistics[]>;
+                $get(params?: { from?: string, to?: string }): Promise<license.officePrepaid.OfficeCurrentStatisticsNative[]>;
                 /**
                  * Controle cache
                  */
@@ -274,7 +420,7 @@ export interface License {
             }
             terminate: {
                 /**
-                 * Terminate your service
+                 * Ask for the termination of your service
                  * POST /license/officePrepaid/{serviceName}/terminate
                  */
                 $post(): Promise<string>;
@@ -284,7 +430,7 @@ export interface License {
                  * Unconfigure the office user
                  * POST /license/officePrepaid/{serviceName}/unconfigure
                  */
-                $post(): Promise<license.office.OfficeTask>;
+                $post(): Promise<license.officePrepaid.OfficeTaskNative>;
             }
         };
     }

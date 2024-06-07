@@ -4,6 +4,35 @@ import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-
  * START API /overTheBox Models
  * Source: https://eu.api.ovh.com/1.0/overTheBox.json
  */
+export namespace iam {
+    /**
+     * IAM resource metadata embedded in services models
+     * interface fullName: iam.ResourceMetadata.ResourceMetadata
+     */
+    export interface ResourceMetadata {
+        displayName?: string;
+        id: string;
+        tags?: { [key: string]: string };
+        urn: string;
+    }
+    export namespace resource {
+        /**
+         * Resource tag filter
+         * interface fullName: iam.resource.TagFilter.TagFilter
+         */
+        export interface TagFilter {
+            operator?: iam.resource.TagFilter.OperatorEnum;
+            value: string;
+        }
+        export namespace TagFilter {
+            /**
+             * Operator that can be used in order to filter resources tags
+             * type fullname: iam.resource.TagFilter.OperatorEnum
+             */
+            export type OperatorEnum = "EQ"
+        }
+    }
+}
 export namespace order {
     /**
      * type fullname: order.CurrencyCodeEnum
@@ -112,6 +141,7 @@ export namespace overTheBox {
      */
     export interface Device {
         activated: boolean;
+        availableUpdate: boolean;
         deviceId: string;
         lastSeen: string;
         networkInterfaces: overTheBox.DeviceInterface[];
@@ -176,6 +206,18 @@ export namespace overTheBox {
         serial: string;
     }
     /**
+     * Hardware properties
+     * interface fullName: overTheBox.HardwareWithIAM.HardwareWithIAM
+     */
+    export interface HardwareWithIAM {
+        canBeLinkedToService: boolean;
+        iam?: iam.ResourceMetadata;
+        mac?: string;
+        model: string;
+        name: string;
+        serial: string;
+    }
+    /**
      * Status of a MPTCP Interface.
      * type fullname: overTheBox.MultipathStatusEnum
      */
@@ -189,6 +231,8 @@ export namespace overTheBox {
         askDate: string;
         authorizedBy?: string;
         connectionInfos: overTheBox.RemoteAccessConnectionInfos;
+        deletedAt?: string;
+        dockerVersion: string;
         expirationDate: string;
         exposedPort: number;
         remoteAccessId: string;
@@ -207,7 +251,7 @@ export namespace overTheBox {
      * Status of the remote access.
      * type fullname: overTheBox.RemoteAccessStatusEnum
      */
-    export type RemoteAccessStatusEnum = "active" | "creating" | "deleted" | "deleting" | "pendingValidation" | "toDelete"
+    export type RemoteAccessStatusEnum = "active" | "creating" | "deleted" | "deleting" | "pendingValidation" | "recreating" | "toDelete" | "toRecreate"
     /**
      * Infos about the remote user
      * interface fullName: overTheBox.RemoteAccessUserInfos.RemoteAccessUserInfos
@@ -224,6 +268,7 @@ export namespace overTheBox {
     export interface Service {
         SOCKSProxyEnabled: boolean;
         autoMTU: overTheBox.AvailableStatusEnum;
+        autoUpgrade: boolean;
         configurationMode: overTheBox.ServiceConfigurationModeEnum;
         customerDescription?: string;
         graphEndpoint?: overTheBox.GraphEndpoint;
@@ -242,6 +287,23 @@ export namespace overTheBox {
      * type fullname: overTheBox.ServiceStatusEnum
      */
     export type ServiceStatusEnum = "active" | "creating" | "deleted" | "suspended" | "toCreate" | "toDelete"
+    /**
+     * Service
+     * interface fullName: overTheBox.ServiceWithIAM.ServiceWithIAM
+     */
+    export interface ServiceWithIAM {
+        SOCKSProxyEnabled: boolean;
+        autoMTU: overTheBox.AvailableStatusEnum;
+        autoUpgrade: boolean;
+        configurationMode: overTheBox.ServiceConfigurationModeEnum;
+        customerDescription?: string;
+        graphEndpoint?: overTheBox.GraphEndpoint;
+        iam?: iam.ResourceMetadata;
+        releaseChannel: string;
+        serviceName: string;
+        status: overTheBox.ServiceStatusEnum;
+        tunnelMode: overTheBox.TunnelModeEnum;
+    }
     /**
      * Task
      * interface fullName: overTheBox.Task.Task
@@ -269,228 +331,6 @@ export namespace overTheBox {
      * type fullname: overTheBox.TunnelModeEnum
      */
     export type TunnelModeEnum = "glorytun" | "glorytun_hybrid" | "glorytun_mud"
-}
-export namespace overthebox {
-    export namespace configuration {
-        /**
-         * Status of the configuration
-         * type fullname: overthebox.configuration.StatusEnum
-         */
-        export type StatusEnum = "applying" | "ok" | "problem" | "to_apply"
-        export namespace dhcp {
-            /**
-             * DHCP configuration
-             * interface fullName: overthebox.configuration.dhcp.Config.Config
-             */
-            export interface Config {
-                configuration: overthebox.configuration.types.dhcp.Config;
-                id: string;
-                priority: number;
-                status: overthebox.configuration.StatusEnum;
-            }
-            /**
-             * DHCP static lease
-             * interface fullName: overthebox.configuration.dhcp.StaticLease.StaticLease
-             */
-            export interface StaticLease {
-                configuration: overthebox.configuration.types.dhcp.StaticLease;
-                id: string;
-                priority: number;
-                status: overthebox.configuration.StatusEnum;
-            }
-        }
-        export namespace dns {
-            /**
-             * DNS local domain
-             * interface fullName: overthebox.configuration.dns.LocalDomain.LocalDomain
-             */
-            export interface LocalDomain {
-                configuration: overthebox.configuration.types.dns.LocalDomain;
-                id: string;
-                priority: number;
-                status: overthebox.configuration.StatusEnum;
-            }
-            /**
-             * DNS nameserver
-             * interface fullName: overthebox.configuration.dns.Nameserver.Nameserver
-             */
-            export interface Nameserver {
-                configuration: overthebox.configuration.types.dns.Nameserver;
-                id: string;
-                priority: number;
-                status: overthebox.configuration.StatusEnum;
-            }
-        }
-        export namespace firewall {
-            /**
-             * Protocol family to match
-             * type fullname: overthebox.configuration.firewall.ProtocolEnum
-             */
-            export type ProtocolEnum = "ah" | "all" | "ax.25" | "dccp" | "ddp" | "egp" | "eigrp" | "encap" | "esp" | "etherip" | "fc" | "ggp" | "gre" | "hmp" | "hopopt" | "icmp" | "idpr-cmtp" | "idrp" | "igmp" | "igp" | "ip" | "ip-encap" | "ipcomp" | "ipip" | "ipsec-ah" | "ipsec-esp" | "ipv6" | "ipv6-frag" | "ipv6-icmp" | "ipv6-nonxt" | "ipv6-opts" | "ipv6-route" | "isis" | "iso-tp4" | "l2tp" | "ospfigp" | "pim" | "pup" | "rdp" | "rspf" | "rsvp" | "sctp" | "skip" | "st" | "tcp" | "tcpudp" | "udp" | "udplite" | "vmtp" | "vrrp" | "xns-idp" | "xtp"
-            /**
-             * Firewall rule
-             * interface fullName: overthebox.configuration.firewall.Redirect.Redirect
-             */
-            export interface Redirect {
-                configuration: overthebox.configuration.types.firewall.Redirect;
-                id: string;
-                priority: number;
-                status: overthebox.configuration.StatusEnum;
-            }
-            /**
-             * Firewall rule
-             * interface fullName: overthebox.configuration.firewall.Rule.Rule
-             */
-            export interface Rule {
-                configuration: overthebox.configuration.types.firewall.Rule;
-                id: string;
-                priority: number;
-                status: overthebox.configuration.StatusEnum;
-            }
-            export namespace redirect {
-                /**
-                 * Redirection NAT target
-                 * type fullname: overthebox.configuration.firewall.redirect.TargetEnum
-                 */
-                export type TargetEnum = "DNAT" | "SNAT"
-            }
-            export namespace rule {
-                /**
-                 * Protocol family to match
-                 * type fullname: overthebox.configuration.firewall.rule.FamilyEnum
-                 */
-                export type FamilyEnum = "any" | "ipv4" | "ipv6"
-                /**
-                 * Target action
-                 * type fullname: overthebox.configuration.firewall.rule.TargetEnum
-                 */
-                export type TargetEnum = "ACCEPT" | "DROP" | "MARK" | "NOTRACK" | "REJECT"
-            }
-        }
-        export namespace network {
-            /**
-             * Network interface
-             * interface fullName: overthebox.configuration.network.Interface.Interface
-             */
-            export interface Interface {
-                configuration: overthebox.configuration.types.network.Interface;
-                id: string;
-                priority: number;
-                status: overthebox.configuration.StatusEnum;
-            }
-            export namespace interf {
-                /**
-                 * Multipath mode
-                 * type fullname: overthebox.configuration.network.interf.MultipathEnum
-                 */
-                export type MultipathEnum = "backup" | "handover" | "master" | "off" | "on"
-                /**
-                 * IP allocation protocol of the network interface
-                 * type fullname: overthebox.configuration.network.interf.ProtoEnum
-                 */
-                export type ProtoEnum = "dhcp" | "dhcpv6" | "static"
-                /**
-                 * Type of the network interface
-                 * type fullname: overthebox.configuration.network.interf.TypeEnum
-                 */
-                export type TypeEnum = "bridge" | "inet" | "inet6"
-            }
-        }
-        export namespace types {
-            export namespace dhcp {
-                /**
-                 * DHCP configuration
-                 * interface fullName: overthebox.configuration.types.dhcp.Config.Config
-                 */
-                export interface Config {
-                    interface: string;
-                    leaseDuration: number;
-                    offset: number;
-                    poolSize: number;
-                }
-                /**
-                 * DHCP static lease
-                 * interface fullName: overthebox.configuration.types.dhcp.StaticLease.StaticLease
-                 */
-                export interface StaticLease {
-                    hostname: string;
-                    ip: string;
-                    mac: string;
-                }
-            }
-            export namespace dns {
-                /**
-                 * DNS local domain
-                 * interface fullName: overthebox.configuration.types.dns.LocalDomain.LocalDomain
-                 */
-                export interface LocalDomain {
-                    hostname: string;
-                    ip: string;
-                }
-                /**
-                 * DNS nameserver
-                 * interface fullName: overthebox.configuration.types.dns.Nameserver.Nameserver
-                 */
-                export interface Nameserver {
-                    server: string;
-                }
-            }
-            export namespace firewall {
-                /**
-                 * Firewall redirect
-                 * interface fullName: overthebox.configuration.types.firewall.Redirect.Redirect
-                 */
-                export interface Redirect {
-                    destinationIp?: string;
-                    destinationPort?: string;
-                    destinationZone?: string;
-                    name: string;
-                    protocol?: overthebox.configuration.firewall.ProtocolEnum;
-                    sourceDestinationIp?: string;
-                    sourceDestinationPort?: string;
-                    sourceIp?: string;
-                    sourcePort?: number;
-                    sourceZone: string;
-                    target?: overthebox.configuration.firewall.redirect.TargetEnum;
-                }
-                /**
-                 * Firewall rule
-                 * interface fullName: overthebox.configuration.types.firewall.Rule.Rule
-                 */
-                export interface Rule {
-                    destinationIp?: string;
-                    destinationPort?: string;
-                    destinationZone?: string;
-                    family?: overthebox.configuration.firewall.rule.FamilyEnum;
-                    name?: string;
-                    protocol?: overthebox.configuration.firewall.ProtocolEnum;
-                    sourceIp?: string;
-                    sourcePort?: string;
-                    sourceZone: string;
-                    target: overthebox.configuration.firewall.rule.TargetEnum;
-                }
-            }
-            export namespace network {
-                /**
-                 * Network interface
-                 * interface fullName: overthebox.configuration.types.network.Interface.Interface
-                 */
-                export interface Interface {
-                    gateway?: string;
-                    ifname: string;
-                    interfaceName: string;
-                    ip?: string;
-                    ipv6?: boolean;
-                    mtu?: number;
-                    multipath?: overthebox.configuration.network.interf.MultipathEnum;
-                    netmask?: string;
-                    protocol?: overthebox.configuration.network.interf.ProtoEnum;
-                    routingTable?: string;
-                    type?: overthebox.configuration.network.interf.TypeEnum;
-                }
-            }
-        }
-    }
 }
 export namespace price {
     export namespace OverTheBox {
@@ -560,7 +400,7 @@ export interface OverTheBox {
      * List available services
      * GET /overTheBox
      */
-    $get(): Promise<string[]>;
+    $get(params?: { iamTags?: any }): Promise<string[]>;
     /**
      * Controle cache
      */
@@ -588,7 +428,7 @@ export interface OverTheBox {
          * List available services
          * GET /overTheBox/hardware
          */
-        $get(): Promise<string[]>;
+        $get(params?: { iamTags?: any }): Promise<string[]>;
         /**
          * Controle cache
          */
@@ -631,7 +471,7 @@ export interface OverTheBox {
          * Alter this object properties
          * PUT /overTheBox/{serviceName}
          */
-        $put(params?: { SOCKSProxyEnabled?: boolean, autoMTU?: overTheBox.AvailableStatusEnum, configurationMode?: overTheBox.ServiceConfigurationModeEnum, customerDescription?: string, graphEndpoint?: overTheBox.GraphEndpoint, releaseChannel?: string, serviceName?: string, status?: overTheBox.ServiceStatusEnum, tunnelMode?: overTheBox.TunnelModeEnum }): Promise<void>;
+        $put(params?: { SOCKSProxyEnabled?: boolean, autoMTU?: overTheBox.AvailableStatusEnum, autoUpgrade?: boolean, configurationMode?: overTheBox.ServiceConfigurationModeEnum, customerDescription?: string, graphEndpoint?: overTheBox.GraphEndpoint, releaseChannel?: string, serviceName?: string, status?: overTheBox.ServiceStatusEnum, tunnelMode?: overTheBox.TunnelModeEnum }): Promise<void>;
         /**
          * Controle cache
          */
@@ -694,275 +534,6 @@ export interface OverTheBox {
              * POST /overTheBox/{serviceName}/changeContact
              */
             $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
-        }
-        configuration: {
-            dhcp: {
-                config: {
-                    /**
-                     * Return the list of DHCP configurations
-                     * GET /overTheBox/{serviceName}/configuration/dhcp/config
-                     */
-                    $get(): Promise<overthebox.configuration.dhcp.Config[]>;
-                    /**
-                     * Create a DHCP configuration
-                     * POST /overTheBox/{serviceName}/configuration/dhcp/config
-                     */
-                    $post(params?: { configuration?: overthebox.configuration.types.dhcp.Config, id?: string, priority?: number, status?: overthebox.configuration.StatusEnum }): Promise<overthebox.configuration.dhcp.Config>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    $(id: string): {
-                        /**
-                         * Delete a DHCP configuration
-                         * DELETE /overTheBox/{serviceName}/configuration/dhcp/config/{id}
-                         */
-                        $delete(): Promise<void>;
-                        /**
-                         * Return the specified DHCP configuration
-                         * GET /overTheBox/{serviceName}/configuration/dhcp/config/{id}
-                         */
-                        $get(): Promise<overthebox.configuration.dhcp.Config>;
-                        /**
-                         * Update a DHCP configuration
-                         * PUT /overTheBox/{serviceName}/configuration/dhcp/config/{id}
-                         */
-                        $put(params?: { configuration?: overthebox.configuration.types.dhcp.Config, id?: string, priority?: number, status?: overthebox.configuration.StatusEnum }): Promise<overthebox.configuration.dhcp.Config>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    };
-                }
-                staticLease: {
-                    /**
-                     * Return the list of DHCP static leases
-                     * GET /overTheBox/{serviceName}/configuration/dhcp/staticLease
-                     */
-                    $get(): Promise<overthebox.configuration.dhcp.StaticLease[]>;
-                    /**
-                     * Create a DHCP static lease
-                     * POST /overTheBox/{serviceName}/configuration/dhcp/staticLease
-                     */
-                    $post(params?: { configuration?: overthebox.configuration.types.dhcp.StaticLease, id?: string, priority?: number, status?: overthebox.configuration.StatusEnum }): Promise<overthebox.configuration.dhcp.StaticLease>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    $(id: string): {
-                        /**
-                         * Delete a DHCP static lease
-                         * DELETE /overTheBox/{serviceName}/configuration/dhcp/staticLease/{id}
-                         */
-                        $delete(): Promise<void>;
-                        /**
-                         * Return the specified DHCP static lease
-                         * GET /overTheBox/{serviceName}/configuration/dhcp/staticLease/{id}
-                         */
-                        $get(): Promise<overthebox.configuration.dhcp.StaticLease>;
-                        /**
-                         * Update a DHCP static lease
-                         * PUT /overTheBox/{serviceName}/configuration/dhcp/staticLease/{id}
-                         */
-                        $put(params?: { configuration?: overthebox.configuration.types.dhcp.StaticLease, id?: string, priority?: number, status?: overthebox.configuration.StatusEnum }): Promise<overthebox.configuration.dhcp.StaticLease>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    };
-                }
-            }
-            dns: {
-                localDomain: {
-                    /**
-                     * Return the list of DNS local domains
-                     * GET /overTheBox/{serviceName}/configuration/dns/localDomain
-                     */
-                    $get(): Promise<overthebox.configuration.dns.LocalDomain[]>;
-                    /**
-                     * Create a DNS local domain
-                     * POST /overTheBox/{serviceName}/configuration/dns/localDomain
-                     */
-                    $post(params?: { configuration?: overthebox.configuration.types.dns.LocalDomain, id?: string, priority?: number, status?: overthebox.configuration.StatusEnum }): Promise<overthebox.configuration.dns.LocalDomain>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    $(id: string): {
-                        /**
-                         * Delete a DNS local domain
-                         * DELETE /overTheBox/{serviceName}/configuration/dns/localDomain/{id}
-                         */
-                        $delete(): Promise<void>;
-                        /**
-                         * Return the specified DNS local domain
-                         * GET /overTheBox/{serviceName}/configuration/dns/localDomain/{id}
-                         */
-                        $get(): Promise<overthebox.configuration.dns.LocalDomain>;
-                        /**
-                         * Update a DNS local domain
-                         * PUT /overTheBox/{serviceName}/configuration/dns/localDomain/{id}
-                         */
-                        $put(params?: { configuration?: overthebox.configuration.types.dns.LocalDomain, id?: string, priority?: number, status?: overthebox.configuration.StatusEnum }): Promise<overthebox.configuration.dns.LocalDomain>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    };
-                }
-                nameserver: {
-                    /**
-                     * Return the list of DNS nameservers
-                     * GET /overTheBox/{serviceName}/configuration/dns/nameserver
-                     */
-                    $get(): Promise<overthebox.configuration.dns.Nameserver[]>;
-                    /**
-                     * Create a DNS nameserver
-                     * POST /overTheBox/{serviceName}/configuration/dns/nameserver
-                     */
-                    $post(params?: { configuration?: overthebox.configuration.types.dns.Nameserver, id?: string, priority?: number, status?: overthebox.configuration.StatusEnum }): Promise<overthebox.configuration.dns.Nameserver>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    $(id: string): {
-                        /**
-                         * Delete a DNS nameserver
-                         * DELETE /overTheBox/{serviceName}/configuration/dns/nameserver/{id}
-                         */
-                        $delete(): Promise<void>;
-                        /**
-                         * Get a DNS nameserver configuration
-                         * GET /overTheBox/{serviceName}/configuration/dns/nameserver/{id}
-                         */
-                        $get(): Promise<overthebox.configuration.dns.Nameserver>;
-                        /**
-                         * Update a DNS nameserver configuration
-                         * PUT /overTheBox/{serviceName}/configuration/dns/nameserver/{id}
-                         */
-                        $put(params?: { configuration?: overthebox.configuration.types.dns.Nameserver, id?: string, priority?: number, status?: overthebox.configuration.StatusEnum }): Promise<overthebox.configuration.dns.Nameserver>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    };
-                }
-            }
-            firewall: {
-                redirect: {
-                    /**
-                     * Return the list of firewall redirects
-                     * GET /overTheBox/{serviceName}/configuration/firewall/redirect
-                     */
-                    $get(): Promise<overthebox.configuration.firewall.Redirect[]>;
-                    /**
-                     * Create a firewall redirect
-                     * POST /overTheBox/{serviceName}/configuration/firewall/redirect
-                     */
-                    $post(params?: { configuration?: overthebox.configuration.types.firewall.Redirect, id?: string, priority?: number, status?: overthebox.configuration.StatusEnum }): Promise<overthebox.configuration.firewall.Redirect>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    $(id: string): {
-                        /**
-                         * Delete a firewall redirect
-                         * DELETE /overTheBox/{serviceName}/configuration/firewall/redirect/{id}
-                         */
-                        $delete(): Promise<void>;
-                        /**
-                         * Get a firewall redirect
-                         * GET /overTheBox/{serviceName}/configuration/firewall/redirect/{id}
-                         */
-                        $get(): Promise<overthebox.configuration.firewall.Redirect>;
-                        /**
-                         * Update a firewall redirect
-                         * PUT /overTheBox/{serviceName}/configuration/firewall/redirect/{id}
-                         */
-                        $put(params?: { configuration?: overthebox.configuration.types.firewall.Redirect, id?: string, priority?: number, status?: overthebox.configuration.StatusEnum }): Promise<overthebox.configuration.firewall.Redirect>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    };
-                }
-                rule: {
-                    /**
-                     * Return the list of firewall rules
-                     * GET /overTheBox/{serviceName}/configuration/firewall/rule
-                     */
-                    $get(): Promise<overthebox.configuration.firewall.Rule[]>;
-                    /**
-                     * Create a firewall rule
-                     * POST /overTheBox/{serviceName}/configuration/firewall/rule
-                     */
-                    $post(params?: { configuration?: overthebox.configuration.types.firewall.Rule, id?: string, priority?: number, status?: overthebox.configuration.StatusEnum }): Promise<overthebox.configuration.firewall.Rule>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    $(id: string): {
-                        /**
-                         * Delete a firewall rule
-                         * DELETE /overTheBox/{serviceName}/configuration/firewall/rule/{id}
-                         */
-                        $delete(): Promise<void>;
-                        /**
-                         * Get a firewall rule
-                         * GET /overTheBox/{serviceName}/configuration/firewall/rule/{id}
-                         */
-                        $get(): Promise<overthebox.configuration.firewall.Rule>;
-                        /**
-                         * Update a firewall rule
-                         * PUT /overTheBox/{serviceName}/configuration/firewall/rule/{id}
-                         */
-                        $put(params?: { configuration?: overthebox.configuration.types.firewall.Rule, id?: string, priority?: number, status?: overthebox.configuration.StatusEnum }): Promise<overthebox.configuration.firewall.Rule>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    };
-                }
-            }
-            network: {
-                interface: {
-                    /**
-                     * Return the list of network interfaces
-                     * GET /overTheBox/{serviceName}/configuration/network/interface
-                     */
-                    $get(): Promise<overthebox.configuration.network.Interface[]>;
-                    /**
-                     * Create a network interface
-                     * POST /overTheBox/{serviceName}/configuration/network/interface
-                     */
-                    $post(params: { configuration: overthebox.configuration.types.network.Interface, id?: string, priority: number, status?: overthebox.configuration.StatusEnum }): Promise<overthebox.configuration.network.Interface>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    $(id: string): {
-                        /**
-                         * Delete a network interface
-                         * DELETE /overTheBox/{serviceName}/configuration/network/interface/{id}
-                         */
-                        $delete(): Promise<void>;
-                        /**
-                         * Get a network interface
-                         * GET /overTheBox/{serviceName}/configuration/network/interface/{id}
-                         */
-                        $get(): Promise<overthebox.configuration.network.Interface>;
-                        /**
-                         * Update a network interface
-                         * PUT /overTheBox/{serviceName}/configuration/network/interface/{id}
-                         */
-                        $put(params: { configuration: overthebox.configuration.types.network.Interface, id?: string, priority: number, status?: overthebox.configuration.StatusEnum }): Promise<overthebox.configuration.network.Interface>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    };
-                }
-            }
         }
         device: {
             /**
@@ -1107,12 +678,12 @@ export interface OverTheBox {
         }
         serviceInfos: {
             /**
-             * Get this object properties
+             * Get service information
              * GET /overTheBox/{serviceName}/serviceInfos
              */
             $get(): Promise<services.Service>;
             /**
-             * Alter this object properties
+             * Update service information
              * PUT /overTheBox/{serviceName}/serviceInfos
              */
             $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;

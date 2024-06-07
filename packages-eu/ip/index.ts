@@ -20,13 +20,47 @@ export namespace coreTypes {
      * type fullname: coreTypes.CountryEnum
      */
     export type CountryEnum = "ac" | "ad" | "ae" | "af" | "ag" | "ai" | "al" | "am" | "an" | "ao" | "aq" | "ar" | "as" | "at" | "au" | "aw" | "ax" | "az" | "ba" | "bb" | "bd" | "be" | "bf" | "bg" | "bh" | "bi" | "bj" | "bl" | "bm" | "bn" | "bo" | "bq" | "br" | "bs" | "bt" | "bv" | "bw" | "by" | "bz" | "ca" | "cc" | "cd" | "cf" | "cg" | "ch" | "ci" | "ck" | "cl" | "cm" | "cn" | "co" | "cr" | "cs" | "cu" | "cv" | "cw" | "cx" | "cy" | "cz" | "de" | "dj" | "dk" | "dm" | "do" | "dz" | "ec" | "ee" | "eg" | "eh" | "er" | "es" | "et" | "fc" | "fd" | "fi" | "fj" | "fk" | "fm" | "fo" | "fr" | "fx" | "ga" | "gb" | "gd" | "ge" | "gf" | "gg" | "gh" | "gi" | "gl" | "gm" | "gn" | "gp" | "gq" | "gr" | "gs" | "gt" | "gu" | "gw" | "gy" | "hk" | "hm" | "hn" | "hr" | "ht" | "hu" | "id" | "ie" | "il" | "im" | "in" | "io" | "iq" | "ir" | "is" | "it" | "je" | "jm" | "jo" | "jp" | "ke" | "kg" | "kh" | "ki" | "km" | "kn" | "kp" | "kr" | "kw" | "ky" | "kz" | "la" | "lb" | "lc" | "li" | "lk" | "lr" | "ls" | "lt" | "lu" | "lv" | "ly" | "ma" | "mc" | "md" | "me" | "mf" | "mg" | "mh" | "mk" | "ml" | "mm" | "mn" | "mo" | "mp" | "mq" | "mr" | "ms" | "mt" | "mu" | "mv" | "mw" | "mx" | "my" | "mz" | "na" | "nc" | "ne" | "nf" | "ng" | "ni" | "nl" | "no" | "np" | "nr" | "nu" | "nz" | "om" | "pa" | "pe" | "pf" | "pg" | "ph" | "pk" | "pl" | "pm" | "pn" | "pr" | "ps" | "pt" | "pw" | "py" | "qa" | "qc" | "re" | "ro" | "rs" | "ru" | "rw" | "sa" | "sb" | "sc" | "sd" | "se" | "sg" | "sh" | "si" | "sj" | "sk" | "sl" | "sm" | "sn" | "so" | "sr" | "ss" | "st" | "sv" | "sx" | "sy" | "sz" | "tc" | "td" | "tf" | "tg" | "th" | "tj" | "tk" | "tl" | "tm" | "tn" | "to" | "tp" | "tr" | "tt" | "tv" | "tw" | "tz" | "ua" | "ug" | "uk" | "um" | "us" | "uy" | "uz" | "va" | "vc" | "ve" | "vg" | "vi" | "vn" | "vu" | "we" | "wf" | "ws" | "ye" | "yt" | "yu" | "za" | "zm" | "zw"
+    /**
+     * Region names
+     * type fullname: coreTypes.RegionCodenameEnum
+     */
+    export type RegionCodenameEnum = "ap-south-mum" | "ap-southeast-sgp" | "ap-southeast-syd" | "ca-east-bhs" | "ca-east-tor" | "eu-central-waw" | "eu-west-eri" | "eu-west-gra" | "eu-west-lim" | "eu-west-par" | "eu-west-rbx" | "eu-west-sbg" | "us-east-vin" | "us-west-hil"
 }
 export namespace dedicated {
     /**
      * ovh datacenter
      * type fullname: dedicated.DatacenterEnum
      */
-    export type DatacenterEnum = "bhs1" | "bhs2" | "bhs3" | "bhs4" | "bhs5" | "bhs6" | "bhs7" | "bhs8" | "dc1" | "eri1" | "gra1" | "gra2" | "gra3" | "gsw" | "hil1" | "lil1-int1" | "lim1" | "lim3" | "p19" | "rbx-hz" | "rbx1" | "rbx2" | "rbx3" | "rbx4" | "rbx5" | "rbx6" | "rbx7" | "rbx8" | "sbg1" | "sbg2" | "sbg3" | "sbg4" | "sbg5" | "sgp1" | "syd1" | "syd2" | "vin1" | "waw1" | "ynm1"
+    export type DatacenterEnum = "bhs1" | "bhs2" | "bhs3" | "bhs4" | "bhs5" | "bhs6" | "bhs7" | "bhs8" | "cch01" | "crx1" | "crx2" | "dc1" | "eri1" | "eri2" | "gra04" | "gra1" | "gra2" | "gra3" | "gsw" | "hil1" | "ieb01" | "lil1-int1" | "lim1" | "lim2" | "lim3" | "mr901" | "p19" | "rbx" | "rbx-hz" | "rbx1" | "rbx10" | "rbx2" | "rbx3" | "rbx4" | "rbx5" | "rbx6" | "rbx7" | "rbx8" | "rbx9" | "sbg1" | "sbg2" | "sbg3" | "sbg4" | "sbg5" | "sgp02" | "sgp1" | "syd03" | "syd1" | "syd2" | "vin1" | "waw1" | "ynm1" | "yyz01"
+}
+export namespace iam {
+    /**
+     * IAM resource metadata embedded in services models
+     * interface fullName: iam.ResourceMetadata.ResourceMetadata
+     */
+    export interface ResourceMetadata {
+        displayName?: string;
+        id: string;
+        tags?: { [key: string]: string };
+        urn: string;
+    }
+    export namespace resource {
+        /**
+         * Resource tag filter
+         * interface fullName: iam.resource.TagFilter.TagFilter
+         */
+        export interface TagFilter {
+            operator?: iam.resource.TagFilter.OperatorEnum;
+            value: string;
+        }
+        export namespace TagFilter {
+            /**
+             * Operator that can be used in order to filter resources tags
+             * type fullname: iam.resource.TagFilter.OperatorEnum
+             */
+            export type OperatorEnum = "EQ"
+        }
+    }
 }
 export namespace ip {
     /**
@@ -78,6 +112,22 @@ export namespace ip {
      */
     export type BlockedIpStateEnum = "blocked" | "unblocking"
     /**
+     * Preview of an IP aggregation on BYOIP Additional IPs
+     * interface fullName: ip.ByoipAggregationPreview.ByoipAggregationPreview
+     */
+    export interface ByoipAggregationPreview {
+        aggregationIp: string;
+        childrenIps: string[];
+    }
+    /**
+     * Preview of an IP slicing on BYOIP Additional IPs
+     * interface fullName: ip.ByoipSlicingPreview.ByoipSlicingPreview
+     */
+    export interface ByoipSlicingPreview {
+        childrenIps: string[];
+        slicingSize: number;
+    }
+    /**
      * Campus of an IP address
      * interface fullName: ip.Campus.Campus
      */
@@ -91,7 +141,7 @@ export namespace ip {
      * Possible values for IP campuses' names
      * type fullname: ip.CampusEnum
      */
-    export type CampusEnum = "BHS" | "ERI" | "GRA" | "HIL" | "LIM" | "RBX" | "SBG" | "SGP" | "SY2" | "SYD" | "VIN" | "WAW" | "YNM"
+    export type CampusEnum = "BHS" | "ERI" | "GRA" | "HIL" | "LIM" | "RBX" | "SBG" | "SGP" | "SYD" | "VIN" | "WAW" | "YNM" | "YYZ"
     /**
      * A structure given service and its nexthops as a destination for failover ips
      * interface fullName: ip.Destination.Destination
@@ -166,7 +216,7 @@ export namespace ip {
      * Possible values for action
      * type fullname: ip.FirewallSequenceRangeEnum
      */
-    export type FirewallSequenceRangeEnum = 0 | 1 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+    export type FirewallSequenceRangeEnum = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19
     /**
      * Possible values for firewall ip state
      * type fullname: ip.FirewallStateEnum
@@ -184,7 +234,9 @@ export namespace ip {
     export interface GameMitigation {
         firewallModeEnabled: boolean;
         ipOnGame: string;
+        maxRules: number;
         state: ip.GameMitigationStateEnum;
+        supportedProtocols: ip.GameMitigationRuleProtocolEnum[];
     }
     /**
      * Rule on ip:ports
@@ -210,7 +262,7 @@ export namespace ip {
      * Possible values for udp mitigation rule state
      * type fullname: ip.GameMitigationStateEnum
      */
-    export type GameMitigationStateEnum = "firewallModeDisablePending" | "firewallModeEnablePending" | "ok"
+    export type GameMitigationStateEnum = "cleanRulesPending" | "firewallModeDisablePending" | "firewallModeEnablePending" | "ok"
     /**
      * Your IP
      * interface fullName: ip.Ip.Ip
@@ -224,6 +276,7 @@ export namespace ip {
         ip: string;
         isAdditionalIp: boolean;
         organisationId?: string;
+        regions?: coreTypes.RegionCodenameEnum[];
         rir?: string;
         routedTo?: ip.RoutedTo;
         type: ip.IpTypeEnum;
@@ -262,31 +315,6 @@ export namespace ip {
      */
     export type IpVersionEnum = 4 | 6
     /**
-     * Mitigation attack on your ip
-     * interface fullName: ip.MitigationAttack.MitigationAttack
-     */
-    export interface MitigationAttack {
-        endDate?: string;
-        idAttack: number;
-        ipAttack: string;
-        startDate: string;
-    }
-    /**
-     * Detailed statistics about your traffic
-     * interface fullName: ip.MitigationDetailedStats.MitigationDetailedStats
-     */
-    export interface MitigationDetailedStats {
-        destPort?: number;
-        fragments?: boolean;
-        icmpCode?: number;
-        icmpType?: number;
-        in?: ip.MitigationTraffic;
-        out?: ip.MitigationTraffic;
-        protocol?: number;
-        srcPort?: number;
-        syn?: boolean;
-    }
-    /**
      * Your IP on mitigation
      * interface fullName: ip.MitigationIp.MitigationIp
      */
@@ -309,7 +337,7 @@ export namespace ip {
      * Possible values for auto mitigation timeout (minutes)
      * type fullname: ip.MitigationProfileAutoMitigationTimeOutEnum
      */
-    export type MitigationProfileAutoMitigationTimeOutEnum = 0 | 15 | 1560 | 360 | 60
+    export type MitigationProfileAutoMitigationTimeOutEnum = 0 | 15 | 60 | 360 | 1560
     /**
      * Possible values for mitigation profile state
      * type fullname: ip.MitigationProfileStateEnum
@@ -320,28 +348,6 @@ export namespace ip {
      * type fullname: ip.MitigationStateEnum
      */
     export type MitigationStateEnum = "creationPending" | "ok" | "removalPending"
-    /**
-     * Traffic statistics in and out on a mitigated ip
-     * interface fullName: ip.MitigationStats.MitigationStats
-     */
-    export interface MitigationStats {
-        in?: ip.MitigationTraffic;
-        out?: ip.MitigationTraffic;
-        timestamp: number;
-    }
-    /**
-     * Possible aggregation scale on statistics
-     * type fullname: ip.MitigationStatsScaleEnum
-     */
-    export type MitigationStatsScaleEnum = "10s" | "1m" | "5m"
-    /**
-     * Traffic on mitigation
-     * interface fullName: ip.MitigationTraffic.MitigationTraffic
-     */
-    export interface MitigationTraffic {
-        bps: number;
-        pps: number;
-    }
     /**
      * Your reverse delegations on IPv6 subnet
      * interface fullName: ip.ReverseDelegation.ReverseDelegation
@@ -380,6 +386,20 @@ export namespace ip {
         canBeTerminated: boolean;
         country?: coreTypes.CountryEnum;
         description?: string;
+        ip: string;
+        organisationId?: string;
+        routedTo?: ip.RoutedTo;
+        type: ip.IpTypeEnum;
+    }
+    /**
+     * Your IP linked to service
+     * interface fullName: ip.ServiceIpWithIAM.ServiceIpWithIAM
+     */
+    export interface ServiceIpWithIAM {
+        canBeTerminated: boolean;
+        country?: coreTypes.CountryEnum;
+        description?: string;
+        iam?: iam.ResourceMetadata;
         ip: string;
         organisationId?: string;
         routedTo?: ip.RoutedTo;
@@ -425,7 +445,7 @@ export namespace ip {
      * different task operation
      * type fullname: ip.TaskFunctionEnum
      */
-    export type TaskFunctionEnum = "arinBlockReassign" | "changeRipeOrg" | "checkAndReleaseIp" | "genericMoveFloatingIp"
+    export type TaskFunctionEnum = "arinBlockReassign" | "changeRipeOrg" | "checkAndReleaseIp" | "genericMoveFloatingIp" | "supernetByoipFailoverPartitioning"
     /**
      * different task status
      * type fullname: ip.TaskStatusEnum
@@ -519,10 +539,10 @@ export interface Ip {
     }
     service: {
         /**
-         * List available services
+         * Your ip services
          * GET /ip/service
          */
-        $get(): Promise<string[]>;
+        $get(params?: { iamTags?: any }): Promise<string[]>;
         /**
          * Controle cache
          */
@@ -551,19 +571,19 @@ export interface Ip {
             }
             confirmTermination: {
                 /**
-                 * Confirm termination of your service
+                 * Confirm service termination
                  * POST /ip/service/{serviceName}/confirmTermination
                  */
                 $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
             }
             serviceInfos: {
                 /**
-                 * Get this object properties
+                 * Get service information
                  * GET /ip/service/{serviceName}/serviceInfos
                  */
                 $get(): Promise<services.Service>;
                 /**
-                 * Alter this object properties
+                 * Update service information
                  * PUT /ip/service/{serviceName}/serviceInfos
                  */
                 $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
@@ -574,7 +594,7 @@ export interface Ip {
             }
             terminate: {
                 /**
-                 * Terminate your service
+                 * Ask for the termination of your service
                  * POST /ip/service/{serviceName}/terminate
                  */
                 $post(): Promise<string>;
@@ -591,7 +611,7 @@ export interface Ip {
          * Alter this object properties
          * PUT /ip/{ip}
          */
-        $put(params?: { bringYourOwnIp?: boolean, campus?: string, canBeTerminated?: boolean, country?: coreTypes.CountryEnum, description?: string, ip?: string, isAdditionalIp?: boolean, organisationId?: string, rir?: string, routedTo?: ip.RoutedTo, type?: ip.IpTypeEnum, version?: ip.IpVersionEnum }): Promise<void>;
+        $put(params?: { bringYourOwnIp?: boolean, campus?: string, canBeTerminated?: boolean, country?: coreTypes.CountryEnum, description?: string, ip?: string, isAdditionalIp?: boolean, organisationId?: string, regions?: coreTypes.RegionCodenameEnum[], rir?: string, routedTo?: ip.RoutedTo, type?: ip.IpTypeEnum, version?: ip.IpVersionEnum }): Promise<void>;
         /**
          * Controle cache
          */
@@ -653,6 +673,40 @@ export interface Ip {
                     $post(): Promise<void>;
                 }
             };
+        }
+        bringYourOwnIp: {
+            aggregate: {
+                /**
+                 * Get available aggregation configurations for this BYOIP Additional IP and it's neighbor(s)
+                 * GET /ip/{ip}/bringYourOwnIp/aggregate
+                 */
+                $get(): Promise<ip.ByoipAggregationPreview[]>;
+                /**
+                 * Aggregate a sliced BYOIP Additional IPs and it's neighbor(s) into a single bigger Additional IP parent
+                 * POST /ip/{ip}/bringYourOwnIp/aggregate
+                 */
+                $post(params: { aggregationIp: string }): Promise<ip.IpTask>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            slice: {
+                /**
+                 * Get available slicing configurations for this BYOIP Additional IP
+                 * GET /ip/{ip}/bringYourOwnIp/slice
+                 */
+                $get(): Promise<ip.ByoipSlicingPreview[]>;
+                /**
+                 * Slice a BYOIP Additional IP into smaller Additional IPs
+                 * POST /ip/{ip}/bringYourOwnIp/slice
+                 */
+                $post(params: { slicingSize: number }): Promise<ip.IpTask>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
         }
         changeOrg: {
             /**
@@ -782,7 +836,7 @@ export interface Ip {
                  * Alter this object properties
                  * PUT /ip/{ip}/game/{ipOnGame}
                  */
-                $put(params?: { firewallModeEnabled?: boolean, ipOnGame?: string, state?: ip.GameMitigationStateEnum }): Promise<void>;
+                $put(params?: { firewallModeEnabled?: boolean, ipOnGame?: string, maxRules?: number, state?: ip.GameMitigationStateEnum, supportedProtocols?: ip.GameMitigationRuleProtocolEnum[] }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -962,28 +1016,6 @@ export interface Ip {
                  * Controle cache
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                stats: {
-                    /**
-                     * AntiDDOS option. Get statistics about your traffic in and out during this mitigation
-                     * GET /ip/{ip}/mitigation/{ipOnMitigation}/stats
-                     */
-                    $get(params: { from: string, scale: ip.MitigationStatsScaleEnum, to: string }): Promise<ip.MitigationStats[]>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                }
-                topStream: {
-                    /**
-                     * AntiDDOS option. Get top stream on your ip on a specific timestamp
-                     * GET /ip/{ip}/mitigation/{ipOnMitigation}/topStream
-                     */
-                    $get(params: { date: string, scale: ip.MitigationStatsScaleEnum }): Promise<ip.MitigationDetailedStats[]>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                }
             };
         }
         mitigationProfiles: {

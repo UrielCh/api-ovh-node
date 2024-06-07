@@ -6,22 +6,6 @@ import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-
  */
 export namespace complexType {
     /**
-     * Chart
-     * interface fullName: complexType.ChartReturn.ChartReturn
-     */
-    export interface ChartReturn {
-        unit?: string;
-        values?: complexType.ChartTimestampValue[];
-    }
-    /**
-     * A timestamp associated to a value
-     * interface fullName: complexType.ChartTimestampValue.ChartTimestampValue
-     */
-    export interface ChartTimestampValue {
-        timestamp: number;
-        value?: number;
-    }
-    /**
      * Key and value, with proper key strings
      * interface fullName: complexType.SafeKeyValue.SafeKeyValue
      */
@@ -38,6 +22,14 @@ export namespace complexType {
         value?: T;
     }
     /**
+     * complexType.SafeKeyValueCanBeNull_string
+     * interface fullName: complexType.SafeKeyValueCanBeNull_string.SafeKeyValueCanBeNull_string
+     */
+    export interface SafeKeyValueCanBeNull_string {
+        key?: string;
+        value: string;
+    }
+    /**
      * A numeric value tagged with its unit
      * interface fullName: complexType.UnitAndValue.UnitAndValue
      */
@@ -46,41 +38,7 @@ export namespace complexType {
         value: T;
     }
 }
-export namespace coreTypes {
-    /**
-     * ISO country codes
-     * type fullname: coreTypes.CountryEnum
-     */
-    export type CountryEnum = "ac" | "ad" | "ae" | "af" | "ag" | "ai" | "al" | "am" | "an" | "ao" | "aq" | "ar" | "as" | "at" | "au" | "aw" | "ax" | "az" | "ba" | "bb" | "bd" | "be" | "bf" | "bg" | "bh" | "bi" | "bj" | "bl" | "bm" | "bn" | "bo" | "bq" | "br" | "bs" | "bt" | "bv" | "bw" | "by" | "bz" | "ca" | "cc" | "cd" | "cf" | "cg" | "ch" | "ci" | "ck" | "cl" | "cm" | "cn" | "co" | "cr" | "cs" | "cu" | "cv" | "cw" | "cx" | "cy" | "cz" | "de" | "dj" | "dk" | "dm" | "do" | "dz" | "ec" | "ee" | "eg" | "eh" | "er" | "es" | "et" | "fc" | "fd" | "fi" | "fj" | "fk" | "fm" | "fo" | "fr" | "fx" | "ga" | "gb" | "gd" | "ge" | "gf" | "gg" | "gh" | "gi" | "gl" | "gm" | "gn" | "gp" | "gq" | "gr" | "gs" | "gt" | "gu" | "gw" | "gy" | "hk" | "hm" | "hn" | "hr" | "ht" | "hu" | "id" | "ie" | "il" | "im" | "in" | "io" | "iq" | "ir" | "is" | "it" | "je" | "jm" | "jo" | "jp" | "ke" | "kg" | "kh" | "ki" | "km" | "kn" | "kp" | "kr" | "kw" | "ky" | "kz" | "la" | "lb" | "lc" | "li" | "lk" | "lr" | "ls" | "lt" | "lu" | "lv" | "ly" | "ma" | "mc" | "md" | "me" | "mf" | "mg" | "mh" | "mk" | "ml" | "mm" | "mn" | "mo" | "mp" | "mq" | "mr" | "ms" | "mt" | "mu" | "mv" | "mw" | "mx" | "my" | "mz" | "na" | "nc" | "ne" | "nf" | "ng" | "ni" | "nl" | "no" | "np" | "nr" | "nu" | "nz" | "om" | "pa" | "pe" | "pf" | "pg" | "ph" | "pk" | "pl" | "pm" | "pn" | "pr" | "ps" | "pt" | "pw" | "py" | "qa" | "qc" | "re" | "ro" | "rs" | "ru" | "rw" | "sa" | "sb" | "sc" | "sd" | "se" | "sg" | "sh" | "si" | "sj" | "sk" | "sl" | "sm" | "sn" | "so" | "sr" | "ss" | "st" | "sv" | "sx" | "sy" | "sz" | "tc" | "td" | "tf" | "tg" | "th" | "tj" | "tk" | "tl" | "tm" | "tn" | "to" | "tp" | "tr" | "tt" | "tv" | "tw" | "tz" | "ua" | "ug" | "uk" | "um" | "us" | "uy" | "uz" | "va" | "vc" | "ve" | "vg" | "vi" | "vn" | "vu" | "we" | "wf" | "ws" | "ye" | "yt" | "yu" | "za" | "zm" | "zw"
-}
 export namespace dedicated {
-    /**
-     * A structure describing the availabilities of dedicated server
-     * interface fullName: dedicated.Availabilities.Availabilities
-     */
-    export interface Availabilities {
-        datacenters: dedicated.AvailabilityDatacenter[];
-        hardware?: string;
-        region?: dedicated.AvailabilityRegionEnum;
-    }
-    /**
-     * A structure describing the availabilities of dedicated server
-     * interface fullName: dedicated.AvailabilitiesRaw.AvailabilitiesRaw
-     */
-    export interface AvailabilitiesRaw {
-        availability: dedicated.AvailabilityEnum;
-        available: number;
-        incomingDatacenter: number;
-        lastRule?: string;
-        ordered: number;
-        orderedCheck: number;
-        parentAvailable: number;
-        reference: string;
-        trueAvailable: number;
-        trueAvailable24H: number;
-        trueAvailable4H: number;
-        zone: dedicated.AvailabilityRegionEnum;
-    }
     /**
      * A structure describing the hardware availability for each datacenter
      * interface fullName: dedicated.AvailabilityDatacenter.AvailabilityDatacenter
@@ -93,28 +51,12 @@ export namespace dedicated {
      * The datacenter
      * type fullname: dedicated.AvailabilityDatacenterEnum
      */
-    export type AvailabilityDatacenterEnum = "au" | "bhs" | "ca" | "de" | "default" | "fr" | "fra" | "gb" | "gra" | "hil" | "in" | "lon" | "pl" | "rbx" | "rbx-hz" | "sbg" | "sg" | "sgp" | "syd" | "us" | "vin" | "waw" | "ynm"
+    export type AvailabilityDatacenterEnum = "ap-south-1-a" | "ap-southeast-sgp-a" | "ap-southeast-syd-a" | "au" | "bhs" | "ca" | "ca-east-1-a" | "ca-east-bhs-a" | "de" | "default" | "eu-central-waw-a" | "eu-west-1-a" | "eu-west-1-b" | "eu-west-1-c" | "eu-west-eri-a" | "eu-west-gra-a" | "eu-west-lim-a" | "eu-west-rbx-a" | "eu-west-sbg-a" | "fr" | "fra" | "gb" | "gra" | "hil" | "in" | "lon" | "pl" | "rbx" | "rbx-hz" | "sbg" | "sg" | "sgp" | "syd" | "us" | "us-east-vin-a" | "us-west-hil-a" | "vin" | "waw" | "ynm"
     /**
      * The availability
      * type fullname: dedicated.AvailabilityEnum
      */
-    export type AvailabilityEnum = "1440H" | "1H-high" | "1H-low" | "2160H" | "240H" | "24H" | "480H" | "720H" | "72H" | "unavailable" | "unknown"
-    /**
-     * A structure describing the hardware raw availability for each datacenter
-     * interface fullName: dedicated.AvailabilityRawDatacenter.AvailabilityRawDatacenter
-     */
-    export interface AvailabilityRawDatacenter {
-        availability: dedicated.AvailabilityEnum;
-        datacenter: dedicated.AvailabilityDatacenterEnum;
-        lastRule?: string;
-        parentAvailable: number;
-        trueAvailable: number;
-    }
-    /**
-     * The region
-     * type fullname: dedicated.AvailabilityRegionEnum
-     */
-    export type AvailabilityRegionEnum = "europe" | "northAmerica"
+    export type AvailabilityEnum = "120H" | "1440H" | "1H-high" | "1H-low" | "2160H" | "240H" | "24H" | "480H" | "720H" | "72H" | "comingSoon" | "unavailable" | "unknown"
     /**
      * Get list of compatible firewall binaries
      * interface fullName: dedicated.BinaryFirewall.BinaryFirewall
@@ -131,11 +73,6 @@ export namespace dedicated {
     export interface BinaryFirewallLink {
         url: string;
     }
-    /**
-     * CheckSum type
-     * type fullname: dedicated.CheckSumTypesEnum
-     */
-    export type CheckSumTypesEnum = "md5" | "sha1" | "sha256" | "sha512"
     /**
      * A structure describing the availabilities of dedicated server
      * interface fullName: dedicated.DatacenterAvailability.DatacenterAvailability
@@ -154,21 +91,7 @@ export namespace dedicated {
      * ovh datacenter
      * type fullname: dedicated.DatacenterEnum
      */
-    export type DatacenterEnum = "bhs1" | "bhs2" | "bhs3" | "bhs4" | "bhs5" | "bhs6" | "bhs7" | "bhs8" | "dc1" | "eri1" | "gra1" | "gra2" | "gra3" | "gsw" | "hil1" | "lil1-int1" | "lim1" | "lim3" | "p19" | "rbx-hz" | "rbx1" | "rbx2" | "rbx3" | "rbx4" | "rbx5" | "rbx6" | "rbx7" | "rbx8" | "sbg1" | "sbg2" | "sbg3" | "sbg4" | "sbg5" | "sgp1" | "syd1" | "syd2" | "vin1" | "waw1" | "ynm1"
-    /**
-     * A structure describing the raw availabilities of dedicated server
-     * interface fullName: dedicated.DatacenterRawAvailability.DatacenterRawAvailability
-     */
-    export interface DatacenterRawAvailability {
-        datacenters: dedicated.AvailabilityRawDatacenter[];
-        fqn: string;
-        gpu?: string;
-        memory?: string;
-        planCode: string;
-        server: string;
-        storage?: string;
-        systemStorage?: string;
-    }
+    export type DatacenterEnum = "bhs1" | "bhs2" | "bhs3" | "bhs4" | "bhs5" | "bhs6" | "bhs7" | "bhs8" | "cch01" | "crx1" | "crx2" | "dc1" | "eri1" | "eri2" | "gra04" | "gra1" | "gra2" | "gra3" | "gsw" | "hil1" | "ieb01" | "lil1-int1" | "lim1" | "lim2" | "lim3" | "mr901" | "p19" | "rbx" | "rbx-hz" | "rbx1" | "rbx10" | "rbx2" | "rbx3" | "rbx4" | "rbx5" | "rbx6" | "rbx7" | "rbx8" | "rbx9" | "sbg1" | "sbg2" | "sbg3" | "sbg4" | "sbg5" | "sgp02" | "sgp1" | "syd03" | "syd1" | "syd2" | "vin1" | "waw1" | "ynm1" | "yyz01"
     /**
      * A task for a dedicated server
      * interface fullName: dedicated.ExposedTask.ExposedTask
@@ -179,11 +102,6 @@ export namespace dedicated {
         server: string;
         todoDate: string;
     }
-    /**
-     * Type of your image
-     * type fullname: dedicated.ImageTypesEnum
-     */
-    export type ImageTypesEnum = "qcow2" | "raw"
     /**
      * List of operation type
      * type fullname: dedicated.OperationFunctionEnum
@@ -221,7 +139,7 @@ export namespace dedicated {
      * different task operation
      * type fullname: dedicated.TaskFunctionEnum
      */
-    export type TaskFunctionEnum = "INFRA_002_VirtualNetworkInterface" | "INFRA_002_VirtualNetworkInterface_group" | "INFRA_002_VirtualNetworkInterface_ungroup" | "INFRA_ONE_NETWORK_VirtualNetworkInterface_group" | "INFRA_ONE_NETWORK_VirtualNetworkInterface_ungroup" | "addVirtualMac" | "addWindowSplaFromExistingSerial" | "applyBackupFtpAcls" | "applyBackupFtpQuota" | "bypassAntiDDosGame" | "changePasswordBackupFTP" | "changeRipeOrg" | "checkAndReleaseIp" | "createBackupFTP" | "createOrUpdateRipeOrg" | "createPrivateNetwork" | "disableFirewall" | "enableFirewall" | "genericMoveFloatingIp" | "hardReboot" | "hardware_update" | "ipmi/configureSGX" | "migrateBackupFTP" | "moveFloatingIp" | "moveVirtualMac" | "reagregateBlock" | "rebootPower8To" | "reinstallServer" | "releaseIp" | "removeBackupFTP" | "removeVirtualMac" | "requestAccessIPMI" | "resetIPMI" | "resetIPMISession" | "testIPMIhttp" | "testIPMIpassword" | "testIPMIping" | "virtualMacAdd" | "virtualMacDelete"
+    export type TaskFunctionEnum = "INFRA_002_VirtualNetworkInterface" | "INFRA_002_VirtualNetworkInterface_group" | "INFRA_002_VirtualNetworkInterface_ungroup" | "INFRA_ONE_NETWORK_ONEAPI_VirtualNetworkInterface_group" | "INFRA_ONE_NETWORK_ONEAPI_VirtualNetworkInterface_ungroup" | "INFRA_ONE_NETWORK_VirtualNetworkInterface_group" | "INFRA_ONE_NETWORK_VirtualNetworkInterface_ungroup" | "addVirtualMac" | "addWindowSplaFromExistingSerial" | "applyBackupFtpAcls" | "applyBackupFtpQuota" | "bypassAntiDDosGame" | "changePasswordBackupFTP" | "changeRipeOrg" | "checkAndReleaseIp" | "createBackupFTP" | "createOrUpdateRipeOrg" | "createPrivateNetwork" | "disableFirewall" | "enableFirewall" | "genericMoveFloatingIp" | "hardReboot" | "hardware_update" | "ipmi/configureSGX" | "migrateBackupFTP" | "moveFloatingIp" | "moveVirtualMac" | "reagregateBlock" | "rebootPower8To" | "reinstallServer" | "releaseIp" | "removeBackupFTP" | "removeVirtualMac" | "requestAccessIPMI" | "resetIPMI" | "resetIPMISession" | "testIPMIhttp" | "testIPMIpassword" | "testIPMIping" | "virtualMacAdd" | "virtualMacDelete"
     /**
      * different task status
      * type fullname: dedicated.TaskStatusEnum
@@ -268,7 +186,7 @@ export namespace dedicated {
          * interface fullName: dedicated.server.Access.Access
          */
         export interface Access {
-            password: string;
+            password?: string;
             type: dedicated.server.AccessTypeEnum;
             url?: string;
             user?: string;
@@ -284,10 +202,37 @@ export namespace dedicated {
          */
         export type AddonFamilyEnum = "memory" | "storage"
         /**
-         * Monitoring alert language
-         * type fullname: dedicated.server.AlertLanguageEnum
+         * A structure describing the hardware availability for each region
+         * interface fullName: dedicated.server.AvailabilityByRegion.AvailabilityByRegion
          */
-        export type AlertLanguageEnum = "cz" | "de" | "en" | "es" | "fi" | "fr" | "it" | "lt" | "nl" | "pl" | "pt"
+        export interface AvailabilityByRegion {
+            availability: dedicated.server.AvailabilityEnum;
+            availabilityZones: dedicated.server.AvailabilityZones[];
+            region: dedicated.server.AvailabilityRegionalizationEnum;
+        }
+        /**
+         * The availability
+         * type fullname: dedicated.server.AvailabilityEnum
+         */
+        export type AvailabilityEnum = "120H" | "1440H" | "1H-high" | "1H-low" | "2160H" | "240H" | "24H" | "480H" | "720H" | "72H" | "comingSoon" | "unavailable" | "unknown"
+        /**
+         * The region
+         * type fullname: dedicated.server.AvailabilityRegionalizationEnum
+         */
+        export type AvailabilityRegionalizationEnum = "ap-south-1" | "ap-southeast-sgp" | "ap-southeast-syd" | "ca-east-1" | "ca-east-bhs" | "eu-central-waw" | "eu-west-eri" | "eu-west-gra" | "eu-west-lim" | "eu-west-par" | "eu-west-rbx" | "eu-west-sbg" | "us-east-vin" | "us-west-hil"
+        /**
+         * A structure describing the hardware availability for each availability zone
+         * interface fullName: dedicated.server.AvailabilityZones.AvailabilityZones
+         */
+        export interface AvailabilityZones {
+            availability: dedicated.server.AvailabilityEnum;
+            availabilityZone: dedicated.server.AvailabilityZonesEnum;
+        }
+        /**
+         * The availability zone
+         * type fullname: dedicated.server.AvailabilityZonesEnum
+         */
+        export type AvailabilityZonesEnum = "ap-south-1-a" | "ap-southeast-sgp-a" | "ap-southeast-syd-a" | "ca-east-1-a" | "ca-east-bhs-a" | "eu-central-waw-a" | "eu-west-1-a" | "eu-west-1-b" | "eu-west-1-c" | "eu-west-eri-a" | "eu-west-gra-a" | "eu-west-lim-a" | "eu-west-rbx-a" | "eu-west-sbg-a" | "us-east-vin-a" | "us-west-hil-a"
         /**
          * Server BMC interface (formerly named IPMI)
          * interface fullName: dedicated.server.BMC.BMC
@@ -310,7 +255,7 @@ export namespace dedicated {
          * Different backup storage capacity in gigabytes
          * type fullname: dedicated.server.BackupStorageCapacityEnum
          */
-        export type BackupStorageCapacityEnum = 1000 | 10000 | 500 | 5000
+        export type BackupStorageCapacityEnum = 500 | 1000 | 5000 | 10000
         /**
          * A structure describing informations storage backup orderable for this dedicated server
          * interface fullName: dedicated.server.BackupStorageOrderable.BackupStorageOrderable
@@ -387,7 +332,7 @@ export namespace dedicated {
          * SGX PRMRR value enum
          * type fullname: dedicated.server.BiosSettingsSgxPrmrrEnum
          */
-        export type BiosSettingsSgxPrmrrEnum = "128" | "16384" | "2048" | "256" | "32" | "32768" | "4096" | "512" | "64" | "65536" | "8192"
+        export type BiosSettingsSgxPrmrrEnum = "128" | "131072" | "16384" | "2048" | "256" | "32" | "32768" | "4096" | "512" | "64" | "65536" | "8192"
         /**
          * SGX Status enum
          * type fullname: dedicated.server.BiosSettingsSgxStatusEnum
@@ -489,36 +434,10 @@ export namespace dedicated {
          */
         export type BurstStatusEnum = "active" | "inactive" | "inactiveLocked"
         /**
-         * Bring you own Image on your server
-         * interface fullName: dedicated.server.ByoiStatus.ByoiStatus
-         */
-        export interface ByoiStatus {
-            checksum?: string;
-            message?: string;
-            servername?: string;
-            status?: dedicated.server.ByoiStatusEnum;
-        }
-        /**
-         * All states a status can be in
-         * type fullname: dedicated.server.ByoiStatusEnum
-         */
-        export type ByoiStatusEnum = "doing" | "done" | "error"
-        /**
          * Time to live in minutes for cache
          * type fullname: dedicated.server.CacheTTLEnum
          */
-        export type CacheTTLEnum = 1 | 10 | 15 | 3 | 5
-        /**
-         * Configurations used by cloud-init or cloudbase-init
-         * interface fullName: dedicated.server.ConfigDrive.ConfigDrive
-         */
-        export interface ConfigDrive {
-            enable?: boolean;
-            hostname?: string;
-            sshKey?: string;
-            userData?: string;
-            userMetadatas?: complexType.SafeKeyValueCanBeNull<string>[];
-        }
+        export type CacheTTLEnum = 1 | 3 | 5 | 10 | 15
         /**
          * cpu family 
          * type fullname: dedicated.server.CpuFamilyEnum
@@ -529,7 +448,9 @@ export namespace dedicated {
          * interface fullName: dedicated.server.Dedicated.Dedicated
          */
         export interface Dedicated {
+            availabilityZone: string;
             bootId?: number;
+            bootScript?: string;
             commercialRange?: string;
             datacenter: dedicated.DatacenterEnum;
             ip: string;
@@ -542,7 +463,39 @@ export namespace dedicated {
             powerState: dedicated.server.PowerStateEnum;
             professionalUse: boolean;
             rack: string;
+            region: string;
             rescueMail?: string;
+            rescueSshKey?: string;
+            reverse?: string;
+            rootDevice?: string;
+            serverId: number;
+            state: dedicated.server.StateEnum;
+            supportLevel: dedicated.server.SupportLevelEnum;
+        }
+        /**
+         * Server informations
+         * interface fullName: dedicated.server.DedicatedWithIAM.DedicatedWithIAM
+         */
+        export interface DedicatedWithIAM {
+            availabilityZone: string;
+            bootId?: number;
+            bootScript?: string;
+            commercialRange?: string;
+            datacenter: dedicated.DatacenterEnum;
+            iam?: iam.ResourceMetadata;
+            ip: string;
+            linkSpeed?: number;
+            monitoring: boolean;
+            name: string;
+            newUpgradeSystem: boolean;
+            noIntervention: boolean;
+            os: string;
+            powerState: dedicated.server.PowerStateEnum;
+            professionalUse: boolean;
+            rack: string;
+            region: string;
+            rescueMail?: string;
+            rescueSshKey?: string;
             reverse?: string;
             rootDevice?: string;
             serverId: number;
@@ -686,16 +639,11 @@ export namespace dedicated {
         export interface InstallCustom {
             customHostname?: string;
             diskGroupId?: number;
-            installRTM?: boolean;
-            installSqlServer?: boolean;
-            language?: string;
             noRaid?: boolean;
             postInstallationScriptLink?: string;
             postInstallationScriptReturn?: string;
             softRaidDevices?: number;
             sshKeyName?: string;
-            useDistribKernel?: boolean;
-            useSpla?: boolean;
         }
         /**
          * A structure describing informations about an Installation templates
@@ -748,7 +696,7 @@ export namespace dedicated {
          * IP block size
          * type fullname: dedicated.server.IpBlockSizeEnum
          */
-        export type IpBlockSizeEnum = 1 | 128 | 16 | 256 | 32 | 4 | 64 | 8
+        export type IpBlockSizeEnum = 1 | 4 | 8 | 16 | 32 | 64 | 128 | 256
         /**
          * Available localization for this static IP
          * type fullname: dedicated.server.IpCountryEnum
@@ -823,16 +771,6 @@ export namespace dedicated {
          * type fullname: dedicated.server.IpmiTestTypeEnum
          */
         export type IpmiTestTypeEnum = "http" | "password" | "ping"
-        /**
-         * Monitoring interval in seconds
-         * type fullname: dedicated.server.MonitoringIntervalEnum
-         */
-        export type MonitoringIntervalEnum = "1800" | "21600" | "300" | "3600"
-        /**
-         * Monitoring protocol
-         * type fullname: dedicated.server.MonitoringProtocolEnum
-         */
-        export type MonitoringProtocolEnum = "DNS" | "FTP" | "HTTP" | "IMAP" | "POP" | "SMTP" | "SSH" | "openTCP"
         /**
          * distincts MRTG period
          * type fullname: dedicated.server.MrtgPeriodEnum
@@ -984,6 +922,20 @@ export namespace dedicated {
          */
         export type PowerStateEnum = "poweroff" | "poweron"
         /**
+         * A structure describing the availabilities of dedicated server
+         * interface fullName: dedicated.server.RegionAvailability.RegionAvailability
+         */
+        export interface RegionAvailability {
+            fqn: string;
+            gpu?: string;
+            memory?: string;
+            planCode: string;
+            regions?: dedicated.server.AvailabilityByRegion[];
+            server: string;
+            storage?: string;
+            systemStorage?: string;
+        }
+        /**
          * A structure describing routing informations about this dedicated server
          * interface fullName: dedicated.server.RoutingDetails.RoutingDetails
          */
@@ -1008,183 +960,6 @@ export namespace dedicated {
             gateway?: string;
             ip?: string;
             network?: string;
-        }
-        /**
-         * Servers statistics sent by RTM (Real Time Monitoring)
-         * interface fullName: dedicated.server.Rtm.Rtm
-         */
-        export interface Rtm {
-            currentVersion?: string;
-            installedVersion?: string;
-            needsUpdate: boolean;
-        }
-        /**
-         * distincts RTM charts period
-         * type fullname: dedicated.server.RtmChartPeriodEnum
-         */
-        export type RtmChartPeriodEnum = "daily" | "monthly" | "weekly" | "yearly"
-        /**
-         * distincts probes type
-         * type fullname: dedicated.server.RtmChartTypeEnum
-         */
-        export type RtmChartTypeEnum = "cpu" | "loadavg1" | "loadavg15" | "loadavg5" | "memory" | "processCount" | "processRunning" | "swap"
-        /**
-         * A structure describing informations about RTM
-         * interface fullName: dedicated.server.RtmCommandSize.RtmCommandSize
-         */
-        export interface RtmCommandSize {
-            command?: string;
-            memory?: complexType.UnitAndValue<number>;
-        }
-        /**
-         * A structure describing informations about opened sockets on the server
-         * interface fullName: dedicated.server.RtmConnection.RtmConnection
-         */
-        export interface RtmConnection {
-            cmdline?: string;
-            domain?: string;
-            exe?: string;
-            ip?: string;
-            pid?: number;
-            port?: number;
-            procname?: string;
-            uid?: number;
-            username?: string;
-        }
-        /**
-         * A structure describing informations about server cpu
-         * interface fullName: dedicated.server.RtmCpu.RtmCpu
-         */
-        export interface RtmCpu {
-            cache?: complexType.UnitAndValue<number>;
-            core?: number;
-            freq?: complexType.UnitAndValue<number>;
-            name?: string;
-        }
-        /**
-         * Server disks informations
-         * interface fullName: dedicated.server.RtmDisk.RtmDisk
-         */
-        export interface RtmDisk {
-            capacity?: complexType.UnitAndValue<number>;
-            disk: string;
-            model?: string;
-            temperature?: complexType.UnitAndValue<number>;
-        }
-        /**
-         * A structure describing SMART health disk status
-         * interface fullName: dedicated.server.RtmDiskSmart.RtmDiskSmart
-         */
-        export interface RtmDiskSmart {
-            current_pending_sector?: number;
-            multizone_error_rate?: number;
-            offline_seek_performance?: number;
-            offline_uncorrectable?: number;
-            other_errors?: number;
-            realocated_event_count?: number;
-            temperature_celsius?: number;
-            udma_crc_error?: number;
-            uncorrected_read_errors?: number;
-            uncorrected_write_errors?: number;
-        }
-        /**
-         * A structure describing informations about server load
-         * interface fullName: dedicated.server.RtmLoad.RtmLoad
-         */
-        export interface RtmLoad {
-            cpu?: complexType.UnitAndValue<number>;
-            loadavg1?: number;
-            loadavg15?: number;
-            loadavg5?: number;
-            memory?: complexType.UnitAndValue<number>;
-            processCount?: number;
-            processRunning?: number;
-            swap?: complexType.UnitAndValue<number>;
-            uptime?: number;
-        }
-        /**
-         * A structure describing informations about server memory
-         * interface fullName: dedicated.server.RtmMemory.RtmMemory
-         */
-        export interface RtmMemory {
-            capacity?: complexType.UnitAndValue<number>;
-            slot?: string;
-        }
-        /**
-         * A structure describing informations about motherboard
-         * interface fullName: dedicated.server.RtmMotherboardHw.RtmMotherboardHw
-         */
-        export interface RtmMotherboardHw {
-            manufacturer?: string;
-            name?: string;
-        }
-        /**
-         * A structure describing informations about Rtm os
-         * interface fullName: dedicated.server.RtmOs.RtmOs
-         */
-        export interface RtmOs {
-            kernelRelease?: string;
-            kernelVersion?: string;
-            release?: string;
-        }
-        /**
-         * Server partitions informations
-         * interface fullName: dedicated.server.RtmPartition.RtmPartition
-         */
-        export interface RtmPartition {
-            inodeUsage?: complexType.UnitAndValue<number>;
-            mountPoint?: string;
-            partition: string;
-            usage?: complexType.UnitAndValue<number>;
-        }
-        /**
-         * A structure describing informations about server PCI devices
-         * interface fullName: dedicated.server.RtmPci.RtmPci
-         */
-        export interface RtmPci {
-            bus?: string;
-            device?: string;
-        }
-        /**
-         * Server raid informations
-         * interface fullName: dedicated.server.RtmRaid.RtmRaid
-         */
-        export interface RtmRaid {
-            unit: string;
-        }
-        /**
-         *  Different RAID status
-         * type fullname: dedicated.server.RtmRaidStatusEnum
-         */
-        export type RtmRaidStatusEnum = "KO" | "OK" | "REBUILDING" | "UNKNOWN"
-        /**
-         * Server raid volume information
-         * interface fullName: dedicated.server.RtmRaidVolume.RtmRaidVolume
-         */
-        export interface RtmRaidVolume {
-            capacity?: complexType.UnitAndValue<number>;
-            chunks?: string;
-            label?: string;
-            letter?: string;
-            phys?: string;
-            status?: dedicated.server.RtmRaidStatusEnum;
-            stripe?: string;
-            syncprogress?: string;
-            type?: string;
-            volume?: string;
-        }
-        /**
-         * Server raid volume port informations
-         * interface fullName: dedicated.server.RtmRaidVolumePort.RtmRaidVolumePort
-         */
-        export interface RtmRaidVolumePort {
-            capacity?: complexType.UnitAndValue<number>;
-            disk?: string;
-            model?: string;
-            port?: string;
-            serial?: string;
-            status?: dedicated.server.RtmRaidStatusEnum;
-            syncprogress?: string;
         }
         /**
          * Server bandwidth burst details
@@ -1296,7 +1071,7 @@ export namespace dedicated {
          *  Different USB key capacity in gigabytes
          * type fullname: dedicated.server.UsbKeyCapacityEnum
          */
-        export type UsbKeyCapacityEnum = 128 | 16 | 256 | 32 | 64
+        export type UsbKeyCapacityEnum = 16 | 32 | 64 | 128 | 256
         /**
          * A structure describing informations about orderable USB keys
          * interface fullName: dedicated.server.UsbKeyOrderableDetails.UsbKeyOrderableDetails
@@ -1420,16 +1195,6 @@ export namespace dedicated {
             }
         }
         /**
-         * Service monitoring Email alert
-         * interface fullName: dedicated.server.emailAlert.emailAlert
-         */
-        export interface emailAlert {
-            alertId: number;
-            email: string;
-            enabled: boolean;
-            language: dedicated.server.AlertLanguageEnum;
-        }
-        /**
          * Physical KVM
          * interface fullName: dedicated.server.kvm.kvm
          */
@@ -1445,33 +1210,6 @@ export namespace dedicated {
         export interface netbootOption {
             option: dedicated.server.BootOptionEnum;
             value: string;
-        }
-        /**
-         * Service monitoring details
-         * interface fullName: dedicated.server.serviceMonitoring.serviceMonitoring
-         */
-        export interface serviceMonitoring {
-            challengeText?: string;
-            enabled: boolean;
-            interval: dedicated.server.MonitoringIntervalEnum;
-            ip: string;
-            monitoringId: number;
-            port: number;
-            protocol: dedicated.server.MonitoringProtocolEnum;
-            url?: string;
-        }
-        /**
-         * Monitoring SMS alert details, This service is currently not supported for servers at BHS 
-         * interface fullName: dedicated.server.smsAlert.smsAlert
-         */
-        export interface smsAlert {
-            alertId: number;
-            enabled: boolean;
-            fromHour?: number;
-            language: dedicated.server.AlertLanguageEnum;
-            phoneNumberTo: string;
-            smsAccount: string;
-            toHour?: number;
         }
         /**
          * SPLA licenses management
@@ -1506,24 +1244,46 @@ export namespace dedicated {
         export type VirtualNetworkInterfaceModeEnum = "public" | "public_aggregation" | "vrack" | "vrack_aggregation"
     }
 }
+export namespace iam {
+    /**
+     * IAM resource metadata embedded in services models
+     * interface fullName: iam.ResourceMetadata.ResourceMetadata
+     */
+    export interface ResourceMetadata {
+        displayName?: string;
+        id: string;
+        tags?: { [key: string]: string };
+        urn: string;
+    }
+    export namespace resource {
+        /**
+         * Resource tag filter
+         * interface fullName: iam.resource.TagFilter.TagFilter
+         */
+        export interface TagFilter {
+            operator?: iam.resource.TagFilter.OperatorEnum;
+            value: string;
+        }
+        export namespace TagFilter {
+            /**
+             * Operator that can be used in order to filter resources tags
+             * type fullname: iam.resource.TagFilter.OperatorEnum
+             */
+            export type OperatorEnum = "EQ"
+        }
+    }
+}
 export namespace license {
     /**
      * All versions for Windows products
      * type fullname: license.WindowsOsVersionEnum
      */
-    export type WindowsOsVersionEnum = "windows-server-2008-license-datacenter-edition-1-cpu" | "windows-server-2008-license-datacenter-edition-2-cpu" | "windows-server-2008-license-datacenter-edition-4-cpu" | "windows-server-2008-license-enterprise-edition-1-cpu" | "windows-server-2008-license-enterprise-edition-2-cpu" | "windows-server-2008-license-enterprise-edition-4-cpu" | "windows-server-2008-license-standard-edition-1-cpu" | "windows-server-2008-license-standard-edition-2-cpu" | "windows-server-2008-license-standard-edition-4-cpu" | "windows-server-2008-license-web-edition-1-cpu" | "windows-server-2008-license-web-edition-2-cpu" | "windows-server-2008-license-web-edition-4-cpu" | "windows-server-2012-license-datacenter-edition-1-cpu" | "windows-server-2012-license-datacenter-edition-2-cpu" | "windows-server-2012-license-datacenter-edition-4-cpu" | "windows-server-2012-license-standard-edition-1-cpu" | "windows-server-2012-license-standard-edition-2-cpu" | "windows-server-2012-license-standard-edition-4-cpu" | "windows-server-2016-license-datacenter-edition-1-cpu-10-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-12-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-14-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-16-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-18-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-20-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-22-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-24-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-8-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-10-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-12-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-14-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-16-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-18-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-20-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-22-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-24-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-8-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-10-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-12-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-14-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-16-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-18-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-20-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-22-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-24-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-8-cores" | "windows-server-2016-license-standard-edition-1-cpu-10-cores" | "windows-server-2016-license-standard-edition-1-cpu-12-cores" | "windows-server-2016-license-standard-edition-1-cpu-14-cores" | "windows-server-2016-license-standard-edition-1-cpu-16-cores" | "windows-server-2016-license-standard-edition-1-cpu-18-cores" | "windows-server-2016-license-standard-edition-1-cpu-20-cores" | "windows-server-2016-license-standard-edition-1-cpu-22-cores" | "windows-server-2016-license-standard-edition-1-cpu-24-cores" | "windows-server-2016-license-standard-edition-1-cpu-8-cores" | "windows-server-2016-license-standard-edition-2-cpu-10-cores" | "windows-server-2016-license-standard-edition-2-cpu-12-cores" | "windows-server-2016-license-standard-edition-2-cpu-14-cores" | "windows-server-2016-license-standard-edition-2-cpu-16-cores" | "windows-server-2016-license-standard-edition-2-cpu-18-cores" | "windows-server-2016-license-standard-edition-2-cpu-20-cores" | "windows-server-2016-license-standard-edition-2-cpu-22-cores" | "windows-server-2016-license-standard-edition-2-cpu-24-cores" | "windows-server-2016-license-standard-edition-2-cpu-8-cores" | "windows-server-2016-license-standard-edition-4-cpu-10-cores" | "windows-server-2016-license-standard-edition-4-cpu-12-cores" | "windows-server-2016-license-standard-edition-4-cpu-14-cores" | "windows-server-2016-license-standard-edition-4-cpu-16-cores" | "windows-server-2016-license-standard-edition-4-cpu-18-cores" | "windows-server-2016-license-standard-edition-4-cpu-20-cores" | "windows-server-2016-license-standard-edition-4-cpu-22-cores" | "windows-server-2016-license-standard-edition-4-cpu-24-cores" | "windows-server-2016-license-standard-edition-4-cpu-8-cores" | "windows-server-2019-license-datacenter-edition-10-cores" | "windows-server-2019-license-datacenter-edition-12-cores" | "windows-server-2019-license-datacenter-edition-14-cores" | "windows-server-2019-license-datacenter-edition-16-cores" | "windows-server-2019-license-datacenter-edition-18-cores" | "windows-server-2019-license-datacenter-edition-20-cores" | "windows-server-2019-license-datacenter-edition-22-cores" | "windows-server-2019-license-datacenter-edition-24-cores" | "windows-server-2019-license-datacenter-edition-26-cores" | "windows-server-2019-license-datacenter-edition-28-cores" | "windows-server-2019-license-datacenter-edition-30-cores" | "windows-server-2019-license-datacenter-edition-32-cores" | "windows-server-2019-license-datacenter-edition-34-cores" | "windows-server-2019-license-datacenter-edition-36-cores" | "windows-server-2019-license-datacenter-edition-38-cores" | "windows-server-2019-license-datacenter-edition-40-cores" | "windows-server-2019-license-datacenter-edition-42-cores" | "windows-server-2019-license-datacenter-edition-44-cores" | "windows-server-2019-license-datacenter-edition-46-cores" | "windows-server-2019-license-datacenter-edition-48-cores" | "windows-server-2019-license-datacenter-edition-50-cores" | "windows-server-2019-license-datacenter-edition-52-cores" | "windows-server-2019-license-datacenter-edition-54-cores" | "windows-server-2019-license-datacenter-edition-56-cores" | "windows-server-2019-license-datacenter-edition-58-cores" | "windows-server-2019-license-datacenter-edition-60-cores" | "windows-server-2019-license-datacenter-edition-62-cores" | "windows-server-2019-license-datacenter-edition-64-cores" | "windows-server-2019-license-datacenter-edition-8-cores" | "windows-server-2019-license-standard-edition-10-cores" | "windows-server-2019-license-standard-edition-12-cores" | "windows-server-2019-license-standard-edition-14-cores" | "windows-server-2019-license-standard-edition-16-cores" | "windows-server-2019-license-standard-edition-18-cores" | "windows-server-2019-license-standard-edition-20-cores" | "windows-server-2019-license-standard-edition-22-cores" | "windows-server-2019-license-standard-edition-24-cores" | "windows-server-2019-license-standard-edition-26-cores" | "windows-server-2019-license-standard-edition-28-cores" | "windows-server-2019-license-standard-edition-30-cores" | "windows-server-2019-license-standard-edition-32-cores" | "windows-server-2019-license-standard-edition-34-cores" | "windows-server-2019-license-standard-edition-36-cores" | "windows-server-2019-license-standard-edition-38-cores" | "windows-server-2019-license-standard-edition-40-cores" | "windows-server-2019-license-standard-edition-42-cores" | "windows-server-2019-license-standard-edition-44-cores" | "windows-server-2019-license-standard-edition-46-cores" | "windows-server-2019-license-standard-edition-48-cores" | "windows-server-2019-license-standard-edition-50-cores" | "windows-server-2019-license-standard-edition-52-cores" | "windows-server-2019-license-standard-edition-54-cores" | "windows-server-2019-license-standard-edition-56-cores" | "windows-server-2019-license-standard-edition-58-cores" | "windows-server-2019-license-standard-edition-60-cores" | "windows-server-2019-license-standard-edition-62-cores" | "windows-server-2019-license-standard-edition-64-cores" | "windows-server-2019-license-standard-edition-8-cores" | "windows-server-2022-license-datacenter-edition-10-cores" | "windows-server-2022-license-datacenter-edition-12-cores" | "windows-server-2022-license-datacenter-edition-14-cores" | "windows-server-2022-license-datacenter-edition-16-cores" | "windows-server-2022-license-datacenter-edition-18-cores" | "windows-server-2022-license-datacenter-edition-20-cores" | "windows-server-2022-license-datacenter-edition-22-cores" | "windows-server-2022-license-datacenter-edition-24-cores" | "windows-server-2022-license-datacenter-edition-26-cores" | "windows-server-2022-license-datacenter-edition-28-cores" | "windows-server-2022-license-datacenter-edition-30-cores" | "windows-server-2022-license-datacenter-edition-32-cores" | "windows-server-2022-license-datacenter-edition-34-cores" | "windows-server-2022-license-datacenter-edition-36-cores" | "windows-server-2022-license-datacenter-edition-38-cores" | "windows-server-2022-license-datacenter-edition-40-cores" | "windows-server-2022-license-datacenter-edition-42-cores" | "windows-server-2022-license-datacenter-edition-44-cores" | "windows-server-2022-license-datacenter-edition-46-cores" | "windows-server-2022-license-datacenter-edition-48-cores" | "windows-server-2022-license-datacenter-edition-50-cores" | "windows-server-2022-license-datacenter-edition-52-cores" | "windows-server-2022-license-datacenter-edition-54-cores" | "windows-server-2022-license-datacenter-edition-56-cores" | "windows-server-2022-license-datacenter-edition-58-cores" | "windows-server-2022-license-datacenter-edition-60-cores" | "windows-server-2022-license-datacenter-edition-62-cores" | "windows-server-2022-license-datacenter-edition-64-cores" | "windows-server-2022-license-datacenter-edition-8-cores" | "windows-server-2022-license-standard-edition-10-cores" | "windows-server-2022-license-standard-edition-12-cores" | "windows-server-2022-license-standard-edition-14-cores" | "windows-server-2022-license-standard-edition-16-cores" | "windows-server-2022-license-standard-edition-18-cores" | "windows-server-2022-license-standard-edition-20-cores" | "windows-server-2022-license-standard-edition-22-cores" | "windows-server-2022-license-standard-edition-24-cores" | "windows-server-2022-license-standard-edition-26-cores" | "windows-server-2022-license-standard-edition-28-cores" | "windows-server-2022-license-standard-edition-30-cores" | "windows-server-2022-license-standard-edition-32-cores" | "windows-server-2022-license-standard-edition-34-cores" | "windows-server-2022-license-standard-edition-36-cores" | "windows-server-2022-license-standard-edition-38-cores" | "windows-server-2022-license-standard-edition-40-cores" | "windows-server-2022-license-standard-edition-42-cores" | "windows-server-2022-license-standard-edition-44-cores" | "windows-server-2022-license-standard-edition-46-cores" | "windows-server-2022-license-standard-edition-48-cores" | "windows-server-2022-license-standard-edition-50-cores" | "windows-server-2022-license-standard-edition-52-cores" | "windows-server-2022-license-standard-edition-54-cores" | "windows-server-2022-license-standard-edition-56-cores" | "windows-server-2022-license-standard-edition-58-cores" | "windows-server-2022-license-standard-edition-60-cores" | "windows-server-2022-license-standard-edition-62-cores" | "windows-server-2022-license-standard-edition-64-cores" | "windows-server-2022-license-standard-edition-8-cores"
+    export type WindowsOsVersionEnum = "windows-server-2008-license-datacenter-edition-1-cpu" | "windows-server-2008-license-datacenter-edition-2-cpu" | "windows-server-2008-license-datacenter-edition-4-cpu" | "windows-server-2008-license-enterprise-edition-1-cpu" | "windows-server-2008-license-enterprise-edition-2-cpu" | "windows-server-2008-license-enterprise-edition-4-cpu" | "windows-server-2008-license-standard-edition-1-cpu" | "windows-server-2008-license-standard-edition-2-cpu" | "windows-server-2008-license-standard-edition-4-cpu" | "windows-server-2008-license-web-edition-1-cpu" | "windows-server-2008-license-web-edition-2-cpu" | "windows-server-2008-license-web-edition-4-cpu" | "windows-server-2012-license-datacenter-edition-1-cpu" | "windows-server-2012-license-datacenter-edition-2-cpu" | "windows-server-2012-license-datacenter-edition-4-cpu" | "windows-server-2012-license-standard-edition-1-cpu" | "windows-server-2012-license-standard-edition-2-cpu" | "windows-server-2012-license-standard-edition-4-cpu" | "windows-server-2016-license-datacenter-edition-1-cpu-10-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-12-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-14-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-16-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-18-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-20-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-22-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-24-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-8-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-10-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-12-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-14-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-16-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-18-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-20-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-22-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-24-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-8-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-10-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-12-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-14-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-16-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-18-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-20-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-22-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-24-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-8-cores" | "windows-server-2016-license-standard-edition-1-cpu-10-cores" | "windows-server-2016-license-standard-edition-1-cpu-12-cores" | "windows-server-2016-license-standard-edition-1-cpu-14-cores" | "windows-server-2016-license-standard-edition-1-cpu-16-cores" | "windows-server-2016-license-standard-edition-1-cpu-18-cores" | "windows-server-2016-license-standard-edition-1-cpu-20-cores" | "windows-server-2016-license-standard-edition-1-cpu-22-cores" | "windows-server-2016-license-standard-edition-1-cpu-24-cores" | "windows-server-2016-license-standard-edition-1-cpu-8-cores" | "windows-server-2016-license-standard-edition-2-cpu-10-cores" | "windows-server-2016-license-standard-edition-2-cpu-12-cores" | "windows-server-2016-license-standard-edition-2-cpu-14-cores" | "windows-server-2016-license-standard-edition-2-cpu-16-cores" | "windows-server-2016-license-standard-edition-2-cpu-18-cores" | "windows-server-2016-license-standard-edition-2-cpu-20-cores" | "windows-server-2016-license-standard-edition-2-cpu-22-cores" | "windows-server-2016-license-standard-edition-2-cpu-24-cores" | "windows-server-2016-license-standard-edition-2-cpu-8-cores" | "windows-server-2016-license-standard-edition-4-cpu-10-cores" | "windows-server-2016-license-standard-edition-4-cpu-12-cores" | "windows-server-2016-license-standard-edition-4-cpu-14-cores" | "windows-server-2016-license-standard-edition-4-cpu-16-cores" | "windows-server-2016-license-standard-edition-4-cpu-18-cores" | "windows-server-2016-license-standard-edition-4-cpu-20-cores" | "windows-server-2016-license-standard-edition-4-cpu-22-cores" | "windows-server-2016-license-standard-edition-4-cpu-24-cores" | "windows-server-2016-license-standard-edition-4-cpu-8-cores" | "windows-server-2019-license-datacenter-edition-10-cores" | "windows-server-2019-license-datacenter-edition-12-cores" | "windows-server-2019-license-datacenter-edition-128-cores" | "windows-server-2019-license-datacenter-edition-14-cores" | "windows-server-2019-license-datacenter-edition-16-cores" | "windows-server-2019-license-datacenter-edition-18-cores" | "windows-server-2019-license-datacenter-edition-20-cores" | "windows-server-2019-license-datacenter-edition-22-cores" | "windows-server-2019-license-datacenter-edition-24-cores" | "windows-server-2019-license-datacenter-edition-256-cores" | "windows-server-2019-license-datacenter-edition-26-cores" | "windows-server-2019-license-datacenter-edition-28-cores" | "windows-server-2019-license-datacenter-edition-30-cores" | "windows-server-2019-license-datacenter-edition-32-cores" | "windows-server-2019-license-datacenter-edition-34-cores" | "windows-server-2019-license-datacenter-edition-36-cores" | "windows-server-2019-license-datacenter-edition-38-cores" | "windows-server-2019-license-datacenter-edition-40-cores" | "windows-server-2019-license-datacenter-edition-42-cores" | "windows-server-2019-license-datacenter-edition-44-cores" | "windows-server-2019-license-datacenter-edition-46-cores" | "windows-server-2019-license-datacenter-edition-48-cores" | "windows-server-2019-license-datacenter-edition-50-cores" | "windows-server-2019-license-datacenter-edition-512-cores" | "windows-server-2019-license-datacenter-edition-52-cores" | "windows-server-2019-license-datacenter-edition-54-cores" | "windows-server-2019-license-datacenter-edition-56-cores" | "windows-server-2019-license-datacenter-edition-58-cores" | "windows-server-2019-license-datacenter-edition-60-cores" | "windows-server-2019-license-datacenter-edition-62-cores" | "windows-server-2019-license-datacenter-edition-64-cores" | "windows-server-2019-license-datacenter-edition-8-cores" | "windows-server-2019-license-datacenter-edition-96-cores" | "windows-server-2019-license-standard-edition-10-cores" | "windows-server-2019-license-standard-edition-12-cores" | "windows-server-2019-license-standard-edition-128-cores" | "windows-server-2019-license-standard-edition-14-cores" | "windows-server-2019-license-standard-edition-16-cores" | "windows-server-2019-license-standard-edition-18-cores" | "windows-server-2019-license-standard-edition-20-cores" | "windows-server-2019-license-standard-edition-22-cores" | "windows-server-2019-license-standard-edition-24-cores" | "windows-server-2019-license-standard-edition-256-cores" | "windows-server-2019-license-standard-edition-26-cores" | "windows-server-2019-license-standard-edition-28-cores" | "windows-server-2019-license-standard-edition-30-cores" | "windows-server-2019-license-standard-edition-32-cores" | "windows-server-2019-license-standard-edition-34-cores" | "windows-server-2019-license-standard-edition-36-cores" | "windows-server-2019-license-standard-edition-38-cores" | "windows-server-2019-license-standard-edition-40-cores" | "windows-server-2019-license-standard-edition-42-cores" | "windows-server-2019-license-standard-edition-44-cores" | "windows-server-2019-license-standard-edition-46-cores" | "windows-server-2019-license-standard-edition-48-cores" | "windows-server-2019-license-standard-edition-50-cores" | "windows-server-2019-license-standard-edition-512-cores" | "windows-server-2019-license-standard-edition-52-cores" | "windows-server-2019-license-standard-edition-54-cores" | "windows-server-2019-license-standard-edition-56-cores" | "windows-server-2019-license-standard-edition-58-cores" | "windows-server-2019-license-standard-edition-60-cores" | "windows-server-2019-license-standard-edition-62-cores" | "windows-server-2019-license-standard-edition-64-cores" | "windows-server-2019-license-standard-edition-8-cores" | "windows-server-2019-license-standard-edition-96-cores" | "windows-server-2022-license-datacenter-edition-10-cores" | "windows-server-2022-license-datacenter-edition-12-cores" | "windows-server-2022-license-datacenter-edition-128-cores" | "windows-server-2022-license-datacenter-edition-14-cores" | "windows-server-2022-license-datacenter-edition-16-cores" | "windows-server-2022-license-datacenter-edition-18-cores" | "windows-server-2022-license-datacenter-edition-20-cores" | "windows-server-2022-license-datacenter-edition-22-cores" | "windows-server-2022-license-datacenter-edition-24-cores" | "windows-server-2022-license-datacenter-edition-256-cores" | "windows-server-2022-license-datacenter-edition-26-cores" | "windows-server-2022-license-datacenter-edition-28-cores" | "windows-server-2022-license-datacenter-edition-30-cores" | "windows-server-2022-license-datacenter-edition-32-cores" | "windows-server-2022-license-datacenter-edition-34-cores" | "windows-server-2022-license-datacenter-edition-36-cores" | "windows-server-2022-license-datacenter-edition-38-cores" | "windows-server-2022-license-datacenter-edition-40-cores" | "windows-server-2022-license-datacenter-edition-42-cores" | "windows-server-2022-license-datacenter-edition-44-cores" | "windows-server-2022-license-datacenter-edition-46-cores" | "windows-server-2022-license-datacenter-edition-48-cores" | "windows-server-2022-license-datacenter-edition-50-cores" | "windows-server-2022-license-datacenter-edition-512-cores" | "windows-server-2022-license-datacenter-edition-52-cores" | "windows-server-2022-license-datacenter-edition-54-cores" | "windows-server-2022-license-datacenter-edition-56-cores" | "windows-server-2022-license-datacenter-edition-58-cores" | "windows-server-2022-license-datacenter-edition-60-cores" | "windows-server-2022-license-datacenter-edition-62-cores" | "windows-server-2022-license-datacenter-edition-64-cores" | "windows-server-2022-license-datacenter-edition-8-cores" | "windows-server-2022-license-datacenter-edition-96-cores" | "windows-server-2022-license-standard-edition-10-cores" | "windows-server-2022-license-standard-edition-12-cores" | "windows-server-2022-license-standard-edition-128-cores" | "windows-server-2022-license-standard-edition-14-cores" | "windows-server-2022-license-standard-edition-16-cores" | "windows-server-2022-license-standard-edition-18-cores" | "windows-server-2022-license-standard-edition-20-cores" | "windows-server-2022-license-standard-edition-22-cores" | "windows-server-2022-license-standard-edition-24-cores" | "windows-server-2022-license-standard-edition-256-cores" | "windows-server-2022-license-standard-edition-26-cores" | "windows-server-2022-license-standard-edition-28-cores" | "windows-server-2022-license-standard-edition-30-cores" | "windows-server-2022-license-standard-edition-32-cores" | "windows-server-2022-license-standard-edition-34-cores" | "windows-server-2022-license-standard-edition-36-cores" | "windows-server-2022-license-standard-edition-38-cores" | "windows-server-2022-license-standard-edition-40-cores" | "windows-server-2022-license-standard-edition-42-cores" | "windows-server-2022-license-standard-edition-44-cores" | "windows-server-2022-license-standard-edition-46-cores" | "windows-server-2022-license-standard-edition-48-cores" | "windows-server-2022-license-standard-edition-50-cores" | "windows-server-2022-license-standard-edition-512-cores" | "windows-server-2022-license-standard-edition-52-cores" | "windows-server-2022-license-standard-edition-54-cores" | "windows-server-2022-license-standard-edition-56-cores" | "windows-server-2022-license-standard-edition-58-cores" | "windows-server-2022-license-standard-edition-60-cores" | "windows-server-2022-license-standard-edition-62-cores" | "windows-server-2022-license-standard-edition-64-cores" | "windows-server-2022-license-standard-edition-8-cores" | "windows-server-2022-license-standard-edition-96-cores"
     /**
      * All SQL Server versions for Windows products
      * type fullname: license.WindowsSqlVersionEnum
      */
     export type WindowsSqlVersionEnum = "SQL_SERVER_2008_STANDARD_EDITION" | "SQL_SERVER_2008_STANDARD_EDITION_2_CPU" | "SQL_SERVER_2008_WEB_EDITION" | "SQL_SERVER_2008_WEB_EDITION_2_CPU" | "SQL_SERVER_2012_STANDARD_EDITION" | "SQL_SERVER_2012_STANDARD_EDITION_12_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_16_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_18_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_20_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_24_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_2_CPU" | "SQL_SERVER_2012_STANDARD_EDITION_32_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_4_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_6_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_8_CORES" | "SQL_SERVER_2012_WEB_EDITION_12_CORES" | "SQL_SERVER_2012_WEB_EDITION_16_CORES" | "SQL_SERVER_2012_WEB_EDITION_18_CORES" | "SQL_SERVER_2012_WEB_EDITION_20_CORES" | "SQL_SERVER_2012_WEB_EDITION_24_CORES" | "SQL_SERVER_2012_WEB_EDITION_32_CORES" | "SQL_SERVER_2012_WEB_EDITION_4_CORES" | "SQL_SERVER_2012_WEB_EDITION_6_CORES" | "SQL_SERVER_2012_WEB_EDITION_8_CORES"
-}
-export namespace nichandle {
-    /**
-     * OVH subsidiaries
-     * type fullname: nichandle.OvhSubsidiaryEnum
-     */
-    export type OvhSubsidiaryEnum = "ASIA" | "AU" | "CA" | "CZ" | "DE" | "ES" | "EU" | "FI" | "FR" | "GB" | "IE" | "IN" | "IT" | "LT" | "MA" | "NL" | "PL" | "PT" | "QC" | "SG" | "SN" | "TN" | "US" | "WE" | "WS"
 }
 export namespace secondaryDns {
     /**
@@ -1673,33 +1433,11 @@ export interface Dedicated {
          * List available services
          * GET /dedicated/server
          */
-        $get(): Promise<string[]>;
+        $get(params?: { iamTags?: any }): Promise<string[]>;
         /**
          * Controle cache
          */
         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-        availabilities: {
-            /**
-             * List the availability of dedicated server
-             * GET /dedicated/server/availabilities
-             */
-            $get(params: { country: nichandle.OvhSubsidiaryEnum, hardware?: string }): Promise<dedicated.Availabilities[]>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            raw: {
-                /**
-                 * List the availability of dedicated server
-                 * GET /dedicated/server/availabilities/raw
-                 */
-                $get(): Promise<dedicated.AvailabilitiesRaw[]>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            }
-        }
         datacenter: {
             availabilities: {
                 /**
@@ -1711,17 +1449,6 @@ export interface Dedicated {
                  * Controle cache
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                raw: {
-                    /**
-                     * List the raw availability of dedicated server
-                     * GET /dedicated/server/datacenter/availabilities/raw
-                     */
-                    $get(params?: { datacenters?: string, excludeDatacenters?: boolean, gpu?: string, memory?: string, planCode?: string, server?: string, storage?: string, systemStorage?: string }): Promise<dedicated.DatacenterRawAvailability[]>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                }
             }
         }
         osAvailabilities: {
@@ -1735,18 +1462,18 @@ export interface Dedicated {
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
-        virtualNetworkInterface: {
-            $(uuid: string): {
+        region: {
+            availabilities: {
                 /**
-                 * Get VirtualNetworkInterface details
-                 * GET /dedicated/server/virtualNetworkInterface/{uuid}
+                 * List the availability of dedicated server
+                 * GET /dedicated/server/region/availabilities
                  */
-                $get(): Promise<dedicated.virtualNetworkInterface.VirtualNetworkInterface>;
+                $get(params?: { excludeRegions?: boolean, gpu?: string, memory?: string, planCode?: string, regions?: dedicated.server.AvailabilityRegionalizationEnum[], server?: string, storage?: string, systemStorage?: string }): Promise<dedicated.server.RegionAvailability[]>;
                 /**
                  * Controle cache
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            };
+            }
         }
         $(serviceName: string): {
             /**
@@ -1758,7 +1485,7 @@ export interface Dedicated {
              * Alter this object properties
              * PUT /dedicated/server/{serviceName}
              */
-            $put(params?: { bootId?: number, commercialRange?: string, datacenter?: dedicated.DatacenterEnum, ip?: string, linkSpeed?: number, monitoring?: boolean, name?: string, newUpgradeSystem?: boolean, noIntervention?: boolean, os?: string, powerState?: dedicated.server.PowerStateEnum, professionalUse?: boolean, rack?: string, rescueMail?: string, reverse?: string, rootDevice?: string, serverId?: number, state?: dedicated.server.StateEnum, supportLevel?: dedicated.server.SupportLevelEnum }): Promise<void>;
+            $put(params?: { availabilityZone?: string, bootId?: number, bootScript?: string, commercialRange?: string, datacenter?: dedicated.DatacenterEnum, ip?: string, linkSpeed?: number, monitoring?: boolean, name?: string, newUpgradeSystem?: boolean, noIntervention?: boolean, os?: string, powerState?: dedicated.server.PowerStateEnum, professionalUse?: boolean, rack?: string, region?: string, rescueMail?: string, rescueSshKey?: string, reverse?: string, rootDevice?: string, serverId?: number, state?: dedicated.server.StateEnum, supportLevel?: dedicated.server.SupportLevelEnum }): Promise<void>;
             /**
              * Controle cache
              */
@@ -1803,7 +1530,7 @@ export interface Dedicated {
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     configure: {
                         /**
-                         * Enable or disable SGX and configure PRMRR size. This will cause your server to reboot one or several time(s).
+                         * Enable or disable SGX and configure PRMRR size
                          * POST /dedicated/server/{serviceName}/biosSettings/sgx/configure
                          */
                         $post(params?: { prmrr?: dedicated.server.BiosSettingsSgxPrmrrEnum, status?: dedicated.server.BiosSettingsSgxStatusEnum }): Promise<dedicated.server.Task>;
@@ -1854,27 +1581,6 @@ export interface Dedicated {
                     }
                 };
             }
-            bringYourOwnImage: {
-                /**
-                 * Delete your current image installation
-                 * DELETE /dedicated/server/{serviceName}/bringYourOwnImage
-                 */
-                $delete(): Promise<void>;
-                /**
-                 * Get this object properties
-                 * GET /dedicated/server/{serviceName}/bringYourOwnImage
-                 */
-                $get(): Promise<dedicated.server.ByoiStatus>;
-                /**
-                 * Start an install with your own image
-                 * POST /dedicated/server/{serviceName}/bringYourOwnImage
-                 */
-                $post(params: { checkSum?: string, checkSumType?: dedicated.CheckSumTypesEnum, configdrive?: dedicated.server.ConfigDrive, description?: string, diskGroupId?: number, httpHeader?: complexType.SafeKeyValueCanBeNull<string>[], type: dedicated.ImageTypesEnum, URL: string }): Promise<void>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            }
             burst: {
                 /**
                  * Get this object properties
@@ -1893,7 +1599,7 @@ export interface Dedicated {
             }
             confirmTermination: {
                 /**
-                 * Confirm termination of your service
+                 * Confirm service termination
                  * POST /dedicated/server/{serviceName}/confirmTermination
                  */
                 $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
@@ -2204,13 +1910,6 @@ export interface Dedicated {
                      * Controle cache
                      */
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                }
-                windows: {
-                    /**
-                     * Add your existing windows license serial to this dedicated server. Will be manageable in /license/windows.
-                     * POST /dedicated/server/{serviceName}/license/windows
-                     */
-                    $post(params: { licenseId: string, version: license.WindowsOsVersionEnum }): Promise<dedicated.server.Task>;
                 }
             }
             mrtg: {
@@ -2538,12 +2237,12 @@ export interface Dedicated {
             }
             serviceInfos: {
                 /**
-                 * Get this object properties
+                 * Get service information
                  * GET /dedicated/server/{serviceName}/serviceInfos
                  */
                 $get(): Promise<services.Service>;
                 /**
-                 * Alter this object properties
+                 * Update service information
                  * PUT /dedicated/server/{serviceName}/serviceInfos
                  */
                 $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
@@ -2551,119 +2250,6 @@ export interface Dedicated {
                  * Controle cache
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            }
-            serviceMonitoring: {
-                /**
-                 * Service monitoring details
-                 * GET /dedicated/server/{serviceName}/serviceMonitoring
-                 */
-                $get(): Promise<number[]>;
-                /**
-                 * Add a new service monitoring
-                 * POST /dedicated/server/{serviceName}/serviceMonitoring
-                 */
-                $post(params: { challengeText?: string, enabled: boolean, interval: dedicated.server.MonitoringIntervalEnum, ip: string, port: number, protocol: dedicated.server.MonitoringProtocolEnum, url?: string }): Promise<dedicated.server.serviceMonitoring>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                $(monitoringId: number): {
-                    /**
-                     * Remove this service monitoring
-                     * DELETE /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}
-                     */
-                    $delete(): Promise<void>;
-                    /**
-                     * Get this object properties
-                     * GET /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}
-                     */
-                    $get(): Promise<dedicated.server.serviceMonitoring>;
-                    /**
-                     * Alter this object properties
-                     * PUT /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}
-                     */
-                    $put(params?: { challengeText?: string, enabled?: boolean, interval?: dedicated.server.MonitoringIntervalEnum, ip?: string, monitoringId?: number, port?: number, protocol?: dedicated.server.MonitoringProtocolEnum, url?: string }): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    alert: {
-                        email: {
-                            /**
-                             * Service monitoring alert by email
-                             * GET /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email
-                             */
-                            $get(): Promise<number[]>;
-                            /**
-                             * Add a new email alert
-                             * POST /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email
-                             */
-                            $post(params: { email: string, language: dedicated.server.AlertLanguageEnum }): Promise<dedicated.server.emailAlert>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                            $(alertId: number): {
-                                /**
-                                 * Remove this Email alert monitoring
-                                 * DELETE /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}
-                                 */
-                                $delete(): Promise<void>;
-                                /**
-                                 * Get this object properties
-                                 * GET /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}
-                                 */
-                                $get(): Promise<dedicated.server.emailAlert>;
-                                /**
-                                 * Alter this object properties
-                                 * PUT /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}
-                                 */
-                                $put(params?: { alertId?: number, email?: string, enabled?: boolean, language?: dedicated.server.AlertLanguageEnum }): Promise<void>;
-                                /**
-                                 * Controle cache
-                                 */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                            };
-                        }
-                        sms: {
-                            /**
-                             * Service monitoring alert by SMS
-                             * GET /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms
-                             */
-                            $get(): Promise<number[]>;
-                            /**
-                             * Create a SMS alert
-                             * POST /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms
-                             */
-                            $post(params: { fromHour?: number, language: dedicated.server.AlertLanguageEnum, phoneNumberTo: string, smsAccount: string, toHour?: number }): Promise<dedicated.server.smsAlert>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                            $(alertId: number): {
-                                /**
-                                 * Remove this SMS alert
-                                 * DELETE /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}
-                                 */
-                                $delete(): Promise<void>;
-                                /**
-                                 * Get this object properties
-                                 * GET /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}
-                                 */
-                                $get(): Promise<dedicated.server.smsAlert>;
-                                /**
-                                 * Alter this object properties
-                                 * PUT /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}
-                                 */
-                                $put(params?: { alertId?: number, enabled?: boolean, fromHour?: number, language?: dedicated.server.AlertLanguageEnum, phoneNumberTo?: string, smsAccount?: string, toHour?: number }): Promise<void>;
-                                /**
-                                 * Controle cache
-                                 */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                            };
-                        }
-                    }
-                };
             }
             specifications: {
                 hardware: {
@@ -2739,248 +2325,6 @@ export interface Dedicated {
                     }
                 };
             }
-            statistics: {
-                /**
-                 * Get this object properties
-                 * GET /dedicated/server/{serviceName}/statistics
-                 */
-                $get(): Promise<dedicated.server.Rtm>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                chart: {
-                    /**
-                     * Retrieve RTM graph values
-                     * GET /dedicated/server/{serviceName}/statistics/chart
-                     */
-                    $get(params: { period: dedicated.server.RtmChartPeriodEnum, type: dedicated.server.RtmChartTypeEnum }): Promise<complexType.ChartReturn>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                }
-                connection: {
-                    /**
-                     * Get server opened connections
-                     * GET /dedicated/server/{serviceName}/statistics/connection
-                     */
-                    $get(): Promise<dedicated.server.RtmConnection[]>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                }
-                cpu: {
-                    /**
-                     * Get server cpu informations
-                     * GET /dedicated/server/{serviceName}/statistics/cpu
-                     */
-                    $get(): Promise<dedicated.server.RtmCpu>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                }
-                disk: {
-                    /**
-                     * Server disks
-                     * GET /dedicated/server/{serviceName}/statistics/disk
-                     */
-                    $get(): Promise<string[]>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    $(disk: string): {
-                        /**
-                         * Get this object properties
-                         * GET /dedicated/server/{serviceName}/statistics/disk/{disk}
-                         */
-                        $get(): Promise<dedicated.server.RtmDisk>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                        smart: {
-                            /**
-                             * Get disk smart informations
-                             * GET /dedicated/server/{serviceName}/statistics/disk/{disk}/smart
-                             */
-                            $get(): Promise<dedicated.server.RtmDiskSmart>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                        }
-                    };
-                }
-                load: {
-                    /**
-                     * Get server load
-                     * GET /dedicated/server/{serviceName}/statistics/load
-                     */
-                    $get(): Promise<dedicated.server.RtmLoad>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                }
-                memory: {
-                    /**
-                     * Get server memory informations
-                     * GET /dedicated/server/{serviceName}/statistics/memory
-                     */
-                    $get(): Promise<dedicated.server.RtmMemory[]>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                }
-                motherboard: {
-                    /**
-                     * Get server motherboard hardware informations
-                     * GET /dedicated/server/{serviceName}/statistics/motherboard
-                     */
-                    $get(): Promise<dedicated.server.RtmMotherboardHw>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                }
-                os: {
-                    /**
-                     * Get server os informations
-                     * GET /dedicated/server/{serviceName}/statistics/os
-                     */
-                    $get(): Promise<dedicated.server.RtmOs>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                }
-                partition: {
-                    /**
-                     * Server partitions
-                     * GET /dedicated/server/{serviceName}/statistics/partition
-                     */
-                    $get(): Promise<string[]>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    $(partition: string): {
-                        /**
-                         * Get this object properties
-                         * GET /dedicated/server/{serviceName}/statistics/partition/{partition}
-                         */
-                        $get(): Promise<dedicated.server.RtmPartition>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                        chart: {
-                            /**
-                             * Retrieve partition charts
-                             * GET /dedicated/server/{serviceName}/statistics/partition/{partition}/chart
-                             */
-                            $get(params: { period: dedicated.server.RtmChartPeriodEnum }): Promise<complexType.ChartReturn>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                        }
-                    };
-                }
-                pci: {
-                    /**
-                     * Get server PCI devices informations
-                     * GET /dedicated/server/{serviceName}/statistics/pci
-                     */
-                    $get(): Promise<dedicated.server.RtmPci[]>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                }
-                process: {
-                    /**
-                     * Get server process
-                     * GET /dedicated/server/{serviceName}/statistics/process
-                     */
-                    $get(): Promise<dedicated.server.RtmCommandSize[]>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                }
-                raid: {
-                    /**
-                     * Server raid informations
-                     * GET /dedicated/server/{serviceName}/statistics/raid
-                     */
-                    $get(): Promise<string[]>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    $(unit: string): {
-                        /**
-                         * Get this object properties
-                         * GET /dedicated/server/{serviceName}/statistics/raid/{unit}
-                         */
-                        $get(): Promise<dedicated.server.RtmRaid>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                        volume: {
-                            /**
-                             * Raid unit volumes
-                             * GET /dedicated/server/{serviceName}/statistics/raid/{unit}/volume
-                             */
-                            $get(): Promise<string[]>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                            $(volume: string): {
-                                /**
-                                 * Get this object properties
-                                 * GET /dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}
-                                 */
-                                $get(): Promise<dedicated.server.RtmRaidVolume>;
-                                /**
-                                 * Controle cache
-                                 */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                                port: {
-                                    /**
-                                     * Raid unit volume ports
-                                     * GET /dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}/port
-                                     */
-                                    $get(): Promise<string[]>;
-                                    /**
-                                     * Controle cache
-                                     */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                                    $(port: string): {
-                                        /**
-                                         * Get this object properties
-                                         * GET /dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}/port/{port}
-                                         */
-                                        $get(): Promise<dedicated.server.RtmRaidVolumePort>;
-                                        /**
-                                         * Controle cache
-                                         */
-                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                                    };
-                                }
-                            };
-                        }
-                    };
-                }
-            }
             support: {
                 replace: {
                     cooling: {
@@ -3055,7 +2399,7 @@ export interface Dedicated {
             }
             terminate: {
                 /**
-                 * Terminate your service
+                 * Ask for the termination of your service
                  * POST /dedicated/server/{serviceName}/terminate
                  */
                 $post(): Promise<string>;

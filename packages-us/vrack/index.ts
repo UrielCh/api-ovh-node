@@ -36,6 +36,35 @@ export namespace dedicated {
         export type MrtgTypeEnum = "errors:download" | "errors:upload" | "packets:download" | "packets:upload" | "traffic:download" | "traffic:upload"
     }
 }
+export namespace iam {
+    /**
+     * IAM resource metadata embedded in services models
+     * interface fullName: iam.ResourceMetadata.ResourceMetadata
+     */
+    export interface ResourceMetadata {
+        displayName?: string;
+        id: string;
+        tags?: { [key: string]: string };
+        urn: string;
+    }
+    export namespace resource {
+        /**
+         * Resource tag filter
+         * interface fullName: iam.resource.TagFilter.TagFilter
+         */
+        export interface TagFilter {
+            operator?: iam.resource.TagFilter.OperatorEnum;
+            value: string;
+        }
+        export namespace TagFilter {
+            /**
+             * Operator that can be used in order to filter resources tags
+             * type fullname: iam.resource.TagFilter.OperatorEnum
+             */
+            export type OperatorEnum = "EQ"
+        }
+    }
+}
 export namespace service {
     /**
      * type fullname: service.StateEnum
@@ -71,7 +100,7 @@ export namespace vrack {
      * Possible values for vrack allowed service
      * type fullname: vrack.AllowedServiceEnum
      */
-    export type AllowedServiceEnum = "cloudProject" | "dedicatedCloud" | "dedicatedCloudDatacenter" | "dedicatedConnect" | "dedicatedServer" | "dedicatedServerInterface" | "ip" | "ipLoadbalancing" | "legacyVrack" | "ovhCloudConnect"
+    export type AllowedServiceEnum = "cloudProject" | "dedicatedCloud" | "dedicatedCloudDatacenter" | "dedicatedConnect" | "dedicatedServer" | "dedicatedServerInterface" | "ip" | "ipLoadbalancing" | "ipv6" | "legacyVrack" | "ovhCloudConnect" | "vrackServices"
     /**
      * A structure given all service allowed for this vrack
      * interface fullName: vrack.AllowedServices.AllowedServices
@@ -85,8 +114,10 @@ export namespace vrack {
         dedicatedServerInterface?: vrackAllowedDedicatedServerInterfaces[];
         ip?: string[];
         ipLoadbalancing?: string[];
+        ipv6?: string[];
         legacyVrack?: string[];
         ovhCloudConnect?: string[];
+        vrackServices?: string[];
     }
     /**
      * Dedicated server interfaces allowed for this vRack
@@ -110,8 +141,10 @@ export namespace vrack {
         dedicatedServerInterface?: vrackEligibleDedicatedServerInterfaces[];
         ip?: string[];
         ipLoadbalancing?: string[];
+        ipv6?: string[];
         legacyVrack?: string[];
         ovhCloudConnect?: string[];
+        vrackServices?: string[];
     }
     /**
      * Eligible services call response
@@ -123,6 +156,11 @@ export namespace vrack {
         result: vrackEligibleServices;
         status: string;
     }
+    /**
+     * Possible values for slaac
+     * type fullname: vrack.SlaacEnum
+     */
+    export type SlaacEnum = "disabled" | "enabled"
     /**
      * vrack tasks
      * interface fullName: vrack.Task.Task
@@ -148,6 +186,15 @@ export namespace vrack {
      */
     export type VrackZoneEnum = "bhs" | "fra1" | "gra" | "lon1" | "pdx1" | "rbx" | "sbg" | "sgp1" | "syd1" | "syd2" | "was1" | "waw"
     /**
+     * Bridged subrange within your IP v6 block
+     * interface fullName: vrack.bridgedSubrange.bridgedSubrange
+     */
+    export interface bridgedSubrange {
+        bridgedSubrange: string;
+        gateway: string;
+        slaac: vrackSlaacEnum;
+    }
+    /**
      * PublicCloud project in vrack
      * interface fullName: vrack.cloudProject.cloudProject
      */
@@ -156,7 +203,7 @@ export namespace vrack {
         vrack: string;
     }
     /**
-     * vrack dedicated cloud interface
+     * VMware on OVHcloud vRack link
      * interface fullName: vrack.dedicatedCloud.dedicatedCloud
      */
     export interface dedicatedCloud {
@@ -205,20 +252,19 @@ export namespace vrack {
         vrack: string;
     }
     /**
+     * IP v6 block in vrack
+     * interface fullName: vrack.ipv6.ipv6
+     */
+    export interface ipv6 {
+        ipv6: string;
+    }
+    /**
      * interface between legacy vrack (vrackXXXX) and vrack (pn-XXXX)
      * interface fullName: vrack.legacyVrack.legacyVrack
      */
     export interface legacyVrack {
         legacyVrack: string;
         vlanId: number;
-    }
-    /**
-     * vrack (1.5) nasha server interfaces
-     * interface fullName: vrack.nasha.nasha
-     */
-    export interface nasha {
-        serviceIp: string;
-        zpool: string;
     }
     /**
      * ovhCloudConnect in vrack
@@ -245,11 +291,36 @@ export namespace vrack {
         bandwidth?: number;
     }
     /**
+     * Routed subranges within your IP v6 block
+     * interface fullName: vrack.routedSubrange.routedSubrange
+     */
+    export interface routedSubrange {
+        nexthop: string;
+        routedSubrange: string;
+    }
+    /**
      * vrack
      * interface fullName: vrack.vrack.vrack
      */
     export interface vrack {
         description: string;
+        name: string;
+    }
+    /**
+     * vrackServices in vrack
+     * interface fullName: vrack.vrackServices.vrackServices
+     */
+    export interface vrackServices {
+        vrack: string;
+        vrackServices: string;
+    }
+    /**
+     * vrack
+     * interface fullName: vrack.vrackWithIAM.vrackWithIAM
+     */
+    export interface vrackWithIAM {
+        description: string;
+        iam?: iam.ResourceMetadata;
         name: string;
     }
 }
@@ -269,7 +340,7 @@ export interface Vrack {
      * List available services
      * GET /vrack
      */
-    $get(): Promise<string[]>;
+    $get(params?: { iamTags?: any }): Promise<string[]>;
     /**
      * Controle cache
      */
@@ -339,7 +410,7 @@ export interface Vrack {
              */
             $get(): Promise<string[]>;
             /**
-             * add a dedicatedCloud (VmNetwork) to this vrack
+             * Add VMware on OVHcloud to vRack
              * POST /vrack/{serviceName}/dedicatedCloud
              */
             $post(params: { dedicatedCloud: string }): Promise<vrack.Task>;
@@ -349,12 +420,12 @@ export interface Vrack {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(dedicatedCloud: string): {
                 /**
-                 * remove this dedicatedCloud (VmNetwork) from this vrack
+                 * Remove VMware on OVHcloud from vRack
                  * DELETE /vrack/{serviceName}/dedicatedCloud/{dedicatedCloud}
                  */
                 $delete(): Promise<vrack.Task>;
                 /**
-                 * Get this object properties
+                 * Get vRack
                  * GET /vrack/{serviceName}/dedicatedCloud/{dedicatedCloud}
                  */
                 $get(): Promise<vrack.dedicatedCloud>;
@@ -610,6 +681,97 @@ export interface Vrack {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
+        ipv6: {
+            /**
+             * vrack for IP v6 blocks
+             * GET /vrack/{serviceName}/ipv6
+             */
+            $get(): Promise<string[]>;
+            /**
+             * add an IP v6 block to this vrack
+             * POST /vrack/{serviceName}/ipv6
+             */
+            $post(params: { block: string }): Promise<vrack.Task>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $(ipv6: string): {
+                /**
+                 * remove this IP v6 block from this vrack
+                 * DELETE /vrack/{serviceName}/ipv6/{ipv6}
+                 */
+                $delete(): Promise<vrack.Task>;
+                /**
+                 * Get this object properties
+                 * GET /vrack/{serviceName}/ipv6/{ipv6}
+                 */
+                $get(): Promise<vrack.ipv6>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                bridgedSubrange: {
+                    /**
+                     * subrange bridged into your vrack
+                     * GET /vrack/{serviceName}/ipv6/{ipv6}/bridgedSubrange
+                     */
+                    $get(): Promise<string[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $(bridgedSubrange: string): {
+                        /**
+                         * Get this object properties
+                         * GET /vrack/{serviceName}/ipv6/{ipv6}/bridgedSubrange/{bridgedSubrange}
+                         */
+                        $get(): Promise<vrack.bridgedSubrange>;
+                        /**
+                         * Update Slaac status
+                         * PUT /vrack/{serviceName}/ipv6/{ipv6}/bridgedSubrange/{bridgedSubrange}
+                         */
+                        $put(params?: { bridgedSubrange?: string, gateway?: string, slaac?: vrackSlaacEnum }): Promise<vrack.Task>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    };
+                }
+                routedSubrange: {
+                    /**
+                     * subrange routed into your vrack
+                     * GET /vrack/{serviceName}/ipv6/{ipv6}/routedSubrange
+                     */
+                    $get(): Promise<string[]>;
+                    /**
+                     * route a subrange of your IP v6 block into your vrack
+                     * POST /vrack/{serviceName}/ipv6/{ipv6}/routedSubrange
+                     */
+                    $post(params: { nexthop: string, routedSubrange: string }): Promise<vrack.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $(routedSubrange: string): {
+                        /**
+                         * unroute subrange from your vrack
+                         * DELETE /vrack/{serviceName}/ipv6/{ipv6}/routedSubrange/{routedSubrange}
+                         */
+                        $delete(): Promise<vrack.Task>;
+                        /**
+                         * Get this object properties
+                         * GET /vrack/{serviceName}/ipv6/{ipv6}/routedSubrange/{routedSubrange}
+                         */
+                        $get(): Promise<vrack.routedSubrange>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    };
+                }
+            };
+        }
         legacyVrack: {
             /**
              * vrack for legacy vrack
@@ -707,6 +869,38 @@ export interface Vrack {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
+        vrackServices: {
+            /**
+             * vrack for vrackServices
+             * GET /vrack/{serviceName}/vrackServices
+             */
+            $get(): Promise<string[]>;
+            /**
+             * Add a vrackServices to the vrack
+             * POST /vrack/{serviceName}/vrackServices
+             */
+            $post(params: { vrackServices: string }): Promise<vrack.Task>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $(vrackServices: string): {
+                /**
+                 * Remove the vrackServices from the vrack
+                 * DELETE /vrack/{serviceName}/vrackServices/{vrackServices}
+                 */
+                $delete(): Promise<vrack.Task>;
+                /**
+                 * Get this object properties
+                 * GET /vrack/{serviceName}/vrackServices/{vrackServices}
+                 */
+                $get(): Promise<vrack.vrackServices>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            };
+        }
     };
 }
 /**
@@ -716,4 +910,5 @@ type vrackAllowedDedicatedServerInterfaces = vrack.AllowedDedicatedServerInterfa
 type vrackEligibleDedicatedServerInterfaces = vrack.EligibleDedicatedServerInterfaces;
 type vrackEligibleServices = vrack.EligibleServices;
 type vrackTaskStatusEnum = vrack.TaskStatusEnum;
+type vrackSlaacEnum = vrack.SlaacEnum;
 type vrackVrackZoneEnum = vrack.VrackZoneEnum;

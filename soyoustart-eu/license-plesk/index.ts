@@ -78,7 +78,7 @@ export namespace license {
      * All language pack numbers available for Plesk products
      * type fullname: license.OrderablePleskLanguagePackEnum
      */
-    export type OrderablePleskLanguagePackEnum = "1" | "1-extra-language-for-plesk12" | "2" | "2-extra-languages-for-plesk12" | "3" | "3-extra-languages-for-plesk12" | "4" | "4-extra-languages-for-plesk12" | "5" | "5-extra-languages-for-plesk12" | "unlimited" | "unlimited-extra-languages-for-plesk12"
+    export type OrderablePleskLanguagePackEnum = "1" | "1-extra-language-for-plesk12" | "1-extra-language-for-plesk12-for-vps" | "2" | "2-extra-languages-for-plesk12" | "2-extra-languages-for-plesk12-for-vps" | "3" | "3-extra-languages-for-plesk12" | "3-extra-languages-for-plesk12-for-vps" | "4" | "4-extra-languages-for-plesk12" | "4-extra-languages-for-plesk12-for-vps" | "5" | "5-extra-languages-for-plesk12" | "5-extra-languages-for-plesk12-for-vps" | "unlimited" | "unlimited-extra-languages-for-plesk12" | "unlimited-extra-languages-for-plesk12-for-vps"
     /**
      * Application set available for Plesk products
      * type fullname: license.PleskApplicationSetEnum
@@ -277,7 +277,7 @@ export interface License {
             }
             confirmTermination: {
                 /**
-                 * Confirm termination of your service
+                 * Confirm service termination
                  * POST /license/plesk/{serviceName}/confirmTermination
                  */
                 $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
@@ -311,12 +311,12 @@ export interface License {
             }
             serviceInfos: {
                 /**
-                 * Get this object properties
+                 * Get service information
                  * GET /license/plesk/{serviceName}/serviceInfos
                  */
                 $get(): Promise<services.Service>;
                 /**
-                 * Alter this object properties
+                 * Update service information
                  * PUT /license/plesk/{serviceName}/serviceInfos
                  */
                 $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
@@ -349,7 +349,7 @@ export interface License {
             }
             terminate: {
                 /**
-                 * Terminate your service
+                 * Ask for the termination of your service
                  * POST /license/plesk/{serviceName}/terminate
                  */
                 $post(): Promise<string>;

@@ -22,6 +22,16 @@ export namespace allDom {
         domain: string;
     }
     /**
+     * AllDom administration
+     * interface fullName: allDom.AllDomWithIAM.AllDomWithIAM
+     */
+    export interface AllDomWithIAM {
+        iam?: iam.ResourceMetadata;
+        name: string;
+        offer: domain.OfferEnum;
+        type: allDom.TypeEnum;
+    }
+    /**
      * Type
      * type fullname: allDom.TypeEnum
      */
@@ -33,6 +43,35 @@ export namespace domain {
      * type fullname: domain.OfferEnum
      */
     export type OfferEnum = "diamond" | "gold" | "platinum"
+}
+export namespace iam {
+    /**
+     * IAM resource metadata embedded in services models
+     * interface fullName: iam.ResourceMetadata.ResourceMetadata
+     */
+    export interface ResourceMetadata {
+        displayName?: string;
+        id: string;
+        tags?: { [key: string]: string };
+        urn: string;
+    }
+    export namespace resource {
+        /**
+         * Resource tag filter
+         * interface fullName: iam.resource.TagFilter.TagFilter
+         */
+        export interface TagFilter {
+            operator?: iam.resource.TagFilter.OperatorEnum;
+            value: string;
+        }
+        export namespace TagFilter {
+            /**
+             * Operator that can be used in order to filter resources tags
+             * type fullname: iam.resource.TagFilter.OperatorEnum
+             */
+            export type OperatorEnum = "EQ"
+        }
+    }
 }
 export namespace service {
     /**
@@ -93,7 +132,7 @@ export interface AllDom {
      * List available services
      * GET /allDom
      */
-    $get(): Promise<string[]>;
+    $get(params?: { iamTags?: any }): Promise<string[]>;
     /**
      * Controle cache
      */
@@ -132,12 +171,12 @@ export interface AllDom {
         }
         serviceInfos: {
             /**
-             * Get this object properties
+             * Get service information
              * GET /allDom/{serviceName}/serviceInfos
              */
             $get(): Promise<services.Service>;
             /**
-             * Alter this object properties
+             * Update service information
              * PUT /allDom/{serviceName}/serviceInfos
              */
             $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;

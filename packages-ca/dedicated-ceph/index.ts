@@ -6,6 +6,23 @@ import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-
  */
 export namespace dedicated {
     export namespace ceph {
+        /**
+         * Update cluster details
+         * interface fullName: dedicated.ceph.UpdateClusterDetails.UpdateClusterDetails
+         */
+        export interface UpdateClusterDetails {
+            crushTunables: dedicated.ceph.clusterUpdate.crushTunablesEnum;
+            label: string;
+        }
+        export namespace acl {
+            /**
+             * Create one or more new IP ACLs
+             * interface fullName: dedicated.ceph.acl.Create.Create
+             */
+            export interface Create {
+                aclList: string[];
+            }
+        }
         export namespace aclGet {
             /**
              * IP ACL
@@ -25,39 +42,10 @@ export namespace dedicated {
                 export type familyEnum = "IPV4" | "IPV6"
             }
         }
-        export namespace aclList {
-            /**
-             * Structure holding IP ACLs
-             * interface fullName: dedicated.ceph.aclList.response.response
-             */
-            export interface response {
-                family: dedicated.ceph.aclList.response.familyEnum;
-                id: number;
-                netmask: string;
-                network: string;
-            }
-            export namespace response {
-                /**
-                 * Family of IP ACL
-                 * type fullname: dedicated.ceph.aclList.response.familyEnum
-                 */
-                export type familyEnum = "IPV4" | "IPV6"
-            }
-        }
         export namespace cephfsGet {
             /**
              * CephFS filesystem data
              * interface fullName: dedicated.ceph.cephfsGet.response.response
-             */
-            export interface response {
-                enabled: boolean;
-                fsName: string;
-            }
-        }
-        export namespace cephfsList {
-            /**
-             * List of CephFS filesystems
-             * interface fullName: dedicated.ceph.cephfsList.response.response
              */
             export interface response {
                 enabled: boolean;
@@ -87,7 +75,7 @@ export namespace dedicated {
                  * Tunables of cluster
                  * type fullname: dedicated.ceph.clusterGet.response.crushTunablesEnum
                  */
-                export type crushTunablesEnum = "OPTIMAL" | "DEFAULT" | "LEGACY" | "BOBTAIL" | "ARGONAUT" | "FIREFLY" | "HAMMER" | "JEWEL"
+                export type crushTunablesEnum = "ARGONAUT" | "BOBTAIL" | "DEFAULT" | "FIREFLY" | "HAMMER" | "JEWEL" | "LEGACY" | "OPTIMAL"
                 /**
                  * State of cluster
                  * type fullname: dedicated.ceph.clusterGet.response.stateEnum
@@ -97,7 +85,25 @@ export namespace dedicated {
                  * Status of cluster
                  * type fullname: dedicated.ceph.clusterGet.response.statusEnum
                  */
-                export type statusEnum = "CREATING" | "INSTALLED" | "DELETING" | "DELETED" | "TASK_IN_PROGRESS"
+                export type statusEnum = "CREATING" | "DELETED" | "DELETING" | "INSTALLED" | "TASK_IN_PROGRESS"
+            }
+            /**
+             * Details about ceph cluster
+             * interface fullName: dedicated.ceph.clusterGet.responseWithIAM.responseWithIAM
+             */
+            export interface responseWithIAM {
+                cephMons: string[];
+                cephVersion: string;
+                createDate: string;
+                crushTunables: dedicated.ceph.clusterGet.response.crushTunablesEnum;
+                iam?: iam.ResourceMetadata;
+                label: string;
+                region: string;
+                serviceName: string;
+                size: number;
+                state: dedicated.ceph.clusterGet.response.stateEnum;
+                status: dedicated.ceph.clusterGet.response.statusEnum;
+                updateDate: string;
             }
         }
         export namespace clusterHealth {
@@ -119,7 +125,25 @@ export namespace dedicated {
              * Tunables of cluster
              * type fullname: dedicated.ceph.clusterUpdate.crushTunablesEnum
              */
-            export type crushTunablesEnum = "OPTIMAL" | "DEFAULT" | "LEGACY" | "BOBTAIL" | "ARGONAUT" | "FIREFLY" | "HAMMER" | "JEWEL"
+            export type crushTunablesEnum = "ARGONAUT" | "BOBTAIL" | "DEFAULT" | "FIREFLY" | "HAMMER" | "JEWEL" | "LEGACY" | "OPTIMAL"
+        }
+        export namespace pool {
+            /**
+             * Create a new ceph pool
+             * interface fullName: dedicated.ceph.pool.Create.Create
+             */
+            export interface Create {
+                poolName: string;
+            }
+        }
+        export namespace poolErasure {
+            /**
+             * Create a new ceph erasure pool
+             * interface fullName: dedicated.ceph.poolErasure.Create.Create
+             */
+            export interface Create {
+                poolName: string;
+            }
         }
         export namespace poolGet {
             /**
@@ -139,40 +163,19 @@ export namespace dedicated {
                  * Type of pool
                  * type fullname: dedicated.ceph.poolGet.response.poolTypeEnum
                  */
-                export type poolTypeEnum = "REPLICATED" | "ERASURE_CODED"
-            }
-        }
-        export namespace poolList {
-            /**
-             * List of cluster pools
-             * interface fullName: dedicated.ceph.poolList.response.response
-             */
-            export interface response {
-                backup: boolean;
-                minActiveReplicas: number;
-                name: string;
-                poolType: dedicated.ceph.poolList.response.poolTypeEnum;
-                replicaCount: number;
-                serviceName: string;
-            }
-            export namespace response {
-                /**
-                 * Type of pool
-                 * type fullname: dedicated.ceph.poolList.response.poolTypeEnum
-                 */
-                export type poolTypeEnum = "REPLICATED" | "ERASURE_CODED"
+                export type poolTypeEnum = "ERASURE_CODED" | "REPLICATED"
             }
         }
         export namespace taskGet {
             /**
-             * list of task subtasks
+             * List of task subtasks
              * interface fullName: dedicated.ceph.taskGet.response.response
              */
             export interface response {
                 createDate: string;
                 finishDate?: string;
                 name: string;
-                state?: dedicated.ceph.taskGet.response.stateEnum;
+                state: dedicated.ceph.taskGet.response.stateEnum;
                 type: string;
             }
             export namespace response {
@@ -180,7 +183,7 @@ export namespace dedicated {
                  * State of task
                  * type fullname: dedicated.ceph.taskGet.response.stateEnum
                  */
-                export type stateEnum = "IN PROGRESS" | "DONE" | "FAILED"
+                export type stateEnum = "DONE" | "FAILED" | "IN PROGRESS"
             }
         }
         export namespace taskList {
@@ -193,6 +196,36 @@ export namespace dedicated {
                 name: string;
             }
         }
+        export namespace user {
+            /**
+             * Create a new ceph user
+             * interface fullName: dedicated.ceph.user.Create.Create
+             */
+            export interface Create {
+                userName: string;
+            }
+            export namespace pool {
+                /**
+                 * Create new user-pool permissions
+                 * interface fullName: dedicated.ceph.user.pool.CreatePermissions.CreatePermissions
+                 */
+                export interface CreatePermissions {
+                    permissions: dedicated.ceph.userPoolPermSetAll.permissions[];
+                }
+                /**
+                 * Update user-pool permission for single pool
+                 * interface fullName: dedicated.ceph.user.pool.UpdatePermission.UpdatePermission
+                 */
+                export interface UpdatePermission {
+                    classRead: boolean;
+                    classWrite: boolean;
+                    execute: boolean;
+                    poolName: string;
+                    read: boolean;
+                    write: boolean;
+                }
+            }
+        }
         export namespace userGet {
             /**
              * Ceph user
@@ -200,21 +233,7 @@ export namespace dedicated {
              */
             export interface response {
                 key: string;
-                mdsCaps: string;
-                monCaps: string;
-                name: string;
-                osdCaps: string;
-                serviceName: string;
-            }
-        }
-        export namespace userList {
-            /**
-             * List of cluster users
-             * interface fullName: dedicated.ceph.userList.response.response
-             */
-            export interface response {
-                key: string;
-                mdsCaps: string;
+                mdsCaps?: string;
                 monCaps: string;
                 name: string;
                 osdCaps: string;
@@ -248,6 +267,35 @@ export namespace dedicated {
                 read: boolean;
                 write: boolean;
             }
+        }
+    }
+}
+export namespace iam {
+    /**
+     * IAM resource metadata embedded in services models
+     * interface fullName: iam.ResourceMetadata.ResourceMetadata
+     */
+    export interface ResourceMetadata {
+        displayName?: string;
+        id: string;
+        tags?: { [key: string]: string };
+        urn: string;
+    }
+    export namespace resource {
+        /**
+         * Resource tag filter
+         * interface fullName: iam.resource.TagFilter.TagFilter
+         */
+        export interface TagFilter {
+            operator?: iam.resource.TagFilter.OperatorEnum;
+            value: string;
+        }
+        export namespace TagFilter {
+            /**
+             * Operator that can be used in order to filter resources tags
+             * type fullname: iam.resource.TagFilter.OperatorEnum
+             */
+            export type OperatorEnum = "EQ"
         }
     }
 }
@@ -321,7 +369,7 @@ export interface Dedicated {
          * List available services
          * GET /dedicated/ceph
          */
-        $get(): Promise<string[]>;
+        $get(params?: { iamTags?: any }): Promise<string[]>;
         /**
          * Controle cache
          */
@@ -346,7 +394,7 @@ export interface Dedicated {
                  * Get list of all IP ACLs in a cluster
                  * GET /dedicated/ceph/{serviceName}/acl
                  */
-                $get(): Promise<dedicated.ceph.aclList.response[]>;
+                $get(): Promise<dedicated.ceph.aclGet.response[]>;
                 /**
                  * Create one or more new IP ACLs
                  * POST /dedicated/ceph/{serviceName}/acl
@@ -356,7 +404,7 @@ export interface Dedicated {
                  * Controle cache
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                $(aclId: string): {
+                $(aclId: number): {
                     /**
                      * Delete single IP ACL
                      * DELETE /dedicated/ceph/{serviceName}/acl/{aclId}
@@ -375,10 +423,10 @@ export interface Dedicated {
             }
             cephfs: {
                 /**
-                 * List CephFS filestystems
+                 * List CephFS filesystems
                  * GET /dedicated/ceph/{serviceName}/cephfs
                  */
-                $get(): Promise<dedicated.ceph.cephfsList.response[]>;
+                $get(): Promise<dedicated.ceph.cephfsGet.response[]>;
                 /**
                  * Controle cache
                  */
@@ -390,7 +438,7 @@ export interface Dedicated {
                      */
                     $delete(): Promise<string>;
                     /**
-                     * Get CephFS filestystem information
+                     * Get CephFS filesystem information
                      * GET /dedicated/ceph/{serviceName}/cephfs/{fsName}
                      */
                     $get(): Promise<dedicated.ceph.cephfsGet.response>;
@@ -423,7 +471,7 @@ export interface Dedicated {
             }
             confirmTermination: {
                 /**
-                 * Confirm termination of your service
+                 * Confirm service termination
                  * POST /dedicated/ceph/{serviceName}/confirmTermination
                  */
                 $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
@@ -444,7 +492,7 @@ export interface Dedicated {
                  * Get list of all pools in a cluster
                  * GET /dedicated/ceph/{serviceName}/pool
                  */
-                $get(): Promise<dedicated.ceph.poolList.response[]>;
+                $get(): Promise<dedicated.ceph.poolGet.response[]>;
                 /**
                  * Create a new ceph pool
                  * POST /dedicated/ceph/{serviceName}/pool
@@ -469,16 +517,23 @@ export interface Dedicated {
                      * Controle cache
                      */
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    allowDeletion: {
+                        /**
+                         * Open 5 minutes window for deleting single ceph pool
+                         * PUT /dedicated/ceph/{serviceName}/pool/{poolName}/allowDeletion
+                         */
+                        $put(): Promise<string>;
+                    }
                 };
             }
             serviceInfos: {
                 /**
-                 * Get this object properties
+                 * Get service information
                  * GET /dedicated/ceph/{serviceName}/serviceInfos
                  */
                 $get(): Promise<services.Service>;
                 /**
-                 * Alter this object properties
+                 * Update service information
                  * PUT /dedicated/ceph/{serviceName}/serviceInfos
                  */
                 $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
@@ -511,7 +566,7 @@ export interface Dedicated {
             }
             terminate: {
                 /**
-                 * Terminate your service
+                 * Ask for the termination of your service
                  * POST /dedicated/ceph/{serviceName}/terminate
                  */
                 $post(): Promise<string>;
@@ -521,7 +576,7 @@ export interface Dedicated {
                  * Get list of all users in a cluster
                  * GET /dedicated/ceph/{serviceName}/user
                  */
-                $get(): Promise<dedicated.ceph.userList.response[]>;
+                $get(): Promise<dedicated.ceph.userGet.response[]>;
                 /**
                  * Create a new ceph user
                  * POST /dedicated/ceph/{serviceName}/user

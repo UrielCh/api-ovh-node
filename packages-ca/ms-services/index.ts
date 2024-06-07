@@ -13,6 +13,35 @@ export namespace email {
         export type CountryCodeEnum = "AC" | "AD" | "AE" | "AF" | "AG" | "AI" | "AL" | "AM" | "AO" | "AQ" | "AR" | "AS" | "AT" | "AU" | "AW" | "AX" | "AZ" | "BA" | "BB" | "BD" | "BE" | "BF" | "BG" | "BH" | "BI" | "BJ" | "BL" | "BM" | "BN" | "BO" | "BQ" | "BR" | "BS" | "BT" | "BW" | "BY" | "BZ" | "CA" | "CC" | "CD" | "CF" | "CG" | "CH" | "CI" | "CK" | "CL" | "CM" | "CN" | "CO" | "CR" | "CU" | "CV" | "CW" | "CX" | "CY" | "CZ" | "DE" | "DG" | "DJ" | "DK" | "DM" | "DO" | "DZ" | "EA" | "EC" | "EE" | "EG" | "EH" | "ER" | "ES" | "ET" | "FI" | "FJ" | "FK" | "FM" | "FO" | "FR" | "GA" | "GB" | "GD" | "GE" | "GF" | "GG" | "GH" | "GI" | "GL" | "GM" | "GN" | "GP" | "GQ" | "GR" | "GS" | "GT" | "GU" | "GW" | "GY" | "HK" | "HN" | "HR" | "HT" | "HU" | "IC" | "ID" | "IE" | "IL" | "IM" | "IN" | "IO" | "IQ" | "IR" | "IS" | "IT" | "JE" | "JM" | "JO" | "JP" | "KE" | "KG" | "KH" | "KI" | "KM" | "KN" | "KP" | "KR" | "KW" | "KY" | "KZ" | "LA" | "LB" | "LC" | "LI" | "LK" | "LR" | "LS" | "LT" | "LU" | "LV" | "LY" | "MA" | "MC" | "MD" | "ME" | "MF" | "MG" | "MH" | "MK" | "ML" | "MM" | "MN" | "MO" | "MP" | "MQ" | "MR" | "MS" | "MT" | "MU" | "MV" | "MW" | "MX" | "MY" | "MZ" | "NA" | "NC" | "NE" | "NF" | "NG" | "NI" | "NL" | "NO" | "NP" | "NR" | "NU" | "NZ" | "OM" | "PA" | "PE" | "PF" | "PG" | "PH" | "PK" | "PL" | "PM" | "PN" | "PR" | "PS" | "PT" | "PW" | "PY" | "QA" | "RE" | "RO" | "RS" | "RU" | "RW" | "SA" | "SB" | "SC" | "SD" | "SE" | "SG" | "SH" | "SI" | "SJ" | "SK" | "SL" | "SM" | "SN" | "SO" | "SR" | "SS" | "ST" | "SV" | "SX" | "SY" | "SZ" | "TA" | "TC" | "TD" | "TF" | "TG" | "TH" | "TJ" | "TK" | "TL" | "TM" | "TN" | "TO" | "TR" | "TT" | "TV" | "TW" | "TZ" | "UA" | "UG" | "UM" | "US" | "UY" | "UZ" | "VA" | "VC" | "VE" | "VG" | "VI" | "VN" | "VU" | "WF" | "WS" | "XK" | "YE" | "YT" | "ZA" | "ZM" | "ZW"
     }
 }
+export namespace iam {
+    /**
+     * IAM resource metadata embedded in services models
+     * interface fullName: iam.ResourceMetadata.ResourceMetadata
+     */
+    export interface ResourceMetadata {
+        displayName?: string;
+        id: string;
+        tags?: { [key: string]: string };
+        urn: string;
+    }
+    export namespace resource {
+        /**
+         * Resource tag filter
+         * interface fullName: iam.resource.TagFilter.TagFilter
+         */
+        export interface TagFilter {
+            operator?: iam.resource.TagFilter.OperatorEnum;
+            value: string;
+        }
+        export namespace TagFilter {
+            /**
+             * Operator that can be used in order to filter resources tags
+             * type fullname: iam.resource.TagFilter.OperatorEnum
+             */
+            export type OperatorEnum = "EQ"
+        }
+    }
+}
 export namespace msServices {
     /**
      * Active Directory Account
@@ -54,6 +83,24 @@ export namespace msServices {
      */
     export interface ActiveDirectoryOrganizationalUnit {
         complexityEnabled: boolean;
+        lockoutDuration: number;
+        lockoutObservationWindow: number;
+        lockoutThreshold?: number;
+        maxPasswordAge?: number;
+        minPasswordAge?: number;
+        minPasswordLength?: number;
+        name: string;
+        officeTenantServiceName?: string;
+        state: msServices.ServiceStateEnum;
+        taskPendingId: number;
+    }
+    /**
+     * Active Directory organizational unit
+     * interface fullName: msServices.ActiveDirectoryOrganizationalUnitWithIAM.ActiveDirectoryOrganizationalUnitWithIAM
+     */
+    export interface ActiveDirectoryOrganizationalUnitWithIAM {
+        complexityEnabled: boolean;
+        iam?: iam.ResourceMetadata;
         lockoutDuration: number;
         lockoutObservationWindow: number;
         lockoutThreshold?: number;
@@ -231,6 +278,14 @@ export namespace msServices {
         domain: string;
     }
     /**
+     * Sharepoint service
+     * interface fullName: msServices.SharepointServiceInfoWithIAM.SharepointServiceInfoWithIAM
+     */
+    export interface SharepointServiceInfoWithIAM {
+        domain: string;
+        iam?: iam.ResourceMetadata;
+    }
+    /**
      * Sharepoint service offer name
      * type fullname: msServices.SharepointServiceOfferEnum
      */
@@ -406,7 +461,7 @@ export interface MsServices {
      * List available services
      * GET /msServices
      */
-    $get(): Promise<string[]>;
+    $get(params?: { iamTags?: any }): Promise<string[]>;
     /**
      * Controle cache
      */
@@ -416,7 +471,7 @@ export interface MsServices {
          * List available services
          * GET /msServices/sharepoint
          */
-        $get(): Promise<string[]>;
+        $get(params?: { iamTags?: any }): Promise<string[]>;
         /**
          * Controle cache
          */
@@ -433,12 +488,12 @@ export interface MsServices {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             serviceInfos: {
                 /**
-                 * Get this object properties
+                 * Get service information
                  * GET /msServices/sharepoint/{domain}/serviceInfos
                  */
                 $get(): Promise<services.Service>;
                 /**
-                 * Alter this object properties
+                 * Update service information
                  * PUT /msServices/sharepoint/{domain}/serviceInfos
                  */
                 $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;

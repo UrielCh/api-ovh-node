@@ -23,6 +23,13 @@ export namespace dedicated {
         export type SupportLevelOrderableEnum = "critical" | "fastpath" | "gs"
     }
 }
+export namespace nichandle {
+    /**
+     * OVH subsidiaries
+     * type fullname: nichandle.OvhSubsidiaryEnum
+     */
+    export type OvhSubsidiaryEnum = "ASIA" | "AU" | "CA" | "CZ" | "DE" | "ES" | "EU" | "FI" | "FR" | "GB" | "IE" | "IN" | "IT" | "LT" | "MA" | "NL" | "PL" | "PT" | "QC" | "SG" | "SN" | "TN" | "US" | "WE" | "WS"
+}
 export namespace order {
     /**
      * A contract
@@ -87,6 +94,7 @@ export namespace order {
      */
     export interface Price {
         currencyCode: order.CurrencyCodeEnum;
+        priceInUcents?: number;
         text: string;
         value: number;
     }
@@ -257,7 +265,7 @@ export namespace order {
         }
         export namespace cloud {
             /**
-             * Describe extra informations of product offer
+             * Describe extra information of product offer
              * interface fullName: order.catalog.cloud.Blob.Blob
              */
             export interface Blob {

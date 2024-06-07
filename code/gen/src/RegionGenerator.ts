@@ -214,9 +214,10 @@ export class RegionGenerator {
                 ],
                 exports: {
                     ".": {
+                        types: "./index.d.ts",
                         require: "./cjs/index.js",
                         import: "./index.js",
-                        types: "./index.d.ts"
+                        default: "./cjs/index.js"
                     }
                 },
                 typings: "index.d.ts",

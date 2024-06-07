@@ -79,6 +79,7 @@ export namespace auth {
      */
     export interface ApiCredentialRequestParams {
         accessRules: auth.AccessRuleRequest[];
+        allowedIPs: string[];
         redirection?: string;
     }
     /**
@@ -86,6 +87,14 @@ export namespace auth {
      * type fullname: auth.ApplicationStatusEnum
      */
     export type ApplicationStatusEnum = "active" | "blocked" | "inactive" | "trusted"
+    /**
+     * X509 Certificate
+     * interface fullName: auth.Certificate.Certificate
+     */
+    export interface Certificate {
+        expiration: string;
+        subject: string;
+    }
     /**
      * Credential request to get access to the API
      * interface fullName: auth.Credential.Credential
@@ -105,11 +114,35 @@ export namespace auth {
      * interface fullName: auth.Details.Details
      */
     export interface Details {
+        account: string;
         allowedRoutes?: auth.AccessRule[];
         description?: string;
+        identities: string[];
         method: auth.MethodEnum;
         roles?: string[];
         user?: string;
+    }
+    /**
+     * An IAM Group
+     * interface fullName: auth.Group.Group
+     */
+    export interface Group {
+        creation: string;
+        defaultGroup: boolean;
+        description?: string;
+        lastUpdate: string;
+        name: string;
+        role: auth.RoleEnum;
+        urn: string;
+    }
+    /**
+     * A new IAM group
+     * interface fullName: auth.GroupRequest.GroupRequest
+     */
+    export interface GroupRequest {
+        description?: string;
+        name: string;
+        role: auth.RoleEnum;
     }
     /**
      * All HTTP methods available
@@ -120,7 +153,87 @@ export namespace auth {
      * All authentication methods available
      * type fullname: auth.MethodEnum
      */
-    export type MethodEnum = "account" | "provider" | "user"
+    export type MethodEnum = "account" | "oauth2_client_credentials" | "provider" | "user"
+    /**
+     * An IAM Federation Provider
+     * interface fullName: auth.Provider.Provider
+     */
+    export interface Provider {
+        creation: string;
+        disableUsers?: boolean;
+        extensions: auth.ProviderExtensions;
+        groupAttributeName: string;
+        idpSigningCertificates: auth.Certificate[];
+        lastUpdate: string;
+        signRequests?: boolean;
+        ssoServiceUrl: string;
+        userAttributeName: string;
+    }
+    /**
+     * A SAML 2.0 Extension that should be added to SAML requests when using this provider
+     * interface fullName: auth.ProviderExtensions.ProviderExtensions
+     */
+    export interface ProviderExtensions {
+        requestedAttributes?: auth.ProviderRequestedAttributes[];
+    }
+    /**
+     * An IAM Federation Provider creation request
+     * interface fullName: auth.ProviderRequest.ProviderRequest
+     */
+    export interface ProviderRequest {
+        disableUsers?: boolean;
+        extensions: auth.ProviderExtensions;
+        groupAttributeName?: string;
+        metadata: string;
+        signRequests?: boolean;
+        userAttributeName?: string;
+    }
+    /**
+     * A SAML 2.0 requested attribute that should be added to SAML requests when using this provider
+     * interface fullName: auth.ProviderRequestedAttributes.ProviderRequestedAttributes
+     */
+    export interface ProviderRequestedAttributes {
+        isRequired: boolean;
+        name: string;
+        nameFormat?: string;
+        values?: string[];
+    }
+    /**
+     * Permission given on the account
+     * type fullname: auth.RoleEnum
+     */
+    export type RoleEnum = "ADMIN" | "NONE" | "REGULAR" | "UNPRIVILEGED"
+    /**
+     * An IAM User
+     * interface fullName: auth.User.User
+     */
+    export interface User {
+        creation: string;
+        description: string;
+        email: string;
+        group: string;
+        lastUpdate: string;
+        login: string;
+        passwordLastUpdate: string;
+        status: auth.UserStatusEnum;
+        urn: string;
+    }
+    /**
+     * An IAM user creation request
+     * interface fullName: auth.UserRequest.UserRequest
+     */
+    export interface UserRequest {
+        description: string;
+        email: string;
+        group: string;
+        login: string;
+        password: string;
+    }
+    /**
+     * Status of a User
+     * type fullname: auth.UserStatusEnum
+     */
+    export type UserStatusEnum = "DISABLED" | "OK" | "PASSWORD_CHANGE_REQUIRED"
 }
 export namespace http {
     /**
@@ -146,7 +259,7 @@ export interface Auth {
          * Request a new credential for your application
          * POST /auth/credential
          */
-        $post(params: { accessRules: auth.AccessRuleRequest[], redirection?: string }): Promise<auth.ApiCredentialRequest>;
+        $post(params: { accessRules: auth.AccessRuleRequest[], allowedIPs?: string[], redirection?: string }): Promise<auth.ApiCredentialRequest>;
     }
     currentCredential: {
         /**

@@ -69,6 +69,7 @@ export namespace dedicated {
      */
     export interface TemplateOsInfoProjectItem {
         governance?: string[];
+        name?: string;
         releaseNotes?: string;
         url?: string;
         version?: string;
@@ -89,12 +90,7 @@ export namespace dedicated {
      * Template OS Input type enum
      * type fullname: dedicated.TemplateOsInputTypeEnum
      */
-    export type TemplateOsInputTypeEnum = "boolean" | "date" | "email" | "enum" | "hexstring" | "ip" | "keyValue" | "number" | "string" | "text" | "time" | "url" | "uuid"
-    /**
-     * all language available
-     * type fullname: dedicated.TemplateOsLanguageEnum
-     */
-    export type TemplateOsLanguageEnum = "ar" | "bg" | "cs" | "da" | "de" | "el" | "en" | "es" | "et" | "fi" | "fr" | "he" | "hr" | "hu" | "it" | "ja" | "ko" | "lt" | "lv" | "nb" | "nl" | "no" | "pl" | "pt" | "ro" | "ru" | "sk" | "sl" | "sr" | "sv" | "th" | "tr" | "tu" | "uk" | "zh-Hans-CN" | "zh-Hans-HK"
+    export type TemplateOsInputTypeEnum = "boolean" | "date" | "email" | "enum" | "hexstring" | "ip" | "keyValue" | "number" | "sshPubKey" | "string" | "text" | "time" | "url" | "uuid"
     /**
      * A structure describing properties customizables about this dedicated installation template
      * interface fullName: dedicated.TemplateOsProperties.TemplateOsProperties
@@ -104,13 +100,12 @@ export namespace dedicated {
         postInstallationScriptLink?: string;
         postInstallationScriptReturn?: string;
         sshKeyName?: string;
-        useDistributionKernel?: boolean;
     }
     /**
      * Os subfamily definition
      * type fullname: dedicated.TemplateOsSubfamilyEnum
      */
-    export type TemplateOsSubfamilyEnum = "alma" | "aos" | "arch" | "byoi" | "centos" | "cloudlinux" | "coreos" | "debian" | "dgx" | "esxi" | "fedora" | "freebsd" | "gentoo" | "hyperv" | "omnios" | "openio" | "openmediavault" | "opensuse" | "ovh" | "pcs" | "power" | "proxmox" | "rhel" | "rocky" | "slackware" | "sles-sap" | "smartos" | "solusvm" | "ubuntu" | "windows-server-core" | "windows-server-desktop-exp" | "xcp" | "xen"
+    export type TemplateOsSubfamilyEnum = "alma" | "aos" | "arch" | "byoi" | "byolinux" | "centos" | "cloudlinux" | "coreos" | "debian" | "dgx" | "esxi" | "fedora" | "freebsd" | "gentoo" | "hyperv" | "omnios" | "openio" | "openmediavault" | "opensuse" | "ovh" | "pcs" | "power" | "proxmox" | "rhel" | "rocky" | "slackware" | "sles-sap" | "smartos" | "solusvm" | "ubuntu" | "windows-server-core" | "windows-server-desktop-exp" | "xcp" | "xen"
     /**
      * Os type
      * type fullname: dedicated.TemplateOsTypeEnum
@@ -120,7 +115,7 @@ export namespace dedicated {
      * Os usage definition
      * type fullname: dedicated.TemplateOsUsageEnum
      */
-    export type TemplateOsUsageEnum = "basic" | "customer" | "database" | "erp" | "hosting" | "management" | "other" | "readyToUse" | "virtualisation" | "virtualization"
+    export type TemplateOsUsageEnum = "backup" | "basic" | "customer" | "database" | "erp" | "hosting" | "management" | "other" | "readyToUse" | "virtualisation" | "virtualization"
     /**
      * partition type
      * type fullname: dedicated.TemplatePartitionTypeEnum
@@ -132,11 +127,9 @@ export namespace dedicated {
          * interface fullName: dedicated.installationTemplate.Templates.Templates
          */
         export interface Templates {
-            availableLanguages: dedicated.TemplateOsLanguageEnum[];
             bitFormat: dedicated.server.BitFormatEnum;
             category: dedicated.TemplateOsUsageEnum;
             customization?: dedicated.TemplateOsProperties;
-            defaultLanguage: dedicated.TemplateOsLanguageEnum;
             description: string;
             distribution: string;
             endOfInstall: string;
@@ -150,10 +143,6 @@ export namespace dedicated {
             project?: dedicated.TemplateOsInfoProject;
             softRaidOnlyMirroring: boolean;
             subfamily: dedicated.TemplateOsSubfamilyEnum;
-            supportsDistributionKernel?: boolean;
-            supportsGptLabel?: boolean;
-            supportsRTM: boolean;
-            supportsSqlServer?: boolean;
             templateName: string;
         }
         /**

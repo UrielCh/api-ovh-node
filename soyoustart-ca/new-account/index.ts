@@ -20,6 +20,8 @@ export namespace nichandle {
         fieldName?: string;
         in?: string[];
         mandatory: boolean;
+        maxLength?: number;
+        minLength?: number;
         prefix?: string;
         regularExpression?: string;
     }
@@ -49,6 +51,8 @@ export namespace nichandle {
         ovhSubsidiary: nichandle.CreationRule;
         phone: nichandle.CreationRule;
         phoneCountry: nichandle.CreationRule;
+        phoneType: nichandle.CreationRule;
+        purposeOfPurchase: nichandle.CreationRule;
         sex: nichandle.CreationRule;
         spareEmail: nichandle.CreationRule;
         vat: nichandle.CreationRule;
@@ -92,6 +96,11 @@ export namespace nichandle {
      * type fullname: nichandle.OvhSubsidiaryEnum
      */
     export type OvhSubsidiaryEnum = "ASIA" | "AU" | "CA" | "CZ" | "DE" | "ES" | "EU" | "FI" | "FR" | "GB" | "IE" | "IN" | "IT" | "LT" | "MA" | "NL" | "PL" | "PT" | "QC" | "SG" | "SN" | "TN" | "US" | "WE" | "WS"
+    /**
+     * Phone Type a nichandle can have
+     * type fullname: nichandle.PhoneTypeEnum
+     */
+    export type PhoneTypeEnum = "landline" | "mobile"
 }
 export namespace order {
     /**
@@ -120,7 +129,7 @@ export interface NewAccount {
      * Create a new OVH identifier
      * POST /newAccount
      */
-    $post(params: { address?: string, area?: string, birthCity?: string, birthDay?: string, city?: string, companyNationalIdentificationNumber?: string, corporationType?: string, country: nichandle.CountryEnum, email: string, fax?: string, firstname?: string, italianSDI?: string, language?: nichandle.LanguageEnum, legalform: nichandle.LegalFormEnum, name?: string, nationalIdentificationNumber?: string, organisation?: string, ovhCompany: nichandle.OvhCompanyEnum, ovhSubsidiary: nichandle.OvhSubsidiaryEnum, phone?: string, phoneCountry?: nichandle.CountryEnum, sex?: nichandle.GenderEnum, spareEmail?: string, vat?: string, zip?: string }): Promise<nichandle.NewAccountAndToken>;
+    $post(params: { address?: string, area?: string, birthCity?: string, birthDay?: string, city?: string, companyNationalIdentificationNumber?: string, corporationType?: string, country: nichandle.CountryEnum, email: string, fax?: string, firstname?: string, italianSDI?: string, language?: nichandle.LanguageEnum, legalform: nichandle.LegalFormEnum, name?: string, nationalIdentificationNumber?: string, organisation?: string, ovhCompany: nichandle.OvhCompanyEnum, ovhSubsidiary: nichandle.OvhSubsidiaryEnum, phone?: string, phoneCountry?: nichandle.CountryEnum, phoneType?: nichandle.PhoneTypeEnum, purposeOfPurchase?: string, sex?: nichandle.GenderEnum, spareEmail?: string, vat?: string, zip?: string }): Promise<nichandle.NewAccountAndToken>;
     area: {
         /**
          * All available areas for a given country
@@ -192,6 +201,6 @@ export interface NewAccount {
          * Give all the rules to follow in order to create and update an OVH identifier
          * POST /newAccount/rules
          */
-        $post(params?: { action?: nichandle.CreationRulesActionEnum, address?: string, area?: string, birthCity?: string, birthDay?: string, city?: string, companyNationalIdentificationNumber?: string, corporationType?: string, country?: nichandle.CountryEnum, email?: string, fax?: string, firstname?: string, italianSDI?: string, language?: nichandle.LanguageEnum, legalform?: nichandle.LegalFormEnum, name?: string, nationalIdentificationNumber?: string, organisation?: string, ovhCompany?: nichandle.OvhCompanyEnum, ovhSubsidiary?: nichandle.OvhSubsidiaryEnum, phone?: string, phoneCountry?: nichandle.CountryEnum, sex?: nichandle.GenderEnum, spareEmail?: string, vat?: string, zip?: string }): Promise<nichandle.CreationRule[]>;
+        $post(params?: { action?: nichandle.CreationRulesActionEnum, address?: string, area?: string, birthCity?: string, birthDay?: string, city?: string, companyNationalIdentificationNumber?: string, corporationType?: string, country?: nichandle.CountryEnum, email?: string, fax?: string, firstname?: string, italianSDI?: string, language?: nichandle.LanguageEnum, legalform?: nichandle.LegalFormEnum, name?: string, nationalIdentificationNumber?: string, organisation?: string, ovhCompany?: nichandle.OvhCompanyEnum, ovhSubsidiary?: nichandle.OvhSubsidiaryEnum, phone?: string, phoneCountry?: nichandle.CountryEnum, phoneType?: nichandle.PhoneTypeEnum, purposeOfPurchase?: string, sex?: nichandle.GenderEnum, spareEmail?: string, vat?: string, zip?: string }): Promise<nichandle.CreationRule[]>;
     }
 }

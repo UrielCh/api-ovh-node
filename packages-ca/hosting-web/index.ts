@@ -169,7 +169,7 @@ export namespace cdn {
                 ttl?: number;
             }
             /**
-             * Additional informations about option
+             * Additional information about option
              * interface fullName: cdn.domain.option.extra.extra
              */
             export interface extra {
@@ -266,18 +266,6 @@ export namespace complexType {
     }
 }
 export namespace hosting {
-    export namespace PrivateDatabase {
-        /**
-         * Private database available ram sizes
-         * type fullname: hosting.PrivateDatabase.AvailableRamSizeEnum
-         */
-        export type AvailableRamSizeEnum = "1024" | "2048" | "4096" | "512"
-        /**
-         * Private database orderable versions
-         * type fullname: hosting.PrivateDatabase.OrderableVersionEnum
-         */
-        export type OrderableVersionEnum = "mariadb_10.11" | "mariadb_10.3" | "mariadb_10.4" | "mariadb_10.5" | "mariadb_10.6" | "mysql_5.7" | "mysql_8.0" | "postgresql_11" | "postgresql_12" | "postgresql_13" | "postgresql_14" | "postgresql_15" | "redis_6.0" | "redis_7.0"
-    }
     export namespace web {
         /**
          * Url and port of a service
@@ -286,6 +274,21 @@ export namespace hosting {
         export interface Address {
             port: number;
             url: string;
+        }
+        /**
+         * Attached domain
+         * interface fullName: hosting.web.AttachedDomain.AttachedDomain
+         */
+        export interface AttachedDomain {
+            bypassDNSConfiguration?: boolean;
+            cdn?: hosting.web.attachedDomain.CdnEnum;
+            domain?: string;
+            firewall?: hosting.web.attachedDomain.FirewallEnum;
+            ipLocation?: hosting.web.CountryEnum;
+            ownLog?: string;
+            path?: string;
+            runtimeId?: number;
+            ssl?: boolean;
         }
         /**
          * Struct which describs an boost offer from a service
@@ -324,7 +327,7 @@ export namespace hosting {
          */
         export interface CountriesIp {
             country: hosting.web.CountryEnum;
-            ip: string;
+            ip?: string;
             ipv6?: string;
         }
         /**
@@ -384,15 +387,42 @@ export namespace hosting {
          */
         export type DiskTypeEnum = "HDD" | "SSD"
         /**
+         * Environment variables set into your webhosting account
+         * interface fullName: hosting.web.EnvVar.EnvVar
+         */
+        export interface EnvVar {
+            key: string;
+            status: hosting.web.envVar.StatusEnum;
+            taskId?: number;
+            type: hosting.web.envVar.TypeEnum;
+            value: string;
+        }
+        /**
+         * Environment variables set into your webhosting account
+         * interface fullName: hosting.web.EnvVarInput.EnvVarInput
+         */
+        export interface EnvVarInput {
+            key: string;
+            type: hosting.web.envVar.TypeEnum;
+            value: string;
+        }
+        /**
          * Highlight tips for offer
          * type fullname: hosting.web.HighLightEnum
          */
         export type HighLightEnum = "best-seller" | "new"
         /**
+         * Key information
+         * interface fullName: hosting.web.Key.Key
+         */
+        export interface Key {
+            publicKey: string;
+        }
+        /**
          * Web supported languages
          * type fullname: hosting.web.LanguagesEnum
          */
-        export type LanguagesEnum = "node10" | "node11" | "node12" | "node14" | "node8" | "node9" | "other" | "php4" | "php5.2" | "php5.3" | "php5.4" | "php5.5" | "php5.6" | "php7.0" | "php7.1" | "php7.2" | "php7.3" | "php7.4" | "php8.0" | "php8.1" | "php8.2" | "python2" | "python3" | "ruby2.6"
+        export type LanguagesEnum = "node10" | "node11" | "node12" | "node14" | "node8" | "node9" | "other" | "php4" | "php5.2" | "php5.3" | "php5.4" | "php5.5" | "php5.6" | "php7.0" | "php7.1" | "php7.2" | "php7.3" | "php7.4" | "php8.0" | "php8.1" | "php8.2" | "php8.3" | "python2" | "python3" | "ruby2.6"
         /**
          * A module specifically packaged by OVH
          * interface fullName: hosting.web.ModuleList.ModuleList
@@ -421,7 +451,7 @@ export namespace hosting {
          * Hosting's offer
          * type fullname: hosting.web.OfferCapabilitiesEnum
          */
-        export type OfferCapabilitiesEnum = "1000gp" | "20gp" | "240gp" | "240pack" | "240plan" | "300gp" | "60gp" | "720pack" | "720plan" | "90pack" | "90plan" | "CLOUDWEB_1" | "CLOUDWEB_2" | "CLOUDWEB_3" | "KS" | "PERFORMANCE_1" | "PERFORMANCE_2" | "PERFORMANCE_3" | "PERFORMANCE_4" | "PERSO" | "POWER_BETA_1" | "PRO" | "START" | "business" | "cloudweb1" | "cloudweb2" | "cloudweb3" | "cloudwebbetax1" | "depro2012" | "deprol2012" | "deproxl2012" | "deproxxl2012" | "destart2012" | "destartl2012" | "destartxl2012" | "domainpack" | "hostingAtScaleX128" | "hostingAtScaleX16" | "hostingAtScaleX20" | "hostingAtScaleX24" | "hostingAtScaleX32" | "hostingAtScaleX64" | "hostingAtScaleX8" | "itbusiness2012" | "itperso2012" | "itpremium2012" | "kimsufi2015" | "mailpack" | "mailplan" | "mediapack" | "mediaplan" | "ovhpro1To" | "ovhpro2To" | "ovhpro5To" | "paas2014beta" | "perf2014x1" | "perf2014x2" | "perf2014x3" | "perf2014x4" | "perso2010" | "perso2014" | "powerBeta1" | "powerbeta1" | "premium" | "pro2010" | "pro2014" | "start10g" | "start10m" | "start1g" | "start1ges" | "start1m" | "start5g" | "starter" | "xxlpack" | "xxlplan"
+        export type OfferCapabilitiesEnum = "1000gp" | "20gp" | "240gp" | "240pack" | "240plan" | "300gp" | "60gp" | "720pack" | "720plan" | "90pack" | "90plan" | "CLOUDWEB_1" | "CLOUDWEB_2" | "CLOUDWEB_3" | "KS" | "PERFORMANCE_1" | "PERFORMANCE_2" | "PERFORMANCE_3" | "PERFORMANCE_4" | "PERSO" | "POWER_BETA_1" | "PRO" | "START" | "business" | "cloudweb1" | "cloudweb2" | "cloudweb3" | "cloudwebbetax1" | "depro2012" | "deprol2012" | "deproxl2012" | "deproxxl2012" | "destart2012" | "destartl2012" | "destartxl2012" | "domainpack" | "hosting-free-100m" | "hosting-performance-1" | "hosting-performance-2" | "hosting-performance-3" | "hosting-performance-4" | "hosting-perso" | "hosting-pro" | "hosting-starter" | "hosting-starter-ovh" | "hostingAtScaleX128" | "hostingAtScaleX16" | "hostingAtScaleX20" | "hostingAtScaleX24" | "hostingAtScaleX32" | "hostingAtScaleX64" | "hostingAtScaleX8" | "itbusiness2012" | "itperso2012" | "itpremium2012" | "kimsufi2015" | "mailpack" | "mailplan" | "mediapack" | "mediaplan" | "ovhpro1To" | "ovhpro2To" | "ovhpro5To" | "paas2014beta" | "perf2014x1" | "perf2014x2" | "perf2014x3" | "perf2014x4" | "perso2010" | "perso2014" | "powerBeta1" | "powerbeta1" | "premium" | "pro2010" | "pro2014" | "start10g" | "start10m" | "start1g" | "start1ges" | "start1m" | "start5g" | "starter" | "xxlpack" | "xxlplan"
         /**
          * Hosting's offer
          * type fullname: hosting.web.OfferEnum
@@ -463,7 +493,7 @@ export namespace hosting {
          * Different PHP versions available
          * type fullname: hosting.web.PhpVersionAvailableEnum
          */
-        export type PhpVersionAvailableEnum = "phpfpm-5.6" | "phpfpm-7.0" | "phpfpm-7.1" | "phpfpm-7.2" | "phpfpm-7.3" | "phpfpm-7.4" | "phpfpm-8.0" | "phpfpm-8.1" | "phpfpm-8.2"
+        export type PhpVersionAvailableEnum = "phpfpm-5.6" | "phpfpm-7.0" | "phpfpm-7.1" | "phpfpm-7.2" | "phpfpm-7.3" | "phpfpm-7.4" | "phpfpm-8.0" | "phpfpm-8.1" | "phpfpm-8.2" | "phpfpm-8.3"
         /**
          * Different support of PHP versions
          * type fullname: hosting.web.PhpVersionStateEnum
@@ -516,6 +546,15 @@ export namespace hosting {
             type: hosting.web.hostedssl.TypeEnum;
         }
         /**
+         * SSL input properties
+         * interface fullName: hosting.web.SSLInput.SSLInput
+         */
+        export interface SSLInput {
+            certificate: string;
+            chain: string;
+            key: string;
+        }
+        /**
          * Web Hosting
          * interface fullName: hosting.web.Service.Service
          */
@@ -561,6 +600,43 @@ export namespace hosting {
             ssh: hosting.web.Address;
         }
         /**
+         * Web Hosting
+         * interface fullName: hosting.web.ServiceWithIAM.ServiceWithIAM
+         */
+        export interface ServiceWithIAM {
+            availableBoostOffer: hosting.web.AvailableOfferStruct[];
+            boostOffer?: hosting.web.OfferCapabilitiesEnum;
+            cluster: string;
+            clusterIp?: string;
+            clusterIpv6?: string;
+            countriesIp?: hosting.web.CountriesIp[];
+            datacenter: string;
+            displayName?: string;
+            filer?: string;
+            hasCdn?: boolean;
+            hasHostedSsl?: boolean;
+            home: string;
+            hostingIp?: string;
+            hostingIpv6?: string;
+            iam?: iam.ResourceMetadata;
+            lastOvhConfigScan?: string;
+            offer: hosting.web.OfferCapabilitiesEnum;
+            operatingSystem: hosting.web.OperatingSystemEnum;
+            phpVersions: hosting.web.PhpVersion[];
+            primaryLogin: string;
+            quotaSize: complexType.UnitAndValue<number>;
+            quotaUsed?: complexType.UnitAndValue<number>;
+            recommendedOffer?: hosting.web.OfferEnum;
+            resourceType: hosting.web.ResourceEnum;
+            serviceManagementAccess: hosting.web.ServiceAccess;
+            serviceName: string;
+            state: hosting.web.StateEnum;
+            token?: string;
+            trafficQuotaSize?: complexType.UnitAndValue<number>;
+            trafficQuotaUsed?: complexType.UnitAndValue<number>;
+            updates: string[];
+        }
+        /**
          * Hosting's state
          * type fullname: hosting.web.StateEnum
          */
@@ -575,6 +651,30 @@ export namespace hosting {
          * type fullname: hosting.web.StatisticsTypeEnum
          */
         export type StatisticsTypeEnum = "in.ftpCommands" | "in.httpHits" | "in.httpMeanResponseTime" | "out.tcpConn" | "sys.cpuUsage" | "sys.workerSpawnOverload"
+        /**
+         * Supported VCS platforms
+         * type fullname: hosting.web.SupportedVcsEnum
+         */
+        export type SupportedVcsEnum = "github"
+        /**
+         * VCS webhooks URLs for given hosting and VCS platform
+         * interface fullName: hosting.web.VcsWebhooks.VcsWebhooks
+         */
+        export interface VcsWebhooks {
+            push: string;
+        }
+        /**
+         * A website on your hosting
+         * interface fullName: hosting.web.Website.Website
+         */
+        export interface Website {
+            id: number;
+            name?: string;
+            path: string;
+            status: hosting.web.website.StatusEnum;
+            vcsBranch: string;
+            vcsUrl: string;
+        }
         /**
          * Virtual service
          * interface fullName: hosting.web.attachedDomain.attachedDomain
@@ -595,22 +695,36 @@ export namespace hosting {
         }
         export namespace attachedDomain {
             /**
-             * Provides the capabilities related to the attachedDomain
+             * Attached domain Capability
              * interface fullName: hosting.web.attachedDomain.Capabilities.Capabilities
              */
             export interface Capabilities {
                 description: string;
                 href: string;
                 key: string;
-                method: hosting.web.attachedDomain.MethodEnum;
+                method: hosting.web.attachedDomain.CapabilityMethodEnum;
             }
             /**
-             * Attached domain cdn enum
+             * allowed attachedDomain's capabilities methods
+             * type fullname: hosting.web.attachedDomain.CapabilityMethodEnum
+             */
+            export type CapabilityMethodEnum = "DELETE" | "GET" | "POST" | "PUT"
+            /**
+             * whether or not the attachedDomain is linked to the hosting cdn
              * type fullname: hosting.web.attachedDomain.CdnEnum
              */
             export type CdnEnum = "active" | "none"
             /**
-             * Attached domain firewall enum
+             * Attached domain DNS status
+             * interface fullName: hosting.web.attachedDomain.DigStatus.DigStatus
+             */
+            export interface DigStatus {
+                domain: string;
+                recommendedIps: hosting.web.attachedDomain.RecommendedIps;
+                records: { [key: string]: hosting.web.attachedDomain.RecordStatus };
+            }
+            /**
+             * Firewall state for this path
              * type fullname: hosting.web.attachedDomain.FirewallEnum
              */
             export type FirewallEnum = "active" | "none"
@@ -620,10 +734,56 @@ export namespace hosting {
              */
             export type MethodEnum = "DELETE" | "GET" | "POST" | "PUT"
             /**
-             * AttachedDomain status
+             * Public attached domain
+             * interface fullName: hosting.web.attachedDomain.PublicAttachedDomain.PublicAttachedDomain
+             */
+            export interface PublicAttachedDomain {
+                capabilities: hosting.web.attachedDomain.Capabilities[];
+                cdn: hosting.web.attachedDomain.CdnEnum;
+                domain: string;
+                firewall: hosting.web.attachedDomain.FirewallEnum;
+                ipLocation?: hosting.web.CountryEnum;
+                isFlushable: boolean;
+                ownLog?: string;
+                path: string;
+                runtimeId?: number;
+                ssl?: boolean;
+                status: hosting.web.attachedDomain.StatusEnum;
+                taskId?: number;
+                vcsStatus: hosting.web.attachedDomain.VcsStatusEnum;
+            }
+            /**
+             * Recommended IPs for DNS records configuration
+             * interface fullName: hosting.web.attachedDomain.RecommendedIps.RecommendedIps
+             */
+            export interface RecommendedIps {
+                recommendedIpV4: string[];
+                recommendedIpV6: string[];
+            }
+            /**
+             * Attached domain record status
+             * interface fullName: hosting.web.attachedDomain.RecordStatus.RecordStatus
+             */
+            export interface RecordStatus {
+                dnsConfigured: boolean;
+                isOvhIp: boolean;
+                type: hosting.web.attachedDomain.RecordTypeEnum;
+            }
+            /**
+             * DNS Record type
+             * type fullname: hosting.web.attachedDomain.RecordTypeEnum
+             */
+            export type RecordTypeEnum = "A" | "AAAA"
+            /**
+             * attachedDomain status
              * type fullname: hosting.web.attachedDomain.StatusEnum
              */
             export type StatusEnum = "created" | "creating" | "deleting" | "updating"
+            /**
+             * AttachedDomain vcs status
+             * type fullname: hosting.web.attachedDomain.VcsStatusEnum
+             */
+            export type VcsStatusEnum = "created" | "creating" | "deleting" | "disabled" | "error" | "initialError"
         }
         export namespace backup {
             /**
@@ -715,7 +875,7 @@ export namespace hosting {
              * Cron's language
              * type fullname: hosting.web.cron.LanguageEnum
              */
-            export type LanguageEnum = "node10" | "node11" | "node12" | "node14" | "node8" | "node9" | "other" | "php4" | "php5.2" | "php5.3" | "php5.4" | "php5.5" | "php5.6" | "php7.0" | "php7.1" | "php7.2" | "php7.3" | "php7.4" | "php8.0" | "php8.1" | "php8.2" | "python2" | "python3" | "ruby2.6"
+            export type LanguageEnum = "node10" | "node11" | "node12" | "node14" | "node8" | "node9" | "other" | "php4" | "php5.2" | "php5.3" | "php5.4" | "php5.5" | "php5.6" | "php7.0" | "php7.1" | "php7.2" | "php7.3" | "php7.4" | "php8.0" | "php8.1" | "php8.2" | "php8.3" | "python2" | "python3" | "ruby2.6"
             /**
              * Cron state
              * type fullname: hosting.web.cron.StateEnum
@@ -732,6 +892,7 @@ export namespace hosting {
          * interface fullName: hosting.web.database.database
          */
         export interface database {
+            databaseServiceDeprecated: boolean;
             databaseType?: hosting.web.database.DatabaseServiceTypeEnum;
             dumps: number;
             guiURL?: string;
@@ -814,7 +975,7 @@ export namespace hosting {
              * ExtraSqlPerso quota enum
              * type fullname: hosting.web.database.ExtraSqlQuotaEnum
              */
-            export type ExtraSqlQuotaEnum = 100 | 200 | 25 | 400 | 800
+            export type ExtraSqlQuotaEnum = 25 | 100 | 200 | 256 | 400 | 512 | 800 | 1024
             /**
              * Database mode
              * type fullname: hosting.web.database.ModeEnum
@@ -850,6 +1011,13 @@ export namespace hosting {
              * type fullname: hosting.web.database.VersionEnum
              */
             export type VersionEnum = "10" | "10.1" | "10.11" | "10.2" | "10.3" | "10.4" | "10.5" | "10.6" | "11" | "12" | "13" | "15" | "3.2" | "3.4" | "4.0" | "5.1" | "5.5" | "5.6" | "5.7" | "6.0" | "7.0" | "8.0" | "8.4" | "9.4" | "9.5" | "9.6"
+            export namespace copy {
+                /**
+                 * Database copy status
+                 * type fullname: hosting.web.database.copy.StatusEnum
+                 */
+                export type StatusEnum = "doing" | "done" | "error" | "todo"
+            }
             export namespace dump {
                 /**
                  * List of dump types
@@ -862,6 +1030,17 @@ export namespace hosting {
                  */
                 export type StatusEnum = "created" | "creating" | "deleting"
             }
+        }
+        /**
+         * Copy
+         * interface fullName: hosting.web.database_copy.database_copy
+         */
+        export interface database_copy {
+            creationDate: string;
+            expirationDate?: string;
+            id: string;
+            lastUpdate: string;
+            status: hosting.web.database.copy.StatusEnum;
         }
         /**
          * Dump
@@ -930,7 +1109,7 @@ export namespace hosting {
              */
             export type StatusEnum = "created" | "creating" | "deleting" | "updating"
             /**
-             * EnvVar type
+             * Filter the value of type property (=)
              * type fullname: hosting.web.envVar.TypeEnum
              */
             export type TypeEnum = "integer" | "password" | "string"
@@ -1267,7 +1446,7 @@ export namespace hosting {
              * Hosting available configuration version
              * type fullname: hosting.web.ovhConfig.AvailableEngineVersionEnum
              */
-            export type AvailableEngineVersionEnum = "5.4" | "5.5" | "5.6" | "7.0" | "7.1" | "7.2" | "7.3" | "7.4" | "8.0" | "8.1" | "8.2"
+            export type AvailableEngineVersionEnum = "5.4" | "5.5" | "5.6" | "7.0" | "7.1" | "7.2" | "7.3" | "7.4" | "8.0" | "8.1" | "8.2" | "8.3"
             /**
              * Hosting configuration engine
              * type fullname: hosting.web.ovhConfig.EngineNameEnum
@@ -1277,7 +1456,7 @@ export namespace hosting {
              * Hosting configuration version
              * type fullname: hosting.web.ovhConfig.EngineVersionEnum
              */
-            export type EngineVersionEnum = "4.4" | "5.0" | "5.1" | "5.2" | "5.3" | "5.4" | "5.5" | "5.6" | "7.0" | "7.1" | "7.2" | "7.3" | "7.4" | "8.0" | "8.1" | "8.2" | "AUTO"
+            export type EngineVersionEnum = "4.4" | "5.0" | "5.1" | "5.2" | "5.3" | "5.4" | "5.5" | "5.6" | "7.0" | "7.1" | "7.2" | "7.3" | "7.4" | "8.0" | "8.1" | "8.2" | "8.3" | "AUTO"
             /**
              * Hosting configuration environment
              * type fullname: hosting.web.ovhConfig.EnvironmentEnum
@@ -1414,12 +1593,12 @@ export namespace hosting {
              * Task function enum
              * type fullname: hosting.web.task.FunctionEnum
              */
-            export type FunctionEnum = "cron/create" | "cron/delete" | "cron/update"
+            export type FunctionEnum = "abuse/close" | "abuse/create" | "abuse/create/web" | "abuse/delete/web" | "abuse/update" | "abuse/update/web" | "agora/AnycastUpdateReference" | "agora/DnsAddonUpdateReference" | "agora/DnsUpdateReference" | "agora/updateReference" | "attachedDomain/create" | "attachedDomain/delete" | "attachedDomain/restart" | "attachedDomain/update" | "cdn/delete" | "cdn/domain/create" | "cdn/domain/delete" | "cdn/domain/flush" | "cdn/domain/suspend" | "cdn/flush" | "cdn/install" | "cdn/reopen" | "cdn/suspend" | "cdn/upgrade" | "cluster/setDevelopment" | "cluster/setTesting" | "cluster/ssl/deploy" | "cluster/ssl/renew" | "cluster/test/attachedDomains" | "cluster/test/cdn" | "cluster/test/crons" | "cluster/test/emails" | "cluster/test/fileBrowser" | "cluster/test/hostedssl" | "cluster/test/modules" | "cluster/test/ovhConfig" | "cluster/test/userLogs" | "cluster/test/users" | "configuration/create" | "configuration/delete" | "configuration/update" | "cron/create" | "cron/delete" | "cron/update" | "database/changePassword" | "database/changePasswordTest" | "database/changeRight" | "database/changeRightTest" | "database/checkQuotaNow" | "database/copy" | "database/copyRestore" | "database/create" | "database/delete" | "database/deleteTest" | "database/dumpAnyDay" | "database/hostUpdate" | "database/import" | "database/optimize" | "database/restore" | "dedicatedIp/delete" | "dedicatedIp/reopen" | "dedicatedIp/suspend" | "depc/push" | "dump/create" | "dump/delete" | "envVar/create" | "envVar/delete" | "envVar/update" | "envVar/upgrade" | "eventbus/push" | "filerz/customerMonitoring" | "filerz/delete" | "hostedssl/assignFreeKey" | "hostedssl/cdn/update" | "hostedssl/create" | "hostedssl/delete" | "hostedssl/globalsign/delete" | "hostedssl/htaccess/install" | "hostedssl/import" | "hostedssl/install" | "hostedssl/install/sectigo" | "hostedssl/iplb/reload" | "hostedssl/push" | "hostedssl/pushDcvFile" | "hostedssl/regenerate" | "hostedssl/repush" | "hosting/activate/privateDatabase" | "hosting/basculement" | "hosting/changeOffer/cloud" | "hosting/changeOffer/shared" | "hosting/changement" | "hosting/delete" | "hosting/delete_start1m" | "hosting/install" | "hosting/reopen" | "hosting/suspend" | "indy/reopen" | "indy/suspend" | "infra/certificate/deploy" | "infra/certificate/generate" | "infra/certificate/install" | "infra/sharedsql/upgrade" | "infra/ssl/deploy" | "infra/ssl/renew" | "ip/move" | "ip/park" | "localSeoAccount/create" | "localSeoAccount/delete" | "localSeoLocation/delete" | "localSeoLocation/install" | "localSeoLocation/reopen" | "localSeoLocation/suspend" | "localSeoVisibilityCheck/process" | "mailsout/checkMailsoutQueue" | "mailsout/flushMailsoutQueue" | "mailsout/updateUserInRedis" | "migration/copyUsers" | "migration/dday/filerz" | "migration/dday/listPrivateDatabases" | "migration/dday/lot" | "migration/dday/updateInfra/crons" | "migration/dday/updateInfra/dedicated" | "migration/dday/updateInfra/migratedFqdn" | "migration/updateOrt" | "module/changePassword" | "module/create" | "module/delete" | "module/install" | "monitoring/remotewrite" | "notification/send" | "ovhConfig/refresh" | "ovhConfig/rollback" | "ovhConfig/update" | "ovhOrg/delete" | "ownLogs/create" | "ownLogs/delete" | "provisionning/cdn" | "provisionning/cluster" | "provisionning/filerz" | "provisionning/filerz_log" | "provisionning/hosting" | "provisionning/ipfo" | "provisionning/ipifo" | "provisionning/iplb" | "provisionning/privatesql" | "provisionning/sharedsql" | "provisionning/ssl" | "provisionning/web" | "provisionning/webapp" | "runtime/create" | "runtime/delete" | "runtime/setDefault" | "runtime/update" | "scan/create" | "sqlperso/delete" | "sqlperso/install" | "sqlperso/reopen" | "sqlperso/suspend" | "synchronizeDepc/attachedDomain" | "synchronizeDepc/cluster" | "synchronizeDepc/database" | "synchronizeDepc/filer" | "synchronizeDepc/offer" | "synchronizeDepc/webd" | "test/migration" | "user/changePassword" | "user/create" | "user/delete" | "user/update" | "userLogs/changePassword" | "userLogs/create" | "userLogs/delete" | "uster/setTesting" | "web/changeDns" | "web/changeFilerz" | "web/changeFilerzWithCallback" | "web/changeJailState" | "web/changeOutState" | "web/changeState" | "web/changeWebState" | "web/checkQuotaNow" | "web/create" | "web/delete" | "web/deleteUser" | "web/restoreSnapshot" | "webProvisionning" | "webd/changeSlots" | "website/create" | "website/delete" | "website/deploy"
             /**
              * Object type enum
              * type fullname: hosting.web.task.ObjectTypeEnum
              */
-            export type ObjectTypeEnum = "Abuse" | "AttachedDomain" | "BlockedIp" | "Cdn" | "Cron" | "Database" | "Dump" | "EnvVar" | "Filerz" | "Hostedssl" | "Hosting" | "Indy" | "Infra" | "Minor" | "Module" | "Other" | "OvhConfig" | "OvhOrg" | "OwnLogs" | "Runtime" | "Scan" | "Sqlperso" | "User" | "UserLogs" | "Web" | "Webd"
+            export type ObjectTypeEnum = "Abuse" | "AttachedDomain" | "BlockedIp" | "Cdn" | "Cron" | "Database" | "Deployment" | "Dump" | "EnvVar" | "Filerz" | "Hostedssl" | "Hosting" | "Indy" | "Infra" | "Minor" | "Module" | "Other" | "OvhConfig" | "OvhOrg" | "OwnLogs" | "Runtime" | "Scan" | "Sqlperso" | "User" | "UserLogs" | "Web" | "Webd" | "Website"
             /**
              * Task status enum
              * type fullname: hosting.web.task.StatusEnum
@@ -1493,6 +1672,95 @@ export namespace hosting {
              */
             export type StatusEnum = "created" | "creating" | "deleting" | "updating"
         }
+        export namespace website {
+            /**
+             * Information needed to create a new website
+             * interface fullName: hosting.web.website.CreationRequest.CreationRequest
+             */
+            export interface CreationRequest {
+                path: string;
+                vcsBranch: string;
+                vcsUrl: string;
+            }
+            /**
+             * A website deployment
+             * interface fullName: hosting.web.website.Deployment.Deployment
+             */
+            export interface Deployment {
+                date: string;
+                id: number;
+                reset: boolean;
+                source: string;
+                status: hosting.web.website.deployment.StatusEnum;
+                vcsBranch: string;
+                vcsCommitId?: string;
+                vcsCommitMessage?: string;
+                websiteId: number;
+            }
+            /**
+             * Information needed to request deployment of a website
+             * interface fullName: hosting.web.website.DeploymentRequest.DeploymentRequest
+             */
+            export interface DeploymentRequest {
+                reset: boolean;
+            }
+            /**
+             * Website status
+             * type fullname: hosting.web.website.StatusEnum
+             */
+            export type StatusEnum = "created" | "creating" | "deleting" | "deploying" | "error" | "initialError"
+            /**
+             * Information to update on a website
+             * interface fullName: hosting.web.website.Update.Update
+             */
+            export interface Update {
+                vcsBranch?: string;
+            }
+            export namespace deployment {
+                /**
+                 * Message from logs of a website deployment
+                 * interface fullName: hosting.web.website.deployment.LogsMessage.LogsMessage
+                 */
+                export interface LogsMessage {
+                    date: string;
+                    message: string;
+                }
+                /**
+                 * Website deployment status
+                 * type fullname: hosting.web.website.deployment.StatusEnum
+                 */
+                export type StatusEnum = "doing" | "failed" | "succeeded"
+            }
+        }
+    }
+}
+export namespace iam {
+    /**
+     * IAM resource metadata embedded in services models
+     * interface fullName: iam.ResourceMetadata.ResourceMetadata
+     */
+    export interface ResourceMetadata {
+        displayName?: string;
+        id: string;
+        tags?: { [key: string]: string };
+        urn: string;
+    }
+    export namespace resource {
+        /**
+         * Resource tag filter
+         * interface fullName: iam.resource.TagFilter.TagFilter
+         */
+        export interface TagFilter {
+            operator?: iam.resource.TagFilter.OperatorEnum;
+            value: string;
+        }
+        export namespace TagFilter {
+            /**
+             * Operator that can be used in order to filter resources tags
+             * type fullname: iam.resource.TagFilter.OperatorEnum
+             */
+            export type OperatorEnum = "EQ"
+        }
     }
 }
 export namespace order {
@@ -1507,6 +1775,7 @@ export namespace order {
      */
     export interface Price {
         currencyCode: order.CurrencyCodeEnum;
+        priceInUcents?: number;
         text: string;
         value: number;
     }
@@ -1581,7 +1850,7 @@ export interface Hosting {
          * List available services
          * GET /hosting/web
          */
-        $get(): Promise<string[]>;
+        $get(params?: { iamTags?: any }): Promise<string[]>;
         /**
          * Controle cache
          */
@@ -1709,48 +1978,52 @@ export interface Hosting {
              * Controle cache
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            activatePrivateDatabase: {
-                /**
-                 * Activate an included private database on your hosting offer
-                 * POST /hosting/web/{serviceName}/activatePrivateDatabase
-                 */
-                $post(params: { ram: hosting.PrivateDatabase.AvailableRamSizeEnum, version: hosting.PrivateDatabase.OrderableVersionEnum }): Promise<hosting.web.task>;
-            }
             attachedDomain: {
                 /**
-                 * Domains or subdomains attached to your hosting
+                 * Get list of attached domains or subdomains attached to your hosting
                  * GET /hosting/web/{serviceName}/attachedDomain
                  */
                 $get(params?: { domain?: string, path?: string }): Promise<string[]>;
                 /**
-                 * Link a domain to this hosting
+                 * Create an attached domain
                  * POST /hosting/web/{serviceName}/attachedDomain
                  */
-                $post(params: { cdn?: hosting.web.attachedDomain.CdnEnum, domain: string, firewall?: hosting.web.attachedDomain.FirewallEnum, ownLog?: string, path: string, runtimeId?: number, ssl?: boolean }): Promise<hosting.web.task>;
+                $post(params?: { bypassDNSConfiguration?: boolean, cdn?: hosting.web.attachedDomain.CdnEnum, domain?: string, firewall?: hosting.web.attachedDomain.FirewallEnum, ipLocation?: hosting.web.CountryEnum, ownLog?: string, path?: string, runtimeId?: number, ssl?: boolean }): Promise<hosting.web.PublicTask>;
                 /**
                  * Controle cache
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(domain: string): {
                     /**
-                     * Unlink domain from hosting
+                     * Unlink attached domain from hosting
                      * DELETE /hosting/web/{serviceName}/attachedDomain/{domain}
                      */
-                    $delete(): Promise<hosting.web.task>;
+                    $delete(params?: { bypassDNSConfiguration?: boolean }): Promise<hosting.web.PublicTask>;
                     /**
-                     * Get this object properties
+                     * Get attachedDomain properties
                      * GET /hosting/web/{serviceName}/attachedDomain/{domain}
                      */
-                    $get(): Promise<hosting.web.attachedDomain>;
+                    $get(): Promise<hosting.web.attachedDomain.PublicAttachedDomain>;
                     /**
-                     * Alter this object properties
+                     * Update attached domain properties
                      * PUT /hosting/web/{serviceName}/attachedDomain/{domain}
                      */
-                    $put(params?: { capabilities?: hosting.web.attachedDomain.Capabilities[], cdn?: hosting.web.attachedDomain.CdnEnum, domain?: string, firewall?: hosting.web.attachedDomain.FirewallEnum, ipLocation?: hosting.web.CountryEnum, isFlushable?: boolean, ownLog?: string, path?: string, runtimeId?: number, ssl?: boolean, status?: hosting.web.attachedDomain.StatusEnum, taskId?: number }): Promise<void>;
+                    $put(params?: { bypassDNSConfiguration?: boolean, cdn?: hosting.web.attachedDomain.CdnEnum, domain?: string, firewall?: hosting.web.attachedDomain.FirewallEnum, ipLocation?: hosting.web.CountryEnum, ownLog?: string, path?: string, runtimeId?: number, ssl?: boolean }): Promise<void>;
                     /**
                      * Controle cache
                      */
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    digStatus: {
+                        /**
+                         * Get attachedDomain DNS status
+                         * GET /hosting/web/{serviceName}/attachedDomain/{domain}/digStatus
+                         */
+                        $get(): Promise<hosting.web.attachedDomain.DigStatus>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    }
                     purgeCache: {
                         /**
                          * Purge cache for this attached domain
@@ -1989,7 +2262,7 @@ export interface Hosting {
             }
             confirmTermination: {
                 /**
-                 * Confirm termination of your service
+                 * Confirm service termination
                  * POST /hosting/web/{serviceName}/confirmTermination
                  */
                 $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
@@ -2089,6 +2362,45 @@ export interface Hosting {
                          * POST /hosting/web/{serviceName}/database/{name}/changePassword
                          */
                         $post(params: { password: string }): Promise<hosting.web.task>;
+                    }
+                    copy: {
+                        /**
+                         * Copies available for your databases
+                         * GET /hosting/web/{serviceName}/database/{name}/copy
+                         */
+                        $get(): Promise<string[]>;
+                        /**
+                         * Create a new copy of your database
+                         * POST /hosting/web/{serviceName}/database/{name}/copy
+                         */
+                        $post(): Promise<hosting.web.database_copy>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $(id: string): {
+                            /**
+                             * Delete the database copy
+                             * DELETE /hosting/web/{serviceName}/database/{name}/copy/{id}
+                             */
+                            $delete(): Promise<void>;
+                            /**
+                             * Get this object properties
+                             * GET /hosting/web/{serviceName}/database/{name}/copy/{id}
+                             */
+                            $get(): Promise<hosting.web.database_copy>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        };
+                    }
+                    copyRestore: {
+                        /**
+                         * Request the copy restore in this database
+                         * POST /hosting/web/{serviceName}/database/{name}/copyRestore
+                         */
+                        $post(params: { copyId: string, flushDatabase?: boolean }): Promise<hosting.web.task>;
                     }
                     dump: {
                         /**
@@ -2310,35 +2622,30 @@ export interface Hosting {
             }
             envVar: {
                 /**
-                 * Environment variables set on your webhosting
                  * GET /hosting/web/{serviceName}/envVar
                  */
                 $get(params?: { type?: hosting.web.envVar.TypeEnum }): Promise<string[]>;
                 /**
-                 * Set a variable to this hosting
                  * POST /hosting/web/{serviceName}/envVar
                  */
-                $post(params: { key: string, type: hosting.web.envVar.TypeEnum, value: string }): Promise<hosting.web.task>;
+                $post(params: { key: string, type: hosting.web.envVar.TypeEnum, value: string }): Promise<hosting.web.PublicTask>;
                 /**
                  * Controle cache
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(key: string): {
                     /**
-                     * Remove variable from hosting
                      * DELETE /hosting/web/{serviceName}/envVar/{key}
                      */
-                    $delete(): Promise<hosting.web.task>;
+                    $delete(): Promise<hosting.web.PublicTask>;
                     /**
-                     * Get this object properties
                      * GET /hosting/web/{serviceName}/envVar/{key}
                      */
-                    $get(): Promise<hosting.web.envVar>;
+                    $get(): Promise<hosting.web.EnvVar>;
                     /**
-                     * Alter this object properties
                      * PUT /hosting/web/{serviceName}/envVar/{key}
                      */
-                    $put(params?: { key?: string, status?: hosting.web.envVar.StatusEnum, taskId?: number, type?: hosting.web.envVar.TypeEnum, value?: string }): Promise<void>;
+                    $put(params?: { key?: string, status?: hosting.web.envVar.StatusEnum, taskId?: number, type?: hosting.web.envVar.TypeEnum, value?: string }): Promise<hosting.web.PublicTask>;
                     /**
                      * Controle cache
                      */
@@ -2815,12 +3122,12 @@ export interface Hosting {
             }
             serviceInfos: {
                 /**
-                 * Get this object properties
+                 * Get service information
                  * GET /hosting/web/{serviceName}/serviceInfos
                  */
                 $get(): Promise<services.Service>;
                 /**
-                 * Alter this object properties
+                 * Update service information
                  * PUT /hosting/web/{serviceName}/serviceInfos
                  */
                 $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
@@ -2841,10 +3148,10 @@ export interface Hosting {
                  */
                 $get(): Promise<hosting.web.SSL>;
                 /**
-                 * Create the free default HostedSsl OR import your proper SSL on your hosting
+                 * Create the free default HostedSsl OR import your own SSL on your hosting
                  * POST /hosting/web/{serviceName}/ssl
                  */
-                $post(params?: { certificate?: string, chain?: string, key?: string }): Promise<hosting.web.ssl>;
+                $post(params?: { certificate?: string, chain?: string, key?: string }): Promise<hosting.web.SSL>;
                 /**
                  * Controle cache
                  */
@@ -2862,10 +3169,10 @@ export interface Hosting {
                 }
                 regenerate: {
                     /**
-                     * Request the regeneration of your HostedSsl
+                     * Regenerate a hosted SSL
                      * POST /hosting/web/{serviceName}/ssl/regenerate
                      */
-                    $post(): Promise<hosting.web.ssl>;
+                    $post(): Promise<hosting.web.SSL>;
                 }
                 report: {
                     /**
@@ -2892,7 +3199,7 @@ export interface Hosting {
             }
             tasks: {
                 /**
-                 * Tasks attached to your hosting
+                 * List tasks attached to your hosting
                  * GET /hosting/web/{serviceName}/tasks
                  */
                 $get(params?: { function_?: string, status?: hosting.web.task.StatusEnum }): Promise<number[]>;
@@ -2902,10 +3209,10 @@ export interface Hosting {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(id: number): {
                     /**
-                     * Get this object properties
+                     * Get this task properties
                      * GET /hosting/web/{serviceName}/tasks/{id}
                      */
-                    $get(): Promise<hosting.web.task>;
+                    $get(): Promise<hosting.web.PublicTask>;
                     /**
                      * Controle cache
                      */
@@ -2914,14 +3221,14 @@ export interface Hosting {
             }
             terminate: {
                 /**
-                 * Terminate your service
+                 * Ask for the termination of your service
                  * POST /hosting/web/{serviceName}/terminate
                  */
                 $post(): Promise<string>;
             }
             token: {
                 /**
-                 * Use to link an external domain. ( This token has to be insert into a TXT field on your dns zone with ovhcontrol subdomain )
+                 * Use to link an external domain
                  * GET /hosting/web/{serviceName}/token
                  */
                 $get(): Promise<string>;

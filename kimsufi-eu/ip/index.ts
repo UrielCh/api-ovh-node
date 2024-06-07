@@ -20,6 +20,11 @@ export namespace coreTypes {
      * type fullname: coreTypes.CountryEnum
      */
     export type CountryEnum = "ac" | "ad" | "ae" | "af" | "ag" | "ai" | "al" | "am" | "an" | "ao" | "aq" | "ar" | "as" | "at" | "au" | "aw" | "ax" | "az" | "ba" | "bb" | "bd" | "be" | "bf" | "bg" | "bh" | "bi" | "bj" | "bl" | "bm" | "bn" | "bo" | "bq" | "br" | "bs" | "bt" | "bv" | "bw" | "by" | "bz" | "ca" | "cc" | "cd" | "cf" | "cg" | "ch" | "ci" | "ck" | "cl" | "cm" | "cn" | "co" | "cr" | "cs" | "cu" | "cv" | "cw" | "cx" | "cy" | "cz" | "de" | "dj" | "dk" | "dm" | "do" | "dz" | "ec" | "ee" | "eg" | "eh" | "er" | "es" | "et" | "fc" | "fd" | "fi" | "fj" | "fk" | "fm" | "fo" | "fr" | "fx" | "ga" | "gb" | "gd" | "ge" | "gf" | "gg" | "gh" | "gi" | "gl" | "gm" | "gn" | "gp" | "gq" | "gr" | "gs" | "gt" | "gu" | "gw" | "gy" | "hk" | "hm" | "hn" | "hr" | "ht" | "hu" | "id" | "ie" | "il" | "im" | "in" | "io" | "iq" | "ir" | "is" | "it" | "je" | "jm" | "jo" | "jp" | "ke" | "kg" | "kh" | "ki" | "km" | "kn" | "kp" | "kr" | "kw" | "ky" | "kz" | "la" | "lb" | "lc" | "li" | "lk" | "lr" | "ls" | "lt" | "lu" | "lv" | "ly" | "ma" | "mc" | "md" | "me" | "mf" | "mg" | "mh" | "mk" | "ml" | "mm" | "mn" | "mo" | "mp" | "mq" | "mr" | "ms" | "mt" | "mu" | "mv" | "mw" | "mx" | "my" | "mz" | "na" | "nc" | "ne" | "nf" | "ng" | "ni" | "nl" | "no" | "np" | "nr" | "nu" | "nz" | "om" | "pa" | "pe" | "pf" | "pg" | "ph" | "pk" | "pl" | "pm" | "pn" | "pr" | "ps" | "pt" | "pw" | "py" | "qa" | "qc" | "re" | "ro" | "rs" | "ru" | "rw" | "sa" | "sb" | "sc" | "sd" | "se" | "sg" | "sh" | "si" | "sj" | "sk" | "sl" | "sm" | "sn" | "so" | "sr" | "ss" | "st" | "sv" | "sx" | "sy" | "sz" | "tc" | "td" | "tf" | "tg" | "th" | "tj" | "tk" | "tl" | "tm" | "tn" | "to" | "tp" | "tr" | "tt" | "tv" | "tw" | "tz" | "ua" | "ug" | "uk" | "um" | "us" | "uy" | "uz" | "va" | "vc" | "ve" | "vg" | "vi" | "vn" | "vu" | "we" | "wf" | "ws" | "ye" | "yt" | "yu" | "za" | "zm" | "zw"
+    /**
+     * Region names
+     * type fullname: coreTypes.RegionCodenameEnum
+     */
+    export type RegionCodenameEnum = "ap-south-mum" | "ap-southeast-sgp" | "ap-southeast-syd" | "ca-east-bhs" | "ca-east-tor" | "eu-central-waw" | "eu-west-eri" | "eu-west-gra" | "eu-west-lim" | "eu-west-par" | "eu-west-rbx" | "eu-west-sbg" | "us-east-vin" | "us-west-hil"
 }
 export namespace ip {
     /**
@@ -77,7 +82,9 @@ export namespace ip {
     export interface GameMitigation {
         firewallModeEnabled: boolean;
         ipOnGame: string;
+        maxRules: number;
         state: ip.GameMitigationStateEnum;
+        supportedProtocols: ip.GameMitigationRuleProtocolEnum[];
     }
     /**
      * Rule on ip:ports
@@ -103,7 +110,7 @@ export namespace ip {
      * Possible values for udp mitigation rule state
      * type fullname: ip.GameMitigationStateEnum
      */
-    export type GameMitigationStateEnum = "firewallModeDisablePending" | "firewallModeEnablePending" | "ok"
+    export type GameMitigationStateEnum = "cleanRulesPending" | "firewallModeDisablePending" | "firewallModeEnablePending" | "ok"
     /**
      * Your IP
      * interface fullName: ip.Ip.Ip
@@ -117,6 +124,7 @@ export namespace ip {
         ip: string;
         isAdditionalIp: boolean;
         organisationId?: string;
+        regions?: coreTypes.RegionCodenameEnum[];
         rir?: string;
         routedTo?: ip.RoutedTo;
         type: ip.IpTypeEnum;
@@ -146,33 +154,6 @@ export namespace ip {
      * type fullname: ip.IpVersionEnum
      */
     export type IpVersionEnum = 4 | 6
-    /**
-     * Mitigation attack on your ip
-     * interface fullName: ip.MitigationAttack.MitigationAttack
-     */
-    export interface MitigationAttack {
-        endDate?: string;
-        idAttack: number;
-        ipAttack: string;
-        startDate: string;
-    }
-    /**
-     * Traffic statistics in and out on a mitigated ip
-     * interface fullName: ip.MitigationStats.MitigationStats
-     */
-    export interface MitigationStats {
-        in?: ip.MitigationTraffic;
-        out?: ip.MitigationTraffic;
-        timestamp: number;
-    }
-    /**
-     * Traffic on mitigation
-     * interface fullName: ip.MitigationTraffic.MitigationTraffic
-     */
-    export interface MitigationTraffic {
-        bps: number;
-        pps: number;
-    }
     /**
      * Your reverse records on IP
      * interface fullName: ip.ReverseIp.ReverseIp
@@ -249,7 +230,7 @@ export namespace ip {
      * different task operation
      * type fullname: ip.TaskFunctionEnum
      */
-    export type TaskFunctionEnum = "arinBlockReassign" | "changeRipeOrg" | "checkAndReleaseIp" | "genericMoveFloatingIp"
+    export type TaskFunctionEnum = "arinBlockReassign" | "changeRipeOrg" | "checkAndReleaseIp" | "genericMoveFloatingIp" | "supernetByoipFailoverPartitioning"
     /**
      * different task status
      * type fullname: ip.TaskStatusEnum
@@ -332,7 +313,7 @@ export interface Ip {
     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
     service: {
         /**
-         * List available services
+         * Your ip services
          * GET /ip/service
          */
         $get(): Promise<string[]>;
@@ -357,19 +338,19 @@ export interface Ip {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             confirmTermination: {
                 /**
-                 * Confirm termination of your service
+                 * Confirm service termination
                  * POST /ip/service/{serviceName}/confirmTermination
                  */
                 $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
             }
             serviceInfos: {
                 /**
-                 * Get this object properties
+                 * Get service information
                  * GET /ip/service/{serviceName}/serviceInfos
                  */
                 $get(): Promise<services.Service>;
                 /**
-                 * Alter this object properties
+                 * Update service information
                  * PUT /ip/service/{serviceName}/serviceInfos
                  */
                 $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
@@ -380,7 +361,7 @@ export interface Ip {
             }
             terminate: {
                 /**
-                 * Terminate your service
+                 * Ask for the termination of your service
                  * POST /ip/service/{serviceName}/terminate
                  */
                 $post(): Promise<string>;
@@ -397,7 +378,7 @@ export interface Ip {
          * Alter this object properties
          * PUT /ip/{ip}
          */
-        $put(params?: { bringYourOwnIp?: boolean, campus?: string, canBeTerminated?: boolean, country?: coreTypes.CountryEnum, description?: string, ip?: string, isAdditionalIp?: boolean, organisationId?: string, rir?: string, routedTo?: ip.RoutedTo, type?: ip.IpTypeEnum, version?: ip.IpVersionEnum }): Promise<void>;
+        $put(params?: { bringYourOwnIp?: boolean, campus?: string, canBeTerminated?: boolean, country?: coreTypes.CountryEnum, description?: string, ip?: string, isAdditionalIp?: boolean, organisationId?: string, regions?: coreTypes.RegionCodenameEnum[], rir?: string, routedTo?: ip.RoutedTo, type?: ip.IpTypeEnum, version?: ip.IpVersionEnum }): Promise<void>;
         /**
          * Controle cache
          */
@@ -480,7 +461,7 @@ export interface Ip {
                  * Alter this object properties
                  * PUT /ip/{ip}/game/{ipOnGame}
                  */
-                $put(params?: { firewallModeEnabled?: boolean, ipOnGame?: string, state?: ip.GameMitigationStateEnum }): Promise<void>;
+                $put(params?: { firewallModeEnabled?: boolean, ipOnGame?: string, maxRules?: number, state?: ip.GameMitigationStateEnum, supportedProtocols?: ip.GameMitigationRuleProtocolEnum[] }): Promise<void>;
                 /**
                  * Controle cache
                  */

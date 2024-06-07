@@ -4,12 +4,68 @@ import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-
  * START API /nutanix Models
  * Source: https://ca.api.ovh.com/1.0/nutanix.json
  */
+export namespace iam {
+    /**
+     * IAM resource metadata embedded in services models
+     * interface fullName: iam.ResourceMetadata.ResourceMetadata
+     */
+    export interface ResourceMetadata {
+        displayName?: string;
+        id: string;
+        tags?: { [key: string]: string };
+        urn: string;
+    }
+    export namespace resource {
+        /**
+         * Resource tag filter
+         * interface fullName: iam.resource.TagFilter.TagFilter
+         */
+        export interface TagFilter {
+            operator?: iam.resource.TagFilter.OperatorEnum;
+            value: string;
+        }
+        export namespace TagFilter {
+            /**
+             * Operator that can be used in order to filter resources tags
+             * type fullname: iam.resource.TagFilter.OperatorEnum
+             */
+            export type OperatorEnum = "EQ"
+        }
+    }
+}
 export namespace nutanix {
+    /**
+     * Cluster availability
+     * interface fullName: nutanix.AvailabilitiesRaw.AvailabilitiesRaw
+     */
+    export interface AvailabilitiesRaw {
+        datacenters: nutanix.AvailabilitiesRawDatacenter[];
+        deploymentType?: nutanix.DeploymentTypeEnum;
+        erasureCoding?: boolean;
+        fqn: string;
+        memory: string;
+        planCode: string;
+        redundancyFactor?: nutanix.RedundancyFactorEnum;
+        server: string;
+        storage: string;
+        systemStorage?: string;
+    }
+    /**
+     * A structure describing the hardware raw availability for each datacenter
+     * interface fullName: nutanix.AvailabilitiesRawDatacenter.AvailabilitiesRawDatacenter
+     */
+    export interface AvailabilitiesRawDatacenter {
+        availability: nutanix.AvailabilityEnum;
+        datacenter: string;
+        lastRule?: string;
+        parentAvailable: number;
+        trueAvailable: number;
+    }
     /**
      * Cluster availability
      * type fullname: nutanix.AvailabilityEnum
      */
-    export type AvailabilityEnum = "1440H" | "240H" | "2880H" | "480H" | "720H" | "72H" | "unavailable"
+    export type AvailabilityEnum = "1440H" | "240H" | "2880H" | "480H" | "720H" | "72H" | "comingSoon" | "unavailable"
     /**
      * Cluster datacenter availability
      * interface fullName: nutanix.DatacenterAvailability.DatacenterAvailability
@@ -61,6 +117,7 @@ export namespace nutanix {
         controlPanelURL: string;
         erasureCoding: boolean;
         gatewayCidr: string;
+        infraVlanNumber: number;
         ipfo: string;
         iplb: string;
         name: string;
@@ -103,6 +160,18 @@ export namespace nutanix {
     export interface state {
         allowedRedundancyFactor: number[];
         availableVersions: string[];
+        serviceName: string;
+        status: nutanix.statusEnum;
+        targetSpec: nutanix.cluster;
+    }
+    /**
+     * Nutanix Cluster State
+     * interface fullName: nutanix.stateWithIAM.stateWithIAM
+     */
+    export interface stateWithIAM {
+        allowedRedundancyFactor: number[];
+        availableVersions: string[];
+        iam?: iam.ResourceMetadata;
         serviceName: string;
         status: nutanix.statusEnum;
         targetSpec: nutanix.cluster;
@@ -182,7 +251,7 @@ export interface Nutanix {
      * Get list of owned Nutanix Clusters
      * GET /nutanix
      */
-    $get(): Promise<string[]>;
+    $get(params?: { iamTags?: any }): Promise<string[]>;
     /**
      * Controle cache
      */
@@ -197,6 +266,17 @@ export interface Nutanix {
          * Controle cache
          */
         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        raw: {
+            /**
+             * List the raw availability for Nutanix cluster
+             * GET /nutanix/availabilities/raw
+             */
+            $get(params: { datacenters?: string, deploymentType?: nutanix.DeploymentTypeEnum, erasureCoding?: boolean, excludeDatacenters?: boolean, excludeRegions?: boolean, memory?: string, planCode?: string, quantity: number, redundancyFactor?: nutanix.RedundancyFactorEnum, regions?: string, server?: string, storage?: string, systemStorage?: string }): Promise<nutanix.AvailabilitiesRaw[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        }
     }
     availableVersions: {
         /**
@@ -230,7 +310,7 @@ export interface Nutanix {
          * Update nutanix cluster info
          * PUT /nutanix/{serviceName}
          */
-        $put(params?: { controlPanelURL?: string, erasureCoding?: boolean, gatewayCidr?: string, ipfo?: string, iplb?: string, name?: string, nodes?: nutanix.nodes[], prismCentral?: nutanix.prismcentral, prismElementVip?: string, prismSecretId?: string, rackAwareness?: boolean, redundancyFactor?: number, version?: string, vrack?: string }): Promise<nutanix.state>;
+        $put(params?: { controlPanelURL?: string, erasureCoding?: boolean, gatewayCidr?: string, infraVlanNumber?: number, ipfo?: string, iplb?: string, name?: string, nodes?: nutanix.nodes[], prismCentral?: nutanix.prismcentral, prismElementVip?: string, prismSecretId?: string, rackAwareness?: boolean, redundancyFactor?: number, version?: string, vrack?: string }): Promise<nutanix.state>;
         /**
          * Controle cache
          */
@@ -244,19 +324,19 @@ export interface Nutanix {
         }
         confirmTermination: {
             /**
-             * Confirm termination of your service
+             * Confirm service termination
              * POST /nutanix/{serviceName}/confirmTermination
              */
             $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
         }
         serviceInfos: {
             /**
-             * Get this object properties
+             * Get service information
              * GET /nutanix/{serviceName}/serviceInfos
              */
             $get(): Promise<services.Service>;
             /**
-             * Alter this object properties
+             * Update service information
              * PUT /nutanix/{serviceName}/serviceInfos
              */
             $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
@@ -267,7 +347,7 @@ export interface Nutanix {
         }
         terminate: {
             /**
-             * Terminate your service
+             * Ask for the termination of your service
              * POST /nutanix/{serviceName}/terminate
              */
             $post(): Promise<string>;

@@ -4,6 +4,35 @@ import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-
  * START API /ipLoadbalancing Models
  * Source: https://eu.api.ovh.com/1.0/ipLoadbalancing.json
  */
+export namespace iam {
+    /**
+     * IAM resource metadata embedded in services models
+     * interface fullName: iam.ResourceMetadata.ResourceMetadata
+     */
+    export interface ResourceMetadata {
+        displayName?: string;
+        id: string;
+        tags?: { [key: string]: string };
+        urn: string;
+    }
+    export namespace resource {
+        /**
+         * Resource tag filter
+         * interface fullName: iam.resource.TagFilter.TagFilter
+         */
+        export interface TagFilter {
+            operator?: iam.resource.TagFilter.OperatorEnum;
+            value: string;
+        }
+        export namespace TagFilter {
+            /**
+             * Operator that can be used in order to filter resources tags
+             * type fullname: iam.resource.TagFilter.OperatorEnum
+             */
+            export type OperatorEnum = "EQ"
+        }
+    }
+}
 export namespace ipLoadbalancing {
     /**
      * Possible values for server status
@@ -128,6 +157,26 @@ export namespace ipLoadbalancing {
      * type fullname: ipLoadbalancing.IpStateEnum
      */
     export type IpStateEnum = "blacklisted" | "deleted" | "free" | "ok" | "quarantined" | "suspended"
+    /**
+     * Your IP load balancing
+     * interface fullName: ipLoadbalancing.IpWithIAM.IpWithIAM
+     */
+    export interface IpWithIAM {
+        displayName?: string;
+        iam?: iam.ResourceMetadata;
+        ipLoadbalancing: string;
+        ipv4?: string;
+        ipv6?: string;
+        metricsToken?: string;
+        offer: string;
+        orderableZone: ipLoadbalancing.OrderableZone[];
+        serviceName: string;
+        sslConfiguration?: ipLoadbalancing.SslConfigurationEnum;
+        state: ipLoadbalancing.IpStateEnum;
+        vrackEligibility: boolean;
+        vrackName?: string;
+        zone: string[];
+    }
     /**
      * a list of {zone, nat Ip}
      * interface fullName: ipLoadbalancing.NatIps.NatIps
@@ -731,10 +780,10 @@ export default proxyIpLoadbalancing;
  */
 export interface IpLoadbalancing {
     /**
-     * List available services
+     * List of your load balancing IP
      * GET /ipLoadbalancing
      */
-    $get(): Promise<string[]>;
+    $get(params?: { iamTags?: any }): Promise<string[]>;
     /**
      * Controle cache
      */
@@ -829,7 +878,7 @@ export interface IpLoadbalancing {
         }
         confirmTermination: {
             /**
-             * Confirm termination of your service
+             * Confirm service termination
              * POST /ipLoadbalancing/{serviceName}/confirmTermination
              */
             $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
@@ -1085,7 +1134,7 @@ export interface IpLoadbalancing {
         }
         natIp: {
             /**
-             * Ip subnet used by OVH to nat requests on your IPLB to your backends. You must ensure that your backends are not part of a network that overlap with this one
+             * Ip subnet used by OVH to nat requests on your IPLB to your backends
              * GET /ipLoadbalancing/{serviceName}/natIp
              */
             $get(): Promise<ipLoadbalancing.NatIps[]>;
@@ -1163,12 +1212,12 @@ export interface IpLoadbalancing {
         }
         serviceInfos: {
             /**
-             * Get this object properties
+             * Get service information
              * GET /ipLoadbalancing/{serviceName}/serviceInfos
              */
             $get(): Promise<services.Service>;
             /**
-             * Alter this object properties
+             * Update service information
              * PUT /ipLoadbalancing/{serviceName}/serviceInfos
              */
             $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
@@ -1436,7 +1485,7 @@ export interface IpLoadbalancing {
         }
         terminate: {
             /**
-             * Terminate your service
+             * Ask for the termination of your service
              * POST /ipLoadbalancing/{serviceName}/terminate
              */
             $post(): Promise<string>;

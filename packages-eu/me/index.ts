@@ -78,6 +78,22 @@ export namespace api {
         route: string;
     }
 }
+export namespace apilogs {
+    /**
+     * Forward logs request
+     * interface fullName: apilogs.ForwardRequest.ForwardRequest
+     */
+    export interface ForwardRequest {
+        streamId: string;
+    }
+    /**
+     * Forward logs response
+     * interface fullName: apilogs.ForwardResponse.ForwardResponse
+     */
+    export interface ForwardResponse {
+        operationId: string;
+    }
+}
 export namespace audit {
     /**
      * An audit Log
@@ -89,6 +105,7 @@ export namespace audit {
         ip?: string;
         loginSuccessDetails?: audit.LogLoginSuccessDetails;
         type: audit.LogTypeEnum;
+        userPasswordChangedDetails?: audit.LogUserPasswordChangedDetails;
     }
     /**
      * Authentication details
@@ -127,7 +144,30 @@ export namespace audit {
      * Audit event type
      * type fullname: audit.LogTypeEnum
      */
-    export type LogTypeEnum = "LOGIN_SUCCESS"
+    export type LogTypeEnum = "ACCOUNT_PASSWORD_CHANGED" | "LOGIN_SUCCESS" | "USER_PASSWORD_CHANGED"
+    /**
+     * specific fields for USER_PASSWORD_CHANGED events
+     * interface fullName: audit.LogUserPasswordChangedDetails.LogUserPasswordChangedDetails
+     */
+    export interface LogUserPasswordChangedDetails {
+        user: string;
+    }
+    export namespace log {
+        /**
+         * Forward logs request
+         * interface fullName: audit.log.ForwardRequest.ForwardRequest
+         */
+        export interface ForwardRequest {
+            streamId: string;
+        }
+        /**
+         * Forward logs response
+         * interface fullName: audit.log.ForwardResponse.ForwardResponse
+         */
+        export interface ForwardResponse {
+            operationId: string;
+        }
+    }
 }
 export namespace auth {
     /**
@@ -170,15 +210,125 @@ export namespace auth {
      */
     export type ApplicationStatusEnum = "active" | "blocked" | "inactive" | "trusted"
     /**
+     * X509 Certificate
+     * interface fullName: auth.Certificate.Certificate
+     */
+    export interface Certificate {
+        expiration: string;
+        subject: string;
+    }
+    /**
      * All states a Credential can be in
      * type fullname: auth.CredentialStateEnum
      */
     export type CredentialStateEnum = "expired" | "pendingValidation" | "refused" | "validated"
     /**
+     * An IAM Group
+     * interface fullName: auth.Group.Group
+     */
+    export interface Group {
+        creation: string;
+        defaultGroup: boolean;
+        description?: string;
+        lastUpdate: string;
+        name: string;
+        role: auth.RoleEnum;
+        urn: string;
+    }
+    /**
+     * A new IAM group
+     * interface fullName: auth.GroupRequest.GroupRequest
+     */
+    export interface GroupRequest {
+        description?: string;
+        name: string;
+        role: auth.RoleEnum;
+    }
+    /**
      * All HTTP methods available
      * type fullname: auth.HTTPMethodEnum
      */
     export type HTTPMethodEnum = "DELETE" | "GET" | "POST" | "PUT"
+    /**
+     * An IAM Federation Provider
+     * interface fullName: auth.Provider.Provider
+     */
+    export interface Provider {
+        creation: string;
+        disableUsers?: boolean;
+        extensions: auth.ProviderExtensions;
+        groupAttributeName: string;
+        idpSigningCertificates: auth.Certificate[];
+        lastUpdate: string;
+        signRequests?: boolean;
+        ssoServiceUrl: string;
+        userAttributeName: string;
+    }
+    /**
+     * A SAML 2.0 Extension that should be added to SAML requests when using this provider
+     * interface fullName: auth.ProviderExtensions.ProviderExtensions
+     */
+    export interface ProviderExtensions {
+        requestedAttributes?: auth.ProviderRequestedAttributes[];
+    }
+    /**
+     * An IAM Federation Provider creation request
+     * interface fullName: auth.ProviderRequest.ProviderRequest
+     */
+    export interface ProviderRequest {
+        disableUsers?: boolean;
+        extensions: auth.ProviderExtensions;
+        groupAttributeName?: string;
+        metadata: string;
+        signRequests?: boolean;
+        userAttributeName?: string;
+    }
+    /**
+     * A SAML 2.0 requested attribute that should be added to SAML requests when using this provider
+     * interface fullName: auth.ProviderRequestedAttributes.ProviderRequestedAttributes
+     */
+    export interface ProviderRequestedAttributes {
+        isRequired: boolean;
+        name: string;
+        nameFormat?: string;
+        values?: string[];
+    }
+    /**
+     * Permission given on the account
+     * type fullname: auth.RoleEnum
+     */
+    export type RoleEnum = "ADMIN" | "NONE" | "REGULAR" | "UNPRIVILEGED"
+    /**
+     * An IAM User
+     * interface fullName: auth.User.User
+     */
+    export interface User {
+        creation: string;
+        description: string;
+        email: string;
+        group: string;
+        lastUpdate: string;
+        login: string;
+        passwordLastUpdate: string;
+        status: auth.UserStatusEnum;
+        urn: string;
+    }
+    /**
+     * An IAM user creation request
+     * interface fullName: auth.UserRequest.UserRequest
+     */
+    export interface UserRequest {
+        description: string;
+        email: string;
+        group: string;
+        login: string;
+        password: string;
+    }
+    /**
+     * Status of a User
+     * type fullname: auth.UserStatusEnum
+     */
+    export type UserStatusEnum = "DISABLED" | "OK" | "PASSWORD_CHANGE_REQUIRED"
 }
 export namespace billing {
     /**
@@ -224,7 +374,7 @@ export namespace billing {
         periodStart?: string;
         quantity: string;
         totalPrice: orderPrice;
-        unitPrice: orderPrice;
+        unitPrice: orderLongPrice;
     }
     /**
      * billing task status
@@ -567,83 +717,6 @@ export namespace billing {
         unitPrice: orderPrice;
         withdrawalDetailId: string;
     }
-    export namespace credit {
-        /**
-         * Credit balance
-         * interface fullName: billing.credit.Balance.Balance
-         */
-        export interface Balance {
-            amount: orderPrice;
-            balanceDetails: billing.credit.balance.BalanceDetail[];
-            balanceName: string;
-            booked: billing.credit.balance.BookedMovement[];
-            creationDate: string;
-            expiring: billing.credit.balance.ExpiringMovement[];
-            expiringSummary: billing.credit.balance.ExpiringMovement[];
-            lastUpdate: string;
-            type: billing.credit.balance.Type;
-        }
-        export namespace balance {
-            /**
-             * Part of a balance
-             * interface fullName: billing.credit.balance.BalanceDetail.BalanceDetail
-             */
-            export interface BalanceDetail {
-                amount: orderPrice;
-                serviceId?: number;
-            }
-            /**
-             * Movement already booked on orders
-             * interface fullName: billing.credit.balance.BookedMovement.BookedMovement
-             */
-            export interface BookedMovement {
-                amount: orderPrice;
-                orderId: number;
-            }
-            /**
-             * Movement expiring soon
-             * interface fullName: billing.credit.balance.ExpiringMovement.ExpiringMovement
-             */
-            export interface ExpiringMovement {
-                amount: orderPrice;
-                creationDate: string;
-                expirationDate: string;
-                lastUpdate: string;
-                sourceObject: billing.credit.balance.movement.SubObject;
-            }
-            /**
-             * Credit balance
-             * interface fullName: billing.credit.balance.Movement.Movement
-             */
-            export interface Movement {
-                amount: orderPrice;
-                balanceName: string;
-                creationDate: string;
-                destinationObject?: billing.credit.balance.movement.SubObject;
-                expirationDate?: string;
-                lastUpdate: string;
-                movementId: number;
-                orderId?: number;
-                sourceObject: billing.credit.balance.movement.SubObject;
-                type: string;
-            }
-            /**
-             * Balance type
-             * type fullname: billing.credit.balance.Type
-             */
-            export type Type = "PREPAID_ACCOUNT" | "VOUCHER" | "DEPOSIT" | "BONUS"
-            export namespace movement {
-                /**
-                 * Movement sub object
-                 * interface fullName: billing.credit.balance.movement.SubObject.SubObject
-                 */
-                export interface SubObject {
-                    id?: string;
-                    name?: string;
-                }
-            }
-        }
-    }
     export namespace fidelityAccount {
         /**
          * Operations a fidelity account movement can represent
@@ -838,6 +911,45 @@ export namespace billing {
         export type OperationEnum = "cancel-credit" | "cancel-debit" | "cancel-pre-debit" | "credit" | "debit" | "pre-credit" | "pre-debit"
     }
 }
+export namespace carbonCalculator {
+    /**
+     * Request body for the calculation of customer's carbon impact
+     * interface fullName: carbonCalculator.CalculationRequest.CalculationRequest
+     */
+    export interface CalculationRequest {
+        date: string;
+    }
+    /**
+     * Response for request of customer's carbon impact
+     * interface fullName: carbonCalculator.CalculationResponse.CalculationResponse
+     */
+    export interface CalculationResponse {
+        taskID: string;
+    }
+    /**
+     * Boolean to determine if account can generate invoice
+     * interface fullName: carbonCalculator.HasInvoiceResponse.HasInvoiceResponse
+     */
+    export interface HasInvoiceResponse {
+        hasInvoice: boolean;
+    }
+    /**
+     * Task to generate a carbon impact document
+     * interface fullName: carbonCalculator.Task.Task
+     */
+    export interface Task {
+        link?: string;
+        status: carbonCalculator.Task.TaskStatusEnum;
+        taskID: string;
+    }
+    export namespace Task {
+        /**
+         * Status of a calculation task
+         * type fullname: carbonCalculator.Task.TaskStatusEnum
+         */
+        export type TaskStatusEnum = "ERROR" | "IN_PROGRESS" | "SUCCESS"
+    }
+}
 export namespace complexType {
     /**
      * Key and value, with proper key strings
@@ -997,7 +1109,7 @@ export namespace debt {
          * All status a debt HistoryOrder entry can be in
          * type fullname: debt.entry.StatusDebtOrderEnum
          */
-        export type StatusDebtOrderEnum = "PAID" | "REFUNDED" | "TO_BE_PAID" | "UNMATURED" | "UNPAID"
+        export type StatusDebtOrderEnum = "PAID" | "REFUNDED" | "TO_BE_PAID" | "UNMATURED" | "UNPAID" | "WRITE_OFF"
         /**
          * All status a debt entry can be in
          * type fullname: debt.entry.StatusEnum
@@ -1046,6 +1158,7 @@ export namespace dedicated {
      */
     export interface TemplateOsInfoProjectItem {
         governance?: string[];
+        name?: string;
         releaseNotes?: string;
         url?: string;
         version?: string;
@@ -1066,12 +1179,7 @@ export namespace dedicated {
      * Template OS Input type enum
      * type fullname: dedicated.TemplateOsInputTypeEnum
      */
-    export type TemplateOsInputTypeEnum = "boolean" | "date" | "email" | "enum" | "hexstring" | "ip" | "keyValue" | "number" | "string" | "text" | "time" | "url" | "uuid"
-    /**
-     * all language available
-     * type fullname: dedicated.TemplateOsLanguageEnum
-     */
-    export type TemplateOsLanguageEnum = "ar" | "bg" | "cs" | "da" | "de" | "el" | "en" | "es" | "et" | "fi" | "fr" | "he" | "hr" | "hu" | "it" | "ja" | "ko" | "lt" | "lv" | "nb" | "nl" | "no" | "pl" | "pt" | "ro" | "ru" | "sk" | "sl" | "sr" | "sv" | "th" | "tr" | "tu" | "uk" | "zh-Hans-CN" | "zh-Hans-HK"
+    export type TemplateOsInputTypeEnum = "boolean" | "date" | "email" | "enum" | "hexstring" | "ip" | "keyValue" | "number" | "sshPubKey" | "string" | "text" | "time" | "url" | "uuid"
     /**
      * A structure describing properties customizables about this dedicated installation template
      * interface fullName: dedicated.TemplateOsProperties.TemplateOsProperties
@@ -1081,13 +1189,12 @@ export namespace dedicated {
         postInstallationScriptLink?: string;
         postInstallationScriptReturn?: string;
         sshKeyName?: string;
-        useDistributionKernel?: boolean;
     }
     /**
      * Os subfamily definition
      * type fullname: dedicated.TemplateOsSubfamilyEnum
      */
-    export type TemplateOsSubfamilyEnum = "alma" | "aos" | "arch" | "byoi" | "centos" | "cloudlinux" | "coreos" | "debian" | "dgx" | "esxi" | "fedora" | "freebsd" | "gentoo" | "hyperv" | "omnios" | "openio" | "openmediavault" | "opensuse" | "ovh" | "pcs" | "power" | "proxmox" | "rhel" | "rocky" | "slackware" | "sles-sap" | "smartos" | "solusvm" | "ubuntu" | "windows-server-core" | "windows-server-desktop-exp" | "xcp" | "xen"
+    export type TemplateOsSubfamilyEnum = "alma" | "aos" | "arch" | "byoi" | "byolinux" | "centos" | "cloudlinux" | "coreos" | "debian" | "dgx" | "esxi" | "fedora" | "freebsd" | "gentoo" | "hyperv" | "omnios" | "openio" | "openmediavault" | "opensuse" | "ovh" | "pcs" | "power" | "proxmox" | "rhel" | "rocky" | "slackware" | "sles-sap" | "smartos" | "solusvm" | "ubuntu" | "windows-server-core" | "windows-server-desktop-exp" | "xcp" | "xen"
     /**
      * Os type
      * type fullname: dedicated.TemplateOsTypeEnum
@@ -1097,7 +1204,7 @@ export namespace dedicated {
      * Os usage definition
      * type fullname: dedicated.TemplateOsUsageEnum
      */
-    export type TemplateOsUsageEnum = "basic" | "customer" | "database" | "erp" | "hosting" | "management" | "other" | "readyToUse" | "virtualisation" | "virtualization"
+    export type TemplateOsUsageEnum = "backup" | "basic" | "customer" | "database" | "erp" | "hosting" | "management" | "other" | "readyToUse" | "virtualisation" | "virtualization"
     /**
      * partition type
      * type fullname: dedicated.TemplatePartitionTypeEnum
@@ -1109,11 +1216,9 @@ export namespace dedicated {
          * interface fullName: dedicated.installationTemplate.Templates.Templates
          */
         export interface Templates {
-            availableLanguages: dedicated.TemplateOsLanguageEnum[];
             bitFormat: dedicated.server.BitFormatEnum;
             category: dedicated.TemplateOsUsageEnum;
             customization?: dedicated.TemplateOsProperties;
-            defaultLanguage: dedicated.TemplateOsLanguageEnum;
             description: string;
             distribution: string;
             endOfInstall: string;
@@ -1127,10 +1232,6 @@ export namespace dedicated {
             project?: dedicated.TemplateOsInfoProject;
             softRaidOnlyMirroring: boolean;
             subfamily: dedicated.TemplateOsSubfamilyEnum;
-            supportsDistributionKernel?: boolean;
-            supportsGptLabel?: boolean;
-            supportsRTM: boolean;
-            supportsSqlServer?: boolean;
             templateName: string;
         }
         /**
@@ -1198,12 +1299,12 @@ export namespace domain {
      * Operation functions
      * type fullname: domain.OperationFunctionEnum
      */
-    export type OperationFunctionEnum = "ContactControl" | "DnsAnycastActivate" | "DnsAnycastDeactivate" | "DnssecDisable" | "DnssecEnable" | "DnssecResigning" | "DnssecRollKsk" | "DnssecRollZsk" | "DomainAfterMarket" | "DomainContactControl" | "DomainContactUpdate" | "DomainControl" | "DomainCreate" | "DomainDelete" | "DomainDnsUpdate" | "DomainDsUpdate" | "DomainEmailRedirectionsCreate" | "DomainEmailRedirectionsDelete" | "DomainHold" | "DomainHostCreate" | "DomainHostDelete" | "DomainHostUpdate" | "DomainIncomingTransfer" | "DomainLock" | "DomainOutgoingTransfer" | "DomainRegistryDelete" | "DomainRenew" | "DomainResourceDelete" | "DomainRestore" | "DomainTrade" | "DomainUnhold" | "DomainUnlock" | "ZoneImport"
+    export type OperationFunctionEnum = "ContactControl" | "ContactControlAcknowledge" | "ContactControlCorrect" | "ContactControlNotify" | "DnsAnycastActivate" | "DnsAnycastDeactivate" | "DnssecDisable" | "DnssecEnable" | "DnssecResigning" | "DnssecRollKsk" | "DnssecRollZsk" | "DomainAfterMarket" | "DomainContactControl" | "DomainContactUpdate" | "DomainControl" | "DomainCreate" | "DomainDelete" | "DomainDnsUpdate" | "DomainDsUpdate" | "DomainEmailRedirectionsCreate" | "DomainEmailRedirectionsDelete" | "DomainHold" | "DomainHostCreate" | "DomainHostDelete" | "DomainHostUpdate" | "DomainIncomingTransfer" | "DomainLock" | "DomainOutgoingTransfer" | "DomainRegistryDelete" | "DomainRenew" | "DomainResourceDelete" | "DomainRestore" | "DomainTrade" | "DomainUnhold" | "DomainUnlock" | "ZoneImport"
     /**
      * Operation status
      * type fullname: domain.OperationStatusEnum
      */
-    export type OperationStatusEnum = "cancelled" | "doing" | "done" | "error" | "todo"
+    export type OperationStatusEnum = "cancelled" | "doing" | "done" | "error" | "problem" | "todo"
     /**
      * One step from an operation
      * interface fullName: domain.OperationStep.OperationStep
@@ -1231,6 +1332,16 @@ export namespace domain {
         status: domain.OperationStatusEnum;
         todoDate: string;
     }
+    /**
+     * All functions from a dns task
+     * type fullname: domain.TaskFunctionEnum
+     */
+    export type TaskFunctionEnum = "DnsAnycastActivate" | "DnsAnycastDeactivate" | "DnssecDisable" | "DnssecEnable" | "DnssecResigning" | "DnssecRollKsk" | "DnssecRollZsk" | "ZoneCreate" | "ZoneCut" | "ZoneDelete" | "ZoneImport" | "ZoneRestore"
+    /**
+     * All statuses from a dns task
+     * type fullname: domain.TaskStatusEnum
+     */
+    export type TaskStatusEnum = "cancelled" | "doing" | "done" | "error" | "problem" | "todo"
 }
 export namespace http {
     /**
@@ -1239,23 +1350,12 @@ export namespace http {
      */
     export type MethodEnum = "DELETE" | "GET" | "POST" | "PUT"
 }
-export namespace insight {
-    /**
-     * Insight access token
-     * interface fullName: insight.Access.Access
-     */
-    export interface Access {
-        access: string;
-        createdAt: string;
-        expireAt: string;
-    }
-}
 export namespace ip {
     /**
      * Possible values for IP campuses' names
      * type fullname: ip.CampusEnum
      */
-    export type CampusEnum = "BHS" | "ERI" | "GRA" | "HIL" | "LIM" | "RBX" | "SBG" | "SGP" | "SY2" | "SYD" | "VIN" | "WAW" | "YNM"
+    export type CampusEnum = "BHS" | "ERI" | "GRA" | "HIL" | "LIM" | "RBX" | "SBG" | "SGP" | "SYD" | "VIN" | "WAW" | "YNM" | "YYZ"
 }
 export namespace me {
     /**
@@ -1410,6 +1510,41 @@ export namespace me {
                 type?: me.billing.purchaseOrder.PurchaseOrderTypeEnum;
             }
         }
+        export namespace report {
+            /**
+             * Consumption billing report
+             * interface fullName: me.billing.report.Consumption.Consumption
+             */
+            export interface Consumption {
+                periodEnd: string;
+                periodStart: string;
+                report?: string;
+                status: me.billing.report.consumption.StatusEnum;
+                taskId: string;
+            }
+            export namespace consumption {
+                /**
+                 * Request of consumption billing report creation
+                 * interface fullName: me.billing.report.consumption.CreationRequest.CreationRequest
+                 */
+                export interface CreationRequest {
+                    periodEnd: string;
+                    periodStart: string;
+                }
+                /**
+                 * Response of consumption billing report creation
+                 * interface fullName: me.billing.report.consumption.CreationResponse.CreationResponse
+                 */
+                export interface CreationResponse {
+                    taskId: string;
+                }
+                /**
+                 * Status of consumption billing report
+                 * type fullname: me.billing.report.consumption.StatusEnum
+                 */
+                export type StatusEnum = "CREATING" | "ERROR" | "READY"
+            }
+        }
         export namespace tasks {
             /**
              * Asynchronous task related to Billing
@@ -1507,16 +1642,16 @@ export namespace me {
              * interface fullName: me.consumption.transaction.Element.Element
              */
             export interface Element {
-                details: me.consumption.transaction.Element.Detail[];
+                details: me.consumption.transaction.element.Detail[];
                 planCode: string;
                 planFamily: string;
                 price: me.consumption.Price;
                 quantity: number;
             }
-            export namespace Element {
+            export namespace element {
                 /**
                  * Element of consumption for resource
-                 * interface fullName: me.consumption.transaction.Element.Detail.Detail
+                 * interface fullName: me.consumption.transaction.element.Detail.Detail
                  */
                 export interface Detail {
                     price: me.consumption.Price;
@@ -1568,6 +1703,15 @@ export namespace me {
             phone?: string;
             spareEmail?: string;
             vat?: string;
+        }
+        /**
+         * Extras information about a field
+         * interface fullName: me.contact.FieldInformation.FieldInformation
+         */
+        export interface FieldInformation {
+            fieldName: string;
+            mandatory: boolean;
+            readOnly: boolean;
         }
     }
     export namespace credit {
@@ -1664,6 +1808,26 @@ export namespace me {
             }
         }
     }
+    export namespace dns {
+        /**
+         * DNS task
+         * interface fullName: me.dns.Task.Task
+         */
+        export interface Task {
+            canAccelerate: boolean;
+            canCancel: boolean;
+            canRelaunch: boolean;
+            comment?: string;
+            creationDate: string;
+            doneDate?: string;
+            function: domain.TaskFunctionEnum;
+            id: number;
+            lastUpdate?: string;
+            status: domain.TaskStatusEnum;
+            todoDate: string;
+            zone: string;
+        }
+    }
     export namespace geolocation {
         /**
          * Representation of country and continent from visitor IP
@@ -1749,6 +1913,40 @@ export namespace me {
             serviceName: string;
         }
     }
+    export namespace insight {
+        /**
+         * Insight access token
+         * interface fullName: me.insight.Access.Access
+         */
+        export interface Access {
+            access: string;
+            createdAt: string;
+            expireAt: string;
+        }
+    }
+    export namespace marketing {
+        /**
+         * User marketing consent
+         * interface fullName: me.marketing.Consent.Consent
+         */
+        export interface Consent {
+            call: me.marketing.ConsentDetails;
+            denyAll: boolean;
+            denyUntil?: string;
+            email: me.marketing.ConsentDetails;
+            sms: me.marketing.ConsentDetails;
+        }
+        /**
+         * User consent details for a marketing communication mean
+         * interface fullName: me.marketing.ConsentDetails.ConsentDetails
+         */
+        export interface ConsentDetails {
+            events: boolean;
+            newProductRecommendation: boolean;
+            newsletter: boolean;
+            offerAndDiscount: boolean;
+        }
+    }
     export namespace migration {
         /**
          * contract
@@ -1822,13 +2020,14 @@ export namespace me {
          */
         export interface Level {
             level: me.partnerLevel.LevelTypeEnum;
+            msa: boolean;
             requirement: me.partnerLevel.RequirementLoSEnum;
         }
         /**
          * Type of level
          * type fullname: me.partnerLevel.LevelTypeEnum
          */
-        export type LevelTypeEnum = "advanced" | "none" | "standard"
+        export type LevelTypeEnum = "advanced" | "none" | "standard" | "strategic"
         /**
          * Level of Support required
          * type fullname: me.partnerLevel.RequirementLoSEnum
@@ -1856,7 +2055,7 @@ export namespace me {
          * Payment method available sub-type enum
          * type fullname: me.payment.AvailableSubTypeEnum
          */
-        export type AvailableSubTypeEnum = "30_DAYS" | "45_DAYS" | "60_DAYS" | "AMERICAN_EXPRESS" | "AURA" | "CARTE_BANCAIRE" | "CARTE_BLEUE" | "CHORUS" | "DINERS_CLUB" | "DISCOVER" | "JCB" | "MAESTRO" | "MASTERCARD" | "NONE" | "VISA"
+        export type AvailableSubTypeEnum = "30_DAYS" | "45_DAYS" | "60_DAYS" | "AMERICAN_EXPRESS" | "AURA" | "CARTE_BANCAIRE" | "CARTE_BLEUE" | "CHORUS" | "DINERS_CLUB" | "DISCOVER" | "JCB" | "MAESTRO" | "MASTERCARD" | "NONE" | "RUPAY" | "VISA"
         /**
          * Payment method creation sub-type enum
          * type fullname: me.payment.CreationSubTypeEnum
@@ -1875,7 +2074,7 @@ export namespace me {
          * Register integration type enum
          * type fullname: me.payment.IntegrationEnum
          */
-        export type IntegrationEnum = "COMPONENT" | "IFRAME_VANTIV" | "IN_CONTEXT" | "NONE" | "POST_FORM" | "REDIRECT"
+        export type IntegrationEnum = "BANK_TRANSFER" | "COMPONENT" | "IFRAME_VANTIV" | "IN_CONTEXT" | "NONE" | "POST_FORM" | "REDIRECT"
         /**
          * Payment method object
          * interface fullName: me.payment.PaymentMethod.PaymentMethod
@@ -1998,7 +2197,7 @@ export namespace me {
     }
     export namespace paymentMean {
         /**
-         * Credit card informations
+         * Credit card information
          * interface fullName: me.paymentMean.BankAccount.BankAccount
          */
         export interface BankAccount {
@@ -2051,7 +2250,7 @@ export namespace me {
             validationType: me.paymentMean.ValidationTypeEnum;
         }
         /**
-         * Credit card informations
+         * Credit card information
          * interface fullName: me.paymentMean.CreditCard.CreditCard
          */
         export interface CreditCard {
@@ -2097,7 +2296,7 @@ export namespace me {
             validationType: me.paymentMean.ValidationTypeEnum;
         }
         /**
-         * Deferred account informations
+         * Deferred account information
          * interface fullName: me.paymentMean.Deferred.Deferred
          */
         export interface Deferred {
@@ -2124,7 +2323,7 @@ export namespace me {
             url?: string;
         }
         /**
-         * Paypal informations
+         * Paypal information
          * interface fullName: me.paymentMean.Paypal.Paypal
          */
         export interface Paypal {
@@ -2263,57 +2462,6 @@ export namespace me {
     }
 }
 export namespace nichandle {
-    export namespace Authentication {
-        /**
-         * X509 Certificate
-         * interface fullName: nichandle.Authentication.Certificate.Certificate
-         */
-        export interface Certificate {
-            expiration: string;
-            subject: string;
-        }
-        /**
-         * A group
-         * interface fullName: nichandle.Authentication.Group.Group
-         */
-        export interface Group {
-            creation: string;
-            defaultGroup: boolean;
-            description: string;
-            lastUpdate: string;
-            name: string;
-            role: nichandle.RoleEnum;
-        }
-        /**
-         * A SAML 2.0 provider
-         * interface fullName: nichandle.Authentication.Provider.Provider
-         */
-        export interface Provider {
-            creation: string;
-            extensions?: nichandle.Authentication.ProviderExtensions;
-            groupAttributeName: string;
-            idpSigningCertificates: nichandle.Authentication.Certificate[];
-            lastUpdate: string;
-            ssoServiceUrl: string;
-        }
-        /**
-         * A SAML 2.0 Extension that should be added to SAML requests when using this provider
-         * interface fullName: nichandle.Authentication.ProviderExtensions.ProviderExtensions
-         */
-        export interface ProviderExtensions {
-            requestedAttributes?: nichandle.Authentication.RequestedAttribute[];
-        }
-        /**
-         * A SAML 2.0 requested attribute that should be added to SAML requests when using this provider
-         * interface fullName: nichandle.Authentication.RequestedAttribute.RequestedAttribute
-         */
-        export interface RequestedAttribute {
-            isRequired: boolean;
-            name: string;
-            nameFormat?: string;
-            values?: string[];
-        }
-    }
     /**
      * Internal customer billing capacities for customer control panel
      * interface fullName: nichandle.BillingCapacities.BillingCapacities
@@ -2466,6 +2614,7 @@ export namespace nichandle {
         birthDay?: string;
         city?: string;
         companyNationalIdentificationNumber?: string;
+        complementaryAddress?: string;
         corporationType?: string;
         country: nichandle.CountryEnum;
         currency: nichandle.Currency;
@@ -2485,6 +2634,8 @@ export namespace nichandle {
         ovhSubsidiary: nichandle.OvhSubsidiaryEnum;
         phone?: string;
         phoneCountry?: nichandle.CountryEnum;
+        phoneType?: nichandle.PhoneTypeEnum;
+        purposeOfPurchase?: string;
         sex?: nichandle.GenderEnum;
         spareEmail?: string;
         state: nichandle.StateEnum;
@@ -2508,7 +2659,7 @@ export namespace nichandle {
      */
     export type NotificationStatusEnum = "ok" | "waitingForValidation"
     /**
-     * OVH subsidiaries
+     * OVH companies
      * type fullname: nichandle.OvhCompanyEnum
      */
     export type OvhCompanyEnum = "kimsufi" | "ovh" | "soyoustart"
@@ -2518,15 +2669,15 @@ export namespace nichandle {
      */
     export type OvhSubsidiaryEnum = "CZ" | "DE" | "ES" | "EU" | "FI" | "FR" | "GB" | "IE" | "IT" | "LT" | "MA" | "NL" | "PL" | "PT" | "SN" | "TN"
     /**
+     * All phone type a person can choose
+     * type fullname: nichandle.PhoneTypeEnum
+     */
+    export type PhoneTypeEnum = "landline" | "mobile"
+    /**
      * Indicates the mandatory nature of having a valid payment method
      * type fullname: nichandle.RequiredPaymentMethodEnum
      */
     export type RequiredPaymentMethodEnum = "mandatoryForAutorenew" | "mandatoryForPostpaid" | "notMandatory"
-    /**
-     * Permission given on the account
-     * type fullname: nichandle.RoleEnum
-     */
-    export type RoleEnum = "REGULAR" | "ADMIN" | "UNPRIVILEGED" | "NONE"
     /**
      * States a nichandle can be in
      * type fullname: nichandle.StateEnum
@@ -2556,25 +2707,6 @@ export namespace nichandle {
         registered?: boolean;
         type: string;
     }
-    /**
-     * A user
-     * interface fullName: nichandle.User.User
-     */
-    export interface User {
-        creation: string;
-        description: string;
-        email: string;
-        group: string;
-        lastUpdate: string;
-        login: string;
-        passwordLastUpdate: string;
-        status: nichandle.UserStatus;
-    }
-    /**
-     * Status of a User
-     * type fullname: nichandle.UserStatus
-     */
-    export type UserStatus = "OK" | "DISABLED" | "PASSWORD_CHANGE_REQUIRED"
     /**
      * VIP Status by Universe
      * interface fullName: nichandle.VipStatus.VipStatus
@@ -2700,34 +2832,13 @@ export namespace nichandle {
          * interface fullName: nichandle.accessRestriction.U2FRegisterChallenge.U2FRegisterChallenge
          */
         export interface U2FRegisterChallenge {
-            applicationId: string;
+            challenge: string;
             id: number;
-            request: nichandle.accessRestriction.U2FRegistrationRequest;
-        }
-        /**
-         * Describe U2F RegistrationRequest
-         * interface fullName: nichandle.accessRestriction.U2FRegistrationRequest.U2FRegistrationRequest
-         */
-        export interface U2FRegistrationRequest {
-            challenge: string;
-            version: string;
-        }
-        /**
-         * U2F Register Request
-         * interface fullName: nichandle.accessRestriction.U2FSignChallenge.U2FSignChallenge
-         */
-        export interface U2FSignChallenge {
-            applicationId: string;
-            request: nichandle.accessRestriction.U2FSignRequest;
-        }
-        /**
-         * Describe U2F SignRequest
-         * interface fullName: nichandle.accessRestriction.U2FSignRequest.U2FSignRequest
-         */
-        export interface U2FSignRequest {
-            challenge: string;
-            keyHandle: string;
-            version: string;
+            rpId: string;
+            rpName: string;
+            userDisplayName: string;
+            userId: string;
+            userName: string;
         }
         /**
          * Status of U2F account
@@ -2824,21 +2935,27 @@ export namespace nichandle {
      * interface fullName: nichandle.sshKey.sshKey
      */
     export interface sshKey {
-        default: boolean;
         key: string;
         keyName: string;
     }
 }
 export namespace oauth2 {
     /**
+     * oAuth2 Flow
+     * type fullname: oauth2.ClientFlowEnum
+     */
+    export type ClientFlowEnum = "AUTHORIZATION_CODE" | "CLIENT_CREDENTIALS"
+    /**
      * An oAuth2 Client
      * interface fullName: oauth2.client.client
      */
     export interface client {
-        callbackUrls: string[];
+        callbackUrls?: string[];
         clientId: string;
         createdAt: string;
         description: string;
+        flow: oauth2.ClientFlowEnum;
+        identity?: string;
         name: string;
     }
     /**
@@ -2848,6 +2965,7 @@ export namespace oauth2 {
     export interface clientRequest {
         callbackUrls: string[];
         description: string;
+        flow: oauth2.ClientFlowEnum;
         name: string;
     }
     /**
@@ -2874,6 +2992,15 @@ export namespace order {
      * type fullname: order.CurrencyCodeEnum
      */
     export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "INR" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
+    /**
+     * LongPrice with all digits and its currency and a textual representation
+     * interface fullName: order.LongPrice.LongPrice
+     */
+    export interface LongPrice {
+        currencyCode: order.CurrencyCodeEnum;
+        text: string;
+        value: number;
+    }
     /**
      * An order
      * interface fullName: order.Order.Order
@@ -2923,6 +3050,7 @@ export namespace order {
      */
     export interface Price {
         currencyCode: order.CurrencyCodeEnum;
+        priceInUcents?: number;
         text: string;
         value: number;
     }
@@ -3025,7 +3153,7 @@ export namespace payment {
          * Payment method integration type
          * type fullname: payment.method.IntegrationType
          */
-        export type IntegrationType = "COMPONENT" | "DONE" | "IFRAME_VANTIV" | "IN_CONTEXT" | "NONE" | "POST_FORM" | "REDIRECT"
+        export type IntegrationType = "BANK_TRANSFER" | "COMPONENT" | "DONE" | "IFRAME_VANTIV" | "IN_CONTEXT" | "NONE" | "POST_FORM" | "REDIRECT"
         /**
          * payment method
          * interface fullName: payment.method.PaymentMethod.PaymentMethod
@@ -3058,7 +3186,7 @@ export namespace payment {
          * Payment method sub-type
          * type fullname: payment.method.SubTypeEnum
          */
-        export type SubTypeEnum = "30_DAYS" | "45_DAYS" | "60_DAYS" | "AMERICAN_EXPRESS" | "AURA" | "CARTE_BANCAIRE" | "CARTE_BLEUE" | "CHORUS" | "DINERS_CLUB" | "DISCOVER" | "JCB" | "MAESTRO" | "MASTERCARD" | "NONE" | "VISA"
+        export type SubTypeEnum = "30_DAYS" | "45_DAYS" | "60_DAYS" | "AMERICAN_EXPRESS" | "AURA" | "CARTE_BANCAIRE" | "CARTE_BLEUE" | "CHORUS" | "DINERS_CLUB" | "DISCOVER" | "JCB" | "MAESTRO" | "MASTERCARD" | "NONE" | "RUPAY" | "VISA"
     }
 }
 export namespace recommendations {
@@ -3191,7 +3319,7 @@ export interface Me {
      * Update details of your nichandle
      * PUT /me
      */
-    $put(params?: { address?: string, area?: string, birthCity?: string, birthDay?: string, city?: string, companyNationalIdentificationNumber?: string, corporationType?: string, country?: nichandle.CountryEnum, currency?: nichandle.Currency, customerCode?: string, email?: string, fax?: string, firstname?: string, italianSDI?: string, kycValidated?: boolean, language?: nichandle.LanguageEnum, legalform?: nichandle.LegalFormEnum, name?: string, nationalIdentificationNumber?: string, nichandle?: string, organisation?: string, ovhCompany?: nichandle.OvhCompanyEnum, ovhSubsidiary?: nichandle.OvhSubsidiaryEnum, phone?: string, phoneCountry?: nichandle.CountryEnum, sex?: nichandle.GenderEnum, spareEmail?: string, state?: nichandle.StateEnum, vat?: string, zip?: string }): Promise<void>;
+    $put(params?: { address?: string, area?: string, birthCity?: string, birthDay?: string, city?: string, companyNationalIdentificationNumber?: string, complementaryAddress?: string, corporationType?: string, country?: nichandle.CountryEnum, currency?: nichandle.Currency, customerCode?: string, email?: string, fax?: string, firstname?: string, italianSDI?: string, kycValidated?: boolean, language?: nichandle.LanguageEnum, legalform?: nichandle.LegalFormEnum, name?: string, nationalIdentificationNumber?: string, nichandle?: string, organisation?: string, ovhCompany?: nichandle.OvhCompanyEnum, ovhSubsidiary?: nichandle.OvhSubsidiaryEnum, phone?: string, phoneCountry?: nichandle.CountryEnum, phoneType?: nichandle.PhoneTypeEnum, purposeOfPurchase?: string, sex?: nichandle.GenderEnum, spareEmail?: string, state?: nichandle.StateEnum, vat?: string, zip?: string }): Promise<void>;
     /**
      * Controle cache
      */
@@ -3488,33 +3616,26 @@ export interface Me {
                  * Controle cache
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                challenge: {
-                    /**
-                     * Get an U2F Challenge
-                     * POST /me/accessRestriction/u2f/{id}/challenge
-                     */
-                    $post(): Promise<nichandle.accessRestriction.U2FSignChallenge>;
-                }
                 disable: {
                     /**
                      * Disable this U2F account
                      * POST /me/accessRestriction/u2f/{id}/disable
                      */
-                    $post(params: { clientData: string, signatureData: string }): Promise<void>;
+                    $post(): Promise<void>;
                 }
                 enable: {
                     /**
                      * Enable this U2F account
                      * POST /me/accessRestriction/u2f/{id}/enable
                      */
-                    $post(params: { clientData: string, signatureData: string }): Promise<void>;
+                    $post(): Promise<void>;
                 }
                 validate: {
                     /**
                      * Validate your U2F account
                      * POST /me/accessRestriction/u2f/{id}/validate
                      */
-                    $post(params: { clientData: string, registrationData: string }): Promise<void>;
+                    $post(params: { attestationObject: string, clientDataJSON: string, rawId: string }): Promise<void>;
                 }
             };
         }
@@ -3631,6 +3752,13 @@ export interface Me {
             };
         }
         logs: {
+            forward: {
+                /**
+                 * Forward API & Customer panel account logs to a dedicated logs stream
+                 * POST /me/api/logs/forward
+                 */
+                $post(params: { streamId: string }): Promise<apilogs.ForwardResponse>;
+            }
             self: {
                 /**
                  * List of Api calls done with your account
@@ -3669,6 +3797,43 @@ export interface Me {
                      * GET /me/api/logs/services/{logId}
                      */
                     $get(): Promise<api.Log>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                };
+            }
+        }
+        oauth2: {
+            client: {
+                /**
+                 * List oAuth2 clients
+                 * GET /me/api/oauth2/client
+                 */
+                $get(): Promise<string[]>;
+                /**
+                 * Create a new oauth2 client
+                 * POST /me/api/oauth2/client
+                 */
+                $post(params: { callbackUrls?: string[], description: string, flow: oauth2.ClientFlowEnum, name: string }): Promise<oauth2.clientSecret>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $(clientId: string): {
+                    /**
+                     * Delete an oAuth2 client
+                     * DELETE /me/api/oauth2/client/{clientId}
+                     */
+                    $delete(): Promise<void>;
+                    /**
+                     * GET /me/api/oauth2/client/{clientId}
+                     */
+                    $get(): Promise<oauth2.client>;
+                    /**
+                     * PUT /me/api/oauth2/client/{clientId}
+                     */
+                    $put(params?: { callbackUrls?: string[], clientId?: string, createdAt?: string, description?: string, flow?: oauth2.ClientFlowEnum, identity?: string, name?: string }): Promise<void>;
                     /**
                      * Controle cache
                      */
@@ -3945,6 +4110,35 @@ export interface Me {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
+        report: {
+            consumption: {
+                /**
+                 * Retrieve all billing reports of consumption
+                 * GET /me/billing/report/consumption
+                 */
+                $get(): Promise<string[]>;
+                /**
+                 * Generate consumption billing report for a period
+                 * POST /me/billing/report/consumption
+                 */
+                $post(params: { periodEnd: string, periodStart: string }): Promise<me.billing.report.consumption.CreationResponse>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $(taskId: string): {
+                    /**
+                     * Retrieve a consumption billing report with task id
+                     * GET /me/billing/report/consumption/{taskId}
+                     */
+                    $get(): Promise<me.billing.report.Consumption>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                };
+            }
+        }
     }
     bringYourOwnIp: {
         token: {
@@ -3957,6 +4151,46 @@ export interface Me {
              * Controle cache
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        }
+    }
+    carbonCalculator: {
+        hasInvoice: {
+            /**
+             * Find out if the account has data to generate invoice
+             * GET /me/carbonCalculator/hasInvoice
+             */
+            $get(params?: { date?: string }): Promise<carbonCalculator.HasInvoiceResponse>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        }
+        task: {
+            /**
+             * List all tasks
+             * GET /me/carbonCalculator/task
+             */
+            $get(): Promise<carbonCalculator.Task[]>;
+            /**
+             * Create a carbon footprint generation task
+             * POST /me/carbonCalculator/task
+             */
+            $post(params: { date: string }): Promise<carbonCalculator.CalculationResponse>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $(taskID: string): {
+                /**
+                 * Fetch a task by its ID
+                 * GET /me/carbonCalculator/task/{taskID}
+                 */
+                $get(): Promise<carbonCalculator.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            };
         }
     }
     certificates: {
@@ -4014,7 +4248,7 @@ export interface Me {
                  * Update decision of a consent campaign
                  * PUT /me/consent/{campaignName}/decision
                  */
-                $put(params: { value: boolean }): Promise<void>;
+                $put(params: { timestamp?: string, value: boolean }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -4091,10 +4325,10 @@ export interface Me {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             fields: {
                 /**
-                 * Display mandatory/read-only informations of a contact
+                 * Get mandatory/read-only information about the fields of a contact
                  * GET /me/contact/{contactId}/fields
                  */
-                $get(): Promise<contact.FieldInformation[]>;
+                $get(): Promise<me.contact.FieldInformation[]>;
                 /**
                  * Controle cache
                  */
@@ -4529,35 +4763,35 @@ export interface Me {
     identity: {
         group: {
             /**
-             * Retrieve all groups of this account
+             * Retrieve all IAM groups of this account
              * GET /me/identity/group
              */
             $get(): Promise<string[]>;
             /**
-             * Create a new group
+             * Create a new IAM group
              * POST /me/identity/group
              */
-            $post(params: { description?: string, name: string, role?: nichandle.RoleEnum }): Promise<nichandle.Authentication.Group>;
+            $post(params: { description?: string, name: string, role?: auth.RoleEnum }): Promise<auth.Group>;
             /**
              * Controle cache
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(group: string): {
                 /**
-                 * Delete this object
+                 * Delete an IAM group
                  * DELETE /me/identity/group/{group}
                  */
                 $delete(): Promise<void>;
                 /**
-                 * Get this object properties
+                 * Get an IAM group
                  * GET /me/identity/group/{group}
                  */
-                $get(): Promise<nichandle.Authentication.Group>;
+                $get(): Promise<auth.Group>;
                 /**
-                 * Alter a group
+                 * Alter an IAM group
                  * PUT /me/identity/group/{group}
                  */
-                $put(params?: { description?: string, role?: nichandle.RoleEnum }): Promise<void>;
+                $put(params?: { creation?: string, defaultGroup?: boolean, description?: string, lastUpdate?: string, name?: string, role?: auth.RoleEnum, urn?: string }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -4571,20 +4805,20 @@ export interface Me {
              */
             $delete(): Promise<void>;
             /**
-             * Identity provider linked to this account
+             * Get the identity provider linked to this account
              * GET /me/identity/provider
              */
-            $get(): Promise<nichandle.Authentication.Provider>;
+            $get(): Promise<auth.Provider>;
             /**
              * Define an identity provider (SAML 2.0)
              * POST /me/identity/provider
              */
-            $post(params: { extensions?: nichandle.Authentication.ProviderExtensions, groupAttributeName?: string, metadata: string }): Promise<nichandle.Authentication.Provider>;
+            $post(params: { disableUsers?: boolean, extensions?: auth.ProviderExtensions, groupAttributeName?: string, metadata: string, signRequests?: boolean, userAttributeName?: string }): Promise<auth.Provider>;
             /**
              * Alter the provider
              * PUT /me/identity/provider
              */
-            $put(params?: { extensions?: nichandle.Authentication.ProviderExtensions, groupAttributeName?: string }): Promise<void>;
+            $put(params?: { creation?: string, disableUsers?: boolean, extensions?: auth.ProviderExtensions, groupAttributeName?: string, idpSigningCertificates?: auth.Certificate[], lastUpdate?: string, signRequests?: boolean, ssoServiceUrl?: string, userAttributeName?: string }): Promise<void>;
             /**
              * Controle cache
              */
@@ -4592,12 +4826,12 @@ export interface Me {
         }
         user: {
             /**
-             * Retrieve all users of this account
+             * Retrieve all IAM users of this account
              * GET /me/identity/user
              */
             $get(): Promise<string[]>;
             /**
-             * Create a new user
+             * Create a new IAM user
              * POST /me/identity/user
              */
             $post(params: { description?: string, email: string, group?: string, login: string, password: string }): Promise<void>;
@@ -4607,20 +4841,20 @@ export interface Me {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(user: string): {
                 /**
-                 * Delete this object
+                 * Delete an IAM user
                  * DELETE /me/identity/user/{user}
                  */
                 $delete(): Promise<void>;
                 /**
-                 * Get this object properties
+                 * Get an IAM user
                  * GET /me/identity/user/{user}
                  */
-                $get(): Promise<nichandle.User>;
+                $get(): Promise<auth.User>;
                 /**
-                 * Alter a user
+                 * Alter an IAM user
                  * PUT /me/identity/user/{user}
                  */
-                $put(params?: { description?: string, email?: string, group?: string }): Promise<void>;
+                $put(params?: { creation?: string, description?: string, email?: string, group?: string, lastUpdate?: string, login?: string, passwordLastUpdate?: string, status?: auth.UserStatusEnum, urn?: string }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -4667,7 +4901,7 @@ export interface Me {
          * Get your insight access token
          * GET /me/insight
          */
-        $get(): Promise<insight.Access>;
+        $get(): Promise<me.insight.Access>;
         /**
          * Controle cache
          */
@@ -4683,7 +4917,7 @@ export interface Me {
          * Create a template
          * POST /me/installationTemplate
          */
-        $post(params: { baseTemplateName: string, defaultLanguage: dedicated.TemplateOsLanguageEnum, name: string }): Promise<void>;
+        $post(params: { baseTemplateName: string, name: string }): Promise<void>;
         /**
          * Controle cache
          */
@@ -4700,10 +4934,10 @@ export interface Me {
              */
             $get(): Promise<dedicated.installationTemplate.Templates>;
             /**
-             * Alter this object properties
+             * Alter this template
              * PUT /me/installationTemplate/{templateName}
              */
-            $put(params?: { availableLanguages?: dedicated.TemplateOsLanguageEnum[], bitFormat?: dedicated.server.BitFormatEnum, category?: dedicated.TemplateOsUsageEnum, customization?: dedicated.TemplateOsProperties, defaultLanguage?: dedicated.TemplateOsLanguageEnum, description?: string, distribution?: string, endOfInstall?: string, family?: dedicated.TemplateOsTypeEnum, filesystems?: dedicated.server.FileSystemEnum[], hardRaidConfiguration?: boolean, inputs?: dedicated.TemplateOsInput[], license?: dedicated.TemplateOsInfoLicense, lvmReady?: boolean, noPartitioning?: boolean, project?: dedicated.TemplateOsInfoProject, softRaidOnlyMirroring?: boolean, subfamily?: dedicated.TemplateOsSubfamilyEnum, supportsDistributionKernel?: boolean, supportsGptLabel?: boolean, supportsRTM?: boolean, supportsSqlServer?: boolean, templateName?: string }): Promise<void>;
+            $put(params?: { bitFormat?: dedicated.server.BitFormatEnum, category?: dedicated.TemplateOsUsageEnum, customization?: dedicated.TemplateOsProperties, description?: string, distribution?: string, endOfInstall?: string, family?: dedicated.TemplateOsTypeEnum, filesystems?: dedicated.server.FileSystemEnum[], hardRaidConfiguration?: boolean, inputs?: dedicated.TemplateOsInput[], license?: dedicated.TemplateOsInfoLicense, lvmReady?: boolean, noPartitioning?: boolean, project?: dedicated.TemplateOsInfoProject, softRaidOnlyMirroring?: boolean, subfamily?: dedicated.TemplateOsSubfamilyEnum, templateName?: string }): Promise<void>;
             /**
              * Controle cache
              */
@@ -4742,7 +4976,7 @@ export interface Me {
                      */
                     $get(): Promise<dedicated.installationTemplate.templatePartitioningSchemes>;
                     /**
-                     * Alter this object properties
+                     * Alter this scheme of partition
                      * PUT /me/installationTemplate/{templateName}/partitionScheme/{schemeName}
                      */
                     $put(params?: { name?: string, priority?: number }): Promise<void>;
@@ -4814,7 +5048,7 @@ export interface Me {
                              */
                             $get(): Promise<dedicated.installationTemplate.templatePartitions>;
                             /**
-                             * Alter this object properties
+                             * Alter this partition
                              * PUT /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}
                              */
                             $put(params?: { filesystem?: dedicated.server.FileSystemEnum, mountpoint?: string, order?: number, raid?: dedicated.server.PartitionRaidEnum, size?: complexType.UnitAndValue<number>, type?: dedicated.TemplatePartitionTypeEnum, volumeName?: string }): Promise<void>;
@@ -4867,15 +5101,10 @@ export interface Me {
     }
     ipxeScript: {
         /**
-         * List of all your IPXE scripts
+         * List of all your IPXE scripts - Use /dedicated/server/{serviceName} instead: see https://help.ovhcloud.com/csm/en-dedicated-servers-ipxe-scripts
          * GET /me/ipxeScript
          */
         $get(): Promise<string[]>;
-        /**
-         * Add an IPXE script
-         * POST /me/ipxeScript
-         */
-        $post(params: { description: string, name: string, script: string }): Promise<nichandle.ipxe>;
         /**
          * Controle cache
          */
@@ -4891,11 +5120,6 @@ export interface Me {
              * GET /me/ipxeScript/{name}
              */
             $get(): Promise<nichandle.ipxe>;
-            /**
-             * Alter this object properties
-             * PUT /me/ipxeScript/{name}
-             */
-            $put(params?: { name?: string, script?: string }): Promise<void>;
             /**
              * Controle cache
              */
@@ -4913,6 +5137,13 @@ export interface Me {
              * Controle cache
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            forward: {
+                /**
+                 * Forward account audit logs to a dedicated logs stream
+                 * POST /me/logs/audit/forward
+                 */
+                $post(params: { streamId: string }): Promise<audit.log.ForwardResponse>;
+            }
         }
     }
     mailingList: {
@@ -4934,6 +5165,22 @@ export interface Me {
              */
             $post(params: { email: string, mailingList: string }): Promise<void>;
         }
+    }
+    marketing: {
+        /**
+         * Retrieve user marketing consent details
+         * GET /me/marketing
+         */
+        $get(): Promise<me.marketing.Consent>;
+        /**
+         * Update user marketing consent
+         * PUT /me/marketing
+         */
+        $put(params?: { call?: me.marketing.ConsentDetails, denyAll?: boolean, denyUntil?: string, email?: me.marketing.ConsentDetails, sms?: me.marketing.ConsentDetails }): Promise<me.marketing.Consent>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
     }
     migration: {
         /**
@@ -5866,11 +6113,6 @@ export interface Me {
              */
             $get(): Promise<nichandle.sshKey>;
             /**
-             * Alter this object properties
-             * PUT /me/sshKey/{keyName}
-             */
-            $put(params?: { default_?: boolean, key?: string, keyName?: string }): Promise<void>;
-            /**
              * Controle cache
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
@@ -6035,6 +6277,49 @@ export interface Me {
                     /**
                      * This call will send you a new email, containing a new token
                      * POST /me/task/contactChange/{id}/resendEmail
+                     */
+                    $post(): Promise<void>;
+                }
+            };
+        }
+        dns: {
+            /**
+             * List zone tasks
+             * GET /me/task/dns
+             */
+            $get(params?: { function_?: domain.TaskFunctionEnum, status?: domain.TaskStatusEnum, zone?: string }): Promise<number[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $(id: number): {
+                /**
+                 * Get a zone task
+                 * GET /me/task/dns/{id}
+                 */
+                $get(): Promise<me.dns.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                accelerate: {
+                    /**
+                     * Accelerate the task
+                     * POST /me/task/dns/{id}/accelerate
+                     */
+                    $post(): Promise<void>;
+                }
+                cancel: {
+                    /**
+                     * Cancel the task
+                     * POST /me/task/dns/{id}/cancel
+                     */
+                    $post(): Promise<void>;
+                }
+                relaunch: {
+                    /**
+                     * Relaunch the task
+                     * POST /me/task/dns/{id}/relaunch
                      */
                     $post(): Promise<void>;
                 }
@@ -6306,4 +6591,5 @@ export interface Me {
  * Extra Alias to bypass relativer namespace colitions
  */
 type orderPrice = order.Price;
+type orderLongPrice = order.LongPrice;
 type orderOrderDetailTypeEnum = order.OrderDetailTypeEnum;

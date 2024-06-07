@@ -4,6 +4,35 @@ import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-
  * START API /metrics Models
  * Source: https://eu.api.ovh.com/1.0/metrics.json
  */
+export namespace iam {
+    /**
+     * IAM resource metadata embedded in services models
+     * interface fullName: iam.ResourceMetadata.ResourceMetadata
+     */
+    export interface ResourceMetadata {
+        displayName?: string;
+        id: string;
+        tags?: { [key: string]: string };
+        urn: string;
+    }
+    export namespace resource {
+        /**
+         * Resource tag filter
+         * interface fullName: iam.resource.TagFilter.TagFilter
+         */
+        export interface TagFilter {
+            operator?: iam.resource.TagFilter.OperatorEnum;
+            value: string;
+        }
+        export namespace TagFilter {
+            /**
+             * Operator that can be used in order to filter resources tags
+             * type fullname: iam.resource.TagFilter.OperatorEnum
+             */
+            export type OperatorEnum = "EQ"
+        }
+    }
+}
 export namespace metrics {
     /**
      * Missing description
@@ -106,6 +135,21 @@ export namespace metrics {
          */
         export type ServiceStatusEnum = "alive" | "dead" | "disabled" | "new"
         /**
+         * Structure holding the elements about a service
+         * interface fullName: metrics.api.ServiceWithIAM.ServiceWithIAM
+         */
+        export interface ServiceWithIAM {
+            description: string;
+            iam?: iam.ResourceMetadata;
+            name: string;
+            offer: string;
+            quota: metrics.api.Option;
+            region: metrics.api.Region;
+            shouldUpgrade: boolean;
+            status: metrics.api.ServiceStatusEnum;
+            type: metrics.api.OfferTypeEnum;
+        }
+        /**
          * Structure holding the elements about a token
          * interface fullName: metrics.api.Token.Token
          */
@@ -190,7 +234,7 @@ export interface Metrics {
      * List available services
      * GET /metrics
      */
-    $get(): Promise<string[]>;
+    $get(params?: { iamTags?: any }): Promise<string[]>;
     /**
      * Controle cache
      */
@@ -219,7 +263,7 @@ export interface Metrics {
         }
         confirmTermination: {
             /**
-             * Confirm termination of your service
+             * Confirm service termination
              * POST /metrics/{serviceName}/confirmTermination
              */
             $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
@@ -253,12 +297,12 @@ export interface Metrics {
         }
         serviceInfos: {
             /**
-             * Get this object properties
+             * Get service information
              * GET /metrics/{serviceName}/serviceInfos
              */
             $get(): Promise<services.Service>;
             /**
-             * Alter this object properties
+             * Update service information
              * PUT /metrics/{serviceName}/serviceInfos
              */
             $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
@@ -269,7 +313,7 @@ export interface Metrics {
         }
         terminate: {
             /**
-             * Terminate your service
+             * Ask for the termination of your service
              * POST /metrics/{serviceName}/terminate
              */
             $post(): Promise<string>;

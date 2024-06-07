@@ -4,6 +4,35 @@ import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-
  * START API /vip Models
  * Source: https://eu.api.ovh.com/1.0/vip.json
  */
+export namespace iam {
+    /**
+     * IAM resource metadata embedded in services models
+     * interface fullName: iam.ResourceMetadata.ResourceMetadata
+     */
+    export interface ResourceMetadata {
+        displayName?: string;
+        id: string;
+        tags?: { [key: string]: string };
+        urn: string;
+    }
+    export namespace resource {
+        /**
+         * Resource tag filter
+         * interface fullName: iam.resource.TagFilter.TagFilter
+         */
+        export interface TagFilter {
+            operator?: iam.resource.TagFilter.OperatorEnum;
+            value: string;
+        }
+        export namespace TagFilter {
+            /**
+             * Operator that can be used in order to filter resources tags
+             * type fullname: iam.resource.TagFilter.OperatorEnum
+             */
+            export type OperatorEnum = "EQ"
+        }
+    }
+}
 export namespace service {
     /**
      * Map a possible renew for a specific service
@@ -57,6 +86,15 @@ export namespace vip {
         universe: vip.UniverseEnum[];
     }
     /**
+     * Vip Service
+     * interface fullName: vip.SupportVipWithIAM.SupportVipWithIAM
+     */
+    export interface SupportVipWithIAM {
+        iam?: iam.ResourceMetadata;
+        serviceName: string;
+        universe: vip.UniverseEnum[];
+    }
+    /**
      * Available universe for VIP service
      * type fullname: vip.UniverseEnum
      */
@@ -78,7 +116,7 @@ export interface Vip {
      * List available services
      * GET /vip
      */
-    $get(): Promise<string[]>;
+    $get(params?: { iamTags?: any }): Promise<string[]>;
     /**
      * Controle cache
      */
@@ -95,12 +133,12 @@ export interface Vip {
         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         serviceInfos: {
             /**
-             * Get this object properties
+             * Get service information
              * GET /vip/{serviceName}/serviceInfos
              */
             $get(): Promise<services.Service>;
             /**
-             * Alter this object properties
+             * Update service information
              * PUT /vip/{serviceName}/serviceInfos
              */
             $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;

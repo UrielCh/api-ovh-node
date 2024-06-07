@@ -14,23 +14,16 @@ export namespace complexType {
         value: T;
     }
 }
-export namespace coreTypes {
-    /**
-     * ISO country codes
-     * type fullname: coreTypes.CountryEnum
-     */
-    export type CountryEnum = "ac" | "ad" | "ae" | "af" | "ag" | "ai" | "al" | "am" | "an" | "ao" | "aq" | "ar" | "as" | "at" | "au" | "aw" | "ax" | "az" | "ba" | "bb" | "bd" | "be" | "bf" | "bg" | "bh" | "bi" | "bj" | "bl" | "bm" | "bn" | "bo" | "bq" | "br" | "bs" | "bt" | "bv" | "bw" | "by" | "bz" | "ca" | "cc" | "cd" | "cf" | "cg" | "ch" | "ci" | "ck" | "cl" | "cm" | "cn" | "co" | "cr" | "cs" | "cu" | "cv" | "cw" | "cx" | "cy" | "cz" | "de" | "dj" | "dk" | "dm" | "do" | "dz" | "ec" | "ee" | "eg" | "eh" | "er" | "es" | "et" | "fc" | "fd" | "fi" | "fj" | "fk" | "fm" | "fo" | "fr" | "fx" | "ga" | "gb" | "gd" | "ge" | "gf" | "gg" | "gh" | "gi" | "gl" | "gm" | "gn" | "gp" | "gq" | "gr" | "gs" | "gt" | "gu" | "gw" | "gy" | "hk" | "hm" | "hn" | "hr" | "ht" | "hu" | "id" | "ie" | "il" | "im" | "in" | "io" | "iq" | "ir" | "is" | "it" | "je" | "jm" | "jo" | "jp" | "ke" | "kg" | "kh" | "ki" | "km" | "kn" | "kp" | "kr" | "kw" | "ky" | "kz" | "la" | "lb" | "lc" | "li" | "lk" | "lr" | "ls" | "lt" | "lu" | "lv" | "ly" | "ma" | "mc" | "md" | "me" | "mf" | "mg" | "mh" | "mk" | "ml" | "mm" | "mn" | "mo" | "mp" | "mq" | "mr" | "ms" | "mt" | "mu" | "mv" | "mw" | "mx" | "my" | "mz" | "na" | "nc" | "ne" | "nf" | "ng" | "ni" | "nl" | "no" | "np" | "nr" | "nu" | "nz" | "om" | "pa" | "pe" | "pf" | "pg" | "ph" | "pk" | "pl" | "pm" | "pn" | "pr" | "ps" | "pt" | "pw" | "py" | "qa" | "qc" | "re" | "ro" | "rs" | "ru" | "rw" | "sa" | "sb" | "sc" | "sd" | "se" | "sg" | "sh" | "si" | "sj" | "sk" | "sl" | "sm" | "sn" | "so" | "sr" | "ss" | "st" | "sv" | "sx" | "sy" | "sz" | "tc" | "td" | "tf" | "tg" | "th" | "tj" | "tk" | "tl" | "tm" | "tn" | "to" | "tp" | "tr" | "tt" | "tv" | "tw" | "tz" | "ua" | "ug" | "uk" | "um" | "us" | "uy" | "uz" | "va" | "vc" | "ve" | "vg" | "vi" | "vn" | "vu" | "we" | "wf" | "ws" | "ye" | "yt" | "yu" | "za" | "zm" | "zw"
-}
 export namespace dedicated {
     /**
      * ovh datacenter
      * type fullname: dedicated.DatacenterEnum
      */
-    export type DatacenterEnum = "bhs1" | "bhs2" | "bhs3" | "bhs4" | "bhs5" | "bhs6" | "bhs7" | "bhs8" | "dc1" | "eri1" | "gra1" | "gra2" | "gra3" | "gsw" | "hil1" | "lil1-int1" | "lim1" | "lim3" | "p19" | "rbx-hz" | "rbx1" | "rbx2" | "rbx3" | "rbx4" | "rbx5" | "rbx6" | "rbx7" | "rbx8" | "sbg1" | "sbg2" | "sbg3" | "sbg4" | "sbg5" | "sgp1" | "syd1" | "syd2" | "vin1" | "waw1" | "ynm1"
+    export type DatacenterEnum = "bhs1" | "bhs2" | "bhs3" | "bhs4" | "bhs5" | "bhs6" | "bhs7" | "bhs8" | "cch01" | "crx1" | "crx2" | "dc1" | "eri1" | "eri2" | "gra04" | "gra1" | "gra2" | "gra3" | "gsw" | "hil1" | "ieb01" | "lil1-int1" | "lim1" | "lim2" | "lim3" | "mr901" | "p19" | "rbx" | "rbx-hz" | "rbx1" | "rbx10" | "rbx2" | "rbx3" | "rbx4" | "rbx5" | "rbx6" | "rbx7" | "rbx8" | "rbx9" | "sbg1" | "sbg2" | "sbg3" | "sbg4" | "sbg5" | "sgp02" | "sgp1" | "syd03" | "syd1" | "syd2" | "vin1" | "waw1" | "ynm1" | "yyz01"
 }
 export namespace dedicatedCloud {
     /**
-     * Network allowed to connect to the Dedicated Cloud management interface
+     * Network allowed on infrastructure firewall
      * interface fullName: dedicatedCloud.AllowedNetwork.AllowedNetwork
      */
     export interface AllowedNetwork {
@@ -45,7 +38,7 @@ export namespace dedicatedCloud {
      */
     export type AllowedNetworkStateEnum = "allowed" | "toDelete" | "toUpdate"
     /**
-     * AutoScale configuration
+     * Autoscale configuration
      * interface fullName: dedicatedCloud.AutoScaleConfig.AutoScaleConfig
      */
     export interface AutoScaleConfig {
@@ -63,14 +56,14 @@ export namespace dedicatedCloud {
         timeDelayStorageScaleOut: number;
     }
     /**
-     * Dedicated Cloud AutoScale option
+     * Autoscale option
      * interface fullName: dedicatedCloud.AutoScaleVirtual.AutoScaleVirtual
      */
     export interface AutoScaleVirtual {
         state: dedicatedCloudoptionStateEnum;
     }
     /**
-     * Backup configured on a given Datacenter
+     * Backup option
      * interface fullName: dedicatedCloud.Backup.Backup
      */
     export interface Backup {
@@ -89,7 +82,7 @@ export namespace dedicatedCloud {
         vmwareVmId?: string;
     }
     /**
-     * Dedicated Cloud Backup Job
+     * Backup job
      * interface fullName: dedicatedCloud.BackupJob.BackupJob
      */
     export interface BackupJob {
@@ -102,7 +95,7 @@ export namespace dedicatedCloud {
         vmName?: string;
     }
     /**
-     * Backup Repository
+     * Backup repository
      * interface fullName: dedicatedCloud.BackupRepository.BackupRepository
      */
     export interface BackupRepository {
@@ -129,7 +122,7 @@ export namespace dedicatedCloud {
      */
     export type BlockRegisterEnum = "arin" | "ripe"
     /**
-     * The features available in your Dedicated Cloud
+     * Available features
      * interface fullName: dedicatedCloud.Capabilities.Capabilities
      */
     export interface Capabilities {
@@ -142,7 +135,7 @@ export namespace dedicatedCloud {
         userAccessPolicyStatus: dedicatedCloudcapabilitiesFeatureStatusEnum;
     }
     /**
-     * Dedicated Cloud Cluster
+     * Cluster
      * interface fullName: dedicatedCloud.Cluster.Cluster
      */
     export interface Cluster {
@@ -159,9 +152,9 @@ export namespace dedicatedCloud {
      * The commercial name component
      * type fullname: dedicatedCloud.CommercialNameEnum
      */
-    export type CommercialNameEnum = "CDI" | "CDI-HDS" | "CDI-HIPAA" | "CDI-NSX" | "CDI-NSX-T" | "CDI-NSX-VROPS" | "CDI-PCIDSS" | "CDI-UNKNOWN" | "CDI-VROPS" | "DC" | "DC-ANCIENT" | "DC-ANCIENT-HDS" | "DC-ANCIENT-HIPAA" | "DC-ANCIENT-NSX" | "DC-ANCIENT-NSX-T" | "DC-ANCIENT-NSX-VROPS" | "DC-ANCIENT-PCIDSS" | "DC-ANCIENT-UNKNOWN" | "DC-ANCIENT-VROPS" | "DC-HDS" | "DC-HIPAA" | "DC-LEGACY" | "DC-LEGACY-HDS" | "DC-LEGACY-HIPAA" | "DC-LEGACY-NSX" | "DC-LEGACY-NSX-T" | "DC-LEGACY-NSX-VROPS" | "DC-LEGACY-PCIDSS" | "DC-LEGACY-UNKNOWN" | "DC-LEGACY-VROPS" | "DC-NSX" | "DC-NSX-T" | "DC-NSX-VROPS" | "DC-PCIDSS" | "DC-UNKNOWN" | "DC-VROPS" | "ESSENTIALS" | "ESSENTIALS-HDS" | "ESSENTIALS-HIPAA" | "ESSENTIALS-NSX" | "ESSENTIALS-NSX-T" | "ESSENTIALS-NSX-VROPS" | "ESSENTIALS-PCIDSS" | "ESSENTIALS-UNKNOWN" | "ESSENTIALS-VROPS" | "NSX-T" | "PREMIER" | "PREMIER-HDS" | "PREMIER-HIPAA" | "PREMIER-NSX" | "PREMIER-NSX-T" | "PREMIER-NSX-VROPS" | "PREMIER-PCIDSS" | "PREMIER-UNKNOWN" | "PREMIER-VROPS" | "SDDC" | "SDDC-HDS" | "SDDC-HIPAA" | "SDDC-LEGACY" | "SDDC-LEGACY-HDS" | "SDDC-LEGACY-HIPAA" | "SDDC-LEGACY-PCIDSS" | "SDDC-LEGACY-UNKNOWN" | "SDDC-LEGACY-VROPS" | "SDDC-LEGACY-VROPS-WITHOUT-NSX" | "SDDC-LEGACY-WITHOUT-NSX" | "SDDC-PCIDSS" | "SDDC-UNKNOWN" | "SDDC-VROPS" | "SDDC-VROPS-WITHOUT-NSX" | "SDDC-WITHOUT-NSX" | "UNKNOWN" | "UNKNOWN-HDS" | "UNKNOWN-HIPAA" | "UNKNOWN-NSX" | "UNKNOWN-NSX-T" | "UNKNOWN-NSX-VROPS" | "UNKNOWN-PCIDSS" | "UNKNOWN-UNKNOWN" | "UNKNOWN-VROPS" | "UNKNOWN-VSPHERE" | "VSPHERE"
+    export type CommercialNameEnum = "CDI" | "CDI-HDS" | "CDI-HIPAA" | "CDI-NSX" | "CDI-NSX-T" | "CDI-NSX-VROPS" | "CDI-PCIDSS" | "CDI-UNKNOWN" | "CDI-VROPS" | "DC" | "DC-ANCIENT" | "DC-ANCIENT-HDS" | "DC-ANCIENT-HIPAA" | "DC-ANCIENT-NSX" | "DC-ANCIENT-NSX-T" | "DC-ANCIENT-NSX-VROPS" | "DC-ANCIENT-PCIDSS" | "DC-ANCIENT-UNKNOWN" | "DC-ANCIENT-VROPS" | "DC-HDS" | "DC-HIPAA" | "DC-LEGACY" | "DC-LEGACY-HDS" | "DC-LEGACY-HIPAA" | "DC-LEGACY-NSX" | "DC-LEGACY-NSX-T" | "DC-LEGACY-NSX-VROPS" | "DC-LEGACY-PCIDSS" | "DC-LEGACY-UNKNOWN" | "DC-LEGACY-VROPS" | "DC-NSX" | "DC-NSX-T" | "DC-NSX-VROPS" | "DC-PCIDSS" | "DC-UNKNOWN" | "DC-VROPS" | "ESSENTIALS" | "ESSENTIALS-HDS" | "ESSENTIALS-HIPAA" | "ESSENTIALS-NSX" | "ESSENTIALS-NSX-T" | "ESSENTIALS-NSX-VROPS" | "ESSENTIALS-PCIDSS" | "ESSENTIALS-UNKNOWN" | "ESSENTIALS-VROPS" | "NSX-T" | "NSX-T-DEFAULT" | "NSX-T-HDS" | "NSX-T-NSX" | "NSX-T-NSX-VROPS" | "NSX-T-PCIDSS" | "NSX-T-VROPS" | "NSX-T-VROPS-WITHOUT-NSX" | "NSX-T-WITHOUT-NSX" | "PREMIER" | "PREMIER-DEFAULT" | "PREMIER-HDS" | "PREMIER-HIPAA" | "PREMIER-NSX" | "PREMIER-NSX-T" | "PREMIER-NSX-VROPS" | "PREMIER-PCIDSS" | "PREMIER-UNKNOWN" | "PREMIER-VROPS" | "SDDC" | "SDDC-DEFAULT" | "SDDC-HDS" | "SDDC-HIPAA" | "SDDC-LEGACY" | "SDDC-LEGACY-HDS" | "SDDC-LEGACY-HIPAA" | "SDDC-LEGACY-PCIDSS" | "SDDC-LEGACY-UNKNOWN" | "SDDC-LEGACY-VROPS" | "SDDC-LEGACY-VROPS-WITHOUT-NSX" | "SDDC-LEGACY-WITHOUT-NSX" | "SDDC-PCIDSS" | "SDDC-UNKNOWN" | "SDDC-VROPS" | "SDDC-VROPS-WITHOUT-NSX" | "SDDC-WITHOUT-NSX" | "UNKNOWN" | "UNKNOWN-HDS" | "UNKNOWN-HIPAA" | "UNKNOWN-NSX" | "UNKNOWN-NSX-T" | "UNKNOWN-NSX-VROPS" | "UNKNOWN-PCIDSS" | "UNKNOWN-UNKNOWN" | "UNKNOWN-VROPS" | "UNKNOWN-VSPHERE" | "VSPHERE" | "VSPHERE-DEFAULT" | "VSPHERE-HDS" | "VSPHERE-NSX" | "VSPHERE-NSX-VROPS" | "VSPHERE-PCIDSS" | "VSPHERE-VROPS" | "VSPHERE-VROPS-WITHOUT-NSX" | "VSPHERE-WITHOUT-NSX"
     /**
-     * The commercial ranges actually available for your Dedicated Cloud
+     * Commercial ranges
      * interface fullName: dedicatedCloud.CommercialRange.CommercialRange
      */
     export interface CommercialRange {
@@ -172,7 +165,7 @@ export namespace dedicatedCloud {
         range?: string;
     }
     /**
-     * Dedicated Cloud Datacenter
+     * Virtual datacenter
      * interface fullName: dedicatedCloud.Datacenter.Datacenter
      */
     export interface Datacenter {
@@ -195,14 +188,14 @@ export namespace dedicatedCloud {
         macChanges: dedicatedCloudvmwareBoolPolicy;
     }
     /**
-     * Dedicated Cloud Active Directory Federation option
+     * Active Directory federation option
      * interface fullName: dedicatedCloud.Federation.Federation
      */
     export interface Federation {
         state: dedicatedCloudoptionStateEnum;
     }
     /**
-     * Dedicated Cloud federation option access network
+     * Federated Active Directory
      * interface fullName: dedicatedCloud.FederationAccessNetwork.FederationAccessNetwork
      */
     export interface FederationAccessNetwork {
@@ -221,7 +214,7 @@ export namespace dedicatedCloud {
         username: string;
     }
     /**
-     * Dedicated Cloud Filer
+     * Datastore
      * interface fullName: dedicatedCloud.Filer.Filer
      */
     export interface Filer {
@@ -249,7 +242,7 @@ export namespace dedicatedCloud {
      */
     export type GenerationEnum = "1.0" | "2.0"
     /**
-     * Dedicated Cloud VMware Hybrid Cloud Extension option
+     * VMware Hybrid Cloud Extension option
      * interface fullName: dedicatedCloud.Hcx.Hcx
      */
     export interface Hcx {
@@ -258,21 +251,21 @@ export namespace dedicatedCloud {
         version?: string;
     }
     /**
-     * The Dedicated Cloud Hds option
+     * HDS certification option
      * interface fullName: dedicatedCloud.Hds.Hds
      */
     export interface Hds {
         state: dedicatedCloudoptionStateEnum;
     }
     /**
-     * The Dedicated Cloud Hipaa option
+     * HIPAA certification option
      * interface fullName: dedicatedCloud.Hipaa.Hipaa
      */
     export interface Hipaa {
         state: dedicatedCloudoptionStateEnum;
     }
     /**
-     * Dedicated Cloud Host
+     * Host
      * interface fullName: dedicatedCloud.Host.Host
      */
     export interface Host {
@@ -300,7 +293,7 @@ export namespace dedicatedCloud {
         vmVcpuTotal?: number;
     }
     /**
-     * Host profiles actually available in Dedicated Cloud
+     * Host profile
      * interface fullName: dedicatedCloud.HostProfile.HostProfile
      */
     export interface HostProfile {
@@ -308,7 +301,7 @@ export namespace dedicatedCloud {
         name: string;
     }
     /**
-     * Host resilience test hability
+     * Host resilience test status
      * interface fullName: dedicatedCloud.HostResilience.HostResilience
      */
     export interface HostResilience {
@@ -344,9 +337,9 @@ export namespace dedicatedCloud {
      * The Hypervisor version of this Dedicated Cloud component
      * type fullname: dedicatedCloud.HypervisorVersionEnum
      */
-    export type HypervisorVersionEnum = "4.1" | "5.0" | "5.1" | "5.5" | "6.0" | "6.5" | "6.7" | "7.0" | "hv3.1" | "hvdc3.1" | "nc1.0"
+    export type HypervisorVersionEnum = "4.1" | "5.0" | "5.1" | "5.5" | "6.0" | "6.5" | "6.7" | "7.0" | "8.0" | "hv3.1" | "hvdc3.1" | "nc1.0"
     /**
-     * The OVHcloud IAM option
+     * OVHcloud IAM option
      * interface fullName: dedicatedCloud.Iam.Iam
      */
     export interface Iam {
@@ -354,7 +347,7 @@ export namespace dedicatedCloud {
         state: dedicatedCloudoptionStateEnum;
     }
     /**
-     * IP Blocks associated with a Dedicated Cloud
+     * IP block
      * interface fullName: dedicatedCloud.Ip.Ip
      */
     export interface Ip {
@@ -383,12 +376,28 @@ export namespace dedicatedCloud {
         usageDetails?: string;
     }
     /**
+     * Log subscription resource
+     * interface fullName: dedicatedCloud.LogSubscriptionResource.LogSubscriptionResource
+     */
+    export interface LogSubscriptionResource {
+        name: string;
+        type: string;
+    }
+    /**
+     * synchronous operation after subscribing or unsubscribing to a resource logs
+     * interface fullName: dedicatedCloud.LogSubscriptionResponse.LogSubscriptionResponse
+     */
+    export interface LogSubscriptionResponse {
+        operationId: string;
+        serviceName: string;
+    }
+    /**
      * The management interface of this Dedicated Cloud
      * type fullname: dedicatedCloud.ManagementInterfaceEnum
      */
     export type ManagementInterfaceEnum = "azure" | "openstack" | "systemcenter" | "vcloud" | "vcsa" | "vsphere"
     /**
-     * The Dedicated Cloud Nsx option
+     * VMware NSX-V option
      * interface fullName: dedicatedCloud.Nsx.Nsx
      */
     export interface Nsx {
@@ -396,7 +405,7 @@ export namespace dedicatedCloud {
         url?: string;
     }
     /**
-     * The Dedicated Cloud NSX-T option
+     * VMware NSX-T option
      * interface fullName: dedicatedCloud.Nsxt.Nsxt
      */
     export interface Nsxt {
@@ -406,7 +415,27 @@ export namespace dedicatedCloud {
         version?: string;
     }
     /**
-     * Dedicated Cloud User object right
+     * NSX Edge
+     * interface fullName: dedicatedCloud.NsxtEdge.NsxtEdge
+     */
+    export interface NsxtEdge {
+        diskLocation?: string;
+        ip: string;
+        moRef?: string;
+        name: string;
+        nsxtEdgeId: number;
+        size: dedicatedCloudnsxtNsxtEdgeSizeEnum;
+        state: dedicatedCloudStateEnum;
+    }
+    /**
+     * NSX Edge resilience test status
+     * interface fullName: dedicatedCloud.NsxtEdgeResilience.NsxtEdgeResilience
+     */
+    export interface NsxtEdgeResilience {
+        state: dedicatedCloudoptionStateEnum;
+    }
+    /**
+     * User object right
      * interface fullName: dedicatedCloud.ObjectRight.ObjectRight
      */
     export interface ObjectRight {
@@ -418,7 +447,7 @@ export namespace dedicatedCloud {
         vmwareObjectId: string;
     }
     /**
-     * Hypervisors actually available in Dedicated Cloud
+     * Hypervisor
      * interface fullName: dedicatedCloud.Os.Os
      */
     export interface Os {
@@ -436,7 +465,7 @@ export namespace dedicatedCloud {
         realVersion: string;
     }
     /**
-     * PccZones actually available in Dedicated Cloud
+     * Hosting location
      * interface fullName: dedicatedCloud.PccZone.PccZone
      */
     export interface PccZone {
@@ -446,14 +475,14 @@ export namespace dedicatedCloud {
         pccZone: string;
     }
     /**
-     * The Dedicated Cloud PCI-DSS option
+     * PCI-DSS certification option
      * interface fullName: dedicatedCloud.PciDss.PciDss
      */
     export interface PciDss {
         state: dedicatedCloudoptionStateEnum;
     }
     /**
-     * Private management gateway deployed in your Dedicated Cloud to block all public access
+     * Private management gateway
      * interface fullName: dedicatedCloud.PrivateGateway.PrivateGateway
      */
     export interface PrivateGateway {
@@ -463,7 +492,7 @@ export namespace dedicatedCloud {
         state: dedicatedCloudoptionStateEnum;
     }
     /**
-     * Dedicated Cloud Restore Point
+     * Restore point
      * interface fullName: dedicatedCloud.RestorePoint.RestorePoint
      */
     export interface RestorePoint {
@@ -474,7 +503,7 @@ export namespace dedicatedCloud {
         type?: dedicatedCloudbackupBackupTypeEnum;
     }
     /**
-     * Dedicated Cloud User right
+     * User datacenter right
      * interface fullName: dedicatedCloud.Right.Right
      */
     export interface Right {
@@ -486,7 +515,7 @@ export namespace dedicatedCloud {
         vmNetworkRole: dedicatedCloudrightVmNetworkRoleEnum;
     }
     /**
-     * The robots used in Dedicated Cloud
+     * Robot
      * interface fullName: dedicatedCloud.Robot.Robot
      */
     export interface Robot {
@@ -497,14 +526,14 @@ export namespace dedicatedCloud {
         type: string;
     }
     /**
-     * Security options of your Dedicated Cloud
+     * Security option
      * interface fullName: dedicatedCloud.SecurityOption.SecurityOption
      */
     export interface SecurityOption {
         state: dedicatedCloudsecurityOptionStateEnum;
     }
     /**
-     * List of Service Packs compliant with the current Dedicated Cloud
+     * Service pack
      * interface fullName: dedicatedCloud.ServicePack.ServicePack
      */
     export interface ServicePack {
@@ -517,7 +546,29 @@ export namespace dedicatedCloud {
      */
     export type StateEnum = "available" | "delivered" | "disabled" | "disabling" | "error" | "migrating" | "provisionning" | "recycling" | "reserved" | "toDisable" | "toProvision" | "toRecycle" | "toRemove" | "toUnprovision" | "unprovisionning" | "upgrading"
     /**
-     * Operation on a Dedicated Cloud component
+     * Log forward to syslog option
+     * interface fullName: dedicatedCloud.SyslogForward.SyslogForward
+     */
+    export interface SyslogForward {
+        state: dedicatedCloudoptionStateEnum;
+    }
+    /**
+     * Forward logs from your PCC infrastructure to your syslog
+     * interface fullName: dedicatedCloud.SyslogForwardAccessNetwork.SyslogForwardAccessNetwork
+     */
+    export interface SyslogForwardAccessNetwork {
+        description: string;
+        ip: string;
+        logForwardId: number;
+        logLevel: dedicatedCloudsyslogForwardLogLevelEnum;
+        noSsl: boolean;
+        servicePort: number;
+        sourceType: dedicatedCloudsyslogForwardSourceTypeEnum[];
+        sslThumbprint?: string;
+        state: dedicatedCloudoptionAccessNetworkStateEnum;
+    }
+    /**
+     * Operation
      * interface fullName: dedicatedCloud.Task.Task
      */
     export interface Task {
@@ -555,7 +606,7 @@ export namespace dedicatedCloud {
      */
     export type TwoFAWhitelistStateEnum = "enabled" | "enabling" | "error" | "migrating" | "removed" | "removing"
     /**
-     * Dedicated Cloud User
+     * User
      * interface fullName: dedicatedCloud.User.User
      */
     export interface User {
@@ -570,6 +621,7 @@ export namespace dedicatedCloud {
         firstName?: string;
         fullAdminRo: boolean;
         identityProviderId?: number;
+        identityProviderType?: dedicatedClouduserIdentityProviderTypeEnum;
         isEnableManageable: boolean;
         isTokenValidator: boolean;
         lastName?: string;
@@ -593,14 +645,14 @@ export namespace dedicatedCloud {
      */
     export type UserLogoutPolicyEnum = "first" | "last"
     /**
-     * Dedicated Cloud VM Encryption option
+     * Virtual machine encryption option
      * interface fullName: dedicatedCloud.VMEncryption.VMEncryption
      */
     export interface VMEncryption {
         state: dedicatedCloudoptionStateEnum;
     }
     /**
-     * Dedicated Cloud VM Encryption option access network
+     * Virtual machine encryption KMS server
      * interface fullName: dedicatedCloud.VMEncryptionAccessNetwork.VMEncryptionAccessNetwork
      */
     export interface VMEncryptionAccessNetwork {
@@ -612,7 +664,7 @@ export namespace dedicatedCloud {
         state: dedicatedCloudoptionAccessNetworkStateEnum;
     }
     /**
-     * The Dedicated Cloud Vendor option
+     * Vendor information
      * interface fullName: dedicatedCloud.Vendor.Vendor
      */
     export interface Vendor {
@@ -633,7 +685,7 @@ export namespace dedicatedCloud {
         minor: string;
     }
     /**
-     * Dedicated Cloud Vlan
+     * vLAN
      * interface fullName: dedicatedCloud.Vlan.Vlan
      */
     export interface Vlan {
@@ -645,7 +697,7 @@ export namespace dedicatedCloud {
         vlanNumber: number;
     }
     /**
-     * Dedicated Cloud Virtual Machine
+     * Virtual machine
      * interface fullName: dedicatedCloud.Vm.Vm
      */
     export interface Vm {
@@ -659,7 +711,9 @@ export namespace dedicatedCloud {
         cpuUsed?: number;
         filers?: dedicatedCloudvmFiler[];
         folderName?: string;
+        guestOsFamily?: string;
         hostName?: string;
+        license?: dedicatedCloudsplaKmsLicenseIncludingLegacyEnum;
         memoryMax?: number;
         memoryTps?: string;
         memoryUsed?: number;
@@ -685,17 +739,29 @@ export namespace dedicatedCloud {
         writeRate?: number;
     }
     /**
-     * The Dedicated Cloud vRealize Operations option
+     * VMware Aria Operations option
      * interface fullName: dedicatedCloud.Vrops.Vrops
      */
     export interface Vrops {
         state: dedicatedCloudoptionStateEnum;
         upgrades?: string[];
         url?: string;
+        vROpsPublicIP?: string;
         version?: string;
     }
     /**
-     * Get VSAN Datastores
+     * VMware Aria Operations outgoing flows
+     * interface fullName: dedicatedCloud.VropsOutgoingFlow.VropsOutgoingFlow
+     */
+    export interface VropsOutgoingFlow {
+        description: string;
+        ip: string;
+        outgoingFlowId: number;
+        servicePort: number;
+        state: dedicatedCloudoptionAccessNetworkStateEnum;
+    }
+    /**
+     * vSAN datastore
      * interface fullName: dedicatedCloud.VsanDatastore.VsanDatastore
      */
     export interface VsanDatastore {
@@ -866,17 +932,48 @@ export namespace dedicatedCloud {
         upgradeRequired: boolean;
     }
     /**
-     * Dedicated Cloud
+     * VMware on OVHcloud
      * interface fullName: dedicatedCloud.dedicatedCloud.dedicatedCloud
      */
     export interface dedicatedCloud {
         advancedSecurity: boolean;
         bandwidth: string;
         billingType: dedicatedCloudBillingTypeEnum;
+        canMigrateToVCD: boolean;
         certifiedInterfaceUrl: string;
         commercialRange: string;
         description: string;
         generation: dedicatedCloudGenerationEnum;
+        location: string;
+        managementInterface: dedicatedCloudManagementInterfaceEnum;
+        productReference: dedicatedCloudproductReferenceEnum;
+        serviceName: string;
+        servicePackName?: string;
+        spla: boolean;
+        sslV3?: boolean;
+        state: dedicatedCloudStateEnum;
+        userAccessPolicy: dedicatedCloudUserAccessPolicyEnum;
+        userLimitConcurrentSession: number;
+        userLogoutPolicy: dedicatedCloudUserLogoutPolicyEnum;
+        userSessionTimeout: number;
+        vScopeUrl: string;
+        version: dedicatedCloudVersion;
+        webInterfaceUrl: string;
+    }
+    /**
+     * VMware on OVHcloud
+     * interface fullName: dedicatedCloud.dedicatedCloudWithIAM.dedicatedCloudWithIAM
+     */
+    export interface dedicatedCloudWithIAM {
+        advancedSecurity: boolean;
+        bandwidth: string;
+        billingType: dedicatedCloudBillingTypeEnum;
+        canMigrateToVCD: boolean;
+        certifiedInterfaceUrl: string;
+        commercialRange: string;
+        description: string;
+        generation: dedicatedCloudGenerationEnum;
+        iam?: iam.ResourceMetadata;
         location: string;
         managementInterface: dedicatedCloudManagementInterfaceEnum;
         productReference: dedicatedCloudproductReferenceEnum;
@@ -904,6 +1001,7 @@ export namespace dedicatedCloud {
          * interface fullName: dedicatedCloud.disasterRecovery.LocalSiteDetails.LocalSiteDetails
          */
         export interface LocalSiteDetails {
+            endpointPublicIp?: string;
             role: dedicatedClouddisasterRecoverySiteRoleEnum;
             state?: dedicatedCloudStateEnum;
             type: dedicatedClouddisasterRecoverySiteTypeEnum;
@@ -967,7 +1065,7 @@ export namespace dedicatedCloud {
             vpgName: string;
         }
         /**
-         * Information on remote network allowed to access to your Zerto disaster recovery service
+         * Zerto disaster recovery remote site
          * interface fullName: dedicatedCloud.disasterRecovery.ZertoRemoteVra.ZertoRemoteVra
          */
         export interface ZertoRemoteVra {
@@ -1069,15 +1167,52 @@ export namespace dedicatedCloud {
      * IP address usage
      * type fullname: dedicatedCloud.ipUsageEnum
      */
-    export type ipUsageEnum = "reserved" | "vm"
+    export type ipUsageEnum = "nsxt" | "reserved" | "vm"
     /**
-     * A structure describing metrics token for vScope graphs data
-     * interface fullName: dedicatedCloud.metricsToken.metricsToken
+     * Log kind for your dedicated cloud
+     * interface fullName: dedicatedCloud.ldpKind.ldpKind
      */
-    export interface metricsToken {
-        opentsdbEndpoint: string;
-        token: string;
-        warpEndpoint: string;
+    export interface ldpKind {
+        additionalReturnedFields: string[];
+        createdAt: string;
+        displayName: string;
+        kindId: string;
+        name: string;
+        updatedAt: string;
+    }
+    /**
+     * Log subscription for your dedicated cloud
+     * interface fullName: dedicatedCloud.ldpSubscription.ldpSubscription
+     */
+    export interface ldpSubscription {
+        createdAt: string;
+        kind: string;
+        resource: dedicatedCloudLogSubscriptionResource;
+        serviceName: string;
+        streamId: string;
+        subscriptionId: string;
+        updatedAt: string;
+    }
+    export namespace nsxt {
+        /**
+         * Maximum number of NSX-T Edges supported in datacenter
+         * interface fullName: dedicatedCloud.nsxt.NsxtEdgeScalingCapability.NsxtEdgeScalingCapability
+         */
+        export interface NsxtEdgeScalingCapability {
+            number?: number;
+        }
+        /**
+         * Sizes of NSX-T Edges
+         * type fullname: dedicatedCloud.nsxt.NsxtEdgeSizeEnum
+         */
+        export type NsxtEdgeSizeEnum = "LARGE" | "MEDIUM" | "XLARGE"
+        /**
+         * Available sizing of NSX-T Edges supported in datacenter
+         * interface fullName: dedicatedCloud.nsxt.NsxtEdgeSizingCapability.NsxtEdgeSizingCapability
+         */
+        export interface NsxtEdgeSizingCapability {
+            size: string[];
+        }
     }
     export namespace option {
         /**
@@ -1246,7 +1381,7 @@ export namespace dedicatedCloud {
      * List of possible service pack
      * type fullname: dedicatedCloud.servicePackEnum
      */
-    export type servicePackEnum = "default" | "default-nsxt" | "hds" | "hipaa" | "legacy" | "nsx" | "nsx-and-vrops" | "nsxt" | "pcidss" | "vrops"
+    export type servicePackEnum = "default" | "default-nsxt" | "hds" | "hds-nsxt" | "hipaa" | "legacy" | "nsx" | "nsx-and-vrops" | "nsxt" | "pcidss" | "pcidss-nsxt" | "vrops" | "vrops-nsxt"
     /**
      * List of possible state of the service pack
      * type fullname: dedicatedCloud.servicePackStateEnum
@@ -1260,8 +1395,32 @@ export namespace dedicatedCloud {
         name: dedicatedCloudservicePackEnum;
         state: dedicatedCloudservicePackStateEnum;
     }
+    export namespace spla {
+        /**
+         * Managed license identifiers
+         * type fullname: dedicatedCloud.spla.KmsLicenseEnum
+         */
+        export type KmsLicenseEnum = "windows 2016 Datacenter" | "windows 2016 Standard" | "windows 2016 Standard SQL2016 Standard" | "windows 2016 Standard SQL2016 Web" | "windows 2019 Datacenter" | "windows 2019 Datacenter Core" | "windows 2019 Standard" | "windows 2019 Standard Core" | "windows 2019 Standard SQL2019 Standard" | "windows 2019 Standard SQL2019 Web" | "windows 2019 Standard SQL2022 Standard" | "windows 2019 Standard SQL2022 Web" | "windows 2022 Datacenter" | "windows 2022 Datacenter Core" | "windows 2022 Datacenter SQL2019 Standard" | "windows 2022 Datacenter SQL2019 Web" | "windows 2022 Datacenter SQL2022 Standard" | "windows 2022 Datacenter SQL2022 Web" | "windows 2022 Standard" | "windows 2022 Standard Core" | "windows 2022 Standard SQL2019 Standard" | "windows 2022 Standard SQL2019 Web" | "windows 2022 Standard SQL2022 Standard" | "windows 2022 Standard SQL2022 Web"
+        /**
+         * Managed license identifiers (including legacy ones)
+         * type fullname: dedicatedCloud.spla.KmsLicenseIncludingLegacyEnum
+         */
+        export type KmsLicenseIncludingLegacyEnum = "unknown or unsupported license" | "windows 2008 R2 Datacenter" | "windows 2008 R2 Enterprise" | "windows 2008 R2 Standard" | "windows 2008 R2 Web" | "windows 2012 Datacenter" | "windows 2012 R2 Datacenter" | "windows 2012 R2 Standard" | "windows 2012 R2 Standard SQL2016 Standard" | "windows 2012 R2 Standard SQL2016 Web" | "windows 2012 Standard" | "windows 2016 Datacenter" | "windows 2016 Standard" | "windows 2016 Standard SQL2016 Standard" | "windows 2016 Standard SQL2016 Web" | "windows 2019 Datacenter" | "windows 2019 Datacenter Core" | "windows 2019 Standard" | "windows 2019 Standard Core" | "windows 2019 Standard SQL2019 Standard" | "windows 2019 Standard SQL2019 Web" | "windows 2019 Standard SQL2022 Standard" | "windows 2019 Standard SQL2022 Web" | "windows 2022 Datacenter" | "windows 2022 Datacenter Core" | "windows 2022 Datacenter SQL2019 Standard" | "windows 2022 Datacenter SQL2019 Web" | "windows 2022 Datacenter SQL2022 Standard" | "windows 2022 Datacenter SQL2022 Web" | "windows 2022 Standard" | "windows 2022 Standard Core" | "windows 2022 Standard SQL2019 Standard" | "windows 2022 Standard SQL2019 Web" | "windows 2022 Standard SQL2022 Standard" | "windows 2022 Standard SQL2022 Web"
+    }
+    export namespace syslogForward {
+        /**
+         * All possible log levels
+         * type fullname: dedicatedCloud.syslogForward.LogLevelEnum
+         */
+        export type LogLevelEnum = "alert" | "critical" | "emergency" | "error" | "info" | "notice" | "warning"
+        /**
+         * Log possible sources
+         * type fullname: dedicatedCloud.syslogForward.SourceTypeEnum
+         */
+        export type SourceTypeEnum = "nsxtEdge"
+    }
     /**
-     * Trust IP which can bypass the two factor authentication
+     * Two factor authentication whitelisted network
      * interface fullName: dedicatedCloud.twoFAWhitelist.twoFAWhitelist
      */
     export interface twoFAWhitelist {
@@ -1277,6 +1436,11 @@ export namespace dedicatedCloud {
          * type fullname: dedicatedCloud.user.ActivationStateEnum
          */
         export type ActivationStateEnum = "disabled" | "disabling" | "enabled" | "enabling" | "toDisable" | "toEnable"
+        /**
+         * The type of the identity provider
+         * type fullname: dedicatedCloud.user.IdentityProviderTypeEnum
+         */
+        export type IdentityProviderTypeEnum = "federation" | "iam"
         /**
          * All states a Dedicated Cloud User can be in
          * type fullname: dedicatedCloud.user.StateEnum
@@ -1327,6 +1491,17 @@ export namespace dedicatedCloud {
      * type fullname: dedicatedCloud.virtualMachineFaultToleranceState
      */
     export type virtualMachineFaultToleranceState = "disabled" | "enabled" | "needSecondary" | "notConfigured" | "running" | "starting"
+    /**
+     * A structure describing the licensing of a virtual machine
+     * interface fullName: dedicatedCloud.virtualMachineLicensingSummary.virtualMachineLicensingSummary
+     */
+    export interface virtualMachineLicensingSummary {
+        guestOsFamily?: string;
+        license: dedicatedCloudsplaKmsLicenseIncludingLegacyEnum;
+        moRef: string;
+        name: string;
+        vmId: number;
+    }
     /**
      * The power state of the virtual machine
      * type fullname: dedicatedCloud.virtualMachinePowerState
@@ -1402,6 +1577,35 @@ export namespace dedicatedCloud {
     export interface vmwareBoolPolicy {
         inherited: boolean;
         value: boolean;
+    }
+}
+export namespace iam {
+    /**
+     * IAM resource metadata embedded in services models
+     * interface fullName: iam.ResourceMetadata.ResourceMetadata
+     */
+    export interface ResourceMetadata {
+        displayName?: string;
+        id: string;
+        tags?: { [key: string]: string };
+        urn: string;
+    }
+    export namespace resource {
+        /**
+         * Resource tag filter
+         * interface fullName: iam.resource.TagFilter.TagFilter
+         */
+        export interface TagFilter {
+            operator?: iam.resource.TagFilter.OperatorEnum;
+            value: string;
+        }
+        export namespace TagFilter {
+            /**
+             * Operator that can be used in order to filter resources tags
+             * type fullname: iam.resource.TagFilter.OperatorEnum
+             */
+            export type OperatorEnum = "EQ"
+        }
     }
 }
 export namespace nichandle {
@@ -1500,7 +1704,7 @@ export namespace vrack {
      */
     export type TaskStatusEnum = "cancelled" | "doing" | "done" | "init" | "todo"
     /**
-     * vrack dedicated cloud interface
+     * VMware on OVHcloud vRack link
      * interface fullName: vrack.dedicatedCloud.dedicatedCloud
      */
     export interface dedicatedCloud {
@@ -1522,17 +1726,17 @@ export default proxyDedicatedCloud;
  */
 export interface DedicatedCloud {
     /**
-     * List available services
+     * List VMware on OVHcloud infrastructures
      * GET /dedicatedCloud
      */
-    $get(): Promise<string[]>;
+    $get(params?: { iamTags?: any }): Promise<string[]>;
     /**
      * Controle cache
      */
     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
     commercialRange: {
         /**
-         * List of commercial Ranges available in a Dedicated Cloud
+         * List commercial ranges
          * GET /dedicatedCloud/commercialRange
          */
         $get(): Promise<string[]>;
@@ -1542,7 +1746,7 @@ export interface DedicatedCloud {
         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         $(commercialRangeName: string): {
             /**
-             * Get this object properties
+             * Get commercial range
              * GET /dedicatedCloud/commercialRange/{commercialRangeName}
              */
             $get(): Promise<dedicatedCloud.CommercialRange>;
@@ -1554,7 +1758,7 @@ export interface DedicatedCloud {
     }
     location: {
         /**
-         * List of locations available in a Dedicated Cloud
+         * List hosting locations
          * GET /dedicatedCloud/location
          */
         $get(): Promise<string[]>;
@@ -1564,7 +1768,7 @@ export interface DedicatedCloud {
         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         $(pccZone: string): {
             /**
-             * Get this object properties
+             * Get hosting location
              * GET /dedicatedCloud/location/{pccZone}
              */
             $get(): Promise<dedicatedCloud.PccZone>;
@@ -1574,7 +1778,7 @@ export interface DedicatedCloud {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             hostProfile: {
                 /**
-                 * Offered host profile
+                 * List host profiles on hosting location
                  * GET /dedicatedCloud/location/{pccZone}/hostProfile
                  */
                 $get(): Promise<number[]>;
@@ -1584,7 +1788,7 @@ export interface DedicatedCloud {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(id: number): {
                     /**
-                     * Get this object properties
+                     * Get host profile
                      * GET /dedicatedCloud/location/{pccZone}/hostProfile/{id}
                      */
                     $get(): Promise<dedicatedCloud.HostProfile>;
@@ -1596,7 +1800,7 @@ export interface DedicatedCloud {
             }
             hypervisor: {
                 /**
-                 * Offered hypervisor version
+                 * List hypervisor versions on hosting location
                  * GET /dedicatedCloud/location/{pccZone}/hypervisor
                  */
                 $get(): Promise<string[]>;
@@ -1606,7 +1810,7 @@ export interface DedicatedCloud {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(shortName: string): {
                     /**
-                     * Get this object properties
+                     * Get hypervisor
                      * GET /dedicatedCloud/location/{pccZone}/hypervisor/{shortName}
                      */
                     $get(): Promise<dedicatedCloud.Os>;
@@ -1619,7 +1823,7 @@ export interface DedicatedCloud {
             stock: {
                 host: {
                     /**
-                     * Available host stock
+                     * Get hosts stock
                      * GET /dedicatedCloud/location/{pccZone}/stock/host
                      */
                     $get(params?: { minYear?: number }): Promise<dedicatedCloud.HostStockProfile[]>;
@@ -1630,7 +1834,7 @@ export interface DedicatedCloud {
                 }
                 pcc: {
                     /**
-                     * Available PCC stock
+                     * Get hypervisors stock
                      * GET /dedicatedCloud/location/{pccZone}/stock/pcc
                      */
                     $get(): Promise<dedicatedCloud.PccStockProfile[]>;
@@ -1641,7 +1845,7 @@ export interface DedicatedCloud {
                 }
                 zpool: {
                     /**
-                     * Available zpool stock
+                     * Get datastores stock
                      * GET /dedicatedCloud/location/{pccZone}/stock/zpool
                      */
                     $get(params?: { profileFilter?: string }): Promise<dedicatedCloud.ZpoolStockProfile[]>;
@@ -1655,27 +1859,27 @@ export interface DedicatedCloud {
     }
     $(serviceName: string): {
         /**
-         * Get this object properties
+         * Get VMware on OVHcloud
          * GET /dedicatedCloud/{serviceName}
          */
         $get(): Promise<dedicatedCloud.dedicatedCloud>;
         /**
-         * Alter this object properties
+         * Update VMware on OVHcloud
          * PUT /dedicatedCloud/{serviceName}
          */
-        $put(params?: { advancedSecurity?: boolean, bandwidth?: string, billingType?: dedicatedCloudBillingTypeEnum, certifiedInterfaceUrl?: string, commercialRange?: string, description?: string, generation?: dedicatedCloudGenerationEnum, location?: string, managementInterface?: dedicatedCloudManagementInterfaceEnum, productReference?: dedicatedCloudproductReferenceEnum, serviceName?: string, servicePackName?: string, spla?: boolean, sslV3?: boolean, state?: dedicatedCloudStateEnum, userAccessPolicy?: dedicatedCloudUserAccessPolicyEnum, userLimitConcurrentSession?: number, userLogoutPolicy?: dedicatedCloudUserLogoutPolicyEnum, userSessionTimeout?: number, vScopeUrl?: string, version?: dedicatedCloudVersion, webInterfaceUrl?: string }): Promise<dedicatedCloud.Task>;
+        $put(params?: { advancedSecurity?: boolean, bandwidth?: string, billingType?: dedicatedCloudBillingTypeEnum, canMigrateToVCD?: boolean, certifiedInterfaceUrl?: string, commercialRange?: string, description?: string, generation?: dedicatedCloudGenerationEnum, location?: string, managementInterface?: dedicatedCloudManagementInterfaceEnum, productReference?: dedicatedCloudproductReferenceEnum, serviceName?: string, servicePackName?: string, spla?: boolean, sslV3?: boolean, state?: dedicatedCloudStateEnum, userAccessPolicy?: dedicatedCloudUserAccessPolicyEnum, userLimitConcurrentSession?: number, userLogoutPolicy?: dedicatedCloudUserLogoutPolicyEnum, userSessionTimeout?: number, vScopeUrl?: string, version?: dedicatedCloudVersion, webInterfaceUrl?: string }): Promise<dedicatedCloud.Task>;
         /**
          * Controle cache
          */
         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         allowedNetwork: {
             /**
-             * Networks allowed to access to this Dedicated Cloud management interface
+             * List networks allowed on infrastructure firewall
              * GET /dedicatedCloud/{serviceName}/allowedNetwork
              */
             $get(): Promise<number[]>;
             /**
-             * Create a new Allowed network for your dedicatedCloud
+             * Create network allowed on infrastructure firewall
              * POST /dedicatedCloud/{serviceName}/allowedNetwork
              */
             $post(params: { description?: string, network: string }): Promise<dedicatedCloud.Task>;
@@ -1685,17 +1889,17 @@ export interface DedicatedCloud {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(networkAccessId: number): {
                 /**
-                 * Remove this network from your Dedicated Cloud
+                 * Remove network allowed on infrastructure firewall
                  * DELETE /dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}
                  */
                 $delete(): Promise<dedicatedCloud.Task>;
                 /**
-                 * Get this object properties
+                 * Get network allowed on infrastructure firewall
                  * GET /dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}
                  */
                 $get(): Promise<dedicatedCloud.AllowedNetwork>;
                 /**
-                 * Alter this object properties
+                 * Update network allowed on infrastructure firewall
                  * PUT /dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}
                  */
                 $put(params?: { description?: string, network?: string, networkAccessId?: number, state?: dedicatedCloudAllowedNetworkStateEnum }): Promise<dedicatedCloud.Task>;
@@ -1705,7 +1909,7 @@ export interface DedicatedCloud {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 task: {
                     /**
-                     * Tasks associated with this allowed network
+                     * List operations associated to a network allowed on infrastructure firewall
                      * GET /dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task
                      */
                     $get(params?: { name?: string, state?: dedicatedCloudTaskStateEnum }): Promise<number[]>;
@@ -1715,7 +1919,7 @@ export interface DedicatedCloud {
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(taskId: number): {
                         /**
-                         * Get this object properties
+                         * Get operation
                          * GET /dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task/{taskId}
                          */
                         $get(): Promise<dedicatedCloud.Task>;
@@ -1725,14 +1929,14 @@ export interface DedicatedCloud {
                         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         changeMaintenanceExecutionDate: {
                             /**
-                             * Change the execution date of a maintenance. Works only if task type is maintenance and if it has not started yet.
+                             * Change the execution date of a maintenance operation
                              * POST /dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task/{taskId}/changeMaintenanceExecutionDate
                              */
                             $post(params: { executionDate: string }): Promise<dedicatedCloud.Task>;
                         }
                         resetTaskState: {
                             /**
-                             * Restart task in error.
+                             * Relaunch operation currently in error state
                              * POST /dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task/{taskId}/resetTaskState
                              */
                             $post(params: { reason: string }): Promise<dedicatedCloud.Task>;
@@ -1743,7 +1947,7 @@ export interface DedicatedCloud {
         }
         backupRepository: {
             /**
-             * Backup repositories associated with this Pcc
+             * List backup repositories
              * GET /dedicatedCloud/{serviceName}/backupRepository
              */
             $get(): Promise<number[]>;
@@ -1753,7 +1957,7 @@ export interface DedicatedCloud {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(repositoryId: number): {
                 /**
-                 * Get this object properties
+                 * Get backup repository
                  * GET /dedicatedCloud/{serviceName}/backupRepository/{repositoryId}
                  */
                 $get(): Promise<dedicatedCloud.BackupRepository>;
@@ -1763,9 +1967,20 @@ export interface DedicatedCloud {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
+        canDeployNsxtEdgesOnGlobalDatastores: {
+            /**
+             * Check if global datastore have enough free space to host NSX-T edges
+             * GET /dedicatedCloud/{serviceName}/canDeployNsxtEdgesOnGlobalDatastores
+             */
+            $get(params?: { count?: number, size?: dedicatedCloudnsxtNsxtEdgeSizeEnum }): Promise<boolean>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        }
         capabilities: {
             /**
-             * Get this object properties
+             * Get available features
              * GET /dedicatedCloud/{serviceName}/capabilities
              */
             $get(): Promise<dedicatedCloud.Capabilities>;
@@ -1776,7 +1991,7 @@ export interface DedicatedCloud {
         }
         changeProperties: {
             /**
-             * Update this Dedicated Cloud properties.
+             * Update VMware on OVHcloud
              * POST /dedicatedCloud/{serviceName}/changeProperties
              */
             $post(params?: { description?: string, sslV3?: boolean, userAccessPolicy?: dedicatedCloudUserAccessPolicyEnum, userLimitConcurrentSession?: number, userLogoutPolicy?: dedicatedCloudUserLogoutPolicyEnum, userSessionTimeout?: number }): Promise<dedicatedCloud.Task>;
@@ -1784,7 +1999,7 @@ export interface DedicatedCloud {
         commercialRange: {
             compliance: {
                 /**
-                 * Get the name of the commercial ranges compliant with your Dedicated Cloud
+                 * Get compliant commercial ranges
                  * GET /dedicatedCloud/{serviceName}/commercialRange/compliance
                  */
                 $get(): Promise<dedicatedCloud.compliantRanges[]>;
@@ -1795,7 +2010,7 @@ export interface DedicatedCloud {
             }
             orderable: {
                 /**
-                 * Get the name of the commercial ranges orderable for your Dedicated Cloud
+                 * Get orderable commercial ranges
                  * GET /dedicatedCloud/{serviceName}/commercialRange/orderable
                  */
                 $get(): Promise<string[]>;
@@ -1807,19 +2022,19 @@ export interface DedicatedCloud {
         }
         confirmTermination: {
             /**
-             * Confirm termination of your service
+             * Confirm service termination
              * POST /dedicatedCloud/{serviceName}/confirmTermination
              */
             $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
         }
         datacenter: {
             /**
-             * Datacenters associated with this Dedicated Cloud
+             * List virtual datacenters
              * GET /dedicatedCloud/{serviceName}/datacenter
              */
             $get(): Promise<number[]>;
             /**
-             * Add a new Datacenter in your Dedicated Cloud
+             * Create virtual datacenter
              * POST /dedicatedCloud/{serviceName}/datacenter
              */
             $post(params: { commercialRangeName: string, vrackName?: string }): Promise<dedicatedCloud.Task>;
@@ -1829,17 +2044,17 @@ export interface DedicatedCloud {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(datacenterId: number): {
                 /**
-                 * Remove this Datacenter from your Dedicated Cloud. (It has to be empty in order to be removable)
+                 * Remove virtual datacenter
                  * DELETE /dedicatedCloud/{serviceName}/datacenter/{datacenterId}
                  */
                 $delete(): Promise<dedicatedCloud.Task>;
                 /**
-                 * Get this object properties
+                 * Get virtual datacenter
                  * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}
                  */
                 $get(): Promise<dedicatedCloud.Datacenter>;
                 /**
-                 * Alter this object properties
+                 * Update virtual datacenter
                  * PUT /dedicatedCloud/{serviceName}/datacenter/{datacenterId}
                  */
                 $put(params?: { commercialName?: dedicatedCloudCommercialNameEnum, commercialRangeName?: string, datacenterId?: number, description?: string, horizonViewName?: string, isRemovable?: boolean, name?: string, version?: string }): Promise<dedicatedCloud.Task>;
@@ -1849,7 +2064,7 @@ export interface DedicatedCloud {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 backup: {
                     /**
-                     * Get this object properties
+                     * Get backup option
                      * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup
                      */
                     $get(): Promise<dedicatedCloud.Backup>;
@@ -1859,14 +2074,14 @@ export interface DedicatedCloud {
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     batchRestore: {
                         /**
-                         * Restores the last restore points for each backup located in the given backup repository to the given Datacenter
+                         * Restore from last point for each backup job
                          * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/batchRestore
                          */
                         $post(params: { backupJobName?: string, backupRepositoryName: string }): Promise<dedicatedCloud.Task>;
                     }
                     canOptimizeProxies: {
                         /**
-                         * Generates recommendation for Backup Proxies optimization
+                         * Generate recommendations for backup proxies optimization
                          * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/canOptimizeProxies
                          */
                         $get(): Promise<dedicatedCloud.backup.OptimizeProxies>;
@@ -1877,28 +2092,28 @@ export interface DedicatedCloud {
                     }
                     changeProperties: {
                         /**
-                         * Edit the backup on a Dedicated Cloud
+                         * Update backup option
                          * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/changeProperties
                          */
                         $post(params: { backupDurationInReport: boolean, backupOffer: dedicatedCloudbackupOfferTypeEnum, backupSizeInReport: boolean, diskSizeInReport: boolean, fullDayInReport: boolean, mailAddress?: string, restorePointInReport: boolean, scheduleHour?: string }): Promise<dedicatedCloud.Task>;
                     }
                     disable: {
                         /**
-                         * Disable backup solution on a Dedicated Cloud
+                         * Disable backup option
                          * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/disable
                          */
                         $post(): Promise<dedicatedCloud.Task>;
                     }
                     enable: {
                         /**
-                         * Enable backup solution on a Dedicated Cloud
+                         * Enable backup option
                          * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/enable
                          */
                         $post(params?: { backupOffer?: dedicatedCloudbackupOfferTypeEnum }): Promise<dedicatedCloud.Task>;
                     }
                     generateReport: {
                         /**
-                         * Generates an email report with all the backups, their last restore point, their size and their location
+                         * Generate email report with all backup information
                          * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/generateReport
                          */
                         $post(): Promise<dedicatedCloud.Task>;
@@ -1916,7 +2131,7 @@ export interface DedicatedCloud {
                     }
                     optimizeProxies: {
                         /**
-                         * Optimizes number of Backup Proxies required for given Datacenter
+                         * Optimize number of backup proxies
                          * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/optimizeProxies
                          */
                         $post(): Promise<dedicatedCloud.Task>;
@@ -1924,7 +2139,7 @@ export interface DedicatedCloud {
                 }
                 backupRepository: {
                     /**
-                     * Backup repositories associated with this Datacenter
+                     * List backup repositories in virtual datacenter
                      * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backupRepository
                      */
                     $get(): Promise<number[]>;
@@ -1934,7 +2149,7 @@ export interface DedicatedCloud {
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(repositoryId: number): {
                         /**
-                         * Get this object properties
+                         * Get backup repository
                          * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backupRepository/{repositoryId}
                          */
                         $get(): Promise<dedicatedCloud.BackupRepository>;
@@ -1946,14 +2161,14 @@ export interface DedicatedCloud {
                 }
                 checkBackupJobs: {
                     /**
-                     * Check whether your backup jobs are correctly set in your current datacenter, use this when your virtual machines have been migrated through another datacenter
+                     * Check if backup jobs are correctly set in virtual datacenter (when vms have been moved to another virtual datacenter)
                      * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/checkBackupJobs
                      */
                     $post(): Promise<dedicatedCloud.Task>;
                 }
                 cluster: {
                     /**
-                     * Clusters associated with this Datacenter
+                     * List clusters within virtual datacenter
                      * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/cluster
                      */
                     $get(): Promise<number[]>;
@@ -1963,7 +2178,7 @@ export interface DedicatedCloud {
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(clusterId: number): {
                         /**
-                         * Get this object properties
+                         * Get cluster
                          * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/cluster/{clusterId}
                          */
                         $get(): Promise<dedicatedCloud.Cluster>;
@@ -1971,41 +2186,86 @@ export interface DedicatedCloud {
                          * Controle cache
                          */
                         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        nsxt: {
+                            /**
+                             * Unconfigure NSX-T on cluster
+                             * DELETE /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/cluster/{clusterId}/nsxt
+                             */
+                            $delete(): Promise<dedicatedCloud.Task>;
+                            /**
+                             * Configure NSX-T on cluster
+                             * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/cluster/{clusterId}/nsxt
+                             */
+                            $post(): Promise<dedicatedCloud.Task>;
+                            /**
+                             * Update NSX-T configuration on cluster
+                             * PUT /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/cluster/{clusterId}/nsxt
+                             */
+                            $put(): Promise<dedicatedCloud.Task>;
+                        }
                     };
                 }
                 disasterRecovery: {
                     zerto: {
                         disable: {
                             /**
-                             * Disable Zerto
+                             * Disable Zerto disaster recovery between two VMware on OVHcloud infrastructures
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/disable
                              */
                             $post(params: { secondaryDatacenterId: number, secondaryServiceName: string }): Promise<dedicatedCloud.Task>;
                         }
                         enable: {
                             /**
-                             * Enable Zerto replication between 2 OVH dedicated Clouds
+                             * Enable Zerto disaster recovery between two VMware on OVHcloud infrastructures
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/enable
                              */
                             $post(params: { primaryEndpointIp: string, secondaryDatacenterId: number, secondaryEndpointIp: string, secondaryServiceName: string }): Promise<dedicatedCloud.Task>;
                         }
                         endMigration: {
                             /**
-                             * Finish migrating Zerto option to this datacenter
+                             * Unlink migration source virtual datacenter from Zerto disaster recovery
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/endMigration
                              */
                             $post(): Promise<dedicatedCloud.Task>;
                         }
+                        endpointPublicIp: {
+                            /**
+                             * Change the IP address used by Zerto disaster recovery endpoint for public network access
+                             * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/endpointPublicIp
+                             */
+                            $post(params: { newEndpointPublicIp: string }): Promise<dedicatedCloud.Task>;
+                        }
+                        remoteSites: {
+                            /**
+                             * Remove Zerto disaster recovery remote site
+                             * DELETE /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/remoteSites
+                             */
+                            $delete(params: { id: number }): Promise<dedicatedCloud.Task>;
+                            /**
+                             * List Zerto disaster recovery remote sites
+                             * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/remoteSites
+                             */
+                            $get(): Promise<dedicatedCloud.disasterRecovery.ZertoRemoteVra[]>;
+                            /**
+                             * Create Zerto disaster recovery remote site on VPN endpoint
+                             * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/remoteSites
+                             */
+                            $post(params: { label: string, preSharedKey: string, remoteEndpointInternalIp: string, remoteEndpointPublicIp: string, remoteVraNetwork: string, remoteZvmInternalIp: string }): Promise<dedicatedCloud.Task>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
                         startMigration: {
                             /**
-                             * Start migrating Zerto option to this datacenter
+                             * Link migration target virtual datacenter to Zerto disaster recovery
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/startMigration
                              */
                             $post(): Promise<dedicatedCloud.Task>;
                         }
                         status: {
                             /**
-                             * Get the current state of Zerto deployment on your dedicated Cloud.
+                             * Get Zerto disaster recovery option status
                              * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/status
                              */
                             $get(): Promise<dedicatedCloud.disasterRecovery.Profile>;
@@ -2016,7 +2276,7 @@ export interface DedicatedCloud {
                         }
                         usageReport: {
                             /**
-                             * Get the list of VMs protected by Zerto for a specific month on your dedicated Cloud.
+                             * List Zerto disaster recovery protected virtual machines
                              * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/usageReport
                              */
                             $get(params: { month: number, year: number }): Promise<dedicatedCloud.disasterRecovery.ZertoProtectedVm[]>;
@@ -2029,14 +2289,14 @@ export interface DedicatedCloud {
                     zertoSingle: {
                         configureVpn: {
                             /**
-                             * Configure vpn between your OVH Dedicated Cloud and your onsite infrastructure
+                             * Configure VPN for Zerto disaster recovery between VMware on OVHcloud infrastructure and onsite infrastructure
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/configureVpn
                              */
                             $post(params: { preSharedKey: string, remoteEndpointInternalIp: string, remoteEndpointPublicIp: string, remoteVraNetwork?: string, remoteZvmInternalIp: string }): Promise<dedicatedCloud.Task>;
                         }
                         defaultLocalVraNetwork: {
                             /**
-                             * Get the default localVraNetwork subnet suggested by OVH
+                             * Get Zerto disaster recovery default suggested local VRA subnet
                              * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/defaultLocalVraNetwork
                              */
                             $get(): Promise<string>;
@@ -2047,21 +2307,49 @@ export interface DedicatedCloud {
                         }
                         disable: {
                             /**
-                             * Disable Single site Zerto
+                             * Disable Zerto disaster recovery between VMware on OVHcloud infrastructure and onsite infrastructure
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/disable
                              */
                             $post(): Promise<dedicatedCloud.Task>;
                         }
                         enable: {
                             /**
-                             * Enable Zerto replication between your OVH Dedicated Cloud and your onsite infrastructure
+                             * Enable Zerto disaster recovery between VMware on OVHcloud infrastructure and onsite infrastructure
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/enable
                              */
                             $post(params: { localVraNetwork: string, ovhEndpointIp: string, remoteVraNetwork: string }): Promise<dedicatedCloud.Task>;
                         }
+                        endpointPublicIp: {
+                            /**
+                             * Change the IP address used by Zerto disaster recovery endpoint for public network access
+                             * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/endpointPublicIp
+                             */
+                            $post(params: { newEndpointPublicIp: string }): Promise<dedicatedCloud.Task>;
+                        }
+                        remoteSites: {
+                            /**
+                             * Remove Zerto disaster recovery remote site
+                             * DELETE /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/remoteSites
+                             */
+                            $delete(params: { id: number }): Promise<dedicatedCloud.Task>;
+                            /**
+                             * List Zerto disaster recovery remote sites
+                             * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/remoteSites
+                             */
+                            $get(): Promise<dedicatedCloud.disasterRecovery.ZertoRemoteVra[]>;
+                            /**
+                             * Create Zerto disaster recovery remote site on VPN endpoint
+                             * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/remoteSites
+                             */
+                            $post(params: { label: string, preSharedKey: string, remoteEndpointInternalIp: string, remoteEndpointPublicIp: string, remoteVraNetwork: string, remoteZvmInternalIp: string }): Promise<dedicatedCloud.Task>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
                         requestPairingToken: {
                             /**
-                             * Request a pairing token in order to link your OVHcloud Zerto Virtual Manager to your local one
+                             * Request Zerto disaster recovery pairing token for onsite infrastructure
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/requestPairingToken
                              */
                             $post(): Promise<dedicatedCloud.Task>;
@@ -2070,7 +2358,7 @@ export interface DedicatedCloud {
                 }
                 filer: {
                     /**
-                     * Filers associated with this Datacenter
+                     * List datastores in virtual datacenter
                      * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer
                      */
                     $get(): Promise<number[]>;
@@ -2080,7 +2368,7 @@ export interface DedicatedCloud {
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(filerId: number): {
                         /**
-                         * Get this object properties
+                         * Get datastore
                          * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}
                          */
                         $get(): Promise<dedicatedCloud.Filer>;
@@ -2090,7 +2378,7 @@ export interface DedicatedCloud {
                         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         checkGlobalCompatible: {
                             /**
-                             * Check if filer on your Dedicated Cloud is capable of converting to global
+                             * Check ability to convert datastore to global datastore
                              * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/checkGlobalCompatible
                              */
                             $get(): Promise<boolean>;
@@ -2101,14 +2389,14 @@ export interface DedicatedCloud {
                         }
                         convertToGlobal: {
                             /**
-                             * Change the filer type to global on your Dedicated Cloud.
+                             * Convert datastore to global datastore
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/convertToGlobal
                              */
                             $post(): Promise<dedicatedCloud.Task>;
                         }
                         hourlyConsumption: {
                             /**
-                             * Hourly consumption associated with this Filer
+                             * Get datastore hourly consumption
                              * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/hourlyConsumption
                              */
                             $get(): Promise<dedicatedCloud.filer.HourlyConsumption>;
@@ -2119,7 +2407,7 @@ export interface DedicatedCloud {
                         }
                         location: {
                             /**
-                             * Location of the Filer
+                             * Get datastore location
                              * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/location
                              */
                             $get(params?: { node?: dedicatedCloudfilerNodeTypeEnum }): Promise<dedicatedCloud.filer.Location>;
@@ -2130,14 +2418,14 @@ export interface DedicatedCloud {
                         }
                         remove: {
                             /**
-                             * Remove the filer from your Dedicated Cloud.
+                             * Remove datastore
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/remove
                              */
                             $post(): Promise<dedicatedCloud.Task>;
                         }
                         task: {
                             /**
-                             * Tasks associated with this Filer
+                             * List operations associated to datastore
                              * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task
                              */
                             $get(params?: { name?: string, state?: dedicatedCloudTaskStateEnum }): Promise<number[]>;
@@ -2147,7 +2435,7 @@ export interface DedicatedCloud {
                             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             $(taskId: number): {
                                 /**
-                                 * Get this object properties
+                                 * Get operation
                                  * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task/{taskId}
                                  */
                                 $get(): Promise<dedicatedCloud.Task>;
@@ -2157,14 +2445,14 @@ export interface DedicatedCloud {
                                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                 changeMaintenanceExecutionDate: {
                                     /**
-                                     * Change the execution date of a maintenance. Works only if task type is maintenance and if it has not started yet.
+                                     * Change the execution date of a maintenance operation
                                      * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task/{taskId}/changeMaintenanceExecutionDate
                                      */
                                     $post(params: { executionDate: string }): Promise<dedicatedCloud.Task>;
                                 }
                                 resetTaskState: {
                                     /**
-                                     * Restart task in error.
+                                     * Relaunch operation currently in error state
                                      * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task/{taskId}/resetTaskState
                                      */
                                     $post(params: { reason: string }): Promise<dedicatedCloud.Task>;
@@ -2175,7 +2463,7 @@ export interface DedicatedCloud {
                 }
                 host: {
                     /**
-                     * Hosts associated with this Datacenter
+                     * List hosts in virtual datacenter
                      * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host
                      */
                     $get(): Promise<number[]>;
@@ -2185,7 +2473,7 @@ export interface DedicatedCloud {
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(hostId: number): {
                         /**
-                         * Get this object properties
+                         * Get host
                          * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}
                          */
                         $get(): Promise<dedicatedCloud.Host>;
@@ -2195,14 +2483,14 @@ export interface DedicatedCloud {
                         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         addHostSpare: {
                             /**
-                             * Add a spare host to your Dedicated Cloud.
+                             * Request host replacement
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/addHostSpare
                              */
                             $post(params: { reason: string }): Promise<dedicatedCloud.Task>;
                         }
                         hourlyConsumption: {
                             /**
-                             * Hourly consumption associated with this host.
+                             * Get host hourly consumption
                              * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/hourlyConsumption
                              */
                             $get(): Promise<dedicatedCloud.host.HourlyConsumption>;
@@ -2213,7 +2501,7 @@ export interface DedicatedCloud {
                         }
                         location: {
                             /**
-                             * Location of the host
+                             * Get host location
                              * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/location
                              */
                             $get(): Promise<dedicatedCloud.host.Location>;
@@ -2224,14 +2512,14 @@ export interface DedicatedCloud {
                         }
                         remove: {
                             /**
-                             * Remove the host from your Dedicated Cloud.
+                             * Remove host
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/remove
                              */
                             $post(): Promise<dedicatedCloud.Task>;
                         }
                         resilience: {
                             /**
-                             * Get this object properties
+                             * Get host resilience test status
                              * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/resilience
                              */
                             $get(): Promise<dedicatedCloud.HostResilience>;
@@ -2252,14 +2540,14 @@ export interface DedicatedCloud {
                             }
                             disable: {
                                 /**
-                                 * Disable resilience test (reconnect the network of your host)
+                                 * Stop resilience test
                                  * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/resilience/disable
                                  */
                                 $post(): Promise<dedicatedCloud.Task>;
                             }
                             enable: {
                                 /**
-                                 * Enable resilience test (disconnnect the network of your host)
+                                 * Start resilience test (will cut host network access)
                                  * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/resilience/enable
                                  */
                                 $post(params?: { duration?: number }): Promise<dedicatedCloud.Task>;
@@ -2267,7 +2555,7 @@ export interface DedicatedCloud {
                         }
                         task: {
                             /**
-                             * Tasks associated with this Host
+                             * List operations associated to host
                              * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task
                              */
                             $get(params?: { name?: string, state?: dedicatedCloudTaskStateEnum }): Promise<number[]>;
@@ -2277,7 +2565,7 @@ export interface DedicatedCloud {
                             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             $(taskId: number): {
                                 /**
-                                 * Get this object properties
+                                 * Get operation
                                  * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task/{taskId}
                                  */
                                 $get(): Promise<dedicatedCloud.Task>;
@@ -2287,14 +2575,14 @@ export interface DedicatedCloud {
                                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                 changeMaintenanceExecutionDate: {
                                     /**
-                                     * Change the execution date of a maintenance. Works only if task type is maintenance and if it has not started yet.
+                                     * Change the execution date of a maintenance operation
                                      * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task/{taskId}/changeMaintenanceExecutionDate
                                      */
                                     $post(params: { executionDate: string }): Promise<dedicatedCloud.Task>;
                                 }
                                 resetTaskState: {
                                     /**
-                                     * Restart task in error.
+                                     * Relaunch operation currently in error state
                                      * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task/{taskId}/resetTaskState
                                      */
                                     $post(params: { reason: string }): Promise<dedicatedCloud.Task>;
@@ -2303,23 +2591,120 @@ export interface DedicatedCloud {
                         }
                     };
                 }
+                nsxtEdge: {
+                    /**
+                     * List NSX Edges within virtual datacenter
+                     * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/nsxtEdge
+                     */
+                    $get(): Promise<number[]>;
+                    /**
+                     * Add a NSX-T Edge in the virtual datacenter
+                     * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/nsxtEdge
+                     */
+                    $post(): Promise<dedicatedCloud.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $(nsxtEdgeId: number): {
+                        /**
+                         * Remove NSX-T Edge from the virtual datacenter
+                         * DELETE /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/nsxtEdge/{nsxtEdgeId}
+                         */
+                        $delete(): Promise<dedicatedCloud.Task>;
+                        /**
+                         * Get NSX-T Edge details
+                         * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/nsxtEdge/{nsxtEdgeId}
+                         */
+                        $get(): Promise<dedicatedCloud.NsxtEdge>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        relocateEdge: {
+                            /**
+                             * Relocate NSX Edge disks
+                             * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/nsxtEdge/{nsxtEdgeId}/relocateEdge
+                             */
+                            $post(params: { datastore: string }): Promise<dedicatedCloud.Task>;
+                        }
+                        resilience: {
+                            /**
+                             * Get NSX Edge resilience test status
+                             * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/nsxtEdge/{nsxtEdgeId}/resilience
+                             */
+                            $get(): Promise<dedicatedCloud.NsxtEdgeResilience>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            canBeEnabled: {
+                                /**
+                                 * Check if resilience test can be performed
+                                 * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/nsxtEdge/{nsxtEdgeId}/resilience/canBeEnabled
+                                 */
+                                $get(): Promise<boolean>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            }
+                            disable: {
+                                /**
+                                 * Stop resilience test
+                                 * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/nsxtEdge/{nsxtEdgeId}/resilience/disable
+                                 */
+                                $post(): Promise<dedicatedCloud.Task>;
+                            }
+                            enable: {
+                                /**
+                                 * Start resilience test (will put NSX Edge in maintenance mode)
+                                 * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/nsxtEdge/{nsxtEdgeId}/resilience/enable
+                                 */
+                                $post(params?: { duration?: number }): Promise<dedicatedCloud.Task>;
+                            }
+                        }
+                    };
+                }
+                nsxtEdgesResizingCapabilities: {
+                    /**
+                     * Resizing Capabilities of NSX-T edges cluster on specified datacenter
+                     * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/nsxtEdgesResizingCapabilities
+                     */
+                    $get(): Promise<dedicatedCloud.nsxt.NsxtEdgeSizingCapability>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+                nsxtEdgesScalingCapabilities: {
+                    /**
+                     * Scaling Capabilities of NSX-T edges cluster on specified datacenter
+                     * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/nsxtEdgesScalingCapabilities
+                     */
+                    $get(): Promise<dedicatedCloud.nsxt.NsxtEdgeScalingCapability>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
                 orderNewFilerHourly: {
                     /**
-                     * Order a new hourly Filer in a given Datacenter
+                     * Order hourly datastore
                      * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderNewFilerHourly
                      */
                     $post(params: { name: string }): Promise<dedicatedCloud.Task>;
                 }
                 orderNewHostHourly: {
                     /**
-                     * Order a new hourly Host in a given Datacenter
+                     * Order hourly host
                      * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderNewHostHourly
                      */
                     $post(params: { name: string, vmwareClusterId?: string }): Promise<dedicatedCloud.Task>;
                 }
                 orderableFilerProfiles: {
                     /**
-                     * List available filers in a given Dedicated Cloud Datacenter
+                     * List available datastore profiles
                      * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableFilerProfiles
                      */
                     $get(): Promise<dedicatedCloud.filer.Profile[]>;
@@ -2330,7 +2715,7 @@ export interface DedicatedCloud {
                 }
                 orderableHostProfiles: {
                     /**
-                     * List available hosts in a given Dedicated Cloud Datacenter
+                     * List available host profiles
                      * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableHostProfiles
                      */
                     $get(): Promise<dedicatedCloud.host.Profile[]>;
@@ -2341,7 +2726,7 @@ export interface DedicatedCloud {
                 }
                 privateGateway: {
                     /**
-                     * Get this object properties
+                     * Get private management gateway
                      * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/privateGateway
                      */
                     $get(): Promise<dedicatedCloud.PrivateGateway>;
@@ -2351,22 +2736,36 @@ export interface DedicatedCloud {
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     disable: {
                         /**
-                         * Remove the private gateway in your Dedicated Cloud and open public access.
+                         * Remove the private management gateway
                          * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/privateGateway/disable
                          */
                         $post(): Promise<dedicatedCloud.Task>;
                     }
                     enable: {
                         /**
-                         * Deploy a private gateway on your Dedicated Cloud to block all public access
+                         * Deploy private management gateway
                          * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/privateGateway/enable
                          */
                         $post(params: { ip: string, netmask: string, portgroup: string }): Promise<dedicatedCloud.Task>;
                     }
+                    reconfigure: {
+                        /**
+                         * Reconfigure private management gateway
+                         * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/privateGateway/reconfigure
+                         */
+                        $post(params?: { ip?: string, netmask?: string, newDatacenterId?: number, portgroup?: string }): Promise<dedicatedCloud.Task>;
+                    }
+                }
+                resizeNsxtEdgeCluster: {
+                    /**
+                     * Resize NSX-T edges on specified datacenter
+                     * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/resizeNsxtEdgeCluster
+                     */
+                    $post(params: { size: dedicatedCloudnsxtNsxtEdgeSizeEnum }): Promise<dedicatedCloud.Task>;
                 }
                 task: {
                     /**
-                     * Tasks associated with this Datacenter
+                     * List operations associated to virtual datacenter
                      * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task
                      */
                     $get(params?: { name?: string, state?: dedicatedCloudTaskStateEnum }): Promise<number[]>;
@@ -2376,7 +2775,7 @@ export interface DedicatedCloud {
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(taskId: number): {
                         /**
-                         * Get this object properties
+                         * Get operation
                          * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task/{taskId}
                          */
                         $get(): Promise<dedicatedCloud.Task>;
@@ -2386,14 +2785,14 @@ export interface DedicatedCloud {
                         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         changeMaintenanceExecutionDate: {
                             /**
-                             * Change the execution date of a maintenance. Works only if task type is maintenance and if it has not started yet.
+                             * Change the execution date of a maintenance operation
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task/{taskId}/changeMaintenanceExecutionDate
                              */
                             $post(params: { executionDate: string }): Promise<dedicatedCloud.Task>;
                         }
                         resetTaskState: {
                             /**
-                             * Restart task in error.
+                             * Relaunch operation currently in error state
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task/{taskId}/resetTaskState
                              */
                             $post(params: { reason: string }): Promise<dedicatedCloud.Task>;
@@ -2402,7 +2801,7 @@ export interface DedicatedCloud {
                 }
                 vm: {
                     /**
-                     * Virtual machiness associated with this Datacenter
+                     * List virtual machines within virtual datacenter
                      * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm
                      */
                     $get(): Promise<number[]>;
@@ -2412,7 +2811,7 @@ export interface DedicatedCloud {
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(vmId: number): {
                         /**
-                         * Get this object properties
+                         * Get virtual machines
                          * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}
                          */
                         $get(): Promise<dedicatedCloud.Vm>;
@@ -2422,12 +2821,12 @@ export interface DedicatedCloud {
                         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         backupJob: {
                             /**
-                             * Get this object properties
+                             * Get virtual machine backup job
                              * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob
                              */
                             $get(): Promise<dedicatedCloud.BackupJob>;
                             /**
-                             * Edit a backup job
+                             * Update backup job
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob
                              */
                             $post(params: { backupDays: dedicatedCloudbackupBackupDaysEnum[] }): Promise<dedicatedCloud.Task>;
@@ -2437,21 +2836,21 @@ export interface DedicatedCloud {
                             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             disable: {
                                 /**
-                                 * Disable backup solution on this virtual Machine
+                                 * Disable backup job
                                  * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/disable
                                  */
                                 $post(): Promise<dedicatedCloud.Task>;
                             }
                             enable: {
                                 /**
-                                 * Enable backup solution on this virtual Machine
+                                 * Enable backup job
                                  * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/enable
                                  */
                                 $post(params: { backupDays: dedicatedCloudbackupBackupDaysEnum[] }): Promise<dedicatedCloud.Task>;
                             }
                             restorePoints: {
                                 /**
-                                 * Restore point associated to this Backup Job
+                                 * List restore points
                                  * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/restorePoints
                                  */
                                 $get(): Promise<number[]>;
@@ -2461,7 +2860,7 @@ export interface DedicatedCloud {
                                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                 $(restorePointId: number): {
                                     /**
-                                     * Get this object properties
+                                     * Get restore point
                                      * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/restorePoints/{restorePointId}
                                      */
                                     $get(): Promise<dedicatedCloud.RestorePoint>;
@@ -2471,7 +2870,7 @@ export interface DedicatedCloud {
                                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                     restore: {
                                         /**
-                                         * Restore this restore point
+                                         * Restore from point
                                          * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/restorePoints/{restorePointId}/restore
                                          */
                                         $post(params: { filerId: number }): Promise<dedicatedCloud.Task>;
@@ -2481,53 +2880,78 @@ export interface DedicatedCloud {
                         }
                         disableBackup: {
                             /**
-                             * Disable backup on this virtual Machine
+                             * Deactivate backup on virtual machine
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/disableBackup
                              */
                             $post(): Promise<dedicatedCloud.Task>;
                         }
                         disableCarp: {
                             /**
-                             * Disable Carp on Virtual Machine
+                             * Disable CARP on virtual machine
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/disableCarp
                              */
                             $post(params: { macAddress: string }): Promise<dedicatedCloud.Task>;
                         }
                         editBackup: {
                             /**
-                             * Edit backup on this virtual Machine
+                             * Update backup configuration
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/editBackup
                              */
                             $post(params: { backupDays: dedicatedCloudbackupBackupDaysEnum[] }): Promise<dedicatedCloud.Task>;
                         }
                         enableBackup: {
                             /**
-                             * Enable backup on this virtual Machine
+                             * Activate backup on virtual machine
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/enableBackup
                              */
                             $post(params: { backupDays: dedicatedCloudbackupBackupDaysEnum[] }): Promise<dedicatedCloud.Task>;
                         }
                         enableCarp: {
                             /**
-                             * Enable Carp on Virtual Machine
+                             * Enable CARP on virtual machine
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/enableCarp
                              */
                             $post(params: { macAddress: string }): Promise<dedicatedCloud.Task>;
                         }
+                        removeLicense: {
+                            /**
+                             * Remove a managed license from virtual machine
+                             * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/removeLicense
+                             */
+                            $post(): Promise<dedicatedCloud.Task>;
+                        }
                         restoreBackup: {
                             /**
-                             * Restore this restore point
+                             * Restore backup
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/restoreBackup
                              */
                             $post(params: { filerId: number, filerType?: dedicatedCloud.filer.FilerTypeEnum, restorePointId: number }): Promise<dedicatedCloud.Task>;
                         }
+                        setLicense: {
+                            /**
+                             * Set a managed license on virtual machine
+                             * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/setLicense
+                             */
+                            $post(params: { bypassGuestOsFamilyCheck: boolean, kmsLicense: dedicatedCloud.spla.KmsLicenseEnum }): Promise<dedicatedCloud.Task>;
+                        }
                     };
+                }
+                vmLicensed: {
+                    /**
+                     * Get virtual machines with managed license
+                     * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vmLicensed
+                     */
+                    $get(params?: { kmsLicense?: dedicatedCloudsplaKmsLicenseIncludingLegacyEnum }): Promise<dedicatedCloud.virtualMachineLicensingSummary[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
         federation: {
             /**
-             * Get this object properties
+             * Get Active Directory federation option
              * GET /dedicatedCloud/{serviceName}/federation
              */
             $get(): Promise<dedicatedCloud.Federation>;
@@ -2537,12 +2961,12 @@ export interface DedicatedCloud {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             activeDirectory: {
                 /**
-                 * Active Directories linked to this Dedicated Cloud
+                 * List federated Active Directories
                  * GET /dedicatedCloud/{serviceName}/federation/activeDirectory
                  */
                 $get(): Promise<number[]>;
                 /**
-                 * Add a new option user access
+                 * Create federated Active Directory
                  * POST /dedicatedCloud/{serviceName}/federation/activeDirectory
                  */
                 $post(params: { baseDnForGroups: string, baseDnForUsers: string, description?: string, domainAlias: string, domainName: string, ip: string, ldapHostname?: string, ldapTcpPort?: number, noSsl?: boolean, password: string, sslThumbprint?: string, username: string }): Promise<dedicatedCloud.Task>;
@@ -2552,12 +2976,12 @@ export interface DedicatedCloud {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(activeDirectoryId: number): {
                     /**
-                     * Remove an option user access
+                     * Remove federated Active Directory
                      * DELETE /dedicatedCloud/{serviceName}/federation/activeDirectory/{activeDirectoryId}
                      */
                     $delete(): Promise<dedicatedCloud.Task>;
                     /**
-                     * Get this object properties
+                     * Get federated Active Directory
                      * GET /dedicatedCloud/{serviceName}/federation/activeDirectory/{activeDirectoryId}
                      */
                     $get(): Promise<dedicatedCloud.FederationAccessNetwork>;
@@ -2567,7 +2991,7 @@ export interface DedicatedCloud {
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     changeProperties: {
                         /**
-                         * Change Active Directory properties
+                         * Update federated Active Directory
                          * POST /dedicatedCloud/{serviceName}/federation/activeDirectory/{activeDirectoryId}/changeProperties
                          */
                         $post(params: { description?: string, password: string, sslThumbprint?: string, username: string }): Promise<dedicatedCloud.Task>;
@@ -2591,7 +3015,7 @@ export interface DedicatedCloud {
         }
         filer: {
             /**
-             * Filers mounted on all Datacenters of your Dedicated Cloud Vsphere
+             * List global datastores mounted on all virtual datacenters
              * GET /dedicatedCloud/{serviceName}/filer
              */
             $get(): Promise<number[]>;
@@ -2601,7 +3025,7 @@ export interface DedicatedCloud {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(filerId: number): {
                 /**
-                 * Get this object properties
+                 * Get datastore
                  * GET /dedicatedCloud/{serviceName}/filer/{filerId}
                  */
                 $get(): Promise<dedicatedCloud.Filer>;
@@ -2611,7 +3035,7 @@ export interface DedicatedCloud {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 checkGlobalCompatible: {
                     /**
-                     * Check if filer on your Dedicated Cloud is capable of converting to global
+                     * Check ability to convert datastore to global datastore
                      * GET /dedicatedCloud/{serviceName}/filer/{filerId}/checkGlobalCompatible
                      */
                     $get(): Promise<boolean>;
@@ -2622,14 +3046,14 @@ export interface DedicatedCloud {
                 }
                 convertToGlobal: {
                     /**
-                     * Change the filer type to global on your Dedicated Cloud.
+                     * Convert datastore to global datastore
                      * POST /dedicatedCloud/{serviceName}/filer/{filerId}/convertToGlobal
                      */
                     $post(): Promise<dedicatedCloud.Task>;
                 }
                 hourlyConsumption: {
                     /**
-                     * Hourly consumption associated with this Filer
+                     * Get datastore hourly consumption
                      * GET /dedicatedCloud/{serviceName}/filer/{filerId}/hourlyConsumption
                      */
                     $get(): Promise<dedicatedCloud.filer.HourlyConsumption>;
@@ -2640,7 +3064,7 @@ export interface DedicatedCloud {
                 }
                 location: {
                     /**
-                     * Location of the Filer
+                     * Get datastore location
                      * GET /dedicatedCloud/{serviceName}/filer/{filerId}/location
                      */
                     $get(params?: { node?: dedicatedCloudfilerNodeTypeEnum }): Promise<dedicatedCloud.filer.Location>;
@@ -2651,14 +3075,14 @@ export interface DedicatedCloud {
                 }
                 remove: {
                     /**
-                     * Remove the filer from your Dedicated Cloud.
+                     * Remove datastore
                      * POST /dedicatedCloud/{serviceName}/filer/{filerId}/remove
                      */
                     $post(): Promise<dedicatedCloud.Task>;
                 }
                 task: {
                     /**
-                     * Tasks associated with this Filer
+                     * List operations associated to datastore
                      * GET /dedicatedCloud/{serviceName}/filer/{filerId}/task
                      */
                     $get(params?: { name?: string, state?: dedicatedCloudTaskStateEnum }): Promise<number[]>;
@@ -2668,7 +3092,7 @@ export interface DedicatedCloud {
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(taskId: number): {
                         /**
-                         * Get this object properties
+                         * Get operation
                          * GET /dedicatedCloud/{serviceName}/filer/{filerId}/task/{taskId}
                          */
                         $get(): Promise<dedicatedCloud.Task>;
@@ -2678,14 +3102,14 @@ export interface DedicatedCloud {
                         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         changeMaintenanceExecutionDate: {
                             /**
-                             * Change the execution date of a maintenance. Works only if task type is maintenance and if it has not started yet.
+                             * Change the execution date of a maintenance operation
                              * POST /dedicatedCloud/{serviceName}/filer/{filerId}/task/{taskId}/changeMaintenanceExecutionDate
                              */
                             $post(params: { executionDate: string }): Promise<dedicatedCloud.Task>;
                         }
                         resetTaskState: {
                             /**
-                             * Restart task in error.
+                             * Relaunch operation currently in error state
                              * POST /dedicatedCloud/{serviceName}/filer/{filerId}/task/{taskId}/resetTaskState
                              */
                             $post(params: { reason: string }): Promise<dedicatedCloud.Task>;
@@ -2694,16 +3118,23 @@ export interface DedicatedCloud {
                 }
             };
         }
+        generateNsxvInventory: {
+            /**
+             * Generate a NSX-V inventory
+             * POST /dedicatedCloud/{serviceName}/generateNsxvInventory
+             */
+            $post(): Promise<dedicatedCloud.Task>;
+        }
         generateVxlanToVrackMapping: {
             /**
-             * Generates a Vxlan to Vrack mapping for NSX-V
+             * Generate a NSX-V VXLAN to vRack mapping
              * POST /dedicatedCloud/{serviceName}/generateVxlanToVrackMapping
              */
             $post(): Promise<dedicatedCloud.Task>;
         }
         globalTasks: {
             /**
-             * Get filtered tasks associated with this Dedicated Cloud
+             * List filtered operations
              * GET /dedicatedCloud/{serviceName}/globalTasks
              */
             $get(params?: { datacenterId?: number, 'endDate.from'?: string, 'endDate.to'?: string, 'executionDate.from'?: string, 'executionDate.to'?: string, filerId?: number, hostId?: number, 'lastModificationDate.from'?: string, 'lastModificationDate.to'?: string, name?: string, networkAccessId?: number, orderId?: number, parentTaskId?: number, state?: dedicatedCloudTaskStateEnum[], userId?: number, vlanId?: number }): Promise<number[]>;
@@ -2714,7 +3145,7 @@ export interface DedicatedCloud {
         }
         hcx: {
             /**
-             * Get this object properties
+             * Get VMware Hybrid Cloud Extension option
              * GET /dedicatedCloud/{serviceName}/hcx
              */
             $get(): Promise<dedicatedCloud.Hcx>;
@@ -2761,7 +3192,7 @@ export interface DedicatedCloud {
         }
         hds: {
             /**
-             * Get this object properties
+             * Get HDS certification option
              * GET /dedicatedCloud/{serviceName}/hds
              */
             $get(): Promise<dedicatedCloud.Hds>;
@@ -2771,7 +3202,7 @@ export interface DedicatedCloud {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             canBeDisabled: {
                 /**
-                 * Check if Hds option can be disabled
+                 * Check if HDS certification option can be disabled
                  * GET /dedicatedCloud/{serviceName}/hds/canBeDisabled
                  */
                 $get(): Promise<dedicatedCloud.optionCompatibility>;
@@ -2782,7 +3213,7 @@ export interface DedicatedCloud {
             }
             canBeEnabled: {
                 /**
-                 * Check if Hds option can be enabled
+                 * Check if HDS certification option can be enabled
                  * GET /dedicatedCloud/{serviceName}/hds/canBeEnabled
                  */
                 $get(): Promise<dedicatedCloud.optionCompatibility>;
@@ -2793,14 +3224,14 @@ export interface DedicatedCloud {
             }
             disable: {
                 /**
-                 * Disable Hds option
+                 * Disable HDS certification option
                  * POST /dedicatedCloud/{serviceName}/hds/disable
                  */
                 $post(): Promise<dedicatedCloud.Task>;
             }
             enable: {
                 /**
-                 * Enable Hds option
+                 * Enable HDS certification option
                  * POST /dedicatedCloud/{serviceName}/hds/enable
                  */
                 $post(): Promise<dedicatedCloud.Task>;
@@ -2808,7 +3239,7 @@ export interface DedicatedCloud {
         }
         hipaa: {
             /**
-             * Get this object properties
+             * Get HIPAA certification option
              * GET /dedicatedCloud/{serviceName}/hipaa
              */
             $get(): Promise<dedicatedCloud.Hipaa>;
@@ -2818,7 +3249,7 @@ export interface DedicatedCloud {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             canBeDisabled: {
                 /**
-                 * Check if Hipaa option can be disabled
+                 * Check if HIPAA certification option can be disabled
                  * GET /dedicatedCloud/{serviceName}/hipaa/canBeDisabled
                  */
                 $get(): Promise<dedicatedCloud.optionCompatibility>;
@@ -2829,7 +3260,7 @@ export interface DedicatedCloud {
             }
             canBeEnabled: {
                 /**
-                 * Check if Hipaa option can be enabled
+                 * Check if HIPAA certification option can be enabled
                  * GET /dedicatedCloud/{serviceName}/hipaa/canBeEnabled
                  */
                 $get(): Promise<dedicatedCloud.optionCompatibility>;
@@ -2840,22 +3271,76 @@ export interface DedicatedCloud {
             }
             disable: {
                 /**
-                 * Disable Hipaa option
+                 * Disable HIPAA certification option
                  * POST /dedicatedCloud/{serviceName}/hipaa/disable
                  */
                 $post(): Promise<dedicatedCloud.Task>;
             }
             enable: {
                 /**
-                 * Enable Hipaa option
+                 * Enable HIPAA certification option
                  * POST /dedicatedCloud/{serviceName}/hipaa/enable
+                 */
+                $post(): Promise<dedicatedCloud.Task>;
+            }
+        }
+        iam: {
+            /**
+             * Get OVHcloud IAM option
+             * GET /dedicatedCloud/{serviceName}/iam
+             */
+            $get(): Promise<dedicatedCloud.Iam>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            addRole: {
+                /**
+                 * Create IAM role
+                 * POST /dedicatedCloud/{serviceName}/iam/addRole
+                 */
+                $post(params: { name: string }): Promise<dedicatedCloud.Task>;
+            }
+            canBeDisabled: {
+                /**
+                 * Check if OVHcloud IAM option can be disabled
+                 * GET /dedicatedCloud/{serviceName}/iam/canBeDisabled
+                 */
+                $get(): Promise<boolean>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            canBeEnabled: {
+                /**
+                 * Check if OVHcloud IAM option can be enabled
+                 * GET /dedicatedCloud/{serviceName}/iam/canBeEnabled
+                 */
+                $get(): Promise<boolean>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            disable: {
+                /**
+                 * Disable OVHcloud IAM option
+                 * POST /dedicatedCloud/{serviceName}/iam/disable
+                 */
+                $post(): Promise<dedicatedCloud.Task>;
+            }
+            enable: {
+                /**
+                 * Enable OVHcloud IAM option
+                 * POST /dedicatedCloud/{serviceName}/iam/enable
                  */
                 $post(): Promise<dedicatedCloud.Task>;
             }
         }
         ip: {
             /**
-             * Ip Blocks attached to this Dedicated Cloud
+             * List IP blocks
              * GET /dedicatedCloud/{serviceName}/ip
              */
             $get(): Promise<string[]>;
@@ -2865,7 +3350,7 @@ export interface DedicatedCloud {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(network: string): {
                 /**
-                 * Get this object properties
+                 * Get IP block
                  * GET /dedicatedCloud/{serviceName}/ip/{network}
                  */
                 $get(): Promise<dedicatedCloud.Ip>;
@@ -2875,7 +3360,7 @@ export interface DedicatedCloud {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 details: {
                     /**
-                     * List details about this IP Block
+                     * Get details about this IP Block
                      * GET /dedicatedCloud/{serviceName}/ip/{network}/details
                      */
                     $get(): Promise<dedicatedCloud.IpDetails[]>;
@@ -2886,7 +3371,7 @@ export interface DedicatedCloud {
                 }
                 task: {
                     /**
-                     * Tasks associated with this IP Block
+                     * List operations associated to IP block
                      * GET /dedicatedCloud/{serviceName}/ip/{network}/task
                      */
                     $get(params?: { name?: string, state?: dedicatedCloudTaskStateEnum }): Promise<number[]>;
@@ -2896,7 +3381,7 @@ export interface DedicatedCloud {
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(taskId: number): {
                         /**
-                         * Get this object properties
+                         * Get operation
                          * GET /dedicatedCloud/{serviceName}/ip/{network}/task/{taskId}
                          */
                         $get(): Promise<dedicatedCloud.Task>;
@@ -2906,14 +3391,14 @@ export interface DedicatedCloud {
                         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         changeMaintenanceExecutionDate: {
                             /**
-                             * Change the execution date of a maintenance. Works only if task type is maintenance and if it has not started yet.
+                             * Change the execution date of a maintenance operation
                              * POST /dedicatedCloud/{serviceName}/ip/{network}/task/{taskId}/changeMaintenanceExecutionDate
                              */
                             $post(params: { executionDate: string }): Promise<dedicatedCloud.Task>;
                         }
                         resetTaskState: {
                             /**
-                             * Restart task in error.
+                             * Relaunch operation currently in error state
                              * POST /dedicatedCloud/{serviceName}/ip/{network}/task/{taskId}/resetTaskState
                              */
                             $post(params: { reason: string }): Promise<dedicatedCloud.Task>;
@@ -2924,7 +3409,7 @@ export interface DedicatedCloud {
         }
         newPrices: {
             /**
-             * Get the new Prices for your Dedicated Cloud
+             * Get new prices
              * GET /dedicatedCloud/{serviceName}/newPrices
              */
             $get(): Promise<dedicatedCloud.resourceNewPrices>;
@@ -2935,7 +3420,7 @@ export interface DedicatedCloud {
         }
         nsx: {
             /**
-             * Get this object properties
+             * Get VMware NSX-V option
              * GET /dedicatedCloud/{serviceName}/nsx
              */
             $get(): Promise<dedicatedCloud.Nsx>;
@@ -2945,7 +3430,7 @@ export interface DedicatedCloud {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             canBeDisabled: {
                 /**
-                 * Check if Nsx option can be disabled
+                 * Check if VMware NSX-V option can be disabled
                  * GET /dedicatedCloud/{serviceName}/nsx/canBeDisabled
                  */
                 $get(): Promise<dedicatedCloud.optionCompatibility>;
@@ -2956,7 +3441,7 @@ export interface DedicatedCloud {
             }
             canBeEnabled: {
                 /**
-                 * Check if Nsx option can be enabled
+                 * Check if VMware NSX-V option can be enabled
                  * GET /dedicatedCloud/{serviceName}/nsx/canBeEnabled
                  */
                 $get(): Promise<dedicatedCloud.optionCompatibility>;
@@ -2967,14 +3452,14 @@ export interface DedicatedCloud {
             }
             disable: {
                 /**
-                 * Disable Nsx option
+                 * Disable VMware NSX-V option
                  * POST /dedicatedCloud/{serviceName}/nsx/disable
                  */
                 $post(): Promise<dedicatedCloud.Task>;
             }
             enable: {
                 /**
-                 * Enable Nsx option
+                 * Enable VMware NSX-V option
                  * POST /dedicatedCloud/{serviceName}/nsx/enable
                  */
                 $post(): Promise<dedicatedCloud.Task>;
@@ -2982,7 +3467,7 @@ export interface DedicatedCloud {
         }
         nsxt: {
             /**
-             * Get this object properties
+             * Get VMware NSX-T option
              * GET /dedicatedCloud/{serviceName}/nsxt
              */
             $get(): Promise<dedicatedCloud.Nsxt>;
@@ -2993,14 +3478,14 @@ export interface DedicatedCloud {
         }
         orderNewFilerHourly: {
             /**
-             * Order a new hourly Filer mounted in every Datacenter of a given Dedicated Cloud
+             * Order hourly global datastore mounted on all virtual datacenters
              * POST /dedicatedCloud/{serviceName}/orderNewFilerHourly
              */
             $post(params: { name: string }): Promise<dedicatedCloud.Task>;
         }
         orderableIpCountries: {
             /**
-             * Get the countries you can select in /order/dedicatedCloud/{serviceName}/ip
+             * Get orderable IP blocks countries
              * GET /dedicatedCloud/{serviceName}/orderableIpCountries
              */
             $get(): Promise<dedicatedCloud.IpCountriesEnum[]>;
@@ -3011,7 +3496,7 @@ export interface DedicatedCloud {
         }
         passwordPolicy: {
             /**
-             * Get the current password policy for your Dedicated Cloud
+             * Get password policy
              * GET /dedicatedCloud/{serviceName}/passwordPolicy
              */
             $get(): Promise<dedicatedCloud.passwordPolicy>;
@@ -3022,7 +3507,7 @@ export interface DedicatedCloud {
         }
         pcidss: {
             /**
-             * Get this object properties
+             * Get PCI-DSS certification option
              * GET /dedicatedCloud/{serviceName}/pcidss
              */
             $get(): Promise<dedicatedCloud.PciDss>;
@@ -3032,7 +3517,7 @@ export interface DedicatedCloud {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             canBeDisabled: {
                 /**
-                 * Check if PCI-DSS option can be disabled
+                 * Check if PCI-DSS certification option can be disabled
                  * GET /dedicatedCloud/{serviceName}/pcidss/canBeDisabled
                  */
                 $get(): Promise<dedicatedCloud.optionCompatibility>;
@@ -3043,7 +3528,7 @@ export interface DedicatedCloud {
             }
             canBeEnabled: {
                 /**
-                 * Check if PCI-DSS option can be enabled
+                 * Check if PCI-DSS certification option can be enabled
                  * GET /dedicatedCloud/{serviceName}/pcidss/canBeEnabled
                  */
                 $get(): Promise<dedicatedCloud.optionCompatibility>;
@@ -3054,14 +3539,14 @@ export interface DedicatedCloud {
             }
             disable: {
                 /**
-                 * Disable PCI-DSS option
+                 * Disable PCI-DSS certification option
                  * POST /dedicatedCloud/{serviceName}/pcidss/disable
                  */
                 $post(): Promise<dedicatedCloud.Task>;
             }
             enable: {
                 /**
-                 * Enable PCI-DSS option
+                 * Enable PCI-DSS certification option
                  * POST /dedicatedCloud/{serviceName}/pcidss/enable
                  */
                 $post(): Promise<dedicatedCloud.Task>;
@@ -3069,14 +3554,14 @@ export interface DedicatedCloud {
         }
         resetTriggeredAlarm: {
             /**
-             * Reset all triggered alarms on PCC
+             * Reset all hypervisor triggered alarms
              * POST /dedicatedCloud/{serviceName}/resetTriggeredAlarm
              */
             $post(): Promise<dedicatedCloud.Task>;
         }
         robot: {
             /**
-             * Robots that can run on this Dedicated Cloud
+             * List robots
              * GET /dedicatedCloud/{serviceName}/robot
              */
             $get(): Promise<string[]>;
@@ -3086,7 +3571,7 @@ export interface DedicatedCloud {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(name: string): {
                 /**
-                 * Get this object properties
+                 * Get robot
                  * GET /dedicatedCloud/{serviceName}/robot/{name}
                  */
                 $get(): Promise<dedicatedCloud.Robot>;
@@ -3098,7 +3583,7 @@ export interface DedicatedCloud {
         }
         securityOptions: {
             /**
-             * Get this object properties
+             * Get security options
              * GET /dedicatedCloud/{serviceName}/securityOptions
              */
             $get(): Promise<dedicatedCloud.SecurityOption>;
@@ -3108,7 +3593,7 @@ export interface DedicatedCloud {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             compatibilityMatrix: {
                 /**
-                 * Show compatibility matrix of security options with your Dedicated Cloud
+                 * Get security options compatibility matrix
                  * GET /dedicatedCloud/{serviceName}/securityOptions/compatibilityMatrix
                  */
                 $get(params?: { showIncompatible?: boolean, showInternal?: boolean }): Promise<dedicatedCloud.securityOption.CompatibilityMatrixEntry[]>;
@@ -3119,7 +3604,7 @@ export interface DedicatedCloud {
             }
             dependenciesTree: {
                 /**
-                 * Show the dependencies tree of a security option
+                 * Get security options dependencies tree
                  * GET /dedicatedCloud/{serviceName}/securityOptions/dependenciesTree
                  */
                 $get(params: { option: dedicatedCloudsecurityOptionSecurityOptionEnum }): Promise<dedicatedCloud.securityOption.DependenciesTree>;
@@ -3130,7 +3615,7 @@ export interface DedicatedCloud {
             }
             pendingOptions: {
                 /**
-                 * List pending security options enabling on your Dedicated Cloud
+                 * Get pending activation security options
                  * GET /dedicatedCloud/{serviceName}/securityOptions/pendingOptions
                  */
                 $get(): Promise<dedicatedCloud.securityOption.SecurityOptionEnum[]>;
@@ -3141,7 +3626,7 @@ export interface DedicatedCloud {
             }
             resumePendingEnabling: {
                 /**
-                 * Resume enabling of pending security options on your Dedicated Cloud
+                 * Retry pending security option activation
                  * POST /dedicatedCloud/{serviceName}/securityOptions/resumePendingEnabling
                  */
                 $post(params: { option: dedicatedCloudsecurityOptionSecurityOptionEnum }): Promise<dedicatedCloud.Task>;
@@ -3149,12 +3634,12 @@ export interface DedicatedCloud {
         }
         serviceInfos: {
             /**
-             * Get this object properties
+             * Get service information
              * GET /dedicatedCloud/{serviceName}/serviceInfos
              */
             $get(): Promise<services.Service>;
             /**
-             * Alter this object properties
+             * Update service information
              * PUT /dedicatedCloud/{serviceName}/serviceInfos
              */
             $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
@@ -3165,7 +3650,7 @@ export interface DedicatedCloud {
         }
         servicePack: {
             /**
-             * Retrieve the service pack informations
+             * Get service pack information
              * GET /dedicatedCloud/{serviceName}/servicePack
              */
             $get(): Promise<dedicatedCloud.servicePackStatus>;
@@ -3176,7 +3661,7 @@ export interface DedicatedCloud {
         }
         servicePacks: {
             /**
-             * Service Pack compliant with the current Dedicated Cloud
+             * List service packs
              * GET /dedicatedCloud/{serviceName}/servicePacks
              */
             $get(): Promise<string[]>;
@@ -3186,7 +3671,7 @@ export interface DedicatedCloud {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(name: string): {
                 /**
-                 * Get this object properties
+                 * Get service pack
                  * GET /dedicatedCloud/{serviceName}/servicePacks/{name}
                  */
                 $get(): Promise<dedicatedCloud.ServicePack>;
@@ -3198,7 +3683,7 @@ export interface DedicatedCloud {
         }
         task: {
             /**
-             * Tasks associated with this Dedicated Cloud
+             * List operations
              * GET /dedicatedCloud/{serviceName}/task
              */
             $get(params?: { name?: string, state?: dedicatedCloudTaskStateEnum }): Promise<number[]>;
@@ -3208,7 +3693,7 @@ export interface DedicatedCloud {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(taskId: number): {
                 /**
-                 * Get this object properties
+                 * Get operation
                  * GET /dedicatedCloud/{serviceName}/task/{taskId}
                  */
                 $get(): Promise<dedicatedCloud.Task>;
@@ -3218,14 +3703,14 @@ export interface DedicatedCloud {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 changeMaintenanceExecutionDate: {
                     /**
-                     * Change the execution date of a maintenance. Works only if task type is maintenance and if it has not started yet.
+                     * Change the execution date of a maintenance operation
                      * POST /dedicatedCloud/{serviceName}/task/{taskId}/changeMaintenanceExecutionDate
                      */
                     $post(params: { executionDate: string }): Promise<dedicatedCloud.Task>;
                 }
                 resetTaskState: {
                     /**
-                     * Restart task in error.
+                     * Relaunch operation currently in error state
                      * POST /dedicatedCloud/{serviceName}/task/{taskId}/resetTaskState
                      */
                     $post(params: { reason: string }): Promise<dedicatedCloud.Task>;
@@ -3234,19 +3719,19 @@ export interface DedicatedCloud {
         }
         terminate: {
             /**
-             * Terminate your service
+             * Ask for the termination of your service
              * POST /dedicatedCloud/{serviceName}/terminate
              */
             $post(): Promise<string>;
         }
         twoFAWhitelist: {
             /**
-             * Ip allowed to bypass the two factor authentication on this Dedicated Cloud management interface
+             * List two factor authentication whitelisted networks
              * GET /dedicatedCloud/{serviceName}/twoFAWhitelist
              */
             $get(): Promise<number[]>;
             /**
-             * Add a whitelisted ip on the two factor authentication
+             * Create two factor authentication whitelisted network
              * POST /dedicatedCloud/{serviceName}/twoFAWhitelist
              */
             $post(params: { description: string, ip: string }): Promise<dedicatedCloud.Task>;
@@ -3256,12 +3741,12 @@ export interface DedicatedCloud {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(id: number): {
                 /**
-                 * Remove a whitelisted ip on the two factor authentication
+                 * Remove two factor authentication whitelisted network
                  * DELETE /dedicatedCloud/{serviceName}/twoFAWhitelist/{id}
                  */
                 $delete(): Promise<dedicatedCloud.Task>;
                 /**
-                 * Get this object properties
+                 * Get two factor authentication whitelisted network
                  * GET /dedicatedCloud/{serviceName}/twoFAWhitelist/{id}
                  */
                 $get(): Promise<dedicatedCloud.twoFAWhitelist>;
@@ -3271,7 +3756,7 @@ export interface DedicatedCloud {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 changeProperties: {
                     /**
-                     * Change Dedicated Cloud Two factor authentication whitelist properties
+                     * Update two factor authentication whitelisted network
                      * POST /dedicatedCloud/{serviceName}/twoFAWhitelist/{id}/changeProperties
                      */
                     $post(params?: { description?: string }): Promise<dedicatedCloud.Task>;
@@ -3280,26 +3765,26 @@ export interface DedicatedCloud {
         }
         upgradeHypervisor: {
             /**
-             * Upgrade your hypervisor to the next released version
+             * Upgrade hypervisor to next version
              * POST /dedicatedCloud/{serviceName}/upgradeHypervisor
              */
             $post(): Promise<dedicatedCloud.Task>;
         }
         upgradeVcenter: {
             /**
-             * Upgrade your vCenter to the next released version
+             * Upgrade hypervisor to next version
              * POST /dedicatedCloud/{serviceName}/upgradeVcenter
              */
             $post(params?: { release?: dedicatedCloud.releaseEnum }): Promise<dedicatedCloud.Task>;
         }
         user: {
             /**
-             * Dedicated Cloud users
+             * List users
              * GET /dedicatedCloud/{serviceName}/user
              */
             $get(params?: { name?: string }): Promise<number[]>;
             /**
-             * Create a new User in your Dedicated Cloud
+             * Create user
              * POST /dedicatedCloud/{serviceName}/user
              */
             $post(params: { canAddRessource?: boolean, canManageRights?: boolean, email?: string, encryptionRight?: boolean, expirationDate?: string, firstName?: string, lastName?: string, name: string, networkRole?: dedicatedCloudrightNetworkRoleEnum, nsxRight?: boolean, password?: string, phoneNumber?: string, receiveAlerts?: boolean, right?: dedicatedCloudrightRightEnum, tokenValidator?: boolean, vmNetworkRole?: dedicatedCloudrightVmNetworkRoleEnum }): Promise<dedicatedCloud.Task>;
@@ -3309,12 +3794,12 @@ export interface DedicatedCloud {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(userId: number): {
                 /**
-                 * Remove a given user from your Dedicated Cloud
+                 * Remove user
                  * DELETE /dedicatedCloud/{serviceName}/user/{userId}
                  */
                 $delete(): Promise<dedicatedCloud.Task>;
                 /**
-                 * Get this object properties
+                 * Update user
                  * GET /dedicatedCloud/{serviceName}/user/{userId}
                  */
                 $get(): Promise<dedicatedCloud.User>;
@@ -3324,54 +3809,47 @@ export interface DedicatedCloud {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 changePassword: {
                     /**
-                     * Change Dedicated Cloud user password
+                     * Change user password
                      * POST /dedicatedCloud/{serviceName}/user/{userId}/changePassword
                      */
                     $post(params?: { password?: string }): Promise<dedicatedCloud.Task>;
                 }
                 changeProperties: {
                     /**
-                     * Change Dedicated Cloud user properties
+                     * Update user
                      * POST /dedicatedCloud/{serviceName}/user/{userId}/changeProperties
                      */
                     $post(params?: { canManageIpFailOvers?: boolean, canManageNetwork?: boolean, canManageRights?: boolean, email?: string, encryptionRight?: boolean, firstName?: string, fullAdminRo?: boolean, lastName?: string, nsxRight?: boolean, phoneNumber?: string, receiveAlerts?: boolean, tokenValidator?: boolean }): Promise<dedicatedCloud.Task>;
                 }
                 confirmPhoneNumber: {
                     /**
-                     * Confirm phone number for user
+                     * Confirm user phone number
                      * POST /dedicatedCloud/{serviceName}/user/{userId}/confirmPhoneNumber
                      */
                     $post(params: { token: string }): Promise<dedicatedCloud.Task>;
                 }
                 disable: {
                     /**
-                     * Disable the given Dedicated Cloud user 
+                     * Disable user
                      * POST /dedicatedCloud/{serviceName}/user/{userId}/disable
                      */
                     $post(): Promise<dedicatedCloud.Task>;
                 }
                 enable: {
                     /**
-                     * Enable the given Dedicated Cloud user 
+                     * Enable user
                      * POST /dedicatedCloud/{serviceName}/user/{userId}/enable
                      */
                     $post(): Promise<dedicatedCloud.Task>;
                 }
-                metricsToken: {
-                    /**
-                     * Get Metrics Token to query vScope Graphs data 
-                     * POST /dedicatedCloud/{serviceName}/user/{userId}/metricsToken
-                     */
-                    $post(): Promise<dedicatedCloud.metricsToken>;
-                }
                 objectRight: {
                     /**
-                     * User rights on an object
+                     * List user object rights
                      * GET /dedicatedCloud/{serviceName}/user/{userId}/objectRight
                      */
                     $get(): Promise<number[]>;
                     /**
-                     * Add a new object right to user in datacenter on Dedicated Cloud
+                     * Create user object right
                      * POST /dedicatedCloud/{serviceName}/user/{userId}/objectRight
                      */
                     $post(params: { propagate?: boolean, right: dedicatedCloudrightRightEnum, type: dedicatedCloudrightUserObjectRightTypeEnum, vmwareObjectId: string }): Promise<dedicatedCloud.Task>;
@@ -3381,12 +3859,12 @@ export interface DedicatedCloud {
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(objectRightId: number): {
                         /**
-                         * Remove an object right from user in datacenter on Dedicated Cloud
+                         * Remove user object right
                          * DELETE /dedicatedCloud/{serviceName}/user/{userId}/objectRight/{objectRightId}
                          */
                         $delete(): Promise<dedicatedCloud.Task>;
                         /**
-                         * Get this object properties
+                         * Get user object right
                          * GET /dedicatedCloud/{serviceName}/user/{userId}/objectRight/{objectRightId}
                          */
                         $get(): Promise<dedicatedCloud.ObjectRight>;
@@ -3398,7 +3876,7 @@ export interface DedicatedCloud {
                 }
                 right: {
                     /**
-                     * User rights in a given Datacenters
+                     * List user datacenter rights
                      * GET /dedicatedCloud/{serviceName}/user/{userId}/right
                      */
                     $get(): Promise<number[]>;
@@ -3408,12 +3886,12 @@ export interface DedicatedCloud {
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(rightId: number): {
                         /**
-                         * Get this object properties
+                         * Get user datacenter right
                          * GET /dedicatedCloud/{serviceName}/user/{userId}/right/{rightId}
                          */
                         $get(): Promise<dedicatedCloud.Right>;
                         /**
-                         * Alter this object properties
+                         * Update user datacenter right
                          * PUT /dedicatedCloud/{serviceName}/user/{userId}/right/{rightId}
                          */
                         $put(params?: { canAddRessource?: boolean, datacenterId?: number, networkRole?: dedicatedCloudrightNetworkRoleEnum, right?: dedicatedCloudrightRightEnum, rightId?: number, vmNetworkRole?: dedicatedCloudrightVmNetworkRoleEnum }): Promise<dedicatedCloud.Task>;
@@ -3425,7 +3903,7 @@ export interface DedicatedCloud {
                 }
                 task: {
                     /**
-                     * Tasks associated with this User
+                     * List operations associated to user
                      * GET /dedicatedCloud/{serviceName}/user/{userId}/task
                      */
                     $get(params?: { name?: string, state?: dedicatedCloudTaskStateEnum }): Promise<number[]>;
@@ -3435,7 +3913,7 @@ export interface DedicatedCloud {
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(taskId: number): {
                         /**
-                         * Get this object properties
+                         * Get operation
                          * GET /dedicatedCloud/{serviceName}/user/{userId}/task/{taskId}
                          */
                         $get(): Promise<dedicatedCloud.Task>;
@@ -3445,14 +3923,14 @@ export interface DedicatedCloud {
                         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         changeMaintenanceExecutionDate: {
                             /**
-                             * Change the execution date of a maintenance. Works only if task type is maintenance and if it has not started yet.
+                             * Change the execution date of a maintenance operation
                              * POST /dedicatedCloud/{serviceName}/user/{userId}/task/{taskId}/changeMaintenanceExecutionDate
                              */
                             $post(params: { executionDate: string }): Promise<dedicatedCloud.Task>;
                         }
                         resetTaskState: {
                             /**
-                             * Restart task in error.
+                             * Relaunch operation currently in error state
                              * POST /dedicatedCloud/{serviceName}/user/{userId}/task/{taskId}/resetTaskState
                              */
                             $post(params: { reason: string }): Promise<dedicatedCloud.Task>;
@@ -3463,7 +3941,7 @@ export interface DedicatedCloud {
         }
         vcenterVersion: {
             /**
-             * Get available upgrade for your vCenter
+             * Get available upgrades for hypervisor
              * GET /dedicatedCloud/{serviceName}/vcenterVersion
              */
             $get(): Promise<dedicatedCloud.vcenter>;
@@ -3474,7 +3952,7 @@ export interface DedicatedCloud {
         }
         vendor: {
             /**
-             * Get this object properties
+             * Get vendor information
              * GET /dedicatedCloud/{serviceName}/vendor
              */
             $get(): Promise<dedicatedCloud.Vendor>;
@@ -3484,14 +3962,14 @@ export interface DedicatedCloud {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             objectType: {
                 /**
-                 * Get available object types
+                 * Get vendor object types
                  * POST /dedicatedCloud/{serviceName}/vendor/objectType
                  */
                 $post(): Promise<string[]>;
             }
             ovhId: {
                 /**
-                 * Get ovh id from object type
+                 * Get OVHcloud API id for object
                  * POST /dedicatedCloud/{serviceName}/vendor/ovhId
                  */
                 $post(params: { objectType: dedicatedCloud.VendorObjectTypeEnum, vendorId: string }): Promise<dedicatedCloud.vendor.OvhId>;
@@ -3499,7 +3977,7 @@ export interface DedicatedCloud {
         }
         vlan: {
             /**
-             * Dedicated Cloud vlans
+             * List vLANs
              * GET /dedicatedCloud/{serviceName}/vlan
              */
             $get(): Promise<number[]>;
@@ -3509,7 +3987,7 @@ export interface DedicatedCloud {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(vlanId: number): {
                 /**
-                 * Get this object properties
+                 * Get vLAN
                  * GET /dedicatedCloud/{serviceName}/vlan/{vlanId}
                  */
                 $get(): Promise<dedicatedCloud.Vlan>;
@@ -3521,7 +3999,7 @@ export interface DedicatedCloud {
         }
         vmEncryption: {
             /**
-             * Get this object properties
+             * Get virtual machine encryption option
              * GET /dedicatedCloud/{serviceName}/vmEncryption
              */
             $get(): Promise<dedicatedCloud.VMEncryption>;
@@ -3531,12 +4009,12 @@ export interface DedicatedCloud {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             kms: {
                 /**
-                 * VM Encryption KMS linked to this Dedicated Cloud
+                 * List virtual machine encryption KMS servers
                  * GET /dedicatedCloud/{serviceName}/vmEncryption/kms
                  */
                 $get(): Promise<number[]>;
                 /**
-                 * Add a new option user access
+                 * Create virtual machine encryption KMS server
                  * POST /dedicatedCloud/{serviceName}/vmEncryption/kms
                  */
                 $post(params: { description?: string, ip: string, sslThumbprint: string }): Promise<dedicatedCloud.Task>;
@@ -3546,12 +4024,12 @@ export interface DedicatedCloud {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(kmsId: number): {
                     /**
-                     * Remove an option user access
+                     * Remove virtual machine encryption KMS server
                      * DELETE /dedicatedCloud/{serviceName}/vmEncryption/kms/{kmsId}
                      */
                     $delete(): Promise<dedicatedCloud.Task>;
                     /**
-                     * Get this object properties
+                     * Get virtual machine encryption KMS server
                      * GET /dedicatedCloud/{serviceName}/vmEncryption/kms/{kmsId}
                      */
                     $get(): Promise<dedicatedCloud.VMEncryptionAccessNetwork>;
@@ -3561,7 +4039,7 @@ export interface DedicatedCloud {
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     changeProperties: {
                         /**
-                         * Change option user access properties
+                         * Update virtual machine encryption KMS server
                          * POST /dedicatedCloud/{serviceName}/vmEncryption/kms/{kmsId}/changeProperties
                          */
                         $post(params: { description?: string, sslThumbprint: string }): Promise<dedicatedCloud.Task>;
@@ -3571,7 +4049,7 @@ export interface DedicatedCloud {
         }
         vrack: {
             /**
-             * This Dedicated Cloud vrack
+             * List vRacks
              * GET /dedicatedCloud/{serviceName}/vrack
              */
             $get(): Promise<string[]>;
@@ -3581,12 +4059,12 @@ export interface DedicatedCloud {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(vrack: string): {
                 /**
-                 * remove this dedicatedCloud (VmNetwork) from this vrack
+                 * Remove VMware on OVHcloud from vRack
                  * DELETE /dedicatedCloud/{serviceName}/vrack/{vrack}
                  */
                 $delete(): Promise<vrack.Task>;
                 /**
-                 * Get this object properties
+                 * Get vRack
                  * GET /dedicatedCloud/{serviceName}/vrack/{vrack}
                  */
                 $get(): Promise<vrack.dedicatedCloud>;
@@ -3598,7 +4076,7 @@ export interface DedicatedCloud {
         }
         vrops: {
             /**
-             * Get this object properties
+             * Get VMware Aria Operations option
              * GET /dedicatedCloud/{serviceName}/vrops
              */
             $get(): Promise<dedicatedCloud.Vrops>;
@@ -3608,7 +4086,7 @@ export interface DedicatedCloud {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             canBeDisabled: {
                 /**
-                 * Check if vRealize Operations option can be disabled
+                 * Check if VMware Aria Operations option can be disabled
                  * GET /dedicatedCloud/{serviceName}/vrops/canBeDisabled
                  */
                 $get(): Promise<dedicatedCloud.optionCompatibility>;
@@ -3619,7 +4097,7 @@ export interface DedicatedCloud {
             }
             canBeEnabled: {
                 /**
-                 * Check if vRealize Operations option can be enabled
+                 * Check if VMware Aria Operations option can be enabled
                  * GET /dedicatedCloud/{serviceName}/vrops/canBeEnabled
                  */
                 $get(): Promise<dedicatedCloud.optionCompatibility>;
@@ -3630,21 +4108,60 @@ export interface DedicatedCloud {
             }
             disable: {
                 /**
-                 * Disable vRealize Operations option
+                 * Disable VMware Aria Operations option
                  * POST /dedicatedCloud/{serviceName}/vrops/disable
                  */
                 $post(): Promise<dedicatedCloud.Task>;
             }
             enable: {
                 /**
-                 * Enable vRealize Operations option
+                 * Enable VMware Aria Operations option
                  * POST /dedicatedCloud/{serviceName}/vrops/enable
                  */
                 $post(): Promise<dedicatedCloud.Task>;
             }
+            outgoingFlow: {
+                /**
+                 * List VMware Aria Operations outgoing flows
+                 * GET /dedicatedCloud/{serviceName}/vrops/outgoingFlow
+                 */
+                $get(): Promise<number[]>;
+                /**
+                 * Create VMware Aria Operations outgoing flow
+                 * POST /dedicatedCloud/{serviceName}/vrops/outgoingFlow
+                 */
+                $post(params: { description?: string, ip: string, servicePort: number }): Promise<dedicatedCloud.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $(outgoingFlowId: number): {
+                    /**
+                     * Remove VMware Aria Operations outgoing flow
+                     * DELETE /dedicatedCloud/{serviceName}/vrops/outgoingFlow/{outgoingFlowId}
+                     */
+                    $delete(): Promise<dedicatedCloud.Task>;
+                    /**
+                     * Get VMware Aria Operations outgoing flows
+                     * GET /dedicatedCloud/{serviceName}/vrops/outgoingFlow/{outgoingFlowId}
+                     */
+                    $get(): Promise<dedicatedCloud.VropsOutgoingFlow>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    changeProperties: {
+                        /**
+                         * Update VMware Aria Operations outgoing flow
+                         * POST /dedicatedCloud/{serviceName}/vrops/outgoingFlow/{outgoingFlowId}/changeProperties
+                         */
+                        $post(params?: { description?: string }): Promise<dedicatedCloud.Task>;
+                    }
+                };
+            }
             upgrade: {
                 /**
-                 * Request vRealize Operations Manager upgrade
+                 * Upgrade VMware Aria Operations
                  * POST /dedicatedCloud/{serviceName}/vrops/upgrade
                  */
                 $post(params?: { version?: string }): Promise<dedicatedCloud.Task>;
@@ -3682,20 +4199,26 @@ type dedicatedCloudHostStockProcGen = dedicatedCloud.HostStockProcGen;
 type dedicatedCloudBlockRegisterEnum = dedicatedCloud.BlockRegisterEnum;
 type dedicatedCloudipUsageEnum = dedicatedCloud.ipUsageEnum;
 type dedicatedCloudoptionDatacenterOptionState = dedicatedCloud.option.DatacenterOptionState;
+type dedicatedCloudnsxtNsxtEdgeSizeEnum = dedicatedCloud.nsxt.NsxtEdgeSizeEnum;
+type dedicatedCloudStateEnum = dedicatedCloud.StateEnum;
 type dedicatedCloudrightRightEnum = dedicatedCloud.right.RightEnum;
 type dedicatedCloudrightUserObjectRightTypeEnum = dedicatedCloud.right.UserObjectRightTypeEnum;
 type dedicatedCloudbackupBackupTypeEnum = dedicatedCloud.backup.BackupTypeEnum;
 type dedicatedCloudrightVmNetworkRoleEnum = dedicatedCloud.right.VmNetworkRoleEnum;
 type dedicatedCloudsecurityOptionStateEnum = dedicatedCloud.securityOption.StateEnum;
+type dedicatedCloudsyslogForwardLogLevelEnum = dedicatedCloud.syslogForward.LogLevelEnum;
+type dedicatedCloudsyslogForwardSourceTypeEnum = dedicatedCloud.syslogForward.SourceTypeEnum;
 type dedicatedCloudTaskStateEnum = dedicatedCloud.TaskStateEnum;
 type dedicatedClouduserActivationStateEnum = dedicatedCloud.user.ActivationStateEnum;
 type dedicatedClouduserTypeEnum = dedicatedCloud.user.TypeEnum;
+type dedicatedClouduserIdentityProviderTypeEnum = dedicatedCloud.user.IdentityProviderTypeEnum;
 type dedicatedClouduserStateEnum = dedicatedCloud.user.StateEnum;
 type dedicatedCloudvlanStateEnum = dedicatedCloud.vlan.StateEnum;
 type dedicatedCloudvlanTypeEnum = dedicatedCloud.vlan.TypeEnum;
 type dedicatedCloudbackupBackup = dedicatedCloud.backup.Backup;
 type dedicatedCloudvirtualMachineCdrom = dedicatedCloud.virtualMachineCdrom;
 type dedicatedCloudvmFiler = dedicatedCloud.vmFiler;
+type dedicatedCloudsplaKmsLicenseIncludingLegacyEnum = dedicatedCloud.spla.KmsLicenseIncludingLegacyEnum;
 type dedicatedCloudvmNetwork = dedicatedCloud.vmNetwork;
 type dedicatedCloudvirtualMachinePowerState = dedicatedCloud.virtualMachinePowerState;
 type dedicatedCloudvirtualMachineFaultToleranceState = dedicatedCloud.virtualMachineFaultToleranceState;
@@ -3709,7 +4232,6 @@ type dedicatedCloudBillingTypeEnum = dedicatedCloud.BillingTypeEnum;
 type dedicatedCloudGenerationEnum = dedicatedCloud.GenerationEnum;
 type dedicatedCloudManagementInterfaceEnum = dedicatedCloud.ManagementInterfaceEnum;
 type dedicatedCloudproductReferenceEnum = dedicatedCloud.productReferenceEnum;
-type dedicatedCloudStateEnum = dedicatedCloud.StateEnum;
 type dedicatedCloudUserAccessPolicyEnum = dedicatedCloud.UserAccessPolicyEnum;
 type dedicatedCloudUserLogoutPolicyEnum = dedicatedCloud.UserLogoutPolicyEnum;
 type dedicatedCloudVersion = dedicatedCloud.Version;
@@ -3719,6 +4241,7 @@ type dedicatedClouddisasterRecoveryDrpTypeEnum = dedicatedCloud.disasterRecovery
 type dedicatedClouddisasterRecoveryLocalSiteDetails = dedicatedCloud.disasterRecovery.LocalSiteDetails;
 type dedicatedClouddisasterRecoveryRemoteSiteDetails = dedicatedCloud.disasterRecovery.RemoteSiteDetails;
 type dedicatedClouddisasterRecoveryVpnConfigStateEnum = dedicatedCloud.disasterRecovery.VpnConfigStateEnum;
+type dedicatedCloudLogSubscriptionResource = dedicatedCloud.LogSubscriptionResource;
 type dedicatedCloudresourceNewPricesEntry = dedicatedCloud.resourceNewPricesEntry;
 type dedicatedCloudressourcesResourceTypeEnum = dedicatedCloud.ressources.ResourceTypeEnum;
 type dedicatedCloudsecurityOptionSecurityOptionEnum = dedicatedCloud.securityOption.SecurityOptionEnum;

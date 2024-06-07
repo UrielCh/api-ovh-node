@@ -18,6 +18,7 @@ export namespace cloud {
         continentCode: cloud.RegionContinentEnum;
         datacenterLocation: string;
         name: string;
+        type: cloud.RegionTypeEnum;
     }
     /**
      * List your automated backups
@@ -47,6 +48,7 @@ export namespace cloud {
      */
     export interface Execution {
         executedAt: string;
+        id: string;
         state: cloud.ExecutionStateEnum;
         stateInfo: string;
     }
@@ -126,6 +128,30 @@ export namespace cloud {
      */
     export interface ProjectActivateMonthlyBillingCreation {
         instances: cloud.instance.MonthlyInstanceBulkParams[];
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectContainerRegistryCreation.ProjectContainerRegistryCreation
+     */
+    export interface ProjectContainerRegistryCreation {
+        name: string;
+        planID: string;
+        region: string;
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectContainerRegistryUpdate.ProjectContainerRegistryUpdate
+     */
+    export interface ProjectContainerRegistryUpdate {
+        name: string;
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectContainerRegistryUsersCreation.ProjectContainerRegistryUsersCreation
+     */
+    export interface ProjectContainerRegistryUsersCreation {
+        email?: string;
+        login?: string;
     }
     /**
      * Missing description
@@ -236,8 +262,10 @@ export namespace cloud {
     export interface ProjectKubeCreation {
         customization?: cloud.ProjectKubeCustomization;
         kubeProxyMode: cloud.kube.KubeProxyModeEnum;
+        loadBalancersSubnetId: string;
         name: string;
         nodepool: cloud.ProjectKubeCreationNodePool;
+        nodesSubnetId: string;
         privateNetworkConfiguration: cloud.kube.PrivateNetworkConfiguration;
         privateNetworkId: string;
         region: string;
@@ -397,7 +425,9 @@ export namespace cloud {
     export interface ProjectKubeResetCreation {
         customization: cloud.ProjectKubeCustomization;
         kubeProxyMode: cloud.kube.KubeProxyModeEnum;
+        loadBalancersSubnetId: string;
         name: string;
+        nodesSubnetId: string;
         privateNetworkConfiguration: cloud.kube.PrivateNetworkConfiguration;
         privateNetworkId: string;
         updatePolicy: cloud.kube.UpdatePolicyEnum;
@@ -426,6 +456,13 @@ export namespace cloud {
     export interface ProjectKubeUpdateCreation {
         force?: boolean;
         strategy: cloud.kube.UpdateStrategyEnum;
+    }
+    /**
+     * Model object to update loadBalancersSubnetId property of a kube cluster
+     * interface fullName: cloud.ProjectKubeUpdateLoadBalancersSubnetId.ProjectKubeUpdateLoadBalancersSubnetId
+     */
+    export interface ProjectKubeUpdateLoadBalancersSubnetId {
+        loadBalancersSubnetId: string;
     }
     /**
      * Missing description
@@ -632,6 +669,24 @@ export namespace cloud {
         size: number;
     }
     /**
+     * Project
+     * interface fullName: cloud.ProjectWithIAM.ProjectWithIAM
+     */
+    export interface ProjectWithIAM {
+        access: cloud.AccessTypeEnum;
+        creationDate: string;
+        description?: string;
+        expiration?: string;
+        iam?: iam.ResourceMetadata;
+        manualQuota: boolean;
+        orderId?: number;
+        planCode: string;
+        projectName?: string;
+        project_id: string;
+        status: cloud.project.ProjectStatusEnum;
+        unleash: boolean;
+    }
+    /**
      * Details about your region
      * interface fullName: cloud.Region.Region
      */
@@ -642,6 +697,7 @@ export namespace cloud {
         name: string;
         services: cloud.Component[];
         status: cloud.RegionStatusEnum;
+        type: cloud.RegionTypeEnum;
     }
     /**
      * Enum values for ContinentCode
@@ -654,6 +710,11 @@ export namespace cloud {
      */
     export type RegionStatusEnum = "DOWN" | "MAINTENANCE" | "UP"
     /**
+     * Enum values for region type
+     * type fullname: cloud.RegionTypeEnum
+     */
+    export type RegionTypeEnum = "localzone" | "region"
+    /**
      * Enum values for Status
      * type fullname: cloud.ServiceStatusEnum
      */
@@ -664,12 +725,14 @@ export namespace cloud {
      */
     export interface StorageContainer {
         createdAt: string;
+        encryption?: cloud.StorageEncryptionObject;
         name: string;
         objects: cloud.StorageObject[];
         objectsCount: number;
         objectsSize: number;
         ownerId: number;
         region: string;
+        versioning?: cloud.StorageVersioningObject;
         virtualHost: string;
     }
     /**
@@ -677,8 +740,17 @@ export namespace cloud {
      * interface fullName: cloud.StorageContainerCreation.StorageContainerCreation
      */
     export interface StorageContainerCreation {
+        encryption?: cloud.StorageEncryptionObject;
         name: string;
         ownerId?: number;
+        versioning?: cloud.StorageVersioningObject;
+    }
+    /**
+     * Object
+     * interface fullName: cloud.StorageEncryptionObject.StorageEncryptionObject
+     */
+    export interface StorageEncryptionObject {
+        sseAlgorithm?: cloud.storage.EncryptionAlgorithmEnum;
     }
     /**
      * Object
@@ -689,6 +761,14 @@ export namespace cloud {
         key: string;
         lastModified: string;
         size: number;
+        storageClass: cloud.storage.StorageClassEnum;
+    }
+    /**
+     * Object
+     * interface fullName: cloud.StorageVersioningObject.StorageVersioningObject
+     */
+    export interface StorageVersioningObject {
+        status?: cloud.storage.VersioningStatusEnum;
     }
     /**
      * A sub-operation is a child of an operation on your Project
@@ -824,6 +904,142 @@ export namespace cloud {
             datacenter: string;
             enabled: boolean;
             name: string;
+            type: cloud.RegionTypeEnum;
+        }
+    }
+    export namespace containerRegistry {
+        /**
+         * The container registry capability for a single region
+         * interface fullName: cloud.containerRegistry.Capability.Capability
+         */
+        export interface Capability {
+            plans: cloud.containerRegistry.Plan[];
+            regionName: string;
+        }
+        /**
+         * Features list, enabled or not
+         * interface fullName: cloud.containerRegistry.Features.Features
+         */
+        export interface Features {
+            vulnerability: boolean;
+        }
+        /**
+         * Container registry Get IP Restrictions
+         * interface fullName: cloud.containerRegistry.IPRestrictions.IPRestrictions
+         */
+        export interface IPRestrictions {
+            createdAt: string;
+            description: string;
+            ipBlock: string;
+            updatedAt: string;
+        }
+        /**
+         * Limitation of a docker registry
+         * interface fullName: cloud.containerRegistry.Limits.Limits
+         */
+        export interface Limits {
+            imageStorage: number;
+            parallelRequest: number;
+        }
+        /**
+         * Docker registry OIDC Configuration
+         * interface fullName: cloud.containerRegistry.OIDCConfiguration.OIDCConfiguration
+         */
+        export interface OIDCConfiguration {
+            adminGroup?: string;
+            autoOnboard?: boolean;
+            clientId: string;
+            clientSecret: string;
+            createdAt: string;
+            endpoint: string;
+            groupsClaim?: string;
+            id: string;
+            name: string;
+            scope: string;
+            status: cloud.containerRegistry.OIDCStatusEnum;
+            updatedAt?: string;
+            userClaim?: string;
+            verifyCert?: boolean;
+        }
+        /**
+         * Docker registry Post OIDC configuration
+         * interface fullName: cloud.containerRegistry.OIDCPost.OIDCPost
+         */
+        export interface OIDCPost {
+            deleteUsers?: boolean;
+            provider: cloud.containerRegistry.OIDCConfiguration;
+        }
+        /**
+         * Docker registry Put OIDC Configuration
+         * interface fullName: cloud.containerRegistry.OIDCPut.OIDCPut
+         */
+        export interface OIDCPut {
+            adminGroup?: string;
+            autoOnboard?: boolean;
+            clientId?: string;
+            clientSecret?: string;
+            endpoint?: string;
+            groupsClaim?: string;
+            name?: string;
+            scope?: string;
+            userClaim?: string;
+            verifyCert?: boolean;
+        }
+        /**
+         * Status of the registry's oidc configuration
+         * type fullname: cloud.containerRegistry.OIDCStatusEnum
+         */
+        export type OIDCStatusEnum = "DELETING" | "ERROR" | "INSTALLING" | "PATCHING" | "READY" | "UPDATING"
+        /**
+         * Plan of the registry
+         * interface fullName: cloud.containerRegistry.Plan.Plan
+         */
+        export interface Plan {
+            code: string;
+            createdAt: string;
+            features: cloud.containerRegistry.Features;
+            id: string;
+            name: string;
+            registryLimits: cloud.containerRegistry.Limits;
+            updatedAt: string;
+        }
+        /**
+         * Missing description
+         * interface fullName: cloud.containerRegistry.PlanUpdate.PlanUpdate
+         */
+        export interface PlanUpdate {
+            planID: string;
+        }
+        /**
+         * Managed docker registry
+         * interface fullName: cloud.containerRegistry.Registry.Registry
+         */
+        export interface Registry {
+            createdAt: string;
+            id: string;
+            name: string;
+            projectID: string;
+            region: string;
+            size: number;
+            status: cloud.containerRegistry.StatusEnum;
+            updatedAt: string;
+            url: string;
+            version: string;
+        }
+        /**
+         * Status of the registry
+         * type fullname: cloud.containerRegistry.StatusEnum
+         */
+        export type StatusEnum = "DELETED" | "DELETING" | "ERROR" | "INSTALLING" | "READY" | "RESTORING" | "SUSPENDED" | "SUSPENDING" | "UPDATING"
+        /**
+         * Docker registry user
+         * interface fullName: cloud.containerRegistry.User.User
+         */
+        export interface User {
+            email: string;
+            id: string;
+            password?: string;
+            user: string;
         }
     }
     export namespace flavor {
@@ -1123,6 +1339,14 @@ export namespace cloud {
             status: cloud.instance.InstanceStatusEnum;
         }
         /**
+         * IP address
+         * interface fullName: cloud.instance.InstanceAddress.InstanceAddress
+         */
+        export interface InstanceAddress {
+            ip: string;
+            version: number;
+        }
+        /**
          * InstanceDetail
          * interface fullName: cloud.instance.InstanceDetail.InstanceDetail
          */
@@ -1168,8 +1392,28 @@ export namespace cloud {
          * interface fullName: cloud.instance.InstanceSummary.InstanceSummary
          */
         export interface InstanceSummary {
+            addresses: cloud.instance.InstanceAddress[];
+            attachedVolumes: cloud.instance.InstanceSummaryVolumeValue[];
+            flavorId: string;
+            flavorName: string;
             id: string;
+            imageId: string;
             name: string;
+            region: string;
+            sshKey: string;
+            taskState: cloud.instance.InstanceSummaryTaskStateEnum;
+        }
+        /**
+         * Enum values for taskState of an instance
+         * type fullname: cloud.instance.InstanceSummaryTaskStateEnum
+         */
+        export type InstanceSummaryTaskStateEnum = "" | "BlockDeviceMapping" | "Deleting" | "ImagePendingUpload" | "ImageSnapshot" | "ImageUpload" | "Migrating" | "Networking" | "Pausing" | "PoweringOff" | "PoweringOn" | "Rebooting" | "RebootingHard" | "RebuildBlockDeviceMapping" | "RebuildSpawning" | "Rebuilding" | "Rescuing" | "ResizeConfirming" | "ResizeFinish" | "ResizeMigrated" | "ResizeMigrating" | "ResizePrep" | "ResizeReverting" | "Resuming" | "Scheduling" | "Spawning" | "Starting" | "Stopping" | "Suspending" | "Unknown" | "Unpausing" | "Unrescuing" | "UpdatingPassword"
+        /**
+         * Volumes attached to your instance
+         * interface fullName: cloud.instance.InstanceSummaryVolumeValue.InstanceSummaryVolumeValue
+         */
+        export interface InstanceSummaryVolumeValue {
+            id: string;
         }
         /**
          * InstanceVnc
@@ -1368,30 +1612,25 @@ export namespace cloud {
     }
     export namespace kube {
         /**
-         * Managed Kubernetes Audit Logs
-         * interface fullName: cloud.kube.AuditLogs.AuditLogs
-         */
-        export interface AuditLogs {
-            expirationDate: string;
-            url: string;
-        }
-        /**
          * Managed Kubernetes cluster description
          * interface fullName: cloud.kube.Cluster.Cluster
          */
         export interface Cluster {
+            auditLogsSubscribed: boolean;
             controlPlaneIsUpToDate: boolean;
             createdAt: string;
             customization?: cloud.ProjectKubeCustomization;
             id: string;
             isUpToDate: boolean;
             kubeProxyMode: cloud.kube.KubeProxyModeEnum;
+            loadBalancersSubnetId?: string;
             name: string;
             nextUpgradeVersions?: string[];
+            nodesSubnetId?: string;
             nodesUrl: string;
             privateNetworkConfiguration?: cloud.kube.PrivateNetworkConfiguration;
             privateNetworkId?: string;
-            region: cloud.kube.RegionEnum;
+            region: string;
             status: cloud.kube.ClusterStatusEnum;
             updatePolicy: string;
             updatedAt: string;
@@ -1427,7 +1666,7 @@ export namespace cloud {
          * Enum values for category
          * type fullname: cloud.kube.FlavorCategoryEnum
          */
-        export type FlavorCategoryEnum = "b" | "c" | "d" | "g" | "i" | "r" | "t"
+        export type FlavorCategoryEnum = "a" | "b" | "c" | "d" | "g" | "h" | "i" | "l" | "r" | "t"
         /**
          * Enum values for State
          * type fullname: cloud.kube.FlavorStateEnum
@@ -1571,16 +1810,6 @@ export namespace cloud {
             privateNetworkRoutingAsDefault?: boolean;
         }
         /**
-         * Enum values for regions where cluster creation is possible, region where cluster are deployed is cloud.kube.RegionEnum
-         * type fullname: cloud.kube.RegionCapabilitiesEnum
-         */
-        export type RegionCapabilitiesEnum = "BHS5" | "DE1" | "GRA5" | "GRA7" | "GRA9" | "SBG5" | "SGP1" | "SYD1" | "UK1" | "US-EAST-VA-1" | "US-WEST-OR-1" | "WAW1"
-        /**
-         * Enum values for regions where cluster are deployed and flavor related location. Available region for cluster creation is cloud.kube.RegionCapabilitiesEnum
-         * type fullname: cloud.kube.RegionEnum
-         */
-        export type RegionEnum = "BHS5" | "DE1" | "GRA5" | "GRA7" | "GRA9" | "SBG5" | "SGP1" | "SYD1" | "UK1" | "US-EAST-VA-1" | "US-WEST-OR-1" | "WAW1"
-        /**
          * Enum values for worker nodes reset policy
          * type fullname: cloud.kube.ResetWorkerNodesPolicyEnum
          */
@@ -1620,7 +1849,7 @@ export namespace cloud {
          * List of available versions for installation
          * type fullname: cloud.kube.VersionEnum
          */
-        export type VersionEnum = "1.24" | "1.25" | "1.26"
+        export type VersionEnum = "1.26" | "1.27" | "1.28" | "1.29"
     }
     export namespace loadbalancing {
         /**
@@ -1645,12 +1874,28 @@ export namespace cloud {
          * interface fullName: cloud.loadbalancing.CreateListener.CreateListener
          */
         export interface CreateListener {
+            allowedCidrs: string[];
             certificateId: string;
             defaultPoolId: string;
+            description: string;
             loadbalancerId: string;
             name: string;
             port: number;
             protocol: cloud.loadbalancing.ListenerProtocolEnum;
+            timeoutClientData: number;
+            timeoutMemberData: number;
+            tlsVersions: cloud.loadbalancing.ListenerTlsVersionEnum[];
+        }
+        /**
+         * Edit a loadbalancer listener
+         * interface fullName: cloud.loadbalancing.EditListener.EditListener
+         */
+        export interface EditListener {
+            allowedCidrs: string[];
+            certificateId: string;
+            defaultPoolId: string;
+            description: string;
+            name: string;
         }
         /**
          * Flavor
@@ -1659,20 +1904,21 @@ export namespace cloud {
         export interface Flavor {
             id: string;
             name: string;
+            region: string;
         }
         /**
          * HealthMonitor
          * interface fullName: cloud.loadbalancing.HealthMonitor.HealthMonitor
          */
         export interface HealthMonitor {
+            delay: number;
             httpConfiguration?: cloud.loadbalancing.HealthMonitorHTTPConfiguration;
             id: string;
             maxRetries: number;
-            maxRetriesDown: number;
+            maxRetriesDown?: number;
             monitorType: cloud.loadbalancing.LoadBalancerHealthMonitorTypeEnum;
             name: string;
             operatingStatus: cloud.loadbalancing.LoadBalancerOperatingStatusEnum;
-            periodicity: string;
             poolId: string;
             provisioningStatus: cloud.loadbalancing.LoadBalancerProvisioningStatusEnum;
             timeout: number;
@@ -1682,13 +1928,13 @@ export namespace cloud {
          * interface fullName: cloud.loadbalancing.HealthMonitorCreate.HealthMonitorCreate
          */
         export interface HealthMonitorCreate {
+            delay: number;
             httpConfiguration?: cloud.loadbalancing.HealthMonitorHTTPConfiguration;
             maxRetries: number;
-            maxRetriesDown: number;
+            maxRetriesDown?: number;
             monitorType: cloud.loadbalancing.LoadBalancerHealthMonitorTypeEnum;
             name: string;
             operatingStatus: cloud.loadbalancing.LoadBalancerOperatingStatusEnum;
-            periodicity: string;
             provisioningStatus: cloud.loadbalancing.LoadBalancerProvisioningStatusEnum;
             timeout: number;
         }
@@ -1698,9 +1944,9 @@ export namespace cloud {
          */
         export interface HealthMonitorHTTPConfiguration {
             domainName: string;
-            expectedCodes: number[];
+            expectedCodes: string;
             httpMethod: cloud.loadbalancing.LoadBalancerHealthMonitorHTTPMethodEnum;
-            httpVersion: cloud.loadbalancing.LoadBalancerHealthMonitorHTTPVersionEnum;
+            httpVersion?: cloud.loadbalancing.LoadBalancerHealthMonitorHTTPVersionEnum;
             urlPath: string;
         }
         /**
@@ -1716,7 +1962,7 @@ export namespace cloud {
             operatingStatus: cloud.loadbalancing.LoadBalancerOperatingStatusEnum;
             position: number;
             provisioningStatus: cloud.loadbalancing.LoadBalancerProvisioningStatusEnum;
-            redirectHttpCode?: number;
+            redirectHttpCode?: cloud.loadbalancing.L7PolicyRedirectHTTPCodeEnum;
             redirectPoolId?: string;
             redirectPrefix?: string;
             redirectUrl?: string;
@@ -1726,6 +1972,11 @@ export namespace cloud {
          * type fullname: cloud.loadbalancing.L7PolicyActionEnum
          */
         export type L7PolicyActionEnum = "redirectPrefix" | "redirectToPool" | "redirectToURL" | "reject"
+        /**
+         * Loadbalancer L7 policy redirect HTTP code
+         * type fullname: cloud.loadbalancing.L7PolicyRedirectHTTPCodeEnum
+         */
+        export type L7PolicyRedirectHTTPCodeEnum = 301 | 302 | 303 | 307 | 308
         /**
          * L7 policy
          * interface fullName: cloud.loadbalancing.L7PolicyUpdate.L7PolicyUpdate
@@ -1770,8 +2021,10 @@ export namespace cloud {
          * interface fullName: cloud.loadbalancing.Listener.Listener
          */
         export interface Listener {
+            allowedCidrs?: string[];
             certificateId?: string;
             defaultPoolId?: string;
+            description?: string;
             id: string;
             loadBalancerIds: string[];
             name: string;
@@ -1779,12 +2032,20 @@ export namespace cloud {
             port: number;
             protocol: cloud.loadbalancing.ListenerProtocolEnum;
             provisioningStatus: cloud.loadbalancing.LoadBalancerProvisioningStatusEnum;
+            timeoutClientData?: number;
+            timeoutMemberData?: number;
+            tlsVersions?: cloud.loadbalancing.ListenerTlsVersionEnum[];
         }
         /**
          * Loadbalancer listener protocol
          * type fullname: cloud.loadbalancing.ListenerProtocolEnum
          */
-        export type ListenerProtocolEnum = "http" | "https" | "sctp" | "tcp" | "terminatedHTTPS" | "udp"
+        export type ListenerProtocolEnum = "http" | "https" | "prometheus" | "sctp" | "tcp" | "terminatedHTTPS" | "udp"
+        /**
+         * Loadbalancer listener TLS versions
+         * type fullname: cloud.loadbalancing.ListenerTlsVersionEnum
+         */
+        export type ListenerTlsVersionEnum = "SSLv3" | "TLSv1" | "TLSv1.1" | "TLSv1.2" | "TLSv1.3"
         /**
          * LoadBalancer
          * interface fullName: cloud.loadbalancing.LoadBalancer.LoadBalancer
@@ -1792,14 +2053,26 @@ export namespace cloud {
         export interface LoadBalancer {
             createdAt: string;
             flavorId: string;
+            floatingIp?: cloud.loadbalancing.LoadBalancer.FloatingIp;
             id: string;
             name: string;
             operatingStatus: cloud.loadbalancing.LoadBalancerOperatingStatusEnum;
             provisioningStatus: cloud.loadbalancing.LoadBalancerProvisioningStatusEnum;
+            region: string;
             updatedAt: string;
             vipAddress: string;
             vipNetworkId: string;
             vipSubnetId: string;
+        }
+        export namespace LoadBalancer {
+            /**
+             * LoadBalancerFloatingIp
+             * interface fullName: cloud.loadbalancing.LoadBalancer.FloatingIp.FloatingIp
+             */
+            export interface FloatingIp {
+                id: string;
+                ip: string;
+            }
         }
         /**
          * Load balancer Healthmonitor HTTP Method
@@ -1826,15 +2099,25 @@ export namespace cloud {
          * type fullname: cloud.loadbalancing.LoadBalancerProvisioningStatusEnum
          */
         export type LoadBalancerProvisioningStatusEnum = "active" | "creating" | "deleted" | "deleting" | "error" | "updating"
+        export namespace Loadbalancer {
+            /**
+             * Create a loadbalancer
+             * interface fullName: cloud.loadbalancing.Loadbalancer.CreateInput.CreateInput
+             */
+            export interface CreateInput {
+                flavorId: string;
+                listeners: cloud.loadbalancing.loadbalancer.ListenerCreate[];
+                name: string;
+                network: cloud.loadbalancing.loadbalancer.CreateInput.Network;
+            }
+        }
         /**
-         * Create a loadbalancer
-         * interface fullName: cloud.loadbalancing.LoadbalancerCreate.LoadbalancerCreate
+         * Edit a loadbalancer
+         * interface fullName: cloud.loadbalancing.LoadbalancerEdit.LoadbalancerEdit
          */
-        export interface LoadbalancerCreate {
-            flavorId: string;
-            listeners: cloud.loadbalancing.loadbalancer.ListenerCreate[];
+        export interface LoadbalancerEdit {
+            description: string;
             name: string;
-            networkInformation: cloud.loadbalancing.loadbalancer.NetworkInformationCreate;
         }
         /**
          * Pool
@@ -1872,7 +2155,7 @@ export namespace cloud {
          * Pool protocol
          * type fullname: cloud.loadbalancing.PoolProtocolEnum
          */
-        export type PoolProtocolEnum = "http" | "https" | "proxy" | "sctp" | "tcp" | "udp"
+        export type PoolProtocolEnum = "http" | "https" | "proxy" | "proxyV2" | "sctp" | "tcp" | "udp"
         /**
          * PoolSessionPersistence
          * interface fullName: cloud.loadbalancing.PoolSessionPersistence.PoolSessionPersistence
@@ -1900,24 +2183,90 @@ export namespace cloud {
          * interface fullName: cloud.loadbalancing.UpdateHealthMonitor.UpdateHealthMonitor
          */
         export interface UpdateHealthMonitor {
+            delay: number;
             httpConfiguration: cloud.loadbalancing.HealthMonitorHTTPConfiguration;
             maxRetries: number;
             maxRetriesDown: number;
             name: string;
-            periodicity: string;
             timeout: number;
         }
         export namespace loadbalancer {
+            export namespace CreateInput {
+                /**
+                 * Network information to create a loadbalancer
+                 * interface fullName: cloud.loadbalancing.loadbalancer.CreateInput.Network.Network
+                 */
+                export interface Network {
+                    private: cloud.loadbalancing.loadbalancer.CreateInput.Network.Private;
+                }
+                export namespace Network {
+                    /**
+                     * Network information to create a loadbalancer
+                     * interface fullName: cloud.loadbalancing.loadbalancer.CreateInput.Network.Private.Private
+                     */
+                    export interface Private {
+                        floatingIp: cloud.loadbalancing.loadbalancer.CreateInput.Network.Private.FloatingIp;
+                        floatingIpCreate: cloud.loadbalancing.loadbalancer.CreateInput.Network.Private.FloatingIpCreate;
+                        gateway: cloud.loadbalancing.loadbalancer.CreateInput.Network.Private.Gateway;
+                        gatewayCreate: cloud.loadbalancing.loadbalancer.CreateInput.Network.Private.GatewayCreate;
+                        network: cloud.loadbalancing.loadbalancer.CreateInput.Network.Private.Network;
+                    }
+                    export namespace Private {
+                        /**
+                         * Information to attach floatingIp
+                         * interface fullName: cloud.loadbalancing.loadbalancer.CreateInput.Network.Private.FloatingIp.FloatingIp
+                         */
+                        export interface FloatingIp {
+                            id: string;
+                        }
+                        /**
+                         * Information to create floatingIp
+                         * interface fullName: cloud.loadbalancing.loadbalancer.CreateInput.Network.Private.FloatingIpCreate.FloatingIpCreate
+                         */
+                        export interface FloatingIpCreate {
+                            description: string;
+                        }
+                        /**
+                         * Information to attach Gateway
+                         * interface fullName: cloud.loadbalancing.loadbalancer.CreateInput.Network.Private.Gateway.Gateway
+                         */
+                        export interface Gateway {
+                            id: string;
+                        }
+                        /**
+                         * Information to create a Gateway
+                         * interface fullName: cloud.loadbalancing.loadbalancer.CreateInput.Network.Private.GatewayCreate.GatewayCreate
+                         */
+                        export interface GatewayCreate {
+                            model: cloud.network.GatewayModelEnum;
+                            name: string;
+                        }
+                        /**
+                         * Network information to associate a network
+                         * interface fullName: cloud.loadbalancing.loadbalancer.CreateInput.Network.Private.Network.Network
+                         */
+                        export interface Network {
+                            id: string;
+                            subnetId: string;
+                        }
+                    }
+                }
+            }
             /**
              * Create a listener on loadbalancer creation
              * interface fullName: cloud.loadbalancing.loadbalancer.ListenerCreate.ListenerCreate
              */
             export interface ListenerCreate {
+                allowedCidrs: string[];
+                description: string;
                 name: string;
-                pools: cloud.loadbalancing.loadbalancer.PoolCreate[];
+                pool: cloud.loadbalancing.loadbalancer.PoolCreate;
                 port: number;
                 protocol: cloud.loadbalancing.ListenerProtocolEnum;
                 secretId: string;
+                timeoutClientData: number;
+                timeoutMemberData: number;
+                tlsVersions: cloud.loadbalancing.ListenerTlsVersionEnum[];
             }
             /**
              * Create a member on loadbalancer creation
@@ -1927,16 +2276,7 @@ export namespace cloud {
                 address: string;
                 name: string;
                 protocolPort: number;
-                weight: number;
-            }
-            /**
-             * Network information to create a loadbalancer
-             * interface fullName: cloud.loadbalancing.loadbalancer.NetworkInformationCreate.NetworkInformationCreate
-             */
-            export interface NetworkInformationCreate {
-                gateway: cloud.network.CreateGatewaySummary;
-                networkId: string;
-                subnetId: string;
+                weight?: number;
             }
             /**
              * Create a pool on loadbalancer creation
@@ -1944,15 +2284,32 @@ export namespace cloud {
              */
             export interface PoolCreate {
                 algorithm: cloud.loadbalancing.PoolAlgorithmEnum;
-                default: boolean;
                 healthMonitor?: cloud.loadbalancing.HealthMonitorCreate;
                 members: cloud.loadbalancing.loadbalancer.MemberCreate[];
                 name: string;
                 protocol: cloud.loadbalancing.PoolProtocolEnum;
                 sessionPersistence: cloud.loadbalancing.PoolSessionPersistence;
             }
+            /**
+             * Loadbalancer statistics
+             * interface fullName: cloud.loadbalancing.loadbalancer.Stats.Stats
+             */
+            export interface Stats {
+                activeConnections: number;
+                bytesIn: number;
+                bytesOut: number;
+                requestErrors: number;
+                totalConnections: number;
+            }
         }
         export namespace pool {
+            /**
+             * Pool Members
+             * interface fullName: cloud.loadbalancing.pool.CreateMembers.CreateMembers
+             */
+            export interface CreateMembers {
+                members: cloud.loadbalancing.pool.Member[];
+            }
             /**
              * Member
              * interface fullName: cloud.loadbalancing.pool.Member.Member
@@ -1964,7 +2321,7 @@ export namespace cloud {
                 operatingStatus: cloud.loadbalancing.LoadBalancerOperatingStatusEnum;
                 protocolPort: number;
                 provisioningStatus: cloud.loadbalancing.LoadBalancerProvisioningStatusEnum;
-                weight: number;
+                weight?: number;
             }
             /**
              * Parameters to update a pool member
@@ -2049,7 +2406,7 @@ export namespace cloud {
          * GatewayModelEnum
          * type fullname: cloud.network.GatewayModelEnum
          */
-        export type GatewayModelEnum = "l" | "m" | "s"
+        export type GatewayModelEnum = "2xl" | "3xl" | "l" | "m" | "s" | "xl"
         /**
          * GatewayStatusEnum
          * type fullname: cloud.network.GatewayStatusEnum
@@ -2443,10 +2800,13 @@ export namespace cloud {
             export interface Availability {
                 backup: cloud.project.database.BackupTypeEnum;
                 backupRetentionDays: number;
+                backups: cloud.project.database.availability.Backups;
+                category: cloud.project.database.engine.CategoryEnum;
                 default: boolean;
                 endOfLife?: string;
                 engine: string;
                 flavor: string;
+                lifecycle: cloud.project.database.availability.Lifecycle;
                 maxDiskSize: number;
                 maxNodeNumber: number;
                 minDiskSize: number;
@@ -2454,6 +2814,7 @@ export namespace cloud {
                 network: cloud.project.database.NetworkTypeEnum;
                 plan: string;
                 region: string;
+                specifications: cloud.project.database.availability.Specifications;
                 startDate: string;
                 status: cloud.project.database.availability.StatusEnum;
                 stepDiskSize: number;
@@ -2478,7 +2839,7 @@ export namespace cloud {
              * Type of backup for the cluster
              * type fullname: cloud.project.database.BackupTypeEnum
              */
-            export type BackupTypeEnum = "automatic" | "manual"
+            export type BackupTypeEnum = "automatic" | "manual" | "none" | "pitr" | "snapshot"
             /**
              * Capabilities available for the databases engines on cloud projects
              * interface fullName: cloud.project.database.Capabilities.Capabilities
@@ -2525,6 +2886,8 @@ export namespace cloud {
             export interface Service {
                 backupTime: string;
                 backups?: cloud.project.database.service.Backup;
+                capabilities: { [key in cloud.project.database.service.CapabilityEnum]: cloud.project.database.service.CapabilityActions };
+                category: cloud.project.database.engine.CategoryEnum;
                 createdAt: string;
                 description: string;
                 disk: cloud.project.database.service.Disk;
@@ -2537,8 +2900,11 @@ export namespace cloud {
                 networkId?: string;
                 networkType: cloud.project.database.NetworkTypeEnum;
                 nodeNumber: number;
+                nodes: cloud.project.database.service.Node[];
                 plan: string;
+                region?: string;
                 status: cloud.project.database.StatusEnum;
+                storage?: cloud.project.database.service.Storage;
                 subnetId?: string;
                 version: string;
             }
@@ -2566,7 +2932,7 @@ export namespace cloud {
              * Possible state of the job
              * type fullname: cloud.project.database.StatusEnum
              */
-            export type StatusEnum = "CREATING" | "DELETING" | "ERROR" | "ERROR_INCONSISTENT_SPEC" | "LOCKED" | "LOCKED_PENDING" | "LOCKED_UPDATING" | "PENDING" | "READY" | "UPDATING"
+            export type StatusEnum = "CREATING" | "DELETING" | "ERROR" | "ERROR_INCONSISTENT_SPEC" | "LOCKED" | "LOCKED_PENDING" | "LOCKED_UPDATING" | "PENDING" | "READY" | "SHELVED" | "UPDATING"
             /**
              * Cloud databases temporary write deadline definition
              * interface fullName: cloud.project.database.TemporaryWriteDeadline.TemporaryWriteDeadline
@@ -2581,10 +2947,67 @@ export namespace cloud {
             export type TypeEnum = "boolean" | "double" | "duration" | "long" | "string"
             export namespace availability {
                 /**
+                 * Possible action to restrict availabilities
+                 * type fullname: cloud.project.database.availability.ActionEnum
+                 */
+                export type ActionEnum = "fork" | "read" | "update"
+                /**
+                 * Backups availability of databases engines on cloud projects
+                 * interface fullName: cloud.project.database.availability.Backups.Backups
+                 */
+                export interface Backups {
+                    available: boolean;
+                    retentionDays?: number;
+                }
+                /**
+                 * Availability of databases engines on cloud projects
+                 * interface fullName: cloud.project.database.availability.Lifecycle.Lifecycle
+                 */
+                export interface Lifecycle {
+                    endOfLife?: string;
+                    endOfSale?: string;
+                    startDate: string;
+                    status: cloud.project.database.availability.StatusEnum;
+                }
+                /**
+                 * Specifications of the availability of databases engines on cloud projects
+                 * interface fullName: cloud.project.database.availability.Specifications.Specifications
+                 */
+                export interface Specifications {
+                    flavor: string;
+                    network: cloud.project.database.NetworkTypeEnum;
+                    nodes: cloud.project.database.availability.specifications.Nodes;
+                    storage?: cloud.project.database.availability.specifications.Storage;
+                }
+                /**
                  * Possible status for the availability
                  * type fullname: cloud.project.database.availability.StatusEnum
                  */
-                export type StatusEnum = "BETA" | "DEPRECATED" | "STABLE"
+                export type StatusEnum = "BETA" | "DEPRECATED" | "END_OF_LIFE" | "END_OF_SALE" | "STABLE" | "UNAVAILABLE"
+                /**
+                 * Possible target to restrict availabilities
+                 * type fullname: cloud.project.database.availability.TargetEnum
+                 */
+                export type TargetEnum = "flavor" | "plan" | "self" | "version"
+                export namespace specifications {
+                    /**
+                     * Specifications of the nodes for availabilities of databases engines on cloud projects
+                     * interface fullName: cloud.project.database.availability.specifications.Nodes.Nodes
+                     */
+                    export interface Nodes {
+                        maximum: number;
+                        minimum: number;
+                    }
+                    /**
+                     * Specifications of the storage for availabilities of databases engines on cloud projects
+                     * interface fullName: cloud.project.database.availability.specifications.Storage.Storage
+                     */
+                    export interface Storage {
+                        maximum: complexType.UnitAndValue<number>;
+                        minimum: complexType.UnitAndValue<number>;
+                        step?: complexType.UnitAndValue<number>;
+                    }
+                }
             }
             export namespace backup {
                 /**
@@ -2601,6 +3024,7 @@ export namespace cloud {
                  * interface fullName: cloud.project.database.capabilities.Engine.Engine
                  */
                 export interface Engine {
+                    category: cloud.project.database.engine.CategoryEnum;
                     defaultVersion: string;
                     description: string;
                     name: string;
@@ -2614,9 +3038,13 @@ export namespace cloud {
                  */
                 export interface Flavor {
                     core: number;
+                    lifecycle: cloud.project.database.availability.Lifecycle;
                     memory: number;
                     name: string;
+                    order: number;
+                    specifications: cloud.project.database.capabilities.flavor.Specifications;
                     storage: number;
+                    tags: string[];
                 }
                 /**
                  * Integration capability between database engines
@@ -2643,7 +3071,10 @@ export namespace cloud {
                 export interface Plan {
                     backupRetention: string;
                     description: string;
+                    lifecycle: cloud.project.database.availability.Lifecycle;
                     name: string;
+                    order: number;
+                    tags: string[];
                 }
                 export namespace advancedConfiguration {
                     /**
@@ -2675,6 +3106,17 @@ export namespace cloud {
                         export type StrategyEnum = "distributed" | "n/a" | "replicated"
                     }
                 }
+                export namespace flavor {
+                    /**
+                     * Cloud Database flavor specifications definition
+                     * interface fullName: cloud.project.database.capabilities.flavor.Specifications.Specifications
+                     */
+                    export interface Specifications {
+                        core: number;
+                        memory: complexType.UnitAndValue<number>;
+                        storage: complexType.UnitAndValue<number>;
+                    }
+                }
                 export namespace integration {
                     /**
                      * Integration capability parameter
@@ -2693,23 +3135,32 @@ export namespace cloud {
                     }
                 }
             }
-            export namespace kafka {
+            export namespace engine {
                 /**
-                 * Cloud databases kafka acl definition
-                 * interface fullName: cloud.project.database.kafka.Acl.Acl
+                 * Different categories of engines
+                 * type fullname: cloud.project.database.engine.CategoryEnum
                  */
-                export interface Acl {
-                    id: string;
-                    permission: string;
-                    topic: string;
-                    username: string;
-                }
+                export type CategoryEnum = "analysis" | "operational" | "streaming"
+            }
+            export namespace kafka {
                 /**
                  * Cloud databases kafka permissions definition
                  * interface fullName: cloud.project.database.kafka.Permissions.Permissions
                  */
                 export interface Permissions {
                     names: string[];
+                    schemaRegistry: string[];
+                    topic: string[];
+                }
+                /**
+                 * Cloud databases kafka schema registry acl definition
+                 * interface fullName: cloud.project.database.kafka.SchemaRegistryAcl.SchemaRegistryAcl
+                 */
+                export interface SchemaRegistryAcl {
+                    id: string;
+                    permission: string;
+                    resource: string;
+                    username: string;
                 }
                 /**
                  * Cloud database kafka service definition
@@ -2717,6 +3168,8 @@ export namespace cloud {
                  */
                 export interface Service {
                     backupTime: string;
+                    capabilities: { [key in cloud.project.database.service.CapabilityEnum]: cloud.project.database.service.CapabilityActions };
+                    category: cloud.project.database.engine.CategoryEnum;
                     createdAt: string;
                     description: string;
                     disk: cloud.project.database.service.Disk;
@@ -2729,10 +3182,12 @@ export namespace cloud {
                     networkId?: string;
                     networkType: cloud.project.database.NetworkTypeEnum;
                     nodeNumber: number;
+                    nodes: cloud.project.database.service.Node[];
                     plan: string;
                     restApi: boolean;
                     schemaRegistry: boolean;
                     status: cloud.project.database.StatusEnum;
+                    storage?: cloud.project.database.service.Storage;
                     subnetId?: string;
                     version: string;
                 }
@@ -2748,6 +3203,16 @@ export namespace cloud {
                     replication: number;
                     retentionBytes: number;
                     retentionHours: number;
+                }
+                /**
+                 * Cloud databases kafka topic acl definition
+                 * interface fullName: cloud.project.database.kafka.TopicAcl.TopicAcl
+                 */
+                export interface TopicAcl {
+                    id: string;
+                    permission: string;
+                    topic: string;
+                    username: string;
                 }
                 /**
                  * Cloud database kafka topic creation definition
@@ -3052,6 +3517,8 @@ export namespace cloud {
                     aclsEnabled: boolean;
                     backupTime: string;
                     backups?: cloud.project.database.service.Backup;
+                    capabilities: { [key in cloud.project.database.service.CapabilityEnum]: cloud.project.database.service.CapabilityActions };
+                    category: cloud.project.database.engine.CategoryEnum;
                     createdAt: string;
                     description: string;
                     disk: cloud.project.database.service.Disk;
@@ -3064,8 +3531,10 @@ export namespace cloud {
                     networkId?: string;
                     networkType: cloud.project.database.NetworkTypeEnum;
                     nodeNumber: number;
+                    nodes: cloud.project.database.service.Node[];
                     plan: string;
                     status: cloud.project.database.StatusEnum;
+                    storage?: cloud.project.database.service.Storage;
                     subnetId?: string;
                     version: string;
                 }
@@ -3242,9 +3711,26 @@ export namespace cloud {
                  * interface fullName: cloud.project.database.service.Backup.Backup
                  */
                 export interface Backup {
+                    pitr?: string;
                     regions: string[];
+                    retentionDays?: number;
                     time: string;
                 }
+                /**
+                 * Cloud database service capability actions definition
+                 * interface fullName: cloud.project.database.service.CapabilityActions.CapabilityActions
+                 */
+                export interface CapabilityActions {
+                    create?: cloud.project.database.service.capability.StateEnum;
+                    delete?: cloud.project.database.service.capability.StateEnum;
+                    read?: cloud.project.database.service.capability.StateEnum;
+                    update?: cloud.project.database.service.capability.StateEnum;
+                }
+                /**
+                 * List of capabilities available for services
+                 * type fullname: cloud.project.database.service.CapabilityEnum
+                 */
+                export type CapabilityEnum = "advancedConfiguration" | "backupRestore" | "backupTime" | "backups" | "certificates" | "connectionPools" | "currentQueries" | "currentQueriesCancel" | "databases" | "enableWrites" | "fork" | "integrations" | "ipRestrictions" | "maintenanceApply" | "maintenanceTime" | "maintenances" | "namespaces" | "nodes" | "queryStatistics" | "queryStatisticsReset" | "service" | "userCredentialsReset" | "users"
                 /**
                  * Certificates definition for cloud project databases
                  * interface fullName: cloud.project.database.service.Certificates.Certificates
@@ -3435,6 +3921,14 @@ export namespace cloud {
                     topics: string[];
                 }
                 /**
+                 * Defines the storage attributes of a service
+                 * interface fullName: cloud.project.database.service.Storage.Storage
+                 */
+                export interface Storage {
+                    size: complexType.UnitAndValue<number>;
+                    type: string;
+                }
+                /**
                  * User definition
                  * interface fullName: cloud.project.database.service.User.User
                  */
@@ -3492,6 +3986,13 @@ export namespace cloud {
                 export interface UserWithRolesCreation {
                     name: string;
                     roles: string[];
+                }
+                export namespace capability {
+                    /**
+                     * State of the service capability for the service
+                     * type fullname: cloud.project.database.service.capability.StateEnum
+                     */
+                    export type StateEnum = "disabled" | "enabled"
                 }
                 export namespace creation {
                     /**
@@ -4149,6 +4650,23 @@ export namespace cloud {
                 export type TypeEnum = "source"
             }
         }
+        export namespace region {
+            /**
+             * Possible values for image os type
+             * type fullname: cloud.project.region.ImageOsTypeEnum
+             */
+            export type ImageOsTypeEnum = "baremetal-linux" | "linux" | "windows"
+            /**
+             * Possible values for image status
+             * type fullname: cloud.project.region.ImageStatusEnum
+             */
+            export type ImageStatusEnum = "active" | "deleted" | "error" | "queued" | "saving"
+            /**
+             * Possible values for image visibility
+             * type fullname: cloud.project.region.ImageVisibilityEnum
+             */
+            export type ImageVisibilityEnum = "community" | "private" | "public" | "shared"
+        }
     }
     export namespace quota {
         /**
@@ -4239,6 +4757,7 @@ export namespace cloud {
             loadbalancer?: cloud.quota.LoadbalancerQuotas;
             network?: cloud.quota.NetworkQuotas;
             region: string;
+            share?: cloud.quota.share.Quota;
             volume?: cloud.quota.VolumeUsageQuotas;
         }
         /**
@@ -4264,6 +4783,21 @@ export namespace cloud {
             volumeBackupCount: number;
             volumeCount: number;
         }
+        export namespace share {
+            /**
+             * Share Quota
+             * interface fullName: cloud.quota.share.Quota.Quota
+             */
+            export interface Quota {
+                maxShareSizePerShare: number;
+                maxShareSizeTotal: number;
+                maxShareSnapshots: number;
+                maxSharesNumber: number;
+                usedShareSizeTotal: number;
+                usedShareSnapshots: number;
+                usedSharesNumber: number;
+            }
+        }
         export namespace storage {
             /**
              * Cloud Storage Quota
@@ -4282,6 +4816,55 @@ export namespace cloud {
             export interface QuotaUpdate {
                 quotaBytes: number;
             }
+        }
+    }
+    export namespace region {
+        /**
+         * Region flavor
+         * interface fullName: cloud.region.Flavor.Flavor
+         */
+        export interface Flavor {
+            disk: number;
+            id: string;
+            name: string;
+            ram: number;
+            region: string;
+            vcpus: number;
+        }
+        /**
+         * Region image
+         * interface fullName: cloud.region.Image.Image
+         */
+        export interface Image {
+            baseImageRef: string;
+            createdAt: string;
+            id: string;
+            name: string;
+            osType: cloud.project.region.ImageOsTypeEnum;
+            region: string;
+            size: number;
+            status: cloud.project.region.ImageStatusEnum;
+            visibility: cloud.project.region.ImageVisibilityEnum;
+        }
+        /**
+         * Region SSHKey
+         * interface fullName: cloud.region.SSHKey.SSHKey
+         */
+        export interface SSHKey {
+            fingerPrint: string;
+            id: string;
+            name: string;
+            publicKey: string;
+            region: string;
+        }
+        /**
+         * Region volume
+         * interface fullName: cloud.region.Volume.Volume
+         */
+        export interface Volume {
+            id: string;
+            name: string;
+            size: number;
         }
     }
     export namespace role {
@@ -4318,6 +4901,122 @@ export namespace cloud {
         export interface Service {
             name: string;
             permissions: cloud.role.Permission[];
+        }
+    }
+    export namespace share {
+        /**
+         * Capability
+         * interface fullName: cloud.share.Capability.Capability
+         */
+        export interface Capability {
+            enabled: boolean;
+            name: string;
+        }
+        /**
+         * Object
+         * interface fullName: cloud.share.ExportLocationObject.ExportLocationObject
+         */
+        export interface ExportLocationObject {
+            id: string;
+            path: string;
+        }
+        /**
+         * Share protocol
+         * type fullname: cloud.share.ProtocolEnum
+         */
+        export type ProtocolEnum = "NFS"
+        /**
+         * Share
+         * interface fullName: cloud.share.Share.Share
+         */
+        export interface Share {
+            capabilities?: cloud.share.Capability[];
+            createdAt: string;
+            description?: string;
+            exportLocations?: cloud.share.ExportLocationObject[];
+            id: string;
+            isPublic: boolean;
+            name?: string;
+            protocol: cloud.share.ProtocolEnum;
+            region: string;
+            size: number;
+            status: cloud.share.StatusEnum;
+            updatedAt: string;
+        }
+        /**
+         * Input Object used to create a share
+         * interface fullName: cloud.share.ShareUpdate.ShareUpdate
+         */
+        export interface ShareUpdate {
+            description: string;
+            name: string;
+            newSize: number;
+        }
+        /**
+         * Share status
+         * type fullname: cloud.share.StatusEnum
+         */
+        export type StatusEnum = "available" | "awaiting_transfer" | "backup_creating" | "backup_restoring" | "backup_restoring_error" | "creating" | "creating_from_snapshot" | "deleted" | "deleting" | "error" | "error_deleting" | "extending" | "extending_error" | "inactive" | "manage_error" | "manage_starting" | "migrating" | "migrating_to" | "replication_change" | "reverting" | "reverting_error" | "shrinking" | "shrinking_error" | "shrinking_possible_data_loss_error" | "unmanage_error" | "unmanage_starting" | "unmanaged"
+        export namespace acl {
+            /**
+             * Share ACL
+             * interface fullName: cloud.share.acl.ACL.ACL
+             */
+            export interface ACL {
+                accessLevel: cloud.share.acl.AccessLevelEnum;
+                accessTo: string;
+                accessType: cloud.share.acl.AccessTypeEnum;
+                createdAt: string;
+                id: string;
+                status: cloud.share.acl.StatusEnum;
+                updatedAt: string;
+            }
+            /**
+             * Share ACL
+             * interface fullName: cloud.share.acl.ACLCreate.ACLCreate
+             */
+            export interface ACLCreate {
+                accessLevel: cloud.share.acl.AccessLevelEnum;
+                accessTo: string;
+                accessType: cloud.share.acl.AccessTypeEnum;
+            }
+            /**
+             * ACL Access Level
+             * type fullname: cloud.share.acl.AccessLevelEnum
+             */
+            export type AccessLevelEnum = "ro" | "rw"
+            /**
+             * ACL Access Type
+             * type fullname: cloud.share.acl.AccessTypeEnum
+             */
+            export type AccessTypeEnum = "cert" | "ip" | "user"
+            /**
+             * ACL Status
+             * type fullname: cloud.share.acl.StatusEnum
+             */
+            export type StatusEnum = "active" | "applying" | "denying" | "error" | "queued_to_apply" | "queued_to_deny"
+        }
+        export namespace snapshot {
+            /**
+             * Share snapshot
+             * interface fullName: cloud.share.snapshot.Snapshot.Snapshot
+             */
+            export interface Snapshot {
+                createdAt: string;
+                description?: string;
+                id: string;
+                name?: string;
+                shareId: string;
+                shareProtocol?: cloud.share.ProtocolEnum;
+                shareSize: number;
+                size: number;
+                status: cloud.share.snapshot.StatusEnum;
+            }
+            /**
+             * Snapshot Status
+             * type fullname: cloud.share.snapshot.StatusEnum
+             */
+            export type StatusEnum = "available" | "creating" | "deleting" | "error" | "error_deleting" | "manage_error" | "manage_starting" | "restoring" | "unmanage_error" | "unmanage_starting"
         }
     }
     export namespace sshkey {
@@ -4407,6 +5106,8 @@ export namespace cloud {
          * interface fullName: cloud.storage.Container.Container
          */
         export interface Container {
+            archive?: boolean;
+            containerType?: cloud.storage.TypeEnum;
             id: string;
             name: string;
             region: string;
@@ -4458,6 +5159,11 @@ export namespace cloud {
             getURL: string;
         }
         /**
+         * Encryption algorithm
+         * type fullname: cloud.storage.EncryptionAlgorithmEnum
+         */
+        export type EncryptionAlgorithmEnum = "AES256" | "plaintext"
+        /**
          * Endpoint
          * interface fullName: cloud.storage.Endpoint.Endpoint
          */
@@ -4483,6 +5189,7 @@ export namespace cloud {
          */
         export interface PresignedURL {
             method: cloud.storage.PresignedURLMethodEnum;
+            signedHeaders: { [key: string]: string };
             url: string;
         }
         /**
@@ -4493,12 +5200,13 @@ export namespace cloud {
             expire: number;
             method: cloud.storage.PresignedURLMethodEnum;
             object: string;
+            storageClass: cloud.storage.StorageClassEnum;
         }
         /**
          * Presigned URL method
          * type fullname: cloud.storage.PresignedURLMethodEnum
          */
-        export type PresignedURLMethodEnum = "GET" | "PUT"
+        export type PresignedURLMethodEnum = "DELETE" | "GET" | "PUT"
         /**
          * Cloud Storage Quota
          * interface fullName: cloud.storage.Quota.Quota
@@ -4518,10 +5226,20 @@ export namespace cloud {
          */
         export type RightEnum = "all" | "read" | "write"
         /**
+         * Storage class
+         * type fullname: cloud.storage.StorageClassEnum
+         */
+        export type StorageClassEnum = "HIGH_PERF" | "STANDARD"
+        /**
          * TypeEnum
          * type fullname: cloud.storage.TypeEnum
          */
         export type TypeEnum = "private" | "public" | "static"
+        /**
+         * Versioning status
+         * type fullname: cloud.storage.VersioningStatusEnum
+         */
+        export type VersioningStatusEnum = "disabled" | "enabled" | "suspended"
     }
     export namespace user {
         /**
@@ -4560,6 +5278,22 @@ export namespace cloud {
          * type fullname: cloud.user.RoleEnum
          */
         export type RoleEnum = "admin" | "administrator" | "ai_training_operator" | "ai_training_read" | "authentication" | "backup_operator" | "compute_operator" | "image_operator" | "infrastructure_supervisor" | "network_operator" | "network_security_operator" | "objectstore_operator" | "volume_operator"
+        /**
+         * S3Credentials
+         * interface fullName: cloud.user.S3Credentials.S3Credentials
+         */
+        export interface S3Credentials {
+            access: string;
+            tenantId: string;
+            userId: string;
+        }
+        /**
+         * S3CredentialsSecretOnly
+         * interface fullName: cloud.user.S3CredentialsSecretOnly.S3CredentialsSecretOnly
+         */
+        export interface S3CredentialsSecretOnly {
+            secret: string;
+        }
         /**
          * S3CredentialsWithSecret
          * interface fullName: cloud.user.S3CredentialsWithSecret.S3CredentialsWithSecret
@@ -4705,6 +5439,66 @@ export namespace complexType {
         value: T;
     }
 }
+export namespace dbaas {
+    export namespace logs {
+        /**
+         * Log kind
+         * interface fullName: dbaas.logs.LogKind.LogKind
+         */
+        export interface LogKind {
+            additionalReturnedFields: string[];
+            createdAt: string;
+            displayName: string;
+            kindId: string;
+            name: string;
+            updatedAt: string;
+        }
+        /**
+         * Log temporary URL creation payload
+         * interface fullName: dbaas.logs.LogUrlCreation.LogUrlCreation
+         */
+        export interface LogUrlCreation {
+            kind: string;
+        }
+        /**
+         * Temporary url information
+         * interface fullName: dbaas.logs.TemporaryLogsLink.TemporaryLogsLink
+         */
+        export interface TemporaryLogsLink {
+            expirationDate: string;
+            url: string;
+        }
+    }
+}
+export namespace iam {
+    /**
+     * IAM resource metadata embedded in services models
+     * interface fullName: iam.ResourceMetadata.ResourceMetadata
+     */
+    export interface ResourceMetadata {
+        displayName?: string;
+        id: string;
+        tags?: { [key: string]: string };
+        urn: string;
+    }
+    export namespace resource {
+        /**
+         * Resource tag filter
+         * interface fullName: iam.resource.TagFilter.TagFilter
+         */
+        export interface TagFilter {
+            operator?: iam.resource.TagFilter.OperatorEnum;
+            value: string;
+        }
+        export namespace TagFilter {
+            /**
+             * Operator that can be used in order to filter resources tags
+             * type fullname: iam.resource.TagFilter.OperatorEnum
+             */
+            export type OperatorEnum = "EQ"
+        }
+    }
+}
 export namespace nichandle {
     /**
      * OVH subsidiaries
@@ -4817,7 +5611,7 @@ export interface Cloud {
          * List available services
          * GET /cloud/project
          */
-        $get(): Promise<string[]>;
+        $get(params?: { iamTags?: any }): Promise<string[]>;
         /**
          * Controle cache
          */
@@ -4845,6 +5639,17 @@ export interface Cloud {
                 $post(params: { instances: cloud.instance.MonthlyInstanceBulkParams[] }): Promise<cloud.instance.InstanceDetail[]>;
             }
             capabilities: {
+                containerRegistry: {
+                    /**
+                     * List container registry capabilities per region
+                     * GET /cloud/project/{serviceName}/capabilities/containerRegistry
+                     */
+                    $get(): Promise<cloud.containerRegistry.Capability[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
                 kube: {
                     admissionplugins: {
                         /**
@@ -4862,18 +5667,42 @@ export interface Cloud {
                          * List Kubernetes available flavors for a region
                          * GET /cloud/project/{serviceName}/capabilities/kube/flavors
                          */
-                        $get(params?: { region?: cloud.kube.RegionEnum }): Promise<cloud.kube.Flavor[]>;
+                        $get(params?: { region?: string }): Promise<cloud.kube.Flavor[]>;
                         /**
                          * Controle cache
                          */
                         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
+                    log: {
+                        kind: {
+                            /**
+                             * List available log kinds
+                             * GET /cloud/project/{serviceName}/capabilities/kube/log/kind
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(name: string): {
+                                /**
+                                 * Get a log kind
+                                 * GET /cloud/project/{serviceName}/capabilities/kube/log/kind/{name}
+                                 */
+                                $get(): Promise<dbaas.logs.LogKind>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                    }
                     regions: {
                         /**
-                         * List Kubernetes regions where cluster creation is possible
+                         * List Kubernetes regions where cluster creation is possible.
                          * GET /cloud/project/{serviceName}/capabilities/kube/regions
                          */
-                        $get(): Promise<cloud.kube.RegionCapabilitiesEnum[]>;
+                        $get(): Promise<string[]>;
                         /**
                          * Controle cache
                          */
@@ -4918,14 +5747,339 @@ export interface Cloud {
             }
             confirmTermination: {
                 /**
-                 * Confirm termination of your service
+                 * Confirm service termination
                  * POST /cloud/project/{serviceName}/confirmTermination
                  */
                 $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
             }
+            containerRegistry: {
+                /**
+                 * List registries of the project
+                 * GET /cloud/project/{serviceName}/containerRegistry
+                 */
+                $get(): Promise<cloud.containerRegistry.Registry[]>;
+                /**
+                 * Create a new registry
+                 * POST /cloud/project/{serviceName}/containerRegistry
+                 */
+                $post(params: { name: string, planID?: string, region: string }): Promise<cloud.containerRegistry.Registry>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $(registryID: string): {
+                    /**
+                     * Delete a registry
+                     * DELETE /cloud/project/{serviceName}/containerRegistry/{registryID}
+                     */
+                    $delete(): Promise<void>;
+                    /**
+                     * Get the registry information
+                     * GET /cloud/project/{serviceName}/containerRegistry/{registryID}
+                     */
+                    $get(): Promise<cloud.containerRegistry.Registry>;
+                    /**
+                     * Update the registry
+                     * PUT /cloud/project/{serviceName}/containerRegistry/{registryID}
+                     */
+                    $put(params: { name: string }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    capabilities: {
+                        plan: {
+                            /**
+                             * Get available plans for the current registry.
+                             * GET /cloud/project/{serviceName}/containerRegistry/{registryID}/capabilities/plan
+                             */
+                            $get(): Promise<cloud.containerRegistry.Plan[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                    }
+                    ipRestrictions: {
+                        management: {
+                            /**
+                             * List your IP restrictions applied on Harbor UI and API
+                             * GET /cloud/project/{serviceName}/containerRegistry/{registryID}/ipRestrictions/management
+                             */
+                            $get(): Promise<cloud.containerRegistry.IPRestrictions[]>;
+                            /**
+                             * Replace IP restrictions applied on Harbor UI and API
+                             * PUT /cloud/project/{serviceName}/containerRegistry/{registryID}/ipRestrictions/management
+                             */
+                            $put(): Promise<cloud.containerRegistry.IPRestrictions[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        registry: {
+                            /**
+                             * List your IP restrictions applied on artifact manager component
+                             * GET /cloud/project/{serviceName}/containerRegistry/{registryID}/ipRestrictions/registry
+                             */
+                            $get(): Promise<cloud.containerRegistry.IPRestrictions[]>;
+                            /**
+                             * Replace IP restrictions applied on artifact manager component (Docker, Helm, etc...)
+                             * PUT /cloud/project/{serviceName}/containerRegistry/{registryID}/ipRestrictions/registry
+                             */
+                            $put(): Promise<cloud.containerRegistry.IPRestrictions[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                    }
+                    openIdConnect: {
+                        /**
+                         * Delete the registry's OIDC Configuration
+                         * DELETE /cloud/project/{serviceName}/containerRegistry/{registryID}/openIdConnect
+                         */
+                        $delete(): Promise<void>;
+                        /**
+                         * Get the registry's OIDC configuration
+                         * GET /cloud/project/{serviceName}/containerRegistry/{registryID}/openIdConnect
+                         */
+                        $get(): Promise<cloud.containerRegistry.OIDCConfiguration>;
+                        /**
+                         * Add or replace the registry's OIDC configuration
+                         * POST /cloud/project/{serviceName}/containerRegistry/{registryID}/openIdConnect
+                         */
+                        $post(params: { deleteUsers?: boolean, provider: cloud.containerRegistry.OIDCConfiguration }): Promise<void>;
+                        /**
+                         * Edit the registry's OIDC configuration
+                         * PUT /cloud/project/{serviceName}/containerRegistry/{registryID}/openIdConnect
+                         */
+                        $put(params?: { adminGroup?: string, autoOnboard?: boolean, clientId?: string, clientSecret?: string, endpoint?: string, groupsClaim?: string, name?: string, scope?: string, userClaim?: string, verifyCert?: boolean }): Promise<void>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    }
+                    plan: {
+                        /**
+                         * Show the actual plan of the registry.
+                         * GET /cloud/project/{serviceName}/containerRegistry/{registryID}/plan
+                         */
+                        $get(): Promise<cloud.containerRegistry.Plan>;
+                        /**
+                         * Update the plan of a registry.
+                         * PUT /cloud/project/{serviceName}/containerRegistry/{registryID}/plan
+                         */
+                        $put(params: { planID: string }): Promise<void>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    }
+                    users: {
+                        /**
+                         * List registry user
+                         * GET /cloud/project/{serviceName}/containerRegistry/{registryID}/users
+                         */
+                        $get(): Promise<cloud.containerRegistry.User[]>;
+                        /**
+                         * Create a new registry user
+                         * POST /cloud/project/{serviceName}/containerRegistry/{registryID}/users
+                         */
+                        $post(params?: { email?: string, login?: string }): Promise<cloud.containerRegistry.User>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $(userID: string): {
+                            /**
+                             * Delete a registry user
+                             * DELETE /cloud/project/{serviceName}/containerRegistry/{registryID}/users/{userID}
+                             */
+                            $delete(): Promise<void>;
+                            /**
+                             * Get registry user
+                             * GET /cloud/project/{serviceName}/containerRegistry/{registryID}/users/{userID}
+                             */
+                            $get(): Promise<cloud.containerRegistry.User>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            setAsAdmin: {
+                                /**
+                                 * Set the user as Admin
+                                 * PUT /cloud/project/{serviceName}/containerRegistry/{registryID}/users/{userID}/setAsAdmin
+                                 */
+                                $put(): Promise<void>;
+                            }
+                        };
+                    }
+                };
+            }
             database: {
+                availability: {
+                    /**
+                     * Get database engines availability
+                     * GET /cloud/project/{serviceName}/database/availability
+                     */
+                    $get(params?: { action?: cloud.project.database.availability.ActionEnum, clusterId?: string, target?: cloud.project.database.availability.TargetEnum }): Promise<cloud.project.database.Availability[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+                capabilities: {
+                    /**
+                     * Get database engines capabilities
+                     * GET /cloud/project/{serviceName}/database/capabilities
+                     */
+                    $get(): Promise<cloud.project.database.Capabilities>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
                 cassandra: {
-                    $(clusterId: string | number): {
+                    /**
+                     * List all the cassandra clusters of the project
+                     * GET /cloud/project/{serviceName}/database/cassandra
+                     */
+                    $get(): Promise<string[]>;
+                    /**
+                     * Create a new cassandra cluster
+                     * POST /cloud/project/{serviceName}/database/cassandra
+                     */
+                    $post(params?: { backup?: cloud.project.database.service.creation.BackupFork, backupTime?: string, backups?: cloud.project.database.service.Backup, description?: string, disk?: cloud.project.database.service.Disk, forkFrom?: cloud.project.database.service.creation.ForkFrom, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, nodesList?: cloud.project.database.service.NodeCreation[], nodesPattern?: cloud.project.database.service.NodePattern, plan?: string, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $(clusterId: string): {
+                        /**
+                         * Delete a cassandra cluster
+                         * DELETE /cloud/project/{serviceName}/database/cassandra/{clusterId}
+                         */
+                        $delete(): Promise<void>;
+                        /**
+                         * Get cassandra cluster properties
+                         * GET /cloud/project/{serviceName}/database/cassandra/{clusterId}
+                         */
+                        $get(): Promise<cloud.project.database.Service>;
+                        /**
+                         * Update an existing cassandra cluster
+                         * PUT /cloud/project/{serviceName}/database/cassandra/{clusterId}
+                         */
+                        $put(params?: { backupTime?: string, backups?: cloud.project.database.service.Backup, capabilities?: { [key in cloud.project.database.service.CapabilityEnum]: cloud.project.database.service.CapabilityActions }, category?: cloud.project.database.engine.CategoryEnum, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, nodes?: cloud.project.database.service.Node[], plan?: string, region?: string, status?: cloud.project.database.StatusEnum, storage?: cloud.project.database.service.Storage, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        advancedConfiguration: {
+                            /**
+                             * Get cassandra advanced configuration
+                             * GET /cloud/project/{serviceName}/database/cassandra/{clusterId}/advancedConfiguration
+                             */
+                            $get(): Promise<{ [key: string]: string }>;
+                            /**
+                             * Update cassandra advanced configuration
+                             * PUT /cloud/project/{serviceName}/database/cassandra/{clusterId}/advancedConfiguration
+                             */
+                            $put(): Promise<{ [key: string]: string }>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        backup: {
+                            /**
+                             * List backups of the cassandra
+                             * GET /cloud/project/{serviceName}/database/cassandra/{clusterId}/backup
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(backupId: string): {
+                                /**
+                                 * Get cassandra backups
+                                 * GET /cloud/project/{serviceName}/database/cassandra/{clusterId}/backup/{backupId}
+                                 */
+                                $get(): Promise<cloud.project.database.Backup>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        capabilities: {
+                            advancedConfiguration: {
+                                /**
+                                 * Get cassandra advanced configuration fields
+                                 * GET /cloud/project/{serviceName}/database/cassandra/{clusterId}/capabilities/advancedConfiguration
+                                 */
+                                $get(): Promise<cloud.project.database.capabilities.advancedConfiguration.Property[]>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            }
+                            integration: {
+                                /**
+                                 * Get integration capabilities related to the cassandra service
+                                 * GET /cloud/project/{serviceName}/database/cassandra/{clusterId}/capabilities/integration
+                                 */
+                                $get(): Promise<cloud.project.database.capabilities.Integration[]>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            }
+                        }
+                        certificates: {
+                            /**
+                             * Retrieve the certificates of the cassandra cluster
+                             * GET /cloud/project/{serviceName}/database/cassandra/{clusterId}/certificates
+                             */
+                            $get(): Promise<cloud.project.database.service.Certificates>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        integration: {
+                            /**
+                             * List integrations
+                             * GET /cloud/project/{serviceName}/database/cassandra/{clusterId}/integration
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Create a new integration
+                             * POST /cloud/project/{serviceName}/database/cassandra/{clusterId}/integration
+                             */
+                            $post(params: { destinationServiceId: string, id?: string, parameters?: { [key: string]: string }, sourceServiceId: string, status?: cloud.project.database.service.integration.StatusEnum, type?: cloud.project.database.service.integration.TypeEnum }): Promise<cloud.project.database.service.Integration>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(integrationId: string): {
+                                /**
+                                 * Delete an integration
+                                 * DELETE /cloud/project/{serviceName}/database/cassandra/{clusterId}/integration/{integrationId}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get an integration
+                                 * GET /cloud/project/{serviceName}/database/cassandra/{clusterId}/integration/{integrationId}
+                                 */
+                                $get(): Promise<cloud.project.database.service.Integration>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
                         ipRestriction: {
                             /**
                              * List cassandra ip restrictions
@@ -4963,6 +6117,17 @@ export interface Cloud {
                                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             };
                         }
+                        logs: {
+                            /**
+                             * Retrieve the most recent cassandra log messages (limited to 1000)
+                             * GET /cloud/project/{serviceName}/database/cassandra/{clusterId}/logs
+                             */
+                            $get(): Promise<cloud.project.database.service.LogEntry[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
                         maintenance: {
                             /**
                              * List maintenances for the cassandra cluster
@@ -4992,10 +6157,222 @@ export interface Cloud {
                                 }
                             };
                         }
+                        metric: {
+                            /**
+                             * List available metrics for the cassandra cluster
+                             * GET /cloud/project/{serviceName}/database/cassandra/{clusterId}/metric
+                             */
+                            $get(params?: { extended?: boolean }): Promise<string[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(metricName: string): {
+                                /**
+                                 * Get the metric values for the cassandra cluster
+                                 * GET /cloud/project/{serviceName}/database/cassandra/{clusterId}/metric/{metricName}
+                                 */
+                                $get(params: { period: cloud.project.database.service.MetricPeriodEnum }): Promise<cloud.project.database.service.Metric>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        node: {
+                            /**
+                             * List nodes of the cassandra
+                             * GET /cloud/project/{serviceName}/database/cassandra/{clusterId}/node
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(nodeId: string): {
+                                /**
+                                 * Get cassandra nodes
+                                 * GET /cloud/project/{serviceName}/database/cassandra/{clusterId}/node/{nodeId}
+                                 */
+                                $get(): Promise<cloud.project.database.service.Node>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        user: {
+                            /**
+                             * List users of the cassandra
+                             * GET /cloud/project/{serviceName}/database/cassandra/{clusterId}/user
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Create a new user on the cassandra cluster
+                             * POST /cloud/project/{serviceName}/database/cassandra/{clusterId}/user
+                             */
+                            $post(params?: { name?: string }): Promise<cloud.project.database.service.UserWithPassword>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(userId: string): {
+                                /**
+                                 * Delete a cassandra user
+                                 * DELETE /cloud/project/{serviceName}/database/cassandra/{clusterId}/user/{userId}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get cassandra users
+                                 * GET /cloud/project/{serviceName}/database/cassandra/{clusterId}/user/{userId}
+                                 */
+                                $get(): Promise<cloud.project.database.service.User>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                credentials: {
+                                    reset: {
+                                        /**
+                                         * Resets the password of a user
+                                         * POST /cloud/project/{serviceName}/database/cassandra/{clusterId}/user/{userId}/credentials/reset
+                                         */
+                                        $post(): Promise<cloud.project.database.service.UserWithPassword>;
+                                    }
+                                }
+                            };
+                        }
                     };
                 }
                 grafana: {
-                    $(clusterId: string | number): {
+                    /**
+                     * List all the grafana of the project
+                     * GET /cloud/project/{serviceName}/database/grafana
+                     */
+                    $get(): Promise<string[]>;
+                    /**
+                     * Create a new grafana cluster
+                     * POST /cloud/project/{serviceName}/database/grafana
+                     */
+                    $post(params?: { backup?: cloud.project.database.service.creation.BackupFork, backupTime?: string, backups?: cloud.project.database.service.Backup, description?: string, disk?: cloud.project.database.service.Disk, forkFrom?: cloud.project.database.service.creation.ForkFrom, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, nodesList?: cloud.project.database.service.NodeCreation[], nodesPattern?: cloud.project.database.service.NodePattern, plan?: string, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $(clusterId: string): {
+                        /**
+                         * Delete a grafana cluster
+                         * DELETE /cloud/project/{serviceName}/database/grafana/{clusterId}
+                         */
+                        $delete(): Promise<void>;
+                        /**
+                         * Get grafana cluster properties
+                         * GET /cloud/project/{serviceName}/database/grafana/{clusterId}
+                         */
+                        $get(): Promise<cloud.project.database.Service>;
+                        /**
+                         * Update an existing grafana cluster
+                         * PUT /cloud/project/{serviceName}/database/grafana/{clusterId}
+                         */
+                        $put(params?: { backupTime?: string, backups?: cloud.project.database.service.Backup, capabilities?: { [key in cloud.project.database.service.CapabilityEnum]: cloud.project.database.service.CapabilityActions }, category?: cloud.project.database.engine.CategoryEnum, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, nodes?: cloud.project.database.service.Node[], plan?: string, region?: string, status?: cloud.project.database.StatusEnum, storage?: cloud.project.database.service.Storage, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        advancedConfiguration: {
+                            /**
+                             * Get grafana advanced configuration
+                             * GET /cloud/project/{serviceName}/database/grafana/{clusterId}/advancedConfiguration
+                             */
+                            $get(): Promise<{ [key: string]: string }>;
+                            /**
+                             * Update grafana advanced configuration
+                             * PUT /cloud/project/{serviceName}/database/grafana/{clusterId}/advancedConfiguration
+                             */
+                            $put(): Promise<{ [key: string]: string }>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        backup: {
+                            /**
+                             * List backups of the grafana
+                             * GET /cloud/project/{serviceName}/database/grafana/{clusterId}/backup
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(backupId: string): {
+                                /**
+                                 * Get grafana backups
+                                 * GET /cloud/project/{serviceName}/database/grafana/{clusterId}/backup/{backupId}
+                                 */
+                                $get(): Promise<cloud.project.database.Backup>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        capabilities: {
+                            advancedConfiguration: {
+                                /**
+                                 * Get grafana advanced configuration fields
+                                 * GET /cloud/project/{serviceName}/database/grafana/{clusterId}/capabilities/advancedConfiguration
+                                 */
+                                $get(): Promise<cloud.project.database.capabilities.advancedConfiguration.Property[]>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            }
+                            integration: {
+                                /**
+                                 * Get integration capabilities related to the grafana service
+                                 * GET /cloud/project/{serviceName}/database/grafana/{clusterId}/capabilities/integration
+                                 */
+                                $get(): Promise<cloud.project.database.capabilities.Integration[]>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            }
+                        }
+                        integration: {
+                            /**
+                             * List integrations
+                             * GET /cloud/project/{serviceName}/database/grafana/{clusterId}/integration
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Create a new integration
+                             * POST /cloud/project/{serviceName}/database/grafana/{clusterId}/integration
+                             */
+                            $post(params: { destinationServiceId: string, id?: string, parameters?: { [key: string]: string }, sourceServiceId: string, status?: cloud.project.database.service.integration.StatusEnum, type?: cloud.project.database.service.integration.TypeEnum }): Promise<cloud.project.database.service.Integration>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(integrationId: string): {
+                                /**
+                                 * Delete an integration
+                                 * DELETE /cloud/project/{serviceName}/database/grafana/{clusterId}/integration/{integrationId}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get an integration
+                                 * GET /cloud/project/{serviceName}/database/grafana/{clusterId}/integration/{integrationId}
+                                 */
+                                $get(): Promise<cloud.project.database.service.Integration>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
                         ipRestriction: {
                             /**
                              * List grafana ip restrictions
@@ -5033,6 +6410,17 @@ export interface Cloud {
                                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             };
                         }
+                        logs: {
+                            /**
+                             * Retrieve the most recent grafana log messages (limited to 1000)
+                             * GET /cloud/project/{serviceName}/database/grafana/{clusterId}/logs
+                             */
+                            $get(): Promise<cloud.project.database.service.LogEntry[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
                         maintenance: {
                             /**
                              * List maintenances for the grafana cluster
@@ -5062,10 +6450,233 @@ export interface Cloud {
                                 }
                             };
                         }
+                        metric: {
+                            /**
+                             * List available metrics for the grafana cluster
+                             * GET /cloud/project/{serviceName}/database/grafana/{clusterId}/metric
+                             */
+                            $get(params?: { extended?: boolean }): Promise<string[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(metricName: string): {
+                                /**
+                                 * Get the metric values for the grafana cluster
+                                 * GET /cloud/project/{serviceName}/database/grafana/{clusterId}/metric/{metricName}
+                                 */
+                                $get(params: { period: cloud.project.database.service.MetricPeriodEnum }): Promise<cloud.project.database.service.Metric>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        node: {
+                            /**
+                             * List nodes of the grafana
+                             * GET /cloud/project/{serviceName}/database/grafana/{clusterId}/node
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(nodeId: string): {
+                                /**
+                                 * Get grafana nodes
+                                 * GET /cloud/project/{serviceName}/database/grafana/{clusterId}/node/{nodeId}
+                                 */
+                                $get(): Promise<cloud.project.database.service.Node>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        user: {
+                            /**
+                             * List users of the grafana
+                             * GET /cloud/project/{serviceName}/database/grafana/{clusterId}/user
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(userId: string): {
+                                /**
+                                 * Get grafana users
+                                 * GET /cloud/project/{serviceName}/database/grafana/{clusterId}/user/{userId}
+                                 */
+                                $get(): Promise<cloud.project.database.service.User>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                credentials: {
+                                    reset: {
+                                        /**
+                                         * Resets the password of a user
+                                         * POST /cloud/project/{serviceName}/database/grafana/{clusterId}/user/{userId}/credentials/reset
+                                         */
+                                        $post(): Promise<cloud.project.database.service.UserWithPassword>;
+                                    }
+                                }
+                            };
+                        }
                     };
                 }
                 kafka: {
-                    $(clusterId: string | number): {
+                    /**
+                     * List all the kafka of the project
+                     * GET /cloud/project/{serviceName}/database/kafka
+                     */
+                    $get(): Promise<string[]>;
+                    /**
+                     * Create a new kafka cluster
+                     * POST /cloud/project/{serviceName}/database/kafka
+                     */
+                    $post(params?: { backup?: cloud.project.database.service.creation.BackupFork, backupTime?: string, backups?: cloud.project.database.service.Backup, description?: string, disk?: cloud.project.database.service.Disk, forkFrom?: cloud.project.database.service.creation.ForkFrom, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, nodesList?: cloud.project.database.service.NodeCreation[], nodesPattern?: cloud.project.database.service.NodePattern, plan?: string, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $(clusterId: string): {
+                        /**
+                         * Delete a kafka cluster
+                         * DELETE /cloud/project/{serviceName}/database/kafka/{clusterId}
+                         */
+                        $delete(): Promise<void>;
+                        /**
+                         * Get kafka cluster properties
+                         * GET /cloud/project/{serviceName}/database/kafka/{clusterId}
+                         */
+                        $get(): Promise<cloud.project.database.kafka.Service>;
+                        /**
+                         * Update an existing kafka cluster
+                         * PUT /cloud/project/{serviceName}/database/kafka/{clusterId}
+                         */
+                        $put(params?: { backupTime?: string, capabilities?: { [key in cloud.project.database.service.CapabilityEnum]: cloud.project.database.service.CapabilityActions }, category?: cloud.project.database.engine.CategoryEnum, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, nodes?: cloud.project.database.service.Node[], plan?: string, restApi?: boolean, schemaRegistry?: boolean, status?: cloud.project.database.StatusEnum, storage?: cloud.project.database.service.Storage, subnetId?: string, version?: string }): Promise<cloud.project.database.kafka.Service>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        acl: {
+                            /**
+                             * List acls of the kafka
+                             * GET /cloud/project/{serviceName}/database/kafka/{clusterId}/acl
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Create a new acl on the kafka cluster
+                             * POST /cloud/project/{serviceName}/database/kafka/{clusterId}/acl
+                             */
+                            $post(params: { id?: string, permission: string, topic: string, username: string }): Promise<cloud.project.database.kafka.TopicAcl>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(aclId: string): {
+                                /**
+                                 * Delete a kafka acl
+                                 * DELETE /cloud/project/{serviceName}/database/kafka/{clusterId}/acl/{aclId}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get kafka acls
+                                 * GET /cloud/project/{serviceName}/database/kafka/{clusterId}/acl/{aclId}
+                                 */
+                                $get(): Promise<cloud.project.database.kafka.TopicAcl>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        advancedConfiguration: {
+                            /**
+                             * Get kafka advanced configuration
+                             * GET /cloud/project/{serviceName}/database/kafka/{clusterId}/advancedConfiguration
+                             */
+                            $get(): Promise<{ [key: string]: string }>;
+                            /**
+                             * Update kafka advanced configuration
+                             * PUT /cloud/project/{serviceName}/database/kafka/{clusterId}/advancedConfiguration
+                             */
+                            $put(): Promise<{ [key: string]: string }>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        capabilities: {
+                            advancedConfiguration: {
+                                /**
+                                 * Get kafka advanced configuration fields
+                                 * GET /cloud/project/{serviceName}/database/kafka/{clusterId}/capabilities/advancedConfiguration
+                                 */
+                                $get(): Promise<cloud.project.database.capabilities.advancedConfiguration.Property[]>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            }
+                            integration: {
+                                /**
+                                 * Get integration capabilities related to the kafka service
+                                 * GET /cloud/project/{serviceName}/database/kafka/{clusterId}/capabilities/integration
+                                 */
+                                $get(): Promise<cloud.project.database.capabilities.Integration[]>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            }
+                        }
+                        certificates: {
+                            /**
+                             * Retrieve the certificates of the kafka cluster
+                             * GET /cloud/project/{serviceName}/database/kafka/{clusterId}/certificates
+                             */
+                            $get(): Promise<cloud.project.database.service.Certificates>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        integration: {
+                            /**
+                             * List integrations
+                             * GET /cloud/project/{serviceName}/database/kafka/{clusterId}/integration
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Create a new integration
+                             * POST /cloud/project/{serviceName}/database/kafka/{clusterId}/integration
+                             */
+                            $post(params: { destinationServiceId: string, id?: string, parameters?: { [key: string]: string }, sourceServiceId: string, status?: cloud.project.database.service.integration.StatusEnum, type?: cloud.project.database.service.integration.TypeEnum }): Promise<cloud.project.database.service.Integration>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(integrationId: string): {
+                                /**
+                                 * Delete an integration
+                                 * DELETE /cloud/project/{serviceName}/database/kafka/{clusterId}/integration/{integrationId}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get an integration
+                                 * GET /cloud/project/{serviceName}/database/kafka/{clusterId}/integration/{integrationId}
+                                 */
+                                $get(): Promise<cloud.project.database.service.Integration>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
                         ipRestriction: {
                             /**
                              * List kafka ip restrictions
@@ -5103,6 +6714,17 @@ export interface Cloud {
                                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             };
                         }
+                        logs: {
+                            /**
+                             * Retrieve the most recent kafka log messages (limited to 1000)
+                             * GET /cloud/project/{serviceName}/database/kafka/{clusterId}/logs
+                             */
+                            $get(): Promise<cloud.project.database.service.LogEntry[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
                         maintenance: {
                             /**
                              * List maintenances for the kafka cluster
@@ -5132,11 +6754,279 @@ export interface Cloud {
                                 }
                             };
                         }
+                        metric: {
+                            /**
+                             * List available metrics for the kafka cluster
+                             * GET /cloud/project/{serviceName}/database/kafka/{clusterId}/metric
+                             */
+                            $get(params?: { extended?: boolean }): Promise<string[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(metricName: string): {
+                                /**
+                                 * Get the metric values for the kafka cluster
+                                 * GET /cloud/project/{serviceName}/database/kafka/{clusterId}/metric/{metricName}
+                                 */
+                                $get(params: { period: cloud.project.database.service.MetricPeriodEnum }): Promise<cloud.project.database.service.Metric>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        node: {
+                            /**
+                             * List nodes of the kafka
+                             * GET /cloud/project/{serviceName}/database/kafka/{clusterId}/node
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(nodeId: string): {
+                                /**
+                                 * Get kafka nodes
+                                 * GET /cloud/project/{serviceName}/database/kafka/{clusterId}/node/{nodeId}
+                                 */
+                                $get(): Promise<cloud.project.database.service.Node>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        permissions: {
+                            /**
+                             * Retrieve the permissions available on the cluster
+                             * GET /cloud/project/{serviceName}/database/kafka/{clusterId}/permissions
+                             */
+                            $get(): Promise<cloud.project.database.kafka.Permissions>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        schemaRegistryAcl: {
+                            /**
+                             * List schema registry acls of the kafka
+                             * GET /cloud/project/{serviceName}/database/kafka/{clusterId}/schemaRegistryAcl
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Create a new schema registry acl on the kafka cluster
+                             * POST /cloud/project/{serviceName}/database/kafka/{clusterId}/schemaRegistryAcl
+                             */
+                            $post(params: { id?: string, permission: string, resource: string, username: string }): Promise<cloud.project.database.kafka.SchemaRegistryAcl>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(aclId: string): {
+                                /**
+                                 * Delete a kafka schema registry acl
+                                 * DELETE /cloud/project/{serviceName}/database/kafka/{clusterId}/schemaRegistryAcl/{aclId}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get kafka schema registry acls
+                                 * GET /cloud/project/{serviceName}/database/kafka/{clusterId}/schemaRegistryAcl/{aclId}
+                                 */
+                                $get(): Promise<cloud.project.database.kafka.SchemaRegistryAcl>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        topic: {
+                            /**
+                             * List topics of the kafka
+                             * GET /cloud/project/{serviceName}/database/kafka/{clusterId}/topic
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Create a new topic on the kafka cluster
+                             * POST /cloud/project/{serviceName}/database/kafka/{clusterId}/topic
+                             */
+                            $post(params: { id?: string, minInsyncReplicas?: number, name: string, partitions?: number, replication?: number, retentionBytes?: number, retentionHours?: number }): Promise<cloud.project.database.kafka.Topic>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(topicId: string): {
+                                /**
+                                 * Delete a kafka topic
+                                 * DELETE /cloud/project/{serviceName}/database/kafka/{clusterId}/topic/{topicId}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get kafka topics
+                                 * GET /cloud/project/{serviceName}/database/kafka/{clusterId}/topic/{topicId}
+                                 */
+                                $get(): Promise<cloud.project.database.kafka.Topic>;
+                                /**
+                                 * Updates the topic on the kafka cluster
+                                 * PUT /cloud/project/{serviceName}/database/kafka/{clusterId}/topic/{topicId}
+                                 */
+                                $put(params?: { id?: string, minInsyncReplicas?: number, name?: string, partitions?: number, replication?: number, retentionBytes?: number, retentionHours?: number }): Promise<cloud.project.database.kafka.Topic>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        topicAcl: {
+                            /**
+                             * List topic acls of the kafka
+                             * GET /cloud/project/{serviceName}/database/kafka/{clusterId}/topicAcl
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Create a new topic acl on the kafka cluster
+                             * POST /cloud/project/{serviceName}/database/kafka/{clusterId}/topicAcl
+                             */
+                            $post(params: { id?: string, permission: string, topic: string, username: string }): Promise<cloud.project.database.kafka.TopicAcl>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(aclId: string): {
+                                /**
+                                 * Delete a kafka topic acl
+                                 * DELETE /cloud/project/{serviceName}/database/kafka/{clusterId}/topicAcl/{aclId}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get kafka topic acls
+                                 * GET /cloud/project/{serviceName}/database/kafka/{clusterId}/topicAcl/{aclId}
+                                 */
+                                $get(): Promise<cloud.project.database.kafka.TopicAcl>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        user: {
+                            /**
+                             * List users of the kafka
+                             * GET /cloud/project/{serviceName}/database/kafka/{clusterId}/user
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Create a new user on the kafka cluster
+                             * POST /cloud/project/{serviceName}/database/kafka/{clusterId}/user
+                             */
+                            $post(params?: { name?: string }): Promise<cloud.project.database.service.UserWithPassword>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(userId: string): {
+                                /**
+                                 * Delete a kafka user
+                                 * DELETE /cloud/project/{serviceName}/database/kafka/{clusterId}/user/{userId}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get kafka users
+                                 * GET /cloud/project/{serviceName}/database/kafka/{clusterId}/user/{userId}
+                                 */
+                                $get(): Promise<cloud.project.database.service.User>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                access: {
+                                    /**
+                                     * Retrieve the user acces for the cluster
+                                     * GET /cloud/project/{serviceName}/database/kafka/{clusterId}/user/{userId}/access
+                                     */
+                                    $get(): Promise<cloud.project.database.kafka.user.Access>;
+                                    /**
+                                     * Controle cache
+                                     */
+                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                }
+                                credentials: {
+                                    reset: {
+                                        /**
+                                         * Resets the password of a user
+                                         * POST /cloud/project/{serviceName}/database/kafka/{clusterId}/user/{userId}/credentials/reset
+                                         */
+                                        $post(): Promise<cloud.project.database.service.UserWithPassword>;
+                                    }
+                                }
+                            };
+                        }
                     };
                 }
                 kafkaConnect: {
-                    $(clusterId: string | number): {
+                    /**
+                     * List all the kafkaConnect of the project
+                     * GET /cloud/project/{serviceName}/database/kafkaConnect
+                     */
+                    $get(): Promise<string[]>;
+                    /**
+                     * Create a new kafkaConnect cluster
+                     * POST /cloud/project/{serviceName}/database/kafkaConnect
+                     */
+                    $post(params?: { backup?: cloud.project.database.service.creation.BackupFork, backupTime?: string, backups?: cloud.project.database.service.Backup, description?: string, disk?: cloud.project.database.service.Disk, forkFrom?: cloud.project.database.service.creation.ForkFrom, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, nodesList?: cloud.project.database.service.NodeCreation[], nodesPattern?: cloud.project.database.service.NodePattern, plan?: string, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $(clusterId: string): {
+                        /**
+                         * Delete a kafkaConnect cluster
+                         * DELETE /cloud/project/{serviceName}/database/kafkaConnect/{clusterId}
+                         */
+                        $delete(): Promise<void>;
+                        /**
+                         * Get kafkaConnect cluster properties
+                         * GET /cloud/project/{serviceName}/database/kafkaConnect/{clusterId}
+                         */
+                        $get(): Promise<cloud.project.database.Service>;
+                        /**
+                         * Update an existing kafkaConnect cluster
+                         * PUT /cloud/project/{serviceName}/database/kafkaConnect/{clusterId}
+                         */
+                        $put(params?: { backupTime?: string, backups?: cloud.project.database.service.Backup, capabilities?: { [key in cloud.project.database.service.CapabilityEnum]: cloud.project.database.service.CapabilityActions }, category?: cloud.project.database.engine.CategoryEnum, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, nodes?: cloud.project.database.service.Node[], plan?: string, region?: string, status?: cloud.project.database.StatusEnum, storage?: cloud.project.database.service.Storage, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        advancedConfiguration: {
+                            /**
+                             * Get kafkaConnect advanced configuration
+                             * GET /cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/advancedConfiguration
+                             */
+                            $get(): Promise<{ [key: string]: string }>;
+                            /**
+                             * Update kafkaConnect advanced configuration
+                             * PUT /cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/advancedConfiguration
+                             */
+                            $put(): Promise<{ [key: string]: string }>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
                         capabilities: {
+                            advancedConfiguration: {
+                                /**
+                                 * Get kafkaConnect advanced configuration fields
+                                 * GET /cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/capabilities/advancedConfiguration
+                                 */
+                                $get(): Promise<cloud.project.database.capabilities.advancedConfiguration.Property[]>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            }
                             connector: {
                                 /**
                                  * List Kafka Connect connectors
@@ -5181,6 +7071,136 @@ export interface Cloud {
                                     }
                                 };
                             }
+                            integration: {
+                                /**
+                                 * Get integration capabilities related to the kafkaConnect service
+                                 * GET /cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/capabilities/integration
+                                 */
+                                $get(): Promise<cloud.project.database.capabilities.Integration[]>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            }
+                        }
+                        connector: {
+                            /**
+                             * List the connectors
+                             * GET /cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/connector
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Create a new connector
+                             * POST /cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/connector
+                             */
+                            $post(params: { configuration: { [key: string]: string }, connectorId: string, name: string }): Promise<cloud.project.database.kafkaConnect.Connector>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(connectorId: string): {
+                                /**
+                                 * Delete a connector
+                                 * DELETE /cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/connector/{connectorId}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get connector
+                                 * GET /cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/connector/{connectorId}
+                                 */
+                                $get(): Promise<cloud.project.database.kafkaConnect.Connector>;
+                                /**
+                                 * Update a connector
+                                 * PUT /cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/connector/{connectorId}
+                                 */
+                                $put(params: { configuration: { [key: string]: string }, connectorId?: string, id?: string, name?: string, status?: cloud.project.database.kafkaConnect.connector.StatusEnum }): Promise<cloud.project.database.kafkaConnect.Connector>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                pause: {
+                                    /**
+                                     * Pause the kafka connector execution
+                                     * POST /cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/connector/{connectorId}/pause
+                                     */
+                                    $post(): Promise<void>;
+                                }
+                                restart: {
+                                    /**
+                                     * Restart the kafka connector execution
+                                     * POST /cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/connector/{connectorId}/restart
+                                     */
+                                    $post(): Promise<void>;
+                                }
+                                resume: {
+                                    /**
+                                     * Resume the kafka connector execution
+                                     * POST /cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/connector/{connectorId}/resume
+                                     */
+                                    $post(): Promise<void>;
+                                }
+                                task: {
+                                    /**
+                                     * List the connector tasks
+                                     * GET /cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/connector/{connectorId}/task
+                                     */
+                                    $get(): Promise<number[]>;
+                                    /**
+                                     * Controle cache
+                                     */
+                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $(taskId: number): {
+                                        /**
+                                         * Get connector task
+                                         * GET /cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/connector/{connectorId}/task/{taskId}
+                                         */
+                                        $get(): Promise<cloud.project.database.kafkaConnect.connector.Task>;
+                                        /**
+                                         * Controle cache
+                                         */
+                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                        restart: {
+                                            /**
+                                             * Restart the kafka connector task execution
+                                             * POST /cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/connector/{connectorId}/task/{taskId}/restart
+                                             */
+                                            $post(): Promise<void>;
+                                        }
+                                    };
+                                }
+                            };
+                        }
+                        integration: {
+                            /**
+                             * List integrations
+                             * GET /cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/integration
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Create a new integration
+                             * POST /cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/integration
+                             */
+                            $post(params: { destinationServiceId: string, id?: string, parameters?: { [key: string]: string }, sourceServiceId: string, status?: cloud.project.database.service.integration.StatusEnum, type?: cloud.project.database.service.integration.TypeEnum }): Promise<cloud.project.database.service.Integration>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(integrationId: string): {
+                                /**
+                                 * Delete an integration
+                                 * DELETE /cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/integration/{integrationId}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get an integration
+                                 * GET /cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/integration/{integrationId}
+                                 */
+                                $get(): Promise<cloud.project.database.service.Integration>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
                         }
                         ipRestriction: {
                             /**
@@ -5219,6 +7239,17 @@ export interface Cloud {
                                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             };
                         }
+                        logs: {
+                            /**
+                             * Retrieve the most recent kafkaConnect log messages (limited to 1000)
+                             * GET /cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/logs
+                             */
+                            $get(): Promise<cloud.project.database.service.LogEntry[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
                         maintenance: {
                             /**
                              * List maintenances for the kafka connect cluster
@@ -5248,10 +7279,184 @@ export interface Cloud {
                                 }
                             };
                         }
+                        metric: {
+                            /**
+                             * List available metrics for the kafkaConnect cluster
+                             * GET /cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/metric
+                             */
+                            $get(params?: { extended?: boolean }): Promise<string[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(metricName: string): {
+                                /**
+                                 * Get the metric values for the kafkaConnect cluster
+                                 * GET /cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/metric/{metricName}
+                                 */
+                                $get(params: { period: cloud.project.database.service.MetricPeriodEnum }): Promise<cloud.project.database.service.Metric>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        node: {
+                            /**
+                             * List nodes of the kafkaConnect
+                             * GET /cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/node
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(nodeId: string): {
+                                /**
+                                 * Get kafkaConnect nodes
+                                 * GET /cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/node/{nodeId}
+                                 */
+                                $get(): Promise<cloud.project.database.service.Node>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        user: {
+                            /**
+                             * List users of the kafkaConnect
+                             * GET /cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/user
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Create a new user on the kafkaConnect cluster
+                             * POST /cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/user
+                             */
+                            $post(params?: { name?: string }): Promise<cloud.project.database.service.UserWithPassword>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(userId: string): {
+                                /**
+                                 * Delete a kafkaConnect user
+                                 * DELETE /cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/user/{userId}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get kafkaConnect users
+                                 * GET /cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/user/{userId}
+                                 */
+                                $get(): Promise<cloud.project.database.service.User>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                credentials: {
+                                    reset: {
+                                        /**
+                                         * Resets the password of a user
+                                         * POST /cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/user/{userId}/credentials/reset
+                                         */
+                                        $post(): Promise<cloud.project.database.service.UserWithPassword>;
+                                    }
+                                }
+                            };
+                        }
                     };
                 }
                 kafkaMirrorMaker: {
-                    $(clusterId: string | number): {
+                    /**
+                     * List all the kafkaMirrorMaker of the project
+                     * GET /cloud/project/{serviceName}/database/kafkaMirrorMaker
+                     */
+                    $get(): Promise<string[]>;
+                    /**
+                     * Create a new kafkaMirrorMaker
+                     * POST /cloud/project/{serviceName}/database/kafkaMirrorMaker
+                     */
+                    $post(params?: { backup?: cloud.project.database.service.creation.BackupFork, backupTime?: string, backups?: cloud.project.database.service.Backup, description?: string, disk?: cloud.project.database.service.Disk, forkFrom?: cloud.project.database.service.creation.ForkFrom, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, nodesList?: cloud.project.database.service.NodeCreation[], nodesPattern?: cloud.project.database.service.NodePattern, plan?: string, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $(clusterId: string): {
+                        /**
+                         * Delete a kafkaMirrorMaker
+                         * DELETE /cloud/project/{serviceName}/database/kafkaMirrorMaker/{clusterId}
+                         */
+                        $delete(): Promise<void>;
+                        /**
+                         * Get kafkaMirrorMaker properties
+                         * GET /cloud/project/{serviceName}/database/kafkaMirrorMaker/{clusterId}
+                         */
+                        $get(): Promise<cloud.project.database.Service>;
+                        /**
+                         * Update an existing kafkaMirrorMaker
+                         * PUT /cloud/project/{serviceName}/database/kafkaMirrorMaker/{clusterId}
+                         */
+                        $put(params?: { backupTime?: string, backups?: cloud.project.database.service.Backup, capabilities?: { [key in cloud.project.database.service.CapabilityEnum]: cloud.project.database.service.CapabilityActions }, category?: cloud.project.database.engine.CategoryEnum, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, nodes?: cloud.project.database.service.Node[], plan?: string, region?: string, status?: cloud.project.database.StatusEnum, storage?: cloud.project.database.service.Storage, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        capabilities: {
+                            integration: {
+                                /**
+                                 * Get integration capabilities related to the kafkaMirrorMaker service
+                                 * GET /cloud/project/{serviceName}/database/kafkaMirrorMaker/{clusterId}/capabilities/integration
+                                 */
+                                $get(): Promise<cloud.project.database.capabilities.Integration[]>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            }
+                        }
+                        integration: {
+                            /**
+                             * List integrations
+                             * GET /cloud/project/{serviceName}/database/kafkaMirrorMaker/{clusterId}/integration
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Create a new integration
+                             * POST /cloud/project/{serviceName}/database/kafkaMirrorMaker/{clusterId}/integration
+                             */
+                            $post(params: { destinationServiceId: string, id?: string, parameters?: { [key: string]: string }, sourceServiceId: string, status?: cloud.project.database.service.integration.StatusEnum, type?: cloud.project.database.service.integration.TypeEnum }): Promise<cloud.project.database.service.Integration>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(integrationId: string): {
+                                /**
+                                 * Delete an integration
+                                 * DELETE /cloud/project/{serviceName}/database/kafkaMirrorMaker/{clusterId}/integration/{integrationId}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get an integration
+                                 * GET /cloud/project/{serviceName}/database/kafkaMirrorMaker/{clusterId}/integration/{integrationId}
+                                 */
+                                $get(): Promise<cloud.project.database.service.Integration>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        logs: {
+                            /**
+                             * Retrieve the most recent kafkaMirrorMaker log messages (limited to 1000)
+                             * GET /cloud/project/{serviceName}/database/kafkaMirrorMaker/{clusterId}/logs
+                             */
+                            $get(): Promise<cloud.project.database.service.LogEntry[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
                         maintenance: {
                             /**
                              * List maintenances for the kafka mirror maker cluster
@@ -5281,10 +7486,180 @@ export interface Cloud {
                                 }
                             };
                         }
+                        metric: {
+                            /**
+                             * List available metrics for the kafkaMirrorMaker
+                             * GET /cloud/project/{serviceName}/database/kafkaMirrorMaker/{clusterId}/metric
+                             */
+                            $get(params?: { extended?: boolean }): Promise<string[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(metricName: string): {
+                                /**
+                                 * Get the metric values for the kafkaMirrorMaker
+                                 * GET /cloud/project/{serviceName}/database/kafkaMirrorMaker/{clusterId}/metric/{metricName}
+                                 */
+                                $get(params: { period: cloud.project.database.service.MetricPeriodEnum }): Promise<cloud.project.database.service.Metric>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        node: {
+                            /**
+                             * List nodes of the kafkaMirrorMaker
+                             * GET /cloud/project/{serviceName}/database/kafkaMirrorMaker/{clusterId}/node
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(nodeId: string): {
+                                /**
+                                 * Get kafkaMirrorMaker nodes
+                                 * GET /cloud/project/{serviceName}/database/kafkaMirrorMaker/{clusterId}/node/{nodeId}
+                                 */
+                                $get(): Promise<cloud.project.database.service.Node>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        replication: {
+                            /**
+                             * List replication of the kafkaMirrorMaker
+                             * GET /cloud/project/{serviceName}/database/kafkaMirrorMaker/{clusterId}/replication
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Create a new replication
+                             * POST /cloud/project/{serviceName}/database/kafkaMirrorMaker/{clusterId}/replication
+                             */
+                            $post(params: { emitHeartbeats?: boolean, enabled: boolean, replicationPolicyClass?: cloud.project.database.service.replication.PolicyClassEnum, sourceIntegration: string, syncGroupOffsets?: boolean, syncInterval?: number, targetIntegration: string, topicExcludeList?: string[], topics?: string[] }): Promise<cloud.project.database.service.Replication>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(replicationId: string): {
+                                /**
+                                 * Delete an replication
+                                 * DELETE /cloud/project/{serviceName}/database/kafkaMirrorMaker/{clusterId}/replication/{replicationId}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get kafkaMirrorMaker replication
+                                 * GET /cloud/project/{serviceName}/database/kafkaMirrorMaker/{clusterId}/replication/{replicationId}
+                                 */
+                                $get(): Promise<cloud.project.database.service.Replication>;
+                                /**
+                                 * Updates a replication
+                                 * PUT /cloud/project/{serviceName}/database/kafkaMirrorMaker/{clusterId}/replication/{replicationId}
+                                 */
+                                $put(params: { emitHeartbeats?: boolean, enabled: boolean, id?: string, replicationPolicyClass?: cloud.project.database.service.replication.PolicyClassEnum, sourceIntegration?: string, syncGroupOffsets?: boolean, syncInterval?: number, targetIntegration?: string, topicExcludeList?: string[], topics?: string[] }): Promise<cloud.project.database.service.Replication>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
                     };
                 }
                 m3aggregator: {
-                    $(clusterId: string | number): {
+                    /**
+                     * List all the m3aggregator of the project
+                     * GET /cloud/project/{serviceName}/database/m3aggregator
+                     */
+                    $get(): Promise<string[]>;
+                    /**
+                     * Create a new m3aggregator
+                     * POST /cloud/project/{serviceName}/database/m3aggregator
+                     */
+                    $post(params?: { backup?: cloud.project.database.service.creation.BackupFork, backupTime?: string, backups?: cloud.project.database.service.Backup, description?: string, disk?: cloud.project.database.service.Disk, forkFrom?: cloud.project.database.service.creation.ForkFrom, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, nodesList?: cloud.project.database.service.NodeCreation[], nodesPattern?: cloud.project.database.service.NodePattern, plan?: string, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $(clusterId: string): {
+                        /**
+                         * Delete a m3aggregator
+                         * DELETE /cloud/project/{serviceName}/database/m3aggregator/{clusterId}
+                         */
+                        $delete(): Promise<void>;
+                        /**
+                         * Get m3aggregator properties
+                         * GET /cloud/project/{serviceName}/database/m3aggregator/{clusterId}
+                         */
+                        $get(): Promise<cloud.project.database.Service>;
+                        /**
+                         * Update an existing m3aggregator
+                         * PUT /cloud/project/{serviceName}/database/m3aggregator/{clusterId}
+                         */
+                        $put(params?: { backupTime?: string, backups?: cloud.project.database.service.Backup, capabilities?: { [key in cloud.project.database.service.CapabilityEnum]: cloud.project.database.service.CapabilityActions }, category?: cloud.project.database.engine.CategoryEnum, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, nodes?: cloud.project.database.service.Node[], plan?: string, region?: string, status?: cloud.project.database.StatusEnum, storage?: cloud.project.database.service.Storage, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        capabilities: {
+                            integration: {
+                                /**
+                                 * Get integration capabilities related to the m3aggregator service
+                                 * GET /cloud/project/{serviceName}/database/m3aggregator/{clusterId}/capabilities/integration
+                                 */
+                                $get(): Promise<cloud.project.database.capabilities.Integration[]>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            }
+                        }
+                        integration: {
+                            /**
+                             * List integrations
+                             * GET /cloud/project/{serviceName}/database/m3aggregator/{clusterId}/integration
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Create a new integration
+                             * POST /cloud/project/{serviceName}/database/m3aggregator/{clusterId}/integration
+                             */
+                            $post(params: { destinationServiceId: string, id?: string, parameters?: { [key: string]: string }, sourceServiceId: string, status?: cloud.project.database.service.integration.StatusEnum, type?: cloud.project.database.service.integration.TypeEnum }): Promise<cloud.project.database.service.Integration>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(integrationId: string): {
+                                /**
+                                 * Delete an integration
+                                 * DELETE /cloud/project/{serviceName}/database/m3aggregator/{clusterId}/integration/{integrationId}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get an integration
+                                 * GET /cloud/project/{serviceName}/database/m3aggregator/{clusterId}/integration/{integrationId}
+                                 */
+                                $get(): Promise<cloud.project.database.service.Integration>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        logs: {
+                            /**
+                             * Retrieve the most recent m3aggregator log messages (limited to 1000)
+                             * GET /cloud/project/{serviceName}/database/m3aggregator/{clusterId}/logs
+                             */
+                            $get(): Promise<cloud.project.database.service.LogEntry[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
                         maintenance: {
                             /**
                              * List maintenances for the m3aggregator cluster
@@ -5314,10 +7689,181 @@ export interface Cloud {
                                 }
                             };
                         }
+                        metric: {
+                            /**
+                             * List available metrics for the m3aggregator
+                             * GET /cloud/project/{serviceName}/database/m3aggregator/{clusterId}/metric
+                             */
+                            $get(params?: { extended?: boolean }): Promise<string[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(metricName: string): {
+                                /**
+                                 * Get the metric values for the m3aggregator
+                                 * GET /cloud/project/{serviceName}/database/m3aggregator/{clusterId}/metric/{metricName}
+                                 */
+                                $get(params: { period: cloud.project.database.service.MetricPeriodEnum }): Promise<cloud.project.database.service.Metric>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        node: {
+                            /**
+                             * List nodes of the m3aggregator
+                             * GET /cloud/project/{serviceName}/database/m3aggregator/{clusterId}/node
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(nodeId: string): {
+                                /**
+                                 * Get m3aggregator nodes
+                                 * GET /cloud/project/{serviceName}/database/m3aggregator/{clusterId}/node/{nodeId}
+                                 */
+                                $get(): Promise<cloud.project.database.service.Node>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
                     };
                 }
                 m3db: {
-                    $(clusterId: string | number): {
+                    /**
+                     * List all the m3db clusters of the project
+                     * GET /cloud/project/{serviceName}/database/m3db
+                     */
+                    $get(): Promise<string[]>;
+                    /**
+                     * Create a new m3db cluster
+                     * POST /cloud/project/{serviceName}/database/m3db
+                     */
+                    $post(params?: { backup?: cloud.project.database.service.creation.BackupFork, backupTime?: string, backups?: cloud.project.database.service.Backup, description?: string, disk?: cloud.project.database.service.Disk, forkFrom?: cloud.project.database.service.creation.ForkFrom, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, nodesList?: cloud.project.database.service.NodeCreation[], nodesPattern?: cloud.project.database.service.NodePattern, plan?: string, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $(clusterId: string): {
+                        /**
+                         * Delete a m3db cluster
+                         * DELETE /cloud/project/{serviceName}/database/m3db/{clusterId}
+                         */
+                        $delete(): Promise<void>;
+                        /**
+                         * Get m3db cluster properties
+                         * GET /cloud/project/{serviceName}/database/m3db/{clusterId}
+                         */
+                        $get(): Promise<cloud.project.database.Service>;
+                        /**
+                         * Update an existing m3db cluster
+                         * PUT /cloud/project/{serviceName}/database/m3db/{clusterId}
+                         */
+                        $put(params?: { backupTime?: string, backups?: cloud.project.database.service.Backup, capabilities?: { [key in cloud.project.database.service.CapabilityEnum]: cloud.project.database.service.CapabilityActions }, category?: cloud.project.database.engine.CategoryEnum, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, nodes?: cloud.project.database.service.Node[], plan?: string, region?: string, status?: cloud.project.database.StatusEnum, storage?: cloud.project.database.service.Storage, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        advancedConfiguration: {
+                            /**
+                             * Get m3db advanced configuration
+                             * GET /cloud/project/{serviceName}/database/m3db/{clusterId}/advancedConfiguration
+                             */
+                            $get(): Promise<{ [key: string]: string }>;
+                            /**
+                             * Update m3db advanced configuration
+                             * PUT /cloud/project/{serviceName}/database/m3db/{clusterId}/advancedConfiguration
+                             */
+                            $put(): Promise<{ [key: string]: string }>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        backup: {
+                            /**
+                             * List backups of the m3db
+                             * GET /cloud/project/{serviceName}/database/m3db/{clusterId}/backup
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(backupId: string): {
+                                /**
+                                 * Get m3db backups
+                                 * GET /cloud/project/{serviceName}/database/m3db/{clusterId}/backup/{backupId}
+                                 */
+                                $get(): Promise<cloud.project.database.Backup>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        capabilities: {
+                            advancedConfiguration: {
+                                /**
+                                 * Get m3db advanced configuration fields
+                                 * GET /cloud/project/{serviceName}/database/m3db/{clusterId}/capabilities/advancedConfiguration
+                                 */
+                                $get(): Promise<cloud.project.database.capabilities.advancedConfiguration.Property[]>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            }
+                            integration: {
+                                /**
+                                 * Get integration capabilities related to the m3db service
+                                 * GET /cloud/project/{serviceName}/database/m3db/{clusterId}/capabilities/integration
+                                 */
+                                $get(): Promise<cloud.project.database.capabilities.Integration[]>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            }
+                        }
+                        integration: {
+                            /**
+                             * List integrations
+                             * GET /cloud/project/{serviceName}/database/m3db/{clusterId}/integration
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Create a new integration
+                             * POST /cloud/project/{serviceName}/database/m3db/{clusterId}/integration
+                             */
+                            $post(params: { destinationServiceId: string, id?: string, parameters?: { [key: string]: string }, sourceServiceId: string, status?: cloud.project.database.service.integration.StatusEnum, type?: cloud.project.database.service.integration.TypeEnum }): Promise<cloud.project.database.service.Integration>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(integrationId: string): {
+                                /**
+                                 * Delete an integration
+                                 * DELETE /cloud/project/{serviceName}/database/m3db/{clusterId}/integration/{integrationId}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get an integration
+                                 * GET /cloud/project/{serviceName}/database/m3db/{clusterId}/integration/{integrationId}
+                                 */
+                                $get(): Promise<cloud.project.database.service.Integration>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
                         ipRestriction: {
                             /**
                              * List m3db ip restrictions
@@ -5355,6 +7901,17 @@ export interface Cloud {
                                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             };
                         }
+                        logs: {
+                            /**
+                             * Retrieve the most recent m3db log messages (limited to 1000)
+                             * GET /cloud/project/{serviceName}/database/m3db/{clusterId}/logs
+                             */
+                            $get(): Promise<cloud.project.database.service.LogEntry[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
                         maintenance: {
                             /**
                              * List maintenances for the m3db cluster
@@ -5384,10 +7941,331 @@ export interface Cloud {
                                 }
                             };
                         }
+                        metric: {
+                            /**
+                             * List available metrics for the m3db cluster
+                             * GET /cloud/project/{serviceName}/database/m3db/{clusterId}/metric
+                             */
+                            $get(params?: { extended?: boolean }): Promise<string[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(metricName: string): {
+                                /**
+                                 * Get the metric values for the m3db cluster
+                                 * GET /cloud/project/{serviceName}/database/m3db/{clusterId}/metric/{metricName}
+                                 */
+                                $get(params: { period: cloud.project.database.service.MetricPeriodEnum }): Promise<cloud.project.database.service.Metric>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        namespace: {
+                            /**
+                             * List namespaces of the m3db
+                             * GET /cloud/project/{serviceName}/database/m3db/{clusterId}/namespace
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Create a new namespace on the m3db cluster
+                             * POST /cloud/project/{serviceName}/database/m3db/{clusterId}/namespace
+                             */
+                            $post(params: { id?: string, name: string, resolution?: string, retention?: cloud.project.database.m3db.namespace.Retention, snapshotEnabled?: boolean, type: cloud.project.database.m3db.namespace.TypeEnum, writesToCommitLogEnabled?: boolean }): Promise<cloud.project.database.m3db.Namespace>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(namespaceId: string): {
+                                /**
+                                 * Delete m3db namespace
+                                 * DELETE /cloud/project/{serviceName}/database/m3db/{clusterId}/namespace/{namespaceId}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get m3db namespaces
+                                 * GET /cloud/project/{serviceName}/database/m3db/{clusterId}/namespace/{namespaceId}
+                                 */
+                                $get(): Promise<cloud.project.database.m3db.Namespace>;
+                                /**
+                                 * Updates the namespace on the m3db cluster
+                                 * PUT /cloud/project/{serviceName}/database/m3db/{clusterId}/namespace/{namespaceId}
+                                 */
+                                $put(params?: { id?: string, name?: string, resolution?: string, retention?: cloud.project.database.m3db.namespace.Retention, snapshotEnabled?: boolean, type?: cloud.project.database.m3db.namespace.TypeEnum, writesToCommitLogEnabled?: boolean }): Promise<cloud.project.database.m3db.Namespace>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        node: {
+                            /**
+                             * List nodes of the m3db
+                             * GET /cloud/project/{serviceName}/database/m3db/{clusterId}/node
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(nodeId: string): {
+                                /**
+                                 * Get m3db nodes
+                                 * GET /cloud/project/{serviceName}/database/m3db/{clusterId}/node/{nodeId}
+                                 */
+                                $get(): Promise<cloud.project.database.service.Node>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        user: {
+                            /**
+                             * List users of the m3db
+                             * GET /cloud/project/{serviceName}/database/m3db/{clusterId}/user
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Create a new user on the m3db cluster
+                             * POST /cloud/project/{serviceName}/database/m3db/{clusterId}/user
+                             */
+                            $post(params: { group?: string, name: string }): Promise<cloud.project.database.m3db.UserWithPassword>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(userId: string): {
+                                /**
+                                 * Delete m3db user
+                                 * DELETE /cloud/project/{serviceName}/database/m3db/{clusterId}/user/{userId}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get m3db users
+                                 * GET /cloud/project/{serviceName}/database/m3db/{clusterId}/user/{userId}
+                                 */
+                                $get(): Promise<cloud.project.database.m3db.User>;
+                                /**
+                                 * Updates the user on the m3db cluster
+                                 * PUT /cloud/project/{serviceName}/database/m3db/{clusterId}/user/{userId}
+                                 */
+                                $put(params?: { createdAt?: string, group?: string, id?: string, status?: cloud.project.database.StatusEnum, username?: string }): Promise<cloud.project.database.m3db.User>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                credentials: {
+                                    reset: {
+                                        /**
+                                         * Resets the password of a user
+                                         * POST /cloud/project/{serviceName}/database/m3db/{clusterId}/user/{userId}/credentials/reset
+                                         */
+                                        $post(): Promise<cloud.project.database.m3db.UserWithPassword>;
+                                    }
+                                }
+                            };
+                        }
                     };
                 }
                 mysql: {
-                    $(clusterId: string | number): {
+                    /**
+                     * List all the mysql of the project
+                     * GET /cloud/project/{serviceName}/database/mysql
+                     */
+                    $get(): Promise<string[]>;
+                    /**
+                     * Create a new mysql cluster
+                     * POST /cloud/project/{serviceName}/database/mysql
+                     */
+                    $post(params?: { backup?: cloud.project.database.service.creation.BackupFork, backupTime?: string, backups?: cloud.project.database.service.Backup, description?: string, disk?: cloud.project.database.service.Disk, forkFrom?: cloud.project.database.service.creation.ForkFrom, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, nodesList?: cloud.project.database.service.NodeCreation[], nodesPattern?: cloud.project.database.service.NodePattern, plan?: string, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $(clusterId: string): {
+                        /**
+                         * Delete a mysql cluster
+                         * DELETE /cloud/project/{serviceName}/database/mysql/{clusterId}
+                         */
+                        $delete(): Promise<void>;
+                        /**
+                         * Get mysql cluster properties
+                         * GET /cloud/project/{serviceName}/database/mysql/{clusterId}
+                         */
+                        $get(): Promise<cloud.project.database.Service>;
+                        /**
+                         * Update an existing mysql cluster
+                         * PUT /cloud/project/{serviceName}/database/mysql/{clusterId}
+                         */
+                        $put(params?: { backupTime?: string, backups?: cloud.project.database.service.Backup, capabilities?: { [key in cloud.project.database.service.CapabilityEnum]: cloud.project.database.service.CapabilityActions }, category?: cloud.project.database.engine.CategoryEnum, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, nodes?: cloud.project.database.service.Node[], plan?: string, region?: string, status?: cloud.project.database.StatusEnum, storage?: cloud.project.database.service.Storage, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        advancedConfiguration: {
+                            /**
+                             * Get mysql advanced configuration
+                             * GET /cloud/project/{serviceName}/database/mysql/{clusterId}/advancedConfiguration
+                             */
+                            $get(): Promise<{ [key: string]: string }>;
+                            /**
+                             * Update mysql advanced configuration
+                             * PUT /cloud/project/{serviceName}/database/mysql/{clusterId}/advancedConfiguration
+                             */
+                            $put(): Promise<{ [key: string]: string }>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        backup: {
+                            /**
+                             * List backups of the mysql
+                             * GET /cloud/project/{serviceName}/database/mysql/{clusterId}/backup
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(backupId: string): {
+                                /**
+                                 * Get mysql backups
+                                 * GET /cloud/project/{serviceName}/database/mysql/{clusterId}/backup/{backupId}
+                                 */
+                                $get(): Promise<cloud.project.database.Backup>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        capabilities: {
+                            advancedConfiguration: {
+                                /**
+                                 * Get mysql advanced configuration fields
+                                 * GET /cloud/project/{serviceName}/database/mysql/{clusterId}/capabilities/advancedConfiguration
+                                 */
+                                $get(): Promise<cloud.project.database.capabilities.advancedConfiguration.Property[]>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            }
+                            integration: {
+                                /**
+                                 * Get integration capabilities related to the mysql service
+                                 * GET /cloud/project/{serviceName}/database/mysql/{clusterId}/capabilities/integration
+                                 */
+                                $get(): Promise<cloud.project.database.capabilities.Integration[]>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            }
+                        }
+                        certificates: {
+                            /**
+                             * Retrieve the certificates of the mysql cluster
+                             * GET /cloud/project/{serviceName}/database/mysql/{clusterId}/certificates
+                             */
+                            $get(): Promise<cloud.project.database.service.Certificates>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        currentQueries: {
+                            /**
+                             * Retrieve the current queries for the cluster
+                             * GET /cloud/project/{serviceName}/database/mysql/{clusterId}/currentQueries
+                             */
+                            $get(params?: { limit?: number, offset?: number }): Promise<cloud.project.database.service.CurrentQueries>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            cancel: {
+                                /**
+                                 * Cancel the given current query of the cluster
+                                 * POST /cloud/project/{serviceName}/database/mysql/{clusterId}/currentQueries/cancel
+                                 */
+                                $post(params?: { pid?: number, terminate?: boolean }): Promise<cloud.project.database.service.currentqueries.query.CancelResponse>;
+                            }
+                        }
+                        database: {
+                            /**
+                             * GET /cloud/project/{serviceName}/database/mysql/{clusterId}/database
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Create a new database on the mysql cluster
+                             * POST /cloud/project/{serviceName}/database/mysql/{clusterId}/database
+                             */
+                            $post(params: { default_?: boolean, id?: string, name: string }): Promise<cloud.project.database.service.Database>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(databaseId: string): {
+                                /**
+                                 * Delete a mysql database
+                                 * DELETE /cloud/project/{serviceName}/database/mysql/{clusterId}/database/{databaseId}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get the database for the mysql cluster
+                                 * GET /cloud/project/{serviceName}/database/mysql/{clusterId}/database/{databaseId}
+                                 */
+                                $get(): Promise<cloud.project.database.service.Database>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        enableWrites: {
+                            /**
+                             * Enable temporary write permission on readonly lock mysql service
+                             * POST /cloud/project/{serviceName}/database/mysql/{clusterId}/enableWrites
+                             */
+                            $post(): Promise<cloud.project.database.TemporaryWriteDeadline>;
+                        }
+                        integration: {
+                            /**
+                             * List integrations
+                             * GET /cloud/project/{serviceName}/database/mysql/{clusterId}/integration
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Create a new integration
+                             * POST /cloud/project/{serviceName}/database/mysql/{clusterId}/integration
+                             */
+                            $post(params: { destinationServiceId: string, id?: string, parameters?: { [key: string]: string }, sourceServiceId: string, status?: cloud.project.database.service.integration.StatusEnum, type?: cloud.project.database.service.integration.TypeEnum }): Promise<cloud.project.database.service.Integration>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(integrationId: string): {
+                                /**
+                                 * Delete an integration
+                                 * DELETE /cloud/project/{serviceName}/database/mysql/{clusterId}/integration/{integrationId}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get an integration
+                                 * GET /cloud/project/{serviceName}/database/mysql/{clusterId}/integration/{integrationId}
+                                 */
+                                $get(): Promise<cloud.project.database.service.Integration>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
                         ipRestriction: {
                             /**
                              * List mysql ip restrictions
@@ -5425,6 +8303,17 @@ export interface Cloud {
                                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             };
                         }
+                        logs: {
+                            /**
+                             * Retrieve the most recent mysql log messages (limited to 1000)
+                             * GET /cloud/project/{serviceName}/database/mysql/{clusterId}/logs
+                             */
+                            $get(): Promise<cloud.project.database.service.LogEntry[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
                         maintenance: {
                             /**
                              * List maintenances for the mysql cluster
@@ -5454,10 +8343,267 @@ export interface Cloud {
                                 }
                             };
                         }
+                        metric: {
+                            /**
+                             * List available metrics for the mysql cluster
+                             * GET /cloud/project/{serviceName}/database/mysql/{clusterId}/metric
+                             */
+                            $get(params?: { extended?: boolean }): Promise<string[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(metricName: string): {
+                                /**
+                                 * Get the metric values for the mysql cluster
+                                 * GET /cloud/project/{serviceName}/database/mysql/{clusterId}/metric/{metricName}
+                                 */
+                                $get(params: { period: cloud.project.database.service.MetricPeriodEnum }): Promise<cloud.project.database.service.Metric>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        node: {
+                            /**
+                             * List nodes of the mysql
+                             * GET /cloud/project/{serviceName}/database/mysql/{clusterId}/node
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(nodeId: string): {
+                                /**
+                                 * Get mysql nodes
+                                 * GET /cloud/project/{serviceName}/database/mysql/{clusterId}/node/{nodeId}
+                                 */
+                                $get(): Promise<cloud.project.database.service.Node>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        queryStatistics: {
+                            /**
+                             * Retrieve the query statistics for the cluster
+                             * GET /cloud/project/{serviceName}/database/mysql/{clusterId}/queryStatistics
+                             */
+                            $get(params?: { limit?: number, offset?: number }): Promise<cloud.project.database.mysql.QueryStatistics>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            reset: {
+                                /**
+                                 * Reset the query statistics of the cluster
+                                 * POST /cloud/project/{serviceName}/database/mysql/{clusterId}/queryStatistics/reset
+                                 */
+                                $post(): Promise<void>;
+                            }
+                        }
+                        user: {
+                            /**
+                             * List users of the mysql
+                             * GET /cloud/project/{serviceName}/database/mysql/{clusterId}/user
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Create a new user on the mysql cluster
+                             * POST /cloud/project/{serviceName}/database/mysql/{clusterId}/user
+                             */
+                            $post(params?: { name?: string }): Promise<cloud.project.database.service.UserWithPassword>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(userId: string): {
+                                /**
+                                 * Delete a mysql user
+                                 * DELETE /cloud/project/{serviceName}/database/mysql/{clusterId}/user/{userId}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get mysql users
+                                 * GET /cloud/project/{serviceName}/database/mysql/{clusterId}/user/{userId}
+                                 */
+                                $get(): Promise<cloud.project.database.service.User>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                credentials: {
+                                    reset: {
+                                        /**
+                                         * Resets the password of a user
+                                         * POST /cloud/project/{serviceName}/database/mysql/{clusterId}/user/{userId}/credentials/reset
+                                         */
+                                        $post(): Promise<cloud.project.database.service.UserWithPassword>;
+                                    }
+                                }
+                            };
+                        }
                     };
                 }
                 opensearch: {
-                    $(clusterId: string | number): {
+                    /**
+                     * List all the opensearch of the project
+                     * GET /cloud/project/{serviceName}/database/opensearch
+                     */
+                    $get(): Promise<string[]>;
+                    /**
+                     * Create a new opensearch cluster
+                     * POST /cloud/project/{serviceName}/database/opensearch
+                     */
+                    $post(params?: { backup?: cloud.project.database.service.creation.BackupFork, backupTime?: string, backups?: cloud.project.database.service.Backup, description?: string, disk?: cloud.project.database.service.Disk, forkFrom?: cloud.project.database.service.creation.ForkFrom, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, nodesList?: cloud.project.database.service.NodeCreation[], nodesPattern?: cloud.project.database.service.NodePattern, plan?: string, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $(clusterId: string): {
+                        /**
+                         * Delete a opensearch cluster
+                         * DELETE /cloud/project/{serviceName}/database/opensearch/{clusterId}
+                         */
+                        $delete(): Promise<void>;
+                        /**
+                         * Get opensearch cluster properties
+                         * GET /cloud/project/{serviceName}/database/opensearch/{clusterId}
+                         */
+                        $get(): Promise<cloud.project.database.opensearch.Service>;
+                        /**
+                         * Update an existing opensearch cluster
+                         * PUT /cloud/project/{serviceName}/database/opensearch/{clusterId}
+                         */
+                        $put(params?: { aclsEnabled?: boolean, backupTime?: string, backups?: cloud.project.database.service.Backup, capabilities?: { [key in cloud.project.database.service.CapabilityEnum]: cloud.project.database.service.CapabilityActions }, category?: cloud.project.database.engine.CategoryEnum, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, nodes?: cloud.project.database.service.Node[], plan?: string, status?: cloud.project.database.StatusEnum, storage?: cloud.project.database.service.Storage, subnetId?: string, version?: string }): Promise<cloud.project.database.opensearch.Service>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        advancedConfiguration: {
+                            /**
+                             * Get opensearch advanced configuration
+                             * GET /cloud/project/{serviceName}/database/opensearch/{clusterId}/advancedConfiguration
+                             */
+                            $get(): Promise<{ [key: string]: string }>;
+                            /**
+                             * Update opensearch advanced configuration
+                             * PUT /cloud/project/{serviceName}/database/opensearch/{clusterId}/advancedConfiguration
+                             */
+                            $put(): Promise<{ [key: string]: string }>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        backup: {
+                            /**
+                             * List backups of the opensearch
+                             * GET /cloud/project/{serviceName}/database/opensearch/{clusterId}/backup
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(backupId: string): {
+                                /**
+                                 * Get opensearch backups
+                                 * GET /cloud/project/{serviceName}/database/opensearch/{clusterId}/backup/{backupId}
+                                 */
+                                $get(): Promise<cloud.project.database.Backup>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        capabilities: {
+                            advancedConfiguration: {
+                                /**
+                                 * Get opensearch advanced configuration fields
+                                 * GET /cloud/project/{serviceName}/database/opensearch/{clusterId}/capabilities/advancedConfiguration
+                                 */
+                                $get(): Promise<cloud.project.database.capabilities.advancedConfiguration.Property[]>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            }
+                            integration: {
+                                /**
+                                 * Get integration capabilities related to the opensearch service
+                                 * GET /cloud/project/{serviceName}/database/opensearch/{clusterId}/capabilities/integration
+                                 */
+                                $get(): Promise<cloud.project.database.capabilities.Integration[]>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            }
+                        }
+                        index: {
+                            /**
+                             * List indexes of the opensearch
+                             * GET /cloud/project/{serviceName}/database/opensearch/{clusterId}/index
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(indexId: string): {
+                                /**
+                                 * Delete an opensearch index
+                                 * DELETE /cloud/project/{serviceName}/database/opensearch/{clusterId}/index/{indexId}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get opensearch index
+                                 * GET /cloud/project/{serviceName}/database/opensearch/{clusterId}/index/{indexId}
+                                 */
+                                $get(): Promise<cloud.project.database.opensearch.Index>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        integration: {
+                            /**
+                             * List integrations
+                             * GET /cloud/project/{serviceName}/database/opensearch/{clusterId}/integration
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Create a new integration
+                             * POST /cloud/project/{serviceName}/database/opensearch/{clusterId}/integration
+                             */
+                            $post(params: { destinationServiceId: string, id?: string, parameters?: { [key: string]: string }, sourceServiceId: string, status?: cloud.project.database.service.integration.StatusEnum, type?: cloud.project.database.service.integration.TypeEnum }): Promise<cloud.project.database.service.Integration>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(integrationId: string): {
+                                /**
+                                 * Delete an integration
+                                 * DELETE /cloud/project/{serviceName}/database/opensearch/{clusterId}/integration/{integrationId}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get an integration
+                                 * GET /cloud/project/{serviceName}/database/opensearch/{clusterId}/integration/{integrationId}
+                                 */
+                                $get(): Promise<cloud.project.database.service.Integration>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
                         ipRestriction: {
                             /**
                              * List opensearch ip restrictions
@@ -5495,6 +8641,17 @@ export interface Cloud {
                                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             };
                         }
+                        logs: {
+                            /**
+                             * Retrieve the most recent opensearch log messages (limited to 1000)
+                             * GET /cloud/project/{serviceName}/database/opensearch/{clusterId}/logs
+                             */
+                            $get(): Promise<cloud.project.database.service.LogEntry[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
                         maintenance: {
                             /**
                              * List maintenances for the opensearch cluster
@@ -5524,10 +8681,373 @@ export interface Cloud {
                                 }
                             };
                         }
+                        metric: {
+                            /**
+                             * List available metrics for the opensearch cluster
+                             * GET /cloud/project/{serviceName}/database/opensearch/{clusterId}/metric
+                             */
+                            $get(params?: { extended?: boolean }): Promise<string[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(metricName: string): {
+                                /**
+                                 * Get the metric values for the opensearch cluster
+                                 * GET /cloud/project/{serviceName}/database/opensearch/{clusterId}/metric/{metricName}
+                                 */
+                                $get(params: { period: cloud.project.database.service.MetricPeriodEnum }): Promise<cloud.project.database.service.Metric>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        node: {
+                            /**
+                             * List nodes of the opensearch
+                             * GET /cloud/project/{serviceName}/database/opensearch/{clusterId}/node
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(nodeId: string): {
+                                /**
+                                 * Get opensearch nodes
+                                 * GET /cloud/project/{serviceName}/database/opensearch/{clusterId}/node/{nodeId}
+                                 */
+                                $get(): Promise<cloud.project.database.service.Node>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        pattern: {
+                            /**
+                             * List patterns of the opensearch
+                             * GET /cloud/project/{serviceName}/database/opensearch/{clusterId}/pattern
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Create a new pattern on the opensearch cluster
+                             * POST /cloud/project/{serviceName}/database/opensearch/{clusterId}/pattern
+                             */
+                            $post(params: { id?: string, maxIndexCount?: number, pattern: string }): Promise<cloud.project.database.opensearch.Pattern>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(patternId: string): {
+                                /**
+                                 * Delete an opensearch pattern
+                                 * DELETE /cloud/project/{serviceName}/database/opensearch/{clusterId}/pattern/{patternId}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get opensearch patterns
+                                 * GET /cloud/project/{serviceName}/database/opensearch/{clusterId}/pattern/{patternId}
+                                 */
+                                $get(): Promise<cloud.project.database.opensearch.Pattern>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        permissions: {
+                            /**
+                             * Retrieve the opensearch permissions values
+                             * GET /cloud/project/{serviceName}/database/opensearch/{clusterId}/permissions
+                             */
+                            $get(): Promise<cloud.project.database.opensearch.Permissions>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        user: {
+                            /**
+                             * List users of the opensearch
+                             * GET /cloud/project/{serviceName}/database/opensearch/{clusterId}/user
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Create a new user on the opensearch cluster
+                             * POST /cloud/project/{serviceName}/database/opensearch/{clusterId}/user
+                             */
+                            $post(params: { acls?: cloud.project.database.opensearch.UserAcl[], name: string }): Promise<cloud.project.database.opensearch.UserWithPassword>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(userId: string): {
+                                /**
+                                 * Delete a opensearch user
+                                 * DELETE /cloud/project/{serviceName}/database/opensearch/{clusterId}/user/{userId}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get opensearch users
+                                 * GET /cloud/project/{serviceName}/database/opensearch/{clusterId}/user/{userId}
+                                 */
+                                $get(): Promise<cloud.project.database.opensearch.User>;
+                                /**
+                                 * Update a user on the opensearch cluster
+                                 * PUT /cloud/project/{serviceName}/database/opensearch/{clusterId}/user/{userId}
+                                 */
+                                $put(params?: { acls?: cloud.project.database.opensearch.UserAcl[], createdAt?: string, id?: string, status?: cloud.project.database.StatusEnum, username?: string }): Promise<cloud.project.database.opensearch.User>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                credentials: {
+                                    reset: {
+                                        /**
+                                         * Resets the password of a user
+                                         * POST /cloud/project/{serviceName}/database/opensearch/{clusterId}/user/{userId}/credentials/reset
+                                         */
+                                        $post(): Promise<cloud.project.database.opensearch.UserWithPassword>;
+                                    }
+                                }
+                            };
+                        }
                     };
                 }
                 postgresql: {
-                    $(clusterId: string | number): {
+                    /**
+                     * List all the postgresql of the project
+                     * GET /cloud/project/{serviceName}/database/postgresql
+                     */
+                    $get(): Promise<string[]>;
+                    /**
+                     * Create a new postgresql cluster
+                     * POST /cloud/project/{serviceName}/database/postgresql
+                     */
+                    $post(params?: { backup?: cloud.project.database.service.creation.BackupFork, backupTime?: string, backups?: cloud.project.database.service.Backup, description?: string, disk?: cloud.project.database.service.Disk, forkFrom?: cloud.project.database.service.creation.ForkFrom, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, nodesList?: cloud.project.database.service.NodeCreation[], nodesPattern?: cloud.project.database.service.NodePattern, plan?: string, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $(clusterId: string): {
+                        /**
+                         * Delete a postgresql cluster
+                         * DELETE /cloud/project/{serviceName}/database/postgresql/{clusterId}
+                         */
+                        $delete(): Promise<void>;
+                        /**
+                         * Get postgresql cluster properties
+                         * GET /cloud/project/{serviceName}/database/postgresql/{clusterId}
+                         */
+                        $get(): Promise<cloud.project.database.Service>;
+                        /**
+                         * Update an existing postgresql cluster
+                         * PUT /cloud/project/{serviceName}/database/postgresql/{clusterId}
+                         */
+                        $put(params?: { backupTime?: string, backups?: cloud.project.database.service.Backup, capabilities?: { [key in cloud.project.database.service.CapabilityEnum]: cloud.project.database.service.CapabilityActions }, category?: cloud.project.database.engine.CategoryEnum, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, nodes?: cloud.project.database.service.Node[], plan?: string, region?: string, status?: cloud.project.database.StatusEnum, storage?: cloud.project.database.service.Storage, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        advancedConfiguration: {
+                            /**
+                             * Get postgresql advanced configuration
+                             * GET /cloud/project/{serviceName}/database/postgresql/{clusterId}/advancedConfiguration
+                             */
+                            $get(): Promise<{ [key: string]: string }>;
+                            /**
+                             * Update postgresql advanced configuration
+                             * PUT /cloud/project/{serviceName}/database/postgresql/{clusterId}/advancedConfiguration
+                             */
+                            $put(): Promise<{ [key: string]: string }>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        backup: {
+                            /**
+                             * List backups of the postgresql
+                             * GET /cloud/project/{serviceName}/database/postgresql/{clusterId}/backup
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(backupId: string): {
+                                /**
+                                 * Get postgresql backups
+                                 * GET /cloud/project/{serviceName}/database/postgresql/{clusterId}/backup/{backupId}
+                                 */
+                                $get(): Promise<cloud.project.database.Backup>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        capabilities: {
+                            advancedConfiguration: {
+                                /**
+                                 * Get postgresql advanced configuration fields
+                                 * GET /cloud/project/{serviceName}/database/postgresql/{clusterId}/capabilities/advancedConfiguration
+                                 */
+                                $get(): Promise<cloud.project.database.capabilities.advancedConfiguration.Property[]>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            }
+                            integration: {
+                                /**
+                                 * Get integration capabilities related to the postgresql service
+                                 * GET /cloud/project/{serviceName}/database/postgresql/{clusterId}/capabilities/integration
+                                 */
+                                $get(): Promise<cloud.project.database.capabilities.Integration[]>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            }
+                        }
+                        certificates: {
+                            /**
+                             * Retrieve the certificates of the postgresql cluster
+                             * GET /cloud/project/{serviceName}/database/postgresql/{clusterId}/certificates
+                             */
+                            $get(): Promise<cloud.project.database.service.Certificates>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        connectionPool: {
+                            /**
+                             * GET /cloud/project/{serviceName}/database/postgresql/{clusterId}/connectionPool
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Create a new connectionPool on the postgresql cluster
+                             * POST /cloud/project/{serviceName}/database/postgresql/{clusterId}/connectionPool
+                             */
+                            $post(params: { databaseId: string, mode: cloud.project.database.postgresql.connectionpool.ModeEnum, name: string, size: number, userId?: string }): Promise<cloud.project.database.postgresql.ConnectionPool>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(connectionPoolId: string): {
+                                /**
+                                 * Delete a postgresql connectionPool
+                                 * DELETE /cloud/project/{serviceName}/database/postgresql/{clusterId}/connectionPool/{connectionPoolId}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get the connectionPool for the postgresql cluster
+                                 * GET /cloud/project/{serviceName}/database/postgresql/{clusterId}/connectionPool/{connectionPoolId}
+                                 */
+                                $get(): Promise<cloud.project.database.postgresql.ConnectionPool>;
+                                /**
+                                 * Update a connectionPool on the postgresql cluster
+                                 * PUT /cloud/project/{serviceName}/database/postgresql/{clusterId}/connectionPool/{connectionPoolId}
+                                 */
+                                $put(params?: { databaseId?: string, id?: string, mode?: cloud.project.database.postgresql.connectionpool.ModeEnum, name?: string, port?: number, size?: number, sslMode?: cloud.project.database.postgresql.connectionpool.SslModeEnum, uri?: string, userId?: string }): Promise<cloud.project.database.postgresql.ConnectionPool>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        currentQueries: {
+                            /**
+                             * Retrieve the current queries for the cluster
+                             * GET /cloud/project/{serviceName}/database/postgresql/{clusterId}/currentQueries
+                             */
+                            $get(params?: { limit?: number, offset?: number }): Promise<cloud.project.database.service.CurrentQueries>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            cancel: {
+                                /**
+                                 * Cancel the given current query of the cluster
+                                 * POST /cloud/project/{serviceName}/database/postgresql/{clusterId}/currentQueries/cancel
+                                 */
+                                $post(params?: { pid?: number, terminate?: boolean }): Promise<cloud.project.database.service.currentqueries.query.CancelResponse>;
+                            }
+                        }
+                        database: {
+                            /**
+                             * GET /cloud/project/{serviceName}/database/postgresql/{clusterId}/database
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Create a new database on the postgresql cluster
+                             * POST /cloud/project/{serviceName}/database/postgresql/{clusterId}/database
+                             */
+                            $post(params: { default_?: boolean, id?: string, name: string }): Promise<cloud.project.database.service.Database>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(databaseId: string): {
+                                /**
+                                 * Delete a postgresql database
+                                 * DELETE /cloud/project/{serviceName}/database/postgresql/{clusterId}/database/{databaseId}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get the database for the postgresql cluster
+                                 * GET /cloud/project/{serviceName}/database/postgresql/{clusterId}/database/{databaseId}
+                                 */
+                                $get(): Promise<cloud.project.database.service.Database>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        enableWrites: {
+                            /**
+                             * Enable temporary write permission on readonly lock postgresql service
+                             * POST /cloud/project/{serviceName}/database/postgresql/{clusterId}/enableWrites
+                             */
+                            $post(): Promise<cloud.project.database.TemporaryWriteDeadline>;
+                        }
+                        integration: {
+                            /**
+                             * List integrations
+                             * GET /cloud/project/{serviceName}/database/postgresql/{clusterId}/integration
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Create a new integration
+                             * POST /cloud/project/{serviceName}/database/postgresql/{clusterId}/integration
+                             */
+                            $post(params: { destinationServiceId: string, id?: string, parameters?: { [key: string]: string }, sourceServiceId: string, status?: cloud.project.database.service.integration.StatusEnum, type?: cloud.project.database.service.integration.TypeEnum }): Promise<cloud.project.database.service.Integration>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(integrationId: string): {
+                                /**
+                                 * Delete an integration
+                                 * DELETE /cloud/project/{serviceName}/database/postgresql/{clusterId}/integration/{integrationId}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get an integration
+                                 * GET /cloud/project/{serviceName}/database/postgresql/{clusterId}/integration/{integrationId}
+                                 */
+                                $get(): Promise<cloud.project.database.service.Integration>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
                         ipRestriction: {
                             /**
                              * List postgresql ip restrictions
@@ -5565,6 +9085,17 @@ export interface Cloud {
                                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             };
                         }
+                        logs: {
+                            /**
+                             * Retrieve the most recent postgresql log messages (limited to 1000)
+                             * GET /cloud/project/{serviceName}/database/postgresql/{clusterId}/logs
+                             */
+                            $get(): Promise<cloud.project.database.service.LogEntry[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
                         maintenance: {
                             /**
                              * List maintenances for the postgresql cluster
@@ -5594,10 +9125,278 @@ export interface Cloud {
                                 }
                             };
                         }
+                        metric: {
+                            /**
+                             * List available metrics for the postgresql cluster
+                             * GET /cloud/project/{serviceName}/database/postgresql/{clusterId}/metric
+                             */
+                            $get(params?: { extended?: boolean }): Promise<string[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(metricName: string): {
+                                /**
+                                 * Get the metric values for the postgresql cluster
+                                 * GET /cloud/project/{serviceName}/database/postgresql/{clusterId}/metric/{metricName}
+                                 */
+                                $get(params: { period: cloud.project.database.service.MetricPeriodEnum }): Promise<cloud.project.database.service.Metric>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        node: {
+                            /**
+                             * List nodes of the postgresql
+                             * GET /cloud/project/{serviceName}/database/postgresql/{clusterId}/node
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(nodeId: string): {
+                                /**
+                                 * Get postgresql nodes
+                                 * GET /cloud/project/{serviceName}/database/postgresql/{clusterId}/node/{nodeId}
+                                 */
+                                $get(): Promise<cloud.project.database.service.Node>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        queryStatistics: {
+                            /**
+                             * Retrieve the query statistics for the cluster
+                             * GET /cloud/project/{serviceName}/database/postgresql/{clusterId}/queryStatistics
+                             */
+                            $get(params?: { limit?: number, offset?: number }): Promise<cloud.project.database.postgresql.QueryStatistics>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            reset: {
+                                /**
+                                 * Reset the query statistics of the cluster
+                                 * POST /cloud/project/{serviceName}/database/postgresql/{clusterId}/queryStatistics/reset
+                                 */
+                                $post(): Promise<void>;
+                            }
+                        }
+                        roles: {
+                            /**
+                             * Get postgresql roles
+                             * GET /cloud/project/{serviceName}/database/postgresql/{clusterId}/roles
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        user: {
+                            /**
+                             * List users of the postgresql
+                             * GET /cloud/project/{serviceName}/database/postgresql/{clusterId}/user
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Create a new user on the postgresql cluster
+                             * POST /cloud/project/{serviceName}/database/postgresql/{clusterId}/user
+                             */
+                            $post(params?: { name?: string, roles?: string[] }): Promise<cloud.project.database.service.UserWithPasswordAndRoles>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(userId: string): {
+                                /**
+                                 * Delete a postgresql user
+                                 * DELETE /cloud/project/{serviceName}/database/postgresql/{clusterId}/user/{userId}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get postgresql users
+                                 * GET /cloud/project/{serviceName}/database/postgresql/{clusterId}/user/{userId}
+                                 */
+                                $get(): Promise<cloud.project.database.service.UserWithRoles>;
+                                /**
+                                 * Updates the user on the postgresql cluster
+                                 * PUT /cloud/project/{serviceName}/database/postgresql/{clusterId}/user/{userId}
+                                 */
+                                $put(params?: { createdAt?: string, id?: string, roles?: string[], status?: cloud.project.database.StatusEnum, username?: string }): Promise<cloud.project.database.service.UserWithRoles>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                credentials: {
+                                    reset: {
+                                        /**
+                                         * Resets the password of a user
+                                         * POST /cloud/project/{serviceName}/database/postgresql/{clusterId}/user/{userId}/credentials/reset
+                                         */
+                                        $post(): Promise<cloud.project.database.service.UserWithPasswordAndRoles>;
+                                    }
+                                }
+                            };
+                        }
                     };
                 }
                 redis: {
-                    $(clusterId: string | number): {
+                    /**
+                     * List all the redis of the project
+                     * GET /cloud/project/{serviceName}/database/redis
+                     */
+                    $get(): Promise<string[]>;
+                    /**
+                     * Create a new redis cluster
+                     * POST /cloud/project/{serviceName}/database/redis
+                     */
+                    $post(params?: { backup?: cloud.project.database.service.creation.BackupFork, backupTime?: string, backups?: cloud.project.database.service.Backup, description?: string, disk?: cloud.project.database.service.Disk, forkFrom?: cloud.project.database.service.creation.ForkFrom, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, nodesList?: cloud.project.database.service.NodeCreation[], nodesPattern?: cloud.project.database.service.NodePattern, plan?: string, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $(clusterId: string): {
+                        /**
+                         * Delete a redis cluster
+                         * DELETE /cloud/project/{serviceName}/database/redis/{clusterId}
+                         */
+                        $delete(): Promise<void>;
+                        /**
+                         * Get redis cluster properties
+                         * GET /cloud/project/{serviceName}/database/redis/{clusterId}
+                         */
+                        $get(): Promise<cloud.project.database.Service>;
+                        /**
+                         * Update an existing redis cluster
+                         * PUT /cloud/project/{serviceName}/database/redis/{clusterId}
+                         */
+                        $put(params?: { backupTime?: string, backups?: cloud.project.database.service.Backup, capabilities?: { [key in cloud.project.database.service.CapabilityEnum]: cloud.project.database.service.CapabilityActions }, category?: cloud.project.database.engine.CategoryEnum, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, nodes?: cloud.project.database.service.Node[], plan?: string, region?: string, status?: cloud.project.database.StatusEnum, storage?: cloud.project.database.service.Storage, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        advancedConfiguration: {
+                            /**
+                             * Get redis advanced configuration
+                             * GET /cloud/project/{serviceName}/database/redis/{clusterId}/advancedConfiguration
+                             */
+                            $get(): Promise<{ [key: string]: string }>;
+                            /**
+                             * Update redis advanced configuration
+                             * PUT /cloud/project/{serviceName}/database/redis/{clusterId}/advancedConfiguration
+                             */
+                            $put(): Promise<{ [key: string]: string }>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        backup: {
+                            /**
+                             * List backups of the redis
+                             * GET /cloud/project/{serviceName}/database/redis/{clusterId}/backup
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(backupId: string): {
+                                /**
+                                 * Get redis backups
+                                 * GET /cloud/project/{serviceName}/database/redis/{clusterId}/backup/{backupId}
+                                 */
+                                $get(): Promise<cloud.project.database.Backup>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        capabilities: {
+                            advancedConfiguration: {
+                                /**
+                                 * Get redis advanced configuration fields
+                                 * GET /cloud/project/{serviceName}/database/redis/{clusterId}/capabilities/advancedConfiguration
+                                 */
+                                $get(): Promise<cloud.project.database.capabilities.advancedConfiguration.Property[]>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            }
+                            categories: {
+                                /**
+                                 * Get available categories in the redis service
+                                 * GET /cloud/project/{serviceName}/database/redis/{clusterId}/capabilities/categories
+                                 */
+                                $get(): Promise<string[]>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            }
+                            commands: {
+                                /**
+                                 * Get available commands in the redis service
+                                 * GET /cloud/project/{serviceName}/database/redis/{clusterId}/capabilities/commands
+                                 */
+                                $get(): Promise<string[]>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            }
+                            integration: {
+                                /**
+                                 * Get integration capabilities related to the redis service
+                                 * GET /cloud/project/{serviceName}/database/redis/{clusterId}/capabilities/integration
+                                 */
+                                $get(): Promise<cloud.project.database.capabilities.Integration[]>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            }
+                        }
+                        integration: {
+                            /**
+                             * List integrations
+                             * GET /cloud/project/{serviceName}/database/redis/{clusterId}/integration
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Create a new integration
+                             * POST /cloud/project/{serviceName}/database/redis/{clusterId}/integration
+                             */
+                            $post(params: { destinationServiceId: string, id?: string, parameters?: { [key: string]: string }, sourceServiceId: string, status?: cloud.project.database.service.integration.StatusEnum, type?: cloud.project.database.service.integration.TypeEnum }): Promise<cloud.project.database.service.Integration>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(integrationId: string): {
+                                /**
+                                 * Delete an integration
+                                 * DELETE /cloud/project/{serviceName}/database/redis/{clusterId}/integration/{integrationId}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get an integration
+                                 * GET /cloud/project/{serviceName}/database/redis/{clusterId}/integration/{integrationId}
+                                 */
+                                $get(): Promise<cloud.project.database.service.Integration>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
                         ipRestriction: {
                             /**
                              * List redis ip restrictions
@@ -5635,6 +9434,17 @@ export interface Cloud {
                                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             };
                         }
+                        logs: {
+                            /**
+                             * Retrieve the most recent redis log messages (limited to 1000)
+                             * GET /cloud/project/{serviceName}/database/redis/{clusterId}/logs
+                             */
+                            $get(): Promise<cloud.project.database.service.LogEntry[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
                         maintenance: {
                             /**
                              * List maintenances for the redis cluster
@@ -5664,6 +9474,118 @@ export interface Cloud {
                                 }
                             };
                         }
+                        metric: {
+                            /**
+                             * List available metrics for the redis cluster
+                             * GET /cloud/project/{serviceName}/database/redis/{clusterId}/metric
+                             */
+                            $get(params?: { extended?: boolean }): Promise<string[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(metricName: string): {
+                                /**
+                                 * Get the metric values for the redis cluster
+                                 * GET /cloud/project/{serviceName}/database/redis/{clusterId}/metric/{metricName}
+                                 */
+                                $get(params: { period: cloud.project.database.service.MetricPeriodEnum }): Promise<cloud.project.database.service.Metric>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        node: {
+                            /**
+                             * List nodes of the redis
+                             * GET /cloud/project/{serviceName}/database/redis/{clusterId}/node
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(nodeId: string): {
+                                /**
+                                 * Get redis nodes
+                                 * GET /cloud/project/{serviceName}/database/redis/{clusterId}/node/{nodeId}
+                                 */
+                                $get(): Promise<cloud.project.database.service.Node>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        user: {
+                            /**
+                             * List users of the redis
+                             * GET /cloud/project/{serviceName}/database/redis/{clusterId}/user
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Create a new user on the redis cluster
+                             * POST /cloud/project/{serviceName}/database/redis/{clusterId}/user
+                             */
+                            $post(params: { categories?: string[], channels?: string[], commands?: string[], keys?: string[], name: string }): Promise<cloud.project.database.redis.UserWithPassword>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(userId: string): {
+                                /**
+                                 * Delete a redis user
+                                 * DELETE /cloud/project/{serviceName}/database/redis/{clusterId}/user/{userId}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get redis users
+                                 * GET /cloud/project/{serviceName}/database/redis/{clusterId}/user/{userId}
+                                 */
+                                $get(): Promise<cloud.project.database.redis.User>;
+                                /**
+                                 * Update a user on the redis cluster
+                                 * PUT /cloud/project/{serviceName}/database/redis/{clusterId}/user/{userId}
+                                 */
+                                $put(params?: { categories?: string[], channels?: string[], commands?: string[], createdAt?: string, id?: string, keys?: string[], status?: cloud.project.database.StatusEnum, username?: string }): Promise<cloud.project.database.redis.User>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                credentials: {
+                                    reset: {
+                                        /**
+                                         * Resets the password of a user
+                                         * POST /cloud/project/{serviceName}/database/redis/{clusterId}/user/{userId}/credentials/reset
+                                         */
+                                        $post(): Promise<cloud.project.database.redis.UserWithPassword>;
+                                    }
+                                }
+                            };
+                        }
+                    };
+                }
+                service: {
+                    /**
+                     * List database services of the project
+                     * GET /cloud/project/{serviceName}/database/service
+                     */
+                    $get(params?: { category?: cloud.project.database.engine.CategoryEnum }): Promise<string[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $(clusterId: string): {
+                        /**
+                         * Get service cluster properties
+                         * GET /cloud/project/{serviceName}/database/service/{clusterId}
+                         */
+                        $get(): Promise<cloud.project.database.Service>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     };
                 }
             }
@@ -5879,7 +9801,7 @@ export interface Cloud {
                     }
                     shelve: {
                         /**
-                         * Shelve an instance. The resources dedicated to the Public Cloud instance are released. The data of the local storage will be stored, the duration of the operation depends on the size of the local disk. The instance can be unshelved at any time. Meanwhile hourly instances will not be billed. The Snapshot Storage used to store the instance's data will be billed.
+                         * Shelve an instance
                          * POST /cloud/project/{serviceName}/instance/{instanceId}/shelve
                          */
                         $post(): Promise<void>;
@@ -5900,14 +9822,14 @@ export interface Cloud {
                     }
                     stop: {
                         /**
-                         * Stop an instance. The resources dedicated to the Public Cloud instances are still reserved. The instance can be restarted at any time. Meanwhile, the same price is charged for the instance.
+                         * Stop an instance
                          * POST /cloud/project/{serviceName}/instance/{instanceId}/stop
                          */
                         $post(): Promise<void>;
                     }
                     unshelve: {
                         /**
-                         * Unshelve an instance. The resources dedicated to the Public Cloud instance are restored. The duration of the operation depends on the size of the local disk. Instance billing will get back to normal and the snapshot used to store the instance's data will be deleted.
+                         * Unshelve an instance
                          * POST /cloud/project/{serviceName}/instance/{instanceId}/unshelve
                          */
                         $post(): Promise<void>;
@@ -5971,7 +9893,7 @@ export interface Cloud {
                  * Create a new managed Kubernetes cluster
                  * POST /cloud/project/{serviceName}/kube
                  */
-                $post(params: { customization?: cloud.ProjectKubeCustomization, kubeProxyMode?: cloud.kube.KubeProxyModeEnum, name?: string, nodepool?: cloud.ProjectKubeCreationNodePool, privateNetworkConfiguration?: cloud.kube.PrivateNetworkConfiguration, privateNetworkId?: string, region: string, updatePolicy?: cloud.kube.UpdatePolicyEnum, version?: cloud.kube.VersionEnum }): Promise<cloud.kube.Cluster>;
+                $post(params: { customization?: cloud.ProjectKubeCustomization, kubeProxyMode?: cloud.kube.KubeProxyModeEnum, loadBalancersSubnetId?: string, name?: string, nodepool?: cloud.ProjectKubeCreationNodePool, nodesSubnetId?: string, privateNetworkConfiguration?: cloud.kube.PrivateNetworkConfiguration, privateNetworkId?: string, region: string, updatePolicy?: cloud.kube.UpdatePolicyEnum, version?: cloud.kube.VersionEnum }): Promise<cloud.kube.Cluster>;
                 /**
                  * Controle cache
                  */
@@ -5981,7 +9903,7 @@ export interface Cloud {
                      * List Kubernetes available regions
                      * GET /cloud/project/{serviceName}/kube/regions
                      */
-                    $get(): Promise<cloud.kube.RegionEnum[]>;
+                    $get(): Promise<string[]>;
                     /**
                      * Controle cache
                      */
@@ -6009,10 +9931,10 @@ export interface Cloud {
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     auditLogs: {
                         /**
-                         * Generate a temporary url to retrieve auditlogs
+                         * Generate a temporary URL to retrieve audit logs
                          * POST /cloud/project/{serviceName}/kube/{kubeId}/auditLogs
                          */
-                        $post(): Promise<cloud.kube.AuditLogs>;
+                        $post(): Promise<dbaas.logs.TemporaryLogsLink>;
                     }
                     customization: {
                         /**
@@ -6083,6 +10005,15 @@ export interface Cloud {
                             $post(): Promise<void>;
                         }
                     }
+                    log: {
+                        url: {
+                            /**
+                             * Generate a temporary URL to retrieve logs
+                             * POST /cloud/project/{serviceName}/kube/{kubeId}/log/url
+                             */
+                            $post(params: { kind: string }): Promise<dbaas.logs.TemporaryLogsLink>;
+                        }
+                    }
                     metrics: {
                         etcdUsage: {
                             /**
@@ -6108,7 +10039,7 @@ export interface Cloud {
                         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         $(nodeId: string): {
                             /**
-                             * Delete a specific node on your cluster. This will also decrease by one the desirednodes value of its nodepool
+                             * Delete a specific node on your cluster
                              * DELETE /cloud/project/{serviceName}/kube/{kubeId}/node/{nodeId}
                              */
                             $delete(): Promise<void>;
@@ -6218,7 +10149,7 @@ export interface Cloud {
                          * Reset cluster: all Kubernetes data will be erased (pods, services, configuration, etc), nodes will be either deleted or reinstalled
                          * POST /cloud/project/{serviceName}/kube/{kubeId}/reset
                          */
-                        $post(params?: { customization?: cloud.ProjectKubeCustomization, kubeProxyMode?: cloud.kube.KubeProxyModeEnum, name?: string, privateNetworkConfiguration?: cloud.kube.PrivateNetworkConfiguration, privateNetworkId?: string, updatePolicy?: cloud.kube.UpdatePolicyEnum, version?: cloud.kube.VersionEnum, workerNodesPolicy?: cloud.kube.ResetWorkerNodesPolicyEnum }): Promise<void>;
+                        $post(params?: { customization?: cloud.ProjectKubeCustomization, kubeProxyMode?: cloud.kube.KubeProxyModeEnum, loadBalancersSubnetId?: string, name?: string, nodesSubnetId?: string, privateNetworkConfiguration?: cloud.kube.PrivateNetworkConfiguration, privateNetworkId?: string, updatePolicy?: cloud.kube.UpdatePolicyEnum, version?: cloud.kube.VersionEnum, workerNodesPolicy?: cloud.kube.ResetWorkerNodesPolicyEnum }): Promise<void>;
                     }
                     restart: {
                         /**
@@ -6233,6 +10164,13 @@ export interface Cloud {
                          * POST /cloud/project/{serviceName}/kube/{kubeId}/update
                          */
                         $post(params?: { force?: boolean, strategy?: cloud.kube.UpdateStrategyEnum }): Promise<void>;
+                    }
+                    updateLoadBalancersSubnetId: {
+                        /**
+                         * Updates the load balancers subnet ID
+                         * PUT /cloud/project/{serviceName}/kube/{kubeId}/updateLoadBalancersSubnetId
+                         */
+                        $put(params: { loadBalancersSubnetId: string }): Promise<void>;
                     }
                     updatePolicy: {
                         /**
@@ -6607,6 +10545,13 @@ export interface Cloud {
                     }
                     instance: {
                         $(instanceId: string | number): {
+                            abortSnapshot: {
+                                /**
+                                 * Abort an instance snapshot creation
+                                 * POST /cloud/project/{serviceName}/region/{regionName}/instance/{instanceId}/abortSnapshot
+                                 */
+                                $post(): Promise<cloud.Operation>;
+                            }
                             associateFloatingIp: {
                                 /**
                                  * Associate an existing floating IP to an instance
@@ -6712,12 +10657,12 @@ export interface Cloud {
                              * List health monitors
                              * GET /cloud/project/{serviceName}/region/{regionName}/loadbalancing/healthMonitor
                              */
-                            $get(): Promise<cloud.loadbalancing.HealthMonitor[]>;
+                            $get(params?: { poolId?: string }): Promise<cloud.loadbalancing.HealthMonitor[]>;
                             /**
                              * Create health monitor
                              * POST /cloud/project/{serviceName}/region/{regionName}/loadbalancing/healthMonitor
                              */
-                            $post(params: { httpConfiguration?: cloud.loadbalancing.HealthMonitorHTTPConfiguration, id?: string, maxRetries: number, maxRetriesDown: number, monitorType: cloud.loadbalancing.LoadBalancerHealthMonitorTypeEnum, name: string, operatingStatus?: cloud.loadbalancing.LoadBalancerOperatingStatusEnum, periodicity: string, poolId: string, provisioningStatus?: cloud.loadbalancing.LoadBalancerProvisioningStatusEnum, timeout: number }): Promise<cloud.loadbalancing.HealthMonitor>;
+                            $post(params: { delay: number, httpConfiguration?: cloud.loadbalancing.HealthMonitorHTTPConfiguration, id?: string, maxRetries: number, maxRetriesDown?: number, monitorType: cloud.loadbalancing.LoadBalancerHealthMonitorTypeEnum, name: string, operatingStatus?: cloud.loadbalancing.LoadBalancerOperatingStatusEnum, poolId: string, provisioningStatus?: cloud.loadbalancing.LoadBalancerProvisioningStatusEnum, timeout: number }): Promise<cloud.loadbalancing.HealthMonitor>;
                             /**
                              * Controle cache
                              */
@@ -6737,7 +10682,7 @@ export interface Cloud {
                                  * Update a health monitor
                                  * PUT /cloud/project/{serviceName}/region/{regionName}/loadbalancing/healthMonitor/{healthMonitorId}
                                  */
-                                $put(params?: { httpConfiguration?: cloud.loadbalancing.HealthMonitorHTTPConfiguration, maxRetries?: number, maxRetriesDown?: number, name?: string, periodicity?: string, timeout?: number }): Promise<cloud.loadbalancing.HealthMonitor>;
+                                $put(params?: { delay?: number, httpConfiguration?: cloud.loadbalancing.HealthMonitorHTTPConfiguration, maxRetries?: number, maxRetriesDown?: number, name?: string, timeout?: number }): Promise<cloud.loadbalancing.HealthMonitor>;
                                 /**
                                  * Controle cache
                                  */
@@ -6748,11 +10693,11 @@ export interface Cloud {
                             /**
                              * GET /cloud/project/{serviceName}/region/{regionName}/loadbalancing/l7Policy
                              */
-                            $get(): Promise<cloud.loadbalancing.L7Policy[]>;
+                            $get(params?: { listenerId?: string }): Promise<cloud.loadbalancing.L7Policy[]>;
                             /**
                              * POST /cloud/project/{serviceName}/region/{regionName}/loadbalancing/l7Policy
                              */
-                            $post(params: { action: cloud.loadbalancing.L7PolicyActionEnum, description?: string, id?: string, listenerId: string, name?: string, operatingStatus?: cloud.loadbalancing.LoadBalancerOperatingStatusEnum, position?: number, provisioningStatus?: cloud.loadbalancing.LoadBalancerProvisioningStatusEnum, redirectHttpCode?: number, redirectPoolId?: string, redirectPrefix?: string, redirectUrl?: string }): Promise<cloud.loadbalancing.L7Policy>;
+                            $post(params: { action: cloud.loadbalancing.L7PolicyActionEnum, description?: string, id?: string, listenerId: string, name?: string, operatingStatus?: cloud.loadbalancing.LoadBalancerOperatingStatusEnum, position?: number, provisioningStatus?: cloud.loadbalancing.LoadBalancerProvisioningStatusEnum, redirectHttpCode?: cloud.loadbalancing.L7PolicyRedirectHTTPCodeEnum, redirectPoolId?: string, redirectPrefix?: string, redirectUrl?: string }): Promise<cloud.loadbalancing.L7Policy>;
                             /**
                              * Controle cache
                              */
@@ -6815,10 +10760,10 @@ export interface Cloud {
                              */
                             $get(params?: { loadbalancerId?: string }): Promise<cloud.loadbalancing.Listener[]>;
                             /**
-                             * Create a loadbalancer listerner
+                             * Create a loadbalancer listener
                              * POST /cloud/project/{serviceName}/region/{regionName}/loadbalancing/listener
                              */
-                            $post(params: { certificateId?: string, defaultPoolId?: string, loadbalancerId: string, name: string, port: number, protocol: cloud.loadbalancing.ListenerProtocolEnum }): Promise<cloud.loadbalancing.Listener>;
+                            $post(params: { allowedCidrs?: string[], certificateId?: string, defaultPoolId?: string, description?: string, loadbalancerId: string, name: string, port: number, protocol: cloud.loadbalancing.ListenerProtocolEnum, timeoutClientData?: number, timeoutMemberData?: number, tlsVersions?: cloud.loadbalancing.ListenerTlsVersionEnum[] }): Promise<cloud.loadbalancing.Listener>;
                             /**
                              * Controle cache
                              */
@@ -6835,6 +10780,11 @@ export interface Cloud {
                                  */
                                 $get(): Promise<cloud.loadbalancing.Listener>;
                                 /**
+                                 * Edit a loadbalancer listener
+                                 * PUT /cloud/project/{serviceName}/region/{regionName}/loadbalancing/listener/{listenerId}
+                                 */
+                                $put(params?: { allowedCidrs?: string[], certificateId?: string, defaultPoolId?: string, description?: string, name?: string }): Promise<cloud.loadbalancing.Listener>;
+                                /**
                                  * Controle cache
                                  */
                                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
@@ -6850,7 +10800,7 @@ export interface Cloud {
                              * Create a loadbalancer
                              * POST /cloud/project/{serviceName}/region/{regionName}/loadbalancing/loadbalancer
                              */
-                            $post(params: { flavorId: string, listeners?: cloud.loadbalancing.loadbalancer.ListenerCreate[], name?: string, networkInformation: cloud.loadbalancing.loadbalancer.NetworkInformationCreate }): Promise<cloud.Operation>;
+                            $post(params: { flavorId: string, listeners?: cloud.loadbalancing.loadbalancer.ListenerCreate[], name?: string, network: cloud.loadbalancing.loadbalancer.CreateInput.Network }): Promise<cloud.Operation>;
                             /**
                              * Controle cache
                              */
@@ -6866,6 +10816,11 @@ export interface Cloud {
                                  * GET /cloud/project/{serviceName}/region/{regionName}/loadbalancing/loadbalancer/{loadBalancerId}
                                  */
                                 $get(): Promise<cloud.loadbalancing.LoadBalancer>;
+                                /**
+                                 * Edit a loadbalancer
+                                 * PUT /cloud/project/{serviceName}/region/{regionName}/loadbalancing/loadbalancer/{loadBalancerId}
+                                 */
+                                $put(params?: { description?: string, name?: string }): Promise<cloud.loadbalancing.LoadBalancer>;
                                 /**
                                  * Controle cache
                                  */
@@ -6883,6 +10838,17 @@ export interface Cloud {
                                      * POST /cloud/project/{serviceName}/region/{regionName}/loadbalancing/loadbalancer/{loadBalancerId}/floatingIp
                                      */
                                     $post(params: { gateway?: cloud.network.CreateGatewaySummary, ip: string }): Promise<cloud.Operation>;
+                                }
+                                stats: {
+                                    /**
+                                     * Get loadbalancer statistics
+                                     * GET /cloud/project/{serviceName}/region/{regionName}/loadbalancing/loadbalancer/{loadBalancerId}/stats
+                                     */
+                                    $get(): Promise<cloud.loadbalancing.loadbalancer.Stats>;
+                                    /**
+                                     * Controle cache
+                                     */
+                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                 }
                             };
                         }
@@ -6928,10 +10894,10 @@ export interface Cloud {
                                      */
                                     $get(): Promise<cloud.loadbalancing.pool.Member[]>;
                                     /**
-                                     * Create a pool member
+                                     * Create pool members
                                      * POST /cloud/project/{serviceName}/region/{regionName}/loadbalancing/pool/{poolId}/member
                                      */
-                                    $post(params: { address: string, id?: string, name?: string, operatingStatus?: cloud.loadbalancing.LoadBalancerOperatingStatusEnum, protocolPort: number, provisioningStatus?: cloud.loadbalancing.LoadBalancerProvisioningStatusEnum, weight?: number }): Promise<cloud.loadbalancing.pool.Member>;
+                                    $post(params: { members: cloud.loadbalancing.pool.Member[] }): Promise<cloud.loadbalancing.pool.Member[]>;
                                     /**
                                      * Controle cache
                                      */
@@ -7085,7 +11051,7 @@ export interface Cloud {
                          * Create S3 storage container
                          * POST /cloud/project/{serviceName}/region/{regionName}/storage
                          */
-                        $post(params: { name: string, ownerId?: number }): Promise<cloud.StorageContainer>;
+                        $post(params: { encryption?: cloud.StorageEncryptionObject, name: string, ownerId?: number, versioning?: cloud.StorageVersioningObject }): Promise<cloud.StorageContainer>;
                         /**
                          * Controle cache
                          */
@@ -7100,7 +11066,12 @@ export interface Cloud {
                              * Get S3 storage container
                              * GET /cloud/project/{serviceName}/region/{regionName}/storage/{name}
                              */
-                            $get(params?: { limit?: number, marker?: string }): Promise<cloud.StorageContainer>;
+                            $get(params?: { limit?: number, marker?: string, prefix?: string }): Promise<cloud.StorageContainer>;
+                            /**
+                             * Update S3 storage container
+                             * PUT /cloud/project/{serviceName}/region/{regionName}/storage/{name}
+                             */
+                            $put(params?: { createdAt?: string, encryption?: cloud.StorageEncryptionObject, name?: string, objects?: cloud.StorageObject[], objectsCount?: number, objectsSize?: number, ownerId?: number, region?: string, versioning?: cloud.StorageVersioningObject, virtualHost?: string }): Promise<cloud.StorageContainer>;
                             /**
                              * Controle cache
                              */
@@ -7128,7 +11099,7 @@ export interface Cloud {
                                  * Generate S3 presigned URLs to download or upload objects
                                  * POST /cloud/project/{serviceName}/region/{regionName}/storage/{name}/presign
                                  */
-                                $post(params?: { expire?: number, method?: cloud.storage.PresignedURLMethodEnum, object?: string }): Promise<cloud.storage.PresignedURL>;
+                                $post(params?: { expire?: number, method?: cloud.storage.PresignedURLMethodEnum, object?: string, storageClass?: cloud.storage.StorageClassEnum }): Promise<cloud.storage.PresignedURL>;
                             }
                         };
                     }
@@ -7238,12 +11209,12 @@ export interface Cloud {
             }
             serviceInfos: {
                 /**
-                 * Get this object properties
+                 * Get service information
                  * GET /cloud/project/{serviceName}/serviceInfos
                  */
                 $get(): Promise<services.Service>;
                 /**
-                 * Alter this object properties
+                 * Update service information
                  * PUT /cloud/project/{serviceName}/serviceInfos
                  */
                 $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
@@ -7338,7 +11309,7 @@ export interface Cloud {
                  * Get SWIFT storage containers
                  * GET /cloud/project/{serviceName}/storage
                  */
-                $get(): Promise<cloud.storage.Container[]>;
+                $get(params?: { includeType?: boolean }): Promise<cloud.storage.Container[]>;
                 /**
                  * Create SWIFT container
                  * POST /cloud/project/{serviceName}/storage
@@ -7351,18 +11322,9 @@ export interface Cloud {
                 access: {
                     /**
                      * Access to SWIFT storage API
-                     * GET /cloud/project/{serviceName}/storage/access
-                     */
-                    $get(): Promise<cloud.storage.ContainerAccess>;
-                    /**
-                     * Access to SWIFT storage API
                      * POST /cloud/project/{serviceName}/storage/access
                      */
                     $post(): Promise<cloud.storage.ContainerAccess>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 quota: {
                     /**
@@ -7385,7 +11347,7 @@ export interface Cloud {
                      * Get SWIFT storage container
                      * GET /cloud/project/{serviceName}/storage/{containerId}
                      */
-                    $get(params?: { noObjects?: boolean }): Promise<cloud.storage.ContainerDetail>;
+                    $get(params?: { noObjects?: boolean, prefix?: string }): Promise<cloud.storage.ContainerDetail>;
                     /**
                      * Update SWIFT storage container
                      * PUT /cloud/project/{serviceName}/storage/{containerId}
@@ -7432,7 +11394,7 @@ export interface Cloud {
             }
             terminate: {
                 /**
-                 * Terminate your service
+                 * Ask for the termination of your service
                  * POST /cloud/project/{serviceName}/terminate
                  */
                 $post(): Promise<string>;
@@ -7565,7 +11527,7 @@ export interface Cloud {
                          * List your S3 credentials
                          * GET /cloud/project/{serviceName}/user/{userId}/s3Credentials
                          */
-                        $get(): Promise<cloud.user.S3CredentialsWithSecret[]>;
+                        $get(): Promise<cloud.user.S3Credentials[]>;
                         /**
                          * Create a new S3 credentials for an user
                          * POST /cloud/project/{serviceName}/user/{userId}/s3Credentials
@@ -7585,11 +11547,18 @@ export interface Cloud {
                              * Get details about an S3 credential
                              * GET /cloud/project/{serviceName}/user/{userId}/s3Credentials/{access}
                              */
-                            $get(): Promise<cloud.user.S3CredentialsWithSecret>;
+                            $get(): Promise<cloud.user.S3Credentials>;
                             /**
                              * Controle cache
                              */
                             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            secret: {
+                                /**
+                                 * Display secret from a S3 credential
+                                 * POST /cloud/project/{serviceName}/user/{userId}/s3Credentials/{access}/secret
+                                 */
+                                $post(): Promise<cloud.user.S3CredentialsSecretOnly>;
+                            }
                         };
                     }
                     token: {

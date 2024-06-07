@@ -99,6 +99,7 @@ export namespace email {
             cnameToCheck?: string;
             domainAliases: string[];
             domainValidated: boolean;
+            expectedMX: string[];
             isAliasDomain: boolean;
             mxIsValid: boolean;
             mxRecord: string[];
@@ -152,6 +153,7 @@ export namespace email {
             displayName?: string;
             domain: string;
             hostname?: string;
+            isZimbra: boolean;
             lastUpdateDate?: string;
             lockoutDuration: number;
             lockoutObservationWindow: number;
@@ -172,6 +174,32 @@ export namespace email {
          * type fullname: email.mxplan.ServiceOfferEnum
          */
         export type ServiceOfferEnum = "MXPLAN"
+        /**
+         * MXPlan service
+         * interface fullName: email.mxplan.ServiceWithIAM.ServiceWithIAM
+         */
+        export interface ServiceWithIAM {
+            complexityEnabled: boolean;
+            displayName?: string;
+            domain: string;
+            hostname?: string;
+            iam?: iam.ResourceMetadata;
+            isZimbra: boolean;
+            lastUpdateDate?: string;
+            lockoutDuration: number;
+            lockoutObservationWindow: number;
+            lockoutThreshold?: number;
+            maxPasswordAge?: number;
+            maxReceiveSize: number;
+            maxSendSize: number;
+            minPasswordAge?: number;
+            minPasswordLength?: number;
+            offer: email.mxplan.ServiceOfferEnum;
+            spamAndVirusConfiguration: email.pro.spamAndVirusConfiguration;
+            state: email.pro.ServiceStateEnum;
+            taskPendingId: number;
+            webUrl?: string;
+        }
         /**
          * Account capabilities
          * interface fullName: email.mxplan.accountCapabilities.accountCapabilities
@@ -263,6 +291,35 @@ export namespace email {
         }
     }
 }
+export namespace iam {
+    /**
+     * IAM resource metadata embedded in services models
+     * interface fullName: iam.ResourceMetadata.ResourceMetadata
+     */
+    export interface ResourceMetadata {
+        displayName?: string;
+        id: string;
+        tags?: { [key: string]: string };
+        urn: string;
+    }
+    export namespace resource {
+        /**
+         * Resource tag filter
+         * interface fullName: iam.resource.TagFilter.TagFilter
+         */
+        export interface TagFilter {
+            operator?: iam.resource.TagFilter.OperatorEnum;
+            value: string;
+        }
+        export namespace TagFilter {
+            /**
+             * Operator that can be used in order to filter resources tags
+             * type fullname: iam.resource.TagFilter.OperatorEnum
+             */
+            export type OperatorEnum = "EQ"
+        }
+    }
+}
 
 /**
  * END API /email/mxplan Models
@@ -280,7 +337,7 @@ export interface Email {
          * List available services
          * GET /email/mxplan
          */
-        $get(): Promise<string[]>;
+        $get(params?: { iamTags?: any }): Promise<string[]>;
         /**
          * Controle cache
          */
@@ -295,7 +352,7 @@ export interface Email {
              * Alter this object properties
              * PUT /email/mxplan/{service}
              */
-            $put(params?: { complexityEnabled?: boolean, displayName?: string, domain?: string, hostname?: string, lastUpdateDate?: string, lockoutDuration?: number, lockoutObservationWindow?: number, lockoutThreshold?: number, maxPasswordAge?: number, maxReceiveSize?: number, maxSendSize?: number, minPasswordAge?: number, minPasswordLength?: number, offer?: email.mxplan.ServiceOfferEnum, spamAndVirusConfiguration?: email.pro.spamAndVirusConfiguration, state?: email.pro.ServiceStateEnum, taskPendingId?: number, webUrl?: string }): Promise<void>;
+            $put(params?: { complexityEnabled?: boolean, displayName?: string, domain?: string, hostname?: string, isZimbra?: boolean, lastUpdateDate?: string, lockoutDuration?: number, lockoutObservationWindow?: number, lockoutThreshold?: number, maxPasswordAge?: number, maxReceiveSize?: number, maxSendSize?: number, minPasswordAge?: number, minPasswordLength?: number, offer?: email.mxplan.ServiceOfferEnum, spamAndVirusConfiguration?: email.pro.spamAndVirusConfiguration, state?: email.pro.ServiceStateEnum, taskPendingId?: number, webUrl?: string }): Promise<void>;
             /**
              * Controle cache
              */
@@ -536,7 +593,7 @@ export interface Email {
                      * Alter this object properties
                      * PUT /email/mxplan/{service}/domain/{domainName}
                      */
-                    $put(params?: { cnameToCheck?: string, domainAliases?: string[], domainValidated?: boolean, isAliasDomain?: boolean, mxIsValid?: boolean, mxRecord?: string[], mxRelay?: string, name?: string, srvIsValid?: boolean, srvRecord?: string[], state?: email.pro.ObjectStateEnum, taskPendingId?: number, type?: email.pro.DomainTypeEnum }): Promise<void>;
+                    $put(params?: { cnameToCheck?: string, domainAliases?: string[], domainValidated?: boolean, expectedMX?: string[], isAliasDomain?: boolean, mxIsValid?: boolean, mxRecord?: string[], mxRelay?: string, name?: string, srvIsValid?: boolean, srvRecord?: string[], state?: email.pro.ObjectStateEnum, taskPendingId?: number, type?: email.pro.DomainTypeEnum }): Promise<void>;
                     /**
                      * Controle cache
                      */

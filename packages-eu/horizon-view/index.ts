@@ -54,6 +54,23 @@ export namespace horizonView {
         serviceName: string;
     }
     /**
+     * Cloud Desktop Infrastructure Datacenter
+     * interface fullName: horizonView.DatacenterWithIAM.DatacenterWithIAM
+     */
+    export interface DatacenterWithIAM {
+        activeDirectoryIP: string;
+        adminDomain: string;
+        adminNetworkNextHop: string;
+        adminPrivateNetwork: string;
+        customerIntercoIP: string;
+        customerIntercoMask: string;
+        customerIntercoVlanId: number;
+        datacenterId: number;
+        iam?: iam.ResourceMetadata;
+        name: string;
+        serviceName: string;
+    }
+    /**
      * Horizon View as a Service
      * interface fullName: horizonView.DedicatedHorizon.DedicatedHorizon
      */
@@ -133,6 +150,35 @@ export namespace horizonView {
      */
     export type Zone = "Beauharnois" | "Roubaix" | "Strasbourg"
 }
+export namespace iam {
+    /**
+     * IAM resource metadata embedded in services models
+     * interface fullName: iam.ResourceMetadata.ResourceMetadata
+     */
+    export interface ResourceMetadata {
+        displayName?: string;
+        id: string;
+        tags?: { [key: string]: string };
+        urn: string;
+    }
+    export namespace resource {
+        /**
+         * Resource tag filter
+         * interface fullName: iam.resource.TagFilter.TagFilter
+         */
+        export interface TagFilter {
+            operator?: iam.resource.TagFilter.OperatorEnum;
+            value: string;
+        }
+        export namespace TagFilter {
+            /**
+             * Operator that can be used in order to filter resources tags
+             * type fullname: iam.resource.TagFilter.OperatorEnum
+             */
+            export type OperatorEnum = "EQ"
+        }
+    }
+}
 export namespace service {
     /**
      * Map a possible renew for a specific service
@@ -199,10 +245,10 @@ export default proxyHorizonView;
  */
 export interface HorizonView {
     /**
-     * List available services
+     * Horizon View as a Service
      * GET /horizonView
      */
-    $get(): Promise<string[]>;
+    $get(params?: { iamTags?: any }): Promise<string[]>;
     /**
      * Controle cache
      */
@@ -318,7 +364,7 @@ export interface HorizonView {
         }
         confirmTermination: {
             /**
-             * Confirm termination of your service
+             * Confirm service termination
              * POST /horizonView/{serviceName}/confirmTermination
              */
             $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
@@ -523,12 +569,12 @@ export interface HorizonView {
         }
         serviceInfos: {
             /**
-             * Get this object properties
+             * Get service information
              * GET /horizonView/{serviceName}/serviceInfos
              */
             $get(): Promise<services.Service>;
             /**
-             * Alter this object properties
+             * Update service information
              * PUT /horizonView/{serviceName}/serviceInfos
              */
             $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
@@ -539,7 +585,7 @@ export interface HorizonView {
         }
         terminate: {
             /**
-             * Terminate your service
+             * Ask for the termination of your service
              * POST /horizonView/{serviceName}/terminate
              */
             $post(): Promise<string>;

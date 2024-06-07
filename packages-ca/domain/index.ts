@@ -11,54 +11,52 @@ export namespace dnssec {
      */
     export type DnssecStatusEnum = "disableInProgress" | "disabled" | "enableInProgress" | "enabled"
     /**
-     * Key type
+     * Domain's DNSSEC Key
      * interface fullName: dnssec.Key.Key
      */
     export interface Key {
         algorithm: dnssec.KeyAlgorithmEnum;
         flags: dnssec.KeyFlagEnum;
+        id: number;
         publicKey: string;
+        status: dnssec.KeyStatusEnum;
         tag: number;
     }
     /**
-     * Dnssec Algorithm
-                        ###
-                        5  : RSASHA1
-                        7  : RSASHA1-NSEC3-SHA1
-                        8  : RSASHA256
-                        10 : RSASHA512
-                        13 : ECDSAP256SHA256
-                        14 : ECDSAP384SHA384
-                        15 : ED25519
+     * DNSSEC Algorithm
+5: RSASHA1
+7: RSASHA1-NSEC3-SHA1
+8: RSASHA256
+10: RSASHA512
+13: ECDSAP256SHA256
+14: ECDSAP384SHA384
+15: ED25519
      * type fullname: dnssec.KeyAlgorithmEnum
      */
-    export type KeyAlgorithmEnum = 10 | 13 | 14 | 15 | 5 | 7 | 8
+    export type KeyAlgorithmEnum = 5 | 7 | 8 | 10 | 13 | 14 | 15
     /**
-     * Dnssec Key Flag Type
-                        ###
-                        256 : Zone Signing Key (ZSK)
-                        257 : Key  Signing Key (KSK)
+     * DNSSEC Key Flag Type: 256=ZSK (Zone Signing Key), 257=KSK (Key Signing Key)
      * type fullname: dnssec.KeyFlagEnum
      */
     export type KeyFlagEnum = 256 | 257
     /**
-     * 
-                Generated : The key has been created, but has not yet been used for anything.
-                ###
-                Published : The DNSKEY record is published in the zone, but predecessors of the key may be held in caches.
-                ###
-                Ready     : The new key data has been published for long enough to guarantee that any previous versions of the DNSKEY RRset have expired from caches.
-                ###
-                Active    : The key has started to be used to sign RRsets.
-                ###
-                Retired   : A successor key has become active and this key is no longer being used to generate RRSIGs.
-                ###
-                Removed   : The key has been removed from the zone.
-                ###
-                Revoked   : The key is published for a period with the "revoke" bit set as a way of notifying validating resolvers that have configured it as an trust anchor that it is about to be removed from the zone.
+     * Generated: The key has been created, but has not yet been used for anything.
+Published: The DNSKEY record is published in the zone, but predecessors of the key may be held in caches.
+Ready: The new key data has been published for long enough to guarantee that any previous versions of the DNSKEY RRset have expired from caches.
+Active: The key has started to be used to sign RRsets.
+Retired: A successor key has become active and this key is no longer being used to generate RRSIGs.
+Removed: The key has been removed from the zone.
+Revoked: The key is published for a period with the "revoke" bit set as a way of notifying validating resolvers that have configured it as an trust anchor that it is about to be removed from the zone.
      * type fullname: dnssec.KeyStatusEnum
      */
     export type KeyStatusEnum = "active" | "generated" | "published" | "removed" | "retired" | "revoked"
+    /**
+     * Payload used to update the DNSSEC keys of a domain name
+     * interface fullName: dnssec.UpdatePayload.UpdatePayload
+     */
+    export interface UpdatePayload {
+        keys: dnssec.Key[];
+    }
 }
 export namespace domain {
     /**
@@ -114,6 +112,7 @@ export namespace domain {
         registrantDocumentType?: string;
         registrantDocumentTypeOther?: string;
         roleInOrganisation?: string;
+        trademarkId?: string;
         vat?: string;
         website?: string;
     }
@@ -132,6 +131,13 @@ export namespace domain {
         zip?: string;
     }
     /**
+     * A contact summary contains the personal data of a user
+     * interface fullName: domain.ContactSummary.ContactSummary
+     */
+    export interface ContactSummary {
+        id: string;
+    }
+    /**
      * A domain data
      * interface fullName: domain.Data.Data
      */
@@ -144,17 +150,15 @@ export namespace domain {
         represent?: string;
     }
     /**
-     * Domain's DNSSEC Key
-     * interface fullName: domain.DnssecKey.DnssecKey
+     * Domain dnssec state
+     * type fullname: domain.DnssecStateEnum
      */
-    export interface DnssecKey {
-        algorithm: dnssec.KeyAlgorithmEnum;
-        flags: dnssec.KeyFlagEnum;
-        id: number;
-        publicKey: string;
-        status: dnssec.KeyStatusEnum;
-        tag: number;
-    }
+    export type DnssecStateEnum = "disabled" | "enabled" | "not_supported"
+    /**
+     * All DNSSEC statuses
+     * type fullname: domain.DnssecStatusEnum
+     */
+    export type DnssecStatusEnum = "disableInProgress" | "disabled" | "enableInProgress" | "enabled"
     /**
      * Domain name administration
      * interface fullName: domain.Domain.Domain
@@ -196,20 +200,107 @@ export namespace domain {
      */
     export type DomainOptionStateEnum = "released" | "subscribed"
     /**
+     * General information about a domain name service
+     * interface fullName: domain.DomainService.DomainService
+     */
+    export interface DomainService {
+        contactAdmin: domain.ContactSummary;
+        contactBilling: domain.ContactSummary;
+        contactOwner: domain.ContactSummary;
+        contactTech: domain.ContactSummary;
+        dnssecState: domain.DnssecStateEnum;
+        dnssecSupported: boolean;
+        domain: string;
+        expirationDate: string;
+        glueRecordIpv6Supported: boolean;
+        glueRecordMultiIpSupported: boolean;
+        hostSupported: boolean;
+        lastUpdate: string;
+        nameServerType: domain.nameServer.NameServerTypeEnum;
+        nameServers: domain.nameServer.NameServer[];
+        offer: domain.OfferEnum;
+        owoSupported: boolean;
+        parentService?: domain.ParentService;
+        renewalDate: string;
+        renewalState: domain.RenewalStateEnum;
+        serviceId: number;
+        state: domain.DomainStateEnum;
+        suspensionState: domain.SuspensionStateEnum;
+        transferLockStatus: domain.LockStatusEnum;
+        whoisOwner: string;
+    }
+    /**
+     * General information about a domain name service
+     * interface fullName: domain.DomainServiceWithIAM.DomainServiceWithIAM
+     */
+    export interface DomainServiceWithIAM {
+        contactAdmin: domain.ContactSummary;
+        contactBilling: domain.ContactSummary;
+        contactOwner: domain.ContactSummary;
+        contactTech: domain.ContactSummary;
+        dnssecState: domain.DnssecStateEnum;
+        dnssecSupported: boolean;
+        domain: string;
+        expirationDate: string;
+        glueRecordIpv6Supported: boolean;
+        glueRecordMultiIpSupported: boolean;
+        hostSupported: boolean;
+        iam?: iam.ResourceMetadata;
+        lastUpdate: string;
+        nameServerType: domain.nameServer.NameServerTypeEnum;
+        nameServers: domain.nameServer.NameServer[];
+        offer: domain.OfferEnum;
+        owoSupported: boolean;
+        parentService?: domain.ParentService;
+        renewalDate: string;
+        renewalState: domain.RenewalStateEnum;
+        serviceId: number;
+        state: domain.DomainStateEnum;
+        suspensionState: domain.SuspensionStateEnum;
+        transferLockStatus: domain.LockStatusEnum;
+        whoisOwner: string;
+    }
+    /**
      * Domain name current state
      * type fullname: domain.DomainStateEnum
      */
-    export type DomainStateEnum = "deleted" | "dispute" | "expired" | "ok" | "outgoing_transfer" | "pending_delete" | "pending_installation" | "restorable"
+    export type DomainStateEnum = "deleted" | "dispute" | "expired" | "ok" | "outgoing_transfer" | "pending_create" | "pending_delete" | "pending_incoming_transfer" | "pending_installation" | "registry_suspended" | "restorable" | "technical_suspended"
     /**
      * Domain name current suspension state
      * type fullname: domain.DomainSuspensionStateEnum
      */
     export type DomainSuspensionStateEnum = "not_suspended" | "suspended"
     /**
+     * Domain name administration
+     * interface fullName: domain.DomainWithIAM.DomainWithIAM
+     */
+    export interface DomainWithIAM {
+        dnssecSupported: boolean;
+        domain: string;
+        glueRecordIpv6Supported: boolean;
+        glueRecordMultiIpSupported: boolean;
+        hostSupported: boolean;
+        iam?: iam.ResourceMetadata;
+        lastUpdate: string;
+        nameServerType: domain.DomainNsTypeEnum;
+        offer: domain.OfferEnum;
+        owoSupported: boolean;
+        parentService?: domain.ParentService;
+        state: domain.DomainStateEnum;
+        suspensionState: domain.DomainSuspensionStateEnum;
+        transferLockStatus: domain.DomainLockStatusEnum;
+        whoisOwner: string;
+    }
+    /**
      * Possible purposes of the domain
      * type fullname: domain.IsForEnum
      */
     export type IsForEnum = "campaign_website" | "educational_website" | "emails" | "information_website" | "other_purpose" | "redirect_page" | "transactional_website"
+    /**
+     * Domain lock status
+     * type fullname: domain.LockStatusEnum
+     */
+    export type LockStatusEnum = "locked" | "locking" | "unavailable" | "unlocked" | "unlocking"
     /**
      * Offer
      * type fullname: domain.OfferEnum
@@ -219,7 +310,7 @@ export namespace domain {
      * Operation status
      * type fullname: domain.OperationStatusEnum
      */
-    export type OperationStatusEnum = "cancelled" | "doing" | "done" | "error" | "todo"
+    export type OperationStatusEnum = "cancelled" | "doing" | "done" | "error" | "problem" | "todo"
     /**
      * Whois optin fields
      * type fullname: domain.OptinFieldsEnum
@@ -235,13 +326,6 @@ export namespace domain {
         state: domain.DomainOptionStateEnum;
     }
     /**
-     * Obfuscate whois
-     * interface fullName: domain.Owo.Owo
-     */
-    export interface Owo {
-        field: domain.WhoisObfuscatorFieldsEnum;
-    }
-    /**
      * Parent service
      * interface fullName: domain.ParentService.ParentService
      */
@@ -254,6 +338,11 @@ export namespace domain {
      * type fullname: domain.ParentServiceTypeEnum
      */
     export type ParentServiceTypeEnum = "/allDom"
+    /**
+     * Domain renewal state
+     * type fullname: domain.RenewalStateEnum
+     */
+    export type RenewalStateEnum = "automatic_renew" | "cancellation_complete" | "cancellation_requested" | "manual_renew" | "unpaid"
     /**
      * Data of a domain option
      * interface fullName: domain.ServiceOption.ServiceOption
@@ -270,6 +359,11 @@ export namespace domain {
         offer?: domain.ServiceOption;
         zone?: domain.ServiceOption;
     }
+    /**
+     * Domain suspension state
+     * type fullname: domain.SuspensionStateEnum
+     */
+    export type SuspensionStateEnum = "not_suspended" | "suspended"
     /**
      * Tasks associated to domain
      * interface fullName: domain.Task.Task
@@ -289,6 +383,16 @@ export namespace domain {
         todoDate: string;
     }
     /**
+     * All functions from a dns task
+     * type fullname: domain.TaskFunctionEnum
+     */
+    export type TaskFunctionEnum = "DnsAnycastActivate" | "DnsAnycastDeactivate" | "DnssecDisable" | "DnssecEnable" | "DnssecResigning" | "DnssecRollKsk" | "DnssecRollZsk" | "ZoneCreate" | "ZoneCut" | "ZoneDelete" | "ZoneImport" | "ZoneRestore"
+    /**
+     * All statuses from a dns task
+     * type fullname: domain.TaskStatusEnum
+     */
+    export type TaskStatusEnum = "cancelled" | "doing" | "done" | "error" | "problem" | "todo"
+    /**
      * Representation of a UK Registrar (used for outgoing transfer)
      * interface fullName: domain.UkRegistrar.UkRegistrar
      */
@@ -297,10 +401,28 @@ export namespace domain {
         tag: string;
     }
     /**
-     * Whois obfuscable fields
-     * type fullname: domain.WhoisObfuscatorFieldsEnum
+     * DNS zone
+     * interface fullName: domain.Zone.Zone
      */
-    export type WhoisObfuscatorFieldsEnum = "address" | "email" | "phone"
+    export interface Zone {
+        dnssecSupported: boolean;
+        hasDnsAnycast: boolean;
+        lastUpdate?: string;
+        name: string;
+        nameServers: string[];
+    }
+    /**
+     * DNS zone
+     * interface fullName: domain.ZoneWithIAM.ZoneWithIAM
+     */
+    export interface ZoneWithIAM {
+        dnssecSupported: boolean;
+        hasDnsAnycast: boolean;
+        iam?: iam.ResourceMetadata;
+        lastUpdate?: string;
+        name: string;
+        nameServers: string[];
+    }
     export namespace configuration {
         export namespace rules {
             /**
@@ -678,7 +800,7 @@ export namespace domain {
          * interface fullName: domain.nameServer.CreatePayload.CreatePayload
          */
         export interface CreatePayload {
-            nameServer: domain.nameServer.NameServer[];
+            nameServer: domain.nameServer.NameServerInput[];
         }
         /**
          * Full name server configuration
@@ -692,10 +814,21 @@ export namespace domain {
             toDelete: boolean;
         }
         /**
-         * Name server
+         * Name server configuration
          * interface fullName: domain.nameServer.NameServer.NameServer
          */
         export interface NameServer {
+            id: number;
+            ipv4?: string;
+            ipv6?: string;
+            nameServer: string;
+            nameServerType: domain.nameServer.NameServerTypeEnum;
+        }
+        /**
+         * Name server input data
+         * interface fullName: domain.nameServer.NameServerInput.NameServerInput
+         */
+        export interface NameServerInput {
             host: string;
             ip?: string;
         }
@@ -717,13 +850,13 @@ export namespace domain {
          * DNS server type
          * type fullname: domain.nameServer.NameServerTypeEnum
          */
-        export type NameServerTypeEnum = "external" | "hosted"
+        export type NameServerTypeEnum = "anycast" | "dedicated" | "empty" | "external" | "hold" | "hosted" | "hosting" | "mixed" | "parking"
         /**
          * Payload used to update the DNS of a domain name
          * interface fullName: domain.nameServer.UpdatePayload.UpdatePayload
          */
         export interface UpdatePayload {
-            nameServers: domain.nameServer.NameServer[];
+            nameServers: domain.nameServer.NameServerInput[];
         }
     }
     export namespace outgoingTransfer {
@@ -748,25 +881,39 @@ export namespace domain {
     }
     export namespace zone {
         /**
-         * Manage Dnssec for this zone
+         * DNS zone capabilities
+         * interface fullName: domain.zone.Capabilities.Capabilities
+         */
+        export interface Capabilities {
+            dynHost: boolean;
+        }
+        /**
+         * DNS zone DNSSEC
          * interface fullName: domain.zone.Dnssec.Dnssec
          */
         export interface Dnssec {
-            status: dnssec.DnssecStatusEnum;
+            status: domain.DnssecStatusEnum;
         }
         /**
-         * Information about the options of a zone
+         * DNS zone import
+         * interface fullName: domain.zone.Import.Import
+         */
+        export interface Import {
+            zoneFile: string;
+        }
+        /**
+         * DNS zone option
          * interface fullName: domain.zone.Option.Option
          */
         export interface Option {
             name: string;
         }
         /**
-         * Zone resource records
+         * DNS zone history
          * interface fullName: domain.zone.Record.Record
          */
         export interface Record {
-            fieldType: zoneNamedResolutionFieldTypeEnum;
+            fieldType: domain.zone.RecordTypeEnum;
             id: number;
             subDomain?: string;
             target: string;
@@ -774,7 +921,33 @@ export namespace domain {
             zone: string;
         }
         /**
-         * Redirection
+         * DNS zone history
+         * interface fullName: domain.zone.RecordCreate.RecordCreate
+         */
+        export interface RecordCreate {
+            fieldType: domain.zone.RecordTypeEnum;
+            id: number;
+            subDomain?: string;
+            target: string;
+            ttl: number;
+            zone: string;
+        }
+        /**
+         * Resource record name
+         * type fullname: domain.zone.RecordTypeEnum
+         */
+        export type RecordTypeEnum = "A" | "AAAA" | "CAA" | "CNAME" | "DKIM" | "DMARC" | "DNAME" | "LOC" | "MX" | "NAPTR" | "NS" | "PTR" | "SPF" | "SRV" | "SSHFP" | "TLSA" | "TXT"
+        /**
+         * DNS zone record
+         * interface fullName: domain.zone.RecordUpdate.RecordUpdate
+         */
+        export interface RecordUpdate {
+            subDomain?: string;
+            target: string;
+            ttl?: number;
+        }
+        /**
+         * DNS zone redirections
          * interface fullName: domain.zone.Redirection.Redirection
          */
         export interface Redirection {
@@ -784,11 +957,63 @@ export namespace domain {
             subDomain?: string;
             target: string;
             title?: string;
-            type: zoneRedirectionTypeEnum;
+            type: domain.zone.RedirectionTypeEnum;
             zone: string;
         }
         /**
-         * Zone Start Of Authority
+         * DNS zone redirection create
+         * interface fullName: domain.zone.RedirectionCreate.RedirectionCreate
+         */
+        export interface RedirectionCreate {
+            description?: string;
+            keywords?: string;
+            subDomain: string;
+            target: string;
+            title?: string;
+            type: domain.zone.RedirectionTypeEnum;
+        }
+        /**
+         * Redirection type:
+ - visible -> Redirection by http code 302
+ - visiblePermanent -> Redirection by http code 301
+ - invisible -> Redirection by html frame
+         * type fullname: domain.zone.RedirectionTypeEnum
+         */
+        export type RedirectionTypeEnum = "invisible" | "visible" | "visiblePermanent"
+        /**
+         * DNS zone redirection update
+         * interface fullName: domain.zone.RedirectionUpdate.RedirectionUpdate
+         */
+        export interface RedirectionUpdate {
+            description?: string;
+            keywords?: string;
+            target: string;
+            title?: string;
+            type: domain.zone.RedirectionTypeEnum;
+        }
+        /**
+         * DNS zone reset
+         * interface fullName: domain.zone.Reset.Reset
+         */
+        export interface Reset {
+            DnsRecords: domain.zone.ResetRecord[];
+            minimized: boolean;
+        }
+        /**
+         * Record associated to domain zone reset
+         * interface fullName: domain.zone.ResetRecord.ResetRecord
+         */
+        export interface ResetRecord {
+            fieldType: domain.zone.ResettableNamedResolutionFieldTypeEnum;
+            target: string;
+        }
+        /**
+         * Resource record name
+         * type fullname: domain.zone.ResettableNamedResolutionFieldTypeEnum
+         */
+        export type ResettableNamedResolutionFieldTypeEnum = "A" | "MX"
+        /**
+         * DNS zone SOA
          * interface fullName: domain.zone.Soa.Soa
          */
         export interface Soa {
@@ -801,7 +1026,16 @@ export namespace domain {
             ttl: number;
         }
         /**
-         * Tasks associated to a zone
+         * DNS zone status
+         * interface fullName: domain.zone.Status.Status
+         */
+        export interface Status {
+            errors?: string[];
+            isDeployed: boolean;
+            warnings?: string[];
+        }
+        /**
+         * DNS zone task
          * interface fullName: domain.zone.Task.Task
          */
         export interface Task {
@@ -811,10 +1045,10 @@ export namespace domain {
             comment?: string;
             creationDate: string;
             doneDate?: string;
-            function: string;
+            function: domain.TaskFunctionEnum;
             id: number;
-            lastUpdate: string;
-            status: domain.OperationStatusEnum;
+            lastUpdate?: string;
+            status: domain.TaskStatusEnum;
             todoDate: string;
         }
         /**
@@ -829,12 +1063,53 @@ export namespace domain {
             nameServers: string[];
         }
         /**
-         * Zone restore point
+         * DNS zone history
          * interface fullName: domain.zone.ZoneRestorePoint.ZoneRestorePoint
          */
         export interface ZoneRestorePoint {
             creationDate: string;
             zoneFileUrl: string;
+        }
+        /**
+         * Zone dns Management
+         * interface fullName: domain.zone.ZoneWithIAM.ZoneWithIAM
+         */
+        export interface ZoneWithIAM {
+            dnssecSupported: boolean;
+            hasDnsAnycast: boolean;
+            iam?: iam.ResourceMetadata;
+            lastUpdate: string;
+            name: string;
+            nameServers: string[];
+        }
+    }
+}
+export namespace iam {
+    /**
+     * IAM resource metadata embedded in services models
+     * interface fullName: iam.ResourceMetadata.ResourceMetadata
+     */
+    export interface ResourceMetadata {
+        displayName?: string;
+        id: string;
+        tags?: { [key: string]: string };
+        urn: string;
+    }
+    export namespace resource {
+        /**
+         * Resource tag filter
+         * interface fullName: iam.resource.TagFilter.TagFilter
+         */
+        export interface TagFilter {
+            operator?: iam.resource.TagFilter.OperatorEnum;
+            value: string;
+        }
+        export namespace TagFilter {
+            /**
+             * Operator that can be used in order to filter resources tags
+             * type fullname: iam.resource.TagFilter.OperatorEnum
+             */
+            export type OperatorEnum = "EQ"
         }
     }
 }
@@ -878,6 +1153,7 @@ export namespace nichandle {
         birthDay?: string;
         city?: string;
         companyNationalIdentificationNumber?: string;
+        complementaryAddress?: string;
         corporationType?: string;
         country: nichandle.CountryEnum;
         currency: nichandle.Currency;
@@ -897,6 +1173,8 @@ export namespace nichandle {
         ovhSubsidiary: nichandle.OvhSubsidiaryEnum;
         phone?: string;
         phoneCountry?: nichandle.CountryEnum;
+        phoneType?: nichandle.PhoneTypeEnum;
+        purposeOfPurchase?: string;
         sex?: nichandle.GenderEnum;
         spareEmail?: string;
         state: nichandle.StateEnum;
@@ -904,7 +1182,7 @@ export namespace nichandle {
         zip?: string;
     }
     /**
-     * OVH subsidiaries
+     * OVH companies
      * type fullname: nichandle.OvhCompanyEnum
      */
     export type OvhCompanyEnum = "kimsufi" | "ovh" | "soyoustart"
@@ -913,6 +1191,11 @@ export namespace nichandle {
      * type fullname: nichandle.OvhSubsidiaryEnum
      */
     export type OvhSubsidiaryEnum = "ASIA" | "AU" | "CA" | "IN" | "QC" | "SG" | "WE" | "WS"
+    /**
+     * All phone type a person can choose
+     * type fullname: nichandle.PhoneTypeEnum
+     */
+    export type PhoneTypeEnum = "landline" | "mobile"
     /**
      * States a nichandle can be in
      * type fullname: nichandle.StateEnum
@@ -1026,10 +1309,10 @@ export default proxyDomain;
  */
 export interface Domain {
     /**
-     * List available services
+     * Get the list of managed domain names
      * GET /domain
      */
-    $get(params?: { whoisOwner?: string }): Promise<string[]>;
+    $get(params?: { iamTags?: any, whoisOwner?: string }): Promise<string[]>;
     /**
      * Controle cache
      */
@@ -1062,7 +1345,7 @@ export interface Domain {
          * Create a contact
          * POST /domain/contact
          */
-        $post(params?: { accreditationCountry?: nichandle.CountryEnum, accreditationId?: string, accreditationOrganism?: string, accreditationYear?: number, address?: domain.ContactAddress, birthCity?: string, birthCountry?: nichandle.CountryEnum, birthDay?: string, birthZip?: string, cellPhone?: string, companyNationalIdentificationNumber?: string, email?: string, enterpriseId?: string, fax?: string, firstName?: string, gender?: nichandle.GenderEnum, id?: number, insee?: string, language?: nichandle.LanguageEnum, lastName?: string, legalForm?: nichandle.LegalFormEnum, legalFormCategory?: string, nationalIdentificationNumber?: string, nationality?: nichandle.CountryEnum, organisationAccountable?: string, organisationFunding?: string, organisationFundingOther?: string, organisationName?: string, organisationRole?: string, organisationRoleOther?: string, organisationStaffStatus?: string, organisationStaffStatusOther?: string, organisationType?: string, organisationTypeOther?: string, phone?: string, registrantDocumentType?: string, registrantDocumentTypeOther?: string, roleInOrganisation?: string, vat?: string, website?: string }): Promise<domain.Contact>;
+        $post(params?: { accreditationCountry?: nichandle.CountryEnum, accreditationId?: string, accreditationOrganism?: string, accreditationYear?: number, address?: domain.ContactAddress, birthCity?: string, birthCountry?: nichandle.CountryEnum, birthDay?: string, birthZip?: string, cellPhone?: string, companyNationalIdentificationNumber?: string, email?: string, enterpriseId?: string, fax?: string, firstName?: string, gender?: nichandle.GenderEnum, id?: number, insee?: string, language?: nichandle.LanguageEnum, lastName?: string, legalForm?: nichandle.LegalFormEnum, legalFormCategory?: string, nationalIdentificationNumber?: string, nationality?: nichandle.CountryEnum, organisationAccountable?: string, organisationFunding?: string, organisationFundingOther?: string, organisationName?: string, organisationRole?: string, organisationRoleOther?: string, organisationStaffStatus?: string, organisationStaffStatusOther?: string, organisationType?: string, organisationTypeOther?: string, phone?: string, registrantDocumentType?: string, registrantDocumentTypeOther?: string, roleInOrganisation?: string, trademarkId?: string, vat?: string, website?: string }): Promise<domain.Contact>;
         /**
          * Controle cache
          */
@@ -1077,7 +1360,7 @@ export interface Domain {
              * Update a contact
              * PUT /domain/contact/{contactId}
              */
-            $put(params?: { accreditationCountry?: nichandle.CountryEnum, accreditationId?: string, accreditationOrganism?: string, accreditationYear?: number, address?: domain.ContactAddress, birthCity?: string, birthCountry?: nichandle.CountryEnum, birthDay?: string, birthZip?: string, cellPhone?: string, companyNationalIdentificationNumber?: string, email?: string, enterpriseId?: string, fax?: string, firstName?: string, gender?: nichandle.GenderEnum, id?: number, insee?: string, language?: nichandle.LanguageEnum, lastName?: string, legalForm?: nichandle.LegalFormEnum, legalFormCategory?: string, nationalIdentificationNumber?: string, nationality?: nichandle.CountryEnum, organisationAccountable?: string, organisationFunding?: string, organisationFundingOther?: string, organisationName?: string, organisationRole?: string, organisationRoleOther?: string, organisationStaffStatus?: string, organisationStaffStatusOther?: string, organisationType?: string, organisationTypeOther?: string, phone?: string, registrantDocumentType?: string, registrantDocumentTypeOther?: string, roleInOrganisation?: string, vat?: string, website?: string }): Promise<domain.Contact>;
+            $put(params?: { accreditationCountry?: nichandle.CountryEnum, accreditationId?: string, accreditationOrganism?: string, accreditationYear?: number, address?: domain.ContactAddress, birthCity?: string, birthCountry?: nichandle.CountryEnum, birthDay?: string, birthZip?: string, cellPhone?: string, companyNationalIdentificationNumber?: string, email?: string, enterpriseId?: string, fax?: string, firstName?: string, gender?: nichandle.GenderEnum, id?: number, insee?: string, language?: nichandle.LanguageEnum, lastName?: string, legalForm?: nichandle.LegalFormEnum, legalFormCategory?: string, nationalIdentificationNumber?: string, nationality?: nichandle.CountryEnum, organisationAccountable?: string, organisationFunding?: string, organisationFundingOther?: string, organisationName?: string, organisationRole?: string, organisationRoleOther?: string, organisationStaffStatus?: string, organisationStaffStatusOther?: string, organisationType?: string, organisationTypeOther?: string, phone?: string, registrantDocumentType?: string, registrantDocumentTypeOther?: string, roleInOrganisation?: string, trademarkId?: string, vat?: string, website?: string }): Promise<domain.Contact>;
             /**
              * Controle cache
              */
@@ -1142,7 +1425,7 @@ export interface Domain {
         }
         pricingAttributes: {
             /**
-             * List extensions with their pricing attributes. It especially documents whether an extension has been implemented recently or whether the price has dropped
+             * List extensions with their pricing attributes
              * GET /domain/extensions/pricingAttributes
              */
             $get(params?: { ovhSubsidiary?: nichandle.OvhSubsidiaryEnum }): Promise<domain.extensions.ExtensionsPricingAttributes[]>;
@@ -1176,30 +1459,30 @@ export interface Domain {
     }
     zone: {
         /**
-         * List available services
+         * List dnsZone services
          * GET /domain/zone
          */
-        $get(): Promise<string[]>;
+        $get(params?: { iamTags?: any }): Promise<string[]>;
         /**
          * Controle cache
          */
         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         $(zoneName: string): {
             /**
-             * Get this object properties
+             * Get a dnsZone service
              * GET /domain/zone/{zoneName}
              */
-            $get(): Promise<domain.zone.Zone>;
+            $get(): Promise<domain.Zone>;
             /**
              * Controle cache
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             capabilities: {
                 /**
-                 * Zone capabilities
+                 * Get zone capabilities
                  * GET /domain/zone/{zoneName}/capabilities
                  */
-                $get(): Promise<zone.Capabilities>;
+                $get(): Promise<domain.zone.Capabilities>;
                 /**
                  * Controle cache
                  */
@@ -1214,24 +1497,24 @@ export interface Domain {
             }
             confirmTermination: {
                 /**
-                 * Confirm termination of your service
+                 * Confirm service termination
                  * POST /domain/zone/{zoneName}/confirmTermination
                  */
                 $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
             }
             dnssec: {
                 /**
-                 * Disable Dnssec
+                 * Disable DNSSEC
                  * DELETE /domain/zone/{zoneName}/dnssec
                  */
                 $delete(): Promise<void>;
                 /**
-                 * Get this object properties
+                 * Get a zone DNSSEC status
                  * GET /domain/zone/{zoneName}/dnssec
                  */
                 $get(): Promise<domain.zone.Dnssec>;
                 /**
-                 * Enable Dnssec
+                 * Enable DNSSEC
                  * POST /domain/zone/{zoneName}/dnssec
                  */
                 $post(): Promise<void>;
@@ -1242,7 +1525,7 @@ export interface Domain {
             }
             export: {
                 /**
-                 * Export zone
+                 * Export DNS zone
                  * GET /domain/zone/{zoneName}/export
                  */
                 $get(): Promise<string>;
@@ -1253,7 +1536,7 @@ export interface Domain {
             }
             history: {
                 /**
-                 * Zone restore points
+                 * List zone histories
                  * GET /domain/zone/{zoneName}/history
                  */
                 $get(params?: { 'creationDate.from'?: string, 'creationDate.to'?: string }): Promise<string[]>;
@@ -1263,7 +1546,7 @@ export interface Domain {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(creationDate: string): {
                     /**
-                     * Get this object properties
+                     * Get a zone history
                      * GET /domain/zone/{zoneName}/history/{creationDate}
                      */
                     $get(): Promise<domain.zone.ZoneRestorePoint>;
@@ -1273,7 +1556,7 @@ export interface Domain {
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     restore: {
                         /**
-                         * Restore the DNS zone
+                         * Restore a backup point
                          * POST /domain/zone/{zoneName}/history/{creationDate}/restore
                          */
                         $post(): Promise<domain.zone.Task>;
@@ -1282,7 +1565,7 @@ export interface Domain {
             }
             import: {
                 /**
-                 * Import zone
+                 * Import a DNS zone from a zone file
                  * POST /domain/zone/{zoneName}/import
                  */
                 $post(params: { zoneFile: string }): Promise<domain.zone.Task>;
@@ -1299,7 +1582,7 @@ export interface Domain {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(name: string): {
                     /**
-                     * Get this object properties
+                     * Get zone option
                      * GET /domain/zone/{zoneName}/option/{name}
                      */
                     $get(): Promise<domain.zone.Option>;
@@ -1327,35 +1610,35 @@ export interface Domain {
             }
             record: {
                 /**
-                 * Records of the zone
+                 * List record
                  * GET /domain/zone/{zoneName}/record
                  */
-                $get(params?: { fieldType?: zoneNamedResolutionFieldTypeEnum, subDomain?: string }): Promise<number[]>;
+                $get(params?: { fieldType?: domain.zone.RecordTypeEnum, subDomain?: string }): Promise<number[]>;
                 /**
-                 * Create a new DNS record (Don't forget to refresh the zone)
+                 * Create a new record (Don't forget to refresh the zone)
                  * POST /domain/zone/{zoneName}/record
                  */
-                $post(params: { fieldType: zoneNamedResolutionFieldTypeEnum, subDomain?: string, target: string, ttl?: number }): Promise<domain.zone.Record>;
+                $post(params: { fieldType: domain.zone.RecordTypeEnum, id?: number, subDomain?: string, target: string, ttl?: number, zone?: string }): Promise<domain.zone.Record>;
                 /**
                  * Controle cache
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(id: number): {
                     /**
-                     * Delete a DNS record (Don't forget to refresh the zone)
+                     * Delete record object (Don't forget to refresh the zone)
                      * DELETE /domain/zone/{zoneName}/record/{id}
                      */
                     $delete(): Promise<void>;
                     /**
-                     * Get this object properties
+                     * Get record object properties
                      * GET /domain/zone/{zoneName}/record/{id}
                      */
                     $get(): Promise<domain.zone.Record>;
                     /**
-                     * Alter this object properties
+                     * Alter record object properties (Don't forget to refresh the zone)
                      * PUT /domain/zone/{zoneName}/record/{id}
                      */
-                    $put(params?: { fieldType?: zoneNamedResolutionFieldTypeEnum, id?: number, subDomain?: string, target?: string, ttl?: number, zone?: string }): Promise<void>;
+                    $put(params?: { subDomain?: string, target?: string, ttl?: number }): Promise<void>;
                     /**
                      * Controle cache
                      */
@@ -1364,7 +1647,7 @@ export interface Domain {
             }
             redirection: {
                 /**
-                 * Redirections
+                 * List redirections
                  * GET /domain/zone/{zoneName}/redirection
                  */
                 $get(params?: { subDomain?: string }): Promise<number[]>;
@@ -1372,27 +1655,27 @@ export interface Domain {
                  * Create a new redirection (Don't forget to refresh the zone)
                  * POST /domain/zone/{zoneName}/redirection
                  */
-                $post(params: { description?: string, keywords?: string, subDomain?: string, target: string, title?: string, type: zoneRedirectionTypeEnum }): Promise<domain.zone.Redirection>;
+                $post(params: { description?: string, keywords?: string, subDomain?: string, target: string, title?: string, type: domain.zone.RedirectionTypeEnum }): Promise<domain.zone.Redirection>;
                 /**
                  * Controle cache
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(id: number): {
                     /**
-                     * Delete a redirection (Don't forget to refresh the zone)
+                     * Delete redirection object (Don't forget to refresh the zone)
                      * DELETE /domain/zone/{zoneName}/redirection/{id}
                      */
                     $delete(): Promise<void>;
                     /**
-                     * Get this object properties
+                     * Get redirection object properties
                      * GET /domain/zone/{zoneName}/redirection/{id}
                      */
                     $get(): Promise<domain.zone.Redirection>;
                     /**
-                     * Alter this object properties
+                     * Alter redirection object properties
                      * PUT /domain/zone/{zoneName}/redirection/{id}
                      */
-                    $put(params?: { description?: string, id?: number, keywords?: string, subDomain?: string, target?: string, title?: string, type?: zoneRedirectionTypeEnum, zone?: string }): Promise<void>;
+                    $put(params?: { description?: string, keywords?: string, target?: string, title?: string, type?: domain.zone.RedirectionTypeEnum }): Promise<void>;
                     /**
                      * Controle cache
                      */
@@ -1401,26 +1684,26 @@ export interface Domain {
             }
             refresh: {
                 /**
-                 * Apply zone modification on DNS servers
+                 * Refresh a DNS zone
                  * POST /domain/zone/{zoneName}/refresh
                  */
                 $post(): Promise<void>;
             }
             reset: {
                 /**
-                 * Reset the DNS zone
+                 * Reset a DNS zone
                  * POST /domain/zone/{zoneName}/reset
                  */
-                $post(params?: { DnsRecords?: zone.ResetRecord[], minimized?: boolean }): Promise<void>;
+                $post(params?: { DnsRecords?: domain.zone.ResetRecord[], minimized?: boolean }): Promise<void>;
             }
             serviceInfos: {
                 /**
-                 * Get this object properties
+                 * Get service information
                  * GET /domain/zone/{zoneName}/serviceInfos
                  */
                 $get(): Promise<services.Service>;
                 /**
-                 * Alter this object properties
+                 * Update service information
                  * PUT /domain/zone/{zoneName}/serviceInfos
                  */
                 $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
@@ -1431,12 +1714,12 @@ export interface Domain {
             }
             soa: {
                 /**
-                 * Get this object properties
+                 * Get zone SOA
                  * GET /domain/zone/{zoneName}/soa
                  */
                 $get(): Promise<domain.zone.Soa>;
                 /**
-                 * Alter this object properties
+                 * Update zone SOA
                  * PUT /domain/zone/{zoneName}/soa
                  */
                 $put(params?: { email?: string, expire?: number, nxDomainTtl?: number, refresh?: number, serial?: number, server?: string, ttl?: number }): Promise<void>;
@@ -1447,10 +1730,10 @@ export interface Domain {
             }
             status: {
                 /**
-                 * Zone status
+                 * Get zone status
                  * GET /domain/zone/{zoneName}/status
                  */
-                $get(): Promise<zone.Status>;
+                $get(): Promise<domain.zone.Status>;
                 /**
                  * Controle cache
                  */
@@ -1458,17 +1741,17 @@ export interface Domain {
             }
             task: {
                 /**
-                 * Domain pending tasks
+                 * List zone tasks
                  * GET /domain/zone/{zoneName}/task
                  */
-                $get(params?: { function_?: string, status?: domain.OperationStatusEnum }): Promise<number[]>;
+                $get(params?: { function_?: domain.TaskFunctionEnum, status?: domain.TaskStatusEnum }): Promise<number[]>;
                 /**
                  * Controle cache
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(id: number): {
                     /**
-                     * Get this object properties
+                     * Get a zone task
                      * GET /domain/zone/{zoneName}/task/{id}
                      */
                     $get(): Promise<domain.zone.Task>;
@@ -1478,21 +1761,21 @@ export interface Domain {
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     accelerate: {
                         /**
-                         * Accelerate the task
+                         * Accelerate a zone task
                          * POST /domain/zone/{zoneName}/task/{id}/accelerate
                          */
                         $post(): Promise<void>;
                     }
                     cancel: {
                         /**
-                         * Cancel the task
+                         * Cancel a zone task
                          * POST /domain/zone/{zoneName}/task/{id}/cancel
                          */
                         $post(): Promise<void>;
                     }
                     relaunch: {
                         /**
-                         * Relaunch the task
+                         * Restart a zone task
                          * POST /domain/zone/{zoneName}/task/{id}/relaunch
                          */
                         $post(): Promise<void>;
@@ -1501,7 +1784,7 @@ export interface Domain {
             }
             terminate: {
                 /**
-                 * Terminate your service
+                 * Ask for the termination of your service
                  * POST /domain/zone/{zoneName}/terminate
                  */
                 $post(): Promise<string>;
@@ -1510,15 +1793,15 @@ export interface Domain {
     }
     $(serviceName: string): {
         /**
-         * Get this object properties
+         * Get domain name information
          * GET /domain/{serviceName}
          */
-        $get(): Promise<domain.Domain>;
+        $get(): Promise<domain.DomainService>;
         /**
-         * Alter this object properties
+         * Edit domain name properties
          * PUT /domain/{serviceName}
          */
-        $put(params?: { dnssecSupported?: boolean, domain?: string, glueRecordIpv6Supported?: boolean, glueRecordMultiIpSupported?: boolean, hostSupported?: boolean, lastUpdate?: string, nameServerType?: domain.DomainNsTypeEnum, offer?: domain.OfferEnum, owoSupported?: boolean, parentService?: domain.ParentService, state?: domain.DomainStateEnum, suspensionState?: domain.DomainSuspensionStateEnum, transferLockStatus?: domain.DomainLockStatusEnum, whoisOwner?: string }): Promise<void>;
+        $put(params?: { contactAdmin?: domain.ContactSummary, contactBilling?: domain.ContactSummary, contactOwner?: domain.ContactSummary, contactTech?: domain.ContactSummary, dnssecState?: domain.DnssecStateEnum, dnssecSupported?: boolean, domain?: string, expirationDate?: string, glueRecordIpv6Supported?: boolean, glueRecordMultiIpSupported?: boolean, hostSupported?: boolean, lastUpdate?: string, nameServerType?: domain.nameServer.NameServerTypeEnum, nameServers?: domain.nameServer.NameServer[], offer?: domain.OfferEnum, owoSupported?: boolean, parentService?: domain.ParentService, renewalDate?: string, renewalState?: domain.RenewalStateEnum, serviceId?: number, state?: domain.DomainStateEnum, suspensionState?: domain.SuspensionStateEnum, transferLockStatus?: domain.LockStatusEnum, whoisOwner?: string }): Promise<domain.DomainService>;
         /**
          * Controle cache
          */
@@ -1599,10 +1882,10 @@ export interface Domain {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(id: number): {
                 /**
-                 * Get this object properties
+                 * Get details on this DS Record
                  * GET /domain/{serviceName}/dsRecord/{id}
                  */
-                $get(): Promise<domain.DnssecKey>;
+                $get(): Promise<dnssec.Key>;
                 /**
                  * Controle cache
                  */
@@ -1658,7 +1941,7 @@ export interface Domain {
              * Add new name server
              * POST /domain/{serviceName}/nameServer
              */
-            $post(params: { nameServer: domain.nameServer.NameServer[] }): Promise<domain.Task>;
+            $post(params: { nameServer: domain.nameServer.NameServerInput[] }): Promise<domain.Task>;
             /**
              * Controle cache
              */
@@ -1697,7 +1980,7 @@ export interface Domain {
                  * Update DNS servers
                  * POST /domain/{serviceName}/nameServers/update
                  */
-                $post(params: { nameServers: domain.nameServer.NameServer[] }): Promise<domain.Task>;
+                $post(params: { nameServers: domain.nameServer.NameServerInput[] }): Promise<domain.Task>;
             }
         }
         option: {
@@ -1747,38 +2030,6 @@ export interface Domain {
                 $post(params?: { approveType?: domain.ApproveTypeEnum, ident?: string }): Promise<void>;
             }
         }
-        owo: {
-            /**
-             * List of whois obfuscators
-             * GET /domain/{serviceName}/owo
-             */
-            $get(params?: { field?: domain.WhoisObfuscatorFieldsEnum }): Promise<domain.WhoisObfuscatorFieldsEnum[]>;
-            /**
-             * Add whois obfuscators
-             * POST /domain/{serviceName}/owo
-             */
-            $post(params: { fields: domain.WhoisObfuscatorFieldsEnum[] }): Promise<domain.WhoisObfuscatorFieldsEnum[]>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            $(field: domain.WhoisObfuscatorFieldsEnum): {
-                /**
-                 * Delete a whois obfuscator
-                 * DELETE /domain/{serviceName}/owo/{field}
-                 */
-                $delete(): Promise<void>;
-                /**
-                 * Get this object properties
-                 * GET /domain/{serviceName}/owo/{field}
-                 */
-                $get(): Promise<domain.Owo>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            };
-        }
         rules: {
             emailsObfuscation: {
                 /**
@@ -1805,12 +2056,12 @@ export interface Domain {
         }
         serviceInfos: {
             /**
-             * Get this object properties
+             * Get service information
              * GET /domain/{serviceName}/serviceInfos
              */
             $get(): Promise<services.Service>;
             /**
-             * Alter this object properties
+             * Update service information
              * PUT /domain/{serviceName}/serviceInfos
              */
             $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
@@ -1882,8 +2133,3 @@ export interface Domain {
         }
     };
 }
-/**
- * Extra Alias to bypass relativer namespace colitions
- */
-type zoneNamedResolutionFieldTypeEnum = zone.NamedResolutionFieldTypeEnum;
-type zoneRedirectionTypeEnum = zone.RedirectionTypeEnum;

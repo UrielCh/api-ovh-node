@@ -4,6 +4,35 @@ import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-
  * START API /license/directadmin Models
  * Source: https://eu.api.ovh.com/1.0/license/directadmin.json
  */
+export namespace iam {
+    /**
+     * IAM resource metadata embedded in services models
+     * interface fullName: iam.ResourceMetadata.ResourceMetadata
+     */
+    export interface ResourceMetadata {
+        displayName?: string;
+        id: string;
+        tags?: { [key: string]: string };
+        urn: string;
+    }
+    export namespace resource {
+        /**
+         * Resource tag filter
+         * interface fullName: iam.resource.TagFilter.TagFilter
+         */
+        export interface TagFilter {
+            operator?: iam.resource.TagFilter.OperatorEnum;
+            value: string;
+        }
+        export namespace TagFilter {
+            /**
+             * Operator that can be used in order to filter resources tags
+             * type fullname: iam.resource.TagFilter.OperatorEnum
+             */
+            export type OperatorEnum = "EQ"
+        }
+    }
+}
 export namespace license {
     /**
      * A short description of what does the Task on your license
@@ -97,6 +126,22 @@ export namespace license {
             status: license.StateEnum;
             version: license.DirectAdminVersionEnum;
         }
+        /**
+         * Your DirectAdmin license
+         * interface fullName: license.directadmin.DirectAdminWithIAM.DirectAdminWithIAM
+         */
+        export interface DirectAdminWithIAM {
+            clientId: number;
+            creation: string;
+            deleteAtExpiration: boolean;
+            domain: string;
+            iam?: iam.ResourceMetadata;
+            ip: string;
+            licenseId: string;
+            os: license.DirectAdminOsEnum;
+            status: license.StateEnum;
+            version: license.DirectAdminVersionEnum;
+        }
     }
 }
 export namespace service {
@@ -169,7 +214,7 @@ export interface License {
          * List available services
          * GET /license/directadmin
          */
-        $get(): Promise<string[]>;
+        $get(params?: { iamTags?: any }): Promise<string[]>;
         /**
          * Controle cache
          */
@@ -238,19 +283,19 @@ export interface License {
             }
             confirmTermination: {
                 /**
-                 * Confirm termination of your service
+                 * Confirm service termination
                  * POST /license/directadmin/{serviceName}/confirmTermination
                  */
                 $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
             }
             serviceInfos: {
                 /**
-                 * Get this object properties
+                 * Get service information
                  * GET /license/directadmin/{serviceName}/serviceInfos
                  */
                 $get(): Promise<services.Service>;
                 /**
-                 * Alter this object properties
+                 * Update service information
                  * PUT /license/directadmin/{serviceName}/serviceInfos
                  */
                 $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
@@ -283,7 +328,7 @@ export interface License {
             }
             terminate: {
                 /**
-                 * Terminate your service
+                 * Ask for the termination of your service
                  * POST /license/directadmin/{serviceName}/terminate
                  */
                 $post(): Promise<string>;

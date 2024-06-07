@@ -36,11 +36,35 @@ export namespace coreTypes {
      * type fullname: coreTypes.CountryEnum
      */
     export type CountryEnum = "ac" | "ad" | "ae" | "af" | "ag" | "ai" | "al" | "am" | "an" | "ao" | "aq" | "ar" | "as" | "at" | "au" | "aw" | "ax" | "az" | "ba" | "bb" | "bd" | "be" | "bf" | "bg" | "bh" | "bi" | "bj" | "bl" | "bm" | "bn" | "bo" | "bq" | "br" | "bs" | "bt" | "bv" | "bw" | "by" | "bz" | "ca" | "cc" | "cd" | "cf" | "cg" | "ch" | "ci" | "ck" | "cl" | "cm" | "cn" | "co" | "cr" | "cs" | "cu" | "cv" | "cw" | "cx" | "cy" | "cz" | "de" | "dj" | "dk" | "dm" | "do" | "dz" | "ec" | "ee" | "eg" | "eh" | "er" | "es" | "et" | "fc" | "fd" | "fi" | "fj" | "fk" | "fm" | "fo" | "fr" | "fx" | "ga" | "gb" | "gd" | "ge" | "gf" | "gg" | "gh" | "gi" | "gl" | "gm" | "gn" | "gp" | "gq" | "gr" | "gs" | "gt" | "gu" | "gw" | "gy" | "hk" | "hm" | "hn" | "hr" | "ht" | "hu" | "id" | "ie" | "il" | "im" | "in" | "io" | "iq" | "ir" | "is" | "it" | "je" | "jm" | "jo" | "jp" | "ke" | "kg" | "kh" | "ki" | "km" | "kn" | "kp" | "kr" | "kw" | "ky" | "kz" | "la" | "lb" | "lc" | "li" | "lk" | "lr" | "ls" | "lt" | "lu" | "lv" | "ly" | "ma" | "mc" | "md" | "me" | "mf" | "mg" | "mh" | "mk" | "ml" | "mm" | "mn" | "mo" | "mp" | "mq" | "mr" | "ms" | "mt" | "mu" | "mv" | "mw" | "mx" | "my" | "mz" | "na" | "nc" | "ne" | "nf" | "ng" | "ni" | "nl" | "no" | "np" | "nr" | "nu" | "nz" | "om" | "pa" | "pe" | "pf" | "pg" | "ph" | "pk" | "pl" | "pm" | "pn" | "pr" | "ps" | "pt" | "pw" | "py" | "qa" | "qc" | "re" | "ro" | "rs" | "ru" | "rw" | "sa" | "sb" | "sc" | "sd" | "se" | "sg" | "sh" | "si" | "sj" | "sk" | "sl" | "sm" | "sn" | "so" | "sr" | "ss" | "st" | "sv" | "sx" | "sy" | "sz" | "tc" | "td" | "tf" | "tg" | "th" | "tj" | "tk" | "tl" | "tm" | "tn" | "to" | "tp" | "tr" | "tt" | "tv" | "tw" | "tz" | "ua" | "ug" | "uk" | "um" | "us" | "uy" | "uz" | "va" | "vc" | "ve" | "vg" | "vi" | "vn" | "vu" | "we" | "wf" | "ws" | "ye" | "yt" | "yu" | "za" | "zm" | "zw"
+}
+export namespace iam {
     /**
-     * IANA TimeZone names
-     * type fullname: coreTypes.TimeZoneEnum
+     * IAM resource metadata embedded in services models
+     * interface fullName: iam.ResourceMetadata.ResourceMetadata
      */
-    export type TimeZoneEnum = "Africa/Abidjan" | "Africa/Accra" | "Africa/Addis_Ababa" | "Africa/Algiers" | "Africa/Asmara" | "Africa/Bamako" | "Africa/Bangui" | "Africa/Banjul" | "Africa/Bissau" | "Africa/Blantyre" | "Africa/Brazzaville" | "Africa/Bujumbura" | "Africa/Cairo" | "Africa/Casablanca" | "Africa/Ceuta" | "Africa/Conakry" | "Africa/Dakar" | "Africa/Dar_es_Salaam" | "Africa/Djibouti" | "Africa/Douala" | "Africa/El_Aaiun" | "Africa/Freetown" | "Africa/Gaborone" | "Africa/Harare" | "Africa/Johannesburg" | "Africa/Juba" | "Africa/Kampala" | "Africa/Khartoum" | "Africa/Kigali" | "Africa/Kinshasa" | "Africa/Lagos" | "Africa/Libreville" | "Africa/Lome" | "Africa/Luanda" | "Africa/Lubumbashi" | "Africa/Lusaka" | "Africa/Malabo" | "Africa/Maputo" | "Africa/Maseru" | "Africa/Mbabane" | "Africa/Mogadishu" | "Africa/Monrovia" | "Africa/Nairobi" | "Africa/Ndjamena" | "Africa/Niamey" | "Africa/Nouakchott" | "Africa/Ouagadougou" | "Africa/Porto-Novo" | "Africa/Sao_Tome" | "Africa/Tripoli" | "Africa/Tunis" | "Africa/Windhoek" | "America/Adak" | "America/Anchorage" | "America/Anguilla" | "America/Antigua" | "America/Araguaina" | "America/Argentina/Buenos_Aires" | "America/Argentina/Catamarca" | "America/Argentina/Cordoba" | "America/Argentina/Jujuy" | "America/Argentina/La_Rioja" | "America/Argentina/Mendoza" | "America/Argentina/Rio_Gallegos" | "America/Argentina/Salta" | "America/Argentina/San_Juan" | "America/Argentina/San_Luis" | "America/Argentina/Tucuman" | "America/Argentina/Ushuaia" | "America/Aruba" | "America/Asuncion" | "America/Atikokan" | "America/Bahia" | "America/Bahia_Banderas" | "America/Barbados" | "America/Belem" | "America/Belize" | "America/Blanc-Sablon" | "America/Boa_Vista" | "America/Bogota" | "America/Boise" | "America/Cambridge_Bay" | "America/Campo_Grande" | "America/Cancun" | "America/Caracas" | "America/Cayenne" | "America/Cayman" | "America/Chicago" | "America/Chihuahua" | "America/Costa_Rica" | "America/Creston" | "America/Cuiaba" | "America/Curacao" | "America/Danmarkshavn" | "America/Dawson" | "America/Dawson_Creek" | "America/Denver" | "America/Detroit" | "America/Dominica" | "America/Edmonton" | "America/Eirunepe" | "America/El_Salvador" | "America/Fortaleza" | "America/Glace_Bay" | "America/Godthab" | "America/Goose_Bay" | "America/Grand_Turk" | "America/Grenada" | "America/Guadeloupe" | "America/Guatemala" | "America/Guayaquil" | "America/Guyana" | "America/Halifax" | "America/Havana" | "America/Hermosillo" | "America/Indiana/Indianapolis" | "America/Indiana/Knox" | "America/Indiana/Marengo" | "America/Indiana/Petersburg" | "America/Indiana/Tell_City" | "America/Indiana/Vevay" | "America/Indiana/Vincennes" | "America/Indiana/Winamac" | "America/Inuvik" | "America/Iqaluit" | "America/Jamaica" | "America/Juneau" | "America/Kentucky/Louisville" | "America/Kentucky/Monticello" | "America/Kralendijk" | "America/La_Paz" | "America/Lima" | "America/Los_Angeles" | "America/Lower_Princes" | "America/Maceio" | "America/Managua" | "America/Manaus" | "America/Marigot" | "America/Martinique" | "America/Matamoros" | "America/Mazatlan" | "America/Menominee" | "America/Merida" | "America/Metlakatla" | "America/Mexico_City" | "America/Miquelon" | "America/Moncton" | "America/Monterrey" | "America/Montevideo" | "America/Montserrat" | "America/Nassau" | "America/New_York" | "America/Nipigon" | "America/Nome" | "America/Noronha" | "America/North_Dakota/Beulah" | "America/North_Dakota/Center" | "America/North_Dakota/New_Salem" | "America/Ojinaga" | "America/Panama" | "America/Pangnirtung" | "America/Paramaribo" | "America/Phoenix" | "America/Port-au-Prince" | "America/Port_of_Spain" | "America/Porto_Velho" | "America/Puerto_Rico" | "America/Rainy_River" | "America/Rankin_Inlet" | "America/Recife" | "America/Regina" | "America/Resolute" | "America/Rio_Branco" | "America/Santa_Isabel" | "America/Santarem" | "America/Santiago" | "America/Santo_Domingo" | "America/Sao_Paulo" | "America/Scoresbysund" | "America/Sitka" | "America/St_Barthelemy" | "America/St_Johns" | "America/St_Kitts" | "America/St_Lucia" | "America/St_Thomas" | "America/St_Vincent" | "America/Swift_Current" | "America/Tegucigalpa" | "America/Thule" | "America/Thunder_Bay" | "America/Tijuana" | "America/Toronto" | "America/Tortola" | "America/Vancouver" | "America/Whitehorse" | "America/Winnipeg" | "America/Yakutat" | "America/Yellowknife" | "Antarctica/Casey" | "Antarctica/Davis" | "Antarctica/DumontDUrville" | "Antarctica/Macquarie" | "Antarctica/Mawson" | "Antarctica/McMurdo" | "Antarctica/Palmer" | "Antarctica/Rothera" | "Antarctica/Syowa" | "Antarctica/Troll" | "Antarctica/Vostok" | "Arctic/Longyearbyen" | "Asia/Aden" | "Asia/Almaty" | "Asia/Amman" | "Asia/Anadyr" | "Asia/Aqtau" | "Asia/Aqtobe" | "Asia/Ashgabat" | "Asia/Baghdad" | "Asia/Bahrain" | "Asia/Baku" | "Asia/Bangkok" | "Asia/Beirut" | "Asia/Bishkek" | "Asia/Brunei" | "Asia/Chita" | "Asia/Choibalsan" | "Asia/Colombo" | "Asia/Damascus" | "Asia/Dhaka" | "Asia/Dili" | "Asia/Dubai" | "Asia/Dushanbe" | "Asia/Gaza" | "Asia/Hebron" | "Asia/Ho_Chi_Minh" | "Asia/Hong_Kong" | "Asia/Hovd" | "Asia/Irkutsk" | "Asia/Jakarta" | "Asia/Jayapura" | "Asia/Jerusalem" | "Asia/Kabul" | "Asia/Kamchatka" | "Asia/Karachi" | "Asia/Kathmandu" | "Asia/Khandyga" | "Asia/Kolkata" | "Asia/Krasnoyarsk" | "Asia/Kuala_Lumpur" | "Asia/Kuching" | "Asia/Kuwait" | "Asia/Macau" | "Asia/Magadan" | "Asia/Makassar" | "Asia/Manila" | "Asia/Muscat" | "Asia/Nicosia" | "Asia/Novokuznetsk" | "Asia/Novosibirsk" | "Asia/Omsk" | "Asia/Oral" | "Asia/Phnom_Penh" | "Asia/Pontianak" | "Asia/Pyongyang" | "Asia/Qatar" | "Asia/Qyzylorda" | "Asia/Rangoon" | "Asia/Riyadh" | "Asia/Sakhalin" | "Asia/Samarkand" | "Asia/Seoul" | "Asia/Shanghai" | "Asia/Singapore" | "Asia/Srednekolymsk" | "Asia/Taipei" | "Asia/Tashkent" | "Asia/Tbilisi" | "Asia/Tehran" | "Asia/Thimphu" | "Asia/Tokyo" | "Asia/Ulaanbaatar" | "Asia/Urumqi" | "Asia/Ust-Nera" | "Asia/Vientiane" | "Asia/Vladivostok" | "Asia/Yakutsk" | "Asia/Yekaterinburg" | "Asia/Yerevan" | "Atlantic/Azores" | "Atlantic/Bermuda" | "Atlantic/Canary" | "Atlantic/Cape_Verde" | "Atlantic/Faroe" | "Atlantic/Madeira" | "Atlantic/Reykjavik" | "Atlantic/South_Georgia" | "Atlantic/St_Helena" | "Atlantic/Stanley" | "Australia/Adelaide" | "Australia/Brisbane" | "Australia/Broken_Hill" | "Australia/Currie" | "Australia/Darwin" | "Australia/Eucla" | "Australia/Hobart" | "Australia/Lindeman" | "Australia/Lord_Howe" | "Australia/Melbourne" | "Australia/Perth" | "Australia/Sydney" | "Europe/Amsterdam" | "Europe/Andorra" | "Europe/Athens" | "Europe/Belgrade" | "Europe/Berlin" | "Europe/Bratislava" | "Europe/Brussels" | "Europe/Bucharest" | "Europe/Budapest" | "Europe/Busingen" | "Europe/Chisinau" | "Europe/Copenhagen" | "Europe/Dublin" | "Europe/Gibraltar" | "Europe/Guernsey" | "Europe/Helsinki" | "Europe/Isle_of_Man" | "Europe/Istanbul" | "Europe/Jersey" | "Europe/Kaliningrad" | "Europe/Kiev" | "Europe/Lisbon" | "Europe/Ljubljana" | "Europe/London" | "Europe/Luxembourg" | "Europe/Madrid" | "Europe/Malta" | "Europe/Mariehamn" | "Europe/Minsk" | "Europe/Monaco" | "Europe/Moscow" | "Europe/Oslo" | "Europe/Paris" | "Europe/Podgorica" | "Europe/Prague" | "Europe/Riga" | "Europe/Rome" | "Europe/Samara" | "Europe/San_Marino" | "Europe/Sarajevo" | "Europe/Simferopol" | "Europe/Skopje" | "Europe/Sofia" | "Europe/Stockholm" | "Europe/Tallinn" | "Europe/Tirane" | "Europe/Uzhgorod" | "Europe/Vaduz" | "Europe/Vatican" | "Europe/Vienna" | "Europe/Vilnius" | "Europe/Volgograd" | "Europe/Warsaw" | "Europe/Zagreb" | "Europe/Zaporozhye" | "Europe/Zurich" | "Indian/Antananarivo" | "Indian/Chagos" | "Indian/Christmas" | "Indian/Cocos" | "Indian/Comoro" | "Indian/Kerguelen" | "Indian/Mahe" | "Indian/Maldives" | "Indian/Mauritius" | "Indian/Mayotte" | "Indian/Reunion" | "Pacific/Apia" | "Pacific/Auckland" | "Pacific/Bougainville" | "Pacific/Chatham" | "Pacific/Chuuk" | "Pacific/Easter" | "Pacific/Efate" | "Pacific/Enderbury" | "Pacific/Fakaofo" | "Pacific/Fiji" | "Pacific/Funafuti" | "Pacific/Galapagos" | "Pacific/Gambier" | "Pacific/Guadalcanal" | "Pacific/Guam" | "Pacific/Honolulu" | "Pacific/Johnston" | "Pacific/Kiritimati" | "Pacific/Kosrae" | "Pacific/Kwajalein" | "Pacific/Majuro" | "Pacific/Marquesas" | "Pacific/Midway" | "Pacific/Nauru" | "Pacific/Niue" | "Pacific/Norfolk" | "Pacific/Noumea" | "Pacific/Pago_Pago" | "Pacific/Palau" | "Pacific/Pitcairn" | "Pacific/Pohnpei" | "Pacific/Port_Moresby" | "Pacific/Rarotonga" | "Pacific/Saipan" | "Pacific/Tahiti" | "Pacific/Tarawa" | "Pacific/Tongatapu" | "Pacific/Wake" | "Pacific/Wallis"
+    export interface ResourceMetadata {
+        displayName?: string;
+        id: string;
+        tags?: { [key: string]: string };
+        urn: string;
+    }
+    export namespace resource {
+        /**
+         * Resource tag filter
+         * interface fullName: iam.resource.TagFilter.TagFilter
+         */
+        export interface TagFilter {
+            operator?: iam.resource.TagFilter.OperatorEnum;
+            value: string;
+        }
+        export namespace TagFilter {
+            /**
+             * Operator that can be used in order to filter resources tags
+             * type fullname: iam.resource.TagFilter.OperatorEnum
+             */
+            export type OperatorEnum = "EQ"
+        }
+    }
 }
 export namespace nichandle {
     /**
@@ -127,6 +151,16 @@ export namespace spare {
             macAddress: string;
             protocol: telephonyProtocolEnum;
         }
+        /**
+         * Spare properties
+         * interface fullName: spare.telephony.TelephonySpareWithIAM.TelephonySpareWithIAM
+         */
+        export interface TelephonySpareWithIAM {
+            brand: string;
+            iam?: iam.ResourceMetadata;
+            macAddress: string;
+            protocol: telephonyProtocolEnum;
+        }
     }
 }
 export namespace telephony {
@@ -207,83 +241,22 @@ export namespace telephony {
      */
     export type BillingAccountStatusEnum = "closed" | "deleted" | "enabled" | "expired"
     /**
-     * Call diagnostic analyze structure on metric performance values
-     * interface fullName: telephony.CallDiagnosticCallQuality.CallDiagnosticCallQuality
+     * Billing Account
+     * interface fullName: telephony.BillingAccountWithIAM.BillingAccountWithIAM
      */
-    export interface CallDiagnosticCallQuality {
-        callId: string;
-        codec: telephony.CallDiagnosticCodecEnum;
-        flowId: number;
-        ipDst: string;
-        ipSrc: string;
-        maxDelay: number;
-        maxJitter: number;
-        mos: number;
-        packets: number;
-        portDst: number;
-        portSrc: number;
-        rtpLost: number;
-        timestamp: string;
-    }
-    /**
-     * SS7 ISUP cause codes
-     * type fullname: telephony.CallDiagnosticCauseEnum
-     */
-    export type CallDiagnosticCauseEnum = "1" | "10" | "11" | "12" | "13" | "14" | "15" | "16" | "1a" | "1b" | "1c" | "1d" | "1e" | "1f" | "2" | "22" | "26" | "27" | "28" | "29" | "2a" | "2b" | "2c" | "2e" | "2f" | "3" | "30" | "31" | "32" | "33" | "34" | "35" | "37" | "39" | "3a" | "3e" | "3f" | "4" | "41" | "42" | "45" | "46" | "4f" | "5" | "51" | "52" | "53" | "54" | "55" | "56" | "57" | "58" | "5a" | "5b" | "5f" | "6" | "60" | "61" | "62" | "63" | "64" | "65" | "66" | "67" | "6e" | "6f" | "7" | "7f" | "8" | "9"
-    /**
-     * Call diagnostic analyze structure call cdrs
-     * interface fullName: telephony.CallDiagnosticCdrs.CallDiagnosticCdrs
-     */
-    export interface CallDiagnosticCdrs {
-        basic: telephony.CallDiagnosticCdrsBasic;
-        timestamp: string;
-    }
-    /**
-     * Call diagnostic analyze structure call cdrs
-     * interface fullName: telephony.CallDiagnosticCdrsBasic.CallDiagnosticCdrsBasic
-     */
-    export interface CallDiagnosticCdrsBasic {
-        cause: telephony.CallDiagnosticCauseEnum;
-        causeDescription: string;
-        releaseLocation: telephony.ReleaseLocationEnum;
-    }
-    /**
-     * Enumeration providing payload type to Name of RTP audio video profile
-     * type fullname: telephony.CallDiagnosticCodecEnum
-     */
-    export type CallDiagnosticCodecEnum = "G722" | "G729" | "PCMA" | "PCMU"
-    /**
-     * Reporting of the current diagnostic
-     * interface fullName: telephony.CallDiagnosticReporting.CallDiagnosticReporting
-     */
-    export interface CallDiagnosticReporting {
-        message: string;
-    }
-    /**
-     * Call diagnostic analyze structure on sip signal
-     * interface fullName: telephony.CallDiagnosticSip.CallDiagnosticSip
-     */
-    export interface CallDiagnosticSip {
-        headers: string;
-        requestMethod?: string;
-        response?: string;
-        timestamp: string;
-    }
-    /**
-     * Information extraction status
-     * type fullname: telephony.CallDiagnosticStatusEnum
-     */
-    export type CallDiagnosticStatusEnum = "doing" | "done" | "error" | "todo"
-    /**
-     * Advanced diagnostic of the voice call
-     * interface fullName: telephony.CallDiagnostics.CallDiagnostics
-     */
-    export interface CallDiagnostics {
-        callQuality: telephony.CallDiagnosticCallQuality[];
-        cdrs: telephony.CallDiagnosticCdrs[];
-        reporting: telephony.CallDiagnosticReporting[];
-        sip: telephony.CallDiagnosticSip[];
-        status: telephony.CallDiagnosticStatusEnum;
+    export interface BillingAccountWithIAM {
+        allowedOutplan: order.Price;
+        billingAccount: string;
+        creditThreshold: order.Price;
+        currentOutplan: order.Price;
+        description: string;
+        hasSpecialNumbers: boolean;
+        hiddenExternalNumber: boolean;
+        iam?: iam.ResourceMetadata;
+        overrideDisplayedNumber: boolean;
+        securityDeposit: order.Price;
+        status: telephony.BillingAccountStatusEnum;
+        trusted: boolean;
     }
     /**
      * Automatic Call made by Call Generator on this line
@@ -372,6 +345,22 @@ export namespace telephony {
      * type fullname: telephony.CarrierSipEndpointProtocolEnum
      */
     export type CarrierSipEndpointProtocolEnum = "tcp" | "tls" | "udp"
+    /**
+     * Carrier SIP VNO mandate
+     * interface fullName: telephony.CarrierSipVnoMandate.CarrierSipVnoMandate
+     */
+    export interface CarrierSipVnoMandate {
+        applicationDate: string;
+        contractReference: string;
+    }
+    /**
+     * Carrier SIP VNO range
+     * interface fullName: telephony.CarrierSipVnoRange.CarrierSipVnoRange
+     */
+    export interface CarrierSipVnoRange {
+        description: string;
+        prefix: string;
+    }
     /**
      * Represents a city
      * interface fullName: telephony.City.City
@@ -1542,7 +1531,7 @@ export namespace telephony {
      * IVR menu key
      * type fullname: telephony.OvhPabxIvrMenuKeyEnum
      */
-    export type OvhPabxIvrMenuKeyEnum = "#" | "*" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+    export type OvhPabxIvrMenuKeyEnum = "#" | "*" | "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
     /**
      * IVR Menu
      * interface fullName: telephony.OvhPabxMenu.OvhPabxMenu
@@ -1908,11 +1897,6 @@ export namespace telephony {
         userAgent?: string;
     }
     /**
-     * Release location type : forward if the calling hangup, backward if the caller hangup, else local
-     * type fullname: telephony.ReleaseLocationEnum
-     */
-    export type ReleaseLocationEnum = "backward" | "forward" | "local"
-    /**
      * Call which are repayable
      * interface fullName: telephony.RepaymentConsumption.RepaymentConsumption
      */
@@ -2148,6 +2132,20 @@ export namespace telephony {
      */
     export type SipDomainProductTypeEnum = "sip" | "trunk"
     /**
+     * Softphone beta eligibility
+     * interface fullName: telephony.SoftphoneBetaEligibility.SoftphoneBetaEligibility
+     */
+    export interface SoftphoneBetaEligibility {
+        eligibility: boolean;
+    }
+    /**
+     * Beta status of softphone
+     * interface fullName: telephony.SoftphoneBetaStatus.SoftphoneBetaStatus
+     */
+    export interface SoftphoneBetaStatus {
+        enabled: boolean;
+    }
+    /**
      * Sounds attached to this telephony account
      * interface fullName: telephony.Sound.Sound
      */
@@ -2195,6 +2193,14 @@ export namespace telephony {
      * interface fullName: telephony.TelephonyGenericService.TelephonyGenericService
      */
     export interface TelephonyGenericService {
+        serviceName: string;
+    }
+    /**
+     * Telephony service
+     * interface fullName: telephony.TelephonyGenericServiceWithIAM.TelephonyGenericServiceWithIAM
+     */
+    export interface TelephonyGenericServiceWithIAM {
+        iam?: iam.ResourceMetadata;
         serviceName: string;
     }
     /**
@@ -2301,7 +2307,7 @@ export namespace telephony {
      * Timeout before unavailable action is triggered
      * type fullname: telephony.TimeConditionsTimeoutEnum
      */
-    export type TimeConditionsTimeoutEnum = 10 | 15 | 20 | 25 | 30 | 35 | 40 | 45 | 5 | 50 | 55 | 60 | 65 | 70 | 75 | 80 | 85 | 90
+    export type TimeConditionsTimeoutEnum = 5 | 10 | 15 | 20 | 25 | 30 | 35 | 40 | 45 | 50 | 55 | 60 | 65 | 70 | 75 | 80 | 85 | 90
     /**
      * A value associated to a timestamp
      * interface fullName: telephony.TimestampAndValue.TimestampAndValue
@@ -2537,7 +2543,7 @@ export namespace telephony {
          * Special number category
          * type fullname: telephony.portability.SpecialNumberCategoryEnum
          */
-        export type SpecialNumberCategoryEnum = "access" | "adults" | "announced" | "conferencing" | "contentsAuto" | "contentsManual" | "directory" | "games" | "linking" | "m2m" | "relationship"
+        export type SpecialNumberCategoryEnum = "access" | "announced" | "conferencing" | "contentsAuto" | "contentsManual" | "directory" | "games" | "linking" | "m2m" | "relationship"
     }
     /**
      * Time zones available for scheduled events time definitions
@@ -2570,10 +2576,10 @@ export default proxyTelephony;
  */
 export interface Telephony {
     /**
-     * List available services
+     * Your telephony billing accounts
      * GET /telephony
      */
-    $get(): Promise<string[]>;
+    $get(params?: { iamTags?: any }): Promise<string[]>;
     /**
      * Controle cache
      */
@@ -2591,10 +2597,10 @@ export interface Telephony {
     }
     aliases: {
         /**
-         * List available services
+         * Your telephony billing accounts
          * GET /telephony/aliases
          */
-        $get(): Promise<string[]>;
+        $get(params?: { iamTags?: any }): Promise<string[]>;
         /**
          * Controle cache
          */
@@ -2618,12 +2624,12 @@ export interface Telephony {
             }
             serviceInfos: {
                 /**
-                 * Get this object properties
+                 * Get service information
                  * GET /telephony/aliases/{serviceName}/serviceInfos
                  */
                 $get(): Promise<services.Service>;
                 /**
-                 * Alter this object properties
+                 * Update service information
                  * PUT /telephony/aliases/{serviceName}/serviceInfos
                  */
                 $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
@@ -2721,10 +2727,10 @@ export interface Telephony {
     }
     lines: {
         /**
-         * List available services
+         * Your telephony billing accounts
          * GET /telephony/lines
          */
-        $get(): Promise<string[]>;
+        $get(params?: { iamTags?: any }): Promise<string[]>;
         /**
          * Controle cache
          */
@@ -2748,12 +2754,12 @@ export interface Telephony {
             }
             serviceInfos: {
                 /**
-                 * Get this object properties
+                 * Get service information
                  * GET /telephony/lines/{serviceName}/serviceInfos
                  */
                 $get(): Promise<services.Service>;
                 /**
-                 * Alter this object properties
+                 * Update service information
                  * PUT /telephony/lines/{serviceName}/serviceInfos
                  */
                 $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
@@ -2893,6 +2899,17 @@ export interface Telephony {
          */
         $post(params: { country: telephony.ServiceNumberCountryEnum, domain: string, type: telephony.SipDomainProductTypeEnum }): Promise<void>;
     }
+    softphoneBetaEligibility: {
+        /**
+         * Get the Softphone beta eligibility status of the account
+         * GET /telephony/softphoneBetaEligibility
+         */
+        $get(): Promise<telephony.SoftphoneBetaEligibility>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+    }
     sounds: {
         /**
          * Sounds attached to this telephony account
@@ -2935,7 +2952,7 @@ export interface Telephony {
          * List available services
          * GET /telephony/spare
          */
-        $get(): Promise<string[]>;
+        $get(params?: { iamTags?: any }): Promise<string[]>;
         /**
          * Controle cache
          */
@@ -2979,19 +2996,19 @@ export interface Telephony {
             }
             replace: {
                 /**
-                 * Replace the phone by its spare. The broken phone became a spare if it was bought. An RMA is created if the broken phone is under securitydeposit.
+                 * Replace the phone by its spare
                  * POST /telephony/spare/{spare}/replace
                  */
                 $post(params: { domain: string, ip: string }): Promise<void>;
             }
             serviceInfos: {
                 /**
-                 * Get this object properties
+                 * Get service information
                  * GET /telephony/spare/{spare}/serviceInfos
                  */
                 $get(): Promise<services.Service>;
                 /**
-                 * Alter this object properties
+                 * Update service information
                  * PUT /telephony/spare/{spare}/serviceInfos
                  */
                 $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
@@ -3004,10 +3021,10 @@ export interface Telephony {
     }
     trunks: {
         /**
-         * List available services
+         * Your telephony trunks
          * GET /telephony/trunks
          */
-        $get(): Promise<string[]>;
+        $get(params?: { iamTags?: any }): Promise<string[]>;
         /**
          * Controle cache
          */
@@ -3031,12 +3048,12 @@ export interface Telephony {
             }
             serviceInfos: {
                 /**
-                 * Get this object properties
+                 * Get service information
                  * GET /telephony/trunks/{serviceName}/serviceInfos
                  */
                 $get(): Promise<services.Service>;
                 /**
-                 * Alter this object properties
+                 * Update service information
                  * PUT /telephony/trunks/{serviceName}/serviceInfos
                  */
                 $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
@@ -3235,6 +3252,55 @@ export interface Telephony {
                      * Controle cache
                      */
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+                vno: {
+                    /**
+                     * List of your VNO mandates
+                     * GET /telephony/{billingAccount}/carrierSip/{serviceName}/vno
+                     */
+                    $get(): Promise<string[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $(contractReference: string): {
+                        /**
+                         * Get this object properties
+                         * GET /telephony/{billingAccount}/carrierSip/{serviceName}/vno/{contractReference}
+                         */
+                        $get(): Promise<telephony.CarrierSipVnoMandate>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        ranges: {
+                            /**
+                             * Number ranges associated with you mandate.
+                             * GET /telephony/{billingAccount}/carrierSip/{serviceName}/vno/{contractReference}/ranges
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(prefix: string): {
+                                /**
+                                 * Get this object properties
+                                 * GET /telephony/{billingAccount}/carrierSip/{serviceName}/vno/{contractReference}/ranges/{prefix}
+                                 */
+                                $get(): Promise<telephony.CarrierSipVnoRange>;
+                                /**
+                                 * Alter this object properties
+                                 * PUT /telephony/{billingAccount}/carrierSip/{serviceName}/vno/{contractReference}/ranges/{prefix}
+                                 */
+                                $put(params?: { description?: string, prefix?: string }): Promise<void>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                    };
                 }
             };
         }
@@ -4883,7 +4949,7 @@ export interface Telephony {
                 }
                 changePassword: {
                     /**
-                     * Change the SIP account password. It must be more than 7 and less than 21 alpha and numerical characters.
+                     * Change the SIP account password
                      * POST /telephony/{billingAccount}/line/{serviceName}/changePassword
                      */
                     $post(params?: { password?: string }): Promise<void>;
@@ -5355,6 +5421,31 @@ export interface Telephony {
                      */
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
+                softphone: {
+                    beta: {
+                        /**
+                         * Get beta status for line softphone
+                         * GET /telephony/{billingAccount}/line/{serviceName}/softphone/beta
+                         */
+                        $get(): Promise<telephony.SoftphoneBetaStatus>;
+                        /**
+                         * Enable or disable beta statuses for line softphone
+                         * PUT /telephony/{billingAccount}/line/{serviceName}/softphone/beta
+                         */
+                        $put(params: { enabled: boolean }): Promise<telephony.SoftphoneBetaStatus>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        regenerateToken: {
+                            /**
+                             * Regenerate softphone token for registration
+                             * POST /telephony/{billingAccount}/line/{serviceName}/softphone/beta/regenerateToken
+                             */
+                            $post(): Promise<void>;
+                        }
+                    }
+                }
                 statistics: {
                     /**
                      * Get statistics of the current line
@@ -5609,7 +5700,7 @@ export interface Telephony {
                  */
                 $get(): Promise<telephony.OfferTask>;
                 /**
-                 * Alter this object properties
+                 * Update the given pending action
                  * PUT /telephony/{billingAccount}/offerTask/{taskId}
                  */
                 $put(params?: { action?: telephony.OfferTaskActionEnum, executionDate?: string, status?: telephony.TaskStatusEnum, taskId?: number, type?: telephony.OfferTaskTypeEnum }): Promise<void>;
@@ -7134,7 +7225,7 @@ export interface Telephony {
                          */
                         $get(): Promise<telephony.OfferTask>;
                         /**
-                         * Alter this object properties
+                         * Update the given pending action
                          * PUT /telephony/{billingAccount}/service/{serviceName}/offerTask/{taskId}
                          */
                         $put(params?: { action?: telephony.OfferTaskActionEnum, executionDate?: string, status?: telephony.TaskStatusEnum, taskId?: number, type?: telephony.OfferTaskTypeEnum }): Promise<void>;
@@ -7230,29 +7321,18 @@ export interface Telephony {
                          * Controle cache
                          */
                         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                        callDiagnostics: {
-                            /**
-                             * Get this object properties
-                             * GET /telephony/{billingAccount}/service/{serviceName}/voiceConsumption/{consumptionId}/callDiagnostics
-                             */
-                            $get(): Promise<telephony.CallDiagnostics>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                        }
                     };
                 }
             };
         }
         serviceInfos: {
             /**
-             * Get this object properties
+             * Get service information
              * GET /telephony/{billingAccount}/serviceInfos
              */
             $get(): Promise<services.Service>;
             /**
-             * Alter this object properties
+             * Update service information
              * PUT /telephony/{billingAccount}/serviceInfos
              */
             $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;

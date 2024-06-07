@@ -4,6 +4,35 @@ import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-
  * START API /storage Models
  * Source: https://eu.api.ovh.com/1.0/storage.json
  */
+export namespace iam {
+    /**
+     * IAM resource metadata embedded in services models
+     * interface fullName: iam.ResourceMetadata.ResourceMetadata
+     */
+    export interface ResourceMetadata {
+        displayName?: string;
+        id: string;
+        tags?: { [key: string]: string };
+        urn: string;
+    }
+    export namespace resource {
+        /**
+         * Resource tag filter
+         * interface fullName: iam.resource.TagFilter.TagFilter
+         */
+        export interface TagFilter {
+            operator?: iam.resource.TagFilter.OperatorEnum;
+            value: string;
+        }
+        export namespace TagFilter {
+            /**
+             * Operator that can be used in order to filter resources tags
+             * type fullname: iam.resource.TagFilter.OperatorEnum
+             */
+            export type OperatorEnum = "EQ"
+        }
+    }
+}
 export namespace service {
     /**
      * Map a possible renew for a specific service
@@ -59,6 +88,20 @@ export namespace services {
 }
 export namespace storage {
     /**
+     * A network
+     * interface fullName: storage.NetAppNetwork.NetAppNetwork
+     */
+    export interface NetAppNetwork {
+        id: string;
+        status?: storage.NetAppNetworkStatusEnum;
+        vRackServicesURN?: string;
+    }
+    /**
+     * Network status
+     * type fullname: storage.NetAppNetworkStatusEnum
+     */
+    export type NetAppNetworkStatusEnum = "associated" | "associating" | "dissociating" | "to_configure"
+    /**
      * A service
      * interface fullName: storage.NetAppService.NetAppService
      */
@@ -88,6 +131,21 @@ export namespace storage {
      */
     export interface NetAppServiceUpdate {
         name: string;
+    }
+    /**
+     * A service
+     * interface fullName: storage.NetAppServiceWithIAM.NetAppServiceWithIAM
+     */
+    export interface NetAppServiceWithIAM {
+        createdAt: string;
+        iam?: iam.ResourceMetadata;
+        id: string;
+        name: string;
+        performanceLevel: storage.NetAppServicePerformanceLevelEnum;
+        product: string;
+        quota: number;
+        region: storage.RegionEnum;
+        status: storage.NetAppServiceStatusEnum;
     }
     /**
      * A share
@@ -143,8 +201,14 @@ export namespace storage {
      * interface fullName: storage.NetAppShareExtendOrShrink.NetAppShareExtendOrShrink
      */
     export interface NetAppShareExtendOrShrink {
-        id: string;
         size: number;
+    }
+    /**
+     * A share
+     * interface fullName: storage.NetAppShareRevertToSnapshot.NetAppShareRevertToSnapshot
+     */
+    export interface NetAppShareRevertToSnapshot {
+        snapshotID: string;
     }
     /**
      * A share snapshot
@@ -285,7 +349,7 @@ export namespace storage {
      * Region of customer's service
      * type fullname: storage.RegionEnum
      */
-    export type RegionEnum = "BHS" | "LIM" | "RBX" | "SBG"
+    export type RegionEnum = "BHS" | "GRA" | "LIM" | "RBX" | "SBG"
 }
 
 /**
@@ -304,7 +368,7 @@ export interface Storage {
          * List available services
          * GET /storage/netapp
          */
-        $get(): Promise<storage.NetAppService[]>;
+        $get(params?: { iamTags?: any }): Promise<storage.NetAppService[]>;
         /**
          * Controle cache
          */
@@ -333,19 +397,41 @@ export interface Storage {
             }
             confirmTermination: {
                 /**
-                 * Confirm termination of your service
+                 * Confirm service termination
                  * POST /storage/netapp/{serviceName}/confirmTermination
                  */
                 $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
             }
+            network: {
+                /**
+                 * List networks
+                 * GET /storage/netapp/{serviceName}/network
+                 */
+                $get(params?: { detail?: boolean }): Promise<storage.NetAppNetwork[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $(networkId: string): {
+                    /**
+                     * Get network details
+                     * GET /storage/netapp/{serviceName}/network/{networkId}
+                     */
+                    $get(): Promise<storage.NetAppNetwork>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                };
+            }
             serviceInfos: {
                 /**
-                 * Get this object properties
+                 * Get service information
                  * GET /storage/netapp/{serviceName}/serviceInfos
                  */
                 $get(): Promise<services.Service>;
                 /**
-                 * Alter this object properties
+                 * Update service information
                  * PUT /storage/netapp/{serviceName}/serviceInfos
                  */
                 $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
@@ -448,14 +534,21 @@ export interface Storage {
                          * Extend share size
                          * POST /storage/netapp/{serviceName}/share/{shareId}/extend
                          */
-                        $post(params: { id?: string, size: number }): Promise<void>;
+                        $post(params: { size: number }): Promise<void>;
+                    }
+                    revert: {
+                        /**
+                         * Revert a share to it's latest snapshot
+                         * POST /storage/netapp/{serviceName}/share/{shareId}/revert
+                         */
+                        $post(params: { snapshotID: string }): Promise<void>;
                     }
                     shrink: {
                         /**
                          * Shrink share size
                          * POST /storage/netapp/{serviceName}/share/{shareId}/shrink
                          */
-                        $post(params: { id?: string, size: number }): Promise<void>;
+                        $post(params: { size: number }): Promise<void>;
                     }
                     snapshot: {
                         /**
@@ -574,7 +667,7 @@ export interface Storage {
             }
             terminate: {
                 /**
-                 * Terminate your service
+                 * Ask for the termination of your service
                  * POST /storage/netapp/{serviceName}/terminate
                  */
                 $post(): Promise<string>;

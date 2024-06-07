@@ -141,6 +141,17 @@ export namespace cluster {
             name: string;
             state: cluster.hadoop.ClusterStateEnum;
         }
+        /**
+         * Managed Hadoop Cluster
+         * interface fullName: cluster.hadoop.hadoopWithIAM.hadoopWithIAM
+         */
+        export interface hadoopWithIAM {
+            clouderaVersion: string;
+            iam?: iam.ResourceMetadata;
+            maxOrderableNodes: number;
+            name: string;
+            state: cluster.hadoop.ClusterStateEnum;
+        }
     }
 }
 export namespace complexType {
@@ -151,6 +162,35 @@ export namespace complexType {
     export interface UnitAndValue<T> {
         unit: string;
         value: T;
+    }
+}
+export namespace iam {
+    /**
+     * IAM resource metadata embedded in services models
+     * interface fullName: iam.ResourceMetadata.ResourceMetadata
+     */
+    export interface ResourceMetadata {
+        displayName?: string;
+        id: string;
+        tags?: { [key: string]: string };
+        urn: string;
+    }
+    export namespace resource {
+        /**
+         * Resource tag filter
+         * interface fullName: iam.resource.TagFilter.TagFilter
+         */
+        export interface TagFilter {
+            operator?: iam.resource.TagFilter.OperatorEnum;
+            value: string;
+        }
+        export namespace TagFilter {
+            /**
+             * Operator that can be used in order to filter resources tags
+             * type fullname: iam.resource.TagFilter.OperatorEnum
+             */
+            export type OperatorEnum = "EQ"
+        }
     }
 }
 export namespace service {
@@ -213,7 +253,7 @@ export interface Cluster {
          * List available services
          * GET /cluster/hadoop
          */
-        $get(): Promise<string[]>;
+        $get(params?: { iamTags?: any }): Promise<string[]>;
         /**
          * Controle cache
          */
@@ -464,12 +504,12 @@ export interface Cluster {
             }
             serviceInfos: {
                 /**
-                 * Get this object properties
+                 * Get service information
                  * GET /cluster/hadoop/{serviceName}/serviceInfos
                  */
                 $get(): Promise<services.Service>;
                 /**
-                 * Alter this object properties
+                 * Update service information
                  * PUT /cluster/hadoop/{serviceName}/serviceInfos
                  */
                 $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;

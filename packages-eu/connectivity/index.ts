@@ -9,7 +9,7 @@ export namespace connectivity {
      * Operator
      * type fullname: connectivity.OperatorEnum
      */
-    export type OperatorEnum = "OVH" | "KOSC" | "SFR" | "ORANGE" | "AXIONE"
+    export type OperatorEnum = "AXIONE" | "BOUYGUES" | "KOSC" | "ORANGE" | "OVH" | "SFR"
     export namespace eligibility {
         /**
          * Activation type, for copper only
@@ -42,7 +42,7 @@ export namespace connectivity {
             name: string;
             nro?: string;
             reference: string;
-            stairs: connectivity.eligibility.BuildingStair[];
+            stairs?: connectivity.eligibility.BuildingStair[];
             type: connectivity.eligibility.BuildingTypeEnum;
         }
         /**
@@ -69,7 +69,7 @@ export namespace connectivity {
             zipCode: string;
         }
         /**
-         * Copper informations
+         * Copper information
          * interface fullName: connectivity.eligibility.CopperInfo.CopperInfo
          */
         export interface CopperInfo {
@@ -91,11 +91,11 @@ export namespace connectivity {
             offers: connectivity.eligibility.Offer[];
         }
         /**
-         * Endpoint informations
+         * Endpoint information
          * interface fullName: connectivity.eligibility.Endpoint.Endpoint
          */
         export interface Endpoint {
-            address: connectivity.eligibility.Address;
+            address?: connectivity.eligibility.Address;
             copperInfo?: connectivity.eligibility.CopperInfo;
             fiberInfo?: connectivity.eligibility.FiberInfo;
             portability?: connectivity.eligibility.Portability;
@@ -108,17 +108,22 @@ export namespace connectivity {
          */
         export type EndpointReferenceTypeEnum = "building" | "lineNumber" | "otp"
         /**
-         * Fiber informations
+         * Fiber information
          * interface fullName: connectivity.eligibility.FiberInfo.FiberInfo
          */
         export interface FiberInfo {
-            buildingName: string;
+            buildingName?: string;
             buildingReference: string;
             buildingType: connectivity.eligibility.BuildingTypeEnum;
             nro?: string;
             operatorCode: string;
             operatorName: string;
         }
+        /**
+         * Installation type, for fiber only
+         * type fullname: connectivity.eligibility.InstallationTypeEnum
+         */
+        export type InstallationTypeEnum = "activate" | "activate_undefined" | "create" | "multiOtp"
         /**
          * Copper line details
          * interface fullName: connectivity.eligibility.Line.Line
@@ -133,6 +138,14 @@ export namespace connectivity {
          * type fullname: connectivity.eligibility.LineStatusEnum
          */
         export type LineStatusEnum = "active" | "inactive"
+        /**
+         * Represents meeting booking options
+         * interface fullName: connectivity.eligibility.MeetingCapacities.MeetingCapacities
+         */
+        export interface MeetingCapacities {
+            eRdv: boolean;
+            phoneCall: boolean;
+        }
         /**
          * Represents a time slot for a meeting
          * interface fullName: connectivity.eligibility.MeetingSlot.MeetingSlot
@@ -149,6 +162,7 @@ export namespace connectivity {
          */
         export interface Meetings {
             canBookFakeMeeting: boolean;
+            capacities: connectivity.eligibility.MeetingCapacities;
             meetingSlots: connectivity.eligibility.MeetingSlot[];
         }
         /**
@@ -182,6 +196,7 @@ export namespace connectivity {
             eligible: boolean;
             estimatedDownloadRate?: number;
             estimatedUploadRate?: number;
+            multiOtp?: boolean;
             reasons: connectivity.eligibility.Message[];
             underConditions: connectivity.eligibility.Message[];
         }
@@ -195,6 +210,7 @@ export namespace connectivity {
             grt: string[];
             guaranteed: boolean;
             name: string;
+            operator: connectivity.eligibility.OfferProductProviderEnum;
             pairs?: number;
             provider: connectivity.eligibility.OfferProductProviderEnum;
             type: connectivity.eligibility.OfferProductTypeEnum;
@@ -205,7 +221,7 @@ export namespace connectivity {
          * Offer product provider
          * type fullname: connectivity.eligibility.OfferProductProviderEnum
          */
-        export type OfferProductProviderEnum = "AI" | "ALTERNATIVE" | "AXIONE" | "FI" | "KOSC" | "OR" | "ORANGE" | "OS" | "REFERENCE" | "SFR"
+        export type OfferProductProviderEnum = "AI" | "ALTERNATIVE" | "AX" | "AXIONE" | "BOUYGUES" | "COVAGE" | "FI" | "KOSC" | "OR" | "ORANGE" | "OS" | "REFERENCE" | "SFR" | "TF"
         /**
          * Offer product type
          * type fullname: connectivity.eligibility.OfferProductTypeEnum
@@ -255,6 +271,170 @@ export namespace connectivity {
             streetCode: string;
             streetName: string;
         }
+        /**
+         * Details of a street number struct
+         * interface fullName: connectivity.eligibility.StreetNumberDetails.StreetNumberDetails
+         */
+        export interface StreetNumberDetails {
+            hexacle?: string;
+            number: string;
+        }
+        export namespace search {
+            /**
+             * Search cities
+             * interface fullName: connectivity.eligibility.search.Cities.Cities
+             */
+            export interface Cities {
+                zipCode: string;
+            }
+            export namespace buildingDetails {
+                /**
+                 * Building details
+                 * interface fullName: connectivity.eligibility.search.buildingDetails.post.post
+                 */
+                export interface post {
+                    building: string;
+                }
+            }
+            export namespace buildings {
+                /**
+                 * connectivity.eligibility.search.buildings.post
+                 * interface fullName: connectivity.eligibility.search.buildings.post.post
+                 */
+                export interface post {
+                    hexacle: string;
+                    streetCode: string;
+                    streetNumber: string;
+                }
+            }
+            export namespace buildingsByLine {
+                /**
+                 * connectivity.eligibility.search.buildingsByLine.post
+                 * interface fullName: connectivity.eligibility.search.buildingsByLine.post.post
+                 */
+                export interface post {
+                    lineNumber: string;
+                    status: connectivity.eligibility.LineStatusEnum;
+                }
+            }
+            export namespace lines {
+                /**
+                 * connectivity.eligibility.search.lines.post
+                 * interface fullName: connectivity.eligibility.search.lines.post.post
+                 */
+                export interface post {
+                    ownerName: string;
+                    streetCode: string;
+                    streetNumber: string;
+                }
+            }
+            export namespace meetings {
+                /**
+                 * connectivity.eligibility.search.meetings.post
+                 * interface fullName: connectivity.eligibility.search.meetings.post.post
+                 */
+                export interface post {
+                    eligibilityReference: string;
+                    installationType: connectivity.eligibility.InstallationTypeEnum;
+                    planCode: string;
+                    productCode: string;
+                    siteCompanyName: string;
+                    type: connectivity.eligibility.OfferProductTypeEnum;
+                    unbundlingType: connectivity.eligibility.OfferProductUnbundlingTypeEnum;
+                }
+            }
+            export namespace streetNumbers {
+                export namespace details {
+                    /**
+                     * connectivity.eligibility.search.streetNumbers.details.post
+                     * interface fullName: connectivity.eligibility.search.streetNumbers.details.post.post
+                     */
+                    export interface post {
+                        streetCode: string;
+                    }
+                }
+                /**
+                 * connectivity.eligibility.search.streetNumbers.post
+                 * interface fullName: connectivity.eligibility.search.streetNumbers.post.post
+                 */
+                export interface post {
+                    streetCode: string;
+                }
+            }
+            export namespace streets {
+                /**
+                 * connectivity.eligibility.search.streets.post
+                 * interface fullName: connectivity.eligibility.search.streets.post.post
+                 */
+                export interface post {
+                    inseeCode: string;
+                }
+            }
+        }
+        export namespace test {
+            export namespace address {
+                export namespace partners {
+                    /**
+                     * connectivity.eligibility.test.address.partners.post
+                     * interface fullName: connectivity.eligibility.test.address.partners.post.post
+                     */
+                    export interface post {
+                        streetCode: string;
+                        streetNumber: string;
+                    }
+                }
+                /**
+                 * connectivity.eligibility.test.address.post
+                 * interface fullName: connectivity.eligibility.test.address.post.post
+                 */
+                export interface post {
+                    streetCode: string;
+                    streetNumber: string;
+                }
+            }
+            export namespace building {
+                /**
+                 * connectivity.eligibility.test.building.post
+                 * interface fullName: connectivity.eligibility.test.building.post.post
+                 */
+                export interface post {
+                    building: string;
+                }
+            }
+            export namespace line {
+                export namespace partners {
+                    /**
+                     * connectivity.eligibility.test.line.partners.post
+                     * interface fullName: connectivity.eligibility.test.line.partners.post.post
+                     */
+                    export interface post {
+                        lineNumber: string;
+                        status: connectivity.eligibility.LineStatusEnum;
+                        streetCode: string;
+                        streetNumber: string;
+                    }
+                }
+                /**
+                 * connectivity.eligibility.test.line.post
+                 * interface fullName: connectivity.eligibility.test.line.post.post
+                 */
+                export interface post {
+                    lineNumber: string;
+                    status: connectivity.eligibility.LineStatusEnum;
+                    streetCode: string;
+                    streetNumber: string;
+                }
+            }
+            export namespace otp {
+                /**
+                 * connectivity.eligibility.test.otp.post
+                 * interface fullName: connectivity.eligibility.test.otp.post.post
+                 */
+                export interface post {
+                    otp: string;
+                }
+            }
+        }
     }
     export namespace maintenance {
         /**
@@ -294,8 +474,9 @@ export namespace connectivity {
             creationDate: string;
             departments: string[];
             endDate?: string;
+            estimatedResolutionDate?: string;
             id: number;
-            national: boolean;
+            isNational?: boolean;
             nra: string[];
             operators: connectivity.OperatorEnum[];
             status: connectivity.monitoring.GenericIncidentStatusEnum;
@@ -306,26 +487,66 @@ export namespace connectivity {
          * Generic incident status
          * type fullname: connectivity.monitoring.GenericIncidentStatusEnum
          */
-        export type GenericIncidentStatusEnum = "detected" | "validated" | "closed"
+        export type GenericIncidentStatusEnum = "closed" | "detected" | "validated"
     }
 }
 export namespace xdsl {
-    /**
-     * Async task
-     * interface fullName: xdsl.AsyncTask.AsyncTask
-     */
-    export interface AsyncTask<T> {
-        error?: string;
-        result?: T;
-        status: xdsl.AsyncTaskStatusEnum;
+    export namespace AsyncTaskArray_connectivity {
+        export namespace eligibility {
+            /**
+             * xdsl.AsyncTaskArray_connectivity.eligibility.Building
+             * interface fullName: xdsl.AsyncTaskArray_connectivity.eligibility.Building.Building
+             */
+            export interface Building {
+                error?: string;
+                result?: connectivity.eligibility.Building[];
+                status: xdsl.AsyncTaskStatusEnum;
+            }
+            /**
+             * xdsl.AsyncTaskArray_connectivity.eligibility.City
+             * interface fullName: xdsl.AsyncTaskArray_connectivity.eligibility.City.City
+             */
+            export interface City {
+                error?: string;
+                result?: connectivity.eligibility.City[];
+                status: xdsl.AsyncTaskStatusEnum;
+            }
+            /**
+             * xdsl.AsyncTaskArray_connectivity.eligibility.Line
+             * interface fullName: xdsl.AsyncTaskArray_connectivity.eligibility.Line.Line
+             */
+            export interface Line {
+                error?: string;
+                result?: connectivity.eligibility.Line[];
+                status: xdsl.AsyncTaskStatusEnum;
+            }
+            /**
+             * xdsl.AsyncTaskArray_connectivity.eligibility.Street
+             * interface fullName: xdsl.AsyncTaskArray_connectivity.eligibility.Street.Street
+             */
+            export interface Street {
+                error?: string;
+                result?: connectivity.eligibility.Street[];
+                status: xdsl.AsyncTaskStatusEnum;
+            }
+            /**
+             * xdsl.AsyncTaskArray_connectivity.eligibility.StreetNumberDetails
+             * interface fullName: xdsl.AsyncTaskArray_connectivity.eligibility.StreetNumberDetails.StreetNumberDetails
+             */
+            export interface StreetNumberDetails {
+                error?: string;
+                result?: connectivity.eligibility.StreetNumberDetails[];
+                status: xdsl.AsyncTaskStatusEnum;
+            }
+        }
     }
     /**
-     * Async task array
-     * interface fullName: xdsl.AsyncTaskArray.AsyncTaskArray
+     * xdsl.AsyncTaskArray_string
+     * interface fullName: xdsl.AsyncTaskArray_string.AsyncTaskArray_string
      */
-    export interface AsyncTaskArray<T> {
+    export interface AsyncTaskArray_string {
         error?: string;
-        result?: T[];
+        result?: string[];
         status: xdsl.AsyncTaskStatusEnum;
     }
     /**
@@ -333,6 +554,37 @@ export namespace xdsl {
      * type fullname: xdsl.AsyncTaskStatusEnum
      */
     export type AsyncTaskStatusEnum = "error" | "ok" | "pending"
+    export namespace AsyncTask_connectivity {
+        export namespace eligibility {
+            /**
+             * xdsl.AsyncTask_connectivity.eligibility.Building
+             * interface fullName: xdsl.AsyncTask_connectivity.eligibility.Building.Building
+             */
+            export interface Building {
+                error?: string;
+                result?: connectivity.eligibility.Building;
+                status: xdsl.AsyncTaskStatusEnum;
+            }
+            /**
+             * xdsl.AsyncTask_connectivity.eligibility.EligibilityTest
+             * interface fullName: xdsl.AsyncTask_connectivity.eligibility.EligibilityTest.EligibilityTest
+             */
+            export interface EligibilityTest {
+                error?: string;
+                result?: connectivity.eligibility.EligibilityTest;
+                status: xdsl.AsyncTaskStatusEnum;
+            }
+            /**
+             * xdsl.AsyncTask_connectivity.eligibility.Meetings
+             * interface fullName: xdsl.AsyncTask_connectivity.eligibility.Meetings.Meetings
+             */
+            export interface Meetings {
+                error?: string;
+                result: connectivity.eligibility.Meetings;
+                status: xdsl.AsyncTaskStatusEnum;
+            }
+        }
+    }
 }
 
 /**
@@ -353,56 +605,63 @@ export interface Connectivity {
                  * Get the details for a building
                  * POST /connectivity/eligibility/search/buildingDetails
                  */
-                $post(params: { building: string }): Promise<xdsl.AsyncTask<connectivity.eligibility.Building>>;
+                $post(params: { building: string }): Promise<xdsl.AsyncTask_connectivity.eligibility.Building>;
             }
             buildings: {
                 /**
-                 * Get all buildings for a specific address
+                 * Get all buildings for a specific address (require at least a couple streetCode/streetNumber or an hexacle)
                  * POST /connectivity/eligibility/search/buildings
                  */
-                $post(params: { streetCode: string, streetNumber: string }): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.Building>>;
+                $post(params?: { hexacle?: string, streetCode?: string, streetNumber?: string }): Promise<xdsl.AsyncTaskArray_connectivity.eligibility.Building>;
             }
             buildingsByLine: {
                 /**
                  * Get building references from a given line number
                  * POST /connectivity/eligibility/search/buildingsByLine
                  */
-                $post(params: { lineNumber: string, status: connectivity.eligibility.LineStatusEnum }): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.Building>>;
+                $post(params: { lineNumber: string, status: connectivity.eligibility.LineStatusEnum }): Promise<xdsl.AsyncTaskArray_connectivity.eligibility.Building>;
             }
             cities: {
                 /**
                  * Get all localities linked to a zip code
                  * POST /connectivity/eligibility/search/cities
                  */
-                $post(params: { zipCode: string }): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.City>>;
+                $post(params: { zipCode: string }): Promise<xdsl.AsyncTaskArray_connectivity.eligibility.City>;
             }
             lines: {
                 /**
-                 * Search for active and inactive lines at an address. It will search for active lines only if the owner name is specified
+                 * Search for active and inactive lines at an address
                  * POST /connectivity/eligibility/search/lines
                  */
-                $post(params: { ownerName?: string, streetCode: string, streetNumber: string }): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.Line>>;
+                $post(params: { ownerName?: string, streetCode: string, streetNumber: string }): Promise<xdsl.AsyncTaskArray_connectivity.eligibility.Line>;
             }
             meetings: {
                 /**
                  * Search for available copper line creation or fiber installation meeting time slots
                  * POST /connectivity/eligibility/search/meetings
                  */
-                $post(params: { eligibilityReference: string, planCode?: string, productCode?: string, type?: connectivity.eligibility.OfferProductTypeEnum, unbundlingType?: connectivity.eligibility.OfferProductUnbundlingTypeEnum }): Promise<xdsl.AsyncTask<connectivity.eligibility.Meetings>>;
+                $post(params: { eligibilityReference: string, installationType?: connectivity.eligibility.InstallationTypeEnum, planCode?: string, productCode?: string, siteCompanyName?: string, type?: connectivity.eligibility.OfferProductTypeEnum, unbundlingType?: connectivity.eligibility.OfferProductUnbundlingTypeEnum }): Promise<xdsl.AsyncTask_connectivity.eligibility.Meetings>;
             }
             streetNumbers: {
                 /**
-                 * Get the available street numbers for a given street code (unique identifier of a street you can get with the method POST /connectivity/eligibility/search/streets)
+                 * Get the available street numbers for a given street code (you can get the unique identifier of a street using the method POST /connectivity/eligibility/search/streets)
                  * POST /connectivity/eligibility/search/streetNumbers
                  */
-                $post(params: { streetCode: string }): Promise<xdsl.AsyncTaskArray<string>>;
+                $post(params: { streetCode: string }): Promise<xdsl.AsyncTaskArray_string>;
+                details: {
+                    /**
+                     * Get the available street numbers and their details for a given street code (you can get the unique identifier of a street you can get using the method POST /connectivity/eligibility/search/streets)
+                     * POST /connectivity/eligibility/search/streetNumbers/details
+                     */
+                    $post(params: { streetCode: string }): Promise<xdsl.AsyncTaskArray_connectivity.eligibility.StreetNumberDetails>;
+                }
             }
             streets: {
                 /**
                  * Get all street linked to a locality
                  * POST /connectivity/eligibility/search/streets
                  */
-                $post(params: { inseeCode: string }): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.Street>>;
+                $post(params: { inseeCode: string }): Promise<xdsl.AsyncTaskArray_connectivity.eligibility.Street>;
             }
         }
         test: {
@@ -420,13 +679,13 @@ export interface Connectivity {
                  * Do an eligibility for an address, if no line exist
                  * POST /connectivity/eligibility/test/address
                  */
-                $post(params: { streetCode: string, streetNumber: string }): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
+                $post(params: { streetCode: string, streetNumber: string }): Promise<xdsl.AsyncTask_connectivity.eligibility.EligibilityTest>;
                 partners: {
                     /**
                      * Do an eligibility for an address, if no line exist. Partners only.
                      * POST /connectivity/eligibility/test/address/partners
                      */
-                    $post(params: { streetCode: string, streetNumber: string }): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
+                    $post(params: { streetCode: string, streetNumber: string }): Promise<xdsl.AsyncTask_connectivity.eligibility.EligibilityTest>;
                 }
             }
             building: {
@@ -434,20 +693,20 @@ export interface Connectivity {
                  * Do an eligibility test on a building, for fiber only
                  * POST /connectivity/eligibility/test/building
                  */
-                $post(params: { building: string }): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
+                $post(params: { building: string }): Promise<xdsl.AsyncTask_connectivity.eligibility.EligibilityTest>;
             }
             line: {
                 /**
                  * Do an eligibility test on a line number, for copper only
                  * POST /connectivity/eligibility/test/line
                  */
-                $post(params: { lineNumber: string, status: connectivity.eligibility.LineStatusEnum, streetCode?: string, streetNumber?: string }): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
+                $post(params: { lineNumber: string, status: connectivity.eligibility.LineStatusEnum, streetCode?: string, streetNumber?: string }): Promise<xdsl.AsyncTask_connectivity.eligibility.EligibilityTest>;
                 partners: {
                     /**
                      * Do an eligibility test on a line number, for copper only. Partners only.
                      * POST /connectivity/eligibility/test/line/partners
                      */
-                    $post(params: { lineNumber: string, status: connectivity.eligibility.LineStatusEnum, streetCode?: string, streetNumber?: string }): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
+                    $post(params: { lineNumber: string, status: connectivity.eligibility.LineStatusEnum, streetCode?: string, streetNumber?: string }): Promise<xdsl.AsyncTask_connectivity.eligibility.EligibilityTest>;
                 }
             }
             otp: {
@@ -455,7 +714,7 @@ export interface Connectivity {
                  * Do an eligibility test on an OTP (Optical Termination Panel), for fiber only
                  * POST /connectivity/eligibility/test/otp
                  */
-                $post(params: { otp: string }): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
+                $post(params: { otp: string }): Promise<xdsl.AsyncTask_connectivity.eligibility.EligibilityTest>;
             }
         }
     }

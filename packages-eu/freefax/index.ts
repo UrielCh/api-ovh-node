@@ -6,7 +6,7 @@ import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-
  */
 export namespace freefax {
     /**
-     * Return credit balance informations structure
+     * Return credit balance information structure
      * interface fullName: freefax.BalanceInformations.BalanceInformations
      */
     export interface BalanceInformations {
@@ -18,13 +18,56 @@ export namespace freefax {
      * interface fullName: freefax.FreefaxProperties.FreefaxProperties
      */
     export interface FreefaxProperties {
-        faxMaxCall: telephony.FaxSendingTries;
+        faxMaxCall: telephony.FaxSendingTriesEnum;
         faxQuality: telephony.FaxQualityEnum;
         faxTagLine: string;
         fromEmail: string;
         fromName: string;
         number: string;
         redirectionEmail: string[];
+    }
+    /**
+     * Freefax properties
+     * interface fullName: freefax.FreefaxPropertiesWithIAM.FreefaxPropertiesWithIAM
+     */
+    export interface FreefaxPropertiesWithIAM {
+        faxMaxCall: telephony.FaxSendingTriesEnum;
+        faxQuality: telephony.FaxQualityEnum;
+        faxTagLine: string;
+        fromEmail: string;
+        fromName: string;
+        iam?: iam.ResourceMetadata;
+        number: string;
+        redirectionEmail: string[];
+    }
+}
+export namespace iam {
+    /**
+     * IAM resource metadata embedded in services models
+     * interface fullName: iam.ResourceMetadata.ResourceMetadata
+     */
+    export interface ResourceMetadata {
+        displayName?: string;
+        id: string;
+        tags?: { [key: string]: string };
+        urn: string;
+    }
+    export namespace resource {
+        /**
+         * Resource tag filter
+         * interface fullName: iam.resource.TagFilter.TagFilter
+         */
+        export interface TagFilter {
+            operator?: iam.resource.TagFilter.OperatorEnum;
+            value: string;
+        }
+        export namespace TagFilter {
+            /**
+             * Operator that can be used in order to filter resources tags
+             * type fullname: iam.resource.TagFilter.OperatorEnum
+             */
+            export type OperatorEnum = "EQ"
+        }
     }
 }
 export namespace nichandle {
@@ -52,6 +95,7 @@ export namespace service {
      */
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
     /**
+     * service.StateEnum
      * type fullname: service.StateEnum
      */
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
@@ -79,7 +123,7 @@ export namespace services {
 }
 export namespace telephony {
     /**
-     * Directory Informations
+     * Directory information
      * interface fullName: telephony.DirectoryHeadingPJ.DirectoryHeadingPJ
      */
     export interface DirectoryHeadingPJ {
@@ -90,7 +134,7 @@ export namespace telephony {
         notification: string;
     }
     /**
-     * Directory Informations
+     * Directory information
      * interface fullName: telephony.DirectoryInfo.DirectoryInfo
      */
     export interface DirectoryInfo {
@@ -111,7 +155,7 @@ export namespace telephony {
         displayUniversalDirectory: boolean;
         email: string;
         firstName: string;
-        gender?: nichandle.GenderEnum;
+        gender: nichandle.GenderEnum;
         inseeCode: number;
         legalForm: string;
         lineDescription: string;
@@ -142,7 +186,14 @@ export namespace telephony {
         wayName: string;
     }
     /**
-     * Task informations about an entreprise
+     * Enterprise number
+     * interface fullName: telephony.EntrepriseNumber.EntrepriseNumber
+     */
+    export interface EntrepriseNumber {
+        entrepriseNumber: string;
+    }
+    /**
+     * Task information about an entreprise
      * interface fullName: telephony.EntrepriseNumberInformations.EntrepriseNumberInformations
      */
     export interface EntrepriseNumberInformations {
@@ -155,7 +206,7 @@ export namespace telephony {
         siren?: string;
     }
     /**
-     * Task about getting entreprise informations
+     * Task about getting entreprise information
      * interface fullName: telephony.EntrepriseNumberInformationsTask.EntrepriseNumberInformationsTask
      */
     export interface EntrepriseNumberInformationsTask {
@@ -172,6 +223,11 @@ export namespace telephony {
      * type fullname: telephony.FaxSendingTries
      */
     export type FaxSendingTries = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+    /**
+     * Number of tries when sending a fax
+     * type fullname: telephony.FaxSendingTriesEnum
+     */
+    export type FaxSendingTriesEnum = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
     /**
      * Voicemail audio format
      * type fullname: telephony.ServiceVoicemailAudioFormatEnum
@@ -234,6 +290,22 @@ export namespace telephony {
         temporaryGreetingSoundId?: number;
         unreadMessages: number;
     }
+    export namespace voicemail {
+        /**
+         * Change voicemail password
+         * interface fullName: telephony.voicemail.ChangePassword.ChangePassword
+         */
+        export interface ChangePassword {
+            password: string;
+        }
+        /**
+         * Change voicemail routing
+         * interface fullName: telephony.voicemail.ChangeRouting.ChangeRouting
+         */
+        export interface ChangeRouting {
+            routing: telephony.VoicefaxRoutingEnum;
+        }
+    }
 }
 
 /**
@@ -248,10 +320,10 @@ export default proxyFreefax;
  */
 export interface Freefax {
     /**
-     * List available services
+     * List Freefax line accounts
      * GET /freefax
      */
-    $get(): Promise<string[]>;
+    $get(params?: { iamTags?: any }): Promise<string[]>;
     /**
      * Controle cache
      */
@@ -269,15 +341,15 @@ export interface Freefax {
     }
     $(serviceName: string): {
         /**
-         * Get this object properties
+         * Get Freefax information
          * GET /freefax/{serviceName}
          */
         $get(): Promise<freefax.FreefaxProperties>;
         /**
-         * Alter this object properties
+         * Edit the Freefax properties
          * PUT /freefax/{serviceName}
          */
-        $put(params?: { faxMaxCall?: telephony.FaxSendingTries, faxQuality?: telephony.FaxQualityEnum, faxTagLine?: string, fromEmail?: string, fromName?: string, number?: string, redirectionEmail?: string[] }): Promise<void>;
+        $put(params?: { faxMaxCall?: telephony.FaxSendingTriesEnum, faxQuality?: telephony.FaxQualityEnum, faxTagLine?: string, fromEmail?: string, fromName?: string, number?: string, redirectionEmail?: string[] }): Promise<void>;
         /**
          * Controle cache
          */
@@ -291,12 +363,12 @@ export interface Freefax {
         }
         directory: {
             /**
-             * Get this object properties
+             * Get Freefax directory information
              * GET /freefax/{serviceName}/directory
              */
             $get(): Promise<telephony.DirectoryInfo>;
             /**
-             * Alter this object properties
+             * Edit Freefax directory information
              * PUT /freefax/{serviceName}/directory
              */
             $put(params?: { PJSocialNomination?: string, address?: string, addressExtra?: string, ape?: string, areaCode?: number, birthDate?: string, cedex?: string, city?: string, country?: string, directoryServiceCode?: string, displayFirstName?: boolean, displayMarketingDirectory?: boolean, displayOnlyCity?: boolean, displaySearchReverse?: boolean, displayUniversalDirectory?: boolean, email?: string, firstName?: string, gender?: nichandle.GenderEnum, inseeCode?: number, legalForm?: string, lineDescription?: string, modificationDate?: string, modificationType?: string, name?: string, number?: string, occupation?: string, postBox?: string, postCode?: string, receivePJDirectory?: boolean, siret?: string, socialNomination?: string, socialNominationExtra?: string, status?: string, urbanDistrict?: string, wayName?: string, wayNumber?: string, wayNumberExtra?: string, wayType?: string }): Promise<void>;
@@ -306,14 +378,14 @@ export interface Freefax {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             fetchEntrepriseInformations: {
                 /**
-                 * Get company entreprise informations by providing entreprise number
+                 * Get enterprise information by providing enterprise number
                  * POST /freefax/{serviceName}/directory/fetchEntrepriseInformations
                  */
                 $post(params: { entrepriseNumber: string }): Promise<telephony.EntrepriseNumberInformationsTask>;
             }
             getDirectoryServiceCode: {
                 /**
-                 * Get directory service code from an APE code ( principal activity of the firm code )
+                 * Get directory service code from an APE code (principal activity of the firm code)
                  * GET /freefax/{serviceName}/directory/getDirectoryServiceCode
                  */
                 $get(params: { apeCode: string }): Promise<telephony.DirectoryHeadingPJ[]>;
@@ -324,7 +396,7 @@ export interface Freefax {
             }
             getWayTypes: {
                 /**
-                 * Get all the way types availables
+                 * Get all the way types available
                  * GET /freefax/{serviceName}/directory/getWayTypes
                  */
                 $get(): Promise<telephony.DirectoryWayType[]>;
@@ -336,7 +408,7 @@ export interface Freefax {
         }
         mainService: {
             /**
-             * Main service attached to freefax
+             * Get main service attached to the Freefax
              * GET /freefax/{serviceName}/mainService
              */
             $get(): Promise<string>;
@@ -347,12 +419,12 @@ export interface Freefax {
         }
         serviceInfos: {
             /**
-             * Get this object properties
+             * Get service information
              * GET /freefax/{serviceName}/serviceInfos
              */
             $get(): Promise<services.Service>;
             /**
-             * Alter this object properties
+             * Update service information
              * PUT /freefax/{serviceName}/serviceInfos
              */
             $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
@@ -363,12 +435,12 @@ export interface Freefax {
         }
         voicemail: {
             /**
-             * Get this object properties
+             * Get the Freefax voicemail information
              * GET /freefax/{serviceName}/voicemail
              */
             $get(): Promise<telephony.VoicemailProperties>;
             /**
-             * Alter this object properties
+             * Edit the Freefax voicemail
              * PUT /freefax/{serviceName}/voicemail
              */
             $put(params?: { annouceMessage?: string, audioFormat?: telephony.ServiceVoicemailAudioFormatEnum, doNotRecord?: boolean, forcePassword?: boolean, fromEmail?: string, fromName?: string, fullGreetingSoundId?: number, greetingType?: telephony.VoicemailGreetingEnum, isNewVersion?: boolean, keepMessage?: boolean, redirectionEmails?: telephony.ServiceVoicemailNotifications[], shortGreetingSoundId?: number, temporaryGreetingActivated?: boolean, temporaryGreetingSoundId?: number, unreadMessages?: number }): Promise<void>;

@@ -135,6 +135,7 @@ export namespace email {
          * interface fullName: email.pro.Dkim.Dkim
          */
         export interface Dkim {
+            cnameIsValid: boolean;
             customerRecord: string;
             header: string;
             lastUpdate?: string;
@@ -174,18 +175,38 @@ export namespace email {
             type: email.pro.DomainTypeEnum;
         }
         /**
+         * Dkim selectors and DNS configuration state
+         * interface fullName: email.pro.DomainDkimDiagnostics.DomainDkimDiagnostics
+         */
+        export interface DomainDkimDiagnostics {
+            errorCode?: number;
+            message?: string;
+            state?: email.pro.DomainDkimDiagnosticsStateEnum;
+        }
+        /**
+         * DKIM status
+         * type fullname: email.pro.DomainDkimDiagnosticsStateEnum
+         */
+        export type DomainDkimDiagnosticsStateEnum = "active" | "disabled" | "error" | "inProgress" | "toConfigure"
+        /**
          * Domain
          * interface fullName: email.pro.DomainNative.DomainNative
          */
         export interface DomainNative {
             cnameToCheck?: string;
+            dkimDiagnostics?: email.pro.DomainDkimDiagnostics;
             domainAliases: string[];
             domainValidated: boolean;
+            expectedAutodiscoverSRV: string;
+            expectedMX: string[];
+            expectedSPF: string;
             isAliasDomain: boolean;
             mxIsValid: boolean;
             mxRecord?: string[];
             mxRelay?: string;
             name: string;
+            spfIsValid: boolean;
+            spfRecord?: string[];
             srvIsValid: boolean;
             srvRecord?: string[];
             state: email.pro.ObjectStateEnum;
@@ -310,6 +331,31 @@ export namespace email {
             webUrl?: string;
         }
         /**
+         * Email pro service
+         * interface fullName: email.pro.ServiceNativeWithIAM.ServiceNativeWithIAM
+         */
+        export interface ServiceNativeWithIAM {
+            complexityEnabled: boolean;
+            displayName?: string;
+            domain: string;
+            hostname?: string;
+            iam?: iam.ResourceMetadata;
+            lastUpdateDate?: string;
+            lockoutDuration: number;
+            lockoutObservationWindow: number;
+            lockoutThreshold?: number;
+            maxPasswordAge?: number;
+            maxReceiveSize: number;
+            maxSendSize: number;
+            minPasswordAge?: number;
+            minPasswordLength?: number;
+            offer: email.pro.ServiceOfferEnum;
+            spamAndVirusConfiguration: email.pro.spamAndVirusConfiguration;
+            state: email.pro.ServiceStateEnum;
+            taskPendingId: number;
+            webUrl?: string;
+        }
+        /**
          * Service Offer name
          * type fullname: email.pro.ServiceOfferEnum
          */
@@ -319,6 +365,31 @@ export namespace email {
          * type fullname: email.pro.ServiceStateEnum
          */
         export type ServiceStateEnum = "creating" | "deleting" | "inMaintenance" | "ok" | "reopening" | "suspended" | "suspending"
+        /**
+         * Email pro service
+         * interface fullName: email.pro.ServiceWithIAM.ServiceWithIAM
+         */
+        export interface ServiceWithIAM {
+            complexityEnabled: boolean;
+            displayName?: string;
+            domain: string;
+            hostname?: string;
+            iam?: iam.ResourceMetadata;
+            lastUpdateDate?: string;
+            lockoutDuration: number;
+            lockoutObservationWindow: number;
+            lockoutThreshold?: number;
+            maxPasswordAge?: number;
+            maxReceiveSize: number;
+            maxSendSize: number;
+            minPasswordAge?: number;
+            minPasswordLength?: number;
+            offer: email.pro.ServiceOfferEnum;
+            spamAndVirusConfiguration: email.pro.spamAndVirusConfiguration;
+            state: email.pro.ServiceStateEnum;
+            taskPendingId: number;
+            webUrl?: string;
+        }
         /**
          * Organization task details
          * interface fullName: email.pro.Task.Task
@@ -406,6 +477,35 @@ export namespace email {
         }
     }
 }
+export namespace iam {
+    /**
+     * IAM resource metadata embedded in services models
+     * interface fullName: iam.ResourceMetadata.ResourceMetadata
+     */
+    export interface ResourceMetadata {
+        displayName?: string;
+        id: string;
+        tags?: { [key: string]: string };
+        urn: string;
+    }
+    export namespace resource {
+        /**
+         * Resource tag filter
+         * interface fullName: iam.resource.TagFilter.TagFilter
+         */
+        export interface TagFilter {
+            operator?: iam.resource.TagFilter.OperatorEnum;
+            value: string;
+        }
+        export namespace TagFilter {
+            /**
+             * Operator that can be used in order to filter resources tags
+             * type fullname: iam.resource.TagFilter.OperatorEnum
+             */
+            export type OperatorEnum = "EQ"
+        }
+    }
+}
 export namespace service {
     /**
      * Map a possible renew for a specific service
@@ -466,7 +566,7 @@ export interface Email {
          * List available services
          * GET /email/pro
          */
-        $get(): Promise<string[]>;
+        $get(params?: { iamTags?: any }): Promise<string[]>;
         /**
          * Controle cache
          */
@@ -737,7 +837,7 @@ export interface Email {
                  * Create new domain in pro services
                  * POST /email/pro/{service}/domain
                  */
-                $post(params: { autoEnableDKIM?: boolean, configureAutodiscover?: boolean, configureDKIM?: boolean, configureMx?: boolean, mxRelay?: string, name: string, type: email.pro.DomainTypeEnum }): Promise<email.pro.Task>;
+                $post(params: { autoEnableDKIM?: boolean, configureAutodiscover?: boolean, configureDKIM?: boolean, configureMx?: boolean, configureSPF?: boolean, mxRelay?: string, name: string, type: email.pro.DomainTypeEnum }): Promise<email.pro.Task>;
                 /**
                  * Controle cache
                  */
@@ -908,12 +1008,12 @@ export interface Email {
             }
             serviceInfos: {
                 /**
-                 * Get this object properties
+                 * Get service information
                  * GET /email/pro/{service}/serviceInfos
                  */
                 $get(): Promise<services.Service>;
                 /**
-                 * Alter this object properties
+                 * Update service information
                  * PUT /email/pro/{service}/serviceInfos
                  */
                 $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;

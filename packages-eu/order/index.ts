@@ -34,13 +34,6 @@ export namespace complexType {
         value: T;
     }
 }
-export namespace coreTypes {
-    /**
-     * ISO country codes
-     * type fullname: coreTypes.CountryEnum
-     */
-    export type CountryEnum = "ac" | "ad" | "ae" | "af" | "ag" | "ai" | "al" | "am" | "an" | "ao" | "aq" | "ar" | "as" | "at" | "au" | "aw" | "ax" | "az" | "ba" | "bb" | "bd" | "be" | "bf" | "bg" | "bh" | "bi" | "bj" | "bl" | "bm" | "bn" | "bo" | "bq" | "br" | "bs" | "bt" | "bv" | "bw" | "by" | "bz" | "ca" | "cc" | "cd" | "cf" | "cg" | "ch" | "ci" | "ck" | "cl" | "cm" | "cn" | "co" | "cr" | "cs" | "cu" | "cv" | "cw" | "cx" | "cy" | "cz" | "de" | "dj" | "dk" | "dm" | "do" | "dz" | "ec" | "ee" | "eg" | "eh" | "er" | "es" | "et" | "fc" | "fd" | "fi" | "fj" | "fk" | "fm" | "fo" | "fr" | "fx" | "ga" | "gb" | "gd" | "ge" | "gf" | "gg" | "gh" | "gi" | "gl" | "gm" | "gn" | "gp" | "gq" | "gr" | "gs" | "gt" | "gu" | "gw" | "gy" | "hk" | "hm" | "hn" | "hr" | "ht" | "hu" | "id" | "ie" | "il" | "im" | "in" | "io" | "iq" | "ir" | "is" | "it" | "je" | "jm" | "jo" | "jp" | "ke" | "kg" | "kh" | "ki" | "km" | "kn" | "kp" | "kr" | "kw" | "ky" | "kz" | "la" | "lb" | "lc" | "li" | "lk" | "lr" | "ls" | "lt" | "lu" | "lv" | "ly" | "ma" | "mc" | "md" | "me" | "mf" | "mg" | "mh" | "mk" | "ml" | "mm" | "mn" | "mo" | "mp" | "mq" | "mr" | "ms" | "mt" | "mu" | "mv" | "mw" | "mx" | "my" | "mz" | "na" | "nc" | "ne" | "nf" | "ng" | "ni" | "nl" | "no" | "np" | "nr" | "nu" | "nz" | "om" | "pa" | "pe" | "pf" | "pg" | "ph" | "pk" | "pl" | "pm" | "pn" | "pr" | "ps" | "pt" | "pw" | "py" | "qa" | "qc" | "re" | "ro" | "rs" | "ru" | "rw" | "sa" | "sb" | "sc" | "sd" | "se" | "sg" | "sh" | "si" | "sj" | "sk" | "sl" | "sm" | "sn" | "so" | "sr" | "ss" | "st" | "sv" | "sx" | "sy" | "sz" | "tc" | "td" | "tf" | "tg" | "th" | "tj" | "tk" | "tl" | "tm" | "tn" | "to" | "tp" | "tr" | "tt" | "tv" | "tw" | "tz" | "ua" | "ug" | "uk" | "um" | "us" | "uy" | "uz" | "va" | "vc" | "ve" | "vg" | "vi" | "vn" | "vu" | "we" | "wf" | "ws" | "ye" | "yt" | "yu" | "za" | "zm" | "zw"
-}
 export namespace dedicated {
     export namespace housing {
         /**
@@ -54,7 +47,7 @@ export namespace dedicated {
          * Different backup storage capacity in gigabytes
          * type fullname: dedicated.server.BackupStorageCapacityEnum
          */
-        export type BackupStorageCapacityEnum = 1000 | 10000 | 500 | 5000
+        export type BackupStorageCapacityEnum = 500 | 1000 | 5000 | 10000
         /**
          *  Different Bandwidth orderable in Mbps
          * type fullname: dedicated.server.BandwidthOrderEnum
@@ -79,7 +72,7 @@ export namespace dedicated {
          * IP block size
          * type fullname: dedicated.server.IpBlockSizeEnum
          */
-        export type IpBlockSizeEnum = 1 | 128 | 16 | 256 | 32 | 4 | 64 | 8
+        export type IpBlockSizeEnum = 1 | 4 | 8 | 16 | 32 | 64 | 128 | 256
         /**
          * Available localization for this static IP
          * type fullname: dedicated.server.IpCountryEnum
@@ -114,7 +107,7 @@ export namespace dedicated {
          *  Different USB key capacity in gigabytes
          * type fullname: dedicated.server.UsbKeyCapacityEnum
          */
-        export type UsbKeyCapacityEnum = 128 | 16 | 256 | 32 | 64
+        export type UsbKeyCapacityEnum = 16 | 32 | 64 | 128 | 256
     }
 }
 export namespace dedicatedCloud {
@@ -169,7 +162,7 @@ export namespace email {
          * Storage quota options in GB
          * type fullname: email.exchange.accountQuotaEnum
          */
-        export type accountQuotaEnum = 300 | 50
+        export type accountQuotaEnum = 50 | 300
     }
 }
 export namespace freefax {
@@ -177,37 +170,10 @@ export namespace freefax {
      * Available quantity of fax to purchase
      * type fullname: freefax.QuantityEnum
      */
-    export type QuantityEnum = 10 | 100 | 1000 | 10000 | 100000 | 200 | 2000 | 50 | 500 | 5000
+    export type QuantityEnum = 10 | 50 | 100 | 200 | 500 | 1000 | 2000 | 5000 | 10000 | 100000
 }
 export namespace hosting {
-    export namespace PrivateDatabase {
-        /**
-         * Private database available ram sizes
-         * type fullname: hosting.PrivateDatabase.AvailableRamSizeEnum
-         */
-        export type AvailableRamSizeEnum = "1024" | "2048" | "4096" | "512"
-        /**
-         * Available datacenters
-         * type fullname: hosting.PrivateDatabase.DatacenterEnum
-         */
-        export type DatacenterEnum = "bhs1" | "gra1" | "gra2" | "gra3" | "p19"
-        /**
-         * Available offers
-         * type fullname: hosting.PrivateDatabase.OfferEnum
-         */
-        export type OfferEnum = "classic" | "public"
-        /**
-         * Private database orderable versions
-         * type fullname: hosting.PrivateDatabase.OrderableVersionEnum
-         */
-        export type OrderableVersionEnum = "mariadb_10.11" | "mariadb_10.3" | "mariadb_10.4" | "mariadb_10.5" | "mariadb_10.6" | "mysql_5.7" | "mysql_8.0" | "postgresql_11" | "postgresql_12" | "postgresql_13" | "postgresql_14" | "postgresql_15" | "redis_6.0" | "redis_7.0"
-    }
     export namespace web {
-        /**
-         * Available offers to increase bandwidth quota (unit in GB)
-         * type fullname: hosting.web.BandwidthOfferEnum
-         */
-        export type BandwidthOfferEnum = 10 | 100 | 1000 | 10000 | 20 | 250 | 30 | 40 | 50 | 500
         /**
          * Struct which describs an offer
          * interface fullName: hosting.web.Capabilities.Capabilities
@@ -231,11 +197,6 @@ export namespace hosting {
             ssh: boolean;
             traffic?: complexType.UnitAndValue<number>;
         }
-        /**
-         * Hosting's CDN offer
-         * type fullname: hosting.web.CdnOfferEnum
-         */
-        export type CdnOfferEnum = "CDN_BUSINESS" | "CDN_BUSINESS_FREE"
         /**
          * Struct which describes mail offer available and his quota
          * interface fullName: hosting.web.CreationEmailCapabilities.CreationEmailCapabilities
@@ -269,11 +230,6 @@ export namespace hosting {
          */
         export type DiskTypeEnum = "HDD" | "SSD"
         /**
-         * Dns zone modification possibilities when installing a new hosting
-         * type fullname: hosting.web.DnsZoneEnum
-         */
-        export type DnsZoneEnum = "NO_CHANGE" | "RESET_ALL" | "RESET_ONLY_A" | "RESET_ONLY_MX"
-        /**
          * Highlight tips for offer
          * type fullname: hosting.web.HighLightEnum
          */
@@ -287,12 +243,12 @@ export namespace hosting {
          * Hosting's offer
          * type fullname: hosting.web.OfferEnum
          */
-        export type OfferEnum = "CLOUDWEB_1" | "CLOUDWEB_2" | "CLOUDWEB_3" | "KS" | "PERFORMANCE_1" | "PERFORMANCE_2" | "PERFORMANCE_3" | "PERFORMANCE_4" | "PERSO" | "POWER_BETA_1" | "PRO" | "START"
+        export type OfferEnum = "CLOUDWEB_1" | "CLOUDWEB_2" | "CLOUDWEB_3" | "KS" | "PERFORMANCE_1" | "PERFORMANCE_2" | "PERFORMANCE_3" | "PERFORMANCE_4" | "PERSO" | "POWER_BETA_1" | "PRO" | "START" | "hosting-free-100m" | "hosting-performance-1" | "hosting-performance-2" | "hosting-performance-3" | "hosting-performance-4" | "hosting-perso" | "hosting-pro" | "hosting-starter" | "hosting-starter-ovh"
         /**
          * Different PHP versions available
          * type fullname: hosting.web.PhpVersionAvailableEnum
          */
-        export type PhpVersionAvailableEnum = "phpfpm-5.6" | "phpfpm-7.0" | "phpfpm-7.1" | "phpfpm-7.2" | "phpfpm-7.3" | "phpfpm-7.4" | "phpfpm-8.0" | "phpfpm-8.1" | "phpfpm-8.2"
+        export type PhpVersionAvailableEnum = "phpfpm-5.6" | "phpfpm-7.0" | "phpfpm-7.1" | "phpfpm-7.2" | "phpfpm-7.3" | "phpfpm-7.4" | "phpfpm-8.0" | "phpfpm-8.1" | "phpfpm-8.2" | "phpfpm-8.3"
         /**
          * Different Python versions available
          * type fullname: hosting.web.PythonVersionAvailableEnum
@@ -330,25 +286,6 @@ export namespace hosting {
              * type fullname: hosting.web.database.DatabaseTypeEnum
              */
             export type DatabaseTypeEnum = "mariadb" | "mongodb" | "mysql" | "postgresql" | "redis"
-            /**
-             * Sql perso's offer enum
-             * type fullname: hosting.web.database.SqlPersoOfferEnum
-             */
-            export type SqlPersoOfferEnum = "SQLPERSO_1_BASES_400_MB" | "SQLPERSO_1_BASES_800_MB" | "SQLPERSO_20_BASES_100_MB" | "SQLPERSO_20_BASES_200_MB" | "SQLPERSO_2_BASES_400_MB" | "SQLPERSO_2_BASES_800_MB" | "SQLPERSO_50_BASES_100_MB" | "SQLPERSO_50_BASES_200_MB" | "SQLPERSO_5_BASES_100_MB" | "SQLPERSO_5_BASES_200_MB" | "SQLPERSO_5_BASES_400_MB" | "SQLPERSO_5_BASES_800_MB"
-        }
-        export namespace module {
-            /**
-             * Module's name orderable when order a new hosting
-             * type fullname: hosting.web.module.OrderableNameEnum
-             */
-            export type OrderableNameEnum = "DRUPAL" | "JOOMLA" | "PRESTASHOP" | "WORDPRESS"
-        }
-        export namespace order {
-            /**
-             * MX plan linked to the new main domain
-             * type fullname: hosting.web.order.MxPlanEnum
-             */
-            export type MxPlanEnum = "005" | "025" | "100" | "delete" | "full"
         }
     }
 }
@@ -377,7 +314,7 @@ export namespace license {
      * All versions available for Cpanel products
      * type fullname: license.OrderableCpanelVersionEnum
      */
-    export type OrderableCpanelVersionEnum = "VERSION_11_FOR_LINUX" | "VERSION_11_FOR_VIRTUOZZO" | "VERSION_11_FOR_VPS" | "cpanel-license-admin-cloud-accounts" | "cpanel-license-plus-cloud-accounts" | "cpanel-license-premier-cloud-100-accounts" | "cpanel-license-premier-cloud-1000-accounts" | "cpanel-license-premier-cloud-10000-accounts" | "cpanel-license-premier-cloud-1100-accounts" | "cpanel-license-premier-cloud-1200-accounts" | "cpanel-license-premier-cloud-1300-accounts" | "cpanel-license-premier-cloud-1400-accounts" | "cpanel-license-premier-cloud-150-accounts" | "cpanel-license-premier-cloud-1500-accounts" | "cpanel-license-premier-cloud-1600-accounts" | "cpanel-license-premier-cloud-1700-accounts" | "cpanel-license-premier-cloud-1800-accounts" | "cpanel-license-premier-cloud-1900-accounts" | "cpanel-license-premier-cloud-200-accounts" | "cpanel-license-premier-cloud-2000-accounts" | "cpanel-license-premier-cloud-2100-accounts" | "cpanel-license-premier-cloud-2200-accounts" | "cpanel-license-premier-cloud-2300-accounts" | "cpanel-license-premier-cloud-2400-accounts" | "cpanel-license-premier-cloud-250-accounts" | "cpanel-license-premier-cloud-2500-accounts" | "cpanel-license-premier-cloud-2600-accounts" | "cpanel-license-premier-cloud-2700-accounts" | "cpanel-license-premier-cloud-2800-accounts" | "cpanel-license-premier-cloud-2900-accounts" | "cpanel-license-premier-cloud-300-accounts" | "cpanel-license-premier-cloud-3000-accounts" | "cpanel-license-premier-cloud-3100-accounts" | "cpanel-license-premier-cloud-3200-accounts" | "cpanel-license-premier-cloud-3300-accounts" | "cpanel-license-premier-cloud-3400-accounts" | "cpanel-license-premier-cloud-3500-accounts" | "cpanel-license-premier-cloud-3600-accounts" | "cpanel-license-premier-cloud-3700-accounts" | "cpanel-license-premier-cloud-3800-accounts" | "cpanel-license-premier-cloud-3900-accounts" | "cpanel-license-premier-cloud-400-accounts" | "cpanel-license-premier-cloud-4000-accounts" | "cpanel-license-premier-cloud-4100-accounts" | "cpanel-license-premier-cloud-4200-accounts" | "cpanel-license-premier-cloud-4300-accounts" | "cpanel-license-premier-cloud-4400-accounts" | "cpanel-license-premier-cloud-4500-accounts" | "cpanel-license-premier-cloud-4600-accounts" | "cpanel-license-premier-cloud-4700-accounts" | "cpanel-license-premier-cloud-4800-accounts" | "cpanel-license-premier-cloud-4900-accounts" | "cpanel-license-premier-cloud-500-accounts" | "cpanel-license-premier-cloud-5000-accounts" | "cpanel-license-premier-cloud-5100-accounts" | "cpanel-license-premier-cloud-5200-accounts" | "cpanel-license-premier-cloud-5300-accounts" | "cpanel-license-premier-cloud-5400-accounts" | "cpanel-license-premier-cloud-5500-accounts" | "cpanel-license-premier-cloud-5600-accounts" | "cpanel-license-premier-cloud-5700-accounts" | "cpanel-license-premier-cloud-5800-accounts" | "cpanel-license-premier-cloud-5900-accounts" | "cpanel-license-premier-cloud-600-accounts" | "cpanel-license-premier-cloud-6000-accounts" | "cpanel-license-premier-cloud-6100-accounts" | "cpanel-license-premier-cloud-6200-accounts" | "cpanel-license-premier-cloud-6300-accounts" | "cpanel-license-premier-cloud-6400-accounts" | "cpanel-license-premier-cloud-6500-accounts" | "cpanel-license-premier-cloud-6600-accounts" | "cpanel-license-premier-cloud-6700-accounts" | "cpanel-license-premier-cloud-6800-accounts" | "cpanel-license-premier-cloud-6900-accounts" | "cpanel-license-premier-cloud-700-accounts" | "cpanel-license-premier-cloud-7000-accounts" | "cpanel-license-premier-cloud-7100-accounts" | "cpanel-license-premier-cloud-7200-accounts" | "cpanel-license-premier-cloud-7300-accounts" | "cpanel-license-premier-cloud-7400-accounts" | "cpanel-license-premier-cloud-7500-accounts" | "cpanel-license-premier-cloud-7600-accounts" | "cpanel-license-premier-cloud-7700-accounts" | "cpanel-license-premier-cloud-7800-accounts" | "cpanel-license-premier-cloud-7900-accounts" | "cpanel-license-premier-cloud-800-accounts" | "cpanel-license-premier-cloud-8000-accounts" | "cpanel-license-premier-cloud-8100-accounts" | "cpanel-license-premier-cloud-8200-accounts" | "cpanel-license-premier-cloud-8300-accounts" | "cpanel-license-premier-cloud-8400-accounts" | "cpanel-license-premier-cloud-8500-accounts" | "cpanel-license-premier-cloud-8600-accounts" | "cpanel-license-premier-cloud-8700-accounts" | "cpanel-license-premier-cloud-8800-accounts" | "cpanel-license-premier-cloud-8900-accounts" | "cpanel-license-premier-cloud-900-accounts" | "cpanel-license-premier-cloud-9000-accounts" | "cpanel-license-premier-cloud-9100-accounts" | "cpanel-license-premier-cloud-9200-accounts" | "cpanel-license-premier-cloud-9300-accounts" | "cpanel-license-premier-cloud-9400-accounts" | "cpanel-license-premier-cloud-9500-accounts" | "cpanel-license-premier-cloud-9600-accounts" | "cpanel-license-premier-cloud-9700-accounts" | "cpanel-license-premier-cloud-9800-accounts" | "cpanel-license-premier-cloud-9900-accounts" | "cpanel-license-premier-metal-100-accounts" | "cpanel-license-premier-metal-1000-accounts" | "cpanel-license-premier-metal-10000-accounts" | "cpanel-license-premier-metal-1100-accounts" | "cpanel-license-premier-metal-1200-accounts" | "cpanel-license-premier-metal-1300-accounts" | "cpanel-license-premier-metal-1400-accounts" | "cpanel-license-premier-metal-150-accounts" | "cpanel-license-premier-metal-1500-accounts" | "cpanel-license-premier-metal-1600-accounts" | "cpanel-license-premier-metal-1700-accounts" | "cpanel-license-premier-metal-1800-accounts" | "cpanel-license-premier-metal-1900-accounts" | "cpanel-license-premier-metal-200-accounts" | "cpanel-license-premier-metal-2000-accounts" | "cpanel-license-premier-metal-2100-accounts" | "cpanel-license-premier-metal-2200-accounts" | "cpanel-license-premier-metal-2300-accounts" | "cpanel-license-premier-metal-2400-accounts" | "cpanel-license-premier-metal-250-accounts" | "cpanel-license-premier-metal-2500-accounts" | "cpanel-license-premier-metal-2600-accounts" | "cpanel-license-premier-metal-2700-accounts" | "cpanel-license-premier-metal-2800-accounts" | "cpanel-license-premier-metal-2900-accounts" | "cpanel-license-premier-metal-300-accounts" | "cpanel-license-premier-metal-3000-accounts" | "cpanel-license-premier-metal-3100-accounts" | "cpanel-license-premier-metal-3200-accounts" | "cpanel-license-premier-metal-3300-accounts" | "cpanel-license-premier-metal-3400-accounts" | "cpanel-license-premier-metal-3500-accounts" | "cpanel-license-premier-metal-3600-accounts" | "cpanel-license-premier-metal-3700-accounts" | "cpanel-license-premier-metal-3800-accounts" | "cpanel-license-premier-metal-3900-accounts" | "cpanel-license-premier-metal-400-accounts" | "cpanel-license-premier-metal-4000-accounts" | "cpanel-license-premier-metal-4100-accounts" | "cpanel-license-premier-metal-4200-accounts" | "cpanel-license-premier-metal-4300-accounts" | "cpanel-license-premier-metal-4400-accounts" | "cpanel-license-premier-metal-4500-accounts" | "cpanel-license-premier-metal-4600-accounts" | "cpanel-license-premier-metal-4700-accounts" | "cpanel-license-premier-metal-4800-accounts" | "cpanel-license-premier-metal-4900-accounts" | "cpanel-license-premier-metal-500-accounts" | "cpanel-license-premier-metal-5000-accounts" | "cpanel-license-premier-metal-5100-accounts" | "cpanel-license-premier-metal-5200-accounts" | "cpanel-license-premier-metal-5300-accounts" | "cpanel-license-premier-metal-5400-accounts" | "cpanel-license-premier-metal-5500-accounts" | "cpanel-license-premier-metal-5600-accounts" | "cpanel-license-premier-metal-5700-accounts" | "cpanel-license-premier-metal-5800-accounts" | "cpanel-license-premier-metal-5900-accounts" | "cpanel-license-premier-metal-600-accounts" | "cpanel-license-premier-metal-6000-accounts" | "cpanel-license-premier-metal-6100-accounts" | "cpanel-license-premier-metal-6200-accounts" | "cpanel-license-premier-metal-6300-accounts" | "cpanel-license-premier-metal-6400-accounts" | "cpanel-license-premier-metal-6500-accounts" | "cpanel-license-premier-metal-6600-accounts" | "cpanel-license-premier-metal-6700-accounts" | "cpanel-license-premier-metal-6800-accounts" | "cpanel-license-premier-metal-6900-accounts" | "cpanel-license-premier-metal-700-accounts" | "cpanel-license-premier-metal-7000-accounts" | "cpanel-license-premier-metal-7100-accounts" | "cpanel-license-premier-metal-7200-accounts" | "cpanel-license-premier-metal-7300-accounts" | "cpanel-license-premier-metal-7400-accounts" | "cpanel-license-premier-metal-7500-accounts" | "cpanel-license-premier-metal-7600-accounts" | "cpanel-license-premier-metal-7700-accounts" | "cpanel-license-premier-metal-7800-accounts" | "cpanel-license-premier-metal-7900-accounts" | "cpanel-license-premier-metal-800-accounts" | "cpanel-license-premier-metal-8000-accounts" | "cpanel-license-premier-metal-8100-accounts" | "cpanel-license-premier-metal-8200-accounts" | "cpanel-license-premier-metal-8300-accounts" | "cpanel-license-premier-metal-8400-accounts" | "cpanel-license-premier-metal-8500-accounts" | "cpanel-license-premier-metal-8600-accounts" | "cpanel-license-premier-metal-8700-accounts" | "cpanel-license-premier-metal-8800-accounts" | "cpanel-license-premier-metal-8900-accounts" | "cpanel-license-premier-metal-900-accounts" | "cpanel-license-premier-metal-9000-accounts" | "cpanel-license-premier-metal-9100-accounts" | "cpanel-license-premier-metal-9200-accounts" | "cpanel-license-premier-metal-9300-accounts" | "cpanel-license-premier-metal-9400-accounts" | "cpanel-license-premier-metal-9500-accounts" | "cpanel-license-premier-metal-9600-accounts" | "cpanel-license-premier-metal-9700-accounts" | "cpanel-license-premier-metal-9800-accounts" | "cpanel-license-premier-metal-9900-accounts" | "cpanel-license-pro-cloud-accounts" | "cpanel-license-solo-cloud-accounts" | "cpanel-license-solo-metal-accounts" | "cpanel-license-version-11" | "cpanel-license-version-11-for-virtuozzo" | "cpanel-license-version-11-for-vps" | "version-admin-cloud" | "version-plus-cloud" | "version-premier-cloud-100" | "version-premier-cloud-1000" | "version-premier-cloud-10000" | "version-premier-cloud-1100" | "version-premier-cloud-1200" | "version-premier-cloud-1300" | "version-premier-cloud-1400" | "version-premier-cloud-150" | "version-premier-cloud-1500" | "version-premier-cloud-1600" | "version-premier-cloud-1700" | "version-premier-cloud-1800" | "version-premier-cloud-1900" | "version-premier-cloud-200" | "version-premier-cloud-2000" | "version-premier-cloud-2100" | "version-premier-cloud-2200" | "version-premier-cloud-2300" | "version-premier-cloud-2400" | "version-premier-cloud-250" | "version-premier-cloud-2500" | "version-premier-cloud-2600" | "version-premier-cloud-2700" | "version-premier-cloud-2800" | "version-premier-cloud-2900" | "version-premier-cloud-300" | "version-premier-cloud-3000" | "version-premier-cloud-3100" | "version-premier-cloud-3200" | "version-premier-cloud-3300" | "version-premier-cloud-3400" | "version-premier-cloud-3500" | "version-premier-cloud-3600" | "version-premier-cloud-3700" | "version-premier-cloud-3800" | "version-premier-cloud-3900" | "version-premier-cloud-400" | "version-premier-cloud-4000" | "version-premier-cloud-4100" | "version-premier-cloud-4200" | "version-premier-cloud-4300" | "version-premier-cloud-4400" | "version-premier-cloud-4500" | "version-premier-cloud-4600" | "version-premier-cloud-4700" | "version-premier-cloud-4800" | "version-premier-cloud-4900" | "version-premier-cloud-500" | "version-premier-cloud-5000" | "version-premier-cloud-5100" | "version-premier-cloud-5200" | "version-premier-cloud-5300" | "version-premier-cloud-5400" | "version-premier-cloud-5500" | "version-premier-cloud-5600" | "version-premier-cloud-5700" | "version-premier-cloud-5800" | "version-premier-cloud-5900" | "version-premier-cloud-600" | "version-premier-cloud-6000" | "version-premier-cloud-6100" | "version-premier-cloud-6200" | "version-premier-cloud-6300" | "version-premier-cloud-6400" | "version-premier-cloud-6500" | "version-premier-cloud-6600" | "version-premier-cloud-6700" | "version-premier-cloud-6800" | "version-premier-cloud-6900" | "version-premier-cloud-700" | "version-premier-cloud-7000" | "version-premier-cloud-7100" | "version-premier-cloud-7200" | "version-premier-cloud-7300" | "version-premier-cloud-7400" | "version-premier-cloud-7500" | "version-premier-cloud-7600" | "version-premier-cloud-7700" | "version-premier-cloud-7800" | "version-premier-cloud-7900" | "version-premier-cloud-800" | "version-premier-cloud-8000" | "version-premier-cloud-8100" | "version-premier-cloud-8200" | "version-premier-cloud-8300" | "version-premier-cloud-8400" | "version-premier-cloud-8500" | "version-premier-cloud-8600" | "version-premier-cloud-8700" | "version-premier-cloud-8800" | "version-premier-cloud-8900" | "version-premier-cloud-900" | "version-premier-cloud-9000" | "version-premier-cloud-9100" | "version-premier-cloud-9200" | "version-premier-cloud-9300" | "version-premier-cloud-9400" | "version-premier-cloud-9500" | "version-premier-cloud-9600" | "version-premier-cloud-9700" | "version-premier-cloud-9800" | "version-premier-cloud-9900" | "version-premier-metal-100" | "version-premier-metal-1000" | "version-premier-metal-10000" | "version-premier-metal-1100" | "version-premier-metal-1200" | "version-premier-metal-1300" | "version-premier-metal-1400" | "version-premier-metal-150" | "version-premier-metal-1500" | "version-premier-metal-1600" | "version-premier-metal-1700" | "version-premier-metal-1800" | "version-premier-metal-1900" | "version-premier-metal-200" | "version-premier-metal-2000" | "version-premier-metal-2100" | "version-premier-metal-2200" | "version-premier-metal-2300" | "version-premier-metal-2400" | "version-premier-metal-250" | "version-premier-metal-2500" | "version-premier-metal-2600" | "version-premier-metal-2700" | "version-premier-metal-2800" | "version-premier-metal-2900" | "version-premier-metal-300" | "version-premier-metal-3000" | "version-premier-metal-3100" | "version-premier-metal-3200" | "version-premier-metal-3300" | "version-premier-metal-3400" | "version-premier-metal-3500" | "version-premier-metal-3600" | "version-premier-metal-3700" | "version-premier-metal-3800" | "version-premier-metal-3900" | "version-premier-metal-400" | "version-premier-metal-4000" | "version-premier-metal-4100" | "version-premier-metal-4200" | "version-premier-metal-4300" | "version-premier-metal-4400" | "version-premier-metal-4500" | "version-premier-metal-4600" | "version-premier-metal-4700" | "version-premier-metal-4800" | "version-premier-metal-4900" | "version-premier-metal-500" | "version-premier-metal-5000" | "version-premier-metal-5100" | "version-premier-metal-5200" | "version-premier-metal-5300" | "version-premier-metal-5400" | "version-premier-metal-5500" | "version-premier-metal-5600" | "version-premier-metal-5700" | "version-premier-metal-5800" | "version-premier-metal-5900" | "version-premier-metal-600" | "version-premier-metal-6000" | "version-premier-metal-6100" | "version-premier-metal-6200" | "version-premier-metal-6300" | "version-premier-metal-6400" | "version-premier-metal-6500" | "version-premier-metal-6600" | "version-premier-metal-6700" | "version-premier-metal-6800" | "version-premier-metal-6900" | "version-premier-metal-700" | "version-premier-metal-7000" | "version-premier-metal-7100" | "version-premier-metal-7200" | "version-premier-metal-7300" | "version-premier-metal-7400" | "version-premier-metal-7500" | "version-premier-metal-7600" | "version-premier-metal-7700" | "version-premier-metal-7800" | "version-premier-metal-7900" | "version-premier-metal-800" | "version-premier-metal-8000" | "version-premier-metal-8100" | "version-premier-metal-8200" | "version-premier-metal-8300" | "version-premier-metal-8400" | "version-premier-metal-8500" | "version-premier-metal-8600" | "version-premier-metal-8700" | "version-premier-metal-8800" | "version-premier-metal-8900" | "version-premier-metal-900" | "version-premier-metal-9000" | "version-premier-metal-9100" | "version-premier-metal-9200" | "version-premier-metal-9300" | "version-premier-metal-9400" | "version-premier-metal-9500" | "version-premier-metal-9600" | "version-premier-metal-9700" | "version-premier-metal-9800" | "version-premier-metal-9900" | "version-pro-cloud" | "version-solo-cloud" | "version-solo-metal"
+    export type OrderableCpanelVersionEnum = "VERSION_11_FOR_LINUX" | "VERSION_11_FOR_VIRTUOZZO" | "VERSION_11_FOR_VPS" | "cpanel-license-admin-cloud" | "cpanel-license-plus-cloud" | "cpanel-license-premier-cloud-100-accounts" | "cpanel-license-premier-cloud-1000-accounts" | "cpanel-license-premier-cloud-10000-accounts" | "cpanel-license-premier-cloud-1100-accounts" | "cpanel-license-premier-cloud-1200-accounts" | "cpanel-license-premier-cloud-1300-accounts" | "cpanel-license-premier-cloud-1400-accounts" | "cpanel-license-premier-cloud-150-accounts" | "cpanel-license-premier-cloud-1500-accounts" | "cpanel-license-premier-cloud-1600-accounts" | "cpanel-license-premier-cloud-1700-accounts" | "cpanel-license-premier-cloud-1800-accounts" | "cpanel-license-premier-cloud-1900-accounts" | "cpanel-license-premier-cloud-200-accounts" | "cpanel-license-premier-cloud-2000-accounts" | "cpanel-license-premier-cloud-2100-accounts" | "cpanel-license-premier-cloud-2200-accounts" | "cpanel-license-premier-cloud-2300-accounts" | "cpanel-license-premier-cloud-2400-accounts" | "cpanel-license-premier-cloud-250-accounts" | "cpanel-license-premier-cloud-2500-accounts" | "cpanel-license-premier-cloud-2600-accounts" | "cpanel-license-premier-cloud-2700-accounts" | "cpanel-license-premier-cloud-2800-accounts" | "cpanel-license-premier-cloud-2900-accounts" | "cpanel-license-premier-cloud-300-accounts" | "cpanel-license-premier-cloud-3000-accounts" | "cpanel-license-premier-cloud-3100-accounts" | "cpanel-license-premier-cloud-3200-accounts" | "cpanel-license-premier-cloud-3300-accounts" | "cpanel-license-premier-cloud-3400-accounts" | "cpanel-license-premier-cloud-3500-accounts" | "cpanel-license-premier-cloud-3600-accounts" | "cpanel-license-premier-cloud-3700-accounts" | "cpanel-license-premier-cloud-3800-accounts" | "cpanel-license-premier-cloud-3900-accounts" | "cpanel-license-premier-cloud-400-accounts" | "cpanel-license-premier-cloud-4000-accounts" | "cpanel-license-premier-cloud-4100-accounts" | "cpanel-license-premier-cloud-4200-accounts" | "cpanel-license-premier-cloud-4300-accounts" | "cpanel-license-premier-cloud-4400-accounts" | "cpanel-license-premier-cloud-4500-accounts" | "cpanel-license-premier-cloud-4600-accounts" | "cpanel-license-premier-cloud-4700-accounts" | "cpanel-license-premier-cloud-4800-accounts" | "cpanel-license-premier-cloud-4900-accounts" | "cpanel-license-premier-cloud-500-accounts" | "cpanel-license-premier-cloud-5000-accounts" | "cpanel-license-premier-cloud-5100-accounts" | "cpanel-license-premier-cloud-5200-accounts" | "cpanel-license-premier-cloud-5300-accounts" | "cpanel-license-premier-cloud-5400-accounts" | "cpanel-license-premier-cloud-5500-accounts" | "cpanel-license-premier-cloud-5600-accounts" | "cpanel-license-premier-cloud-5700-accounts" | "cpanel-license-premier-cloud-5800-accounts" | "cpanel-license-premier-cloud-5900-accounts" | "cpanel-license-premier-cloud-600-accounts" | "cpanel-license-premier-cloud-6000-accounts" | "cpanel-license-premier-cloud-6100-accounts" | "cpanel-license-premier-cloud-6200-accounts" | "cpanel-license-premier-cloud-6300-accounts" | "cpanel-license-premier-cloud-6400-accounts" | "cpanel-license-premier-cloud-6500-accounts" | "cpanel-license-premier-cloud-6600-accounts" | "cpanel-license-premier-cloud-6700-accounts" | "cpanel-license-premier-cloud-6800-accounts" | "cpanel-license-premier-cloud-6900-accounts" | "cpanel-license-premier-cloud-700-accounts" | "cpanel-license-premier-cloud-7000-accounts" | "cpanel-license-premier-cloud-7100-accounts" | "cpanel-license-premier-cloud-7200-accounts" | "cpanel-license-premier-cloud-7300-accounts" | "cpanel-license-premier-cloud-7400-accounts" | "cpanel-license-premier-cloud-7500-accounts" | "cpanel-license-premier-cloud-7600-accounts" | "cpanel-license-premier-cloud-7700-accounts" | "cpanel-license-premier-cloud-7800-accounts" | "cpanel-license-premier-cloud-7900-accounts" | "cpanel-license-premier-cloud-800-accounts" | "cpanel-license-premier-cloud-8000-accounts" | "cpanel-license-premier-cloud-8100-accounts" | "cpanel-license-premier-cloud-8200-accounts" | "cpanel-license-premier-cloud-8300-accounts" | "cpanel-license-premier-cloud-8400-accounts" | "cpanel-license-premier-cloud-8500-accounts" | "cpanel-license-premier-cloud-8600-accounts" | "cpanel-license-premier-cloud-8700-accounts" | "cpanel-license-premier-cloud-8800-accounts" | "cpanel-license-premier-cloud-8900-accounts" | "cpanel-license-premier-cloud-900-accounts" | "cpanel-license-premier-cloud-9000-accounts" | "cpanel-license-premier-cloud-9100-accounts" | "cpanel-license-premier-cloud-9200-accounts" | "cpanel-license-premier-cloud-9300-accounts" | "cpanel-license-premier-cloud-9400-accounts" | "cpanel-license-premier-cloud-9500-accounts" | "cpanel-license-premier-cloud-9600-accounts" | "cpanel-license-premier-cloud-9700-accounts" | "cpanel-license-premier-cloud-9800-accounts" | "cpanel-license-premier-cloud-9900-accounts" | "cpanel-license-premier-metal-100-accounts" | "cpanel-license-premier-metal-1000-accounts" | "cpanel-license-premier-metal-10000-accounts" | "cpanel-license-premier-metal-1100-accounts" | "cpanel-license-premier-metal-1200-accounts" | "cpanel-license-premier-metal-1300-accounts" | "cpanel-license-premier-metal-1400-accounts" | "cpanel-license-premier-metal-150-accounts" | "cpanel-license-premier-metal-1500-accounts" | "cpanel-license-premier-metal-1600-accounts" | "cpanel-license-premier-metal-1700-accounts" | "cpanel-license-premier-metal-1800-accounts" | "cpanel-license-premier-metal-1900-accounts" | "cpanel-license-premier-metal-200-accounts" | "cpanel-license-premier-metal-2000-accounts" | "cpanel-license-premier-metal-2100-accounts" | "cpanel-license-premier-metal-2200-accounts" | "cpanel-license-premier-metal-2300-accounts" | "cpanel-license-premier-metal-2400-accounts" | "cpanel-license-premier-metal-250-accounts" | "cpanel-license-premier-metal-2500-accounts" | "cpanel-license-premier-metal-2600-accounts" | "cpanel-license-premier-metal-2700-accounts" | "cpanel-license-premier-metal-2800-accounts" | "cpanel-license-premier-metal-2900-accounts" | "cpanel-license-premier-metal-300-accounts" | "cpanel-license-premier-metal-3000-accounts" | "cpanel-license-premier-metal-3100-accounts" | "cpanel-license-premier-metal-3200-accounts" | "cpanel-license-premier-metal-3300-accounts" | "cpanel-license-premier-metal-3400-accounts" | "cpanel-license-premier-metal-3500-accounts" | "cpanel-license-premier-metal-3600-accounts" | "cpanel-license-premier-metal-3700-accounts" | "cpanel-license-premier-metal-3800-accounts" | "cpanel-license-premier-metal-3900-accounts" | "cpanel-license-premier-metal-400-accounts" | "cpanel-license-premier-metal-4000-accounts" | "cpanel-license-premier-metal-4100-accounts" | "cpanel-license-premier-metal-4200-accounts" | "cpanel-license-premier-metal-4300-accounts" | "cpanel-license-premier-metal-4400-accounts" | "cpanel-license-premier-metal-4500-accounts" | "cpanel-license-premier-metal-4600-accounts" | "cpanel-license-premier-metal-4700-accounts" | "cpanel-license-premier-metal-4800-accounts" | "cpanel-license-premier-metal-4900-accounts" | "cpanel-license-premier-metal-500-accounts" | "cpanel-license-premier-metal-5000-accounts" | "cpanel-license-premier-metal-5100-accounts" | "cpanel-license-premier-metal-5200-accounts" | "cpanel-license-premier-metal-5300-accounts" | "cpanel-license-premier-metal-5400-accounts" | "cpanel-license-premier-metal-5500-accounts" | "cpanel-license-premier-metal-5600-accounts" | "cpanel-license-premier-metal-5700-accounts" | "cpanel-license-premier-metal-5800-accounts" | "cpanel-license-premier-metal-5900-accounts" | "cpanel-license-premier-metal-600-accounts" | "cpanel-license-premier-metal-6000-accounts" | "cpanel-license-premier-metal-6100-accounts" | "cpanel-license-premier-metal-6200-accounts" | "cpanel-license-premier-metal-6300-accounts" | "cpanel-license-premier-metal-6400-accounts" | "cpanel-license-premier-metal-6500-accounts" | "cpanel-license-premier-metal-6600-accounts" | "cpanel-license-premier-metal-6700-accounts" | "cpanel-license-premier-metal-6800-accounts" | "cpanel-license-premier-metal-6900-accounts" | "cpanel-license-premier-metal-700-accounts" | "cpanel-license-premier-metal-7000-accounts" | "cpanel-license-premier-metal-7100-accounts" | "cpanel-license-premier-metal-7200-accounts" | "cpanel-license-premier-metal-7300-accounts" | "cpanel-license-premier-metal-7400-accounts" | "cpanel-license-premier-metal-7500-accounts" | "cpanel-license-premier-metal-7600-accounts" | "cpanel-license-premier-metal-7700-accounts" | "cpanel-license-premier-metal-7800-accounts" | "cpanel-license-premier-metal-7900-accounts" | "cpanel-license-premier-metal-800-accounts" | "cpanel-license-premier-metal-8000-accounts" | "cpanel-license-premier-metal-8100-accounts" | "cpanel-license-premier-metal-8200-accounts" | "cpanel-license-premier-metal-8300-accounts" | "cpanel-license-premier-metal-8400-accounts" | "cpanel-license-premier-metal-8500-accounts" | "cpanel-license-premier-metal-8600-accounts" | "cpanel-license-premier-metal-8700-accounts" | "cpanel-license-premier-metal-8800-accounts" | "cpanel-license-premier-metal-8900-accounts" | "cpanel-license-premier-metal-900-accounts" | "cpanel-license-premier-metal-9000-accounts" | "cpanel-license-premier-metal-9100-accounts" | "cpanel-license-premier-metal-9200-accounts" | "cpanel-license-premier-metal-9300-accounts" | "cpanel-license-premier-metal-9400-accounts" | "cpanel-license-premier-metal-9500-accounts" | "cpanel-license-premier-metal-9600-accounts" | "cpanel-license-premier-metal-9700-accounts" | "cpanel-license-premier-metal-9800-accounts" | "cpanel-license-premier-metal-9900-accounts" | "cpanel-license-pro-cloud" | "cpanel-license-solo-cloud" | "cpanel-license-solo-metal" | "cpanel-license-version-11" | "cpanel-license-version-11-for-virtuozzo" | "cpanel-license-version-11-for-vps" | "version-admin-cloud" | "version-plus-cloud" | "version-premier-cloud-100" | "version-premier-cloud-1000" | "version-premier-cloud-10000" | "version-premier-cloud-1100" | "version-premier-cloud-1200" | "version-premier-cloud-1300" | "version-premier-cloud-1400" | "version-premier-cloud-150" | "version-premier-cloud-1500" | "version-premier-cloud-1600" | "version-premier-cloud-1700" | "version-premier-cloud-1800" | "version-premier-cloud-1900" | "version-premier-cloud-200" | "version-premier-cloud-2000" | "version-premier-cloud-2100" | "version-premier-cloud-2200" | "version-premier-cloud-2300" | "version-premier-cloud-2400" | "version-premier-cloud-250" | "version-premier-cloud-2500" | "version-premier-cloud-2600" | "version-premier-cloud-2700" | "version-premier-cloud-2800" | "version-premier-cloud-2900" | "version-premier-cloud-300" | "version-premier-cloud-3000" | "version-premier-cloud-3100" | "version-premier-cloud-3200" | "version-premier-cloud-3300" | "version-premier-cloud-3400" | "version-premier-cloud-3500" | "version-premier-cloud-3600" | "version-premier-cloud-3700" | "version-premier-cloud-3800" | "version-premier-cloud-3900" | "version-premier-cloud-400" | "version-premier-cloud-4000" | "version-premier-cloud-4100" | "version-premier-cloud-4200" | "version-premier-cloud-4300" | "version-premier-cloud-4400" | "version-premier-cloud-4500" | "version-premier-cloud-4600" | "version-premier-cloud-4700" | "version-premier-cloud-4800" | "version-premier-cloud-4900" | "version-premier-cloud-500" | "version-premier-cloud-5000" | "version-premier-cloud-5100" | "version-premier-cloud-5200" | "version-premier-cloud-5300" | "version-premier-cloud-5400" | "version-premier-cloud-5500" | "version-premier-cloud-5600" | "version-premier-cloud-5700" | "version-premier-cloud-5800" | "version-premier-cloud-5900" | "version-premier-cloud-600" | "version-premier-cloud-6000" | "version-premier-cloud-6100" | "version-premier-cloud-6200" | "version-premier-cloud-6300" | "version-premier-cloud-6400" | "version-premier-cloud-6500" | "version-premier-cloud-6600" | "version-premier-cloud-6700" | "version-premier-cloud-6800" | "version-premier-cloud-6900" | "version-premier-cloud-700" | "version-premier-cloud-7000" | "version-premier-cloud-7100" | "version-premier-cloud-7200" | "version-premier-cloud-7300" | "version-premier-cloud-7400" | "version-premier-cloud-7500" | "version-premier-cloud-7600" | "version-premier-cloud-7700" | "version-premier-cloud-7800" | "version-premier-cloud-7900" | "version-premier-cloud-800" | "version-premier-cloud-8000" | "version-premier-cloud-8100" | "version-premier-cloud-8200" | "version-premier-cloud-8300" | "version-premier-cloud-8400" | "version-premier-cloud-8500" | "version-premier-cloud-8600" | "version-premier-cloud-8700" | "version-premier-cloud-8800" | "version-premier-cloud-8900" | "version-premier-cloud-900" | "version-premier-cloud-9000" | "version-premier-cloud-9100" | "version-premier-cloud-9200" | "version-premier-cloud-9300" | "version-premier-cloud-9400" | "version-premier-cloud-9500" | "version-premier-cloud-9600" | "version-premier-cloud-9700" | "version-premier-cloud-9800" | "version-premier-cloud-9900" | "version-premier-metal-100" | "version-premier-metal-1000" | "version-premier-metal-10000" | "version-premier-metal-1100" | "version-premier-metal-1200" | "version-premier-metal-1300" | "version-premier-metal-1400" | "version-premier-metal-150" | "version-premier-metal-1500" | "version-premier-metal-1600" | "version-premier-metal-1700" | "version-premier-metal-1800" | "version-premier-metal-1900" | "version-premier-metal-200" | "version-premier-metal-2000" | "version-premier-metal-2100" | "version-premier-metal-2200" | "version-premier-metal-2300" | "version-premier-metal-2400" | "version-premier-metal-250" | "version-premier-metal-2500" | "version-premier-metal-2600" | "version-premier-metal-2700" | "version-premier-metal-2800" | "version-premier-metal-2900" | "version-premier-metal-300" | "version-premier-metal-3000" | "version-premier-metal-3100" | "version-premier-metal-3200" | "version-premier-metal-3300" | "version-premier-metal-3400" | "version-premier-metal-3500" | "version-premier-metal-3600" | "version-premier-metal-3700" | "version-premier-metal-3800" | "version-premier-metal-3900" | "version-premier-metal-400" | "version-premier-metal-4000" | "version-premier-metal-4100" | "version-premier-metal-4200" | "version-premier-metal-4300" | "version-premier-metal-4400" | "version-premier-metal-4500" | "version-premier-metal-4600" | "version-premier-metal-4700" | "version-premier-metal-4800" | "version-premier-metal-4900" | "version-premier-metal-500" | "version-premier-metal-5000" | "version-premier-metal-5100" | "version-premier-metal-5200" | "version-premier-metal-5300" | "version-premier-metal-5400" | "version-premier-metal-5500" | "version-premier-metal-5600" | "version-premier-metal-5700" | "version-premier-metal-5800" | "version-premier-metal-5900" | "version-premier-metal-600" | "version-premier-metal-6000" | "version-premier-metal-6100" | "version-premier-metal-6200" | "version-premier-metal-6300" | "version-premier-metal-6400" | "version-premier-metal-6500" | "version-premier-metal-6600" | "version-premier-metal-6700" | "version-premier-metal-6800" | "version-premier-metal-6900" | "version-premier-metal-700" | "version-premier-metal-7000" | "version-premier-metal-7100" | "version-premier-metal-7200" | "version-premier-metal-7300" | "version-premier-metal-7400" | "version-premier-metal-7500" | "version-premier-metal-7600" | "version-premier-metal-7700" | "version-premier-metal-7800" | "version-premier-metal-7900" | "version-premier-metal-800" | "version-premier-metal-8000" | "version-premier-metal-8100" | "version-premier-metal-8200" | "version-premier-metal-8300" | "version-premier-metal-8400" | "version-premier-metal-8500" | "version-premier-metal-8600" | "version-premier-metal-8700" | "version-premier-metal-8800" | "version-premier-metal-8900" | "version-premier-metal-900" | "version-premier-metal-9000" | "version-premier-metal-9100" | "version-premier-metal-9200" | "version-premier-metal-9300" | "version-premier-metal-9400" | "version-premier-metal-9500" | "version-premier-metal-9600" | "version-premier-metal-9700" | "version-premier-metal-9800" | "version-premier-metal-9900" | "version-pro-cloud" | "version-solo-cloud" | "version-solo-metal"
     /**
      * All versions available for DirectAdmin products
      * type fullname: license.OrderableDirectAdminVersionEnum
@@ -392,7 +329,7 @@ export namespace license {
      * All language pack numbers available for Plesk products
      * type fullname: license.OrderablePleskLanguagePackEnum
      */
-    export type OrderablePleskLanguagePackEnum = "1" | "1-extra-language-for-plesk12" | "2" | "2-extra-languages-for-plesk12" | "3" | "3-extra-languages-for-plesk12" | "4" | "4-extra-languages-for-plesk12" | "5" | "5-extra-languages-for-plesk12" | "unlimited" | "unlimited-extra-languages-for-plesk12"
+    export type OrderablePleskLanguagePackEnum = "1" | "1-extra-language-for-plesk12" | "1-extra-language-for-plesk12-for-vps" | "2" | "2-extra-languages-for-plesk12" | "2-extra-languages-for-plesk12-for-vps" | "3" | "3-extra-languages-for-plesk12" | "3-extra-languages-for-plesk12-for-vps" | "4" | "4-extra-languages-for-plesk12" | "4-extra-languages-for-plesk12-for-vps" | "5" | "5-extra-languages-for-plesk12" | "5-extra-languages-for-plesk12-for-vps" | "unlimited" | "unlimited-extra-languages-for-plesk12" | "unlimited-extra-languages-for-plesk12-for-vps"
     /**
      * All quantities of container available for a Virtuozzo license
      * type fullname: license.OrderableVirtuozzoContainerNumberEnum
@@ -417,12 +354,12 @@ export namespace license {
      * All versions for SQL Server product
      * type fullname: license.SqlServerVersionEnum
      */
-    export type SqlServerVersionEnum = "SQL_SERVER_2008_STANDARD_EDITION_2_CPU" | "SQL_SERVER_2008_STANDARD_EDITION_4_CPU" | "SQL_SERVER_2008_WEB_EDITION_2_CPU" | "SQL_SERVER_2008_WEB_EDITION_4_CPU" | "SQL_SERVER_2012_STANDARD_EDITION_10_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_12_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_16_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_18_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_20_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_24_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_2_CPU" | "SQL_SERVER_2012_STANDARD_EDITION_32_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_4_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_6_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_8_CORES" | "SQL_SERVER_2012_WEB_EDITION_10_CORES" | "SQL_SERVER_2012_WEB_EDITION_12_CORES" | "SQL_SERVER_2012_WEB_EDITION_16_CORES" | "SQL_SERVER_2012_WEB_EDITION_18_CORES" | "SQL_SERVER_2012_WEB_EDITION_20_CORES" | "SQL_SERVER_2012_WEB_EDITION_24_CORES" | "SQL_SERVER_2012_WEB_EDITION_32_CORES" | "SQL_SERVER_2012_WEB_EDITION_4_CORES" | "SQL_SERVER_2012_WEB_EDITION_6_CORES" | "SQL_SERVER_2012_WEB_EDITION_8_CORES" | "SQL_SERVER_2014_STANDARD_EDITION_10_CORES" | "SQL_SERVER_2014_STANDARD_EDITION_12_CORES" | "SQL_SERVER_2014_STANDARD_EDITION_16_CORES" | "SQL_SERVER_2014_STANDARD_EDITION_18_CORES" | "SQL_SERVER_2014_STANDARD_EDITION_20_CORES" | "SQL_SERVER_2014_STANDARD_EDITION_24_CORES" | "SQL_SERVER_2014_STANDARD_EDITION_4_CORES" | "SQL_SERVER_2014_STANDARD_EDITION_6_CORES" | "SQL_SERVER_2014_STANDARD_EDITION_8_CORES" | "SQL_SERVER_2014_WEB_EDITION_10_CORES" | "SQL_SERVER_2014_WEB_EDITION_12_CORES" | "SQL_SERVER_2014_WEB_EDITION_16_CORES" | "SQL_SERVER_2014_WEB_EDITION_18_CORES" | "SQL_SERVER_2014_WEB_EDITION_20_CORES" | "SQL_SERVER_2014_WEB_EDITION_24_CORES" | "SQL_SERVER_2014_WEB_EDITION_4_CORES" | "SQL_SERVER_2014_WEB_EDITION_6_CORES" | "SQL_SERVER_2014_WEB_EDITION_8_CORES" | "SQL_SERVER_2016_STANDARD_EDITION_10_CORES" | "SQL_SERVER_2016_STANDARD_EDITION_12_CORES" | "SQL_SERVER_2016_STANDARD_EDITION_14_CORES" | "SQL_SERVER_2016_STANDARD_EDITION_16_CORES" | "SQL_SERVER_2016_STANDARD_EDITION_4_CORES" | "SQL_SERVER_2016_STANDARD_EDITION_6_CORES" | "SQL_SERVER_2016_STANDARD_EDITION_8_CORES" | "SQL_SERVER_2016_WEB_EDITION_10_CORES" | "SQL_SERVER_2016_WEB_EDITION_12_CORES" | "SQL_SERVER_2016_WEB_EDITION_14_CORES" | "SQL_SERVER_2016_WEB_EDITION_16_CORES" | "SQL_SERVER_2016_WEB_EDITION_4_CORES" | "SQL_SERVER_2016_WEB_EDITION_6_CORES" | "SQL_SERVER_2016_WEB_EDITION_8_CORES" | "SQL_SERVER_2017_STANDARD_EDITION_10_CORES" | "SQL_SERVER_2017_STANDARD_EDITION_12_CORES" | "SQL_SERVER_2017_STANDARD_EDITION_14_CORES" | "SQL_SERVER_2017_STANDARD_EDITION_16_CORES" | "SQL_SERVER_2017_STANDARD_EDITION_18_CORES" | "SQL_SERVER_2017_STANDARD_EDITION_20_CORES" | "SQL_SERVER_2017_STANDARD_EDITION_22_CORES" | "SQL_SERVER_2017_STANDARD_EDITION_24_CORES" | "SQL_SERVER_2017_STANDARD_EDITION_26_CORES" | "SQL_SERVER_2017_STANDARD_EDITION_28_CORES" | "SQL_SERVER_2017_STANDARD_EDITION_30_CORES" | "SQL_SERVER_2017_STANDARD_EDITION_32_CORES" | "SQL_SERVER_2017_STANDARD_EDITION_4_CORES" | "SQL_SERVER_2017_STANDARD_EDITION_6_CORES" | "SQL_SERVER_2017_STANDARD_EDITION_8_CORES" | "SQL_SERVER_2017_WEB_EDITION_10_CORES" | "SQL_SERVER_2017_WEB_EDITION_12_CORES" | "SQL_SERVER_2017_WEB_EDITION_14_CORES" | "SQL_SERVER_2017_WEB_EDITION_16_CORES" | "SQL_SERVER_2017_WEB_EDITION_18_CORES" | "SQL_SERVER_2017_WEB_EDITION_20_CORES" | "SQL_SERVER_2017_WEB_EDITION_22_CORES" | "SQL_SERVER_2017_WEB_EDITION_24_CORES" | "SQL_SERVER_2017_WEB_EDITION_26_CORES" | "SQL_SERVER_2017_WEB_EDITION_28_CORES" | "SQL_SERVER_2017_WEB_EDITION_30_CORES" | "SQL_SERVER_2017_WEB_EDITION_32_CORES" | "SQL_SERVER_2017_WEB_EDITION_4_CORES" | "SQL_SERVER_2017_WEB_EDITION_6_CORES" | "SQL_SERVER_2017_WEB_EDITION_8_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_10_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_12_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_14_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_16_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_18_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_20_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_22_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_24_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_26_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_28_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_30_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_32_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_34_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_36_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_38_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_40_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_42_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_44_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_46_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_48_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_4_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_50_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_52_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_54_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_56_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_58_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_60_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_62_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_64_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_6_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_8_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_10_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_12_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_14_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_16_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_18_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_20_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_22_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_24_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_26_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_28_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_30_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_32_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_34_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_36_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_38_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_40_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_42_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_44_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_46_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_48_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_4_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_50_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_52_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_54_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_56_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_58_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_60_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_62_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_64_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_6_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_8_CORES" | "SQL_SERVER_2019_WEB_EDITION_10_CORES" | "SQL_SERVER_2019_WEB_EDITION_12_CORES" | "SQL_SERVER_2019_WEB_EDITION_14_CORES" | "SQL_SERVER_2019_WEB_EDITION_16_CORES" | "SQL_SERVER_2019_WEB_EDITION_18_CORES" | "SQL_SERVER_2019_WEB_EDITION_20_CORES" | "SQL_SERVER_2019_WEB_EDITION_22_CORES" | "SQL_SERVER_2019_WEB_EDITION_24_CORES" | "SQL_SERVER_2019_WEB_EDITION_26_CORES" | "SQL_SERVER_2019_WEB_EDITION_28_CORES" | "SQL_SERVER_2019_WEB_EDITION_30_CORES" | "SQL_SERVER_2019_WEB_EDITION_32_CORES" | "SQL_SERVER_2019_WEB_EDITION_34_CORES" | "SQL_SERVER_2019_WEB_EDITION_36_CORES" | "SQL_SERVER_2019_WEB_EDITION_38_CORES" | "SQL_SERVER_2019_WEB_EDITION_40_CORES" | "SQL_SERVER_2019_WEB_EDITION_42_CORES" | "SQL_SERVER_2019_WEB_EDITION_44_CORES" | "SQL_SERVER_2019_WEB_EDITION_46_CORES" | "SQL_SERVER_2019_WEB_EDITION_48_CORES" | "SQL_SERVER_2019_WEB_EDITION_4_CORES" | "SQL_SERVER_2019_WEB_EDITION_50_CORES" | "SQL_SERVER_2019_WEB_EDITION_52_CORES" | "SQL_SERVER_2019_WEB_EDITION_54_CORES" | "SQL_SERVER_2019_WEB_EDITION_56_CORES" | "SQL_SERVER_2019_WEB_EDITION_58_CORES" | "SQL_SERVER_2019_WEB_EDITION_60_CORES" | "SQL_SERVER_2019_WEB_EDITION_62_CORES" | "SQL_SERVER_2019_WEB_EDITION_64_CORES" | "SQL_SERVER_2019_WEB_EDITION_6_CORES" | "SQL_SERVER_2019_WEB_EDITION_8_CORES" | "sql-server-2008-license-standard-edition-2-cpu" | "sql-server-2008-license-standard-edition-4-cpu" | "sql-server-2008-license-web-edition-2-cpu" | "sql-server-2008-license-web-edition-4-cpu" | "sql-server-2012-license-standard-edition-10-cores" | "sql-server-2012-license-standard-edition-12-cores" | "sql-server-2012-license-standard-edition-16-cores" | "sql-server-2012-license-standard-edition-18-cores" | "sql-server-2012-license-standard-edition-2-cpu" | "sql-server-2012-license-standard-edition-20-cores" | "sql-server-2012-license-standard-edition-24-cores" | "sql-server-2012-license-standard-edition-32-cores" | "sql-server-2012-license-standard-edition-4-cores" | "sql-server-2012-license-standard-edition-6-cores" | "sql-server-2012-license-standard-edition-8-cores" | "sql-server-2012-license-web-edition-10-cores" | "sql-server-2012-license-web-edition-12-cores" | "sql-server-2012-license-web-edition-16-cores" | "sql-server-2012-license-web-edition-18-cores" | "sql-server-2012-license-web-edition-20-cores" | "sql-server-2012-license-web-edition-24-cores" | "sql-server-2012-license-web-edition-32-cores" | "sql-server-2012-license-web-edition-4-cores" | "sql-server-2012-license-web-edition-6-cores" | "sql-server-2012-license-web-edition-8-cores" | "sql-server-2014-license-standard-edition-10-cores" | "sql-server-2014-license-standard-edition-12-cores" | "sql-server-2014-license-standard-edition-16-cores" | "sql-server-2014-license-standard-edition-18-cores" | "sql-server-2014-license-standard-edition-20-cores" | "sql-server-2014-license-standard-edition-24-cores" | "sql-server-2014-license-standard-edition-4-cores" | "sql-server-2014-license-standard-edition-6-cores" | "sql-server-2014-license-standard-edition-8-cores" | "sql-server-2014-license-web-edition-10-cores" | "sql-server-2014-license-web-edition-12-cores" | "sql-server-2014-license-web-edition-16-cores" | "sql-server-2014-license-web-edition-18-cores" | "sql-server-2014-license-web-edition-20-cores" | "sql-server-2014-license-web-edition-24-cores" | "sql-server-2014-license-web-edition-4-cores" | "sql-server-2014-license-web-edition-6-cores" | "sql-server-2014-license-web-edition-8-cores" | "sql-server-2016-license-standard-edition-10-cores" | "sql-server-2016-license-standard-edition-12-cores" | "sql-server-2016-license-standard-edition-14-cores" | "sql-server-2016-license-standard-edition-16-cores" | "sql-server-2016-license-standard-edition-4-cores" | "sql-server-2016-license-standard-edition-6-cores" | "sql-server-2016-license-standard-edition-8-cores" | "sql-server-2016-license-web-edition-10-cores" | "sql-server-2016-license-web-edition-12-cores" | "sql-server-2016-license-web-edition-14-cores" | "sql-server-2016-license-web-edition-16-cores" | "sql-server-2016-license-web-edition-4-cores" | "sql-server-2016-license-web-edition-6-cores" | "sql-server-2016-license-web-edition-8-cores" | "sql-server-2017-license-standard-edition-10-cores" | "sql-server-2017-license-standard-edition-12-cores" | "sql-server-2017-license-standard-edition-14-cores" | "sql-server-2017-license-standard-edition-16-cores" | "sql-server-2017-license-standard-edition-18-cores" | "sql-server-2017-license-standard-edition-20-cores" | "sql-server-2017-license-standard-edition-22-cores" | "sql-server-2017-license-standard-edition-24-cores" | "sql-server-2017-license-standard-edition-26-cores" | "sql-server-2017-license-standard-edition-28-cores" | "sql-server-2017-license-standard-edition-30-cores" | "sql-server-2017-license-standard-edition-32-cores" | "sql-server-2017-license-standard-edition-4-cores" | "sql-server-2017-license-standard-edition-6-cores" | "sql-server-2017-license-standard-edition-8-cores" | "sql-server-2017-license-web-edition-10-cores" | "sql-server-2017-license-web-edition-12-cores" | "sql-server-2017-license-web-edition-14-cores" | "sql-server-2017-license-web-edition-16-cores" | "sql-server-2017-license-web-edition-18-cores" | "sql-server-2017-license-web-edition-20-cores" | "sql-server-2017-license-web-edition-22-cores" | "sql-server-2017-license-web-edition-24-cores" | "sql-server-2017-license-web-edition-26-cores" | "sql-server-2017-license-web-edition-28-cores" | "sql-server-2017-license-web-edition-30-cores" | "sql-server-2017-license-web-edition-32-cores" | "sql-server-2017-license-web-edition-4-cores" | "sql-server-2017-license-web-edition-6-cores" | "sql-server-2017-license-web-edition-8-cores" | "sql-server-2019-license-enterprise-edition-10-cores" | "sql-server-2019-license-enterprise-edition-12-cores" | "sql-server-2019-license-enterprise-edition-14-cores" | "sql-server-2019-license-enterprise-edition-16-cores" | "sql-server-2019-license-enterprise-edition-18-cores" | "sql-server-2019-license-enterprise-edition-20-cores" | "sql-server-2019-license-enterprise-edition-22-cores" | "sql-server-2019-license-enterprise-edition-24-cores" | "sql-server-2019-license-enterprise-edition-26-cores" | "sql-server-2019-license-enterprise-edition-28-cores" | "sql-server-2019-license-enterprise-edition-30-cores" | "sql-server-2019-license-enterprise-edition-32-cores" | "sql-server-2019-license-enterprise-edition-34-cores" | "sql-server-2019-license-enterprise-edition-36-cores" | "sql-server-2019-license-enterprise-edition-38-cores" | "sql-server-2019-license-enterprise-edition-4-cores" | "sql-server-2019-license-enterprise-edition-40-cores" | "sql-server-2019-license-enterprise-edition-42-cores" | "sql-server-2019-license-enterprise-edition-44-cores" | "sql-server-2019-license-enterprise-edition-46-cores" | "sql-server-2019-license-enterprise-edition-48-cores" | "sql-server-2019-license-enterprise-edition-50-cores" | "sql-server-2019-license-enterprise-edition-52-cores" | "sql-server-2019-license-enterprise-edition-54-cores" | "sql-server-2019-license-enterprise-edition-56-cores" | "sql-server-2019-license-enterprise-edition-58-cores" | "sql-server-2019-license-enterprise-edition-6-cores" | "sql-server-2019-license-enterprise-edition-60-cores" | "sql-server-2019-license-enterprise-edition-62-cores" | "sql-server-2019-license-enterprise-edition-64-cores" | "sql-server-2019-license-enterprise-edition-8-cores" | "sql-server-2019-license-standard-edition-10-cores" | "sql-server-2019-license-standard-edition-12-cores" | "sql-server-2019-license-standard-edition-14-cores" | "sql-server-2019-license-standard-edition-16-cores" | "sql-server-2019-license-standard-edition-18-cores" | "sql-server-2019-license-standard-edition-20-cores" | "sql-server-2019-license-standard-edition-22-cores" | "sql-server-2019-license-standard-edition-24-cores" | "sql-server-2019-license-standard-edition-26-cores" | "sql-server-2019-license-standard-edition-28-cores" | "sql-server-2019-license-standard-edition-30-cores" | "sql-server-2019-license-standard-edition-32-cores" | "sql-server-2019-license-standard-edition-34-cores" | "sql-server-2019-license-standard-edition-36-cores" | "sql-server-2019-license-standard-edition-38-cores" | "sql-server-2019-license-standard-edition-4-cores" | "sql-server-2019-license-standard-edition-40-cores" | "sql-server-2019-license-standard-edition-42-cores" | "sql-server-2019-license-standard-edition-44-cores" | "sql-server-2019-license-standard-edition-46-cores" | "sql-server-2019-license-standard-edition-48-cores" | "sql-server-2019-license-standard-edition-50-cores" | "sql-server-2019-license-standard-edition-52-cores" | "sql-server-2019-license-standard-edition-54-cores" | "sql-server-2019-license-standard-edition-56-cores" | "sql-server-2019-license-standard-edition-58-cores" | "sql-server-2019-license-standard-edition-6-cores" | "sql-server-2019-license-standard-edition-60-cores" | "sql-server-2019-license-standard-edition-62-cores" | "sql-server-2019-license-standard-edition-64-cores" | "sql-server-2019-license-standard-edition-8-cores" | "sql-server-2019-license-web-edition-10-cores" | "sql-server-2019-license-web-edition-12-cores" | "sql-server-2019-license-web-edition-14-cores" | "sql-server-2019-license-web-edition-16-cores" | "sql-server-2019-license-web-edition-18-cores" | "sql-server-2019-license-web-edition-20-cores" | "sql-server-2019-license-web-edition-22-cores" | "sql-server-2019-license-web-edition-24-cores" | "sql-server-2019-license-web-edition-26-cores" | "sql-server-2019-license-web-edition-28-cores" | "sql-server-2019-license-web-edition-30-cores" | "sql-server-2019-license-web-edition-32-cores" | "sql-server-2019-license-web-edition-34-cores" | "sql-server-2019-license-web-edition-36-cores" | "sql-server-2019-license-web-edition-38-cores" | "sql-server-2019-license-web-edition-4-cores" | "sql-server-2019-license-web-edition-40-cores" | "sql-server-2019-license-web-edition-42-cores" | "sql-server-2019-license-web-edition-44-cores" | "sql-server-2019-license-web-edition-46-cores" | "sql-server-2019-license-web-edition-48-cores" | "sql-server-2019-license-web-edition-50-cores" | "sql-server-2019-license-web-edition-52-cores" | "sql-server-2019-license-web-edition-54-cores" | "sql-server-2019-license-web-edition-56-cores" | "sql-server-2019-license-web-edition-58-cores" | "sql-server-2019-license-web-edition-6-cores" | "sql-server-2019-license-web-edition-60-cores" | "sql-server-2019-license-web-edition-62-cores" | "sql-server-2019-license-web-edition-64-cores" | "sql-server-2019-license-web-edition-8-cores"
+    export type SqlServerVersionEnum = "SQL_SERVER_2008_STANDARD_EDITION_2_CPU" | "SQL_SERVER_2008_STANDARD_EDITION_4_CPU" | "SQL_SERVER_2008_WEB_EDITION_2_CPU" | "SQL_SERVER_2008_WEB_EDITION_4_CPU" | "SQL_SERVER_2012_STANDARD_EDITION_10_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_12_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_16_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_18_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_20_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_24_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_2_CPU" | "SQL_SERVER_2012_STANDARD_EDITION_32_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_4_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_6_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_8_CORES" | "SQL_SERVER_2012_WEB_EDITION_10_CORES" | "SQL_SERVER_2012_WEB_EDITION_12_CORES" | "SQL_SERVER_2012_WEB_EDITION_16_CORES" | "SQL_SERVER_2012_WEB_EDITION_18_CORES" | "SQL_SERVER_2012_WEB_EDITION_20_CORES" | "SQL_SERVER_2012_WEB_EDITION_24_CORES" | "SQL_SERVER_2012_WEB_EDITION_32_CORES" | "SQL_SERVER_2012_WEB_EDITION_4_CORES" | "SQL_SERVER_2012_WEB_EDITION_6_CORES" | "SQL_SERVER_2012_WEB_EDITION_8_CORES" | "SQL_SERVER_2014_STANDARD_EDITION_10_CORES" | "SQL_SERVER_2014_STANDARD_EDITION_12_CORES" | "SQL_SERVER_2014_STANDARD_EDITION_16_CORES" | "SQL_SERVER_2014_STANDARD_EDITION_18_CORES" | "SQL_SERVER_2014_STANDARD_EDITION_20_CORES" | "SQL_SERVER_2014_STANDARD_EDITION_24_CORES" | "SQL_SERVER_2014_STANDARD_EDITION_4_CORES" | "SQL_SERVER_2014_STANDARD_EDITION_6_CORES" | "SQL_SERVER_2014_STANDARD_EDITION_8_CORES" | "SQL_SERVER_2014_WEB_EDITION_10_CORES" | "SQL_SERVER_2014_WEB_EDITION_12_CORES" | "SQL_SERVER_2014_WEB_EDITION_16_CORES" | "SQL_SERVER_2014_WEB_EDITION_18_CORES" | "SQL_SERVER_2014_WEB_EDITION_20_CORES" | "SQL_SERVER_2014_WEB_EDITION_24_CORES" | "SQL_SERVER_2014_WEB_EDITION_4_CORES" | "SQL_SERVER_2014_WEB_EDITION_6_CORES" | "SQL_SERVER_2014_WEB_EDITION_8_CORES" | "SQL_SERVER_2016_STANDARD_EDITION_10_CORES" | "SQL_SERVER_2016_STANDARD_EDITION_12_CORES" | "SQL_SERVER_2016_STANDARD_EDITION_14_CORES" | "SQL_SERVER_2016_STANDARD_EDITION_16_CORES" | "SQL_SERVER_2016_STANDARD_EDITION_4_CORES" | "SQL_SERVER_2016_STANDARD_EDITION_6_CORES" | "SQL_SERVER_2016_STANDARD_EDITION_8_CORES" | "SQL_SERVER_2016_WEB_EDITION_10_CORES" | "SQL_SERVER_2016_WEB_EDITION_12_CORES" | "SQL_SERVER_2016_WEB_EDITION_14_CORES" | "SQL_SERVER_2016_WEB_EDITION_16_CORES" | "SQL_SERVER_2016_WEB_EDITION_4_CORES" | "SQL_SERVER_2016_WEB_EDITION_6_CORES" | "SQL_SERVER_2016_WEB_EDITION_8_CORES" | "SQL_SERVER_2017_STANDARD_EDITION_10_CORES" | "SQL_SERVER_2017_STANDARD_EDITION_12_CORES" | "SQL_SERVER_2017_STANDARD_EDITION_14_CORES" | "SQL_SERVER_2017_STANDARD_EDITION_16_CORES" | "SQL_SERVER_2017_STANDARD_EDITION_18_CORES" | "SQL_SERVER_2017_STANDARD_EDITION_20_CORES" | "SQL_SERVER_2017_STANDARD_EDITION_22_CORES" | "SQL_SERVER_2017_STANDARD_EDITION_24_CORES" | "SQL_SERVER_2017_STANDARD_EDITION_26_CORES" | "SQL_SERVER_2017_STANDARD_EDITION_28_CORES" | "SQL_SERVER_2017_STANDARD_EDITION_30_CORES" | "SQL_SERVER_2017_STANDARD_EDITION_32_CORES" | "SQL_SERVER_2017_STANDARD_EDITION_4_CORES" | "SQL_SERVER_2017_STANDARD_EDITION_6_CORES" | "SQL_SERVER_2017_STANDARD_EDITION_8_CORES" | "SQL_SERVER_2017_WEB_EDITION_10_CORES" | "SQL_SERVER_2017_WEB_EDITION_12_CORES" | "SQL_SERVER_2017_WEB_EDITION_14_CORES" | "SQL_SERVER_2017_WEB_EDITION_16_CORES" | "SQL_SERVER_2017_WEB_EDITION_18_CORES" | "SQL_SERVER_2017_WEB_EDITION_20_CORES" | "SQL_SERVER_2017_WEB_EDITION_22_CORES" | "SQL_SERVER_2017_WEB_EDITION_24_CORES" | "SQL_SERVER_2017_WEB_EDITION_26_CORES" | "SQL_SERVER_2017_WEB_EDITION_28_CORES" | "SQL_SERVER_2017_WEB_EDITION_30_CORES" | "SQL_SERVER_2017_WEB_EDITION_32_CORES" | "SQL_SERVER_2017_WEB_EDITION_4_CORES" | "SQL_SERVER_2017_WEB_EDITION_6_CORES" | "SQL_SERVER_2017_WEB_EDITION_8_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_10_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_128_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_12_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_14_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_16_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_18_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_20_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_22_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_24_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_26_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_28_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_30_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_32_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_34_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_36_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_38_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_40_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_42_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_44_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_46_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_48_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_4_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_50_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_52_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_54_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_56_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_58_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_60_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_62_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_64_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_6_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_8_CORES" | "SQL_SERVER_2019_ENTERPRISE_EDITION_96_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_10_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_128_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_12_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_14_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_16_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_18_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_20_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_22_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_24_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_26_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_28_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_30_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_32_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_34_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_36_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_38_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_40_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_42_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_44_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_46_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_48_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_4_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_50_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_52_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_54_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_56_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_58_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_60_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_62_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_64_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_6_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_8_CORES" | "SQL_SERVER_2019_STANDARD_EDITION_96_CORES" | "SQL_SERVER_2019_WEB_EDITION_10_CORES" | "SQL_SERVER_2019_WEB_EDITION_128_CORES" | "SQL_SERVER_2019_WEB_EDITION_12_CORES" | "SQL_SERVER_2019_WEB_EDITION_14_CORES" | "SQL_SERVER_2019_WEB_EDITION_16_CORES" | "SQL_SERVER_2019_WEB_EDITION_18_CORES" | "SQL_SERVER_2019_WEB_EDITION_20_CORES" | "SQL_SERVER_2019_WEB_EDITION_22_CORES" | "SQL_SERVER_2019_WEB_EDITION_24_CORES" | "SQL_SERVER_2019_WEB_EDITION_26_CORES" | "SQL_SERVER_2019_WEB_EDITION_28_CORES" | "SQL_SERVER_2019_WEB_EDITION_30_CORES" | "SQL_SERVER_2019_WEB_EDITION_32_CORES" | "SQL_SERVER_2019_WEB_EDITION_34_CORES" | "SQL_SERVER_2019_WEB_EDITION_36_CORES" | "SQL_SERVER_2019_WEB_EDITION_38_CORES" | "SQL_SERVER_2019_WEB_EDITION_40_CORES" | "SQL_SERVER_2019_WEB_EDITION_42_CORES" | "SQL_SERVER_2019_WEB_EDITION_44_CORES" | "SQL_SERVER_2019_WEB_EDITION_46_CORES" | "SQL_SERVER_2019_WEB_EDITION_48_CORES" | "SQL_SERVER_2019_WEB_EDITION_4_CORES" | "SQL_SERVER_2019_WEB_EDITION_50_CORES" | "SQL_SERVER_2019_WEB_EDITION_52_CORES" | "SQL_SERVER_2019_WEB_EDITION_54_CORES" | "SQL_SERVER_2019_WEB_EDITION_56_CORES" | "SQL_SERVER_2019_WEB_EDITION_58_CORES" | "SQL_SERVER_2019_WEB_EDITION_60_CORES" | "SQL_SERVER_2019_WEB_EDITION_62_CORES" | "SQL_SERVER_2019_WEB_EDITION_64_CORES" | "SQL_SERVER_2019_WEB_EDITION_6_CORES" | "SQL_SERVER_2019_WEB_EDITION_8_CORES" | "SQL_SERVER_2019_WEB_EDITION_96_CORES" | "SQL_SERVER_2022_ENTERPRISE_EDITION_10_CORES" | "SQL_SERVER_2022_ENTERPRISE_EDITION_128_CORES" | "SQL_SERVER_2022_ENTERPRISE_EDITION_12_CORES" | "SQL_SERVER_2022_ENTERPRISE_EDITION_14_CORES" | "SQL_SERVER_2022_ENTERPRISE_EDITION_16_CORES" | "SQL_SERVER_2022_ENTERPRISE_EDITION_18_CORES" | "SQL_SERVER_2022_ENTERPRISE_EDITION_20_CORES" | "SQL_SERVER_2022_ENTERPRISE_EDITION_22_CORES" | "SQL_SERVER_2022_ENTERPRISE_EDITION_24_CORES" | "SQL_SERVER_2022_ENTERPRISE_EDITION_26_CORES" | "SQL_SERVER_2022_ENTERPRISE_EDITION_28_CORES" | "SQL_SERVER_2022_ENTERPRISE_EDITION_30_CORES" | "SQL_SERVER_2022_ENTERPRISE_EDITION_32_CORES" | "SQL_SERVER_2022_ENTERPRISE_EDITION_34_CORES" | "SQL_SERVER_2022_ENTERPRISE_EDITION_36_CORES" | "SQL_SERVER_2022_ENTERPRISE_EDITION_38_CORES" | "SQL_SERVER_2022_ENTERPRISE_EDITION_40_CORES" | "SQL_SERVER_2022_ENTERPRISE_EDITION_42_CORES" | "SQL_SERVER_2022_ENTERPRISE_EDITION_44_CORES" | "SQL_SERVER_2022_ENTERPRISE_EDITION_46_CORES" | "SQL_SERVER_2022_ENTERPRISE_EDITION_48_CORES" | "SQL_SERVER_2022_ENTERPRISE_EDITION_4_CORES" | "SQL_SERVER_2022_ENTERPRISE_EDITION_50_CORES" | "SQL_SERVER_2022_ENTERPRISE_EDITION_52_CORES" | "SQL_SERVER_2022_ENTERPRISE_EDITION_54_CORES" | "SQL_SERVER_2022_ENTERPRISE_EDITION_56_CORES" | "SQL_SERVER_2022_ENTERPRISE_EDITION_58_CORES" | "SQL_SERVER_2022_ENTERPRISE_EDITION_60_CORES" | "SQL_SERVER_2022_ENTERPRISE_EDITION_62_CORES" | "SQL_SERVER_2022_ENTERPRISE_EDITION_64_CORES" | "SQL_SERVER_2022_ENTERPRISE_EDITION_6_CORES" | "SQL_SERVER_2022_ENTERPRISE_EDITION_8_CORES" | "SQL_SERVER_2022_ENTERPRISE_EDITION_96_CORES" | "SQL_SERVER_2022_STANDARD_EDITION_10_CORES" | "SQL_SERVER_2022_STANDARD_EDITION_128_CORES" | "SQL_SERVER_2022_STANDARD_EDITION_12_CORES" | "SQL_SERVER_2022_STANDARD_EDITION_14_CORES" | "SQL_SERVER_2022_STANDARD_EDITION_16_CORES" | "SQL_SERVER_2022_STANDARD_EDITION_18_CORES" | "SQL_SERVER_2022_STANDARD_EDITION_20_CORES" | "SQL_SERVER_2022_STANDARD_EDITION_22_CORES" | "SQL_SERVER_2022_STANDARD_EDITION_24_CORES" | "SQL_SERVER_2022_STANDARD_EDITION_26_CORES" | "SQL_SERVER_2022_STANDARD_EDITION_28_CORES" | "SQL_SERVER_2022_STANDARD_EDITION_30_CORES" | "SQL_SERVER_2022_STANDARD_EDITION_32_CORES" | "SQL_SERVER_2022_STANDARD_EDITION_34_CORES" | "SQL_SERVER_2022_STANDARD_EDITION_36_CORES" | "SQL_SERVER_2022_STANDARD_EDITION_38_CORES" | "SQL_SERVER_2022_STANDARD_EDITION_40_CORES" | "SQL_SERVER_2022_STANDARD_EDITION_42_CORES" | "SQL_SERVER_2022_STANDARD_EDITION_44_CORES" | "SQL_SERVER_2022_STANDARD_EDITION_46_CORES" | "SQL_SERVER_2022_STANDARD_EDITION_48_CORES" | "SQL_SERVER_2022_STANDARD_EDITION_4_CORES" | "SQL_SERVER_2022_STANDARD_EDITION_50_CORES" | "SQL_SERVER_2022_STANDARD_EDITION_52_CORES" | "SQL_SERVER_2022_STANDARD_EDITION_54_CORES" | "SQL_SERVER_2022_STANDARD_EDITION_56_CORES" | "SQL_SERVER_2022_STANDARD_EDITION_58_CORES" | "SQL_SERVER_2022_STANDARD_EDITION_60_CORES" | "SQL_SERVER_2022_STANDARD_EDITION_62_CORES" | "SQL_SERVER_2022_STANDARD_EDITION_64_CORES" | "SQL_SERVER_2022_STANDARD_EDITION_6_CORES" | "SQL_SERVER_2022_STANDARD_EDITION_8_CORES" | "SQL_SERVER_2022_STANDARD_EDITION_96_CORES" | "SQL_SERVER_2022_WEB_EDITION_10_CORES" | "SQL_SERVER_2022_WEB_EDITION_128_CORES" | "SQL_SERVER_2022_WEB_EDITION_12_CORES" | "SQL_SERVER_2022_WEB_EDITION_14_CORES" | "SQL_SERVER_2022_WEB_EDITION_16_CORES" | "SQL_SERVER_2022_WEB_EDITION_18_CORES" | "SQL_SERVER_2022_WEB_EDITION_20_CORES" | "SQL_SERVER_2022_WEB_EDITION_22_CORES" | "SQL_SERVER_2022_WEB_EDITION_24_CORES" | "SQL_SERVER_2022_WEB_EDITION_26_CORES" | "SQL_SERVER_2022_WEB_EDITION_28_CORES" | "SQL_SERVER_2022_WEB_EDITION_30_CORES" | "SQL_SERVER_2022_WEB_EDITION_32_CORES" | "SQL_SERVER_2022_WEB_EDITION_34_CORES" | "SQL_SERVER_2022_WEB_EDITION_36_CORES" | "SQL_SERVER_2022_WEB_EDITION_38_CORES" | "SQL_SERVER_2022_WEB_EDITION_40_CORES" | "SQL_SERVER_2022_WEB_EDITION_42_CORES" | "SQL_SERVER_2022_WEB_EDITION_44_CORES" | "SQL_SERVER_2022_WEB_EDITION_46_CORES" | "SQL_SERVER_2022_WEB_EDITION_48_CORES" | "SQL_SERVER_2022_WEB_EDITION_4_CORES" | "SQL_SERVER_2022_WEB_EDITION_50_CORES" | "SQL_SERVER_2022_WEB_EDITION_52_CORES" | "SQL_SERVER_2022_WEB_EDITION_54_CORES" | "SQL_SERVER_2022_WEB_EDITION_56_CORES" | "SQL_SERVER_2022_WEB_EDITION_58_CORES" | "SQL_SERVER_2022_WEB_EDITION_60_CORES" | "SQL_SERVER_2022_WEB_EDITION_62_CORES" | "SQL_SERVER_2022_WEB_EDITION_64_CORES" | "SQL_SERVER_2022_WEB_EDITION_6_CORES" | "SQL_SERVER_2022_WEB_EDITION_8_CORES" | "SQL_SERVER_2022_WEB_EDITION_96_CORES" | "sql-server-2008-license-standard-edition-2-cpu" | "sql-server-2008-license-standard-edition-4-cpu" | "sql-server-2008-license-web-edition-2-cpu" | "sql-server-2008-license-web-edition-4-cpu" | "sql-server-2012-license-standard-edition-10-cores" | "sql-server-2012-license-standard-edition-12-cores" | "sql-server-2012-license-standard-edition-16-cores" | "sql-server-2012-license-standard-edition-18-cores" | "sql-server-2012-license-standard-edition-2-cpu" | "sql-server-2012-license-standard-edition-20-cores" | "sql-server-2012-license-standard-edition-24-cores" | "sql-server-2012-license-standard-edition-32-cores" | "sql-server-2012-license-standard-edition-4-cores" | "sql-server-2012-license-standard-edition-6-cores" | "sql-server-2012-license-standard-edition-8-cores" | "sql-server-2012-license-web-edition-10-cores" | "sql-server-2012-license-web-edition-12-cores" | "sql-server-2012-license-web-edition-16-cores" | "sql-server-2012-license-web-edition-18-cores" | "sql-server-2012-license-web-edition-20-cores" | "sql-server-2012-license-web-edition-24-cores" | "sql-server-2012-license-web-edition-32-cores" | "sql-server-2012-license-web-edition-4-cores" | "sql-server-2012-license-web-edition-6-cores" | "sql-server-2012-license-web-edition-8-cores" | "sql-server-2014-license-standard-edition-10-cores" | "sql-server-2014-license-standard-edition-12-cores" | "sql-server-2014-license-standard-edition-16-cores" | "sql-server-2014-license-standard-edition-18-cores" | "sql-server-2014-license-standard-edition-20-cores" | "sql-server-2014-license-standard-edition-24-cores" | "sql-server-2014-license-standard-edition-4-cores" | "sql-server-2014-license-standard-edition-6-cores" | "sql-server-2014-license-standard-edition-8-cores" | "sql-server-2014-license-web-edition-10-cores" | "sql-server-2014-license-web-edition-12-cores" | "sql-server-2014-license-web-edition-16-cores" | "sql-server-2014-license-web-edition-18-cores" | "sql-server-2014-license-web-edition-20-cores" | "sql-server-2014-license-web-edition-24-cores" | "sql-server-2014-license-web-edition-4-cores" | "sql-server-2014-license-web-edition-6-cores" | "sql-server-2014-license-web-edition-8-cores" | "sql-server-2016-license-standard-edition-10-cores" | "sql-server-2016-license-standard-edition-12-cores" | "sql-server-2016-license-standard-edition-14-cores" | "sql-server-2016-license-standard-edition-16-cores" | "sql-server-2016-license-standard-edition-4-cores" | "sql-server-2016-license-standard-edition-6-cores" | "sql-server-2016-license-standard-edition-8-cores" | "sql-server-2016-license-web-edition-10-cores" | "sql-server-2016-license-web-edition-12-cores" | "sql-server-2016-license-web-edition-14-cores" | "sql-server-2016-license-web-edition-16-cores" | "sql-server-2016-license-web-edition-4-cores" | "sql-server-2016-license-web-edition-6-cores" | "sql-server-2016-license-web-edition-8-cores" | "sql-server-2017-license-standard-edition-10-cores" | "sql-server-2017-license-standard-edition-12-cores" | "sql-server-2017-license-standard-edition-14-cores" | "sql-server-2017-license-standard-edition-16-cores" | "sql-server-2017-license-standard-edition-18-cores" | "sql-server-2017-license-standard-edition-20-cores" | "sql-server-2017-license-standard-edition-22-cores" | "sql-server-2017-license-standard-edition-24-cores" | "sql-server-2017-license-standard-edition-26-cores" | "sql-server-2017-license-standard-edition-28-cores" | "sql-server-2017-license-standard-edition-30-cores" | "sql-server-2017-license-standard-edition-32-cores" | "sql-server-2017-license-standard-edition-4-cores" | "sql-server-2017-license-standard-edition-6-cores" | "sql-server-2017-license-standard-edition-8-cores" | "sql-server-2017-license-web-edition-10-cores" | "sql-server-2017-license-web-edition-12-cores" | "sql-server-2017-license-web-edition-14-cores" | "sql-server-2017-license-web-edition-16-cores" | "sql-server-2017-license-web-edition-18-cores" | "sql-server-2017-license-web-edition-20-cores" | "sql-server-2017-license-web-edition-22-cores" | "sql-server-2017-license-web-edition-24-cores" | "sql-server-2017-license-web-edition-26-cores" | "sql-server-2017-license-web-edition-28-cores" | "sql-server-2017-license-web-edition-30-cores" | "sql-server-2017-license-web-edition-32-cores" | "sql-server-2017-license-web-edition-4-cores" | "sql-server-2017-license-web-edition-6-cores" | "sql-server-2017-license-web-edition-8-cores" | "sql-server-2019-license-enterprise-edition-10-cores" | "sql-server-2019-license-enterprise-edition-12-cores" | "sql-server-2019-license-enterprise-edition-128-cores" | "sql-server-2019-license-enterprise-edition-14-cores" | "sql-server-2019-license-enterprise-edition-16-cores" | "sql-server-2019-license-enterprise-edition-18-cores" | "sql-server-2019-license-enterprise-edition-20-cores" | "sql-server-2019-license-enterprise-edition-22-cores" | "sql-server-2019-license-enterprise-edition-24-cores" | "sql-server-2019-license-enterprise-edition-26-cores" | "sql-server-2019-license-enterprise-edition-28-cores" | "sql-server-2019-license-enterprise-edition-30-cores" | "sql-server-2019-license-enterprise-edition-32-cores" | "sql-server-2019-license-enterprise-edition-34-cores" | "sql-server-2019-license-enterprise-edition-36-cores" | "sql-server-2019-license-enterprise-edition-38-cores" | "sql-server-2019-license-enterprise-edition-4-cores" | "sql-server-2019-license-enterprise-edition-40-cores" | "sql-server-2019-license-enterprise-edition-42-cores" | "sql-server-2019-license-enterprise-edition-44-cores" | "sql-server-2019-license-enterprise-edition-46-cores" | "sql-server-2019-license-enterprise-edition-48-cores" | "sql-server-2019-license-enterprise-edition-50-cores" | "sql-server-2019-license-enterprise-edition-52-cores" | "sql-server-2019-license-enterprise-edition-54-cores" | "sql-server-2019-license-enterprise-edition-56-cores" | "sql-server-2019-license-enterprise-edition-58-cores" | "sql-server-2019-license-enterprise-edition-6-cores" | "sql-server-2019-license-enterprise-edition-60-cores" | "sql-server-2019-license-enterprise-edition-62-cores" | "sql-server-2019-license-enterprise-edition-64-cores" | "sql-server-2019-license-enterprise-edition-8-cores" | "sql-server-2019-license-enterprise-edition-96-cores" | "sql-server-2019-license-standard-edition-10-cores" | "sql-server-2019-license-standard-edition-12-cores" | "sql-server-2019-license-standard-edition-128-cores" | "sql-server-2019-license-standard-edition-14-cores" | "sql-server-2019-license-standard-edition-16-cores" | "sql-server-2019-license-standard-edition-18-cores" | "sql-server-2019-license-standard-edition-20-cores" | "sql-server-2019-license-standard-edition-22-cores" | "sql-server-2019-license-standard-edition-24-cores" | "sql-server-2019-license-standard-edition-26-cores" | "sql-server-2019-license-standard-edition-28-cores" | "sql-server-2019-license-standard-edition-30-cores" | "sql-server-2019-license-standard-edition-32-cores" | "sql-server-2019-license-standard-edition-34-cores" | "sql-server-2019-license-standard-edition-36-cores" | "sql-server-2019-license-standard-edition-38-cores" | "sql-server-2019-license-standard-edition-4-cores" | "sql-server-2019-license-standard-edition-40-cores" | "sql-server-2019-license-standard-edition-42-cores" | "sql-server-2019-license-standard-edition-44-cores" | "sql-server-2019-license-standard-edition-46-cores" | "sql-server-2019-license-standard-edition-48-cores" | "sql-server-2019-license-standard-edition-50-cores" | "sql-server-2019-license-standard-edition-52-cores" | "sql-server-2019-license-standard-edition-54-cores" | "sql-server-2019-license-standard-edition-56-cores" | "sql-server-2019-license-standard-edition-58-cores" | "sql-server-2019-license-standard-edition-6-cores" | "sql-server-2019-license-standard-edition-60-cores" | "sql-server-2019-license-standard-edition-62-cores" | "sql-server-2019-license-standard-edition-64-cores" | "sql-server-2019-license-standard-edition-8-cores" | "sql-server-2019-license-standard-edition-96-cores" | "sql-server-2019-license-web-edition-10-cores" | "sql-server-2019-license-web-edition-12-cores" | "sql-server-2019-license-web-edition-128-cores" | "sql-server-2019-license-web-edition-14-cores" | "sql-server-2019-license-web-edition-16-cores" | "sql-server-2019-license-web-edition-18-cores" | "sql-server-2019-license-web-edition-20-cores" | "sql-server-2019-license-web-edition-22-cores" | "sql-server-2019-license-web-edition-24-cores" | "sql-server-2019-license-web-edition-26-cores" | "sql-server-2019-license-web-edition-28-cores" | "sql-server-2019-license-web-edition-30-cores" | "sql-server-2019-license-web-edition-32-cores" | "sql-server-2019-license-web-edition-34-cores" | "sql-server-2019-license-web-edition-36-cores" | "sql-server-2019-license-web-edition-38-cores" | "sql-server-2019-license-web-edition-4-cores" | "sql-server-2019-license-web-edition-40-cores" | "sql-server-2019-license-web-edition-42-cores" | "sql-server-2019-license-web-edition-44-cores" | "sql-server-2019-license-web-edition-46-cores" | "sql-server-2019-license-web-edition-48-cores" | "sql-server-2019-license-web-edition-50-cores" | "sql-server-2019-license-web-edition-52-cores" | "sql-server-2019-license-web-edition-54-cores" | "sql-server-2019-license-web-edition-56-cores" | "sql-server-2019-license-web-edition-58-cores" | "sql-server-2019-license-web-edition-6-cores" | "sql-server-2019-license-web-edition-60-cores" | "sql-server-2019-license-web-edition-62-cores" | "sql-server-2019-license-web-edition-64-cores" | "sql-server-2019-license-web-edition-8-cores" | "sql-server-2019-license-web-edition-96-cores" | "sql-server-2022-license-enterprise-edition-10-cores" | "sql-server-2022-license-enterprise-edition-12-cores" | "sql-server-2022-license-enterprise-edition-128-cores" | "sql-server-2022-license-enterprise-edition-14-cores" | "sql-server-2022-license-enterprise-edition-16-cores" | "sql-server-2022-license-enterprise-edition-18-cores" | "sql-server-2022-license-enterprise-edition-20-cores" | "sql-server-2022-license-enterprise-edition-22-cores" | "sql-server-2022-license-enterprise-edition-24-cores" | "sql-server-2022-license-enterprise-edition-26-cores" | "sql-server-2022-license-enterprise-edition-28-cores" | "sql-server-2022-license-enterprise-edition-30-cores" | "sql-server-2022-license-enterprise-edition-32-cores" | "sql-server-2022-license-enterprise-edition-34-cores" | "sql-server-2022-license-enterprise-edition-36-cores" | "sql-server-2022-license-enterprise-edition-38-cores" | "sql-server-2022-license-enterprise-edition-4-cores" | "sql-server-2022-license-enterprise-edition-40-cores" | "sql-server-2022-license-enterprise-edition-42-cores" | "sql-server-2022-license-enterprise-edition-44-cores" | "sql-server-2022-license-enterprise-edition-46-cores" | "sql-server-2022-license-enterprise-edition-48-cores" | "sql-server-2022-license-enterprise-edition-50-cores" | "sql-server-2022-license-enterprise-edition-52-cores" | "sql-server-2022-license-enterprise-edition-54-cores" | "sql-server-2022-license-enterprise-edition-56-cores" | "sql-server-2022-license-enterprise-edition-58-cores" | "sql-server-2022-license-enterprise-edition-6-cores" | "sql-server-2022-license-enterprise-edition-60-cores" | "sql-server-2022-license-enterprise-edition-62-cores" | "sql-server-2022-license-enterprise-edition-64-cores" | "sql-server-2022-license-enterprise-edition-8-cores" | "sql-server-2022-license-enterprise-edition-96-cores" | "sql-server-2022-license-standard-edition-10-cores" | "sql-server-2022-license-standard-edition-12-cores" | "sql-server-2022-license-standard-edition-128-cores" | "sql-server-2022-license-standard-edition-14-cores" | "sql-server-2022-license-standard-edition-16-cores" | "sql-server-2022-license-standard-edition-18-cores" | "sql-server-2022-license-standard-edition-20-cores" | "sql-server-2022-license-standard-edition-22-cores" | "sql-server-2022-license-standard-edition-24-cores" | "sql-server-2022-license-standard-edition-26-cores" | "sql-server-2022-license-standard-edition-28-cores" | "sql-server-2022-license-standard-edition-30-cores" | "sql-server-2022-license-standard-edition-32-cores" | "sql-server-2022-license-standard-edition-34-cores" | "sql-server-2022-license-standard-edition-36-cores" | "sql-server-2022-license-standard-edition-38-cores" | "sql-server-2022-license-standard-edition-4-cores" | "sql-server-2022-license-standard-edition-40-cores" | "sql-server-2022-license-standard-edition-42-cores" | "sql-server-2022-license-standard-edition-44-cores" | "sql-server-2022-license-standard-edition-46-cores" | "sql-server-2022-license-standard-edition-48-cores" | "sql-server-2022-license-standard-edition-50-cores" | "sql-server-2022-license-standard-edition-52-cores" | "sql-server-2022-license-standard-edition-54-cores" | "sql-server-2022-license-standard-edition-56-cores" | "sql-server-2022-license-standard-edition-58-cores" | "sql-server-2022-license-standard-edition-6-cores" | "sql-server-2022-license-standard-edition-60-cores" | "sql-server-2022-license-standard-edition-62-cores" | "sql-server-2022-license-standard-edition-64-cores" | "sql-server-2022-license-standard-edition-8-cores" | "sql-server-2022-license-standard-edition-96-cores" | "sql-server-2022-license-web-edition-10-cores" | "sql-server-2022-license-web-edition-12-cores" | "sql-server-2022-license-web-edition-128-cores" | "sql-server-2022-license-web-edition-14-cores" | "sql-server-2022-license-web-edition-16-cores" | "sql-server-2022-license-web-edition-18-cores" | "sql-server-2022-license-web-edition-20-cores" | "sql-server-2022-license-web-edition-22-cores" | "sql-server-2022-license-web-edition-24-cores" | "sql-server-2022-license-web-edition-26-cores" | "sql-server-2022-license-web-edition-28-cores" | "sql-server-2022-license-web-edition-30-cores" | "sql-server-2022-license-web-edition-32-cores" | "sql-server-2022-license-web-edition-34-cores" | "sql-server-2022-license-web-edition-36-cores" | "sql-server-2022-license-web-edition-38-cores" | "sql-server-2022-license-web-edition-4-cores" | "sql-server-2022-license-web-edition-40-cores" | "sql-server-2022-license-web-edition-42-cores" | "sql-server-2022-license-web-edition-44-cores" | "sql-server-2022-license-web-edition-46-cores" | "sql-server-2022-license-web-edition-48-cores" | "sql-server-2022-license-web-edition-50-cores" | "sql-server-2022-license-web-edition-52-cores" | "sql-server-2022-license-web-edition-54-cores" | "sql-server-2022-license-web-edition-56-cores" | "sql-server-2022-license-web-edition-58-cores" | "sql-server-2022-license-web-edition-6-cores" | "sql-server-2022-license-web-edition-60-cores" | "sql-server-2022-license-web-edition-62-cores" | "sql-server-2022-license-web-edition-64-cores" | "sql-server-2022-license-web-edition-8-cores" | "sql-server-2022-license-web-edition-96-cores"
     /**
      * All versions for Windows products
      * type fullname: license.WindowsOsVersionEnum
      */
-    export type WindowsOsVersionEnum = "WINDOWS_SERVER_2003_ENTERPRISE_EDITION" | "WINDOWS_SERVER_2003_ENTERPRISE_EDITION_2_CPU" | "WINDOWS_SERVER_2003_STANDARD_EDITION" | "WINDOWS_SERVER_2003_WEB_EDITION" | "WINDOWS_SERVER_2003_WEB_EDITION_2_CPU" | "WINDOWS_SERVER_2003_WEB_ENHANCED_EDITION" | "WINDOWS_SERVER_2003_WEB_STANDARD_EDITION" | "WINDOWS_SERVER_2003_WEB_STANDARD_EDITION_2_CPU" | "WINDOWS_SERVER_2008_DATACENTER_EDITION" | "WINDOWS_SERVER_2008_DATACENTER_EDITION_2_CPU" | "WINDOWS_SERVER_2008_DATACENTER_EDITION_4_CPU" | "WINDOWS_SERVER_2008_ENTERPRISE_EDITION" | "WINDOWS_SERVER_2008_ENTERPRISE_EDITION_2_CPU" | "WINDOWS_SERVER_2008_ENTERPRISE_EDITION_4_CPU" | "WINDOWS_SERVER_2008_STANDARD_EDITION" | "WINDOWS_SERVER_2008_STANDARD_EDITION_2_CPU" | "WINDOWS_SERVER_2008_STANDARD_EDITION_4_CPU" | "WINDOWS_SERVER_2008_WEB_EDITION" | "WINDOWS_SERVER_2008_WEB_EDITION_2_CPU" | "WINDOWS_SERVER_2008_WEB_EDITION_4_CPU" | "WINDOWS_SERVER_2008_WEB_STANDARD_EDITION" | "WINDOWS_SERVER_2012_DATACENTER_EDITION" | "WINDOWS_SERVER_2012_DATACENTER_EDITION_2_CPU" | "WINDOWS_SERVER_2012_DATACENTER_EDITION_4_CPU" | "WINDOWS_SERVER_2012_ENTERPRISE_EDITION" | "WINDOWS_SERVER_2012_ENTERPRISE_EDITION_2_CPU" | "WINDOWS_SERVER_2012_STANDARD_EDITION" | "WINDOWS_SERVER_2012_STANDARD_EDITION_2_CPU" | "WINDOWS_SERVER_2012_STANDARD_EDITION_4_CPU" | "WINDOWS_SERVER_2012_WEB_EDITION" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_1_CPU_10_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_1_CPU_12_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_1_CPU_14_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_1_CPU_16_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_1_CPU_18_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_1_CPU_20_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_1_CPU_22_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_1_CPU_24_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_1_CPU_8_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_2_CPU_10_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_2_CPU_12_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_2_CPU_14_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_2_CPU_16_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_2_CPU_18_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_2_CPU_20_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_2_CPU_22_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_2_CPU_24_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_2_CPU_8_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_4_CPU_10_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_4_CPU_12_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_4_CPU_14_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_4_CPU_16_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_4_CPU_18_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_4_CPU_20_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_4_CPU_22_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_4_CPU_24_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_4_CPU_8_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_1_CPU_10_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_1_CPU_12_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_1_CPU_14_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_1_CPU_16_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_1_CPU_18_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_1_CPU_20_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_1_CPU_22_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_1_CPU_24_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_1_CPU_8_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_2_CPU_10_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_2_CPU_12_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_2_CPU_14_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_2_CPU_16_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_2_CPU_18_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_2_CPU_20_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_2_CPU_22_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_2_CPU_24_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_2_CPU_8_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_10_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_12_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_14_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_16_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_18_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_20_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_22_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_24_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_8_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_10_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_12_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_14_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_16_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_18_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_20_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_22_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_24_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_26_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_28_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_30_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_32_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_34_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_36_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_38_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_40_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_42_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_44_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_46_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_48_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_50_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_52_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_54_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_56_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_58_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_60_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_62_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_64_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_8_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_10_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_12_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_14_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_16_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_18_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_20_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_22_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_24_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_26_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_28_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_30_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_32_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_34_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_36_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_38_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_40_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_42_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_44_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_46_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_48_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_50_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_52_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_54_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_56_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_58_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_60_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_62_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_64_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_8_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_10_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_12_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_14_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_16_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_18_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_20_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_22_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_24_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_26_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_28_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_30_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_32_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_34_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_36_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_38_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_40_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_42_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_44_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_46_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_48_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_50_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_52_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_54_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_56_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_58_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_60_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_62_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_64_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_8_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_10_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_12_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_14_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_16_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_18_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_20_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_22_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_24_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_26_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_28_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_30_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_32_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_34_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_36_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_38_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_40_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_42_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_44_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_46_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_48_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_50_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_52_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_54_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_56_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_58_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_60_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_62_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_64_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_8_CORES" | "windows-server-2008-license-datacenter-edition-1-cpu" | "windows-server-2008-license-datacenter-edition-2-cpu" | "windows-server-2008-license-datacenter-edition-4-cpu" | "windows-server-2008-license-enterprise-edition-1-cpu" | "windows-server-2008-license-enterprise-edition-2-cpu" | "windows-server-2008-license-enterprise-edition-4-cpu" | "windows-server-2008-license-standard-edition-1-cpu" | "windows-server-2008-license-standard-edition-2-cpu" | "windows-server-2008-license-standard-edition-4-cpu" | "windows-server-2008-license-web-edition-1-cpu" | "windows-server-2008-license-web-edition-2-cpu" | "windows-server-2008-license-web-edition-4-cpu" | "windows-server-2012-license-datacenter-edition-1-cpu" | "windows-server-2012-license-datacenter-edition-2-cpu" | "windows-server-2012-license-datacenter-edition-4-cpu" | "windows-server-2012-license-standard-edition-1-cpu" | "windows-server-2012-license-standard-edition-2-cpu" | "windows-server-2012-license-standard-edition-4-cpu" | "windows-server-2016-license-datacenter-edition-1-cpu-10-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-12-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-14-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-16-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-18-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-20-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-22-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-24-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-8-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-10-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-12-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-14-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-16-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-18-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-20-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-22-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-24-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-8-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-10-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-12-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-14-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-16-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-18-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-20-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-22-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-24-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-8-cores" | "windows-server-2016-license-standard-edition-1-cpu-10-cores" | "windows-server-2016-license-standard-edition-1-cpu-12-cores" | "windows-server-2016-license-standard-edition-1-cpu-14-cores" | "windows-server-2016-license-standard-edition-1-cpu-16-cores" | "windows-server-2016-license-standard-edition-1-cpu-18-cores" | "windows-server-2016-license-standard-edition-1-cpu-20-cores" | "windows-server-2016-license-standard-edition-1-cpu-22-cores" | "windows-server-2016-license-standard-edition-1-cpu-24-cores" | "windows-server-2016-license-standard-edition-1-cpu-8-cores" | "windows-server-2016-license-standard-edition-2-cpu-10-cores" | "windows-server-2016-license-standard-edition-2-cpu-12-cores" | "windows-server-2016-license-standard-edition-2-cpu-14-cores" | "windows-server-2016-license-standard-edition-2-cpu-16-cores" | "windows-server-2016-license-standard-edition-2-cpu-18-cores" | "windows-server-2016-license-standard-edition-2-cpu-20-cores" | "windows-server-2016-license-standard-edition-2-cpu-22-cores" | "windows-server-2016-license-standard-edition-2-cpu-24-cores" | "windows-server-2016-license-standard-edition-2-cpu-8-cores" | "windows-server-2016-license-standard-edition-4-cpu-10-cores" | "windows-server-2016-license-standard-edition-4-cpu-12-cores" | "windows-server-2016-license-standard-edition-4-cpu-14-cores" | "windows-server-2016-license-standard-edition-4-cpu-16-cores" | "windows-server-2016-license-standard-edition-4-cpu-18-cores" | "windows-server-2016-license-standard-edition-4-cpu-20-cores" | "windows-server-2016-license-standard-edition-4-cpu-22-cores" | "windows-server-2016-license-standard-edition-4-cpu-24-cores" | "windows-server-2016-license-standard-edition-4-cpu-8-cores" | "windows-server-2019-license-datacenter-edition-10-cores" | "windows-server-2019-license-datacenter-edition-12-cores" | "windows-server-2019-license-datacenter-edition-14-cores" | "windows-server-2019-license-datacenter-edition-16-cores" | "windows-server-2019-license-datacenter-edition-18-cores" | "windows-server-2019-license-datacenter-edition-20-cores" | "windows-server-2019-license-datacenter-edition-22-cores" | "windows-server-2019-license-datacenter-edition-24-cores" | "windows-server-2019-license-datacenter-edition-26-cores" | "windows-server-2019-license-datacenter-edition-28-cores" | "windows-server-2019-license-datacenter-edition-30-cores" | "windows-server-2019-license-datacenter-edition-32-cores" | "windows-server-2019-license-datacenter-edition-34-cores" | "windows-server-2019-license-datacenter-edition-36-cores" | "windows-server-2019-license-datacenter-edition-38-cores" | "windows-server-2019-license-datacenter-edition-40-cores" | "windows-server-2019-license-datacenter-edition-42-cores" | "windows-server-2019-license-datacenter-edition-44-cores" | "windows-server-2019-license-datacenter-edition-46-cores" | "windows-server-2019-license-datacenter-edition-48-cores" | "windows-server-2019-license-datacenter-edition-50-cores" | "windows-server-2019-license-datacenter-edition-52-cores" | "windows-server-2019-license-datacenter-edition-54-cores" | "windows-server-2019-license-datacenter-edition-56-cores" | "windows-server-2019-license-datacenter-edition-58-cores" | "windows-server-2019-license-datacenter-edition-60-cores" | "windows-server-2019-license-datacenter-edition-62-cores" | "windows-server-2019-license-datacenter-edition-64-cores" | "windows-server-2019-license-datacenter-edition-8-cores" | "windows-server-2019-license-standard-edition-10-cores" | "windows-server-2019-license-standard-edition-12-cores" | "windows-server-2019-license-standard-edition-14-cores" | "windows-server-2019-license-standard-edition-16-cores" | "windows-server-2019-license-standard-edition-18-cores" | "windows-server-2019-license-standard-edition-20-cores" | "windows-server-2019-license-standard-edition-22-cores" | "windows-server-2019-license-standard-edition-24-cores" | "windows-server-2019-license-standard-edition-26-cores" | "windows-server-2019-license-standard-edition-28-cores" | "windows-server-2019-license-standard-edition-30-cores" | "windows-server-2019-license-standard-edition-32-cores" | "windows-server-2019-license-standard-edition-34-cores" | "windows-server-2019-license-standard-edition-36-cores" | "windows-server-2019-license-standard-edition-38-cores" | "windows-server-2019-license-standard-edition-40-cores" | "windows-server-2019-license-standard-edition-42-cores" | "windows-server-2019-license-standard-edition-44-cores" | "windows-server-2019-license-standard-edition-46-cores" | "windows-server-2019-license-standard-edition-48-cores" | "windows-server-2019-license-standard-edition-50-cores" | "windows-server-2019-license-standard-edition-52-cores" | "windows-server-2019-license-standard-edition-54-cores" | "windows-server-2019-license-standard-edition-56-cores" | "windows-server-2019-license-standard-edition-58-cores" | "windows-server-2019-license-standard-edition-60-cores" | "windows-server-2019-license-standard-edition-62-cores" | "windows-server-2019-license-standard-edition-64-cores" | "windows-server-2019-license-standard-edition-8-cores" | "windows-server-2022-license-datacenter-edition-10-cores" | "windows-server-2022-license-datacenter-edition-12-cores" | "windows-server-2022-license-datacenter-edition-14-cores" | "windows-server-2022-license-datacenter-edition-16-cores" | "windows-server-2022-license-datacenter-edition-18-cores" | "windows-server-2022-license-datacenter-edition-20-cores" | "windows-server-2022-license-datacenter-edition-22-cores" | "windows-server-2022-license-datacenter-edition-24-cores" | "windows-server-2022-license-datacenter-edition-26-cores" | "windows-server-2022-license-datacenter-edition-28-cores" | "windows-server-2022-license-datacenter-edition-30-cores" | "windows-server-2022-license-datacenter-edition-32-cores" | "windows-server-2022-license-datacenter-edition-34-cores" | "windows-server-2022-license-datacenter-edition-36-cores" | "windows-server-2022-license-datacenter-edition-38-cores" | "windows-server-2022-license-datacenter-edition-40-cores" | "windows-server-2022-license-datacenter-edition-42-cores" | "windows-server-2022-license-datacenter-edition-44-cores" | "windows-server-2022-license-datacenter-edition-46-cores" | "windows-server-2022-license-datacenter-edition-48-cores" | "windows-server-2022-license-datacenter-edition-50-cores" | "windows-server-2022-license-datacenter-edition-52-cores" | "windows-server-2022-license-datacenter-edition-54-cores" | "windows-server-2022-license-datacenter-edition-56-cores" | "windows-server-2022-license-datacenter-edition-58-cores" | "windows-server-2022-license-datacenter-edition-60-cores" | "windows-server-2022-license-datacenter-edition-62-cores" | "windows-server-2022-license-datacenter-edition-64-cores" | "windows-server-2022-license-datacenter-edition-8-cores" | "windows-server-2022-license-standard-edition-10-cores" | "windows-server-2022-license-standard-edition-12-cores" | "windows-server-2022-license-standard-edition-14-cores" | "windows-server-2022-license-standard-edition-16-cores" | "windows-server-2022-license-standard-edition-18-cores" | "windows-server-2022-license-standard-edition-20-cores" | "windows-server-2022-license-standard-edition-22-cores" | "windows-server-2022-license-standard-edition-24-cores" | "windows-server-2022-license-standard-edition-26-cores" | "windows-server-2022-license-standard-edition-28-cores" | "windows-server-2022-license-standard-edition-30-cores" | "windows-server-2022-license-standard-edition-32-cores" | "windows-server-2022-license-standard-edition-34-cores" | "windows-server-2022-license-standard-edition-36-cores" | "windows-server-2022-license-standard-edition-38-cores" | "windows-server-2022-license-standard-edition-40-cores" | "windows-server-2022-license-standard-edition-42-cores" | "windows-server-2022-license-standard-edition-44-cores" | "windows-server-2022-license-standard-edition-46-cores" | "windows-server-2022-license-standard-edition-48-cores" | "windows-server-2022-license-standard-edition-50-cores" | "windows-server-2022-license-standard-edition-52-cores" | "windows-server-2022-license-standard-edition-54-cores" | "windows-server-2022-license-standard-edition-56-cores" | "windows-server-2022-license-standard-edition-58-cores" | "windows-server-2022-license-standard-edition-60-cores" | "windows-server-2022-license-standard-edition-62-cores" | "windows-server-2022-license-standard-edition-64-cores" | "windows-server-2022-license-standard-edition-8-cores"
+    export type WindowsOsVersionEnum = "WINDOWS_SERVER_2003_ENTERPRISE_EDITION" | "WINDOWS_SERVER_2003_ENTERPRISE_EDITION_2_CPU" | "WINDOWS_SERVER_2003_STANDARD_EDITION" | "WINDOWS_SERVER_2003_WEB_EDITION" | "WINDOWS_SERVER_2003_WEB_EDITION_2_CPU" | "WINDOWS_SERVER_2003_WEB_ENHANCED_EDITION" | "WINDOWS_SERVER_2003_WEB_STANDARD_EDITION" | "WINDOWS_SERVER_2003_WEB_STANDARD_EDITION_2_CPU" | "WINDOWS_SERVER_2008_DATACENTER_EDITION" | "WINDOWS_SERVER_2008_DATACENTER_EDITION_2_CPU" | "WINDOWS_SERVER_2008_DATACENTER_EDITION_4_CPU" | "WINDOWS_SERVER_2008_ENTERPRISE_EDITION" | "WINDOWS_SERVER_2008_ENTERPRISE_EDITION_2_CPU" | "WINDOWS_SERVER_2008_ENTERPRISE_EDITION_4_CPU" | "WINDOWS_SERVER_2008_STANDARD_EDITION" | "WINDOWS_SERVER_2008_STANDARD_EDITION_2_CPU" | "WINDOWS_SERVER_2008_STANDARD_EDITION_4_CPU" | "WINDOWS_SERVER_2008_WEB_EDITION" | "WINDOWS_SERVER_2008_WEB_EDITION_2_CPU" | "WINDOWS_SERVER_2008_WEB_EDITION_4_CPU" | "WINDOWS_SERVER_2008_WEB_STANDARD_EDITION" | "WINDOWS_SERVER_2012_DATACENTER_EDITION" | "WINDOWS_SERVER_2012_DATACENTER_EDITION_2_CPU" | "WINDOWS_SERVER_2012_DATACENTER_EDITION_4_CPU" | "WINDOWS_SERVER_2012_ENTERPRISE_EDITION" | "WINDOWS_SERVER_2012_ENTERPRISE_EDITION_2_CPU" | "WINDOWS_SERVER_2012_STANDARD_EDITION" | "WINDOWS_SERVER_2012_STANDARD_EDITION_2_CPU" | "WINDOWS_SERVER_2012_STANDARD_EDITION_4_CPU" | "WINDOWS_SERVER_2012_WEB_EDITION" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_1_CPU_10_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_1_CPU_12_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_1_CPU_14_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_1_CPU_16_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_1_CPU_18_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_1_CPU_20_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_1_CPU_22_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_1_CPU_24_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_1_CPU_8_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_2_CPU_10_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_2_CPU_12_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_2_CPU_14_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_2_CPU_16_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_2_CPU_18_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_2_CPU_20_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_2_CPU_22_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_2_CPU_24_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_2_CPU_8_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_4_CPU_10_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_4_CPU_12_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_4_CPU_14_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_4_CPU_16_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_4_CPU_18_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_4_CPU_20_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_4_CPU_22_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_4_CPU_24_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_4_CPU_8_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_1_CPU_10_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_1_CPU_12_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_1_CPU_14_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_1_CPU_16_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_1_CPU_18_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_1_CPU_20_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_1_CPU_22_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_1_CPU_24_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_1_CPU_8_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_2_CPU_10_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_2_CPU_12_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_2_CPU_14_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_2_CPU_16_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_2_CPU_18_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_2_CPU_20_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_2_CPU_22_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_2_CPU_24_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_2_CPU_8_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_10_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_12_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_14_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_16_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_18_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_20_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_22_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_24_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_8_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_10_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_128_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_12_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_14_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_16_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_18_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_20_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_22_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_24_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_256_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_26_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_28_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_30_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_32_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_34_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_36_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_38_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_40_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_42_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_44_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_46_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_48_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_50_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_512_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_52_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_54_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_56_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_58_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_60_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_62_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_64_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_8_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_96_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_10_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_128_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_12_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_14_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_16_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_18_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_20_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_22_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_24_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_256_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_26_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_28_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_30_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_32_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_34_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_36_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_38_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_40_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_42_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_44_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_46_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_48_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_50_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_512_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_52_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_54_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_56_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_58_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_60_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_62_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_64_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_8_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_96_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_10_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_128_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_12_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_14_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_16_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_18_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_20_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_22_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_24_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_256_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_26_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_28_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_30_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_32_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_34_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_36_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_38_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_40_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_42_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_44_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_46_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_48_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_50_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_512_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_52_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_54_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_56_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_58_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_60_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_62_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_64_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_8_CORES" | "WINDOWS_SERVER_2022_DATACENTER_EDITION_96_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_10_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_128_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_12_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_14_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_16_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_18_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_20_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_22_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_24_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_256_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_26_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_28_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_30_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_32_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_34_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_36_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_38_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_40_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_42_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_44_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_46_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_48_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_50_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_512_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_52_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_54_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_56_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_58_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_60_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_62_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_64_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_8_CORES" | "WINDOWS_SERVER_2022_STANDARD_EDITION_96_CORES" | "windows-server-2008-license-datacenter-edition-1-cpu" | "windows-server-2008-license-datacenter-edition-2-cpu" | "windows-server-2008-license-datacenter-edition-4-cpu" | "windows-server-2008-license-enterprise-edition-1-cpu" | "windows-server-2008-license-enterprise-edition-2-cpu" | "windows-server-2008-license-enterprise-edition-4-cpu" | "windows-server-2008-license-standard-edition-1-cpu" | "windows-server-2008-license-standard-edition-2-cpu" | "windows-server-2008-license-standard-edition-4-cpu" | "windows-server-2008-license-web-edition-1-cpu" | "windows-server-2008-license-web-edition-2-cpu" | "windows-server-2008-license-web-edition-4-cpu" | "windows-server-2012-license-datacenter-edition-1-cpu" | "windows-server-2012-license-datacenter-edition-2-cpu" | "windows-server-2012-license-datacenter-edition-4-cpu" | "windows-server-2012-license-standard-edition-1-cpu" | "windows-server-2012-license-standard-edition-2-cpu" | "windows-server-2012-license-standard-edition-4-cpu" | "windows-server-2016-license-datacenter-edition-1-cpu-10-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-12-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-14-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-16-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-18-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-20-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-22-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-24-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-8-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-10-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-12-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-14-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-16-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-18-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-20-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-22-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-24-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-8-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-10-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-12-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-14-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-16-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-18-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-20-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-22-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-24-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-8-cores" | "windows-server-2016-license-standard-edition-1-cpu-10-cores" | "windows-server-2016-license-standard-edition-1-cpu-12-cores" | "windows-server-2016-license-standard-edition-1-cpu-14-cores" | "windows-server-2016-license-standard-edition-1-cpu-16-cores" | "windows-server-2016-license-standard-edition-1-cpu-18-cores" | "windows-server-2016-license-standard-edition-1-cpu-20-cores" | "windows-server-2016-license-standard-edition-1-cpu-22-cores" | "windows-server-2016-license-standard-edition-1-cpu-24-cores" | "windows-server-2016-license-standard-edition-1-cpu-8-cores" | "windows-server-2016-license-standard-edition-2-cpu-10-cores" | "windows-server-2016-license-standard-edition-2-cpu-12-cores" | "windows-server-2016-license-standard-edition-2-cpu-14-cores" | "windows-server-2016-license-standard-edition-2-cpu-16-cores" | "windows-server-2016-license-standard-edition-2-cpu-18-cores" | "windows-server-2016-license-standard-edition-2-cpu-20-cores" | "windows-server-2016-license-standard-edition-2-cpu-22-cores" | "windows-server-2016-license-standard-edition-2-cpu-24-cores" | "windows-server-2016-license-standard-edition-2-cpu-8-cores" | "windows-server-2016-license-standard-edition-4-cpu-10-cores" | "windows-server-2016-license-standard-edition-4-cpu-12-cores" | "windows-server-2016-license-standard-edition-4-cpu-14-cores" | "windows-server-2016-license-standard-edition-4-cpu-16-cores" | "windows-server-2016-license-standard-edition-4-cpu-18-cores" | "windows-server-2016-license-standard-edition-4-cpu-20-cores" | "windows-server-2016-license-standard-edition-4-cpu-22-cores" | "windows-server-2016-license-standard-edition-4-cpu-24-cores" | "windows-server-2016-license-standard-edition-4-cpu-8-cores" | "windows-server-2019-license-datacenter-edition-10-cores" | "windows-server-2019-license-datacenter-edition-12-cores" | "windows-server-2019-license-datacenter-edition-128-cores" | "windows-server-2019-license-datacenter-edition-14-cores" | "windows-server-2019-license-datacenter-edition-16-cores" | "windows-server-2019-license-datacenter-edition-18-cores" | "windows-server-2019-license-datacenter-edition-20-cores" | "windows-server-2019-license-datacenter-edition-22-cores" | "windows-server-2019-license-datacenter-edition-24-cores" | "windows-server-2019-license-datacenter-edition-256-cores" | "windows-server-2019-license-datacenter-edition-26-cores" | "windows-server-2019-license-datacenter-edition-28-cores" | "windows-server-2019-license-datacenter-edition-30-cores" | "windows-server-2019-license-datacenter-edition-32-cores" | "windows-server-2019-license-datacenter-edition-34-cores" | "windows-server-2019-license-datacenter-edition-36-cores" | "windows-server-2019-license-datacenter-edition-38-cores" | "windows-server-2019-license-datacenter-edition-40-cores" | "windows-server-2019-license-datacenter-edition-42-cores" | "windows-server-2019-license-datacenter-edition-44-cores" | "windows-server-2019-license-datacenter-edition-46-cores" | "windows-server-2019-license-datacenter-edition-48-cores" | "windows-server-2019-license-datacenter-edition-50-cores" | "windows-server-2019-license-datacenter-edition-512-cores" | "windows-server-2019-license-datacenter-edition-52-cores" | "windows-server-2019-license-datacenter-edition-54-cores" | "windows-server-2019-license-datacenter-edition-56-cores" | "windows-server-2019-license-datacenter-edition-58-cores" | "windows-server-2019-license-datacenter-edition-60-cores" | "windows-server-2019-license-datacenter-edition-62-cores" | "windows-server-2019-license-datacenter-edition-64-cores" | "windows-server-2019-license-datacenter-edition-8-cores" | "windows-server-2019-license-datacenter-edition-96-cores" | "windows-server-2019-license-standard-edition-10-cores" | "windows-server-2019-license-standard-edition-12-cores" | "windows-server-2019-license-standard-edition-128-cores" | "windows-server-2019-license-standard-edition-14-cores" | "windows-server-2019-license-standard-edition-16-cores" | "windows-server-2019-license-standard-edition-18-cores" | "windows-server-2019-license-standard-edition-20-cores" | "windows-server-2019-license-standard-edition-22-cores" | "windows-server-2019-license-standard-edition-24-cores" | "windows-server-2019-license-standard-edition-256-cores" | "windows-server-2019-license-standard-edition-26-cores" | "windows-server-2019-license-standard-edition-28-cores" | "windows-server-2019-license-standard-edition-30-cores" | "windows-server-2019-license-standard-edition-32-cores" | "windows-server-2019-license-standard-edition-34-cores" | "windows-server-2019-license-standard-edition-36-cores" | "windows-server-2019-license-standard-edition-38-cores" | "windows-server-2019-license-standard-edition-40-cores" | "windows-server-2019-license-standard-edition-42-cores" | "windows-server-2019-license-standard-edition-44-cores" | "windows-server-2019-license-standard-edition-46-cores" | "windows-server-2019-license-standard-edition-48-cores" | "windows-server-2019-license-standard-edition-50-cores" | "windows-server-2019-license-standard-edition-512-cores" | "windows-server-2019-license-standard-edition-52-cores" | "windows-server-2019-license-standard-edition-54-cores" | "windows-server-2019-license-standard-edition-56-cores" | "windows-server-2019-license-standard-edition-58-cores" | "windows-server-2019-license-standard-edition-60-cores" | "windows-server-2019-license-standard-edition-62-cores" | "windows-server-2019-license-standard-edition-64-cores" | "windows-server-2019-license-standard-edition-8-cores" | "windows-server-2019-license-standard-edition-96-cores" | "windows-server-2022-license-datacenter-edition-10-cores" | "windows-server-2022-license-datacenter-edition-12-cores" | "windows-server-2022-license-datacenter-edition-128-cores" | "windows-server-2022-license-datacenter-edition-14-cores" | "windows-server-2022-license-datacenter-edition-16-cores" | "windows-server-2022-license-datacenter-edition-18-cores" | "windows-server-2022-license-datacenter-edition-20-cores" | "windows-server-2022-license-datacenter-edition-22-cores" | "windows-server-2022-license-datacenter-edition-24-cores" | "windows-server-2022-license-datacenter-edition-256-cores" | "windows-server-2022-license-datacenter-edition-26-cores" | "windows-server-2022-license-datacenter-edition-28-cores" | "windows-server-2022-license-datacenter-edition-30-cores" | "windows-server-2022-license-datacenter-edition-32-cores" | "windows-server-2022-license-datacenter-edition-34-cores" | "windows-server-2022-license-datacenter-edition-36-cores" | "windows-server-2022-license-datacenter-edition-38-cores" | "windows-server-2022-license-datacenter-edition-40-cores" | "windows-server-2022-license-datacenter-edition-42-cores" | "windows-server-2022-license-datacenter-edition-44-cores" | "windows-server-2022-license-datacenter-edition-46-cores" | "windows-server-2022-license-datacenter-edition-48-cores" | "windows-server-2022-license-datacenter-edition-50-cores" | "windows-server-2022-license-datacenter-edition-512-cores" | "windows-server-2022-license-datacenter-edition-52-cores" | "windows-server-2022-license-datacenter-edition-54-cores" | "windows-server-2022-license-datacenter-edition-56-cores" | "windows-server-2022-license-datacenter-edition-58-cores" | "windows-server-2022-license-datacenter-edition-60-cores" | "windows-server-2022-license-datacenter-edition-62-cores" | "windows-server-2022-license-datacenter-edition-64-cores" | "windows-server-2022-license-datacenter-edition-8-cores" | "windows-server-2022-license-datacenter-edition-96-cores" | "windows-server-2022-license-standard-edition-10-cores" | "windows-server-2022-license-standard-edition-12-cores" | "windows-server-2022-license-standard-edition-128-cores" | "windows-server-2022-license-standard-edition-14-cores" | "windows-server-2022-license-standard-edition-16-cores" | "windows-server-2022-license-standard-edition-18-cores" | "windows-server-2022-license-standard-edition-20-cores" | "windows-server-2022-license-standard-edition-22-cores" | "windows-server-2022-license-standard-edition-24-cores" | "windows-server-2022-license-standard-edition-256-cores" | "windows-server-2022-license-standard-edition-26-cores" | "windows-server-2022-license-standard-edition-28-cores" | "windows-server-2022-license-standard-edition-30-cores" | "windows-server-2022-license-standard-edition-32-cores" | "windows-server-2022-license-standard-edition-34-cores" | "windows-server-2022-license-standard-edition-36-cores" | "windows-server-2022-license-standard-edition-38-cores" | "windows-server-2022-license-standard-edition-40-cores" | "windows-server-2022-license-standard-edition-42-cores" | "windows-server-2022-license-standard-edition-44-cores" | "windows-server-2022-license-standard-edition-46-cores" | "windows-server-2022-license-standard-edition-48-cores" | "windows-server-2022-license-standard-edition-50-cores" | "windows-server-2022-license-standard-edition-512-cores" | "windows-server-2022-license-standard-edition-52-cores" | "windows-server-2022-license-standard-edition-54-cores" | "windows-server-2022-license-standard-edition-56-cores" | "windows-server-2022-license-standard-edition-58-cores" | "windows-server-2022-license-standard-edition-60-cores" | "windows-server-2022-license-standard-edition-62-cores" | "windows-server-2022-license-standard-edition-64-cores" | "windows-server-2022-license-standard-edition-8-cores" | "windows-server-2022-license-standard-edition-96-cores"
     /**
      * All SQL Server versions for Windows products
      * type fullname: license.WindowsSqlVersionEnum
@@ -452,6 +389,11 @@ export namespace nichandle {
     export type OvhSubsidiaryEnum = "CZ" | "DE" | "ES" | "EU" | "FI" | "FR" | "GB" | "IE" | "IT" | "LT" | "MA" | "NL" | "PL" | "PT" | "SN" | "TN"
 }
 export namespace order {
+    /**
+     * Application context of a promotion
+     * type fullname: order.ContextTypeEnum
+     */
+    export type ContextTypeEnum = "discover" | "standard" | "welcome"
     /**
      * A contract
      * interface fullName: order.Contract.Contract
@@ -515,6 +457,7 @@ export namespace order {
      */
     export interface Price {
         currencyCode: order.CurrencyCodeEnum;
+        priceInUcents?: number;
         text: string;
         value: number;
     }
@@ -649,27 +592,6 @@ export namespace order {
         export type DurationUnitEnum = "day" | "hour" | "month" | "none"
         /**
          * Missing description
-         * interface fullName: order.cart.GenericDedicatedCreation.GenericDedicatedCreation
-         */
-        export interface GenericDedicatedCreation {
-            duration: string;
-            planCode: string;
-            pricingMode: string;
-            quantity: number;
-        }
-        /**
-         * Missing description
-         * interface fullName: order.cart.GenericDedicatedOptionsCreation.GenericDedicatedOptionsCreation
-         */
-        export interface GenericDedicatedOptionsCreation {
-            duration: string;
-            itemId: number;
-            planCode: string;
-            pricingMode: string;
-            quantity: number;
-        }
-        /**
-         * Missing description
          * interface fullName: order.cart.GenericDomainCreation.GenericDomainCreation
          */
         export interface GenericDomainCreation {
@@ -782,12 +704,12 @@ export namespace order {
             configurations?: number[];
             duration?: string;
             itemId: number;
-            offerId: string;
+            offerId?: string;
             options: number[];
             parentItemId?: number;
             prices: order.cart.Price[];
             productId: string;
-            settings: order.cart.DomainSettings;
+            settings: order.cart.ItemSettings;
         }
         /**
          * Missing description
@@ -798,6 +720,15 @@ export namespace order {
             value: string;
         }
         /**
+         * Order item settings
+         * interface fullName: order.cart.ItemSettings.ItemSettings
+         */
+        export interface ItemSettings {
+            planCode?: string;
+            pricingMode?: string;
+            quantity?: number;
+        }
+        /**
          * Missing description
          * interface fullName: order.cart.ItemUpdate.ItemUpdate
          */
@@ -806,12 +737,13 @@ export namespace order {
             quantity: number;
         }
         /**
-         * Price informations with label
+         * Price information with label
          * interface fullName: order.cart.Price.Price
          */
         export interface Price {
             label: order.cart.PriceLabelEnum;
             price: order.Price;
+            promotions?: order.cart.Promotion[];
         }
         /**
          * Label corresponding to different type of price
@@ -835,6 +767,19 @@ export namespace order {
             pricingMode: string;
             productId: string;
             quantityMax: number;
+        }
+        /**
+         * Describes a promotion of a product
+         * interface fullName: order.cart.Promotion.Promotion
+         */
+        export interface Promotion {
+            bundleWithPlanCodes: string[];
+            endDate?: string;
+            name: string;
+            price: order.Price;
+            startDate: string;
+            tags?: string[];
+            type: string;
         }
         /**
          * Missing description
@@ -971,7 +916,7 @@ export namespace order {
         }
         export namespace cloud {
             /**
-             * Describe extra informations of product offer
+             * Describe extra information of product offer
              * interface fullName: order.catalog.cloud.Blob.Blob
              */
             export interface Blob {
@@ -1194,7 +1139,7 @@ export namespace order {
                      */
                     export interface Disk {
                         number: number;
-                        planCode: string;
+                        planCode?: string;
                         raid: string;
                         size: number;
                         type: string;
@@ -1214,7 +1159,7 @@ export namespace order {
                      */
                     export interface Memory {
                         planCode?: string;
-                        size?: string;
+                        size?: number;
                         type?: string;
                     }
                     /**
@@ -1382,6 +1327,7 @@ export namespace order {
                 onInitialOrder: boolean;
                 onUpgradeOrder: boolean;
                 planCode: string;
+                showInOrderFunnel?: boolean;
                 type: string;
             }
             /**
@@ -1397,9 +1343,11 @@ export namespace order {
              * interface fullName: order.catalog.pcc.ServicePack.ServicePack
              */
             export interface ServicePack {
+                disabledElementForOrderType?: string[];
                 name: string;
                 options: order.catalog.pcc.ServicePackOption[];
                 planCode: string;
+                showInOrderFunnel?: boolean;
                 upgradableTo: string[];
             }
             /**
@@ -1435,6 +1383,7 @@ export namespace order {
              * interface fullName: order.catalog.pcc.managementFees.managementFees
              */
             export interface managementFees {
+                disabledElementForOrderType?: string[];
                 planCode: string;
                 upgradableTo: string[];
             }
@@ -1890,6 +1839,7 @@ export namespace order {
                 nodes?: order.catalog.publik.ProductBlobTechnicalNodes;
                 nvme?: order.catalog.publik.ProductBlobTechnicalNvme;
                 os?: order.catalog.publik.ProductBlobTechnicalOS;
+                provider?: order.catalog.publik.ProductBlobTechnicalProvider;
                 requestPerSeconds?: order.catalog.publik.ProductBlobTechnicalPerSeconds;
                 server?: order.catalog.publik.ProductBlobTechnicalServer;
                 storage?: order.catalog.publik.ProductBlobTechnicalStorage;
@@ -1908,10 +1858,12 @@ export namespace order {
                 cores?: number;
                 customizable?: boolean;
                 frequency?: number;
+                maxFrequency?: number;
                 model?: string;
                 number?: number;
                 score?: number;
                 threads?: number;
+                type?: string;
             }
             /**
              * Describes a Datacenter for a technical Blob
@@ -1932,6 +1884,7 @@ export namespace order {
                 capacity: number;
                 interface?: string;
                 iops?: number;
+                maximumCapacity: number;
                 number?: number;
                 sizeUnit?: string;
                 specs?: string;
@@ -2016,8 +1969,11 @@ export namespace order {
                 isMax?: boolean;
                 level?: number;
                 limit?: number;
+                max: number;
+                maxUnit: string;
                 shared?: boolean;
                 traffic?: number;
+                unit: string;
                 unlimited?: boolean;
             }
             /**
@@ -2053,6 +2009,14 @@ export namespace order {
                 unit?: string;
             }
             /**
+             * Describes a provider for a technical blob
+             * interface fullName: order.catalog.publik.ProductBlobTechnicalProvider.ProductBlobTechnicalProvider
+             */
+            export interface ProductBlobTechnicalProvider {
+                pointsOfPresence: number;
+                reference?: boolean;
+            }
+            /**
              * Describes a Raid for a technical blob
              * interface fullName: order.catalog.publik.ProductBlobTechnicalRaid.ProductBlobTechnicalRaid
              */
@@ -2062,7 +2026,7 @@ export namespace order {
                 type: string;
             }
             /**
-             * Describes some technicals informations for a technical blob
+             * Describes some technicals information for a technical blob
              * interface fullName: order.catalog.publik.ProductBlobTechnicalServer.ProductBlobTechnicalServer
              */
             export interface ProductBlobTechnicalServer {
@@ -2073,12 +2037,12 @@ export namespace order {
                 services: order.catalog.publik.ProductBlobTechnicalServices;
             }
             /**
-             * Describes some technicals informations
+             * Describes some technicals information
              * interface fullName: order.catalog.publik.ProductBlobTechnicalServices.ProductBlobTechnicalServices
              */
             export interface ProductBlobTechnicalServices {
                 antiddos: string;
-                includedBackup: number;
+                includedBackup?: number;
                 sla: number;
             }
             /**
@@ -2127,6 +2091,9 @@ export namespace order {
             export interface ProductBlobTechnicalVolumeIops {
                 guaranteed: boolean;
                 level: number;
+                max: number;
+                maxUnit: string;
+                unit: string;
             }
             /**
              * Describes a Promotion inside a Catalog
@@ -2183,7 +2150,7 @@ export namespace order {
          * Unit that represent the status of an operation
          * type fullname: order.upgrade.OperationStatusEnum
          */
-        export type OperationStatusEnum = "TODO" | "DOING" | "DONE" | "ERROR" | "DELAYED" | "CANCELLED" | "SCHEDULED"
+        export type OperationStatusEnum = "CANCELLED" | "DELAYED" | "DOING" | "DONE" | "ERROR" | "SCHEDULED" | "TODO"
         /**
          * Unit that represent the type of an operation
          * type fullname: order.upgrade.OperationTypeEnum
@@ -2233,17 +2200,17 @@ export namespace telephony {
      * Number quantity contained in the pool
      * type fullname: telephony.NumberPoolEnum
      */
-    export type NumberPoolEnum = 10 | 100 | 50
+    export type NumberPoolEnum = 10 | 50 | 100
     /**
      * Number special typology
      * type fullname: telephony.NumberSpecialTypologyEnum
      */
-    export type NumberSpecialTypologyEnum = "be_adults" | "be_content" | "be_games" | "be_general" | "be_relaxing" | "fr_access" | "fr_adults" | "fr_announced" | "fr_conferencing" | "fr_contentsAuto" | "fr_contentsManual" | "fr_games" | "fr_linking" | "fr_m2m" | "fr_relationship"
+    export type NumberSpecialTypologyEnum = "fr_access" | "fr_announced" | "fr_conferencing" | "fr_contentsAuto" | "fr_contentsManual" | "fr_games" | "fr_linking" | "fr_m2m" | "fr_relationship"
     /**
      * Available amounts for security deposit crediting
      * type fullname: telephony.SecurityDepositAmountsEnum
      */
-    export type SecurityDepositAmountsEnum = 10 | 100 | 1000 | 10000 | 20 | 200 | 2000 | 30 | 300 | 3000 | 40 | 400 | 4000 | 50 | 500 | 5000
+    export type SecurityDepositAmountsEnum = 10 | 20 | 30 | 40 | 50 | 100 | 200 | 300 | 400 | 500 | 1000 | 2000 | 3000 | 4000 | 5000 | 10000
     /**
      * Special number country
      * type fullname: telephony.SpecialNumberCountryEnum
@@ -2274,7 +2241,7 @@ export namespace telephony {
          * Special number category
          * type fullname: telephony.portability.SpecialNumberCategoryEnum
          */
-        export type SpecialNumberCategoryEnum = "access" | "adults" | "announced" | "conferencing" | "contentsAuto" | "contentsManual" | "directory" | "games" | "linking" | "m2m" | "relationship"
+        export type SpecialNumberCategoryEnum = "access" | "announced" | "conferencing" | "contentsAuto" | "contentsManual" | "directory" | "games" | "linking" | "m2m" | "relationship"
     }
 }
 export namespace veeamCloudConnect {
@@ -2366,7 +2333,7 @@ export interface Order {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             analytics: {
                 /**
-                 * Get informations about analytics offers
+                 * Get information about analytics offers
                  * GET /order/cart/{cartId}/analytics
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -2381,45 +2348,13 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about analytics options
+                     * Get information about analytics options
                      * GET /order/cart/{cartId}/analytics/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
                     /**
                      * Post a new analytics addon in your cart
                      * POST /order/cart/{cartId}/analytics/options
-                     */
-                    $post(params: { duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                }
-            }
-            anthos: {
-                /**
-                 * Get informations about Anthos offers
-                 * GET /order/cart/{cartId}/anthos
-                 */
-                $get(): Promise<order.cart.GenericProductDefinition[]>;
-                /**
-                 * Post a new Anthos item in your cart
-                 * POST /order/cart/{cartId}/anthos
-                 */
-                $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                options: {
-                    /**
-                     * Get informations about Anthos options
-                     * GET /order/cart/{cartId}/anthos/options
-                     */
-                    $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
-                    /**
-                     * Post a new Anthos option in your cart
-                     * POST /order/cart/{cartId}/anthos/options
                      */
                     $post(params: { duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
                     /**
@@ -2437,7 +2372,7 @@ export interface Order {
             }
             baremetalServers: {
                 /**
-                 * Get informations about a baremetal server
+                 * Get information about a baremetal server
                  * GET /order/cart/{cartId}/baremetalServers
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -2452,7 +2387,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about baremetal server options
+                     * Get information about baremetal server options
                      * GET /order/cart/{cartId}/baremetalServers/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -2485,7 +2420,7 @@ export interface Order {
             }
             cdn: {
                 /**
-                 * Get informations about CDN offers
+                 * Get information about CDN offers
                  * GET /order/cart/{cartId}/cdn
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -2500,7 +2435,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about CDN options
+                     * Get information about CDN options
                      * GET /order/cart/{cartId}/cdn/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -2517,7 +2452,7 @@ export interface Order {
             }
             cephaas: {
                 /**
-                 * Get informations about Ceph as a Service offers
+                 * Get information about Ceph as a Service offers
                  * GET /order/cart/{cartId}/cephaas
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -2532,7 +2467,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about Ceph as a Service options
+                     * Get information about Ceph as a Service options
                      * GET /order/cart/{cartId}/cephaas/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -2565,7 +2500,7 @@ export interface Order {
             }
             cloud: {
                 /**
-                 * Get informations about Public Cloud offers
+                 * Get information about Public Cloud offers
                  * GET /order/cart/{cartId}/cloud
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -2580,7 +2515,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about Public Cloud options
+                     * Get information about Public Cloud options
                      * GET /order/cart/{cartId}/cloud/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -2613,7 +2548,7 @@ export interface Order {
             }
             cloudweb: {
                 /**
-                 * Get informations about Cloud Web offers
+                 * Get information about Cloud Web offers
                  * GET /order/cart/{cartId}/cloudweb
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -2628,7 +2563,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about Cloud Web options
+                     * Get information about Cloud Web options
                      * GET /order/cart/{cartId}/cloudweb/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -2666,7 +2601,7 @@ export interface Order {
             }
             csp2: {
                 /**
-                 * Get informations about SaaS CSP2 offers
+                 * Get information about SaaS CSP2 offers
                  * GET /order/cart/{cartId}/csp2
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -2681,7 +2616,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about SaaS CSP2 options
+                     * Get information about SaaS CSP2 options
                      * GET /order/cart/{cartId}/csp2/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -2698,7 +2633,7 @@ export interface Order {
             }
             dbaasTimeseries: {
                 /**
-                 * Get informations about a timeseries offer
+                 * Get information about a timeseries offer
                  * GET /order/cart/{cartId}/dbaasTimeseries
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -2714,7 +2649,7 @@ export interface Order {
             }
             dedicated: {
                 /**
-                 * Get informations about a dedicated server
+                 * Get information about a dedicated server
                  * GET /order/cart/{cartId}/dedicated
                  */
                 $get(params?: { family?: string, planCode?: string }): Promise<order.cart.GenericProductDefinition[]>;
@@ -2729,7 +2664,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about dedicated server options
+                     * Get information about dedicated server options
                      * GET /order/cart/{cartId}/dedicated/options
                      */
                     $get(params: { family?: string, planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -2746,7 +2681,7 @@ export interface Order {
             }
             dedicatedCloud: {
                 /**
-                 * Get informations about a dedicated server
+                 * Get information about a dedicated server
                  * GET /order/cart/{cartId}/dedicatedCloud
                  */
                 $get(params?: { family?: string, planCode?: string }): Promise<order.cart.GenericProductDefinition[]>;
@@ -2761,7 +2696,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about dedicated server options
+                     * Get information about dedicated server options
                      * GET /order/cart/{cartId}/dedicatedCloud/options
                      */
                     $get(params: { family?: string, planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -2778,7 +2713,7 @@ export interface Order {
             }
             dedicatedDirectSales: {
                 /**
-                 * Get informations about a dedicated Direct Sales server
+                 * Get information about a dedicated Direct Sales server
                  * GET /order/cart/{cartId}/dedicatedDirectSales
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -2793,7 +2728,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about dedicated Direct Sales server options
+                     * Get information about dedicated Direct Sales server options
                      * GET /order/cart/{cartId}/dedicatedDirectSales/options
                      */
                     $get(): Promise<order.cart.GenericOptionDefinition[]>;
@@ -2810,7 +2745,7 @@ export interface Order {
             }
             dedicatedLabs: {
                 /**
-                 * Get informations about a dedicated labs server
+                 * Get information about a dedicated labs server
                  * GET /order/cart/{cartId}/dedicatedLabs
                  */
                 $get(params?: { planCode?: string }): Promise<order.cart.GenericProductDefinition[]>;
@@ -2825,7 +2760,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about dedicated labs server options
+                     * Get information about dedicated labs server options
                      * GET /order/cart/{cartId}/dedicatedLabs/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -2874,7 +2809,7 @@ export interface Order {
             }
             dedicatedPciVps: {
                 /**
-                 * Get informations about a dedicated server
+                 * Get information about a dedicated server
                  * GET /order/cart/{cartId}/dedicatedPciVps
                  */
                 $get(params?: { family?: string, planCode?: string }): Promise<order.cart.GenericProductDefinition[]>;
@@ -2889,7 +2824,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about dedicated server options
+                     * Get information about dedicated server options
                      * GET /order/cart/{cartId}/dedicatedPciVps/options
                      */
                     $get(params: { family?: string, planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -2906,7 +2841,7 @@ export interface Order {
             }
             dedicatedReseller: {
                 /**
-                 * Get informations about a dedicated server for US Reseller
+                 * Get information about a dedicated server for US Reseller
                  * GET /order/cart/{cartId}/dedicatedReseller
                  */
                 $get(params?: { family?: string, planCode?: string }): Promise<order.cart.GenericProductDefinition[]>;
@@ -2921,7 +2856,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about dedicated server options
+                     * Get information about dedicated server options
                      * GET /order/cart/{cartId}/dedicatedReseller/options
                      */
                     $get(params: { family?: string, planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -2938,7 +2873,7 @@ export interface Order {
             }
             deskaas: {
                 /**
-                 * Get informations about Desk As A Service offers
+                 * Get information about Desk As A Service offers
                  * GET /order/cart/{cartId}/deskaas
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -2954,7 +2889,7 @@ export interface Order {
             }
             discover: {
                 /**
-                 * Get informations about Dedicated Discover server offers
+                 * Get information about Dedicated Discover server offers
                  * GET /order/cart/{cartId}/discover
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -2969,7 +2904,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about Dedicated Discover server options
+                     * Get information about Dedicated Discover server options
                      * GET /order/cart/{cartId}/discover/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -2986,7 +2921,7 @@ export interface Order {
             }
             dns: {
                 /**
-                 * Get informations about DNS zone offer
+                 * Get information about DNS zone offer
                  * GET /order/cart/{cartId}/dns
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -3001,7 +2936,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about DNS options
+                     * Get information about DNS options
                      * GET /order/cart/{cartId}/dns/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -3018,12 +2953,12 @@ export interface Order {
             }
             domain: {
                 /**
-                 * Get informations about a domain name
+                 * Get information about a domain name
                  * GET /order/cart/{cartId}/domain
                  */
                 $get(params: { domain: string }): Promise<order.cart.ProductInformation[]>;
                 /**
-                 * Post a new domain in your cart
+                 * Post a new domain name in your cart
                  * POST /order/cart/{cartId}/domain
                  */
                 $post(params: { domain: string, duration?: string, offerId?: string, planCode?: string, pricingMode?: string, quantity?: number }): Promise<order.cart.Item>;
@@ -3033,7 +2968,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about domain names options
+                     * Get information about domain names options
                      * GET /order/cart/{cartId}/domain/options
                      */
                     $get(params: { domain: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -3050,7 +2985,7 @@ export interface Order {
             }
             domainPacks: {
                 /**
-                 * Get informations about Domain packs offers (AllDom)
+                 * Get information about Domain packs offers (AllDom)
                  * GET /order/cart/{cartId}/domainPacks
                  */
                 $get(params: { domain: string }): Promise<order.cart.DomainPacksProductInformation[]>;
@@ -3066,7 +3001,7 @@ export interface Order {
             }
             domainRestore: {
                 /**
-                 * Get informations about Domain Restore
+                 * Get information about Domain Restore
                  * GET /order/cart/{cartId}/domainRestore
                  */
                 $get(params: { domain: string }): Promise<order.cart.GenericProductDefinition[]>;
@@ -3074,38 +3009,6 @@ export interface Order {
                  * Controle cache
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            }
-            domainTransfer: {
-                /**
-                 * Get informations about a domain name transfer
-                 * GET /order/cart/{cartId}/domainTransfer
-                 */
-                $get(params: { domain: string }): Promise<order.cart.ProductInformation[]>;
-                /**
-                 * Post a new domain tranfer in your cart
-                 * POST /order/cart/{cartId}/domainTransfer
-                 */
-                $post(params: { domain: string, duration?: string, offerId?: string, planCode?: string, pricingMode?: string, quantity?: number }): Promise<order.cart.Item>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                options: {
-                    /**
-                     * Get informations about domain names transfer options
-                     * GET /order/cart/{cartId}/domainTransfer/options
-                     */
-                    $get(params: { domain: string }): Promise<order.cart.GenericOptionDefinition[]>;
-                    /**
-                     * Post a new domain name transfer option in your cart
-                     * POST /order/cart/{cartId}/domainTransfer/options
-                     */
-                    $post(params: { duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                }
             }
             eco: {
                 /**
@@ -3157,7 +3060,7 @@ export interface Order {
             }
             emailpro: {
                 /**
-                 * Get informations about EmailPro offers
+                 * Get information about EmailPro offers
                  * GET /order/cart/{cartId}/emailpro
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -3172,7 +3075,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about EmailPro options
+                     * Get information about EmailPro options
                      * GET /order/cart/{cartId}/emailpro/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -3189,7 +3092,7 @@ export interface Order {
             }
             exchange: {
                 /**
-                 * Get informations about Exchange offers
+                 * Get information about Exchange offers
                  * GET /order/cart/{cartId}/exchange
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -3204,7 +3107,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about Exchange options
+                     * Get information about Exchange options
                      * GET /order/cart/{cartId}/exchange/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -3221,7 +3124,7 @@ export interface Order {
             }
             exchangeEnterprise: {
                 /**
-                 * Get informations about Exchange Enterprise offers
+                 * Get information about Exchange Enterprise offers
                  * GET /order/cart/{cartId}/exchangeEnterprise
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -3236,7 +3139,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about Exchange Enterprise options
+                     * Get information about Exchange Enterprise options
                      * GET /order/cart/{cartId}/exchangeEnterprise/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -3253,7 +3156,7 @@ export interface Order {
             }
             ip: {
                 /**
-                 * Get informations about IP addresses offers
+                 * Get information about IP addresses offers
                  * GET /order/cart/{cartId}/ip
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -3268,7 +3171,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about IP addresses options
+                     * Get information about IP addresses options
                      * GET /order/cart/{cartId}/ip/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -3285,7 +3188,7 @@ export interface Order {
             }
             ipLoadbalancing: {
                 /**
-                 * Get informations about IP Load-Balancing offers
+                 * Get information about IP Load-Balancing offers
                  * GET /order/cart/{cartId}/ipLoadbalancing
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -3300,7 +3203,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about IP Load-Balancing options
+                     * Get information about IP Load-Balancing options
                      * GET /order/cart/{cartId}/ipLoadbalancing/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -3333,12 +3236,12 @@ export interface Order {
             }
             ispPublic: {
                 /**
-                 * Get informations about offers
+                 * Get information about offers
                  * GET /order/cart/{cartId}/ispPublic
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 /**
-                 * Post a new item in your cart
+                 * Add a new item in your cart
                  * POST /order/cart/{cartId}/ispPublic
                  */
                 $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
@@ -3348,12 +3251,12 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about options
+                     * Get information about options
                      * GET /order/cart/{cartId}/ispPublic/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
                     /**
-                     * Post a new option in your cart
+                     * Add a new option in your cart
                      * POST /order/cart/{cartId}/ispPublic/options
                      */
                     $post(params: { duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
@@ -3365,12 +3268,12 @@ export interface Order {
             }
             ispReseller: {
                 /**
-                 * Get informations about offers
+                 * Get information about offers
                  * GET /order/cart/{cartId}/ispReseller
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 /**
-                 * Post a new item in your cart
+                 * Add a new item in your cart
                  * POST /order/cart/{cartId}/ispReseller
                  */
                 $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
@@ -3380,7 +3283,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about options
+                     * Get information about options
                      * GET /order/cart/{cartId}/ispReseller/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -3472,7 +3375,7 @@ export interface Order {
             }
             kubernetes: {
                 /**
-                 * Get informations about Kubernetes offers
+                 * Get information about Kubernetes offers
                  * GET /order/cart/{cartId}/kubernetes
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -3487,7 +3390,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about Kubernetes options
+                     * Get information about Kubernetes options
                      * GET /order/cart/{cartId}/kubernetes/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -3504,7 +3407,7 @@ export interface Order {
             }
             licenseCloudLinux: {
                 /**
-                 * Get informations about CloudLinux licenses offers
+                 * Get information about CloudLinux licenses offers
                  * GET /order/cart/{cartId}/licenseCloudLinux
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -3520,7 +3423,7 @@ export interface Order {
             }
             licenseDirectadmin: {
                 /**
-                 * Get informations about Directadmin licenses offers
+                 * Get information about Directadmin licenses offers
                  * GET /order/cart/{cartId}/licenseDirectadmin
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -3536,7 +3439,7 @@ export interface Order {
             }
             licensePlesk: {
                 /**
-                 * Get informations about Plesk licenses offers
+                 * Get information about Plesk licenses offers
                  * GET /order/cart/{cartId}/licensePlesk
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -3551,7 +3454,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about Plesk license options
+                     * Get information about Plesk license options
                      * GET /order/cart/{cartId}/licensePlesk/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -3568,7 +3471,7 @@ export interface Order {
             }
             licenseSqlServer: {
                 /**
-                 * Get informations about SqlServer licenses offers
+                 * Get information about SqlServer licenses offers
                  * GET /order/cart/{cartId}/licenseSqlServer
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -3584,7 +3487,7 @@ export interface Order {
             }
             licenseVirtuozzo: {
                 /**
-                 * Get informations about Virtuozzo licenses offers
+                 * Get information about Virtuozzo licenses offers
                  * GET /order/cart/{cartId}/licenseVirtuozzo
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -3600,7 +3503,7 @@ export interface Order {
             }
             licenseWindows: {
                 /**
-                 * Get informations about Windows licenses offers
+                 * Get information about Windows licenses offers
                  * GET /order/cart/{cartId}/licenseWindows
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -3616,7 +3519,7 @@ export interface Order {
             }
             licenseWorklight: {
                 /**
-                 * Get informations about Worklight licenses offers
+                 * Get information about Worklight licenses offers
                  * GET /order/cart/{cartId}/licenseWorklight
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -3632,7 +3535,7 @@ export interface Order {
             }
             licensecPanel: {
                 /**
-                 * Get informations about cPanel licenses offers
+                 * Get information about cPanel licenses offers
                  * GET /order/cart/{cartId}/licensecPanel
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -3648,7 +3551,7 @@ export interface Order {
             }
             logs: {
                 /**
-                 * Get informations about Logs offers
+                 * Get information about Logs offers
                  * GET /order/cart/{cartId}/logs
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -3663,7 +3566,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about Logs options
+                     * Get information about Logs options
                      * GET /order/cart/{cartId}/logs/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -3680,7 +3583,7 @@ export interface Order {
             }
             managedServices: {
                 /**
-                 * Get informations about Managed Services offers
+                 * Get information about Managed Services offers
                  * GET /order/cart/{cartId}/managedServices
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -3695,7 +3598,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about Managed Services options
+                     * Get information about Managed Services options
                      * GET /order/cart/{cartId}/managedServices/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -3712,7 +3615,7 @@ export interface Order {
             }
             metrics: {
                 /**
-                 * Get informations about Metrics offers
+                 * Get information about Metrics offers
                  * GET /order/cart/{cartId}/metrics
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -3727,7 +3630,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about Metrics options
+                     * Get information about Metrics options
                      * GET /order/cart/{cartId}/metrics/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -3744,7 +3647,7 @@ export interface Order {
             }
             microsoft: {
                 /**
-                 * Get informations about Microsoft offers
+                 * Get information about Microsoft offers
                  * GET /order/cart/{cartId}/microsoft
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -3759,7 +3662,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about Microsoft options
+                     * Get information about Microsoft options
                      * GET /order/cart/{cartId}/microsoft/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -3776,7 +3679,7 @@ export interface Order {
             }
             nasha: {
                 /**
-                 * Get informations about NAS HA offers
+                 * Get information about NAS HA offers
                  * GET /order/cart/{cartId}/nasha
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -3791,7 +3694,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about NAS HA options
+                     * Get information about NAS HA options
                      * GET /order/cart/{cartId}/nasha/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -3808,7 +3711,7 @@ export interface Order {
             }
             netapp: {
                 /**
-                 * Get informations about NetApp offers
+                 * Get information about NetApp offers
                  * GET /order/cart/{cartId}/netapp
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -3823,7 +3726,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about NetApp options
+                     * Get information about NetApp options
                      * GET /order/cart/{cartId}/netapp/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -3872,7 +3775,7 @@ export interface Order {
             }
             office365: {
                 /**
-                 * Get informations about Office 365 licenses
+                 * Get information about Office 365 licenses
                  * GET /order/cart/{cartId}/office365
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -3887,7 +3790,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about Office 365 options
+                     * Get information about Office 365 options
                      * GET /order/cart/{cartId}/office365/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -3904,7 +3807,7 @@ export interface Order {
             }
             office365Prepaid: {
                 /**
-                 * Get informations about Office 365 Prepaid licenses
+                 * Get information about Office 365 Prepaid licenses
                  * GET /order/cart/{cartId}/office365Prepaid
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -3919,7 +3822,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about Office 365 Prepaid options
+                     * Get information about Office 365 Prepaid options
                      * GET /order/cart/{cartId}/office365Prepaid/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -3936,7 +3839,7 @@ export interface Order {
             }
             officePrepaid: {
                 /**
-                 * Get informations about a officePrepaid
+                 * Get information about a officePrepaid
                  * GET /order/cart/{cartId}/officePrepaid
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -3951,7 +3854,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about officePrepaid options
+                     * Get information about officePrepaid options
                      * GET /order/cart/{cartId}/officePrepaid/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -3968,7 +3871,7 @@ export interface Order {
             }
             otb: {
                 /**
-                 * Get informations about Over The Box offers
+                 * Get information about Over The Box offers
                  * GET /order/cart/{cartId}/otb
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -3983,7 +3886,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about Over The Box options
+                     * Get information about Over The Box options
                      * GET /order/cart/{cartId}/otb/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -4000,7 +3903,7 @@ export interface Order {
             }
             ovhCloudConnect: {
                 /**
-                 * Get informations about OVHcloud Connect offers
+                 * Get information about OVHcloud Connect offers
                  * GET /order/cart/{cartId}/ovhCloudConnect
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -4016,7 +3919,7 @@ export interface Order {
             }
             paasmon: {
                 /**
-                 * Get informations about PaaS Monitoring offers
+                 * Get information about PaaS Monitoring offers
                  * GET /order/cart/{cartId}/paasmon
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -4032,7 +3935,7 @@ export interface Order {
             }
             packsProfessionalServices: {
                 /**
-                 * Get informations about a packs professional services
+                 * Get information about a packs professional services
                  * GET /order/cart/{cartId}/packsProfessionalServices
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -4047,7 +3950,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about packs professional services options
+                     * Get information about packs professional services options
                      * GET /order/cart/{cartId}/packsProfessionalServices/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -4064,7 +3967,7 @@ export interface Order {
             }
             powerHosting: {
                 /**
-                 * Get informations about power hosting offer
+                 * Get information about power hosting offer
                  * GET /order/cart/{cartId}/powerHosting
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -4080,7 +3983,7 @@ export interface Order {
             }
             privateCloud: {
                 /**
-                 * Get informations about Hosted Private Cloud offers
+                 * Get information about Hosted Private Cloud offers
                  * GET /order/cart/{cartId}/privateCloud
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -4095,7 +3998,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about Hosted Private Cloud options
+                     * Get information about Hosted Private Cloud options
                      * GET /order/cart/{cartId}/privateCloud/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -4112,7 +4015,7 @@ export interface Order {
             }
             privateCloudCDI: {
                 /**
-                 * Get informations about Private Cloud CDI offers
+                 * Get information about Private Cloud CDI offers
                  * GET /order/cart/{cartId}/privateCloudCDI
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -4127,7 +4030,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about Private Cloud CDI options
+                     * Get information about Private Cloud CDI options
                      * GET /order/cart/{cartId}/privateCloudCDI/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -4144,7 +4047,7 @@ export interface Order {
             }
             privateCloudDC: {
                 /**
-                 * Get informations about Private Cloud Dedicated Cloud offers
+                 * Get information about Private Cloud Dedicated Cloud offers
                  * GET /order/cart/{cartId}/privateCloudDC
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -4159,7 +4062,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about Private Cloud Dedicated Cloud options
+                     * Get information about Private Cloud Dedicated Cloud options
                      * GET /order/cart/{cartId}/privateCloudDC/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -4176,7 +4079,7 @@ export interface Order {
             }
             privateCloudEnterprise: {
                 /**
-                 * Get informations about Hosted Private Cloud offers
+                 * Get information about Hosted Private Cloud offers
                  * GET /order/cart/{cartId}/privateCloudEnterprise
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -4191,7 +4094,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about Hosted Private Cloud options
+                     * Get information about Hosted Private Cloud options
                      * GET /order/cart/{cartId}/privateCloudEnterprise/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -4208,12 +4111,12 @@ export interface Order {
             }
             privateCloudReseller: {
                 /**
-                 * Get informations about Dedicated Cloud Reseller offers
+                 * Get information about Private Cloud Reseller offers
                  * GET /order/cart/{cartId}/privateCloudReseller
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 /**
-                 * Post a new Dedicated Cloud Reseller item in your cart
+                 * Post a new Private Cloud Reseller item in your cart
                  * POST /order/cart/{cartId}/privateCloudReseller
                  */
                 $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
@@ -4223,12 +4126,12 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about Dedicated Cloud Reseller options
+                     * Get information about Private Cloud Reseller options
                      * GET /order/cart/{cartId}/privateCloudReseller/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
                     /**
-                     * Post a new Dedicated Cloud Reseller option in your cart
+                     * Post a new Private Cloud Reseller option in your cart
                      * POST /order/cart/{cartId}/privateCloudReseller/options
                      */
                     $post(params: { duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
@@ -4240,12 +4143,12 @@ export interface Order {
             }
             privateCloudResellerEnterprise: {
                 /**
-                 * Get informations about Dedicated Cloud Reseller Enterprise offers
+                 * Get information about Private Cloud Reseller Enterprise offers
                  * GET /order/cart/{cartId}/privateCloudResellerEnterprise
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 /**
-                 * Post a new Dedicated Cloud Reseller Enterprise item in your cart
+                 * Post a new Private Cloud Reseller Enterprise item in your cart
                  * POST /order/cart/{cartId}/privateCloudResellerEnterprise
                  */
                 $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
@@ -4255,12 +4158,12 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about Dedicated Cloud Reseller Enterprise options
+                     * Get information about Private Cloud Reseller Enterprise options
                      * GET /order/cart/{cartId}/privateCloudResellerEnterprise/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
                     /**
-                     * Post a new Dedicated Cloud Reseller Enterprise option in your cart
+                     * Post a new Private Cloud Reseller Enterprise option in your cart
                      * POST /order/cart/{cartId}/privateCloudResellerEnterprise/options
                      */
                     $post(params: { duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
@@ -4272,7 +4175,7 @@ export interface Order {
             }
             privateCloudSDDC: {
                 /**
-                 * Get informations about Private Cloud SDDC offers
+                 * Get information about Private Cloud SDDC offers
                  * GET /order/cart/{cartId}/privateCloudSDDC
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -4287,7 +4190,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about Private Cloud SDDC options
+                     * Get information about Private Cloud SDDC options
                      * GET /order/cart/{cartId}/privateCloudSDDC/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -4320,7 +4223,7 @@ export interface Order {
             }
             reseller: {
                 /**
-                 * Get informations about Reseller offers
+                 * Get information about Reseller offers
                  * GET /order/cart/{cartId}/reseller
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -4336,7 +4239,7 @@ export interface Order {
             }
             sharepoint: {
                 /**
-                 * Get informations about Sharepoint offers
+                 * Get information about Sharepoint offers
                  * GET /order/cart/{cartId}/sharepoint
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -4351,7 +4254,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about Sharepoint options
+                     * Get information about Sharepoint options
                      * GET /order/cart/{cartId}/sharepoint/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -4368,7 +4271,7 @@ export interface Order {
             }
             sms: {
                 /**
-                 * Get informations about SMS offers
+                 * Get information about SMS offers
                  * GET /order/cart/{cartId}/sms
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -4384,7 +4287,7 @@ export interface Order {
             }
             sslComodo: {
                 /**
-                 * Get informations about SSL Comodo offers
+                 * Get information about SSL Comodo offers
                  * GET /order/cart/{cartId}/sslComodo
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -4399,7 +4302,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about SSL Comodo options
+                     * Get information about SSL Comodo options
                      * GET /order/cart/{cartId}/sslComodo/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -4416,7 +4319,7 @@ export interface Order {
             }
             sslGateway: {
                 /**
-                 * Get informations about SSL Gateway offers
+                 * Get information about SSL Gateway offers
                  * GET /order/cart/{cartId}/sslGateway
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -4431,7 +4334,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about SSL Gateway options
+                     * Get information about SSL Gateway options
                      * GET /order/cart/{cartId}/sslGateway/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -4475,7 +4378,7 @@ export interface Order {
             }
             telephony: {
                 /**
-                 * Get informations about VoIP offers
+                 * Get information about VoIP offers
                  * GET /order/cart/{cartId}/telephony
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -4490,7 +4393,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about VoIP options
+                     * Get information about VoIP options
                      * GET /order/cart/{cartId}/telephony/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -4523,7 +4426,7 @@ export interface Order {
             }
             vdi: {
                 /**
-                 * Get informations about Horizon View offers
+                 * Get information about Horizon View offers
                  * GET /order/cart/{cartId}/vdi
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -4538,7 +4441,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about Horizon View options
+                     * Get information about Horizon View options
                      * GET /order/cart/{cartId}/vdi/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -4555,7 +4458,7 @@ export interface Order {
             }
             veeamEnterprise: {
                 /**
-                 * Get informations about Veeam Enterprise offers
+                 * Get information about Veeam Enterprise offers
                  * GET /order/cart/{cartId}/veeamEnterprise
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -4570,7 +4473,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about Veeam Enterprise options
+                     * Get information about Veeam Enterprise options
                      * GET /order/cart/{cartId}/veeamEnterprise/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -4587,7 +4490,7 @@ export interface Order {
             }
             veeamcc: {
                 /**
-                 * Get informations about Veeam Cloud Connect offers
+                 * Get information about Veeam Cloud Connect offers
                  * GET /order/cart/{cartId}/veeamcc
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -4602,7 +4505,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about Veeam Cloud Connect options
+                     * Get information about Veeam Cloud Connect options
                      * GET /order/cart/{cartId}/veeamcc/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -4619,7 +4522,7 @@ export interface Order {
             }
             vps: {
                 /**
-                 * Get informations about VPS offers
+                 * Get information about VPS offers
                  * GET /order/cart/{cartId}/vps
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -4634,7 +4537,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about VPS options
+                     * Get information about VPS options
                      * GET /order/cart/{cartId}/vps/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -4651,7 +4554,7 @@ export interface Order {
             }
             vrack: {
                 /**
-                 * Get informations about vRack offers
+                 * Get information about vRack offers
                  * GET /order/cart/{cartId}/vrack
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -4667,7 +4570,7 @@ export interface Order {
             }
             vrackReseller: {
                 /**
-                 * Get informations about vRack offers
+                 * Get information about vRack offers
                  * GET /order/cart/{cartId}/vrackReseller
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -4681,9 +4584,25 @@ export interface Order {
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
+            vrackServices: {
+                /**
+                 * Get information about vRack Services offers
+                 * GET /order/cart/{cartId}/vrackServices
+                 */
+                $get(): Promise<order.cart.GenericProductDefinition[]>;
+                /**
+                 * Post a new vRack Services item in your cart
+                 * POST /order/cart/{cartId}/vrackServices
+                 */
+                $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
             webHosting: {
                 /**
-                 * Get informations about webHosting offers
+                 * Get information about webHosting offers
                  * GET /order/cart/{cartId}/webHosting
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -4698,7 +4617,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about webHosting options
+                     * Get information about webHosting options
                      * GET /order/cart/{cartId}/webHosting/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -4747,7 +4666,7 @@ export interface Order {
             }
             xdsl: {
                 /**
-                 * Get informations about xdsl offers
+                 * Get information about xdsl offers
                  * GET /order/cart/{cartId}/xdsl
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -4762,7 +4681,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about xdsl options
+                     * Get information about xdsl options
                      * GET /order/cart/{cartId}/xdsl/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -4780,33 +4699,6 @@ export interface Order {
         };
     }
     cartServiceOption: {
-        anthos: {
-            /**
-             * List available services
-             * GET /order/cartServiceOption/anthos
-             */
-            $get(): Promise<string[]>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            $(serviceName: string): {
-                /**
-                 * Get informations about additional anthos offer for your service
-                 * GET /order/cartServiceOption/anthos/{serviceName}
-                 */
-                $get(): Promise<order.cart.GenericOptionDefinition[]>;
-                /**
-                 * Post an additional anthos option in your cart
-                 * POST /order/cartServiceOption/anthos/{serviceName}
-                 */
-                $post(params: { cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            };
-        }
         baremetalServers: {
             /**
              * List available services
@@ -5077,6 +4969,33 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
+        nutanix: {
+            /**
+             * List available services
+             * GET /order/cartServiceOption/nutanix
+             */
+            $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $(serviceName: string): {
+                /**
+                 * Get informations about additional Nutanix offer for your service
+                 * GET /order/cartServiceOption/nutanix/{serviceName}
+                 */
+                $get(): Promise<order.cart.GenericOptionDefinition[]>;
+                /**
+                 * Post an additional nutanix option in your cart
+                 * POST /order/cartServiceOption/nutanix/{serviceName}
+                 */
+                $post(params: { cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            };
+        }
         office365Prepaid: {
             /**
              * List available services
@@ -5266,6 +5185,33 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
+        sms: {
+            /**
+             * List available services
+             * GET /order/cartServiceOption/sms
+             */
+            $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $(serviceName: string): {
+                /**
+                 * Get information about additional SMS offer for your service
+                 * GET /order/cartServiceOption/sms/{serviceName}
+                 */
+                $get(): Promise<order.cart.GenericOptionDefinition[]>;
+                /**
+                 * Post an additional SMS option in your cart
+                 * POST /order/cartServiceOption/sms/{serviceName}
+                 */
+                $post(params: { cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            };
+        }
         sslGateway: {
             /**
              * List available services
@@ -5441,17 +5387,6 @@ export interface Order {
                  * GET /order/catalog/formatted/dedicated
                  */
                 $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.dedicated.Catalog>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            }
-            deskaas: {
-                /**
-                 * Retrieve information of Desk as a service catalog
-                 * GET /order/catalog/formatted/deskaas
-                 */
-                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.Catalog>;
                 /**
                  * Controle cache
                  */
@@ -5692,17 +5627,6 @@ export interface Order {
             }
         }
         public: {
-            anthos: {
-                /**
-                 * Retrieve Anthos catalog
-                 * GET /order/catalog/public/anthos
-                 */
-                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            }
             baremetalServers: {
                 /**
                  * Retrieve bare-metal servers catalog
@@ -5806,17 +5730,6 @@ export interface Order {
                 /**
                  * Retrieve IP Load Balancing catalog
                  * GET /order/catalog/public/ipLoadbalancing
-                 */
-                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            }
-            kms: {
-                /**
-                 * Retrieve KMS catalog
-                 * GET /order/catalog/public/kms
                  */
                 $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
                 /**
@@ -6546,7 +6459,7 @@ export interface Order {
     }
     dedicatedCloud: {
         /**
-         * List available services
+         * List VMware on OVHcloud service options
          * GET /order/dedicatedCloud
          */
         $get(): Promise<string[]>;
@@ -7077,7 +6990,7 @@ export interface Order {
     }
     freefax: {
         /**
-         * List available services
+         * Freefax line accounts
          * GET /order/freefax
          */
         $get(): Promise<string[]>;
@@ -7130,82 +7043,6 @@ export interface Order {
         };
     }
     hosting: {
-        privateDatabase: {
-            /**
-             * List available services
-             * GET /order/hosting/privateDatabase
-             */
-            $get(): Promise<string[]>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            new: {
-                /**
-                 * Get allowed durations for 'new' option
-                 * GET /order/hosting/privateDatabase/new
-                 */
-                $get(params: { datacenter?: hosting.PrivateDatabase.DatacenterEnum, offer?: hosting.PrivateDatabase.OfferEnum, ram: hosting.PrivateDatabase.AvailableRamSizeEnum, version: hosting.PrivateDatabase.OrderableVersionEnum }): Promise<string[]>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                $(duration: string): {
-                    /**
-                     * Get prices and contracts information
-                     * GET /order/hosting/privateDatabase/new/{duration}
-                     */
-                    $get(params: { datacenter?: hosting.PrivateDatabase.DatacenterEnum, offer?: hosting.PrivateDatabase.OfferEnum, ram: hosting.PrivateDatabase.AvailableRamSizeEnum, version: hosting.PrivateDatabase.OrderableVersionEnum }): Promise<order.Order>;
-                    /**
-                     * Create order
-                     * POST /order/hosting/privateDatabase/new/{duration}
-                     */
-                    $post(params: { datacenter?: hosting.PrivateDatabase.DatacenterEnum, offer?: hosting.PrivateDatabase.OfferEnum, ram: hosting.PrivateDatabase.AvailableRamSizeEnum, version: hosting.PrivateDatabase.OrderableVersionEnum }): Promise<order.Order>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                };
-            }
-            $(serviceName: string): {
-                /**
-                 * Get allowed options
-                 * GET /order/hosting/privateDatabase/{serviceName}
-                 */
-                $get(): Promise<string[]>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                ram: {
-                    /**
-                     * Get allowed durations for 'ram' option
-                     * GET /order/hosting/privateDatabase/{serviceName}/ram
-                     */
-                    $get(params: { ram: hosting.PrivateDatabase.AvailableRamSizeEnum }): Promise<string[]>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    $(duration: string): {
-                        /**
-                         * Get prices and contracts information
-                         * GET /order/hosting/privateDatabase/{serviceName}/ram/{duration}
-                         */
-                        $get(params: { ram: hosting.PrivateDatabase.AvailableRamSizeEnum }): Promise<order.Order>;
-                        /**
-                         * Create order
-                         * POST /order/hosting/privateDatabase/{serviceName}/ram/{duration}
-                         */
-                        $post(params: { ram: hosting.PrivateDatabase.AvailableRamSizeEnum }): Promise<order.Order>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    };
-                }
-            };
-        }
         web: {
             /**
              * List available services
@@ -7216,33 +7053,6 @@ export interface Order {
              * Controle cache
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            new: {
-                /**
-                 * Get allowed durations for 'new' option
-                 * GET /order/hosting/web/new
-                 */
-                $get(params: { dnsZone?: hosting.web.DnsZoneEnum, domain: string, module?: hosting.web.module.OrderableNameEnum, offer: hosting.web.OfferEnum, waiveRetractationPeriod?: boolean }): Promise<string[]>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                $(duration: string): {
-                    /**
-                     * Get prices and contracts information
-                     * GET /order/hosting/web/new/{duration}
-                     */
-                    $get(params: { dnsZone?: hosting.web.DnsZoneEnum, domain: string, module?: hosting.web.module.OrderableNameEnum, offer: hosting.web.OfferEnum, waiveRetractationPeriod?: boolean }): Promise<order.Order>;
-                    /**
-                     * Create order
-                     * POST /order/hosting/web/new/{duration}
-                     */
-                    $post(params: { dnsZone?: hosting.web.DnsZoneEnum, domain: string, module?: hosting.web.module.OrderableNameEnum, offer: hosting.web.OfferEnum, waiveRetractationPeriod?: boolean }): Promise<order.Order>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                };
-            }
             $(serviceName: string): {
                 /**
                  * Get allowed options
@@ -7253,141 +7063,6 @@ export interface Order {
                  * Controle cache
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                bandwidth: {
-                    /**
-                     * Get allowed durations for 'bandwidth' option
-                     * GET /order/hosting/web/{serviceName}/bandwidth
-                     */
-                    $get(params: { traffic: hosting.web.BandwidthOfferEnum }): Promise<string[]>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    $(duration: string): {
-                        /**
-                         * Get prices and contracts information
-                         * GET /order/hosting/web/{serviceName}/bandwidth/{duration}
-                         */
-                        $get(params: { traffic: hosting.web.BandwidthOfferEnum }): Promise<order.Order>;
-                        /**
-                         * Create order
-                         * POST /order/hosting/web/{serviceName}/bandwidth/{duration}
-                         */
-                        $post(params: { traffic: hosting.web.BandwidthOfferEnum }): Promise<order.Order>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    };
-                }
-                cdn: {
-                    /**
-                     * Get allowed durations for 'cdn' option
-                     * GET /order/hosting/web/{serviceName}/cdn
-                     */
-                    $get(params: { offer: hosting.web.CdnOfferEnum }): Promise<string[]>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    $(duration: string): {
-                        /**
-                         * Get prices and contracts information
-                         * GET /order/hosting/web/{serviceName}/cdn/{duration}
-                         */
-                        $get(params: { offer: hosting.web.CdnOfferEnum }): Promise<order.Order>;
-                        /**
-                         * Create order
-                         * POST /order/hosting/web/{serviceName}/cdn/{duration}
-                         */
-                        $post(params: { offer: hosting.web.CdnOfferEnum }): Promise<order.Order>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    };
-                }
-                changeMainDomain: {
-                    /**
-                     * Get allowed durations for 'changeMainDomain' option
-                     * GET /order/hosting/web/{serviceName}/changeMainDomain
-                     */
-                    $get(params: { domain: string, mxplan: hosting.web.order.MxPlanEnum }): Promise<string[]>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    $(duration: string): {
-                        /**
-                         * Get prices and contracts information
-                         * GET /order/hosting/web/{serviceName}/changeMainDomain/{duration}
-                         */
-                        $get(params: { domain: string, mxplan: hosting.web.order.MxPlanEnum }): Promise<order.Order>;
-                        /**
-                         * Create order
-                         * POST /order/hosting/web/{serviceName}/changeMainDomain/{duration}
-                         */
-                        $post(params: { domain: string, mxplan: hosting.web.order.MxPlanEnum }): Promise<order.Order>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    };
-                }
-                extraSqlPerso: {
-                    /**
-                     * Get allowed durations for 'extraSqlPerso' option
-                     * GET /order/hosting/web/{serviceName}/extraSqlPerso
-                     */
-                    $get(params: { offer: hosting.web.database.SqlPersoOfferEnum }): Promise<string[]>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    $(duration: string): {
-                        /**
-                         * Get prices and contracts information
-                         * GET /order/hosting/web/{serviceName}/extraSqlPerso/{duration}
-                         */
-                        $get(params: { offer: hosting.web.database.SqlPersoOfferEnum }): Promise<order.Order>;
-                        /**
-                         * Create order
-                         * POST /order/hosting/web/{serviceName}/extraSqlPerso/{duration}
-                         */
-                        $post(params: { offer: hosting.web.database.SqlPersoOfferEnum }): Promise<order.Order>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    };
-                }
-                ssl: {
-                    /**
-                     * Get allowed durations for 'ssl' option
-                     * GET /order/hosting/web/{serviceName}/ssl
-                     */
-                    $get(): Promise<string[]>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    $(duration: string): {
-                        /**
-                         * Get prices and contracts information
-                         * GET /order/hosting/web/{serviceName}/ssl/{duration}
-                         */
-                        $get(): Promise<order.Order>;
-                        /**
-                         * Create order
-                         * POST /order/hosting/web/{serviceName}/ssl/{duration}
-                         */
-                        $post(): Promise<order.Order>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    };
-                }
                 upgrade: {
                     /**
                      * Get allowed durations for 'upgrade' option
@@ -8115,7 +7790,7 @@ export interface Order {
     }
     telephony: {
         /**
-         * List available services
+         * Your telephony billing accounts
          * GET /order/telephony
          */
         $get(): Promise<string[]>;
@@ -8125,7 +7800,7 @@ export interface Order {
         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         lines: {
             /**
-             * List available services
+             * Your telephony billing accounts
              * GET /order/telephony/lines
              */
             $get(): Promise<string[]>;
@@ -8229,7 +7904,7 @@ export interface Order {
         }
         trunks: {
             /**
-             * List available services
+             * Your telephony trunks
              * GET /order/telephony/trunks
              */
             $get(): Promise<string[]>;
@@ -9147,7 +8822,7 @@ export interface Order {
     }
     veeamCloudConnect: {
         /**
-         * List available services
+         * Veeam Cloud Connect order
          * GET /order/veeamCloudConnect
          */
         $get(): Promise<string[]>;

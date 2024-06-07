@@ -21,7 +21,7 @@ export namespace ovhcloudconnect {
     export interface DatacenterConfig {
         datacenterId: number;
         id: number;
-        ovhBgpArea: number;
+        ovhBgpArea?: number;
         status: ovhcloudconnect.popConfig.StatusEnum;
         subnet?: string;
     }
@@ -130,14 +130,23 @@ export namespace ovhcloudconnect {
         value: number;
     }
     /**
+     * OVHcloud Connect Monitoring
+     * interface fullName: ovhcloudconnect.Monitoring.Monitoring
+     */
+    export interface Monitoring {
+        activated: boolean;
+        description: string;
+        name: string;
+    }
+    /**
      * OVHcloud Connect Service Pop Configuration
      * interface fullName: ovhcloudconnect.PopConfig.PopConfig
      */
     export interface PopConfig {
-        customerBgpArea: number;
+        customerBgpArea?: number;
         id: number;
         interfaceId: number;
-        ovhBgpArea: number;
+        ovhBgpArea?: number;
         status: ovhcloudconnect.popConfig.StatusEnum;
         subnet?: string;
         type: ovhcloudconnect.popConfig.TypeEnum;
@@ -164,6 +173,13 @@ export namespace ovhcloudconnect {
         status: ovhcloudconnect.service.StatusEnum;
         uuid: string;
         vrack?: string;
+    }
+    /**
+     * OVHcloud Connect Subscriptions
+     * interface fullName: ovhcloudconnect.Subscriptions.Subscriptions
+     */
+    export interface Subscriptions {
+        subscriptions: string[];
     }
     /**
      * OVHcloud Connect Task
@@ -288,7 +304,7 @@ export namespace ovhcloudconnect {
          * Enum values for service provider
          * type fullname: ovhcloudconnect.service.ProviderEnum
          */
-        export type ProviderEnum = "OVHcloud" | "RISQ" | "equinix" | "fibrenoire" | "intercloud" | "internal" | "interxion" | "megaport" | "orange" | "pccw"
+        export type ProviderEnum = "OVHcloud" | "RISQ" | "consoleconnect" | "equinix" | "fibrenoire" | "intercloud" | "internal" | "interxion" | "megaport" | "orange"
         /**
          * Enum values for the Service
          * type fullname: ovhcloudconnect.service.StatusEnum
@@ -497,7 +513,7 @@ export interface OvhCloudConnect {
         }
         confirmTermination: {
             /**
-             * Confirm termination of your service
+             * Confirm service termination
              * POST /ovhCloudConnect/{serviceName}/confirmTermination
              */
             $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
@@ -627,14 +643,35 @@ export interface OvhCloudConnect {
              */
             $post(): Promise<string>;
         }
+        monitoring: {
+            /**
+             * Delete monitoring
+             * DELETE /ovhCloudConnect/{serviceName}/monitoring
+             */
+            $delete(): Promise<void>;
+            /**
+             * List monitoring alerts
+             * GET /ovhCloudConnect/{serviceName}/monitoring
+             */
+            $get(): Promise<ovhcloudconnect.Monitoring[]>;
+            /**
+             * Monitor the Service
+             * POST /ovhCloudConnect/{serviceName}/monitoring
+             */
+            $post(params?: { subscriptions?: string[] }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        }
         serviceInfos: {
             /**
-             * Get this object properties
+             * Get service information
              * GET /ovhCloudConnect/{serviceName}/serviceInfos
              */
             $get(): Promise<services.Service>;
             /**
-             * Alter this object properties
+             * Update service information
              * PUT /ovhCloudConnect/{serviceName}/serviceInfos
              */
             $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
@@ -703,7 +740,7 @@ export interface OvhCloudConnect {
         }
         terminate: {
             /**
-             * Terminate your service
+             * Ask for the termination of your service
              * POST /ovhCloudConnect/{serviceName}/terminate
              */
             $post(): Promise<string>;

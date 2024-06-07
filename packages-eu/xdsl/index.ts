@@ -6,24 +6,50 @@ import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-
  */
 export namespace complexType {
     /**
-     * A numeric value tagged with its unit
-     * interface fullName: complexType.UnitAndValue.UnitAndValue
+     * complexType.UnitAndValue_double
+     * interface fullName: complexType.UnitAndValue_double.UnitAndValue_double
      */
-    export interface UnitAndValue<T> {
+    export interface UnitAndValue_double {
         unit: string;
-        value: T;
+        value: number;
     }
     /**
-     * A value set tagged with its unit
-     * interface fullName: complexType.UnitAndValues.UnitAndValues
+     * complexType.UnitAndValue_long
+     * interface fullName: complexType.UnitAndValue_long.UnitAndValue_long
      */
-    export interface UnitAndValues<T> {
+    export interface UnitAndValue_long {
         unit: string;
-        values: T[];
+        value: number;
+    }
+    export namespace UnitAndValues_xdsl {
+        /**
+         * complexType.UnitAndValues_xdsl.AccessLatency
+         * interface fullName: complexType.UnitAndValues_xdsl.AccessLatency.AccessLatency
+         */
+        export interface AccessLatency {
+            unit: string;
+            values: xdsl.AccessLatency[];
+        }
+        /**
+         * complexType.UnitAndValues_xdsl.TimestampAndValue
+         * interface fullName: complexType.UnitAndValues_xdsl.TimestampAndValue.TimestampAndValue
+         */
+        export interface TimestampAndValue {
+            unit: string;
+            values: xdsl.TimestampAndValue[];
+        }
     }
 }
 export namespace connectivity {
     export namespace eligibility {
+        /**
+         * Represents meeting booking options
+         * interface fullName: connectivity.eligibility.MeetingCapacities.MeetingCapacities
+         */
+        export interface MeetingCapacities {
+            eRdv: boolean;
+            phoneCall: boolean;
+        }
         /**
          * Represents a time slot for a meeting
          * interface fullName: connectivity.eligibility.MeetingSlot.MeetingSlot
@@ -40,6 +66,7 @@ export namespace connectivity {
          */
         export interface Meetings {
             canBookFakeMeeting: boolean;
+            capacities: connectivity.eligibility.MeetingCapacities;
             meetingSlots: connectivity.eligibility.MeetingSlot[];
         }
     }
@@ -65,6 +92,35 @@ export namespace email {
         export type ObjectStateEnum = "creating" | "deleting" | "ok" | "reopening" | "suspended" | "suspending" | "unknown"
     }
 }
+export namespace iam {
+    /**
+     * IAM resource metadata embedded in services models
+     * interface fullName: iam.ResourceMetadata.ResourceMetadata
+     */
+    export interface ResourceMetadata {
+        displayName?: string;
+        id: string;
+        tags?: { [key: string]: string };
+        urn: string;
+    }
+    export namespace resource {
+        /**
+         * Resource tag filter
+         * interface fullName: iam.resource.TagFilter.TagFilter
+         */
+        export interface TagFilter {
+            operator?: iam.resource.TagFilter.OperatorEnum;
+            value: string;
+        }
+        export namespace TagFilter {
+            /**
+             * Operator that can be used in order to filter resources tags
+             * type fullname: iam.resource.TagFilter.OperatorEnum
+             */
+            export type OperatorEnum = "EQ"
+        }
+    }
+}
 export namespace order {
     /**
      * A contract
@@ -76,6 +132,7 @@ export namespace order {
         url: string;
     }
     /**
+     * Currency code
      * type fullname: order.CurrencyCodeEnum
      */
     export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "INR" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
@@ -95,10 +152,14 @@ export namespace order {
      * interface fullName: order.OrderDetail.OrderDetail
      */
     export interface OrderDetail {
+        cartItemID?: number;
         description: string;
         detailType?: order.OrderDetailTypeEnum;
         domain: string;
+        originalTotalPrice: order.Price;
         quantity: number;
+        reductionTotalPrice: order.Price;
+        reductions: order.Reduction[];
         totalPrice: order.Price;
         unitPrice: order.Price;
     }
@@ -112,19 +173,44 @@ export namespace order {
      * interface fullName: order.OrderPrices.OrderPrices
      */
     export interface OrderPrices {
+        originalWithoutTax?: order.Price;
+        reduction?: order.Price;
         tax: order.Price;
         withTax: order.Price;
         withoutTax: order.Price;
     }
     /**
-     * Price with it's currency and textual representation
+     * Price with its currency and textual representation
      * interface fullName: order.Price.Price
      */
     export interface Price {
         currencyCode: order.CurrencyCodeEnum;
+        priceInUcents?: number;
         text: string;
         value: number;
     }
+    /**
+     * Order detail reduction
+     * interface fullName: order.Reduction.Reduction
+     */
+    export interface Reduction {
+        context: order.ReductionContextEnum;
+        description: string;
+        price: order.Price;
+        reductionDescription: string;
+        type: order.ReductionTypeEnum;
+        value: order.Price;
+    }
+    /**
+     * Context of the reduction
+     * type fullname: order.ReductionContextEnum
+     */
+    export type ReductionContextEnum = "promotion" | "voucher"
+    /**
+     * Type of reduction
+     * type fullname: order.ReductionTypeEnum
+     */
+    export type ReductionTypeEnum = "fixed_amount" | "forced_amount" | "percentage"
 }
 export namespace service {
     /**
@@ -144,6 +230,7 @@ export namespace service {
      */
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
     /**
+     * service.StateEnum
      * type fullname: service.StateEnum
      */
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
@@ -179,11 +266,20 @@ export namespace spare {
             brand: string;
             macAddress: string;
         }
+        /**
+         * Spare properties
+         * interface fullName: spare.xdsl.XdslSpareWithIAM.XdslSpareWithIAM
+         */
+        export interface XdslSpareWithIAM {
+            brand: string;
+            iam?: iam.ResourceMetadata;
+            macAddress: string;
+        }
     }
 }
 export namespace telephony {
     /**
-     * Contact informations structure
+     * Contact information structure
      * interface fullName: telephony.Contact.Contact
      */
     export interface Contact {
@@ -281,6 +377,8 @@ export namespace xdsl {
         nra: string;
         packName?: string;
         pairsNumber: number;
+        provider: xdsl.ProviderEnum;
+        providerInfra?: string;
         role: xdsl.AccessRoleEnum;
         status: xdsl.AccessStatusEnum;
     }
@@ -325,6 +423,17 @@ export namespace xdsl {
         sync: boolean;
     }
     /**
+     * An access latency item
+     * interface fullName: xdsl.AccessLatency.AccessLatency
+     */
+    export interface AccessLatency {
+        loss?: number;
+        status?: number;
+        timestamp: number;
+        value?: number;
+        verboseStatus?: string;
+    }
+    /**
      * Available access roles
      * type fullname: xdsl.AccessRoleEnum
      */
@@ -339,6 +448,28 @@ export namespace xdsl {
      * type fullname: xdsl.AccessStatusEnum
      */
     export type AccessStatusEnum = "active" | "cancelled" | "close" | "deleting" | "doing" | "migration" | "slamming" | "terminated" | "upgradeOffer"
+    /**
+     * XDSL Access
+     * interface fullName: xdsl.AccessWithIAM.AccessWithIAM
+     */
+    export interface AccessWithIAM {
+        accessName: string;
+        accessType: xdsl.DslTypeEnum;
+        address: xdsl.AddressDetail;
+        capabilities: xdsl.AccessCapabilities;
+        description: string;
+        iam?: iam.ResourceMetadata;
+        ipv6Enabled: boolean;
+        lnsRateLimit?: number;
+        monitoring: boolean;
+        nra: string;
+        packName?: string;
+        pairsNumber: number;
+        provider: xdsl.ProviderEnum;
+        providerInfra?: string;
+        role: xdsl.AccessRoleEnum;
+        status: xdsl.AccessStatusEnum;
+    }
     /**
      * All components of an address
      * interface fullName: xdsl.AddressDetail.AddressDetail
@@ -369,19 +500,54 @@ export namespace xdsl {
         status: xdsl.antiSpam.AntiSpamStatusEnum;
     }
     /**
-     * Async task
-     * interface fullName: xdsl.AsyncTask.AsyncTask
-     */
-    export interface AsyncTask<T> {
-        error?: string;
-        result?: T;
-        status: xdsl.AsyncTaskStatusEnum;
-    }
-    /**
      * AsyncTask status
      * type fullname: xdsl.AsyncTaskStatusEnum
      */
     export type AsyncTaskStatusEnum = "error" | "ok" | "pending"
+    export namespace AsyncTask_connectivity {
+        export namespace eligibility {
+            /**
+             * xdsl.AsyncTask_connectivity.eligibility.Meetings
+             * interface fullName: xdsl.AsyncTask_connectivity.eligibility.Meetings.Meetings
+             */
+            export interface Meetings {
+                error?: string;
+                result: connectivity.eligibility.Meetings;
+                status: xdsl.AsyncTaskStatusEnum;
+            }
+        }
+    }
+    export namespace AsyncTask_xdsl {
+        /**
+         * xdsl.AsyncTask_xdsl.ModemInfo
+         * interface fullName: xdsl.AsyncTask_xdsl.ModemInfo.ModemInfo
+         */
+        export interface ModemInfo {
+            error?: string;
+            result?: xdsl.ModemInfo;
+            status: xdsl.AsyncTaskStatusEnum;
+        }
+    }
+    /**
+     * Copper grid closure trajectory
+     * interface fullName: xdsl.CopperGridClosureTrajectory.CopperGridClosureTrajectory
+     */
+    export interface CopperGridClosureTrajectory {
+        commercialClosureAnnouncementDate?: string;
+        commercialClosureDate?: string;
+        commercialClosureInitialDate?: string;
+        departmentCode: string;
+        departmentName?: string;
+        ftthZone?: string;
+        inseeCode: string;
+        lot?: string;
+        municipalityName: string;
+        oiCode?: string;
+        oiName?: string;
+        technicalClosureAnnouncementDate?: string;
+        technicalClosureDate?: string;
+        technicalClosureInitialDate?: string;
+    }
     /**
      * DHCP Configuration of the Modem
      * interface fullName: xdsl.DHCP.DHCP
@@ -424,7 +590,7 @@ export namespace xdsl {
         price: order.Price;
     }
     /**
-     * Describe device informations of a Modem
+     * Describe device information of a Modem
      * interface fullName: xdsl.DeviceModemInfo.DeviceModemInfo
      */
     export interface DeviceModemInfo {
@@ -501,6 +667,7 @@ export namespace xdsl {
         buildingName?: string;
         buildingReference?: string;
         buildingSeqId?: number;
+        copperGridClosureTrajectory?: xdsl.CopperGridClosureTrajectory;
         firstEligibleDate?: string;
         grts?: xdsl.GtrEnum[];
         id: number;
@@ -600,6 +767,7 @@ export namespace xdsl {
         sync: boolean;
     }
     /**
+     * xdsl.LineSectionLength
      * interface fullName: xdsl.LineSectionLength.LineSectionLength
      */
     export interface LineSectionLength {
@@ -700,6 +868,14 @@ export namespace xdsl {
         name: string;
     }
     /**
+     * Access ONT information
+     * interface fullName: xdsl.Ont.Ont
+     */
+    export interface Ont {
+        mac: string;
+        serial: string;
+    }
+    /**
      * Operators
      * type fullname: xdsl.OperatorTypeEnum
      */
@@ -737,6 +913,11 @@ export namespace xdsl {
         code: string;
         name: string;
     }
+    /**
+     * The providers
+     * type fullname: xdsl.ProviderEnum
+     */
+    export type ProviderEnum = "axione" | "bouygues" | "ft" | "ftBySfr" | "kosc" | "koscDeg" | "ovh" | "sfr"
     /**
      * Log entry of an auth attempt to the radius server
      * interface fullName: xdsl.RadiusConnectionLog.RadiusConnectionLog
@@ -905,6 +1086,26 @@ export namespace xdsl {
          */
         export type EvidencesInfoStatusEnum = "error" | "ok" | "pending"
     }
+    export namespace applyTemplateToModem {
+        /**
+         * xdsl.applyTemplateToModem.post
+         * interface fullName: xdsl.applyTemplateToModem.post.post
+         */
+        export interface post {
+            templateName: string;
+        }
+    }
+    export namespace changeContact {
+        /**
+         * xdsl.changeContact.post
+         * interface fullName: xdsl.changeContact.post.post
+         */
+        export interface post {
+            contactAdmin: string;
+            contactBilling: string;
+            contactTech: string;
+        }
+    }
     /**
      * Connected Device
      * interface fullName: xdsl.connectedDevice.connectedDevice
@@ -936,6 +1137,24 @@ export namespace xdsl {
              * type fullname: xdsl.email.pro.TaskStatusEnum
              */
             export type TaskStatusEnum = "cancelled" | "doing" | "done" | "error" | "todo"
+            export namespace changePassword {
+                /**
+                 * xdsl.email.pro.changePassword.post
+                 * interface fullName: xdsl.email.pro.changePassword.post.post
+                 */
+                export interface post {
+                    password: string;
+                }
+            }
+        }
+    }
+    export namespace ipv6 {
+        /**
+         * xdsl.ipv6.post
+         * interface fullName: xdsl.ipv6.post.post
+         */
+        export interface post {
+            enabled: boolean;
         }
     }
     export namespace lineDiagnostic {
@@ -1006,7 +1225,7 @@ export namespace xdsl {
          */
         export type CustomerActionsEnum = "bePreparedToCheckModemSynchronization" | "changeDslFilterAndPlugInDti" | "changeExtensionCable" | "changeProfile" | "checkConnectionCable" | "checkConnectionLoginAndParameters" | "checkFilter" | "connectModemToOtherPlugs" | "neutralTest" | "rebootModem" | "resetModem" | "unplugEveryModems" | "unplugModem"
         /**
-         * Diagnostic status and informations
+         * Diagnostic status and information
          * interface fullName: xdsl.lineDiagnostic.Diagnostic.Diagnostic
          */
         export interface Diagnostic {
@@ -1016,7 +1235,7 @@ export namespace xdsl {
             status: xdsl.lineDiagnostic.DiagnosticStatusEnum;
         }
         /**
-         * Diagnostic data and informations
+         * Diagnostic data and information
          * interface fullName: xdsl.lineDiagnostic.DiagnosticData.DiagnosticData
          */
         export interface DiagnosticData {
@@ -1055,7 +1274,7 @@ export namespace xdsl {
             up?: number;
         }
         /**
-         * Line informations
+         * Line information
          * interface fullName: xdsl.lineDiagnostic.LineDetails.LineDetails
          */
         export interface LineDetails {
@@ -1072,7 +1291,7 @@ export namespace xdsl {
             lineType: xdsl.DslTypeEnum;
             nra?: string;
             number: string;
-            operator: xdsl.lineDiagnostic.ProviderEnum;
+            operator: xdsl.ProviderEnum;
             sections?: xdsl.lineDiagnostic.Section[];
         }
         /**
@@ -1089,11 +1308,6 @@ export namespace xdsl {
          * type fullname: xdsl.lineDiagnostic.ProblemTypeEnum
          */
         export type ProblemTypeEnum = "lowBandwidth" | "syncLoss"
-        /**
-         * The providers for xdsl access
-         * type fullname: xdsl.lineDiagnostic.ProviderEnum
-         */
-        export type ProviderEnum = "axione" | "ft" | "ftBySfr" | "kosc" | "koscDeg" | "ovh" | "sfr"
         /**
          * Question to customer
          * interface fullName: xdsl.lineDiagnostic.Question.Question
@@ -1152,6 +1366,166 @@ export namespace xdsl {
          */
         export type SeltStatusEnum = "failed" | "notAvailable" | "ok"
     }
+    export namespace lines {
+        export namespace diagnostic {
+            export namespace run {
+                /**
+                 * xdsl.lines.diagnostic.run.post
+                 * interface fullName: xdsl.lines.diagnostic.run.post.post
+                 */
+                export interface post {
+                    actionsDone: xdsl.lineDiagnostic.CustomerActionsEnum[];
+                    answers: xdsl.lineDiagnostic.Answers;
+                    faultType: xdsl.lineDiagnostic.FaultTypeEnum;
+                }
+            }
+        }
+        export namespace dslamPort {
+            export namespace changeProfile {
+                /**
+                 * xdsl.lines.dslamPort.changeProfile.post
+                 * interface fullName: xdsl.lines.dslamPort.changeProfile.post.post
+                 */
+                export interface post {
+                    dslamProfileId: number;
+                }
+            }
+        }
+    }
+    export namespace modem {
+        export namespace blocIp {
+            /**
+             * xdsl.modem.blocIp.post
+             * interface fullName: xdsl.modem.blocIp.post.post
+             */
+            export interface post {
+                status: xdsl.ServiceStatusEnum;
+            }
+        }
+        export namespace callWaiting {
+            /**
+             * xdsl.modem.callWaiting.post
+             * interface fullName: xdsl.modem.callWaiting.post.post
+             */
+            export interface post {
+                callWaiting: xdsl.ServiceStatusEnum;
+            }
+        }
+        export namespace comfortExchange {
+            /**
+             * xdsl.modem.comfortExchange.post
+             * interface fullName: xdsl.modem.comfortExchange.post.post
+             */
+            export interface post {
+                contactShipping: string;
+            }
+        }
+        export namespace contentSharing {
+            /**
+             * xdsl.modem.contentSharing.post
+             * interface fullName: xdsl.modem.contentSharing.post.post
+             */
+            export interface post {
+                contentSharing: xdsl.ServiceStatusEnum;
+            }
+        }
+        export namespace firmware {
+            /**
+             * xdsl.modem.firmware.post
+             * interface fullName: xdsl.modem.firmware.post.post
+             */
+            export interface post {
+                firmware: string;
+                todoDate: string;
+            }
+        }
+        export namespace ftp {
+            /**
+             * xdsl.modem.ftp.post
+             * interface fullName: xdsl.modem.ftp.post.post
+             */
+            export interface post {
+                ftp: xdsl.ServiceStatusEnum;
+            }
+        }
+        export namespace ipsecAlg {
+            /**
+             * xdsl.modem.ipsecAlg.post
+             * interface fullName: xdsl.modem.ipsecAlg.post.post
+             */
+            export interface post {
+                ipsecAlg: xdsl.ServiceStatusEnum;
+            }
+        }
+        export namespace lan {
+            export namespace dhcp {
+                export namespace DHCPStaticAddresses {
+                    /**
+                     * xdsl.modem.lan.dhcp.DHCPStaticAddresses.post
+                     * interface fullName: xdsl.modem.lan.dhcp.DHCPStaticAddresses.post.post
+                     */
+                    export interface post {
+                        IPAddress: string;
+                        MACAddress: string;
+                        name: string;
+                    }
+                }
+            }
+        }
+        export namespace portMappings {
+            /**
+             * xdsl.modem.portMappings.post
+             * interface fullName: xdsl.modem.portMappings.post.post
+             */
+            export interface post {
+                allowedRemoteIp: string;
+                description: string;
+                externalPortEnd: number;
+                externalPortStart: number;
+                internalClient: string;
+                internalPort: number;
+                internalPortEnd: number;
+                name: string;
+                protocol: xdsl.xdslModemConfig.ProtocolTypeEnum;
+            }
+        }
+        export namespace reboot {
+            /**
+             * xdsl.modem.reboot.post
+             * interface fullName: xdsl.modem.reboot.post.post
+             */
+            export interface post {
+                todoDate: string;
+            }
+        }
+        export namespace reset {
+            /**
+             * xdsl.modem.reset.post
+             * interface fullName: xdsl.modem.reset.post.post
+             */
+            export interface post {
+                resetOvhConfig: boolean;
+            }
+        }
+        export namespace sipAlg {
+            /**
+             * xdsl.modem.sipAlg.post
+             * interface fullName: xdsl.modem.sipAlg.post.post
+             */
+            export interface post {
+                sipAlg: xdsl.ServiceStatusEnum;
+            }
+        }
+        export namespace upnp {
+            /**
+             * xdsl.modem.upnp.post
+             * interface fullName: xdsl.modem.upnp.post.post
+             */
+            export interface post {
+                upnp: xdsl.ServiceStatusEnum;
+            }
+        }
+    }
     export namespace monitoringNotifications {
         /**
          * Frequency between notifications.
@@ -1163,6 +1537,19 @@ export namespace xdsl {
          * type fullname: xdsl.monitoringNotifications.TypeEnum
          */
         export type TypeEnum = "mail" | "sms"
+        /**
+         * xdsl.monitoringNotifications.post
+         * interface fullName: xdsl.monitoringNotifications.post.post
+         */
+        export interface post {
+            allowIncident: boolean;
+            downThreshold: number;
+            email: string;
+            frequency: xdsl.monitoringNotifications.FrequencyEnum;
+            phone: string;
+            smsAccount: string;
+            type: xdsl.monitoringNotifications.TypeEnum;
+        }
     }
     export namespace orderFollowup {
         /**
@@ -1192,6 +1579,59 @@ export namespace xdsl {
          * type fullname: xdsl.orderFollowup.StepStatusEnum
          */
         export type StepStatusEnum = "doing" | "done" | "error" | "todo" | "waitingCustomer"
+    }
+    export namespace orderMeeting {
+        /**
+         * xdsl.orderMeeting.post
+         * interface fullName: xdsl.orderMeeting.post.post
+         */
+        export interface post {
+            endDate: string;
+            startDate: string;
+            uiCode: string;
+        }
+    }
+    export namespace requestTotalDeconsolidation {
+        /**
+         * xdsl.requestTotalDeconsolidation.post
+         * interface fullName: xdsl.requestTotalDeconsolidation.post.post
+         */
+        export interface post {
+            noPortability: boolean;
+            rio: string;
+        }
+    }
+    export namespace resiliate {
+        /**
+         * xdsl.resiliate.post
+         * interface fullName: xdsl.resiliate.post.post
+         */
+        export interface post {
+            resiliationDate: string;
+            resiliationSurvey: xdsl.ResiliationSurvey;
+        }
+    }
+    export namespace rma {
+        export namespace changeType {
+            /**
+             * xdsl.rma.changeType.post
+             * interface fullName: xdsl.rma.changeType.post.post
+             */
+            export interface post {
+                type: telephony.RmaChangeTypeEnum;
+            }
+        }
+    }
+    export namespace spare {
+        export namespace replace {
+            /**
+             * xdsl.spare.replace.post
+             * interface fullName: xdsl.spare.replace.post.post
+             */
+            export interface post {
+                domain: string;
+            }
+        }
     }
     export namespace templateModem {
         /**
@@ -1267,13 +1707,31 @@ export namespace xdsl {
             securityType: xdsl.templateModem.SecurityTypeEnum;
             wifiName: string;
         }
+        /**
+         * xdsl.templateModem.post
+         * interface fullName: xdsl.templateModem.post.post
+         */
+        export interface post {
+            name: string;
+            serviceName: string;
+        }
+    }
+    export namespace updateInvalidOrMissingRio {
+        /**
+         * xdsl.updateInvalidOrMissingRio.post
+         * interface fullName: xdsl.updateInvalidOrMissingRio.post.post
+         */
+        export interface post {
+            relaunchWithoutPortability: boolean;
+            rio: string;
+        }
     }
     /**
      * XDSL Email Pro
      * interface fullName: xdsl.xdslEmailPro.xdslEmailPro
      */
     export interface xdslEmailPro {
-        currentUsage: complexType.UnitAndValue<number>;
+        currentUsage: complexType.UnitAndValue_double;
         displayName?: string;
         domain: string;
         firstName?: string;
@@ -1285,7 +1743,29 @@ export namespace xdsl {
         login: string;
         passwordLastUpdate?: string;
         primaryEmailAddress: string;
-        quota: complexType.UnitAndValue<number>;
+        quota: complexType.UnitAndValue_long;
+        state: emailproObjectStateEnum;
+        taskPendingId?: number;
+    }
+    /**
+     * XDSL Email Pro
+     * interface fullName: xdsl.xdslEmailProWithIAM.xdslEmailProWithIAM
+     */
+    export interface xdslEmailProWithIAM {
+        currentUsage: complexType.UnitAndValue_double;
+        displayName?: string;
+        domain: string;
+        firstName?: string;
+        iam?: iam.ResourceMetadata;
+        id: number;
+        initial?: string;
+        lastLogoffDate?: string;
+        lastLogonDate?: string;
+        lastName?: string;
+        login: string;
+        passwordLastUpdate?: string;
+        primaryEmailAddress: string;
+        quota: complexType.UnitAndValue_long;
         state: emailproObjectStateEnum;
         taskPendingId?: number;
     }
@@ -1353,7 +1833,7 @@ export interface Xdsl {
      * List available services
      * GET /xdsl
      */
-    $get(): Promise<string[]>;
+    $get(params?: { iamTags?: any }): Promise<string[]>;
     /**
      * Controle cache
      */
@@ -1364,7 +1844,7 @@ export interface Xdsl {
              * List available services
              * GET /xdsl/email/pro
              */
-            $get(): Promise<string[]>;
+            $get(params?: { iamTags?: any }): Promise<string[]>;
             /**
              * Controle cache
              */
@@ -1384,7 +1864,7 @@ export interface Xdsl {
                  * Alter this object properties
                  * PUT /xdsl/email/pro/{email}
                  */
-                $put(params?: { currentUsage?: complexType.UnitAndValue<number>, displayName?: string, domain?: string, firstName?: string, id?: number, initial?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, login?: string, passwordLastUpdate?: string, primaryEmailAddress?: string, quota?: complexType.UnitAndValue<number>, state?: emailproObjectStateEnum, taskPendingId?: number }): Promise<void>;
+                $put(params?: { currentUsage?: complexType.UnitAndValue_double, displayName?: string, domain?: string, firstName?: string, id?: number, initial?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, login?: string, passwordLastUpdate?: string, primaryEmailAddress?: string, quota?: complexType.UnitAndValue_long, state?: emailproObjectStateEnum, taskPendingId?: number }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -1426,7 +1906,7 @@ export interface Xdsl {
          * List available services
          * GET /xdsl/spare
          */
-        $get(): Promise<string[]>;
+        $get(params?: { iamTags?: any }): Promise<string[]>;
         /**
          * Controle cache
          */
@@ -1484,12 +1964,12 @@ export interface Xdsl {
             }
             serviceInfos: {
                 /**
-                 * Get this object properties
+                 * Get service information
                  * GET /xdsl/spare/{spare}/serviceInfos
                  */
                 $get(): Promise<services.Service>;
                 /**
-                 * Alter this object properties
+                 * Update service information
                  * PUT /xdsl/spare/{spare}/serviceInfos
                  */
                 $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
@@ -1547,7 +2027,7 @@ export interface Xdsl {
          * Alter this object properties
          * PUT /xdsl/{serviceName}
          */
-        $put(params?: { accessName?: string, accessType?: xdsl.DslTypeEnum, address?: xdsl.AddressDetail, capabilities?: xdsl.AccessCapabilities, description?: string, ipv6Enabled?: boolean, lnsRateLimit?: number, monitoring?: boolean, nra?: string, packName?: string, pairsNumber?: number, role?: xdsl.AccessRoleEnum, status?: xdsl.AccessStatusEnum }): Promise<void>;
+        $put(params?: { accessName?: string, accessType?: xdsl.DslTypeEnum, address?: xdsl.AddressDetail, capabilities?: xdsl.AccessCapabilities, description?: string, ipv6Enabled?: boolean, lnsRateLimit?: number, monitoring?: boolean, nra?: string, packName?: string, pairsNumber?: number, provider?: xdsl.ProviderEnum, providerInfra?: string, role?: xdsl.AccessRoleEnum, status?: xdsl.AccessStatusEnum }): Promise<void>;
         /**
          * Controle cache
          */
@@ -1813,7 +2293,7 @@ export interface Xdsl {
                      * Get various statistics about the line
                      * GET /xdsl/{serviceName}/lines/{number}/statistics
                      */
-                    $get(params: { period: xdsl.StatisticsPeriodEnum, type: xdsl.LineStatisticsTypeEnum }): Promise<complexType.UnitAndValues<xdsl.TimestampAndValue>>;
+                    $get(params: { period: xdsl.StatisticsPeriodEnum, type: xdsl.LineStatisticsTypeEnum }): Promise<complexType.UnitAndValues_xdsl.TimestampAndValue>;
                     /**
                      * Controle cache
                      */
@@ -2171,7 +2651,7 @@ export interface Xdsl {
                  * get general Modem information
                  * POST /xdsl/{serviceName}/modem/retrieveInfo
                  */
-                $post(): Promise<xdsl.AsyncTask<xdsl.ModemInfo>>;
+                $post(): Promise<xdsl.AsyncTask_xdsl.ModemInfo>;
             }
             sipAlg: {
                 /**
@@ -2230,6 +2710,17 @@ export interface Xdsl {
                      * Controle cache
                      */
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    qrCode: {
+                        /**
+                         * Get the WiFi configuration QR code as base64, if applicable
+                         * GET /xdsl/{serviceName}/modem/wifi/{wifiName}/qrCode
+                         */
+                        $get(): Promise<string>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    }
                 };
             }
         }
@@ -2269,6 +2760,17 @@ export interface Xdsl {
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
+        }
+        ont: {
+            /**
+             * Get this object properties
+             * GET /xdsl/{serviceName}/ont
+             */
+            $get(): Promise<xdsl.Ont>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         orderFollowup: {
             /**
@@ -2312,7 +2814,7 @@ export interface Xdsl {
         }
         requestPPPLoginMail: {
             /**
-             * Renew PPP password and send the PPP login informations to the e-mail of the nicAdmin
+             * Renew PPP password and send the PPP login information to the e-mail of the nicAdmin
              * POST /xdsl/{serviceName}/requestPPPLoginMail
              */
             $post(): Promise<void>;
@@ -2397,23 +2899,23 @@ export interface Xdsl {
              * Search for available line creation meeting time slots, for order only
              * POST /xdsl/{serviceName}/searchOrderMeetings
              */
-            $post(): Promise<xdsl.AsyncTask<connectivity.eligibility.Meetings>>;
+            $post(): Promise<xdsl.AsyncTask_connectivity.eligibility.Meetings>;
         }
         sendOrderToProvider: {
             /**
-             * Unlock order in "waitingCustomer" status. It only concerns orders whose modem is sent before anything have been forwarded to our provider
+             * Unlock order in "waitingCustomer" status
              * POST /xdsl/{serviceName}/sendOrderToProvider
              */
             $post(): Promise<void>;
         }
         serviceInfos: {
             /**
-             * Get this object properties
+             * Get service information
              * GET /xdsl/{serviceName}/serviceInfos
              */
             $get(): Promise<services.Service>;
             /**
-             * Alter this object properties
+             * Update service information
              * PUT /xdsl/{serviceName}/serviceInfos
              */
             $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
@@ -2427,7 +2929,7 @@ export interface Xdsl {
              * Get various statistics about this access
              * GET /xdsl/{serviceName}/statistics
              */
-            $get(params: { period: xdsl.StatisticsPeriodEnum, type: xdsl.AccessStatisticsTypeEnum }): Promise<complexType.UnitAndValues<xdsl.TimestampAndValue>>;
+            $get(params: { period: xdsl.StatisticsPeriodEnum, type: xdsl.AccessStatisticsTypeEnum }): Promise<complexType.UnitAndValues_xdsl.AccessLatency>;
             /**
              * Controle cache
              */

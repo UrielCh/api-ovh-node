@@ -6,22 +6,6 @@ import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-
  */
 export namespace complexType {
     /**
-     * Chart
-     * interface fullName: complexType.ChartReturn.ChartReturn
-     */
-    export interface ChartReturn {
-        unit?: string;
-        values?: complexType.ChartTimestampValue[];
-    }
-    /**
-     * A timestamp associated to a value
-     * interface fullName: complexType.ChartTimestampValue.ChartTimestampValue
-     */
-    export interface ChartTimestampValue {
-        timestamp: number;
-        value?: number;
-    }
-    /**
      * Key and value, with proper key strings
      * interface fullName: complexType.SafeKeyValue.SafeKeyValue
      */
@@ -48,15 +32,10 @@ export namespace complexType {
 }
 export namespace dedicated {
     /**
-     * CheckSum type
-     * type fullname: dedicated.CheckSumTypesEnum
-     */
-    export type CheckSumTypesEnum = "md5" | "sha1" | "sha256" | "sha512"
-    /**
      * ovh datacenter
      * type fullname: dedicated.DatacenterEnum
      */
-    export type DatacenterEnum = "bhs1" | "bhs2" | "bhs3" | "bhs4" | "bhs5" | "bhs6" | "bhs7" | "bhs8" | "dc1" | "eri1" | "gra1" | "gra2" | "gra3" | "gsw" | "hil1" | "lil1-int1" | "lim1" | "lim3" | "p19" | "rbx-hz" | "rbx1" | "rbx2" | "rbx3" | "rbx4" | "rbx5" | "rbx6" | "rbx7" | "rbx8" | "sbg1" | "sbg2" | "sbg3" | "sbg4" | "sbg5" | "sgp1" | "syd1" | "syd2" | "vin1" | "waw1" | "ynm1"
+    export type DatacenterEnum = "bhs1" | "bhs2" | "bhs3" | "bhs4" | "bhs5" | "bhs6" | "bhs7" | "bhs8" | "cch01" | "crx1" | "crx2" | "dc1" | "eri1" | "eri2" | "gra04" | "gra1" | "gra2" | "gra3" | "gsw" | "hil1" | "ieb01" | "lil1-int1" | "lim1" | "lim2" | "lim3" | "mr901" | "p19" | "rbx" | "rbx-hz" | "rbx1" | "rbx10" | "rbx2" | "rbx3" | "rbx4" | "rbx5" | "rbx6" | "rbx7" | "rbx8" | "rbx9" | "sbg1" | "sbg2" | "sbg3" | "sbg4" | "sbg5" | "sgp02" | "sgp1" | "syd03" | "syd1" | "syd2" | "vin1" | "waw1" | "ynm1" | "yyz01"
     /**
      * A task for a dedicated server
      * interface fullName: dedicated.ExposedTask.ExposedTask
@@ -67,11 +46,6 @@ export namespace dedicated {
         server: string;
         todoDate: string;
     }
-    /**
-     * Type of your image
-     * type fullname: dedicated.ImageTypesEnum
-     */
-    export type ImageTypesEnum = "qcow2" | "raw"
     /**
      * List of operation type
      * type fullname: dedicated.OperationFunctionEnum
@@ -122,7 +96,7 @@ export namespace dedicated {
      * different task operation
      * type fullname: dedicated.TaskFunctionEnum
      */
-    export type TaskFunctionEnum = "INFRA_002_VirtualNetworkInterface" | "INFRA_002_VirtualNetworkInterface_group" | "INFRA_002_VirtualNetworkInterface_ungroup" | "INFRA_ONE_NETWORK_VirtualNetworkInterface_group" | "INFRA_ONE_NETWORK_VirtualNetworkInterface_ungroup" | "addVirtualMac" | "addWindowSplaFromExistingSerial" | "applyBackupFtpAcls" | "applyBackupFtpQuota" | "bypassAntiDDosGame" | "changePasswordBackupFTP" | "changeRipeOrg" | "checkAndReleaseIp" | "createBackupFTP" | "createOrUpdateRipeOrg" | "createPrivateNetwork" | "disableFirewall" | "enableFirewall" | "genericMoveFloatingIp" | "hardReboot" | "hardware_update" | "ipmi/configureSGX" | "migrateBackupFTP" | "moveFloatingIp" | "moveVirtualMac" | "reagregateBlock" | "rebootPower8To" | "reinstallServer" | "releaseIp" | "removeBackupFTP" | "removeVirtualMac" | "requestAccessIPMI" | "resetIPMI" | "resetIPMISession" | "testIPMIhttp" | "testIPMIpassword" | "testIPMIping" | "virtualMacAdd" | "virtualMacDelete"
+    export type TaskFunctionEnum = "INFRA_002_VirtualNetworkInterface" | "INFRA_002_VirtualNetworkInterface_group" | "INFRA_002_VirtualNetworkInterface_ungroup" | "INFRA_ONE_NETWORK_ONEAPI_VirtualNetworkInterface_group" | "INFRA_ONE_NETWORK_ONEAPI_VirtualNetworkInterface_ungroup" | "INFRA_ONE_NETWORK_VirtualNetworkInterface_group" | "INFRA_ONE_NETWORK_VirtualNetworkInterface_ungroup" | "addVirtualMac" | "addWindowSplaFromExistingSerial" | "applyBackupFtpAcls" | "applyBackupFtpQuota" | "bypassAntiDDosGame" | "changePasswordBackupFTP" | "changeRipeOrg" | "checkAndReleaseIp" | "createBackupFTP" | "createOrUpdateRipeOrg" | "createPrivateNetwork" | "disableFirewall" | "enableFirewall" | "genericMoveFloatingIp" | "hardReboot" | "hardware_update" | "ipmi/configureSGX" | "migrateBackupFTP" | "moveFloatingIp" | "moveVirtualMac" | "reagregateBlock" | "rebootPower8To" | "reinstallServer" | "releaseIp" | "removeBackupFTP" | "removeVirtualMac" | "requestAccessIPMI" | "resetIPMI" | "resetIPMISession" | "testIPMIhttp" | "testIPMIpassword" | "testIPMIping" | "virtualMacAdd" | "virtualMacDelete"
     /**
      * different task status
      * type fullname: dedicated.TaskStatusEnum
@@ -169,7 +143,7 @@ export namespace dedicated {
          * interface fullName: dedicated.server.Access.Access
          */
         export interface Access {
-            password: string;
+            password?: string;
             type: dedicated.server.AccessTypeEnum;
             url?: string;
             user?: string;
@@ -224,7 +198,7 @@ export namespace dedicated {
          * SGX PRMRR value enum
          * type fullname: dedicated.server.BiosSettingsSgxPrmrrEnum
          */
-        export type BiosSettingsSgxPrmrrEnum = "128" | "16384" | "2048" | "256" | "32" | "32768" | "4096" | "512" | "64" | "65536" | "8192"
+        export type BiosSettingsSgxPrmrrEnum = "128" | "131072" | "16384" | "2048" | "256" | "32" | "32768" | "4096" | "512" | "64" | "65536" | "8192"
         /**
          * SGX Status enum
          * type fullname: dedicated.server.BiosSettingsSgxStatusEnum
@@ -262,32 +236,6 @@ export namespace dedicated {
          */
         export type BootTypeEnum = "harddisk" | "internal" | "ipxeCustomerScript" | "network" | "power" | "rescue"
         /**
-         * Bring you own Image on your server
-         * interface fullName: dedicated.server.ByoiStatus.ByoiStatus
-         */
-        export interface ByoiStatus {
-            checksum?: string;
-            message?: string;
-            servername?: string;
-            status?: dedicated.server.ByoiStatusEnum;
-        }
-        /**
-         * All states a status can be in
-         * type fullname: dedicated.server.ByoiStatusEnum
-         */
-        export type ByoiStatusEnum = "doing" | "done" | "error"
-        /**
-         * Configurations used by cloud-init or cloudbase-init
-         * interface fullName: dedicated.server.ConfigDrive.ConfigDrive
-         */
-        export interface ConfigDrive {
-            enable?: boolean;
-            hostname?: string;
-            sshKey?: string;
-            userData?: string;
-            userMetadatas?: complexType.SafeKeyValueCanBeNull<string>[];
-        }
-        /**
          * cpu family 
          * type fullname: dedicated.server.CpuFamilyEnum
          */
@@ -297,7 +245,9 @@ export namespace dedicated {
          * interface fullName: dedicated.server.Dedicated.Dedicated
          */
         export interface Dedicated {
+            availabilityZone: string;
             bootId?: number;
+            bootScript?: string;
             commercialRange?: string;
             datacenter: dedicated.DatacenterEnum;
             ip: string;
@@ -310,7 +260,39 @@ export namespace dedicated {
             powerState: dedicated.server.PowerStateEnum;
             professionalUse: boolean;
             rack: string;
+            region: string;
             rescueMail?: string;
+            rescueSshKey?: string;
+            reverse?: string;
+            rootDevice?: string;
+            serverId: number;
+            state: dedicated.server.StateEnum;
+            supportLevel: dedicated.server.SupportLevelEnum;
+        }
+        /**
+         * Server informations
+         * interface fullName: dedicated.server.DedicatedWithIAM.DedicatedWithIAM
+         */
+        export interface DedicatedWithIAM {
+            availabilityZone: string;
+            bootId?: number;
+            bootScript?: string;
+            commercialRange?: string;
+            datacenter: dedicated.DatacenterEnum;
+            iam?: iam.ResourceMetadata;
+            ip: string;
+            linkSpeed?: number;
+            monitoring: boolean;
+            name: string;
+            newUpgradeSystem: boolean;
+            noIntervention: boolean;
+            os: string;
+            powerState: dedicated.server.PowerStateEnum;
+            professionalUse: boolean;
+            rack: string;
+            region: string;
+            rescueMail?: string;
+            rescueSshKey?: string;
             reverse?: string;
             rootDevice?: string;
             serverId: number;
@@ -433,16 +415,11 @@ export namespace dedicated {
         export interface InstallCustom {
             customHostname?: string;
             diskGroupId?: number;
-            installRTM?: boolean;
-            installSqlServer?: boolean;
-            language?: string;
             noRaid?: boolean;
             postInstallationScriptLink?: string;
             postInstallationScriptReturn?: string;
             softRaidDevices?: number;
             sshKeyName?: string;
-            useDistribKernel?: boolean;
-            useSpla?: boolean;
         }
         /**
          * A structure describing informations about an Installation templates
@@ -495,7 +472,7 @@ export namespace dedicated {
          * IP block size
          * type fullname: dedicated.server.IpBlockSizeEnum
          */
-        export type IpBlockSizeEnum = 1 | 128 | 16 | 256 | 32 | 4 | 64 | 8
+        export type IpBlockSizeEnum = 1 | 4 | 8 | 16 | 32 | 64 | 128 | 256
         /**
          * A structure describing informations about orderable IP address
          * interface fullName: dedicated.server.IpOrderable.IpOrderable
@@ -693,183 +670,6 @@ export namespace dedicated {
             network?: string;
         }
         /**
-         * Servers statistics sent by RTM (Real Time Monitoring)
-         * interface fullName: dedicated.server.Rtm.Rtm
-         */
-        export interface Rtm {
-            currentVersion?: string;
-            installedVersion?: string;
-            needsUpdate: boolean;
-        }
-        /**
-         * distincts RTM charts period
-         * type fullname: dedicated.server.RtmChartPeriodEnum
-         */
-        export type RtmChartPeriodEnum = "daily" | "monthly" | "weekly" | "yearly"
-        /**
-         * distincts probes type
-         * type fullname: dedicated.server.RtmChartTypeEnum
-         */
-        export type RtmChartTypeEnum = "cpu" | "loadavg1" | "loadavg15" | "loadavg5" | "memory" | "processCount" | "processRunning" | "swap"
-        /**
-         * A structure describing informations about RTM
-         * interface fullName: dedicated.server.RtmCommandSize.RtmCommandSize
-         */
-        export interface RtmCommandSize {
-            command?: string;
-            memory?: complexType.UnitAndValue<number>;
-        }
-        /**
-         * A structure describing informations about opened sockets on the server
-         * interface fullName: dedicated.server.RtmConnection.RtmConnection
-         */
-        export interface RtmConnection {
-            cmdline?: string;
-            domain?: string;
-            exe?: string;
-            ip?: string;
-            pid?: number;
-            port?: number;
-            procname?: string;
-            uid?: number;
-            username?: string;
-        }
-        /**
-         * A structure describing informations about server cpu
-         * interface fullName: dedicated.server.RtmCpu.RtmCpu
-         */
-        export interface RtmCpu {
-            cache?: complexType.UnitAndValue<number>;
-            core?: number;
-            freq?: complexType.UnitAndValue<number>;
-            name?: string;
-        }
-        /**
-         * Server disks informations
-         * interface fullName: dedicated.server.RtmDisk.RtmDisk
-         */
-        export interface RtmDisk {
-            capacity?: complexType.UnitAndValue<number>;
-            disk: string;
-            model?: string;
-            temperature?: complexType.UnitAndValue<number>;
-        }
-        /**
-         * A structure describing SMART health disk status
-         * interface fullName: dedicated.server.RtmDiskSmart.RtmDiskSmart
-         */
-        export interface RtmDiskSmart {
-            current_pending_sector?: number;
-            multizone_error_rate?: number;
-            offline_seek_performance?: number;
-            offline_uncorrectable?: number;
-            other_errors?: number;
-            realocated_event_count?: number;
-            temperature_celsius?: number;
-            udma_crc_error?: number;
-            uncorrected_read_errors?: number;
-            uncorrected_write_errors?: number;
-        }
-        /**
-         * A structure describing informations about server load
-         * interface fullName: dedicated.server.RtmLoad.RtmLoad
-         */
-        export interface RtmLoad {
-            cpu?: complexType.UnitAndValue<number>;
-            loadavg1?: number;
-            loadavg15?: number;
-            loadavg5?: number;
-            memory?: complexType.UnitAndValue<number>;
-            processCount?: number;
-            processRunning?: number;
-            swap?: complexType.UnitAndValue<number>;
-            uptime?: number;
-        }
-        /**
-         * A structure describing informations about server memory
-         * interface fullName: dedicated.server.RtmMemory.RtmMemory
-         */
-        export interface RtmMemory {
-            capacity?: complexType.UnitAndValue<number>;
-            slot?: string;
-        }
-        /**
-         * A structure describing informations about motherboard
-         * interface fullName: dedicated.server.RtmMotherboardHw.RtmMotherboardHw
-         */
-        export interface RtmMotherboardHw {
-            manufacturer?: string;
-            name?: string;
-        }
-        /**
-         * A structure describing informations about Rtm os
-         * interface fullName: dedicated.server.RtmOs.RtmOs
-         */
-        export interface RtmOs {
-            kernelRelease?: string;
-            kernelVersion?: string;
-            release?: string;
-        }
-        /**
-         * Server partitions informations
-         * interface fullName: dedicated.server.RtmPartition.RtmPartition
-         */
-        export interface RtmPartition {
-            inodeUsage?: complexType.UnitAndValue<number>;
-            mountPoint?: string;
-            partition: string;
-            usage?: complexType.UnitAndValue<number>;
-        }
-        /**
-         * A structure describing informations about server PCI devices
-         * interface fullName: dedicated.server.RtmPci.RtmPci
-         */
-        export interface RtmPci {
-            bus?: string;
-            device?: string;
-        }
-        /**
-         * Server raid informations
-         * interface fullName: dedicated.server.RtmRaid.RtmRaid
-         */
-        export interface RtmRaid {
-            unit: string;
-        }
-        /**
-         *  Different RAID status
-         * type fullname: dedicated.server.RtmRaidStatusEnum
-         */
-        export type RtmRaidStatusEnum = "KO" | "OK" | "REBUILDING" | "UNKNOWN"
-        /**
-         * Server raid volume information
-         * interface fullName: dedicated.server.RtmRaidVolume.RtmRaidVolume
-         */
-        export interface RtmRaidVolume {
-            capacity?: complexType.UnitAndValue<number>;
-            chunks?: string;
-            label?: string;
-            letter?: string;
-            phys?: string;
-            status?: dedicated.server.RtmRaidStatusEnum;
-            stripe?: string;
-            syncprogress?: string;
-            type?: string;
-            volume?: string;
-        }
-        /**
-         * Server raid volume port informations
-         * interface fullName: dedicated.server.RtmRaidVolumePort.RtmRaidVolumePort
-         */
-        export interface RtmRaidVolumePort {
-            capacity?: complexType.UnitAndValue<number>;
-            disk?: string;
-            model?: string;
-            port?: string;
-            serial?: string;
-            status?: dedicated.server.RtmRaidStatusEnum;
-            syncprogress?: string;
-        }
-        /**
          * All states a Dedicated can in
          * type fullname: dedicated.server.StateEnum
          */
@@ -993,6 +793,35 @@ export namespace dedicated {
         export type VirtualNetworkInterfaceModeEnum = "public" | "public_aggregation" | "vrack" | "vrack_aggregation"
     }
 }
+export namespace iam {
+    /**
+     * IAM resource metadata embedded in services models
+     * interface fullName: iam.ResourceMetadata.ResourceMetadata
+     */
+    export interface ResourceMetadata {
+        displayName?: string;
+        id: string;
+        tags?: { [key: string]: string };
+        urn: string;
+    }
+    export namespace resource {
+        /**
+         * Resource tag filter
+         * interface fullName: iam.resource.TagFilter.TagFilter
+         */
+        export interface TagFilter {
+            operator?: iam.resource.TagFilter.OperatorEnum;
+            value: string;
+        }
+        export namespace TagFilter {
+            /**
+             * Operator that can be used in order to filter resources tags
+             * type fullname: iam.resource.TagFilter.OperatorEnum
+             */
+            export type OperatorEnum = "EQ"
+        }
+    }
+}
 export namespace secondaryDns {
     /**
      * Secondary dns infos
@@ -1112,7 +941,7 @@ export interface Dedicated {
          * List available services
          * GET /dedicated/server
          */
-        $get(): Promise<string[]>;
+        $get(params?: { iamTags?: any }): Promise<string[]>;
         /**
          * Controle cache
          */
@@ -1138,7 +967,7 @@ export interface Dedicated {
              * Alter this object properties
              * PUT /dedicated/server/{serviceName}
              */
-            $put(params?: { bootId?: number, commercialRange?: string, datacenter?: dedicated.DatacenterEnum, ip?: string, linkSpeed?: number, monitoring?: boolean, name?: string, newUpgradeSystem?: boolean, noIntervention?: boolean, os?: string, powerState?: dedicated.server.PowerStateEnum, professionalUse?: boolean, rack?: string, rescueMail?: string, reverse?: string, rootDevice?: string, serverId?: number, state?: dedicated.server.StateEnum, supportLevel?: dedicated.server.SupportLevelEnum }): Promise<void>;
+            $put(params?: { availabilityZone?: string, bootId?: number, bootScript?: string, commercialRange?: string, datacenter?: dedicated.DatacenterEnum, ip?: string, linkSpeed?: number, monitoring?: boolean, name?: string, newUpgradeSystem?: boolean, noIntervention?: boolean, os?: string, powerState?: dedicated.server.PowerStateEnum, professionalUse?: boolean, rack?: string, region?: string, rescueMail?: string, rescueSshKey?: string, reverse?: string, rootDevice?: string, serverId?: number, state?: dedicated.server.StateEnum, supportLevel?: dedicated.server.SupportLevelEnum }): Promise<void>;
             /**
              * Controle cache
              */
@@ -1183,7 +1012,7 @@ export interface Dedicated {
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     configure: {
                         /**
-                         * Enable or disable SGX and configure PRMRR size. This will cause your server to reboot one or several time(s).
+                         * Enable or disable SGX and configure PRMRR size
                          * POST /dedicated/server/{serviceName}/biosSettings/sgx/configure
                          */
                         $post(params?: { prmrr?: dedicated.server.BiosSettingsSgxPrmrrEnum, status?: dedicated.server.BiosSettingsSgxStatusEnum }): Promise<dedicated.server.Task>;
@@ -1234,30 +1063,9 @@ export interface Dedicated {
                     }
                 };
             }
-            bringYourOwnImage: {
-                /**
-                 * Delete your current image installation
-                 * DELETE /dedicated/server/{serviceName}/bringYourOwnImage
-                 */
-                $delete(): Promise<void>;
-                /**
-                 * Get this object properties
-                 * GET /dedicated/server/{serviceName}/bringYourOwnImage
-                 */
-                $get(): Promise<dedicated.server.ByoiStatus>;
-                /**
-                 * Start an install with your own image
-                 * POST /dedicated/server/{serviceName}/bringYourOwnImage
-                 */
-                $post(params: { checkSum?: string, checkSumType?: dedicated.CheckSumTypesEnum, configdrive?: dedicated.server.ConfigDrive, description?: string, diskGroupId?: number, httpHeader?: complexType.SafeKeyValueCanBeNull<string>[], type: dedicated.ImageTypesEnum, URL: string }): Promise<void>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            }
             confirmTermination: {
                 /**
-                 * Confirm termination of your service
+                 * Confirm service termination
                  * POST /dedicated/server/{serviceName}/confirmTermination
                  */
                 $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
@@ -1553,12 +1361,12 @@ export interface Dedicated {
             }
             serviceInfos: {
                 /**
-                 * Get this object properties
+                 * Get service information
                  * GET /dedicated/server/{serviceName}/serviceInfos
                  */
                 $get(): Promise<services.Service>;
                 /**
-                 * Alter this object properties
+                 * Update service information
                  * PUT /dedicated/server/{serviceName}/serviceInfos
                  */
                 $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
@@ -1600,248 +1408,6 @@ export interface Dedicated {
                      * Controle cache
                      */
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                }
-            }
-            statistics: {
-                /**
-                 * Get this object properties
-                 * GET /dedicated/server/{serviceName}/statistics
-                 */
-                $get(): Promise<dedicated.server.Rtm>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                chart: {
-                    /**
-                     * Retrieve RTM graph values
-                     * GET /dedicated/server/{serviceName}/statistics/chart
-                     */
-                    $get(params: { period: dedicated.server.RtmChartPeriodEnum, type: dedicated.server.RtmChartTypeEnum }): Promise<complexType.ChartReturn>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                }
-                connection: {
-                    /**
-                     * Get server opened connections
-                     * GET /dedicated/server/{serviceName}/statistics/connection
-                     */
-                    $get(): Promise<dedicated.server.RtmConnection[]>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                }
-                cpu: {
-                    /**
-                     * Get server cpu informations
-                     * GET /dedicated/server/{serviceName}/statistics/cpu
-                     */
-                    $get(): Promise<dedicated.server.RtmCpu>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                }
-                disk: {
-                    /**
-                     * Server disks
-                     * GET /dedicated/server/{serviceName}/statistics/disk
-                     */
-                    $get(): Promise<string[]>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    $(disk: string): {
-                        /**
-                         * Get this object properties
-                         * GET /dedicated/server/{serviceName}/statistics/disk/{disk}
-                         */
-                        $get(): Promise<dedicated.server.RtmDisk>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                        smart: {
-                            /**
-                             * Get disk smart informations
-                             * GET /dedicated/server/{serviceName}/statistics/disk/{disk}/smart
-                             */
-                            $get(): Promise<dedicated.server.RtmDiskSmart>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                        }
-                    };
-                }
-                load: {
-                    /**
-                     * Get server load
-                     * GET /dedicated/server/{serviceName}/statistics/load
-                     */
-                    $get(): Promise<dedicated.server.RtmLoad>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                }
-                memory: {
-                    /**
-                     * Get server memory informations
-                     * GET /dedicated/server/{serviceName}/statistics/memory
-                     */
-                    $get(): Promise<dedicated.server.RtmMemory[]>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                }
-                motherboard: {
-                    /**
-                     * Get server motherboard hardware informations
-                     * GET /dedicated/server/{serviceName}/statistics/motherboard
-                     */
-                    $get(): Promise<dedicated.server.RtmMotherboardHw>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                }
-                os: {
-                    /**
-                     * Get server os informations
-                     * GET /dedicated/server/{serviceName}/statistics/os
-                     */
-                    $get(): Promise<dedicated.server.RtmOs>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                }
-                partition: {
-                    /**
-                     * Server partitions
-                     * GET /dedicated/server/{serviceName}/statistics/partition
-                     */
-                    $get(): Promise<string[]>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    $(partition: string): {
-                        /**
-                         * Get this object properties
-                         * GET /dedicated/server/{serviceName}/statistics/partition/{partition}
-                         */
-                        $get(): Promise<dedicated.server.RtmPartition>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                        chart: {
-                            /**
-                             * Retrieve partition charts
-                             * GET /dedicated/server/{serviceName}/statistics/partition/{partition}/chart
-                             */
-                            $get(params: { period: dedicated.server.RtmChartPeriodEnum }): Promise<complexType.ChartReturn>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                        }
-                    };
-                }
-                pci: {
-                    /**
-                     * Get server PCI devices informations
-                     * GET /dedicated/server/{serviceName}/statistics/pci
-                     */
-                    $get(): Promise<dedicated.server.RtmPci[]>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                }
-                process: {
-                    /**
-                     * Get server process
-                     * GET /dedicated/server/{serviceName}/statistics/process
-                     */
-                    $get(): Promise<dedicated.server.RtmCommandSize[]>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                }
-                raid: {
-                    /**
-                     * Server raid informations
-                     * GET /dedicated/server/{serviceName}/statistics/raid
-                     */
-                    $get(): Promise<string[]>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    $(unit: string): {
-                        /**
-                         * Get this object properties
-                         * GET /dedicated/server/{serviceName}/statistics/raid/{unit}
-                         */
-                        $get(): Promise<dedicated.server.RtmRaid>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                        volume: {
-                            /**
-                             * Raid unit volumes
-                             * GET /dedicated/server/{serviceName}/statistics/raid/{unit}/volume
-                             */
-                            $get(): Promise<string[]>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                            $(volume: string): {
-                                /**
-                                 * Get this object properties
-                                 * GET /dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}
-                                 */
-                                $get(): Promise<dedicated.server.RtmRaidVolume>;
-                                /**
-                                 * Controle cache
-                                 */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                                port: {
-                                    /**
-                                     * Raid unit volume ports
-                                     * GET /dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}/port
-                                     */
-                                    $get(): Promise<string[]>;
-                                    /**
-                                     * Controle cache
-                                     */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                                    $(port: string): {
-                                        /**
-                                         * Get this object properties
-                                         * GET /dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}/port/{port}
-                                         */
-                                        $get(): Promise<dedicated.server.RtmRaidVolumePort>;
-                                        /**
-                                         * Controle cache
-                                         */
-                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                                    };
-                                }
-                            };
-                        }
-                    };
                 }
             }
             support: {
@@ -1918,7 +1484,7 @@ export interface Dedicated {
             }
             terminate: {
                 /**
-                 * Terminate your service
+                 * Ask for the termination of your service
                  * POST /dedicated/server/{serviceName}/terminate
                  */
                 $post(): Promise<string>;

@@ -4,6 +4,35 @@ import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-
  * START API /sslGateway Models
  * Source: https://eu.api.ovh.com/1.0/sslGateway.json
  */
+export namespace iam {
+    /**
+     * IAM resource metadata embedded in services models
+     * interface fullName: iam.ResourceMetadata.ResourceMetadata
+     */
+    export interface ResourceMetadata {
+        displayName?: string;
+        id: string;
+        tags?: { [key: string]: string };
+        urn: string;
+    }
+    export namespace resource {
+        /**
+         * Resource tag filter
+         * interface fullName: iam.resource.TagFilter.TagFilter
+         */
+        export interface TagFilter {
+            operator?: iam.resource.TagFilter.OperatorEnum;
+            value: string;
+        }
+        export namespace TagFilter {
+            /**
+             * Operator that can be used in order to filter resources tags
+             * type fullname: iam.resource.TagFilter.OperatorEnum
+             */
+            export type OperatorEnum = "EQ"
+        }
+    }
+}
 export namespace service {
     /**
      * Map a possible renew for a specific service
@@ -136,6 +165,27 @@ export namespace sslGateway {
         zones: string[];
     }
     /**
+     * Your SSL Gateway
+     * interface fullName: sslGateway.SslGatewayWithIAM.SslGatewayWithIAM
+     */
+    export interface SslGatewayWithIAM {
+        allowedSource?: string[];
+        displayName?: string;
+        hsts: boolean;
+        httpsRedirect: boolean;
+        iam?: iam.ResourceMetadata;
+        ipv4: string;
+        ipv6?: string;
+        metricsToken?: string;
+        offer: sslGateway.OfferEnum;
+        reverse?: string;
+        serverHttps: boolean;
+        serviceName: string;
+        sslConfiguration?: sslGateway.SslConfigurationEnum;
+        state: sslGateway.StateEnum;
+        zones: string[];
+    }
+    /**
      * Possible values for SSL Gateway state
      * type fullname: sslGateway.StateEnum
      */
@@ -175,10 +225,10 @@ export default proxySslGateway;
  */
 export interface SslGateway {
     /**
-     * List available services
+     * List of your SSL Gateways
      * GET /sslGateway
      */
-    $get(): Promise<string[]>;
+    $get(params?: { iamTags?: any }): Promise<string[]>;
     /**
      * Controle cache
      */
@@ -229,7 +279,7 @@ export interface SslGateway {
         }
         confirmTermination: {
             /**
-             * Confirm termination of your service
+             * Confirm service termination
              * POST /sslGateway/{serviceName}/confirmTermination
              */
             $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
@@ -323,12 +373,12 @@ export interface SslGateway {
         }
         serviceInfos: {
             /**
-             * Get this object properties
+             * Get service information
              * GET /sslGateway/{serviceName}/serviceInfos
              */
             $get(): Promise<services.Service>;
             /**
-             * Alter this object properties
+             * Update service information
              * PUT /sslGateway/{serviceName}/serviceInfos
              */
             $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
@@ -361,7 +411,7 @@ export interface SslGateway {
         }
         terminate: {
             /**
-             * Terminate your service
+             * Ask for the termination of your service
              * POST /sslGateway/{serviceName}/terminate
              */
             $post(): Promise<string>;

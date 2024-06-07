@@ -48,7 +48,7 @@ export namespace cloud {
      * Possible values for delay between two alerts in seconds
      * type fullname: cloud.AlertingDelayEnum
      */
-    export type AlertingDelayEnum = 10800 | 172800 | 21600 | 259200 | 3600 | 43200 | 604800 | 86400
+    export type AlertingDelayEnum = 3600 | 10800 | 21600 | 43200 | 86400 | 172800 | 259200 | 604800
     /**
      * Details about an available region that can be activated on your project
      * interface fullName: cloud.AvailableRegion.AvailableRegion
@@ -57,6 +57,7 @@ export namespace cloud {
         continentCode: cloud.RegionContinentEnum;
         datacenterLocation: string;
         name: string;
+        type: cloud.RegionTypeEnum;
     }
     /**
      * List your automated backups
@@ -78,6 +79,7 @@ export namespace cloud {
     export interface ColdArchiveContainer {
         automaticDeletionAt?: string;
         createdAt: string;
+        lockedUntil?: string;
         name: string;
         objects: cloud.StorageObject[];
         objectsCount: number;
@@ -121,6 +123,7 @@ export namespace cloud {
      */
     export interface Execution {
         executedAt: string;
+        id: string;
         state: cloud.ExecutionStateEnum;
         stateInfo: string;
     }
@@ -334,8 +337,10 @@ export namespace cloud {
     export interface ProjectKubeCreation {
         customization?: cloud.ProjectKubeCustomization;
         kubeProxyMode: cloud.kube.KubeProxyModeEnum;
+        loadBalancersSubnetId: string;
         name: string;
         nodepool: cloud.ProjectKubeCreationNodePool;
+        nodesSubnetId: string;
         privateNetworkConfiguration: cloud.kube.PrivateNetworkConfiguration;
         privateNetworkId: string;
         region: string;
@@ -495,7 +500,9 @@ export namespace cloud {
     export interface ProjectKubeResetCreation {
         customization: cloud.ProjectKubeCustomization;
         kubeProxyMode: cloud.kube.KubeProxyModeEnum;
+        loadBalancersSubnetId: string;
         name: string;
+        nodesSubnetId: string;
         privateNetworkConfiguration: cloud.kube.PrivateNetworkConfiguration;
         privateNetworkId: string;
         updatePolicy: cloud.kube.UpdatePolicyEnum;
@@ -524,6 +531,13 @@ export namespace cloud {
     export interface ProjectKubeUpdateCreation {
         force?: boolean;
         strategy: cloud.kube.UpdateStrategyEnum;
+    }
+    /**
+     * Model object to update loadBalancersSubnetId property of a kube cluster
+     * interface fullName: cloud.ProjectKubeUpdateLoadBalancersSubnetId.ProjectKubeUpdateLoadBalancersSubnetId
+     */
+    export interface ProjectKubeUpdateLoadBalancersSubnetId {
+        loadBalancersSubnetId: string;
     }
     /**
      * Missing description
@@ -737,6 +751,24 @@ export namespace cloud {
         size: number;
     }
     /**
+     * Project
+     * interface fullName: cloud.ProjectWithIAM.ProjectWithIAM
+     */
+    export interface ProjectWithIAM {
+        access: cloud.AccessTypeEnum;
+        creationDate: string;
+        description?: string;
+        expiration?: string;
+        iam?: iam.ResourceMetadata;
+        manualQuota: boolean;
+        orderId?: number;
+        planCode: string;
+        projectName?: string;
+        project_id: string;
+        status: cloud.project.ProjectStatusEnum;
+        unleash: boolean;
+    }
+    /**
      * Details about your region
      * interface fullName: cloud.Region.Region
      */
@@ -747,6 +779,7 @@ export namespace cloud {
         name: string;
         services: cloud.Component[];
         status: cloud.RegionStatusEnum;
+        type: cloud.RegionTypeEnum;
     }
     /**
      * Enum values for ContinentCode
@@ -759,6 +792,11 @@ export namespace cloud {
      */
     export type RegionStatusEnum = "DOWN" | "MAINTENANCE" | "UP"
     /**
+     * Enum values for region type
+     * type fullname: cloud.RegionTypeEnum
+     */
+    export type RegionTypeEnum = "localzone" | "region"
+    /**
      * Enum values for Status
      * type fullname: cloud.ServiceStatusEnum
      */
@@ -769,12 +807,14 @@ export namespace cloud {
      */
     export interface StorageContainer {
         createdAt: string;
+        encryption?: cloud.StorageEncryptionObject;
         name: string;
         objects: cloud.StorageObject[];
         objectsCount: number;
         objectsSize: number;
         ownerId: number;
         region: string;
+        versioning?: cloud.StorageVersioningObject;
         virtualHost: string;
     }
     /**
@@ -782,8 +822,17 @@ export namespace cloud {
      * interface fullName: cloud.StorageContainerCreation.StorageContainerCreation
      */
     export interface StorageContainerCreation {
+        encryption?: cloud.StorageEncryptionObject;
         name: string;
         ownerId?: number;
+        versioning?: cloud.StorageVersioningObject;
+    }
+    /**
+     * Object
+     * interface fullName: cloud.StorageEncryptionObject.StorageEncryptionObject
+     */
+    export interface StorageEncryptionObject {
+        sseAlgorithm?: cloud.storage.EncryptionAlgorithmEnum;
     }
     /**
      * Object
@@ -794,6 +843,14 @@ export namespace cloud {
         key: string;
         lastModified: string;
         size: number;
+        storageClass: cloud.storage.StorageClassEnum;
+    }
+    /**
+     * Object
+     * interface fullName: cloud.StorageVersioningObject.StorageVersioningObject
+     */
+    export interface StorageVersioningObject {
+        status?: cloud.storage.VersioningStatusEnum;
     }
     /**
      * A sub-operation is a child of an operation on your Project
@@ -1202,6 +1259,7 @@ export namespace cloud {
             datacenter: string;
             enabled: boolean;
             name: string;
+            type: cloud.RegionTypeEnum;
         }
     }
     export namespace common {
@@ -1231,6 +1289,16 @@ export namespace cloud {
             vulnerability: boolean;
         }
         /**
+         * Container registry Get IP Restrictions
+         * interface fullName: cloud.containerRegistry.IPRestrictions.IPRestrictions
+         */
+        export interface IPRestrictions {
+            createdAt: string;
+            description: string;
+            ipBlock: string;
+            updatedAt: string;
+        }
+        /**
          * Limitation of a docker registry
          * interface fullName: cloud.containerRegistry.Limits.Limits
          */
@@ -1238,6 +1306,55 @@ export namespace cloud {
             imageStorage: number;
             parallelRequest: number;
         }
+        /**
+         * Docker registry OIDC Configuration
+         * interface fullName: cloud.containerRegistry.OIDCConfiguration.OIDCConfiguration
+         */
+        export interface OIDCConfiguration {
+            adminGroup?: string;
+            autoOnboard?: boolean;
+            clientId: string;
+            clientSecret: string;
+            createdAt: string;
+            endpoint: string;
+            groupsClaim?: string;
+            id: string;
+            name: string;
+            scope: string;
+            status: cloud.containerRegistry.OIDCStatusEnum;
+            updatedAt?: string;
+            userClaim?: string;
+            verifyCert?: boolean;
+        }
+        /**
+         * Docker registry Post OIDC configuration
+         * interface fullName: cloud.containerRegistry.OIDCPost.OIDCPost
+         */
+        export interface OIDCPost {
+            deleteUsers?: boolean;
+            provider: cloud.containerRegistry.OIDCConfiguration;
+        }
+        /**
+         * Docker registry Put OIDC Configuration
+         * interface fullName: cloud.containerRegistry.OIDCPut.OIDCPut
+         */
+        export interface OIDCPut {
+            adminGroup?: string;
+            autoOnboard?: boolean;
+            clientId?: string;
+            clientSecret?: string;
+            endpoint?: string;
+            groupsClaim?: string;
+            name?: string;
+            scope?: string;
+            userClaim?: string;
+            verifyCert?: boolean;
+        }
+        /**
+         * Status of the registry's oidc configuration
+         * type fullname: cloud.containerRegistry.OIDCStatusEnum
+         */
+        export type OIDCStatusEnum = "DELETING" | "ERROR" | "INSTALLING" | "PATCHING" | "READY" | "UPDATING"
         /**
          * Plan of the registry
          * interface fullName: cloud.containerRegistry.Plan.Plan
@@ -1288,45 +1405,6 @@ export namespace cloud {
             id: string;
             password?: string;
             user: string;
-        }
-        export namespace registry {
-            /**
-             * Region of the registry
-             * type fullname: cloud.containerRegistry.registry.RegionEnum
-             */
-            export type RegionEnum = "GRA7"
-            /**
-             * Managed docker registry
-             * interface fullName: cloud.containerRegistry.registry.Registry.Registry
-             */
-            export interface Registry {
-                createdAt: string;
-                id: string;
-                name: string;
-                projectID: string;
-                region: cloud.containerRegistry.registry.RegionEnum;
-                status: cloud.containerRegistry.registry.StatusEnum;
-                updatedAt: string;
-                url: string;
-                version: string;
-            }
-            /**
-             * Status of the registry
-             * type fullname: cloud.containerRegistry.registry.StatusEnum
-             */
-            export type StatusEnum = "ERROR" | "READY" | "DELETED" | "SUSPENDED" | "INSTALLING" | "UPDATING" | "RESTORING" | "SUSPENDING" | "DELETING"
-        }
-        export namespace user {
-            /**
-             * Docker registry user
-             * interface fullName: cloud.containerRegistry.user.User.User
-             */
-            export interface User {
-                email: string;
-                id: string;
-                password?: string;
-                user: string;
-            }
         }
     }
     export namespace flavor {
@@ -1626,6 +1704,14 @@ export namespace cloud {
             status: cloud.instance.InstanceStatusEnum;
         }
         /**
+         * IP address
+         * interface fullName: cloud.instance.InstanceAddress.InstanceAddress
+         */
+        export interface InstanceAddress {
+            ip: string;
+            version: number;
+        }
+        /**
          * InstanceDetail
          * interface fullName: cloud.instance.InstanceDetail.InstanceDetail
          */
@@ -1671,8 +1757,28 @@ export namespace cloud {
          * interface fullName: cloud.instance.InstanceSummary.InstanceSummary
          */
         export interface InstanceSummary {
+            addresses: cloud.instance.InstanceAddress[];
+            attachedVolumes: cloud.instance.InstanceSummaryVolumeValue[];
+            flavorId: string;
+            flavorName: string;
             id: string;
+            imageId: string;
             name: string;
+            region: string;
+            sshKey: string;
+            taskState: cloud.instance.InstanceSummaryTaskStateEnum;
+        }
+        /**
+         * Enum values for taskState of an instance
+         * type fullname: cloud.instance.InstanceSummaryTaskStateEnum
+         */
+        export type InstanceSummaryTaskStateEnum = "" | "BlockDeviceMapping" | "Deleting" | "ImagePendingUpload" | "ImageSnapshot" | "ImageUpload" | "Migrating" | "Networking" | "Pausing" | "PoweringOff" | "PoweringOn" | "Rebooting" | "RebootingHard" | "RebuildBlockDeviceMapping" | "RebuildSpawning" | "Rebuilding" | "Rescuing" | "ResizeConfirming" | "ResizeFinish" | "ResizeMigrated" | "ResizeMigrating" | "ResizePrep" | "ResizeReverting" | "Resuming" | "Scheduling" | "Spawning" | "Starting" | "Stopping" | "Suspending" | "Unknown" | "Unpausing" | "Unrescuing" | "UpdatingPassword"
+        /**
+         * Volumes attached to your instance
+         * interface fullName: cloud.instance.InstanceSummaryVolumeValue.InstanceSummaryVolumeValue
+         */
+        export interface InstanceSummaryVolumeValue {
+            id: string;
         }
         /**
          * InstanceVnc
@@ -1871,41 +1977,31 @@ export namespace cloud {
     }
     export namespace kube {
         /**
-         * Managed Kubernetes Audit Logs
-         * interface fullName: cloud.kube.AuditLogs.AuditLogs
-         */
-        export interface AuditLogs {
-            expirationDate: string;
-            url: string;
-        }
-        /**
          * Managed Kubernetes cluster description
          * interface fullName: cloud.kube.Cluster.Cluster
          */
         export interface Cluster {
+            auditLogsSubscribed: boolean;
             controlPlaneIsUpToDate: boolean;
             createdAt: string;
             customization?: cloud.ProjectKubeCustomization;
             id: string;
             isUpToDate: boolean;
             kubeProxyMode: cloud.kube.KubeProxyModeEnum;
+            loadBalancersSubnetId?: string;
             name: string;
             nextUpgradeVersions?: string[];
+            nodesSubnetId?: string;
             nodesUrl: string;
             privateNetworkConfiguration?: cloud.kube.PrivateNetworkConfiguration;
             privateNetworkId?: string;
-            region: cloud.kube.RegionEnum;
+            region: string;
             status: cloud.kube.ClusterStatusEnum;
             updatePolicy: string;
             updatedAt: string;
             url: string;
             version: string;
         }
-        /**
-         * Enum values for Status
-         * type fullname: cloud.kube.ClusterStatus
-         */
-        export type ClusterStatus = "INSTALLING" | "UPDATING" | "RESETTING" | "SUSPENDING" | "REOPENING" | "DELETING" | "SUSPENDED" | "ERROR" | "USER_ERROR" | "USER_QUOTA_ERROR" | "READY"
         /**
          * Enum values for Status
          * type fullname: cloud.kube.ClusterStatusEnum
@@ -1933,19 +2029,9 @@ export namespace cloud {
         }
         /**
          * Enum values for category
-         * type fullname: cloud.kube.FlavorCategory
-         */
-        export type FlavorCategory = "c" | "g" | "t" | "b" | "r"
-        /**
-         * Enum values for category
          * type fullname: cloud.kube.FlavorCategoryEnum
          */
-        export type FlavorCategoryEnum = "b" | "c" | "d" | "g" | "i" | "r" | "t"
-        /**
-         * Enum values for State
-         * type fullname: cloud.kube.FlavorState
-         */
-        export type FlavorState = "available" | "unavailable"
+        export type FlavorCategoryEnum = "a" | "b" | "c" | "d" | "g" | "h" | "i" | "l" | "r" | "t"
         /**
          * Enum values for State
          * type fullname: cloud.kube.FlavorStateEnum
@@ -2057,11 +2143,6 @@ export namespace cloud {
         }
         /**
          * Enum values for Status
-         * type fullname: cloud.kube.NodeStatus
-         */
-        export type NodeStatus = "INSTALLING" | "UPDATING" | "RESETTING" | "SUSPENDING" | "REOPENING" | "DELETING" | "SUSPENDED" | "ERROR" | "USER_ERROR" | "USER_QUOTA_ERROR" | "USER_NODE_NOT_FOUND_ERROR" | "USER_NODE_SUSPENDED_SERVICE" | "READY"
-        /**
-         * Enum values for Status
          * type fullname: cloud.kube.NodeStatusEnum
          */
         export type NodeStatusEnum = "DELETED" | "DELETING" | "ERROR" | "FLAVOR_OUT_OF_STOCK_ERROR" | "INSTALLING" | "MAINTENANCE" | "READY" | "REDEPLOYING" | "REOPENING" | "RESETTING" | "SUSPENDED" | "SUSPENDING" | "UPDATING" | "USER_ERROR" | "USER_NODE_NOT_FOUND_ERROR" | "USER_NODE_SUSPENDED_SERVICE" | "USER_QUOTA_ERROR" | "USER_WEBHOOK_PREVENTING_OPERATIONS_ERROR"
@@ -2094,26 +2175,6 @@ export namespace cloud {
             privateNetworkRoutingAsDefault?: boolean;
         }
         /**
-         * Enum values for available regions
-         * type fullname: cloud.kube.Region
-         */
-        export type Region = "GRA5" | "GRA7" | "BHS5"
-        /**
-         * Enum values for regions where cluster creation is possible, region where cluster are deployed is cloud.kube.RegionEnum
-         * type fullname: cloud.kube.RegionCapabilitiesEnum
-         */
-        export type RegionCapabilitiesEnum = "BHS5" | "DE1" | "GRA5" | "GRA7" | "GRA9" | "SBG5" | "SGP1" | "SYD1" | "UK1" | "US-EAST-VA-1" | "US-WEST-OR-1" | "WAW1"
-        /**
-         * Enum values for regions where cluster are deployed and flavor related location. Available region for cluster creation is cloud.kube.RegionCapabilitiesEnum
-         * type fullname: cloud.kube.RegionEnum
-         */
-        export type RegionEnum = "BHS5" | "DE1" | "GRA5" | "GRA7" | "GRA9" | "SBG5" | "SGP1" | "SYD1" | "UK1" | "US-EAST-VA-1" | "US-WEST-OR-1" | "WAW1"
-        /**
-         * Enum values for worker nodes reset policy
-         * type fullname: cloud.kube.ResetWorkerNodesPolicy
-         */
-        export type ResetWorkerNodesPolicy = "reinstall" | "delete"
-        /**
          * Enum values for worker nodes reset policy
          * type fullname: cloud.kube.ResetWorkerNodesPolicyEnum
          */
@@ -2141,39 +2202,19 @@ export namespace cloud {
         export type TaintEffectEnum = "NoExecute" | "NoSchedule" | "PreferNoSchedule"
         /**
          * Enum values for UpdatePolicy
-         * type fullname: cloud.kube.UpdatePolicy
-         */
-        export type UpdatePolicy = "ALWAYS_UPDATE" | "MINIMAL_DOWNTIME" | "NEVER_UPDATE"
-        /**
-         * Enum values for UpdatePolicy
          * type fullname: cloud.kube.UpdatePolicyEnum
          */
         export type UpdatePolicyEnum = "ALWAYS_UPDATE" | "MINIMAL_DOWNTIME" | "NEVER_UPDATE"
-        /**
-         * Enum values for UpdateStrategy
-         * type fullname: cloud.kube.UpdateStrategy
-         */
-        export type UpdateStrategy = "LATEST_PATCH" | "NEXT_MINOR"
         /**
          * Enum values for UpdateStrategy
          * type fullname: cloud.kube.UpdateStrategyEnum
          */
         export type UpdateStrategyEnum = "LATEST_PATCH" | "NEXT_MINOR"
         /**
-         * List of available versions for upgrade
-         * type fullname: cloud.kube.UpgradeVersion
-         */
-        export type UpgradeVersion = "1.12" | "1.13" | "1.14" | "1.15" | "1.16"
-        /**
-         * List of available versions for installation
-         * type fullname: cloud.kube.Version
-         */
-        export type Version = "1.13" | "1.14" | "1.15"
-        /**
          * List of available versions for installation
          * type fullname: cloud.kube.VersionEnum
          */
-        export type VersionEnum = "1.24" | "1.25" | "1.26"
+        export type VersionEnum = "1.26" | "1.27" | "1.28" | "1.29"
     }
     export namespace loadbalancing {
         /**
@@ -2198,12 +2239,28 @@ export namespace cloud {
          * interface fullName: cloud.loadbalancing.CreateListener.CreateListener
          */
         export interface CreateListener {
+            allowedCidrs: string[];
             certificateId: string;
             defaultPoolId: string;
+            description: string;
             loadbalancerId: string;
             name: string;
             port: number;
             protocol: cloud.loadbalancing.ListenerProtocolEnum;
+            timeoutClientData: number;
+            timeoutMemberData: number;
+            tlsVersions: cloud.loadbalancing.ListenerTlsVersionEnum[];
+        }
+        /**
+         * Edit a loadbalancer listener
+         * interface fullName: cloud.loadbalancing.EditListener.EditListener
+         */
+        export interface EditListener {
+            allowedCidrs: string[];
+            certificateId: string;
+            defaultPoolId: string;
+            description: string;
+            name: string;
         }
         /**
          * Flavor
@@ -2212,20 +2269,21 @@ export namespace cloud {
         export interface Flavor {
             id: string;
             name: string;
+            region: string;
         }
         /**
          * HealthMonitor
          * interface fullName: cloud.loadbalancing.HealthMonitor.HealthMonitor
          */
         export interface HealthMonitor {
+            delay: number;
             httpConfiguration?: cloud.loadbalancing.HealthMonitorHTTPConfiguration;
             id: string;
             maxRetries: number;
-            maxRetriesDown: number;
+            maxRetriesDown?: number;
             monitorType: cloud.loadbalancing.LoadBalancerHealthMonitorTypeEnum;
             name: string;
             operatingStatus: cloud.loadbalancing.LoadBalancerOperatingStatusEnum;
-            periodicity: string;
             poolId: string;
             provisioningStatus: cloud.loadbalancing.LoadBalancerProvisioningStatusEnum;
             timeout: number;
@@ -2235,13 +2293,13 @@ export namespace cloud {
          * interface fullName: cloud.loadbalancing.HealthMonitorCreate.HealthMonitorCreate
          */
         export interface HealthMonitorCreate {
+            delay: number;
             httpConfiguration?: cloud.loadbalancing.HealthMonitorHTTPConfiguration;
             maxRetries: number;
-            maxRetriesDown: number;
+            maxRetriesDown?: number;
             monitorType: cloud.loadbalancing.LoadBalancerHealthMonitorTypeEnum;
             name: string;
             operatingStatus: cloud.loadbalancing.LoadBalancerOperatingStatusEnum;
-            periodicity: string;
             provisioningStatus: cloud.loadbalancing.LoadBalancerProvisioningStatusEnum;
             timeout: number;
         }
@@ -2251,9 +2309,9 @@ export namespace cloud {
          */
         export interface HealthMonitorHTTPConfiguration {
             domainName: string;
-            expectedCodes: number[];
+            expectedCodes: string;
             httpMethod: cloud.loadbalancing.LoadBalancerHealthMonitorHTTPMethodEnum;
-            httpVersion: cloud.loadbalancing.LoadBalancerHealthMonitorHTTPVersionEnum;
+            httpVersion?: cloud.loadbalancing.LoadBalancerHealthMonitorHTTPVersionEnum;
             urlPath: string;
         }
         /**
@@ -2269,7 +2327,7 @@ export namespace cloud {
             operatingStatus: cloud.loadbalancing.LoadBalancerOperatingStatusEnum;
             position: number;
             provisioningStatus: cloud.loadbalancing.LoadBalancerProvisioningStatusEnum;
-            redirectHttpCode?: number;
+            redirectHttpCode?: cloud.loadbalancing.L7PolicyRedirectHTTPCodeEnum;
             redirectPoolId?: string;
             redirectPrefix?: string;
             redirectUrl?: string;
@@ -2279,6 +2337,11 @@ export namespace cloud {
          * type fullname: cloud.loadbalancing.L7PolicyActionEnum
          */
         export type L7PolicyActionEnum = "redirectPrefix" | "redirectToPool" | "redirectToURL" | "reject"
+        /**
+         * Loadbalancer L7 policy redirect HTTP code
+         * type fullname: cloud.loadbalancing.L7PolicyRedirectHTTPCodeEnum
+         */
+        export type L7PolicyRedirectHTTPCodeEnum = 301 | 302 | 303 | 307 | 308
         /**
          * L7 policy
          * interface fullName: cloud.loadbalancing.L7PolicyUpdate.L7PolicyUpdate
@@ -2323,8 +2386,10 @@ export namespace cloud {
          * interface fullName: cloud.loadbalancing.Listener.Listener
          */
         export interface Listener {
+            allowedCidrs?: string[];
             certificateId?: string;
             defaultPoolId?: string;
+            description?: string;
             id: string;
             loadBalancerIds: string[];
             name: string;
@@ -2332,12 +2397,20 @@ export namespace cloud {
             port: number;
             protocol: cloud.loadbalancing.ListenerProtocolEnum;
             provisioningStatus: cloud.loadbalancing.LoadBalancerProvisioningStatusEnum;
+            timeoutClientData?: number;
+            timeoutMemberData?: number;
+            tlsVersions?: cloud.loadbalancing.ListenerTlsVersionEnum[];
         }
         /**
          * Loadbalancer listener protocol
          * type fullname: cloud.loadbalancing.ListenerProtocolEnum
          */
-        export type ListenerProtocolEnum = "http" | "https" | "sctp" | "tcp" | "terminatedHTTPS" | "udp"
+        export type ListenerProtocolEnum = "http" | "https" | "prometheus" | "sctp" | "tcp" | "terminatedHTTPS" | "udp"
+        /**
+         * Loadbalancer listener TLS versions
+         * type fullname: cloud.loadbalancing.ListenerTlsVersionEnum
+         */
+        export type ListenerTlsVersionEnum = "SSLv3" | "TLSv1" | "TLSv1.1" | "TLSv1.2" | "TLSv1.3"
         /**
          * LoadBalancer
          * interface fullName: cloud.loadbalancing.LoadBalancer.LoadBalancer
@@ -2345,14 +2418,26 @@ export namespace cloud {
         export interface LoadBalancer {
             createdAt: string;
             flavorId: string;
+            floatingIp?: cloud.loadbalancing.LoadBalancer.FloatingIp;
             id: string;
             name: string;
             operatingStatus: cloud.loadbalancing.LoadBalancerOperatingStatusEnum;
             provisioningStatus: cloud.loadbalancing.LoadBalancerProvisioningStatusEnum;
+            region: string;
             updatedAt: string;
             vipAddress: string;
             vipNetworkId: string;
             vipSubnetId: string;
+        }
+        export namespace LoadBalancer {
+            /**
+             * LoadBalancerFloatingIp
+             * interface fullName: cloud.loadbalancing.LoadBalancer.FloatingIp.FloatingIp
+             */
+            export interface FloatingIp {
+                id: string;
+                ip: string;
+            }
         }
         /**
          * Load balancer Healthmonitor HTTP Method
@@ -2379,15 +2464,25 @@ export namespace cloud {
          * type fullname: cloud.loadbalancing.LoadBalancerProvisioningStatusEnum
          */
         export type LoadBalancerProvisioningStatusEnum = "active" | "creating" | "deleted" | "deleting" | "error" | "updating"
+        export namespace Loadbalancer {
+            /**
+             * Create a loadbalancer
+             * interface fullName: cloud.loadbalancing.Loadbalancer.CreateInput.CreateInput
+             */
+            export interface CreateInput {
+                flavorId: string;
+                listeners: cloud.loadbalancing.loadbalancer.ListenerCreate[];
+                name: string;
+                network: cloud.loadbalancing.loadbalancer.CreateInput.Network;
+            }
+        }
         /**
-         * Create a loadbalancer
-         * interface fullName: cloud.loadbalancing.LoadbalancerCreate.LoadbalancerCreate
+         * Edit a loadbalancer
+         * interface fullName: cloud.loadbalancing.LoadbalancerEdit.LoadbalancerEdit
          */
-        export interface LoadbalancerCreate {
-            flavorId: string;
-            listeners: cloud.loadbalancing.loadbalancer.ListenerCreate[];
+        export interface LoadbalancerEdit {
+            description: string;
             name: string;
-            networkInformation: cloud.loadbalancing.loadbalancer.NetworkInformationCreate;
         }
         /**
          * Pool
@@ -2425,7 +2520,7 @@ export namespace cloud {
          * Pool protocol
          * type fullname: cloud.loadbalancing.PoolProtocolEnum
          */
-        export type PoolProtocolEnum = "http" | "https" | "proxy" | "sctp" | "tcp" | "udp"
+        export type PoolProtocolEnum = "http" | "https" | "proxy" | "proxyV2" | "sctp" | "tcp" | "udp"
         /**
          * PoolSessionPersistence
          * interface fullName: cloud.loadbalancing.PoolSessionPersistence.PoolSessionPersistence
@@ -2453,24 +2548,90 @@ export namespace cloud {
          * interface fullName: cloud.loadbalancing.UpdateHealthMonitor.UpdateHealthMonitor
          */
         export interface UpdateHealthMonitor {
+            delay: number;
             httpConfiguration: cloud.loadbalancing.HealthMonitorHTTPConfiguration;
             maxRetries: number;
             maxRetriesDown: number;
             name: string;
-            periodicity: string;
             timeout: number;
         }
         export namespace loadbalancer {
+            export namespace CreateInput {
+                /**
+                 * Network information to create a loadbalancer
+                 * interface fullName: cloud.loadbalancing.loadbalancer.CreateInput.Network.Network
+                 */
+                export interface Network {
+                    private: cloud.loadbalancing.loadbalancer.CreateInput.Network.Private;
+                }
+                export namespace Network {
+                    /**
+                     * Network information to create a loadbalancer
+                     * interface fullName: cloud.loadbalancing.loadbalancer.CreateInput.Network.Private.Private
+                     */
+                    export interface Private {
+                        floatingIp: cloud.loadbalancing.loadbalancer.CreateInput.Network.Private.FloatingIp;
+                        floatingIpCreate: cloud.loadbalancing.loadbalancer.CreateInput.Network.Private.FloatingIpCreate;
+                        gateway: cloud.loadbalancing.loadbalancer.CreateInput.Network.Private.Gateway;
+                        gatewayCreate: cloud.loadbalancing.loadbalancer.CreateInput.Network.Private.GatewayCreate;
+                        network: cloud.loadbalancing.loadbalancer.CreateInput.Network.Private.Network;
+                    }
+                    export namespace Private {
+                        /**
+                         * Information to attach floatingIp
+                         * interface fullName: cloud.loadbalancing.loadbalancer.CreateInput.Network.Private.FloatingIp.FloatingIp
+                         */
+                        export interface FloatingIp {
+                            id: string;
+                        }
+                        /**
+                         * Information to create floatingIp
+                         * interface fullName: cloud.loadbalancing.loadbalancer.CreateInput.Network.Private.FloatingIpCreate.FloatingIpCreate
+                         */
+                        export interface FloatingIpCreate {
+                            description: string;
+                        }
+                        /**
+                         * Information to attach Gateway
+                         * interface fullName: cloud.loadbalancing.loadbalancer.CreateInput.Network.Private.Gateway.Gateway
+                         */
+                        export interface Gateway {
+                            id: string;
+                        }
+                        /**
+                         * Information to create a Gateway
+                         * interface fullName: cloud.loadbalancing.loadbalancer.CreateInput.Network.Private.GatewayCreate.GatewayCreate
+                         */
+                        export interface GatewayCreate {
+                            model: cloud.network.GatewayModelEnum;
+                            name: string;
+                        }
+                        /**
+                         * Network information to associate a network
+                         * interface fullName: cloud.loadbalancing.loadbalancer.CreateInput.Network.Private.Network.Network
+                         */
+                        export interface Network {
+                            id: string;
+                            subnetId: string;
+                        }
+                    }
+                }
+            }
             /**
              * Create a listener on loadbalancer creation
              * interface fullName: cloud.loadbalancing.loadbalancer.ListenerCreate.ListenerCreate
              */
             export interface ListenerCreate {
+                allowedCidrs: string[];
+                description: string;
                 name: string;
-                pools: cloud.loadbalancing.loadbalancer.PoolCreate[];
+                pool: cloud.loadbalancing.loadbalancer.PoolCreate;
                 port: number;
                 protocol: cloud.loadbalancing.ListenerProtocolEnum;
                 secretId: string;
+                timeoutClientData: number;
+                timeoutMemberData: number;
+                tlsVersions: cloud.loadbalancing.ListenerTlsVersionEnum[];
             }
             /**
              * Create a member on loadbalancer creation
@@ -2480,16 +2641,7 @@ export namespace cloud {
                 address: string;
                 name: string;
                 protocolPort: number;
-                weight: number;
-            }
-            /**
-             * Network information to create a loadbalancer
-             * interface fullName: cloud.loadbalancing.loadbalancer.NetworkInformationCreate.NetworkInformationCreate
-             */
-            export interface NetworkInformationCreate {
-                gateway: cloud.network.CreateGatewaySummary;
-                networkId: string;
-                subnetId: string;
+                weight?: number;
             }
             /**
              * Create a pool on loadbalancer creation
@@ -2497,15 +2649,32 @@ export namespace cloud {
              */
             export interface PoolCreate {
                 algorithm: cloud.loadbalancing.PoolAlgorithmEnum;
-                default: boolean;
                 healthMonitor?: cloud.loadbalancing.HealthMonitorCreate;
                 members: cloud.loadbalancing.loadbalancer.MemberCreate[];
                 name: string;
                 protocol: cloud.loadbalancing.PoolProtocolEnum;
                 sessionPersistence: cloud.loadbalancing.PoolSessionPersistence;
             }
+            /**
+             * Loadbalancer statistics
+             * interface fullName: cloud.loadbalancing.loadbalancer.Stats.Stats
+             */
+            export interface Stats {
+                activeConnections: number;
+                bytesIn: number;
+                bytesOut: number;
+                requestErrors: number;
+                totalConnections: number;
+            }
         }
         export namespace pool {
+            /**
+             * Pool Members
+             * interface fullName: cloud.loadbalancing.pool.CreateMembers.CreateMembers
+             */
+            export interface CreateMembers {
+                members: cloud.loadbalancing.pool.Member[];
+            }
             /**
              * Member
              * interface fullName: cloud.loadbalancing.pool.Member.Member
@@ -2517,7 +2686,7 @@ export namespace cloud {
                 operatingStatus: cloud.loadbalancing.LoadBalancerOperatingStatusEnum;
                 protocolPort: number;
                 provisioningStatus: cloud.loadbalancing.LoadBalancerProvisioningStatusEnum;
-                weight: number;
+                weight?: number;
             }
             /**
              * Parameters to update a pool member
@@ -2619,7 +2788,7 @@ export namespace cloud {
          * GatewayModelEnum
          * type fullname: cloud.network.GatewayModelEnum
          */
-        export type GatewayModelEnum = "l" | "m" | "s"
+        export type GatewayModelEnum = "2xl" | "3xl" | "l" | "m" | "s" | "xl"
         /**
          * GatewayStatusEnum
          * type fullname: cloud.network.GatewayStatusEnum
@@ -3046,7 +3215,7 @@ export namespace cloud {
          * List of accepted payment methods
          * type fullname: cloud.project.PaymentMethodAuthorized
          */
-        export type PaymentMethodAuthorized = "bankAccount" | "credit" | "creditCard" | "paypal" | "sepaDirectDebit"
+        export type PaymentMethodAuthorized = "bankAccount" | "credit" | "creditCard" | "paypal" | "rupay" | "sepaDirectDebit"
         /**
          * Product agreements
          * interface fullName: cloud.project.ProductAgreements.ProductAgreements
@@ -3177,6 +3346,7 @@ export namespace cloud {
              */
             export interface DataStore {
                 alias: string;
+                endpoint?: string;
                 owner: cloud.project.ai.DataStoreOwnerEnum;
                 type: cloud.project.ai.DataStoreTypeEnum;
             }
@@ -3192,6 +3362,20 @@ export namespace cloud {
                 token?: string;
                 url?: string;
             }
+            /**
+             * AI Datastore containers list object
+             * interface fullName: cloud.project.ai.DataStoreContainersList.DataStoreContainersList
+             */
+            export interface DataStoreContainersList {
+                containers?: string[];
+                message: string;
+                status: cloud.project.ai.DataStoreContainersListStatusTypeEnum;
+            }
+            /**
+             * Data Store Containers List Status
+             * type fullname: cloud.project.ai.DataStoreContainersListStatusTypeEnum
+             */
+            export type DataStoreContainersListStatusTypeEnum = "FAILED" | "PARTIAL" | "SUCCESS"
             /**
              * AI Solutions data store credentials Object
              * interface fullName: cloud.project.ai.DataStoreCredentialsInput.DataStoreCredentialsInput
@@ -3222,6 +3406,14 @@ export namespace cloud {
              * type fullname: cloud.project.ai.DataStoreTypeEnum
              */
             export type DataStoreTypeEnum = "git" | "s3" | "swift"
+            /**
+             * AI Solutions Instance Env Object
+             * interface fullName: cloud.project.ai.Env.Env
+             */
+            export interface Env {
+                name: string;
+                value?: string;
+            }
             /**
              * Basic model with a single message field
              * interface fullName: cloud.project.ai.GenericResponse.GenericResponse
@@ -3370,8 +3562,9 @@ export namespace cloud {
                 export interface AppSpec {
                     command?: string[];
                     defaultHttpPort?: number;
-                    env?: cloud.project.ai.job.JobEnv[];
+                    deploymentStrategy?: cloud.project.ai.app.DeploymentStrategy;
                     envVars?: cloud.project.ai.job.JobEnv[];
+                    grpcPort?: number;
                     image: string;
                     labels?: { [key: string]: string };
                     name: string;
@@ -3390,8 +3583,9 @@ export namespace cloud {
                 export interface AppSpecInput {
                     command?: string[];
                     defaultHttpPort?: number;
-                    env?: cloud.project.ai.job.JobEnv[];
+                    deploymentStrategy?: cloud.project.ai.app.DeploymentStrategy;
                     envVars?: cloud.project.ai.job.JobEnv[];
+                    grpcPort?: number;
                     image: string;
                     labels?: { [key: string]: string };
                     name: string;
@@ -3423,14 +3617,25 @@ export namespace cloud {
                 export interface AppStatus {
                     availableReplicas: number;
                     dataSync: cloud.project.ai.volume.DataSync[];
+                    grpcAddress?: string;
                     history: cloud.project.ai.app.AppStateHistory[];
                     info: cloud.project.ai.Info;
                     infoUrl?: string;
+                    internalServiceIp?: string;
                     lastTransitionDate?: string;
                     monitoringUrl?: string;
                     state?: cloud.project.ai.app.AppStateEnum;
                     url?: string;
                     volumes?: cloud.project.ai.volume.VolumeStatus[];
+                }
+                /**
+                 * AI Solutions AI App deployment strategy object
+                 * interface fullName: cloud.project.ai.app.DeploymentStrategy.DeploymentStrategy
+                 */
+                export interface DeploymentStrategy {
+                    maxSurge?: string;
+                    maxUnavailable?: string;
+                    progressDeadlineSeconds?: number;
                 }
                 /**
                  * AI Solutions App Probe Object
@@ -3503,6 +3708,21 @@ export namespace cloud {
                     automatic?: cloud.project.ai.app.ScalingAutomaticStrategyInput;
                     fixed?: cloud.project.ai.app.ScalingFixedStrategyInput;
                 }
+                /**
+                 * AI Solutions AI App update object
+                 * interface fullName: cloud.project.ai.app.UpdateInput.UpdateInput
+                 */
+                export interface UpdateInput {
+                    command?: string[];
+                    cpu?: number;
+                    defaultHttpPort?: number;
+                    deploymentStrategy?: cloud.project.ai.app.DeploymentStrategy;
+                    envVars?: cloud.project.ai.Env[];
+                    flavor?: string;
+                    gpu?: number;
+                    grpcPort?: number;
+                    url?: string;
+                }
             }
             export namespace capabilities {
                 /**
@@ -3535,7 +3755,7 @@ export namespace cloud {
                  * Licensing Type
                  * type fullname: cloud.project.ai.capabilities.LicensingTypeEnum
                  */
-                export type LicensingTypeEnum = "per-app" | "per-replica" | "per-resource"
+                export type LicensingTypeEnum = "per-app" | "per-replica" | "per-resource" | "per-second-bracket"
                 /**
                  * AI Solutions Preset image
                  * interface fullName: cloud.project.ai.capabilities.Preset.Preset
@@ -3678,6 +3898,7 @@ export namespace cloud {
                         id: string;
                         logoUrl: string;
                         name: string;
+                        savedPaths?: string[];
                         versions: string[];
                     }
                 }
@@ -3710,8 +3931,8 @@ export namespace cloud {
                 export interface JobSpec {
                     command?: string[];
                     defaultHttpPort?: number;
-                    env?: cloud.project.ai.job.JobEnv[];
                     envVars?: cloud.project.ai.job.JobEnv[];
+                    grpcPort?: number;
                     image: string;
                     labels?: { [key: string]: string };
                     name: string;
@@ -3722,6 +3943,7 @@ export namespace cloud {
                     shutdown?: cloud.project.ai.ShutdownStrategyEnum;
                     sshPublicKeys?: string[];
                     timeout?: number;
+                    timeoutAutoRestart?: boolean;
                     unsecureHttp?: boolean;
                     volumes?: cloud.project.ai.volume.Volume[];
                 }
@@ -3732,8 +3954,8 @@ export namespace cloud {
                 export interface JobSpecInput {
                     command?: string[];
                     defaultHttpPort?: number;
-                    env?: cloud.project.ai.job.JobEnv[];
                     envVars?: cloud.project.ai.job.JobEnv[];
+                    grpcPort?: number;
                     image: string;
                     labels?: { [key: string]: string };
                     name: string;
@@ -3744,6 +3966,7 @@ export namespace cloud {
                     shutdown?: cloud.project.ai.ShutdownStrategyEnum;
                     sshPublicKeys?: string[];
                     timeout?: number;
+                    timeoutAutoRestart?: boolean;
                     unsecureHttp?: boolean;
                     volumes?: cloud.project.ai.volume.Volume[];
                 }
@@ -3751,7 +3974,7 @@ export namespace cloud {
                  * State of the job
                  * type fullname: cloud.project.ai.job.JobStateEnum
                  */
-                export type JobStateEnum = "DONE" | "ERROR" | "FAILED" | "FINALIZING" | "INITIALIZING" | "INTERRUPTED" | "INTERRUPTING" | "PENDING" | "QUEUED" | "RUNNING" | "SYNC_FAILED" | "TIMEOUT"
+                export type JobStateEnum = "DONE" | "ERROR" | "FAILED" | "FINALIZING" | "INITIALIZING" | "INTERRUPTED" | "INTERRUPTING" | "PENDING" | "QUEUED" | "RESTARTING" | "RUNNING" | "SYNC_FAILED" | "TIMEOUT"
                 /**
                  * AI Solutions Job Status Object
                  * interface fullName: cloud.project.ai.job.JobStatus.JobStatus
@@ -3762,6 +3985,7 @@ export namespace cloud {
                     exitCode?: number;
                     externalIp?: string;
                     finalizedAt?: string;
+                    grpcAddress?: string;
                     history: cloud.project.ai.job.JobStatusHistory[];
                     info: cloud.project.ai.Info;
                     infoUrl?: string;
@@ -3774,6 +3998,7 @@ export namespace cloud {
                     startedAt?: string;
                     state?: cloud.project.ai.job.JobStateEnum;
                     stoppedAt?: string;
+                    timeoutAt?: string;
                     url?: string;
                     volumes?: cloud.project.ai.volume.VolumeStatus[];
                 }
@@ -3875,6 +4100,7 @@ export namespace cloud {
                     resources: cloud.project.ai.Resources;
                     shutdown?: cloud.project.ai.ShutdownStrategyEnum;
                     sshPublicKeys?: string[];
+                    timeoutAutoRestart?: boolean;
                     unsecureHttp?: boolean;
                     volumes?: cloud.project.ai.volume.Volume[];
                 }
@@ -3891,6 +4117,7 @@ export namespace cloud {
                     resources: cloud.project.ai.ResourcesInput;
                     shutdown?: cloud.project.ai.ShutdownStrategyEnum;
                     sshPublicKeys?: string[];
+                    timeoutAutoRestart?: boolean;
                     unsecureHttp?: boolean;
                     volumes?: cloud.project.ai.volume.Volume[];
                 }
@@ -3898,7 +4125,7 @@ export namespace cloud {
                  * State of the notebook
                  * type fullname: cloud.project.ai.notebook.NotebookStateEnum
                  */
-                export type NotebookStateEnum = "DELETING" | "FAILED" | "RUNNING" | "STARTING" | "STOPPED" | "STOPPING" | "SYNC_FAILED"
+                export type NotebookStateEnum = "DELETING" | "FAILED" | "RESTARTING" | "RUNNING" | "STARTING" | "STOPPED" | "STOPPING" | "SYNC_FAILED"
                 /**
                  * AI Solutions Notebook Status Object
                  * interface fullName: cloud.project.ai.notebook.NotebookStatus.NotebookStatus
@@ -3906,6 +4133,7 @@ export namespace cloud {
                 export interface NotebookStatus {
                     dataSync: cloud.project.ai.volume.DataSync[];
                     duration?: number;
+                    grpcAddress?: string;
                     info: cloud.project.ai.Info;
                     infoUrl?: string;
                     lastJobStatus: cloud.project.ai.job.JobStatus;
@@ -3926,6 +4154,7 @@ export namespace cloud {
                     labels?: { [key: string]: string };
                     resources?: cloud.project.ai.ResourcesInput;
                     sshPublicKeys?: string[];
+                    timeoutAutoRestart?: boolean;
                     unsecureHttp?: boolean;
                     volumes?: cloud.project.ai.volume.Volume[];
                 }
@@ -3990,208 +4219,6 @@ export namespace cloud {
                     url?: string;
                     username?: string;
                 }
-            }
-            export namespace serving {
-                /**
-                 * Status of API
-                 * type fullname: cloud.project.ai.serving.APIStatusEnum
-                 */
-                export type APIStatusEnum = "pending" | "running" | "scaling" | "sleeping" | "starting" | "waking"
-                /**
-                 * Autoscaling specification
-                 * interface fullName: cloud.project.ai.serving.AutoscalingSpec.AutoscalingSpec
-                 */
-                export interface AutoscalingSpec {
-                    cpuAverageUtilization?: number;
-                    maxReplicas?: number;
-                    memoryAverageUtilization?: number;
-                    minReplicas?: number;
-                }
-                /**
-                 * Backend serving the model
-                 * interface fullName: cloud.project.ai.serving.Backend.Backend
-                 */
-                export interface Backend {
-                    id: cloud.project.ai.serving.BackendIdEnum;
-                    link: string;
-                    name: string;
-                }
-                /**
-                 * Backend serving the model
-                 * type fullname: cloud.project.ai.serving.BackendIdEnum
-                 */
-                export type BackendIdEnum = "bentoml" | "serving-runtime"
-                /**
-                 * Features of Serving Engine
-                 * interface fullName: cloud.project.ai.serving.Features.Features
-                 */
-                export interface Features {
-                    chooseBackend: boolean;
-                }
-                /**
-                 * Compute Flavor for the Serving Engine
-                 * interface fullName: cloud.project.ai.serving.Flavor.Flavor
-                 */
-                export interface Flavor {
-                    cpuCore: number;
-                    description: string;
-                    id: string;
-                    ramMB: number;
-                }
-                /**
-                 * Framework of the model
-                 * interface fullName: cloud.project.ai.serving.Framework.Framework
-                 */
-                export interface Framework {
-                    backends: cloud.project.ai.serving.BackendIdEnum[];
-                    docPage: string;
-                    id: cloud.project.ai.serving.FrameworkIdEnum;
-                    link: string;
-                    logo: string;
-                    name: string;
-                    recommendedBackend: cloud.project.ai.serving.BackendIdEnum;
-                    version: string;
-                }
-                /**
-                 * Framework of the model
-                 * type fullname: cloud.project.ai.serving.FrameworkIdEnum
-                 */
-                export type FrameworkIdEnum = "fastai" | "flow" | "huggingface" | "onnx" | "pmml" | "tensorflow_1" | "torch"
-                /**
-                 * Metrics information
-                 * interface fullName: cloud.project.ai.serving.Metrics.Metrics
-                 */
-                export interface Metrics {
-                    endpoints: cloud.project.ai.serving.MetricsEndpoint[];
-                    token: string;
-                }
-                /**
-                 * User Metrics Endpoints
-                 * interface fullName: cloud.project.ai.serving.MetricsEndpoint.MetricsEndpoint
-                 */
-                export interface MetricsEndpoint {
-                    name: string;
-                    url: string;
-                }
-                /**
-                 * A deployed machine learning model
-                 * interface fullName: cloud.project.ai.serving.Model.Model
-                 */
-                export interface Model {
-                    apiStatus: cloud.project.ai.serving.APIStatusEnum;
-                    autoscalingSpec?: cloud.project.ai.serving.AutoscalingSpec;
-                    createdAt: string;
-                    flavor?: string;
-                    id: string;
-                    replicas?: number;
-                    url?: string;
-                    version?: number;
-                    versionStatus: cloud.project.ai.serving.VersionStatusEnum;
-                    workflowTemplate?: cloud.project.ai.serving.WorkflowTemplateEnum;
-                    workflowTemplateParameters: cloud.project.ai.serving.ModelWorkflowTemplateParameter;
-                }
-                /**
-                 * Missing description
-                 * interface fullName: cloud.project.ai.serving.ModelDefinition.ModelDefinition
-                 */
-                export interface ModelDefinition {
-                    autoscalingSpec?: cloud.project.ai.serving.AutoscalingSpec;
-                    backend?: cloud.project.ai.serving.BackendIdEnum;
-                    flavor: string;
-                    framework?: cloud.project.ai.serving.FrameworkIdEnum;
-                    id: string;
-                    imageId?: string;
-                    storagePath?: string;
-                    workflowTemplate?: cloud.project.ai.serving.WorkflowTemplateEnum;
-                }
-                /**
-                 * Parameters of the Workflow that build
-                 * interface fullName: cloud.project.ai.serving.ModelWorkflowTemplateParameter.ModelWorkflowTemplateParameter
-                 */
-                export interface ModelWorkflowTemplateParameter {
-                    backend?: cloud.project.ai.serving.BackendIdEnum;
-                    framework?: cloud.project.ai.serving.FrameworkIdEnum;
-                    imageId?: string;
-                    storagePath?: string;
-                }
-                /**
-                 * A serving engine namespace
-                 * interface fullName: cloud.project.ai.serving.Namespace.Namespace
-                 */
-                export interface Namespace {
-                    clusterId: string;
-                    container: string;
-                    containerId: string;
-                    createdAt: string;
-                    description: string;
-                    hubUrl: string;
-                    id: string;
-                    region: string;
-                    url: string;
-                }
-                /**
-                 * Missing description
-                 * interface fullName: cloud.project.ai.serving.NamespaceCreation.NamespaceCreation
-                 */
-                export interface NamespaceCreation {
-                    container: string;
-                    description: string;
-                    region: string;
-                }
-                /**
-                 * A Image of a built serving model
-                 * interface fullName: cloud.project.ai.serving.PresetImage.PresetImage
-                 */
-                export interface PresetImage {
-                    description: string;
-                    id: string;
-                    link?: string;
-                    name: string;
-                    ramRequirementMB?: number;
-                }
-                /**
-                 * Representation of a registry
-                 * interface fullName: cloud.project.ai.serving.Registry.Registry
-                 */
-                export interface Registry {
-                    custom: boolean;
-                    password: string;
-                    url: string;
-                    username: string;
-                }
-                /**
-                 * Missing description
-                 * interface fullName: cloud.project.ai.serving.RegistryResponse.RegistryResponse
-                 */
-                export interface RegistryResponse {
-                    message: string;
-                }
-                /**
-                 * A token to access / manage a machine learning Model
-                 * interface fullName: cloud.project.ai.serving.Token.Token
-                 */
-                export interface Token {
-                    createdAt: string;
-                    groups: cloud.project.ai.serving.TokenGroupEnum[];
-                    id: string;
-                    resource: string;
-                    token?: string;
-                }
-                /**
-                 * A serving engine access group
-                 * type fullname: cloud.project.ai.serving.TokenGroupEnum
-                 */
-                export type TokenGroupEnum = "model-evaluation" | "model-management"
-                /**
-                 * Status of current version
-                 * type fullname: cloud.project.ai.serving.VersionStatusEnum
-                 */
-                export type VersionStatusEnum = "build-error" | "building" | "built" | "deployed" | "deploying" | "failed" | "pending" | "rollback"
-                /**
-                 * The workflow Template to use
-                 * type fullname: cloud.project.ai.serving.WorkflowTemplateEnum
-                 */
-                export type WorkflowTemplateEnum = "build-image" | "preset-image"
             }
             export namespace token {
                 /**
@@ -4303,7 +4330,7 @@ export namespace cloud {
                     createdAt: string;
                     deleted: number;
                     direction: cloud.project.ai.volume.DataSyncEnum;
-                    eta: number;
+                    eta?: number;
                     failed: number;
                     id: string;
                     info: string;
@@ -4390,183 +4417,6 @@ export namespace cloud {
              */
             export type ServerAlternativeNameKindEnum = "DNS" | "EMAIL" | "IP" | "URI"
         }
-        export namespace dataIntegration {
-            /**
-             * Connector parameters
-             * interface fullName: cloud.project.dataIntegration.CapabilitiesConnectorParameter.CapabilitiesConnectorParameter
-             */
-            export interface CapabilitiesConnectorParameter {
-                default?: string;
-                description: string;
-                mandatory: boolean;
-                name: string;
-                type: string;
-                validator: cloud.project.dataIntegration.ParameterValidator;
-            }
-            /**
-             * Connection information
-             * interface fullName: cloud.project.dataIntegration.Connection.Connection
-             */
-            export interface Connection {
-                date?: string;
-                status: cloud.project.dataIntegration.ConnectionStatusEnum;
-            }
-            /**
-             * Possible state of connection
-             * type fullname: cloud.project.dataIntegration.ConnectionStatusEnum
-             */
-            export type ConnectionStatusEnum = "CONNECTION_FAILED" | "CONNECTION_RUNNING" | "CONNECTION_SUCCEED"
-            /**
-             * Connector information
-             * interface fullName: cloud.project.dataIntegration.Connector.Connector
-             */
-            export interface Connector {
-                description: string;
-                documentationUrl?: string;
-                id: string;
-                name: string;
-                parameters?: cloud.project.dataIntegration.CapabilitiesConnectorParameter[];
-                version: string;
-            }
-            /**
-             * Destination information
-             * interface fullName: cloud.project.dataIntegration.Destination.Destination
-             */
-            export interface Destination {
-                connectorId: string;
-                creationDate?: string;
-                id: string;
-                lastUpdateDate?: string;
-                name: string;
-                parameters: cloud.project.dataIntegration.Parameter[];
-                status: cloud.project.dataIntegration.ConnectionStatusEnum;
-            }
-            /**
-             * Editable destination properties
-             * interface fullName: cloud.project.dataIntegration.DestinationUpdate.DestinationUpdate
-             */
-            export interface DestinationUpdate {
-                id: string;
-                name?: string;
-                parameters?: cloud.project.dataIntegration.Parameter[];
-            }
-            /**
-             * Job information
-             * interface fullName: cloud.project.dataIntegration.Job.Job
-             */
-            export interface Job {
-                createdAt: string;
-                endedAt?: string;
-                id: string;
-                startedAt?: string;
-                status: cloud.project.dataIntegration.StatusEnum;
-            }
-            /**
-             * Metadata from source
-             * interface fullName: cloud.project.dataIntegration.Metadata.Metadata
-             */
-            export interface Metadata {
-                endedAt?: string;
-                metadata?: cloud.project.dataIntegration.MetadataDescription[];
-                startedAt: string;
-                status: cloud.project.dataIntegration.MetadataStatusEnum;
-                tableName: string;
-            }
-            /**
-             * Metadata description
-             * interface fullName: cloud.project.dataIntegration.MetadataDescription.MetadataDescription
-             */
-            export interface MetadataDescription {
-                cardinality: number;
-                max: number;
-                min: number;
-                name: string;
-                type: string;
-            }
-            /**
-             * Possible state of the metadata extraction
-             * type fullname: cloud.project.dataIntegration.MetadataStatusEnum
-             */
-            export type MetadataStatusEnum = "FAILED" | "PROCESSING" | "STOP" | "SUCCESS" | "UNKNOWN"
-            /**
-             * Parameters of the connector
-             * interface fullName: cloud.project.dataIntegration.Parameter.Parameter
-             */
-            export interface Parameter {
-                name: string;
-                value: string;
-            }
-            /**
-             * Conditions to which the value of parameter must conform
-             * interface fullName: cloud.project.dataIntegration.ParameterValidator.ParameterValidator
-             */
-            export interface ParameterValidator {
-                max?: number;
-                min?: number;
-                regex?: string;
-            }
-            /**
-             * Source information
-             * interface fullName: cloud.project.dataIntegration.Source.Source
-             */
-            export interface Source {
-                connectorId: string;
-                creationDate?: string;
-                id: string;
-                lastUpdateDate?: string;
-                name: string;
-                parameters: cloud.project.dataIntegration.Parameter[];
-                status: cloud.project.dataIntegration.ConnectionStatusEnum;
-            }
-            /**
-             * Editable source properties
-             * interface fullName: cloud.project.dataIntegration.SourceUpdate.SourceUpdate
-             */
-            export interface SourceUpdate {
-                id: string;
-                name?: string;
-                parameters?: cloud.project.dataIntegration.Parameter[];
-            }
-            /**
-             * Possible state of the connector
-             * type fullname: cloud.project.dataIntegration.StatusEnum
-             */
-            export type StatusEnum = "COMPLETED" | "DELETED" | "FAILED" | "PROVISIONING" | "RUNNING" | "SUBMITTED" | "TERMINATED" | "UNKNOWN"
-            /**
-             * Workflow information
-             * interface fullName: cloud.project.dataIntegration.Workflow.Workflow
-             */
-            export interface Workflow {
-                description?: string;
-                destinationId: string;
-                destinationName: string;
-                enabled: boolean;
-                id: string;
-                lastExecutionDate?: string;
-                name: string;
-                region: string;
-                schedule?: string;
-                sourceId: string;
-                sourceName: string;
-                status: cloud.project.dataIntegration.WorkflowStatusEnum;
-            }
-            /**
-             * Possible state of the worfklow
-             * type fullname: cloud.project.dataIntegration.WorkflowStatusEnum
-             */
-            export type WorkflowStatusEnum = "CREATING" | "ERROR" | "READY"
-            /**
-             * Editable workflow properties
-             * interface fullName: cloud.project.dataIntegration.WorkflowUpdate.WorkflowUpdate
-             */
-            export interface WorkflowUpdate {
-                description?: string;
-                enabled?: boolean;
-                id: string;
-                name?: string;
-                schedule?: string;
-            }
-        }
         export namespace dataProcessing {
             /**
              * Authorization status
@@ -4636,6 +4486,8 @@ export namespace cloud {
             export interface EngineVersion {
                 availableRegions: string[];
                 description: string;
+                endOfLife?: string;
+                endOfSupport?: string;
                 name: string;
             }
             /**
@@ -4688,22 +4540,6 @@ export namespace cloud {
                 content: string;
                 id: number;
                 timestamp: string;
-            }
-            /**
-             * Metrics information
-             * interface fullName: cloud.project.dataProcessing.Metrics.Metrics
-             */
-            export interface Metrics {
-                endpoints: cloud.project.dataProcessing.MetricsEndpoint[];
-                token: string;
-            }
-            /**
-             * Job Logs
-             * interface fullName: cloud.project.dataProcessing.MetricsEndpoint.MetricsEndpoint
-             */
-            export interface MetricsEndpoint {
-                name: string;
-                url: string;
             }
             /**
              * Conditions to which the value of parameter must conform
@@ -4783,10 +4619,13 @@ export namespace cloud {
             export interface Availability {
                 backup: cloud.project.database.BackupTypeEnum;
                 backupRetentionDays: number;
+                backups: cloud.project.database.availability.Backups;
+                category: cloud.project.database.engine.CategoryEnum;
                 default: boolean;
                 endOfLife?: string;
                 engine: string;
                 flavor: string;
+                lifecycle: cloud.project.database.availability.Lifecycle;
                 maxDiskSize: number;
                 maxNodeNumber: number;
                 minDiskSize: number;
@@ -4794,6 +4633,7 @@ export namespace cloud {
                 network: cloud.project.database.NetworkTypeEnum;
                 plan: string;
                 region: string;
+                specifications: cloud.project.database.availability.Specifications;
                 startDate: string;
                 status: cloud.project.database.availability.StatusEnum;
                 stepDiskSize: number;
@@ -4818,7 +4658,7 @@ export namespace cloud {
              * Type of backup for the cluster
              * type fullname: cloud.project.database.BackupTypeEnum
              */
-            export type BackupTypeEnum = "automatic" | "manual"
+            export type BackupTypeEnum = "automatic" | "manual" | "none" | "pitr" | "snapshot"
             /**
              * Capabilities available for the databases engines on cloud projects
              * interface fullName: cloud.project.database.Capabilities.Capabilities
@@ -4854,6 +4694,13 @@ export namespace cloud {
                 ip: string;
             }
             /**
+             * Logs to customer subscription creation definition for cloud project databases
+             * interface fullName: cloud.project.database.LogSubscriptionCreation.LogSubscriptionCreation
+             */
+            export interface LogSubscriptionCreation {
+                streamId: string;
+            }
+            /**
              * Type of network in which the databases cluster are
              * type fullname: cloud.project.database.NetworkTypeEnum
              */
@@ -4865,6 +4712,8 @@ export namespace cloud {
             export interface Service {
                 backupTime: string;
                 backups?: cloud.project.database.service.Backup;
+                capabilities: { [key in cloud.project.database.service.CapabilityEnum]: cloud.project.database.service.CapabilityActions };
+                category: cloud.project.database.engine.CategoryEnum;
                 createdAt: string;
                 description: string;
                 disk: cloud.project.database.service.Disk;
@@ -4877,8 +4726,11 @@ export namespace cloud {
                 networkId?: string;
                 networkType: cloud.project.database.NetworkTypeEnum;
                 nodeNumber: number;
+                nodes: cloud.project.database.service.Node[];
                 plan: string;
+                region?: string;
                 status: cloud.project.database.StatusEnum;
+                storage?: cloud.project.database.service.Storage;
                 subnetId?: string;
                 version: string;
             }
@@ -4906,7 +4758,7 @@ export namespace cloud {
              * Possible state of the job
              * type fullname: cloud.project.database.StatusEnum
              */
-            export type StatusEnum = "CREATING" | "DELETING" | "ERROR" | "ERROR_INCONSISTENT_SPEC" | "LOCKED" | "LOCKED_PENDING" | "LOCKED_UPDATING" | "PENDING" | "READY" | "UPDATING"
+            export type StatusEnum = "CREATING" | "DELETING" | "ERROR" | "ERROR_INCONSISTENT_SPEC" | "LOCKED" | "LOCKED_PENDING" | "LOCKED_UPDATING" | "PENDING" | "READY" | "SHELVED" | "UPDATING"
             /**
              * Cloud databases temporary write deadline definition
              * interface fullName: cloud.project.database.TemporaryWriteDeadline.TemporaryWriteDeadline
@@ -4921,10 +4773,67 @@ export namespace cloud {
             export type TypeEnum = "boolean" | "double" | "duration" | "long" | "string"
             export namespace availability {
                 /**
+                 * Possible action to restrict availabilities
+                 * type fullname: cloud.project.database.availability.ActionEnum
+                 */
+                export type ActionEnum = "fork" | "read" | "update"
+                /**
+                 * Backups availability of databases engines on cloud projects
+                 * interface fullName: cloud.project.database.availability.Backups.Backups
+                 */
+                export interface Backups {
+                    available: boolean;
+                    retentionDays?: number;
+                }
+                /**
+                 * Availability of databases engines on cloud projects
+                 * interface fullName: cloud.project.database.availability.Lifecycle.Lifecycle
+                 */
+                export interface Lifecycle {
+                    endOfLife?: string;
+                    endOfSale?: string;
+                    startDate: string;
+                    status: cloud.project.database.availability.StatusEnum;
+                }
+                /**
+                 * Specifications of the availability of databases engines on cloud projects
+                 * interface fullName: cloud.project.database.availability.Specifications.Specifications
+                 */
+                export interface Specifications {
+                    flavor: string;
+                    network: cloud.project.database.NetworkTypeEnum;
+                    nodes: cloud.project.database.availability.specifications.Nodes;
+                    storage?: cloud.project.database.availability.specifications.Storage;
+                }
+                /**
                  * Possible status for the availability
                  * type fullname: cloud.project.database.availability.StatusEnum
                  */
-                export type StatusEnum = "BETA" | "DEPRECATED" | "STABLE"
+                export type StatusEnum = "BETA" | "DEPRECATED" | "END_OF_LIFE" | "END_OF_SALE" | "STABLE" | "UNAVAILABLE"
+                /**
+                 * Possible target to restrict availabilities
+                 * type fullname: cloud.project.database.availability.TargetEnum
+                 */
+                export type TargetEnum = "flavor" | "plan" | "self" | "version"
+                export namespace specifications {
+                    /**
+                     * Specifications of the nodes for availabilities of databases engines on cloud projects
+                     * interface fullName: cloud.project.database.availability.specifications.Nodes.Nodes
+                     */
+                    export interface Nodes {
+                        maximum: number;
+                        minimum: number;
+                    }
+                    /**
+                     * Specifications of the storage for availabilities of databases engines on cloud projects
+                     * interface fullName: cloud.project.database.availability.specifications.Storage.Storage
+                     */
+                    export interface Storage {
+                        maximum: complexType.UnitAndValue<number>;
+                        minimum: complexType.UnitAndValue<number>;
+                        step?: complexType.UnitAndValue<number>;
+                    }
+                }
             }
             export namespace backup {
                 /**
@@ -4941,6 +4850,7 @@ export namespace cloud {
                  * interface fullName: cloud.project.database.capabilities.Engine.Engine
                  */
                 export interface Engine {
+                    category: cloud.project.database.engine.CategoryEnum;
                     defaultVersion: string;
                     description: string;
                     name: string;
@@ -4954,9 +4864,13 @@ export namespace cloud {
                  */
                 export interface Flavor {
                     core: number;
+                    lifecycle: cloud.project.database.availability.Lifecycle;
                     memory: number;
                     name: string;
+                    order: number;
+                    specifications: cloud.project.database.capabilities.flavor.Specifications;
                     storage: number;
+                    tags: string[];
                 }
                 /**
                  * Integration capability between database engines
@@ -4983,7 +4897,10 @@ export namespace cloud {
                 export interface Plan {
                     backupRetention: string;
                     description: string;
+                    lifecycle: cloud.project.database.availability.Lifecycle;
                     name: string;
+                    order: number;
+                    tags: string[];
                 }
                 export namespace advancedConfiguration {
                     /**
@@ -5015,6 +4932,17 @@ export namespace cloud {
                         export type StrategyEnum = "distributed" | "n/a" | "replicated"
                     }
                 }
+                export namespace flavor {
+                    /**
+                     * Cloud Database flavor specifications definition
+                     * interface fullName: cloud.project.database.capabilities.flavor.Specifications.Specifications
+                     */
+                    export interface Specifications {
+                        core: number;
+                        memory: complexType.UnitAndValue<number>;
+                        storage: complexType.UnitAndValue<number>;
+                    }
+                }
                 export namespace integration {
                     /**
                      * Integration capability parameter
@@ -5033,23 +4961,32 @@ export namespace cloud {
                     }
                 }
             }
-            export namespace kafka {
+            export namespace engine {
                 /**
-                 * Cloud databases kafka acl definition
-                 * interface fullName: cloud.project.database.kafka.Acl.Acl
+                 * Different categories of engines
+                 * type fullname: cloud.project.database.engine.CategoryEnum
                  */
-                export interface Acl {
-                    id: string;
-                    permission: string;
-                    topic: string;
-                    username: string;
-                }
+                export type CategoryEnum = "analysis" | "operational" | "streaming"
+            }
+            export namespace kafka {
                 /**
                  * Cloud databases kafka permissions definition
                  * interface fullName: cloud.project.database.kafka.Permissions.Permissions
                  */
                 export interface Permissions {
                     names: string[];
+                    schemaRegistry: string[];
+                    topic: string[];
+                }
+                /**
+                 * Cloud databases kafka schema registry acl definition
+                 * interface fullName: cloud.project.database.kafka.SchemaRegistryAcl.SchemaRegistryAcl
+                 */
+                export interface SchemaRegistryAcl {
+                    id: string;
+                    permission: string;
+                    resource: string;
+                    username: string;
                 }
                 /**
                  * Cloud database kafka service definition
@@ -5057,6 +4994,8 @@ export namespace cloud {
                  */
                 export interface Service {
                     backupTime: string;
+                    capabilities: { [key in cloud.project.database.service.CapabilityEnum]: cloud.project.database.service.CapabilityActions };
+                    category: cloud.project.database.engine.CategoryEnum;
                     createdAt: string;
                     description: string;
                     disk: cloud.project.database.service.Disk;
@@ -5069,10 +5008,12 @@ export namespace cloud {
                     networkId?: string;
                     networkType: cloud.project.database.NetworkTypeEnum;
                     nodeNumber: number;
+                    nodes: cloud.project.database.service.Node[];
                     plan: string;
                     restApi: boolean;
                     schemaRegistry: boolean;
                     status: cloud.project.database.StatusEnum;
+                    storage?: cloud.project.database.service.Storage;
                     subnetId?: string;
                     version: string;
                 }
@@ -5088,6 +5029,16 @@ export namespace cloud {
                     replication: number;
                     retentionBytes: number;
                     retentionHours: number;
+                }
+                /**
+                 * Cloud databases kafka topic acl definition
+                 * interface fullName: cloud.project.database.kafka.TopicAcl.TopicAcl
+                 */
+                export interface TopicAcl {
+                    id: string;
+                    permission: string;
+                    topic: string;
+                    username: string;
                 }
                 /**
                  * Cloud database kafka topic creation definition
@@ -5392,6 +5343,8 @@ export namespace cloud {
                     aclsEnabled: boolean;
                     backupTime: string;
                     backups?: cloud.project.database.service.Backup;
+                    capabilities: { [key in cloud.project.database.service.CapabilityEnum]: cloud.project.database.service.CapabilityActions };
+                    category: cloud.project.database.engine.CategoryEnum;
                     createdAt: string;
                     description: string;
                     disk: cloud.project.database.service.Disk;
@@ -5404,8 +5357,10 @@ export namespace cloud {
                     networkId?: string;
                     networkType: cloud.project.database.NetworkTypeEnum;
                     nodeNumber: number;
+                    nodes: cloud.project.database.service.Node[];
                     plan: string;
                     status: cloud.project.database.StatusEnum;
+                    storage?: cloud.project.database.service.Storage;
                     subnetId?: string;
                     version: string;
                 }
@@ -5582,9 +5537,26 @@ export namespace cloud {
                  * interface fullName: cloud.project.database.service.Backup.Backup
                  */
                 export interface Backup {
+                    pitr?: string;
                     regions: string[];
+                    retentionDays?: number;
                     time: string;
                 }
+                /**
+                 * Cloud database service capability actions definition
+                 * interface fullName: cloud.project.database.service.CapabilityActions.CapabilityActions
+                 */
+                export interface CapabilityActions {
+                    create?: cloud.project.database.service.capability.StateEnum;
+                    delete?: cloud.project.database.service.capability.StateEnum;
+                    read?: cloud.project.database.service.capability.StateEnum;
+                    update?: cloud.project.database.service.capability.StateEnum;
+                }
+                /**
+                 * List of capabilities available for services
+                 * type fullname: cloud.project.database.service.CapabilityEnum
+                 */
+                export type CapabilityEnum = "advancedConfiguration" | "backupRestore" | "backupTime" | "backups" | "certificates" | "connectionPools" | "currentQueries" | "currentQueriesCancel" | "databases" | "enableWrites" | "fork" | "integrations" | "ipRestrictions" | "maintenanceApply" | "maintenanceTime" | "maintenances" | "namespaces" | "nodes" | "queryStatistics" | "queryStatisticsReset" | "service" | "userCredentialsReset" | "users"
                 /**
                  * Certificates definition for cloud project databases
                  * interface fullName: cloud.project.database.service.Certificates.Certificates
@@ -5782,6 +5754,14 @@ export namespace cloud {
                     pointInTime: string;
                 }
                 /**
+                 * Defines the storage attributes of a service
+                 * interface fullName: cloud.project.database.service.Storage.Storage
+                 */
+                export interface Storage {
+                    size: complexType.UnitAndValue<number>;
+                    type: string;
+                }
+                /**
                  * User definition
                  * interface fullName: cloud.project.database.service.User.User
                  */
@@ -5839,6 +5819,13 @@ export namespace cloud {
                 export interface UserWithRolesCreation {
                     name: string;
                     roles: string[];
+                }
+                export namespace capability {
+                    /**
+                     * State of the service capability for the service
+                     * type fullname: cloud.project.database.service.capability.StateEnum
+                     */
+                    export type StateEnum = "disabled" | "enabled"
                 }
                 export namespace creation {
                     /**
@@ -6626,6 +6613,23 @@ export namespace cloud {
                 export type TypeEnum = "source"
             }
         }
+        export namespace region {
+            /**
+             * Possible values for image os type
+             * type fullname: cloud.project.region.ImageOsTypeEnum
+             */
+            export type ImageOsTypeEnum = "baremetal-linux" | "linux" | "windows"
+            /**
+             * Possible values for image status
+             * type fullname: cloud.project.region.ImageStatusEnum
+             */
+            export type ImageStatusEnum = "active" | "deleted" | "error" | "queued" | "saving"
+            /**
+             * Possible values for image visibility
+             * type fullname: cloud.project.region.ImageVisibilityEnum
+             */
+            export type ImageVisibilityEnum = "community" | "private" | "public" | "shared"
+        }
     }
     export namespace quota {
         /**
@@ -6716,6 +6720,7 @@ export namespace cloud {
             loadbalancer?: cloud.quota.LoadbalancerQuotas;
             network?: cloud.quota.NetworkQuotas;
             region: string;
+            share?: cloud.quota.share.Quota;
             volume?: cloud.quota.VolumeUsageQuotas;
         }
         /**
@@ -6741,6 +6746,21 @@ export namespace cloud {
             volumeBackupCount: number;
             volumeCount: number;
         }
+        export namespace share {
+            /**
+             * Share Quota
+             * interface fullName: cloud.quota.share.Quota.Quota
+             */
+            export interface Quota {
+                maxShareSizePerShare: number;
+                maxShareSizeTotal: number;
+                maxShareSnapshots: number;
+                maxSharesNumber: number;
+                usedShareSizeTotal: number;
+                usedShareSnapshots: number;
+                usedSharesNumber: number;
+            }
+        }
         export namespace storage {
             /**
              * Cloud Storage Quota
@@ -6759,6 +6779,55 @@ export namespace cloud {
             export interface QuotaUpdate {
                 quotaBytes: number;
             }
+        }
+    }
+    export namespace region {
+        /**
+         * Region flavor
+         * interface fullName: cloud.region.Flavor.Flavor
+         */
+        export interface Flavor {
+            disk: number;
+            id: string;
+            name: string;
+            ram: number;
+            region: string;
+            vcpus: number;
+        }
+        /**
+         * Region image
+         * interface fullName: cloud.region.Image.Image
+         */
+        export interface Image {
+            baseImageRef: string;
+            createdAt: string;
+            id: string;
+            name: string;
+            osType: cloud.project.region.ImageOsTypeEnum;
+            region: string;
+            size: number;
+            status: cloud.project.region.ImageStatusEnum;
+            visibility: cloud.project.region.ImageVisibilityEnum;
+        }
+        /**
+         * Region SSHKey
+         * interface fullName: cloud.region.SSHKey.SSHKey
+         */
+        export interface SSHKey {
+            fingerPrint: string;
+            id: string;
+            name: string;
+            publicKey: string;
+            region: string;
+        }
+        /**
+         * Region volume
+         * interface fullName: cloud.region.Volume.Volume
+         */
+        export interface Volume {
+            id: string;
+            name: string;
+            size: number;
         }
     }
     export namespace role {
@@ -6795,6 +6864,122 @@ export namespace cloud {
         export interface Service {
             name: string;
             permissions: cloud.role.Permission[];
+        }
+    }
+    export namespace share {
+        /**
+         * Capability
+         * interface fullName: cloud.share.Capability.Capability
+         */
+        export interface Capability {
+            enabled: boolean;
+            name: string;
+        }
+        /**
+         * Object
+         * interface fullName: cloud.share.ExportLocationObject.ExportLocationObject
+         */
+        export interface ExportLocationObject {
+            id: string;
+            path: string;
+        }
+        /**
+         * Share protocol
+         * type fullname: cloud.share.ProtocolEnum
+         */
+        export type ProtocolEnum = "NFS"
+        /**
+         * Share
+         * interface fullName: cloud.share.Share.Share
+         */
+        export interface Share {
+            capabilities?: cloud.share.Capability[];
+            createdAt: string;
+            description?: string;
+            exportLocations?: cloud.share.ExportLocationObject[];
+            id: string;
+            isPublic: boolean;
+            name?: string;
+            protocol: cloud.share.ProtocolEnum;
+            region: string;
+            size: number;
+            status: cloud.share.StatusEnum;
+            updatedAt: string;
+        }
+        /**
+         * Input Object used to create a share
+         * interface fullName: cloud.share.ShareUpdate.ShareUpdate
+         */
+        export interface ShareUpdate {
+            description: string;
+            name: string;
+            newSize: number;
+        }
+        /**
+         * Share status
+         * type fullname: cloud.share.StatusEnum
+         */
+        export type StatusEnum = "available" | "awaiting_transfer" | "backup_creating" | "backup_restoring" | "backup_restoring_error" | "creating" | "creating_from_snapshot" | "deleted" | "deleting" | "error" | "error_deleting" | "extending" | "extending_error" | "inactive" | "manage_error" | "manage_starting" | "migrating" | "migrating_to" | "replication_change" | "reverting" | "reverting_error" | "shrinking" | "shrinking_error" | "shrinking_possible_data_loss_error" | "unmanage_error" | "unmanage_starting" | "unmanaged"
+        export namespace acl {
+            /**
+             * Share ACL
+             * interface fullName: cloud.share.acl.ACL.ACL
+             */
+            export interface ACL {
+                accessLevel: cloud.share.acl.AccessLevelEnum;
+                accessTo: string;
+                accessType: cloud.share.acl.AccessTypeEnum;
+                createdAt: string;
+                id: string;
+                status: cloud.share.acl.StatusEnum;
+                updatedAt: string;
+            }
+            /**
+             * Share ACL
+             * interface fullName: cloud.share.acl.ACLCreate.ACLCreate
+             */
+            export interface ACLCreate {
+                accessLevel: cloud.share.acl.AccessLevelEnum;
+                accessTo: string;
+                accessType: cloud.share.acl.AccessTypeEnum;
+            }
+            /**
+             * ACL Access Level
+             * type fullname: cloud.share.acl.AccessLevelEnum
+             */
+            export type AccessLevelEnum = "ro" | "rw"
+            /**
+             * ACL Access Type
+             * type fullname: cloud.share.acl.AccessTypeEnum
+             */
+            export type AccessTypeEnum = "cert" | "ip" | "user"
+            /**
+             * ACL Status
+             * type fullname: cloud.share.acl.StatusEnum
+             */
+            export type StatusEnum = "active" | "applying" | "denying" | "error" | "queued_to_apply" | "queued_to_deny"
+        }
+        export namespace snapshot {
+            /**
+             * Share snapshot
+             * interface fullName: cloud.share.snapshot.Snapshot.Snapshot
+             */
+            export interface Snapshot {
+                createdAt: string;
+                description?: string;
+                id: string;
+                name?: string;
+                shareId: string;
+                shareProtocol?: cloud.share.ProtocolEnum;
+                shareSize: number;
+                size: number;
+                status: cloud.share.snapshot.StatusEnum;
+            }
+            /**
+             * Snapshot Status
+             * type fullname: cloud.share.snapshot.StatusEnum
+             */
+            export type StatusEnum = "available" | "creating" | "deleting" | "error" | "error_deleting" | "manage_error" | "manage_starting" | "restoring" | "unmanage_error" | "unmanage_starting"
         }
     }
     export namespace sshkey {
@@ -6880,10 +7065,19 @@ export namespace cloud {
             roleName: cloud.storage.PolicyRoleEnum;
         }
         /**
+         * Archive a ColdArchiveContainer
+         * interface fullName: cloud.storage.ArchiveColdArchiveContainer.ArchiveColdArchiveContainer
+         */
+        export interface ArchiveColdArchiveContainer {
+            lockedUntilDays?: number;
+        }
+        /**
          * Container
          * interface fullName: cloud.storage.Container.Container
          */
         export interface Container {
+            archive?: boolean;
+            containerType?: cloud.storage.TypeEnum;
             id: string;
             name: string;
             region: string;
@@ -6935,6 +7129,11 @@ export namespace cloud {
             getURL: string;
         }
         /**
+         * Encryption algorithm
+         * type fullname: cloud.storage.EncryptionAlgorithmEnum
+         */
+        export type EncryptionAlgorithmEnum = "AES256" | "plaintext"
+        /**
          * Endpoint
          * interface fullName: cloud.storage.Endpoint.Endpoint
          */
@@ -6960,6 +7159,7 @@ export namespace cloud {
          */
         export interface PresignedURL {
             method: cloud.storage.PresignedURLMethodEnum;
+            signedHeaders: { [key: string]: string };
             url: string;
         }
         /**
@@ -6970,12 +7170,13 @@ export namespace cloud {
             expire: number;
             method: cloud.storage.PresignedURLMethodEnum;
             object: string;
+            storageClass: cloud.storage.StorageClassEnum;
         }
         /**
          * Presigned URL method
          * type fullname: cloud.storage.PresignedURLMethodEnum
          */
-        export type PresignedURLMethodEnum = "GET" | "PUT"
+        export type PresignedURLMethodEnum = "DELETE" | "GET" | "PUT"
         /**
          * Cloud Storage Quota
          * interface fullName: cloud.storage.Quota.Quota
@@ -6995,10 +7196,20 @@ export namespace cloud {
          */
         export type RightEnum = "all" | "read" | "write"
         /**
+         * Storage class
+         * type fullname: cloud.storage.StorageClassEnum
+         */
+        export type StorageClassEnum = "HIGH_PERF" | "STANDARD"
+        /**
          * TypeEnum
          * type fullname: cloud.storage.TypeEnum
          */
         export type TypeEnum = "private" | "public" | "static"
+        /**
+         * Versioning status
+         * type fullname: cloud.storage.VersioningStatusEnum
+         */
+        export type VersioningStatusEnum = "disabled" | "enabled" | "suspended"
     }
     export namespace usage {
         /**
@@ -7121,6 +7332,22 @@ export namespace cloud {
          * type fullname: cloud.user.RoleEnum
          */
         export type RoleEnum = "admin" | "administrator" | "ai_training_operator" | "ai_training_read" | "authentication" | "backup_operator" | "compute_operator" | "image_operator" | "infrastructure_supervisor" | "network_operator" | "network_security_operator" | "objectstore_operator" | "volume_operator"
+        /**
+         * S3Credentials
+         * interface fullName: cloud.user.S3Credentials.S3Credentials
+         */
+        export interface S3Credentials {
+            access: string;
+            tenantId: string;
+            userId: string;
+        }
+        /**
+         * S3CredentialsSecretOnly
+         * interface fullName: cloud.user.S3CredentialsSecretOnly.S3CredentialsSecretOnly
+         */
+        export interface S3CredentialsSecretOnly {
+            secret: string;
+        }
         /**
          * S3CredentialsWithSecret
          * interface fullName: cloud.user.S3CredentialsWithSecret.S3CredentialsWithSecret
@@ -7264,6 +7491,103 @@ export namespace complexType {
     export interface UnitAndValue<T> {
         unit: string;
         value: T;
+    }
+}
+export namespace dbaas {
+    export namespace logs {
+        /**
+         * Log kind
+         * interface fullName: dbaas.logs.LogKind.LogKind
+         */
+        export interface LogKind {
+            additionalReturnedFields: string[];
+            createdAt: string;
+            displayName: string;
+            kindId: string;
+            name: string;
+            updatedAt: string;
+        }
+        /**
+         * Log subscription
+         * interface fullName: dbaas.logs.LogSubscription.LogSubscription
+         */
+        export interface LogSubscription {
+            createdAt: string;
+            kind: string;
+            resource: dbaas.logs.LogSubscriptionResource;
+            serviceName: string;
+            streamId: string;
+            subscriptionId: string;
+            updatedAt: string;
+        }
+        /**
+         * Log subscription creation payload
+         * interface fullName: dbaas.logs.LogSubscriptionCreation.LogSubscriptionCreation
+         */
+        export interface LogSubscriptionCreation {
+            kind: string;
+            streamId: string;
+        }
+        /**
+         * Log subscription resource
+         * interface fullName: dbaas.logs.LogSubscriptionResource.LogSubscriptionResource
+         */
+        export interface LogSubscriptionResource {
+            name: string;
+            type: string;
+        }
+        /**
+         * Asynchronous operation after subscribing or unsubscribing to a resource logs
+         * interface fullName: dbaas.logs.LogSubscriptionResponse.LogSubscriptionResponse
+         */
+        export interface LogSubscriptionResponse {
+            operationId: string;
+            serviceName: string;
+        }
+        /**
+         * Log temporary URL creation payload
+         * interface fullName: dbaas.logs.LogUrlCreation.LogUrlCreation
+         */
+        export interface LogUrlCreation {
+            kind: string;
+        }
+        /**
+         * Temporary url information
+         * interface fullName: dbaas.logs.TemporaryLogsLink.TemporaryLogsLink
+         */
+        export interface TemporaryLogsLink {
+            expirationDate: string;
+            url: string;
+        }
+    }
+}
+export namespace iam {
+    /**
+     * IAM resource metadata embedded in services models
+     * interface fullName: iam.ResourceMetadata.ResourceMetadata
+     */
+    export interface ResourceMetadata {
+        displayName?: string;
+        id: string;
+        tags?: { [key: string]: string };
+        urn: string;
+    }
+    export namespace resource {
+        /**
+         * Resource tag filter
+         * interface fullName: iam.resource.TagFilter.TagFilter
+         */
+        export interface TagFilter {
+            operator?: iam.resource.TagFilter.OperatorEnum;
+            value: string;
+        }
+        export namespace TagFilter {
+            /**
+             * Operator that can be used in order to filter resources tags
+             * type fullname: iam.resource.TagFilter.OperatorEnum
+             */
+            export type OperatorEnum = "EQ"
+        }
     }
 }
 export namespace nichandle {
@@ -7415,7 +7739,7 @@ export interface Cloud {
          * List available services
          * GET /cloud/project
          */
-        $get(): Promise<string[]>;
+        $get(params?: { iamTags?: any }): Promise<string[]>;
         /**
          * Controle cache
          */
@@ -7485,7 +7809,7 @@ export interface Cloud {
                      * Create a new app
                      * POST /cloud/project/{serviceName}/ai/app
                      */
-                    $post(params: { command?: string[], defaultHttpPort?: number, env?: cloud.project.ai.job.JobEnv[], envVars?: cloud.project.ai.job.JobEnv[], image: string, labels?: { [key: string]: string }, name?: string, partnerId?: string, probe?: cloud.project.ai.app.ProbeInput, region: string, resources: cloud.project.ai.ResourcesInput, scalingStrategy?: cloud.project.ai.app.ScalingStrategyInput, unsecureHttp?: boolean, volumes?: cloud.project.ai.volume.Volume[] }): Promise<cloud.project.ai.app.App>;
+                    $post(params: { command?: string[], defaultHttpPort?: number, deploymentStrategy?: cloud.project.ai.app.DeploymentStrategy, envVars?: cloud.project.ai.job.JobEnv[], grpcPort?: number, image: string, labels?: { [key: string]: string }, name?: string, partnerId?: string, probe?: cloud.project.ai.app.ProbeInput, region: string, resources: cloud.project.ai.ResourcesInput, scalingStrategy?: cloud.project.ai.app.ScalingStrategyInput, unsecureHttp?: boolean, volumes?: cloud.project.ai.volume.Volume[] }): Promise<cloud.project.ai.app.App>;
                     /**
                      * Controle cache
                      */
@@ -7495,7 +7819,7 @@ export interface Cloud {
                          * Generate an app spec corresponding CLI command
                          * POST /cloud/project/{serviceName}/ai/app/command
                          */
-                        $post(params: { command?: string[], defaultHttpPort?: number, env?: cloud.project.ai.job.JobEnv[], envVars?: cloud.project.ai.job.JobEnv[], image: string, labels?: { [key: string]: string }, name?: string, partnerId?: string, probe?: cloud.project.ai.app.ProbeInput, region: string, resources: cloud.project.ai.ResourcesInput, scalingStrategy?: cloud.project.ai.app.ScalingStrategyInput, unsecureHttp?: boolean, volumes?: cloud.project.ai.volume.Volume[] }): Promise<cloud.project.ai.Command>;
+                        $post(params: { command?: string[], defaultHttpPort?: number, deploymentStrategy?: cloud.project.ai.app.DeploymentStrategy, envVars?: cloud.project.ai.job.JobEnv[], grpcPort?: number, image: string, labels?: { [key: string]: string }, name?: string, partnerId?: string, probe?: cloud.project.ai.app.ProbeInput, region: string, resources: cloud.project.ai.ResourcesInput, scalingStrategy?: cloud.project.ai.app.ScalingStrategyInput, unsecureHttp?: boolean, volumes?: cloud.project.ai.volume.Volume[] }): Promise<cloud.project.ai.Command>;
                     }
                     $(appId: string): {
                         /**
@@ -7508,6 +7832,11 @@ export interface Cloud {
                          * GET /cloud/project/{serviceName}/ai/app/{appId}
                          */
                         $get(): Promise<cloud.project.ai.app.App>;
+                        /**
+                         * Update several parts of an app's spec
+                         * PUT /cloud/project/{serviceName}/ai/app/{appId}
+                         */
+                        $put(params?: { command?: string[], cpu?: number, defaultHttpPort?: number, deploymentStrategy?: cloud.project.ai.app.DeploymentStrategy, envVars?: cloud.project.ai.Env[], flavor?: string, gpu?: number, grpcPort?: number, url?: string }): Promise<cloud.project.ai.app.App>;
                         /**
                          * Controle cache
                          */
@@ -7626,6 +7955,19 @@ export interface Cloud {
                              * Controle cache
                              */
                             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            app: {
+                                image: {
+                                    /**
+                                     * List AI Solutions App images
+                                     * GET /cloud/project/{serviceName}/ai/capabilities/region/{region}/app/image
+                                     */
+                                    $get(): Promise<cloud.project.ai.capabilities.app.Image[]>;
+                                    /**
+                                     * Controle cache
+                                     */
+                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                }
+                            }
                             data: {
                                 region: {
                                     /**
@@ -7685,74 +8027,6 @@ export interface Cloud {
                             }
                         };
                     }
-                    serving: {
-                        backend: {
-                            /**
-                             * Deprecated - ML Serving is End Of Life - List Serving Engine available backends
-                             * GET /cloud/project/{serviceName}/ai/capabilities/serving/backend
-                             */
-                            $get(): Promise<cloud.project.ai.serving.Backend[]>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                        }
-                        feature: {
-                            /**
-                             * Deprecated - ML Serving is End Of Life - List Serving Engine Features
-                             * GET /cloud/project/{serviceName}/ai/capabilities/serving/feature
-                             */
-                            $get(): Promise<cloud.project.ai.serving.Features>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                        }
-                        flavor: {
-                            /**
-                             * Deprecated - ML Serving is End Of Life - List Serving Engine available flavor
-                             * GET /cloud/project/{serviceName}/ai/capabilities/serving/flavor
-                             */
-                            $get(): Promise<cloud.project.ai.serving.Flavor[]>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                        }
-                        framework: {
-                            /**
-                             * Deprecated - ML Serving is End Of Life - List Serving Engine available frameworks
-                             * GET /cloud/project/{serviceName}/ai/capabilities/serving/framework
-                             */
-                            $get(): Promise<cloud.project.ai.serving.Framework[]>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                        }
-                        presetImage: {
-                            /**
-                             * Deprecated - ML Serving is End Of Life - List Serving Engine Preset Model Images
-                             * GET /cloud/project/{serviceName}/ai/capabilities/serving/presetImage
-                             */
-                            $get(): Promise<cloud.project.ai.serving.PresetImage[]>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                        }
-                        region: {
-                            /**
-                             * Deprecated - ML Serving is End Of Life - List Serving Engine available regions
-                             * GET /cloud/project/{serviceName}/ai/capabilities/serving/region
-                             */
-                            $get(): Promise<string[]>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                        }
-                    }
                 }
                 data: {
                     region: {
@@ -7805,7 +8079,7 @@ export interface Cloud {
                                      * Update a datastore
                                      * PUT /cloud/project/{serviceName}/ai/data/region/{region}/alias/{alias}
                                      */
-                                    $put(params: { alias: string, credentials: cloud.project.ai.DataStoreCredentialsInput, endpoint: string, owner: cloud.project.ai.DataStoreOwnerEnum, prefix?: string, type: cloud.project.ai.DataStoreTypeEnum }): Promise<cloud.project.ai.DataStore>;
+                                    $put(params: { alias: string, credentials: cloud.project.ai.DataStoreCredentialsInput, endpoint: string, owner: cloud.project.ai.DataStoreOwnerEnum, prefix?: string, type: cloud.project.ai.DataStoreTypeEnum }): Promise<void>;
                                     /**
                                      * Controle cache
                                      */
@@ -7836,7 +8110,7 @@ export interface Cloud {
                      * Create a new job
                      * POST /cloud/project/{serviceName}/ai/job
                      */
-                    $post(params: { command?: string[], defaultHttpPort?: number, env?: cloud.project.ai.job.JobEnv[], envVars?: cloud.project.ai.job.JobEnv[], image: string, labels?: { [key: string]: string }, name?: string, partnerId?: string, readUser?: string, region: string, resources: cloud.project.ai.ResourcesInput, shutdown?: cloud.project.ai.ShutdownStrategyEnum, sshPublicKeys?: string[], timeout?: number, unsecureHttp?: boolean, volumes?: cloud.project.ai.volume.Volume[] }): Promise<cloud.project.ai.job.Job>;
+                    $post(params: { command?: string[], defaultHttpPort?: number, envVars?: cloud.project.ai.job.JobEnv[], grpcPort?: number, image: string, labels?: { [key: string]: string }, name?: string, partnerId?: string, readUser?: string, region: string, resources: cloud.project.ai.ResourcesInput, shutdown?: cloud.project.ai.ShutdownStrategyEnum, sshPublicKeys?: string[], timeout?: number, timeoutAutoRestart?: boolean, unsecureHttp?: boolean, volumes?: cloud.project.ai.volume.Volume[] }): Promise<cloud.project.ai.job.Job>;
                     /**
                      * Controle cache
                      */
@@ -7859,7 +8133,7 @@ export interface Cloud {
                          * Generate a job spec corresponding CLI command
                          * POST /cloud/project/{serviceName}/ai/job/command
                          */
-                        $post(params: { command?: string[], defaultHttpPort?: number, env?: cloud.project.ai.job.JobEnv[], envVars?: cloud.project.ai.job.JobEnv[], image: string, labels?: { [key: string]: string }, name?: string, partnerId?: string, readUser?: string, region: string, resources: cloud.project.ai.ResourcesInput, shutdown?: cloud.project.ai.ShutdownStrategyEnum, sshPublicKeys?: string[], timeout?: number, unsecureHttp?: boolean, volumes?: cloud.project.ai.volume.Volume[] }): Promise<cloud.project.ai.Command>;
+                        $post(params: { command?: string[], defaultHttpPort?: number, envVars?: cloud.project.ai.job.JobEnv[], grpcPort?: number, image: string, labels?: { [key: string]: string }, name?: string, partnerId?: string, readUser?: string, region: string, resources: cloud.project.ai.ResourcesInput, shutdown?: cloud.project.ai.ShutdownStrategyEnum, sshPublicKeys?: string[], timeout?: number, timeoutAutoRestart?: boolean, unsecureHttp?: boolean, volumes?: cloud.project.ai.volume.Volume[] }): Promise<cloud.project.ai.Command>;
                     }
                     $(jobId: string): {
                         /**
@@ -7920,7 +8194,7 @@ export interface Cloud {
                      * Create a new notebook
                      * POST /cloud/project/{serviceName}/ai/notebook
                      */
-                    $post(params: { env: cloud.project.ai.notebook.NotebookEnv, envVars?: cloud.project.ai.job.JobEnv[], labels?: { [key: string]: string }, name?: string, region: string, resources: cloud.project.ai.ResourcesInput, shutdown?: cloud.project.ai.ShutdownStrategyEnum, sshPublicKeys?: string[], unsecureHttp?: boolean, volumes?: cloud.project.ai.volume.Volume[] }): Promise<cloud.project.ai.notebook.Notebook>;
+                    $post(params: { env: cloud.project.ai.notebook.NotebookEnv, envVars?: cloud.project.ai.job.JobEnv[], labels?: { [key: string]: string }, name?: string, region: string, resources: cloud.project.ai.ResourcesInput, shutdown?: cloud.project.ai.ShutdownStrategyEnum, sshPublicKeys?: string[], timeoutAutoRestart?: boolean, unsecureHttp?: boolean, volumes?: cloud.project.ai.volume.Volume[] }): Promise<cloud.project.ai.notebook.Notebook>;
                     /**
                      * Controle cache
                      */
@@ -7954,7 +8228,7 @@ export interface Cloud {
                          * Generate a notebook spec corresponding CLI command
                          * POST /cloud/project/{serviceName}/ai/notebook/command
                          */
-                        $post(params: { env: cloud.project.ai.notebook.NotebookEnv, envVars?: cloud.project.ai.job.JobEnv[], labels?: { [key: string]: string }, name?: string, region: string, resources: cloud.project.ai.ResourcesInput, shutdown?: cloud.project.ai.ShutdownStrategyEnum, sshPublicKeys?: string[], unsecureHttp?: boolean, volumes?: cloud.project.ai.volume.Volume[] }): Promise<cloud.project.ai.Command>;
+                        $post(params: { env: cloud.project.ai.notebook.NotebookEnv, envVars?: cloud.project.ai.job.JobEnv[], labels?: { [key: string]: string }, name?: string, region: string, resources: cloud.project.ai.ResourcesInput, shutdown?: cloud.project.ai.ShutdownStrategyEnum, sshPublicKeys?: string[], timeoutAutoRestart?: boolean, unsecureHttp?: boolean, volumes?: cloud.project.ai.volume.Volume[] }): Promise<cloud.project.ai.Command>;
                     }
                     $(notebookId: string): {
                         /**
@@ -7971,7 +8245,7 @@ export interface Cloud {
                          * Update an existing notebook. Only labels update can be done while notebook is running.
                          * PUT /cloud/project/{serviceName}/ai/notebook/{notebookId}
                          */
-                        $put(params?: { labels?: { [key: string]: string }, resources?: cloud.project.ai.ResourcesInput, sshPublicKeys?: string[], unsecureHttp?: boolean, volumes?: cloud.project.ai.volume.Volume[] }): Promise<void>;
+                        $put(params?: { labels?: { [key: string]: string }, resources?: cloud.project.ai.ResourcesInput, sshPublicKeys?: string[], timeoutAutoRestart?: boolean, unsecureHttp?: boolean, volumes?: cloud.project.ai.volume.Volume[] }): Promise<void>;
                         /**
                          * Controle cache
                          */
@@ -8046,6 +8320,52 @@ export interface Cloud {
                         }
                     };
                 }
+                partners: {
+                    region: {
+                        /**
+                         * List Region
+                         * GET /cloud/project/{serviceName}/ai/partners/region
+                         */
+                        $get(): Promise<cloud.project.ai.capabilities.Region[]>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $(region: string): {
+                            /**
+                             * Get Region Information
+                             * GET /cloud/project/{serviceName}/ai/partners/region/{region}
+                             */
+                            $get(): Promise<cloud.project.ai.capabilities.Region>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            partner: {
+                                /**
+                                 * List partners and contracts
+                                 * GET /cloud/project/{serviceName}/ai/partners/region/{region}/partner
+                                 */
+                                $get(): Promise<cloud.project.ai.partner.Partner[]>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $(partnerId: string): {
+                                    /**
+                                     * Get partner and contract
+                                     * GET /cloud/project/{serviceName}/ai/partners/region/{region}/partner/{partnerId}
+                                     */
+                                    $get(): Promise<cloud.project.ai.partner.Partner>;
+                                    /**
+                                     * Controle cache
+                                     */
+                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                };
+                            }
+                        };
+                    }
+                }
                 registry: {
                     /**
                      * List Docker registries
@@ -8081,144 +8401,6 @@ export interface Cloud {
                          * Controle cache
                          */
                         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    };
-                }
-                serving: {
-                    /**
-                     * Deprecated - ML Serving is End Of Life - List namespaces of the project
-                     * GET /cloud/project/{serviceName}/ai/serving
-                     */
-                    $get(): Promise<cloud.project.ai.serving.Namespace[]>;
-                    /**
-                     * Deprecated - ML Serving is End Of Life - Create a new namespace
-                     * POST /cloud/project/{serviceName}/ai/serving
-                     */
-                    $post(params: { container: string, description: string, region: string }): Promise<cloud.project.ai.serving.Namespace>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    $(namespaceId: string): {
-                        /**
-                         * Deprecated - ML Serving is End Of Life - Delete a namespace
-                         * DELETE /cloud/project/{serviceName}/ai/serving/{namespaceId}
-                         */
-                        $delete(): Promise<void>;
-                        /**
-                         * Deprecated - ML Serving is End Of Life - Get the namespace information
-                         * GET /cloud/project/{serviceName}/ai/serving/{namespaceId}
-                         */
-                        $get(): Promise<cloud.project.ai.serving.Namespace>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                        metrics: {
-                            /**
-                             * Deprecated - ML Serving is End Of Life - Get metrics token and urls compatible with this token
-                             * GET /cloud/project/{serviceName}/ai/serving/{namespaceId}/metrics
-                             */
-                            $get(): Promise<cloud.project.ai.serving.Metrics>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                        }
-                        model: {
-                            /**
-                             * Deprecated - ML Serving is End Of Life - List models
-                             * GET /cloud/project/{serviceName}/ai/serving/{namespaceId}/model
-                             */
-                            $get(): Promise<cloud.project.ai.serving.Model[]>;
-                            /**
-                             * Deprecated - ML Serving is End Of Life - Create a new model
-                             * POST /cloud/project/{serviceName}/ai/serving/{namespaceId}/model
-                             */
-                            $post(params: { autoscalingSpec?: cloud.project.ai.serving.AutoscalingSpec, backend?: cloud.project.ai.serving.BackendIdEnum, flavor: string, framework?: cloud.project.ai.serving.FrameworkIdEnum, id: string, imageId?: string, storagePath?: string, workflowTemplate?: cloud.project.ai.serving.WorkflowTemplateEnum }): Promise<cloud.project.ai.serving.Model>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                            $(modelId: string): {
-                                /**
-                                 * Deprecated - ML Serving is End Of Life - Delete a model
-                                 * DELETE /cloud/project/{serviceName}/ai/serving/{namespaceId}/model/{modelId}
-                                 */
-                                $delete(): Promise<void>;
-                                /**
-                                 * Deprecated - ML Serving is End Of Life - Get model information
-                                 * GET /cloud/project/{serviceName}/ai/serving/{namespaceId}/model/{modelId}
-                                 */
-                                $get(): Promise<cloud.project.ai.serving.Model>;
-                                /**
-                                 * Deprecated - ML Serving is End Of Life - Update a model
-                                 * PUT /cloud/project/{serviceName}/ai/serving/{namespaceId}/model/{modelId}
-                                 */
-                                $put(): Promise<cloud.project.ai.serving.Model>;
-                                /**
-                                 * Controle cache
-                                 */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                            };
-                        }
-                        registry: {
-                            /**
-                             * Deprecated - ML Serving is End Of Life - Detach the current registry
-                             * DELETE /cloud/project/{serviceName}/ai/serving/{namespaceId}/registry
-                             */
-                            $delete(): Promise<void>;
-                            /**
-                             * Deprecated - ML Serving is End Of Life - Get registry information
-                             * GET /cloud/project/{serviceName}/ai/serving/{namespaceId}/registry
-                             */
-                            $get(): Promise<cloud.project.ai.serving.Registry>;
-                            /**
-                             * Deprecated - ML Serving is End Of Life - Attach a docker registry
-                             * POST /cloud/project/{serviceName}/ai/serving/{namespaceId}/registry
-                             */
-                            $post(params: { custom?: boolean, password: string, url: string, username: string }): Promise<cloud.project.ai.serving.RegistryResponse>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                        }
-                        token: {
-                            /**
-                             * Deprecated - ML Serving is End Of Life - List tokens
-                             * GET /cloud/project/{serviceName}/ai/serving/{namespaceId}/token
-                             */
-                            $get(): Promise<cloud.project.ai.serving.Token[]>;
-                            /**
-                             * Deprecated - ML Serving is End Of Life - Create a new token
-                             * POST /cloud/project/{serviceName}/ai/serving/{namespaceId}/token
-                             */
-                            $post(params: { createdAt?: string, groups: cloud.project.ai.serving.TokenGroupEnum[], id?: string, resource: string, token?: string }): Promise<cloud.project.ai.serving.Token>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                            $(tokenId: string): {
-                                /**
-                                 * Deprecated - ML Serving is End Of Life - Delete a token
-                                 * DELETE /cloud/project/{serviceName}/ai/serving/{namespaceId}/token/{tokenId}
-                                 */
-                                $delete(): Promise<void>;
-                                /**
-                                 * Deprecated - ML Serving is End Of Life - Get token information
-                                 * GET /cloud/project/{serviceName}/ai/serving/{namespaceId}/token/{tokenId}
-                                 */
-                                $get(): Promise<cloud.project.ai.serving.Token>;
-                                /**
-                                 * Deprecated - ML Serving is End Of Life - Renew a new token
-                                 * PUT /cloud/project/{serviceName}/ai/serving/{namespaceId}/token/{tokenId}
-                                 */
-                                $put(): Promise<cloud.project.ai.serving.Token>;
-                                /**
-                                 * Controle cache
-                                 */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                            };
-                        }
                     };
                 }
                 token: {
@@ -8367,18 +8549,42 @@ export interface Cloud {
                          * List Kubernetes available flavors for a region
                          * GET /cloud/project/{serviceName}/capabilities/kube/flavors
                          */
-                        $get(params?: { region?: cloud.kube.RegionEnum }): Promise<cloud.kube.Flavor[]>;
+                        $get(params?: { region?: string }): Promise<cloud.kube.Flavor[]>;
                         /**
                          * Controle cache
                          */
                         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
+                    log: {
+                        kind: {
+                            /**
+                             * List available log kinds
+                             * GET /cloud/project/{serviceName}/capabilities/kube/log/kind
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(name: string): {
+                                /**
+                                 * Get a log kind
+                                 * GET /cloud/project/{serviceName}/capabilities/kube/log/kind/{name}
+                                 */
+                                $get(): Promise<dbaas.logs.LogKind>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                    }
                     regions: {
                         /**
-                         * List Kubernetes regions where cluster creation is possible
+                         * List Kubernetes regions where cluster creation is possible.
                          * GET /cloud/project/{serviceName}/capabilities/kube/regions
                          */
-                        $get(): Promise<cloud.kube.RegionCapabilitiesEnum[]>;
+                        $get(): Promise<string[]>;
                         /**
                          * Controle cache
                          */
@@ -8430,7 +8636,7 @@ export interface Cloud {
             }
             confirmTermination: {
                 /**
-                 * Confirm termination of your service
+                 * Confirm service termination
                  * POST /cloud/project/{serviceName}/confirmTermination
                  */
                 $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
@@ -8494,6 +8700,66 @@ export interface Cloud {
                             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                     }
+                    ipRestrictions: {
+                        management: {
+                            /**
+                             * List your IP restrictions applied on Harbor UI and API
+                             * GET /cloud/project/{serviceName}/containerRegistry/{registryID}/ipRestrictions/management
+                             */
+                            $get(): Promise<cloud.containerRegistry.IPRestrictions[]>;
+                            /**
+                             * Replace IP restrictions applied on Harbor UI and API
+                             * PUT /cloud/project/{serviceName}/containerRegistry/{registryID}/ipRestrictions/management
+                             */
+                            $put(): Promise<cloud.containerRegistry.IPRestrictions[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        registry: {
+                            /**
+                             * List your IP restrictions applied on artifact manager component
+                             * GET /cloud/project/{serviceName}/containerRegistry/{registryID}/ipRestrictions/registry
+                             */
+                            $get(): Promise<cloud.containerRegistry.IPRestrictions[]>;
+                            /**
+                             * Replace IP restrictions applied on artifact manager component (Docker, Helm, etc...)
+                             * PUT /cloud/project/{serviceName}/containerRegistry/{registryID}/ipRestrictions/registry
+                             */
+                            $put(): Promise<cloud.containerRegistry.IPRestrictions[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                    }
+                    openIdConnect: {
+                        /**
+                         * Delete the registry's OIDC Configuration
+                         * DELETE /cloud/project/{serviceName}/containerRegistry/{registryID}/openIdConnect
+                         */
+                        $delete(): Promise<void>;
+                        /**
+                         * Get the registry's OIDC configuration
+                         * GET /cloud/project/{serviceName}/containerRegistry/{registryID}/openIdConnect
+                         */
+                        $get(): Promise<cloud.containerRegistry.OIDCConfiguration>;
+                        /**
+                         * Add or replace the registry's OIDC configuration
+                         * POST /cloud/project/{serviceName}/containerRegistry/{registryID}/openIdConnect
+                         */
+                        $post(params: { deleteUsers?: boolean, provider: cloud.containerRegistry.OIDCConfiguration }): Promise<void>;
+                        /**
+                         * Edit the registry's OIDC configuration
+                         * PUT /cloud/project/{serviceName}/containerRegistry/{registryID}/openIdConnect
+                         */
+                        $put(params?: { adminGroup?: string, autoOnboard?: boolean, clientId?: string, clientSecret?: string, endpoint?: string, groupsClaim?: string, name?: string, scope?: string, userClaim?: string, verifyCert?: boolean }): Promise<void>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    }
                     plan: {
                         /**
                          * Show the actual plan of the registry.
@@ -8531,6 +8797,22 @@ export interface Cloud {
                              * DELETE /cloud/project/{serviceName}/containerRegistry/{registryID}/users/{userID}
                              */
                             $delete(): Promise<void>;
+                            /**
+                             * Get registry user
+                             * GET /cloud/project/{serviceName}/containerRegistry/{registryID}/users/{userID}
+                             */
+                            $get(): Promise<cloud.containerRegistry.User>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            setAsAdmin: {
+                                /**
+                                 * Set the user as Admin
+                                 * PUT /cloud/project/{serviceName}/containerRegistry/{registryID}/users/{userID}/setAsAdmin
+                                 */
+                                $put(): Promise<void>;
+                            }
                         };
                     }
                 };
@@ -8633,17 +8915,6 @@ export interface Cloud {
                         }
                     };
                 }
-                metrics: {
-                    /**
-                     * Get metrics token and urls compatible with this token
-                     * GET /cloud/project/{serviceName}/dataProcessing/metrics
-                     */
-                    $get(): Promise<cloud.project.dataProcessing.Metrics>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                }
                 notebooks: {
                     /**
                      * List all notebooks
@@ -8708,7 +8979,7 @@ export interface Cloud {
                      * Get database engines availability
                      * GET /cloud/project/{serviceName}/database/availability
                      */
-                    $get(): Promise<cloud.project.database.Availability[]>;
+                    $get(params?: { action?: cloud.project.database.availability.ActionEnum, clusterId?: string, target?: cloud.project.database.availability.TargetEnum }): Promise<cloud.project.database.Availability[]>;
                     /**
                      * Controle cache
                      */
@@ -8755,7 +9026,7 @@ export interface Cloud {
                          * Update an existing cassandra cluster
                          * PUT /cloud/project/{serviceName}/database/cassandra/{clusterId}
                          */
-                        $put(params?: { backupTime?: string, backups?: cloud.project.database.service.Backup, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, plan?: string, status?: cloud.project.database.StatusEnum, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
+                        $put(params?: { backupTime?: string, backups?: cloud.project.database.service.Backup, capabilities?: { [key in cloud.project.database.service.CapabilityEnum]: cloud.project.database.service.CapabilityActions }, category?: cloud.project.database.engine.CategoryEnum, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, nodes?: cloud.project.database.service.Node[], plan?: string, region?: string, status?: cloud.project.database.StatusEnum, storage?: cloud.project.database.service.Storage, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
                         /**
                          * Controle cache
                          */
@@ -8901,6 +9172,40 @@ export interface Cloud {
                                  */
                                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             };
+                        }
+                        log: {
+                            subscription: {
+                                /**
+                                 * List subscription IDs for a cluster
+                                 * GET /cloud/project/{serviceName}/database/cassandra/{clusterId}/log/subscription
+                                 */
+                                $get(params?: { kind?: string }): Promise<string[]>;
+                                /**
+                                 * Create subscription to log to customer for a cassandra
+                                 * POST /cloud/project/{serviceName}/database/cassandra/{clusterId}/log/subscription
+                                 */
+                                $post(params: { streamId: string }): Promise<dbaas.logs.LogSubscriptionResponse>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $(subscriptionId: string): {
+                                    /**
+                                     * Delete a subscription
+                                     * DELETE /cloud/project/{serviceName}/database/cassandra/{clusterId}/log/subscription/{subscriptionId}
+                                     */
+                                    $delete(): Promise<dbaas.logs.LogSubscriptionResponse>;
+                                    /**
+                                     * Get subscription details
+                                     * GET /cloud/project/{serviceName}/database/cassandra/{clusterId}/log/subscription/{subscriptionId}
+                                     */
+                                    $get(): Promise<dbaas.logs.LogSubscription>;
+                                    /**
+                                     * Controle cache
+                                     */
+                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                };
+                            }
                         }
                         logs: {
                             /**
@@ -9059,7 +9364,7 @@ export interface Cloud {
                          * Update an existing grafana cluster
                          * PUT /cloud/project/{serviceName}/database/grafana/{clusterId}
                          */
-                        $put(params?: { backupTime?: string, backups?: cloud.project.database.service.Backup, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, plan?: string, status?: cloud.project.database.StatusEnum, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
+                        $put(params?: { backupTime?: string, backups?: cloud.project.database.service.Backup, capabilities?: { [key in cloud.project.database.service.CapabilityEnum]: cloud.project.database.service.CapabilityActions }, category?: cloud.project.database.engine.CategoryEnum, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, nodes?: cloud.project.database.service.Node[], plan?: string, region?: string, status?: cloud.project.database.StatusEnum, storage?: cloud.project.database.service.Storage, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
                         /**
                          * Controle cache
                          */
@@ -9194,6 +9499,40 @@ export interface Cloud {
                                  */
                                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             };
+                        }
+                        log: {
+                            subscription: {
+                                /**
+                                 * List subscription IDs for a cluster
+                                 * GET /cloud/project/{serviceName}/database/grafana/{clusterId}/log/subscription
+                                 */
+                                $get(params?: { kind?: string }): Promise<string[]>;
+                                /**
+                                 * Create subscription to log to customer for a grafana
+                                 * POST /cloud/project/{serviceName}/database/grafana/{clusterId}/log/subscription
+                                 */
+                                $post(params: { streamId: string }): Promise<dbaas.logs.LogSubscriptionResponse>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $(subscriptionId: string): {
+                                    /**
+                                     * Delete a subscription
+                                     * DELETE /cloud/project/{serviceName}/database/grafana/{clusterId}/log/subscription/{subscriptionId}
+                                     */
+                                    $delete(): Promise<dbaas.logs.LogSubscriptionResponse>;
+                                    /**
+                                     * Get subscription details
+                                     * GET /cloud/project/{serviceName}/database/grafana/{clusterId}/log/subscription/{subscriptionId}
+                                     */
+                                    $get(): Promise<dbaas.logs.LogSubscription>;
+                                    /**
+                                     * Controle cache
+                                     */
+                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                };
+                            }
                         }
                         logs: {
                             /**
@@ -9342,7 +9681,7 @@ export interface Cloud {
                          * Update an existing kafka cluster
                          * PUT /cloud/project/{serviceName}/database/kafka/{clusterId}
                          */
-                        $put(params?: { backupTime?: string, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, plan?: string, restApi?: boolean, schemaRegistry?: boolean, status?: cloud.project.database.StatusEnum, subnetId?: string, version?: string }): Promise<cloud.project.database.kafka.Service>;
+                        $put(params?: { backupTime?: string, capabilities?: { [key in cloud.project.database.service.CapabilityEnum]: cloud.project.database.service.CapabilityActions }, category?: cloud.project.database.engine.CategoryEnum, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, nodes?: cloud.project.database.service.Node[], plan?: string, restApi?: boolean, schemaRegistry?: boolean, status?: cloud.project.database.StatusEnum, storage?: cloud.project.database.service.Storage, subnetId?: string, version?: string }): Promise<cloud.project.database.kafka.Service>;
                         /**
                          * Controle cache
                          */
@@ -9357,7 +9696,7 @@ export interface Cloud {
                              * Create a new acl on the kafka cluster
                              * POST /cloud/project/{serviceName}/database/kafka/{clusterId}/acl
                              */
-                            $post(params: { id?: string, permission: string, topic: string, username: string }): Promise<cloud.project.database.kafka.Acl>;
+                            $post(params: { id?: string, permission: string, topic: string, username: string }): Promise<cloud.project.database.kafka.TopicAcl>;
                             /**
                              * Controle cache
                              */
@@ -9372,7 +9711,7 @@ export interface Cloud {
                                  * Get kafka acls
                                  * GET /cloud/project/{serviceName}/database/kafka/{clusterId}/acl/{aclId}
                                  */
-                                $get(): Promise<cloud.project.database.kafka.Acl>;
+                                $get(): Promise<cloud.project.database.kafka.TopicAcl>;
                                 /**
                                  * Controle cache
                                  */
@@ -9499,6 +9838,40 @@ export interface Cloud {
                                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             };
                         }
+                        log: {
+                            subscription: {
+                                /**
+                                 * List subscription IDs for a cluster
+                                 * GET /cloud/project/{serviceName}/database/kafka/{clusterId}/log/subscription
+                                 */
+                                $get(params?: { kind?: string }): Promise<string[]>;
+                                /**
+                                 * Create subscription to log to customer for a kafka
+                                 * POST /cloud/project/{serviceName}/database/kafka/{clusterId}/log/subscription
+                                 */
+                                $post(params: { streamId: string }): Promise<dbaas.logs.LogSubscriptionResponse>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $(subscriptionId: string): {
+                                    /**
+                                     * Delete a subscription
+                                     * DELETE /cloud/project/{serviceName}/database/kafka/{clusterId}/log/subscription/{subscriptionId}
+                                     */
+                                    $delete(): Promise<dbaas.logs.LogSubscriptionResponse>;
+                                    /**
+                                     * Get subscription details
+                                     * GET /cloud/project/{serviceName}/database/kafka/{clusterId}/log/subscription/{subscriptionId}
+                                     */
+                                    $get(): Promise<dbaas.logs.LogSubscription>;
+                                    /**
+                                     * Controle cache
+                                     */
+                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                };
+                            }
+                        }
                         logs: {
                             /**
                              * Retrieve the most recent kafka log messages (limited to 1000)
@@ -9594,6 +9967,38 @@ export interface Cloud {
                              */
                             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
+                        schemaRegistryAcl: {
+                            /**
+                             * List schema registry acls of the kafka
+                             * GET /cloud/project/{serviceName}/database/kafka/{clusterId}/schemaRegistryAcl
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Create a new schema registry acl on the kafka cluster
+                             * POST /cloud/project/{serviceName}/database/kafka/{clusterId}/schemaRegistryAcl
+                             */
+                            $post(params: { id?: string, permission: string, resource: string, username: string }): Promise<cloud.project.database.kafka.SchemaRegistryAcl>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(aclId: string): {
+                                /**
+                                 * Delete a kafka schema registry acl
+                                 * DELETE /cloud/project/{serviceName}/database/kafka/{clusterId}/schemaRegistryAcl/{aclId}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get kafka schema registry acls
+                                 * GET /cloud/project/{serviceName}/database/kafka/{clusterId}/schemaRegistryAcl/{aclId}
+                                 */
+                                $get(): Promise<cloud.project.database.kafka.SchemaRegistryAcl>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
                         topic: {
                             /**
                              * List topics of the kafka
@@ -9625,6 +10030,38 @@ export interface Cloud {
                                  * PUT /cloud/project/{serviceName}/database/kafka/{clusterId}/topic/{topicId}
                                  */
                                 $put(params?: { id?: string, minInsyncReplicas?: number, name?: string, partitions?: number, replication?: number, retentionBytes?: number, retentionHours?: number }): Promise<cloud.project.database.kafka.Topic>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        topicAcl: {
+                            /**
+                             * List topic acls of the kafka
+                             * GET /cloud/project/{serviceName}/database/kafka/{clusterId}/topicAcl
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Create a new topic acl on the kafka cluster
+                             * POST /cloud/project/{serviceName}/database/kafka/{clusterId}/topicAcl
+                             */
+                            $post(params: { id?: string, permission: string, topic: string, username: string }): Promise<cloud.project.database.kafka.TopicAcl>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(aclId: string): {
+                                /**
+                                 * Delete a kafka topic acl
+                                 * DELETE /cloud/project/{serviceName}/database/kafka/{clusterId}/topicAcl/{aclId}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get kafka topic acls
+                                 * GET /cloud/project/{serviceName}/database/kafka/{clusterId}/topicAcl/{aclId}
+                                 */
+                                $get(): Promise<cloud.project.database.kafka.TopicAcl>;
                                 /**
                                  * Controle cache
                                  */
@@ -9715,7 +10152,7 @@ export interface Cloud {
                          * Update an existing kafkaConnect cluster
                          * PUT /cloud/project/{serviceName}/database/kafkaConnect/{clusterId}
                          */
-                        $put(params?: { backupTime?: string, backups?: cloud.project.database.service.Backup, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, plan?: string, status?: cloud.project.database.StatusEnum, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
+                        $put(params?: { backupTime?: string, backups?: cloud.project.database.service.Backup, capabilities?: { [key in cloud.project.database.service.CapabilityEnum]: cloud.project.database.service.CapabilityActions }, category?: cloud.project.database.engine.CategoryEnum, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, nodes?: cloud.project.database.service.Node[], plan?: string, region?: string, status?: cloud.project.database.StatusEnum, storage?: cloud.project.database.service.Storage, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
                         /**
                          * Controle cache
                          */
@@ -9960,6 +10397,40 @@ export interface Cloud {
                                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             };
                         }
+                        log: {
+                            subscription: {
+                                /**
+                                 * List subscription IDs for a cluster
+                                 * GET /cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/log/subscription
+                                 */
+                                $get(params?: { kind?: string }): Promise<string[]>;
+                                /**
+                                 * Create subscription to log to customer for a kafkaConnect
+                                 * POST /cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/log/subscription
+                                 */
+                                $post(params: { streamId: string }): Promise<dbaas.logs.LogSubscriptionResponse>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $(subscriptionId: string): {
+                                    /**
+                                     * Delete a subscription
+                                     * DELETE /cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/log/subscription/{subscriptionId}
+                                     */
+                                    $delete(): Promise<dbaas.logs.LogSubscriptionResponse>;
+                                    /**
+                                     * Get subscription details
+                                     * GET /cloud/project/{serviceName}/database/kafkaConnect/{clusterId}/log/subscription/{subscriptionId}
+                                     */
+                                    $get(): Promise<dbaas.logs.LogSubscription>;
+                                    /**
+                                     * Controle cache
+                                     */
+                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                };
+                            }
+                        }
                         logs: {
                             /**
                              * Retrieve the most recent kafkaConnect log messages (limited to 1000)
@@ -10117,7 +10588,7 @@ export interface Cloud {
                          * Update an existing kafkaMirrorMaker
                          * PUT /cloud/project/{serviceName}/database/kafkaMirrorMaker/{clusterId}
                          */
-                        $put(params?: { backupTime?: string, backups?: cloud.project.database.service.Backup, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, plan?: string, status?: cloud.project.database.StatusEnum, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
+                        $put(params?: { backupTime?: string, backups?: cloud.project.database.service.Backup, capabilities?: { [key in cloud.project.database.service.CapabilityEnum]: cloud.project.database.service.CapabilityActions }, category?: cloud.project.database.engine.CategoryEnum, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, nodes?: cloud.project.database.service.Node[], plan?: string, region?: string, status?: cloud.project.database.StatusEnum, storage?: cloud.project.database.service.Storage, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
                         /**
                          * Controle cache
                          */
@@ -10166,6 +10637,40 @@ export interface Cloud {
                                  */
                                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             };
+                        }
+                        log: {
+                            subscription: {
+                                /**
+                                 * List subscription IDs for a cluster
+                                 * GET /cloud/project/{serviceName}/database/kafkaMirrorMaker/{clusterId}/log/subscription
+                                 */
+                                $get(params?: { kind?: string }): Promise<string[]>;
+                                /**
+                                 * Create subscription to log to customer for a kafkaMirrorMaker
+                                 * POST /cloud/project/{serviceName}/database/kafkaMirrorMaker/{clusterId}/log/subscription
+                                 */
+                                $post(params: { streamId: string }): Promise<dbaas.logs.LogSubscriptionResponse>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $(subscriptionId: string): {
+                                    /**
+                                     * Delete a subscription
+                                     * DELETE /cloud/project/{serviceName}/database/kafkaMirrorMaker/{clusterId}/log/subscription/{subscriptionId}
+                                     */
+                                    $delete(): Promise<dbaas.logs.LogSubscriptionResponse>;
+                                    /**
+                                     * Get subscription details
+                                     * GET /cloud/project/{serviceName}/database/kafkaMirrorMaker/{clusterId}/log/subscription/{subscriptionId}
+                                     */
+                                    $get(): Promise<dbaas.logs.LogSubscription>;
+                                    /**
+                                     * Controle cache
+                                     */
+                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                };
+                            }
                         }
                         logs: {
                             /**
@@ -10320,7 +10825,7 @@ export interface Cloud {
                          * Update an existing m3aggregator
                          * PUT /cloud/project/{serviceName}/database/m3aggregator/{clusterId}
                          */
-                        $put(params?: { backupTime?: string, backups?: cloud.project.database.service.Backup, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, plan?: string, status?: cloud.project.database.StatusEnum, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
+                        $put(params?: { backupTime?: string, backups?: cloud.project.database.service.Backup, capabilities?: { [key in cloud.project.database.service.CapabilityEnum]: cloud.project.database.service.CapabilityActions }, category?: cloud.project.database.engine.CategoryEnum, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, nodes?: cloud.project.database.service.Node[], plan?: string, region?: string, status?: cloud.project.database.StatusEnum, storage?: cloud.project.database.service.Storage, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
                         /**
                          * Controle cache
                          */
@@ -10369,6 +10874,40 @@ export interface Cloud {
                                  */
                                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             };
+                        }
+                        log: {
+                            subscription: {
+                                /**
+                                 * List subscription IDs for a cluster
+                                 * GET /cloud/project/{serviceName}/database/m3aggregator/{clusterId}/log/subscription
+                                 */
+                                $get(params?: { kind?: string }): Promise<string[]>;
+                                /**
+                                 * Create subscription to log to customer for a m3aggregator
+                                 * POST /cloud/project/{serviceName}/database/m3aggregator/{clusterId}/log/subscription
+                                 */
+                                $post(params: { streamId: string }): Promise<dbaas.logs.LogSubscriptionResponse>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $(subscriptionId: string): {
+                                    /**
+                                     * Delete a subscription
+                                     * DELETE /cloud/project/{serviceName}/database/m3aggregator/{clusterId}/log/subscription/{subscriptionId}
+                                     */
+                                    $delete(): Promise<dbaas.logs.LogSubscriptionResponse>;
+                                    /**
+                                     * Get subscription details
+                                     * GET /cloud/project/{serviceName}/database/m3aggregator/{clusterId}/log/subscription/{subscriptionId}
+                                     */
+                                    $get(): Promise<dbaas.logs.LogSubscription>;
+                                    /**
+                                     * Controle cache
+                                     */
+                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                };
+                            }
                         }
                         logs: {
                             /**
@@ -10486,7 +11025,7 @@ export interface Cloud {
                          * Update an existing m3db cluster
                          * PUT /cloud/project/{serviceName}/database/m3db/{clusterId}
                          */
-                        $put(params?: { backupTime?: string, backups?: cloud.project.database.service.Backup, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, plan?: string, status?: cloud.project.database.StatusEnum, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
+                        $put(params?: { backupTime?: string, backups?: cloud.project.database.service.Backup, capabilities?: { [key in cloud.project.database.service.CapabilityEnum]: cloud.project.database.service.CapabilityActions }, category?: cloud.project.database.engine.CategoryEnum, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, nodes?: cloud.project.database.service.Node[], plan?: string, region?: string, status?: cloud.project.database.StatusEnum, storage?: cloud.project.database.service.Storage, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
                         /**
                          * Controle cache
                          */
@@ -10621,6 +11160,40 @@ export interface Cloud {
                                  */
                                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             };
+                        }
+                        log: {
+                            subscription: {
+                                /**
+                                 * List subscription IDs for a cluster
+                                 * GET /cloud/project/{serviceName}/database/m3db/{clusterId}/log/subscription
+                                 */
+                                $get(params?: { kind?: string }): Promise<string[]>;
+                                /**
+                                 * Create subscription to log to customer for a m3db
+                                 * POST /cloud/project/{serviceName}/database/m3db/{clusterId}/log/subscription
+                                 */
+                                $post(params: { streamId: string }): Promise<dbaas.logs.LogSubscriptionResponse>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $(subscriptionId: string): {
+                                    /**
+                                     * Delete a subscription
+                                     * DELETE /cloud/project/{serviceName}/database/m3db/{clusterId}/log/subscription/{subscriptionId}
+                                     */
+                                    $delete(): Promise<dbaas.logs.LogSubscriptionResponse>;
+                                    /**
+                                     * Get subscription details
+                                     * GET /cloud/project/{serviceName}/database/m3db/{clusterId}/log/subscription/{subscriptionId}
+                                     */
+                                    $get(): Promise<dbaas.logs.LogSubscription>;
+                                    /**
+                                     * Controle cache
+                                     */
+                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                };
+                            }
                         }
                         logs: {
                             /**
@@ -10821,7 +11394,7 @@ export interface Cloud {
                          * Update an existing mongodb cluster
                          * PUT /cloud/project/{serviceName}/database/mongodb/{clusterId}
                          */
-                        $put(params?: { backupTime?: string, backups?: cloud.project.database.service.Backup, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, plan?: string, status?: cloud.project.database.StatusEnum, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
+                        $put(params?: { backupTime?: string, backups?: cloud.project.database.service.Backup, capabilities?: { [key in cloud.project.database.service.CapabilityEnum]: cloud.project.database.service.CapabilityActions }, category?: cloud.project.database.engine.CategoryEnum, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, nodes?: cloud.project.database.service.Node[], plan?: string, region?: string, status?: cloud.project.database.StatusEnum, storage?: cloud.project.database.service.Storage, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
                         /**
                          * Controle cache
                          */
@@ -10891,6 +11464,40 @@ export interface Cloud {
                                  */
                                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             };
+                        }
+                        log: {
+                            subscription: {
+                                /**
+                                 * List subscription IDs for a cluster
+                                 * GET /cloud/project/{serviceName}/database/mongodb/{clusterId}/log/subscription
+                                 */
+                                $get(params?: { kind?: string }): Promise<string[]>;
+                                /**
+                                 * Create subscription to log to customer for a mongodb
+                                 * POST /cloud/project/{serviceName}/database/mongodb/{clusterId}/log/subscription
+                                 */
+                                $post(params: { streamId: string }): Promise<dbaas.logs.LogSubscriptionResponse>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $(subscriptionId: string): {
+                                    /**
+                                     * Delete a subscription
+                                     * DELETE /cloud/project/{serviceName}/database/mongodb/{clusterId}/log/subscription/{subscriptionId}
+                                     */
+                                    $delete(): Promise<dbaas.logs.LogSubscriptionResponse>;
+                                    /**
+                                     * Get subscription details
+                                     * GET /cloud/project/{serviceName}/database/mongodb/{clusterId}/log/subscription/{subscriptionId}
+                                     */
+                                    $get(): Promise<dbaas.logs.LogSubscription>;
+                                    /**
+                                     * Controle cache
+                                     */
+                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                };
+                            }
                         }
                         logs: {
                             /**
@@ -11087,7 +11694,7 @@ export interface Cloud {
                          * Update an existing mysql cluster
                          * PUT /cloud/project/{serviceName}/database/mysql/{clusterId}
                          */
-                        $put(params?: { backupTime?: string, backups?: cloud.project.database.service.Backup, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, plan?: string, status?: cloud.project.database.StatusEnum, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
+                        $put(params?: { backupTime?: string, backups?: cloud.project.database.service.Backup, capabilities?: { [key in cloud.project.database.service.CapabilityEnum]: cloud.project.database.service.CapabilityActions }, category?: cloud.project.database.engine.CategoryEnum, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, nodes?: cloud.project.database.service.Node[], plan?: string, region?: string, status?: cloud.project.database.StatusEnum, storage?: cloud.project.database.service.Storage, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
                         /**
                          * Controle cache
                          */
@@ -11290,6 +11897,40 @@ export interface Cloud {
                                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             };
                         }
+                        log: {
+                            subscription: {
+                                /**
+                                 * List subscription IDs for a cluster
+                                 * GET /cloud/project/{serviceName}/database/mysql/{clusterId}/log/subscription
+                                 */
+                                $get(params?: { kind?: string }): Promise<string[]>;
+                                /**
+                                 * Create subscription to log to customer for a mysql
+                                 * POST /cloud/project/{serviceName}/database/mysql/{clusterId}/log/subscription
+                                 */
+                                $post(params: { streamId: string }): Promise<dbaas.logs.LogSubscriptionResponse>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $(subscriptionId: string): {
+                                    /**
+                                     * Delete a subscription
+                                     * DELETE /cloud/project/{serviceName}/database/mysql/{clusterId}/log/subscription/{subscriptionId}
+                                     */
+                                    $delete(): Promise<dbaas.logs.LogSubscriptionResponse>;
+                                    /**
+                                     * Get subscription details
+                                     * GET /cloud/project/{serviceName}/database/mysql/{clusterId}/log/subscription/{subscriptionId}
+                                     */
+                                    $get(): Promise<dbaas.logs.LogSubscription>;
+                                    /**
+                                     * Controle cache
+                                     */
+                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                };
+                            }
+                        }
                         logs: {
                             /**
                              * Retrieve the most recent mysql log messages (limited to 1000)
@@ -11465,7 +12106,7 @@ export interface Cloud {
                          * Update an existing opensearch cluster
                          * PUT /cloud/project/{serviceName}/database/opensearch/{clusterId}
                          */
-                        $put(params?: { aclsEnabled?: boolean, backupTime?: string, backups?: cloud.project.database.service.Backup, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, plan?: string, status?: cloud.project.database.StatusEnum, subnetId?: string, version?: string }): Promise<cloud.project.database.opensearch.Service>;
+                        $put(params?: { aclsEnabled?: boolean, backupTime?: string, backups?: cloud.project.database.service.Backup, capabilities?: { [key in cloud.project.database.service.CapabilityEnum]: cloud.project.database.service.CapabilityActions }, category?: cloud.project.database.engine.CategoryEnum, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, nodes?: cloud.project.database.service.Node[], plan?: string, status?: cloud.project.database.StatusEnum, storage?: cloud.project.database.service.Storage, subnetId?: string, version?: string }): Promise<cloud.project.database.opensearch.Service>;
                         /**
                          * Controle cache
                          */
@@ -11627,6 +12268,40 @@ export interface Cloud {
                                  */
                                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             };
+                        }
+                        log: {
+                            subscription: {
+                                /**
+                                 * List subscription IDs for a cluster
+                                 * GET /cloud/project/{serviceName}/database/opensearch/{clusterId}/log/subscription
+                                 */
+                                $get(params?: { kind?: string }): Promise<string[]>;
+                                /**
+                                 * Create subscription to log to customer for a opensearch
+                                 * POST /cloud/project/{serviceName}/database/opensearch/{clusterId}/log/subscription
+                                 */
+                                $post(params: { streamId: string }): Promise<dbaas.logs.LogSubscriptionResponse>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $(subscriptionId: string): {
+                                    /**
+                                     * Delete a subscription
+                                     * DELETE /cloud/project/{serviceName}/database/opensearch/{clusterId}/log/subscription/{subscriptionId}
+                                     */
+                                    $delete(): Promise<dbaas.logs.LogSubscriptionResponse>;
+                                    /**
+                                     * Get subscription details
+                                     * GET /cloud/project/{serviceName}/database/opensearch/{clusterId}/log/subscription/{subscriptionId}
+                                     */
+                                    $get(): Promise<dbaas.logs.LogSubscription>;
+                                    /**
+                                     * Controle cache
+                                     */
+                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                };
+                            }
                         }
                         logs: {
                             /**
@@ -11833,7 +12508,7 @@ export interface Cloud {
                          * Update an existing postgresql cluster
                          * PUT /cloud/project/{serviceName}/database/postgresql/{clusterId}
                          */
-                        $put(params?: { backupTime?: string, backups?: cloud.project.database.service.Backup, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, plan?: string, status?: cloud.project.database.StatusEnum, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
+                        $put(params?: { backupTime?: string, backups?: cloud.project.database.service.Backup, capabilities?: { [key in cloud.project.database.service.CapabilityEnum]: cloud.project.database.service.CapabilityActions }, category?: cloud.project.database.engine.CategoryEnum, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, nodes?: cloud.project.database.service.Node[], plan?: string, region?: string, status?: cloud.project.database.StatusEnum, storage?: cloud.project.database.service.Storage, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
                         /**
                          * Controle cache
                          */
@@ -12072,6 +12747,40 @@ export interface Cloud {
                                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             };
                         }
+                        log: {
+                            subscription: {
+                                /**
+                                 * List subscription IDs for a cluster
+                                 * GET /cloud/project/{serviceName}/database/postgresql/{clusterId}/log/subscription
+                                 */
+                                $get(params?: { kind?: string }): Promise<string[]>;
+                                /**
+                                 * Create subscription to log to customer for a postgresql
+                                 * POST /cloud/project/{serviceName}/database/postgresql/{clusterId}/log/subscription
+                                 */
+                                $post(params: { streamId: string }): Promise<dbaas.logs.LogSubscriptionResponse>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $(subscriptionId: string): {
+                                    /**
+                                     * Delete a subscription
+                                     * DELETE /cloud/project/{serviceName}/database/postgresql/{clusterId}/log/subscription/{subscriptionId}
+                                     */
+                                    $delete(): Promise<dbaas.logs.LogSubscriptionResponse>;
+                                    /**
+                                     * Get subscription details
+                                     * GET /cloud/project/{serviceName}/database/postgresql/{clusterId}/log/subscription/{subscriptionId}
+                                     */
+                                    $get(): Promise<dbaas.logs.LogSubscription>;
+                                    /**
+                                     * Controle cache
+                                     */
+                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                };
+                            }
+                        }
                         logs: {
                             /**
                              * Retrieve the most recent postgresql log messages (limited to 1000)
@@ -12263,7 +12972,7 @@ export interface Cloud {
                          * Update an existing redis cluster
                          * PUT /cloud/project/{serviceName}/database/redis/{clusterId}
                          */
-                        $put(params?: { backupTime?: string, backups?: cloud.project.database.service.Backup, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, plan?: string, status?: cloud.project.database.StatusEnum, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
+                        $put(params?: { backupTime?: string, backups?: cloud.project.database.service.Backup, capabilities?: { [key in cloud.project.database.service.CapabilityEnum]: cloud.project.database.service.CapabilityActions }, category?: cloud.project.database.engine.CategoryEnum, createdAt?: string, description?: string, disk?: cloud.project.database.service.Disk, endpoints?: cloud.project.database.service.Endpoint[], engine?: cloud.project.database.EngineEnum, flavor?: string, id?: string, ipRestrictions?: cloud.project.database.service.IpRestriction[], maintenanceTime?: string, networkId?: string, networkType?: cloud.project.database.NetworkTypeEnum, nodeNumber?: number, nodes?: cloud.project.database.service.Node[], plan?: string, region?: string, status?: cloud.project.database.StatusEnum, storage?: cloud.project.database.service.Storage, subnetId?: string, version?: string }): Promise<cloud.project.database.Service>;
                         /**
                          * Controle cache
                          */
@@ -12421,6 +13130,40 @@ export interface Cloud {
                                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             };
                         }
+                        log: {
+                            subscription: {
+                                /**
+                                 * List subscription IDs for a cluster
+                                 * GET /cloud/project/{serviceName}/database/redis/{clusterId}/log/subscription
+                                 */
+                                $get(params?: { kind?: string }): Promise<string[]>;
+                                /**
+                                 * Create subscription to log to customer for a redis
+                                 * POST /cloud/project/{serviceName}/database/redis/{clusterId}/log/subscription
+                                 */
+                                $post(params: { streamId: string }): Promise<dbaas.logs.LogSubscriptionResponse>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $(subscriptionId: string): {
+                                    /**
+                                     * Delete a subscription
+                                     * DELETE /cloud/project/{serviceName}/database/redis/{clusterId}/log/subscription/{subscriptionId}
+                                     */
+                                    $delete(): Promise<dbaas.logs.LogSubscriptionResponse>;
+                                    /**
+                                     * Get subscription details
+                                     * GET /cloud/project/{serviceName}/database/redis/{clusterId}/log/subscription/{subscriptionId}
+                                     */
+                                    $get(): Promise<dbaas.logs.LogSubscription>;
+                                    /**
+                                     * Controle cache
+                                     */
+                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                };
+                            }
+                        }
                         logs: {
                             /**
                              * Retrieve the most recent redis log messages (limited to 1000)
@@ -12558,7 +13301,7 @@ export interface Cloud {
                      * List database services of the project
                      * GET /cloud/project/{serviceName}/database/service
                      */
-                    $get(): Promise<string[]>;
+                    $get(params?: { category?: cloud.project.database.engine.CategoryEnum }): Promise<string[]>;
                     /**
                      * Controle cache
                      */
@@ -12788,7 +13531,7 @@ export interface Cloud {
                     }
                     shelve: {
                         /**
-                         * Shelve an instance. The resources dedicated to the Public Cloud instance are released. The data of the local storage will be stored, the duration of the operation depends on the size of the local disk. The instance can be unshelved at any time. Meanwhile hourly instances will not be billed. The Snapshot Storage used to store the instance's data will be billed.
+                         * Shelve an instance
                          * POST /cloud/project/{serviceName}/instance/{instanceId}/shelve
                          */
                         $post(): Promise<void>;
@@ -12809,14 +13552,14 @@ export interface Cloud {
                     }
                     stop: {
                         /**
-                         * Stop an instance. The resources dedicated to the Public Cloud instances are still reserved. The instance can be restarted at any time. Meanwhile, the same price is charged for the instance.
+                         * Stop an instance
                          * POST /cloud/project/{serviceName}/instance/{instanceId}/stop
                          */
                         $post(): Promise<void>;
                     }
                     unshelve: {
                         /**
-                         * Unshelve an instance. The resources dedicated to the Public Cloud instance are restored. The duration of the operation depends on the size of the local disk. Instance billing will get back to normal and the snapshot used to store the instance's data will be deleted.
+                         * Unshelve an instance
                          * POST /cloud/project/{serviceName}/instance/{instanceId}/unshelve
                          */
                         $post(): Promise<void>;
@@ -13038,7 +13781,7 @@ export interface Cloud {
                  * Create a new managed Kubernetes cluster
                  * POST /cloud/project/{serviceName}/kube
                  */
-                $post(params: { customization?: cloud.ProjectKubeCustomization, kubeProxyMode?: cloud.kube.KubeProxyModeEnum, name?: string, nodepool?: cloud.ProjectKubeCreationNodePool, privateNetworkConfiguration?: cloud.kube.PrivateNetworkConfiguration, privateNetworkId?: string, region: string, updatePolicy?: cloud.kube.UpdatePolicyEnum, version?: cloud.kube.VersionEnum }): Promise<cloud.kube.Cluster>;
+                $post(params: { customization?: cloud.ProjectKubeCustomization, kubeProxyMode?: cloud.kube.KubeProxyModeEnum, loadBalancersSubnetId?: string, name?: string, nodepool?: cloud.ProjectKubeCreationNodePool, nodesSubnetId?: string, privateNetworkConfiguration?: cloud.kube.PrivateNetworkConfiguration, privateNetworkId?: string, region: string, updatePolicy?: cloud.kube.UpdatePolicyEnum, version?: cloud.kube.VersionEnum }): Promise<cloud.kube.Cluster>;
                 /**
                  * Controle cache
                  */
@@ -13048,7 +13791,7 @@ export interface Cloud {
                      * List Kubernetes available regions
                      * GET /cloud/project/{serviceName}/kube/regions
                      */
-                    $get(): Promise<cloud.kube.RegionEnum[]>;
+                    $get(): Promise<string[]>;
                     /**
                      * Controle cache
                      */
@@ -13076,10 +13819,17 @@ export interface Cloud {
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     auditLogs: {
                         /**
-                         * Generate a temporary url to retrieve auditlogs
+                         * Generate a temporary URL to retrieve audit logs
                          * POST /cloud/project/{serviceName}/kube/{kubeId}/auditLogs
                          */
-                        $post(): Promise<cloud.kube.AuditLogs>;
+                        $post(): Promise<dbaas.logs.TemporaryLogsLink>;
+                        forward: {
+                            /**
+                             * Forward the cluster audit logs to a pre-existing LDP stream
+                             * POST /cloud/project/{serviceName}/kube/{kubeId}/auditLogs/forward
+                             */
+                            $post(params: { kind: string, streamId: string }): Promise<dbaas.logs.LogSubscriptionResponse>;
+                        }
                     }
                     customization: {
                         /**
@@ -13150,6 +13900,47 @@ export interface Cloud {
                             $post(): Promise<void>;
                         }
                     }
+                    log: {
+                        subscription: {
+                            /**
+                             * List subscription IDs for a cluster
+                             * GET /cloud/project/{serviceName}/kube/{kubeId}/log/subscription
+                             */
+                            $get(params?: { kind?: string }): Promise<string[]>;
+                            /**
+                             * Create a subscription from logs to a pre-existing LDP stream
+                             * POST /cloud/project/{serviceName}/kube/{kubeId}/log/subscription
+                             */
+                            $post(params: { kind: string, streamId: string }): Promise<dbaas.logs.LogSubscriptionResponse>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(subscriptionId: string): {
+                                /**
+                                 * Delete a subscription
+                                 * DELETE /cloud/project/{serviceName}/kube/{kubeId}/log/subscription/{subscriptionId}
+                                 */
+                                $delete(): Promise<dbaas.logs.LogSubscriptionResponse>;
+                                /**
+                                 * Get subscription details
+                                 * GET /cloud/project/{serviceName}/kube/{kubeId}/log/subscription/{subscriptionId}
+                                 */
+                                $get(): Promise<dbaas.logs.LogSubscription>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        url: {
+                            /**
+                             * Generate a temporary URL to retrieve logs
+                             * POST /cloud/project/{serviceName}/kube/{kubeId}/log/url
+                             */
+                            $post(params: { kind: string }): Promise<dbaas.logs.TemporaryLogsLink>;
+                        }
+                    }
                     metrics: {
                         etcdUsage: {
                             /**
@@ -13175,7 +13966,7 @@ export interface Cloud {
                         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         $(nodeId: string): {
                             /**
-                             * Delete a specific node on your cluster. This will also decrease by one the desirednodes value of its nodepool
+                             * Delete a specific node on your cluster
                              * DELETE /cloud/project/{serviceName}/kube/{kubeId}/node/{nodeId}
                              */
                             $delete(): Promise<void>;
@@ -13285,7 +14076,7 @@ export interface Cloud {
                          * Reset cluster: all Kubernetes data will be erased (pods, services, configuration, etc), nodes will be either deleted or reinstalled
                          * POST /cloud/project/{serviceName}/kube/{kubeId}/reset
                          */
-                        $post(params?: { customization?: cloud.ProjectKubeCustomization, kubeProxyMode?: cloud.kube.KubeProxyModeEnum, name?: string, privateNetworkConfiguration?: cloud.kube.PrivateNetworkConfiguration, privateNetworkId?: string, updatePolicy?: cloud.kube.UpdatePolicyEnum, version?: cloud.kube.VersionEnum, workerNodesPolicy?: cloud.kube.ResetWorkerNodesPolicyEnum }): Promise<void>;
+                        $post(params?: { customization?: cloud.ProjectKubeCustomization, kubeProxyMode?: cloud.kube.KubeProxyModeEnum, loadBalancersSubnetId?: string, name?: string, nodesSubnetId?: string, privateNetworkConfiguration?: cloud.kube.PrivateNetworkConfiguration, privateNetworkId?: string, updatePolicy?: cloud.kube.UpdatePolicyEnum, version?: cloud.kube.VersionEnum, workerNodesPolicy?: cloud.kube.ResetWorkerNodesPolicyEnum }): Promise<void>;
                     }
                     restart: {
                         /**
@@ -13300,6 +14091,13 @@ export interface Cloud {
                          * POST /cloud/project/{serviceName}/kube/{kubeId}/update
                          */
                         $post(params?: { force?: boolean, strategy?: cloud.kube.UpdateStrategyEnum }): Promise<void>;
+                    }
+                    updateLoadBalancersSubnetId: {
+                        /**
+                         * Updates the load balancers subnet ID
+                         * PUT /cloud/project/{serviceName}/kube/{kubeId}/updateLoadBalancersSubnetId
+                         */
+                        $put(params: { loadBalancersSubnetId: string }): Promise<void>;
                     }
                     updatePolicy: {
                         /**
@@ -13599,7 +14397,7 @@ export interface Cloud {
                          * Create S3 cold archive container
                          * POST /cloud/project/{serviceName}/region/{regionName}/coldArchive
                          */
-                        $post(params: { name: string, ownerId?: number }): Promise<cloud.ColdArchiveContainer>;
+                        $post(params: { encryption?: cloud.StorageEncryptionObject, name: string, ownerId?: number, versioning?: cloud.StorageVersioningObject }): Promise<cloud.ColdArchiveContainer>;
                         /**
                          * Controle cache
                          */
@@ -13614,7 +14412,7 @@ export interface Cloud {
                              * Get S3 cold archive container
                              * GET /cloud/project/{serviceName}/region/{regionName}/coldArchive/{name}
                              */
-                            $get(params?: { limit?: number, marker?: string }): Promise<cloud.ColdArchiveContainer>;
+                            $get(params?: { limit?: number, marker?: string, prefix?: string }): Promise<cloud.ColdArchiveContainer>;
                             /**
                              * Controle cache
                              */
@@ -13624,7 +14422,7 @@ export interface Cloud {
                                  * Start archiving of container
                                  * POST /cloud/project/{serviceName}/region/{regionName}/coldArchive/{name}/archive
                                  */
-                                $post(): Promise<void>;
+                                $post(params?: { lockedUntilDays?: number }): Promise<void>;
                             }
                             destroy: {
                                 /**
@@ -13656,7 +14454,7 @@ export interface Cloud {
                                  * Generate presigned URLs to download or upload objects
                                  * POST /cloud/project/{serviceName}/region/{regionName}/coldArchive/{name}/presign
                                  */
-                                $post(params?: { expire?: number, method?: cloud.storage.PresignedURLMethodEnum, object?: string }): Promise<cloud.storage.PresignedURL>;
+                                $post(params?: { expire?: number, method?: cloud.storage.PresignedURLMethodEnum, object?: string, storageClass?: cloud.storage.StorageClassEnum }): Promise<cloud.storage.PresignedURL>;
                             }
                             restore: {
                                 /**
@@ -13779,6 +14577,13 @@ export interface Cloud {
                     }
                     instance: {
                         $(instanceId: string | number): {
+                            abortSnapshot: {
+                                /**
+                                 * Abort an instance snapshot creation
+                                 * POST /cloud/project/{serviceName}/region/{regionName}/instance/{instanceId}/abortSnapshot
+                                 */
+                                $post(): Promise<cloud.Operation>;
+                            }
                             associateFloatingIp: {
                                 /**
                                  * Associate an existing floating IP to an instance
@@ -13884,12 +14689,12 @@ export interface Cloud {
                              * List health monitors
                              * GET /cloud/project/{serviceName}/region/{regionName}/loadbalancing/healthMonitor
                              */
-                            $get(): Promise<cloud.loadbalancing.HealthMonitor[]>;
+                            $get(params?: { poolId?: string }): Promise<cloud.loadbalancing.HealthMonitor[]>;
                             /**
                              * Create health monitor
                              * POST /cloud/project/{serviceName}/region/{regionName}/loadbalancing/healthMonitor
                              */
-                            $post(params: { httpConfiguration?: cloud.loadbalancing.HealthMonitorHTTPConfiguration, id?: string, maxRetries: number, maxRetriesDown: number, monitorType: cloud.loadbalancing.LoadBalancerHealthMonitorTypeEnum, name: string, operatingStatus?: cloud.loadbalancing.LoadBalancerOperatingStatusEnum, periodicity: string, poolId: string, provisioningStatus?: cloud.loadbalancing.LoadBalancerProvisioningStatusEnum, timeout: number }): Promise<cloud.loadbalancing.HealthMonitor>;
+                            $post(params: { delay: number, httpConfiguration?: cloud.loadbalancing.HealthMonitorHTTPConfiguration, id?: string, maxRetries: number, maxRetriesDown?: number, monitorType: cloud.loadbalancing.LoadBalancerHealthMonitorTypeEnum, name: string, operatingStatus?: cloud.loadbalancing.LoadBalancerOperatingStatusEnum, poolId: string, provisioningStatus?: cloud.loadbalancing.LoadBalancerProvisioningStatusEnum, timeout: number }): Promise<cloud.loadbalancing.HealthMonitor>;
                             /**
                              * Controle cache
                              */
@@ -13909,7 +14714,7 @@ export interface Cloud {
                                  * Update a health monitor
                                  * PUT /cloud/project/{serviceName}/region/{regionName}/loadbalancing/healthMonitor/{healthMonitorId}
                                  */
-                                $put(params?: { httpConfiguration?: cloud.loadbalancing.HealthMonitorHTTPConfiguration, maxRetries?: number, maxRetriesDown?: number, name?: string, periodicity?: string, timeout?: number }): Promise<cloud.loadbalancing.HealthMonitor>;
+                                $put(params?: { delay?: number, httpConfiguration?: cloud.loadbalancing.HealthMonitorHTTPConfiguration, maxRetries?: number, maxRetriesDown?: number, name?: string, timeout?: number }): Promise<cloud.loadbalancing.HealthMonitor>;
                                 /**
                                  * Controle cache
                                  */
@@ -13920,11 +14725,11 @@ export interface Cloud {
                             /**
                              * GET /cloud/project/{serviceName}/region/{regionName}/loadbalancing/l7Policy
                              */
-                            $get(): Promise<cloud.loadbalancing.L7Policy[]>;
+                            $get(params?: { listenerId?: string }): Promise<cloud.loadbalancing.L7Policy[]>;
                             /**
                              * POST /cloud/project/{serviceName}/region/{regionName}/loadbalancing/l7Policy
                              */
-                            $post(params: { action: cloud.loadbalancing.L7PolicyActionEnum, description?: string, id?: string, listenerId: string, name?: string, operatingStatus?: cloud.loadbalancing.LoadBalancerOperatingStatusEnum, position?: number, provisioningStatus?: cloud.loadbalancing.LoadBalancerProvisioningStatusEnum, redirectHttpCode?: number, redirectPoolId?: string, redirectPrefix?: string, redirectUrl?: string }): Promise<cloud.loadbalancing.L7Policy>;
+                            $post(params: { action: cloud.loadbalancing.L7PolicyActionEnum, description?: string, id?: string, listenerId: string, name?: string, operatingStatus?: cloud.loadbalancing.LoadBalancerOperatingStatusEnum, position?: number, provisioningStatus?: cloud.loadbalancing.LoadBalancerProvisioningStatusEnum, redirectHttpCode?: cloud.loadbalancing.L7PolicyRedirectHTTPCodeEnum, redirectPoolId?: string, redirectPrefix?: string, redirectUrl?: string }): Promise<cloud.loadbalancing.L7Policy>;
                             /**
                              * Controle cache
                              */
@@ -13987,10 +14792,10 @@ export interface Cloud {
                              */
                             $get(params?: { loadbalancerId?: string }): Promise<cloud.loadbalancing.Listener[]>;
                             /**
-                             * Create a loadbalancer listerner
+                             * Create a loadbalancer listener
                              * POST /cloud/project/{serviceName}/region/{regionName}/loadbalancing/listener
                              */
-                            $post(params: { certificateId?: string, defaultPoolId?: string, loadbalancerId: string, name: string, port: number, protocol: cloud.loadbalancing.ListenerProtocolEnum }): Promise<cloud.loadbalancing.Listener>;
+                            $post(params: { allowedCidrs?: string[], certificateId?: string, defaultPoolId?: string, description?: string, loadbalancerId: string, name: string, port: number, protocol: cloud.loadbalancing.ListenerProtocolEnum, timeoutClientData?: number, timeoutMemberData?: number, tlsVersions?: cloud.loadbalancing.ListenerTlsVersionEnum[] }): Promise<cloud.loadbalancing.Listener>;
                             /**
                              * Controle cache
                              */
@@ -14007,6 +14812,11 @@ export interface Cloud {
                                  */
                                 $get(): Promise<cloud.loadbalancing.Listener>;
                                 /**
+                                 * Edit a loadbalancer listener
+                                 * PUT /cloud/project/{serviceName}/region/{regionName}/loadbalancing/listener/{listenerId}
+                                 */
+                                $put(params?: { allowedCidrs?: string[], certificateId?: string, defaultPoolId?: string, description?: string, name?: string }): Promise<cloud.loadbalancing.Listener>;
+                                /**
                                  * Controle cache
                                  */
                                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
@@ -14022,7 +14832,7 @@ export interface Cloud {
                              * Create a loadbalancer
                              * POST /cloud/project/{serviceName}/region/{regionName}/loadbalancing/loadbalancer
                              */
-                            $post(params: { flavorId: string, listeners?: cloud.loadbalancing.loadbalancer.ListenerCreate[], name?: string, networkInformation: cloud.loadbalancing.loadbalancer.NetworkInformationCreate }): Promise<cloud.Operation>;
+                            $post(params: { flavorId: string, listeners?: cloud.loadbalancing.loadbalancer.ListenerCreate[], name?: string, network: cloud.loadbalancing.loadbalancer.CreateInput.Network }): Promise<cloud.Operation>;
                             /**
                              * Controle cache
                              */
@@ -14038,6 +14848,11 @@ export interface Cloud {
                                  * GET /cloud/project/{serviceName}/region/{regionName}/loadbalancing/loadbalancer/{loadBalancerId}
                                  */
                                 $get(): Promise<cloud.loadbalancing.LoadBalancer>;
+                                /**
+                                 * Edit a loadbalancer
+                                 * PUT /cloud/project/{serviceName}/region/{regionName}/loadbalancing/loadbalancer/{loadBalancerId}
+                                 */
+                                $put(params?: { description?: string, name?: string }): Promise<cloud.loadbalancing.LoadBalancer>;
                                 /**
                                  * Controle cache
                                  */
@@ -14056,7 +14871,83 @@ export interface Cloud {
                                      */
                                     $post(params: { gateway?: cloud.network.CreateGatewaySummary, ip: string }): Promise<cloud.Operation>;
                                 }
+                                log: {
+                                    subscription: {
+                                        /**
+                                         * List subscription IDs for a cluster
+                                         * GET /cloud/project/{serviceName}/region/{regionName}/loadbalancing/loadbalancer/{loadBalancerId}/log/subscription
+                                         */
+                                        $get(params?: { kind?: string }): Promise<string[]>;
+                                        /**
+                                         * Create a subscription from logs to a pre-existing LDP stream
+                                         * POST /cloud/project/{serviceName}/region/{regionName}/loadbalancing/loadbalancer/{loadBalancerId}/log/subscription
+                                         */
+                                        $post(params: { kind: string, streamId: string }): Promise<dbaas.logs.LogSubscriptionResponse>;
+                                        /**
+                                         * Controle cache
+                                         */
+                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                        $(subscriptionId: string): {
+                                            /**
+                                             * Delete a subscription
+                                             * DELETE /cloud/project/{serviceName}/region/{regionName}/loadbalancing/loadbalancer/{loadBalancerId}/log/subscription/{subscriptionId}
+                                             */
+                                            $delete(): Promise<dbaas.logs.LogSubscriptionResponse>;
+                                            /**
+                                             * Get subscription details
+                                             * GET /cloud/project/{serviceName}/region/{regionName}/loadbalancing/loadbalancer/{loadBalancerId}/log/subscription/{subscriptionId}
+                                             */
+                                            $get(): Promise<dbaas.logs.LogSubscription>;
+                                            /**
+                                             * Controle cache
+                                             */
+                                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                        };
+                                    }
+                                    url: {
+                                        /**
+                                         * Generate a temporary URL to retrieve logs
+                                         * POST /cloud/project/{serviceName}/region/{regionName}/loadbalancing/loadbalancer/{loadBalancerId}/log/url
+                                         */
+                                        $post(params: { kind: string }): Promise<dbaas.logs.TemporaryLogsLink>;
+                                    }
+                                }
+                                stats: {
+                                    /**
+                                     * Get loadbalancer statistics
+                                     * GET /cloud/project/{serviceName}/region/{regionName}/loadbalancing/loadbalancer/{loadBalancerId}/stats
+                                     */
+                                    $get(): Promise<cloud.loadbalancing.loadbalancer.Stats>;
+                                    /**
+                                     * Controle cache
+                                     */
+                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                }
                             };
+                        }
+                        log: {
+                            kind: {
+                                /**
+                                 * List available log kinds
+                                 * GET /cloud/project/{serviceName}/region/{regionName}/loadbalancing/log/kind
+                                 */
+                                $get(): Promise<string[]>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $(name: string): {
+                                    /**
+                                     * Get a log kind
+                                     * GET /cloud/project/{serviceName}/region/{regionName}/loadbalancing/log/kind/{name}
+                                     */
+                                    $get(): Promise<dbaas.logs.LogKind>;
+                                    /**
+                                     * Controle cache
+                                     */
+                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                };
+                            }
                         }
                         pool: {
                             /**
@@ -14100,10 +14991,10 @@ export interface Cloud {
                                      */
                                     $get(): Promise<cloud.loadbalancing.pool.Member[]>;
                                     /**
-                                     * Create a pool member
+                                     * Create pool members
                                      * POST /cloud/project/{serviceName}/region/{regionName}/loadbalancing/pool/{poolId}/member
                                      */
-                                    $post(params: { address: string, id?: string, name?: string, operatingStatus?: cloud.loadbalancing.LoadBalancerOperatingStatusEnum, protocolPort: number, provisioningStatus?: cloud.loadbalancing.LoadBalancerProvisioningStatusEnum, weight?: number }): Promise<cloud.loadbalancing.pool.Member>;
+                                    $post(params: { members: cloud.loadbalancing.pool.Member[] }): Promise<cloud.loadbalancing.pool.Member[]>;
                                     /**
                                      * Controle cache
                                      */
@@ -14257,7 +15148,7 @@ export interface Cloud {
                          * Create S3 storage container
                          * POST /cloud/project/{serviceName}/region/{regionName}/storage
                          */
-                        $post(params: { name: string, ownerId?: number }): Promise<cloud.StorageContainer>;
+                        $post(params: { encryption?: cloud.StorageEncryptionObject, name: string, ownerId?: number, versioning?: cloud.StorageVersioningObject }): Promise<cloud.StorageContainer>;
                         /**
                          * Controle cache
                          */
@@ -14272,7 +15163,12 @@ export interface Cloud {
                              * Get S3 storage container
                              * GET /cloud/project/{serviceName}/region/{regionName}/storage/{name}
                              */
-                            $get(params?: { limit?: number, marker?: string }): Promise<cloud.StorageContainer>;
+                            $get(params?: { limit?: number, marker?: string, prefix?: string }): Promise<cloud.StorageContainer>;
+                            /**
+                             * Update S3 storage container
+                             * PUT /cloud/project/{serviceName}/region/{regionName}/storage/{name}
+                             */
+                            $put(params?: { createdAt?: string, encryption?: cloud.StorageEncryptionObject, name?: string, objects?: cloud.StorageObject[], objectsCount?: number, objectsSize?: number, ownerId?: number, region?: string, versioning?: cloud.StorageVersioningObject, virtualHost?: string }): Promise<cloud.StorageContainer>;
                             /**
                              * Controle cache
                              */
@@ -14300,7 +15196,7 @@ export interface Cloud {
                                  * Generate S3 presigned URLs to download or upload objects
                                  * POST /cloud/project/{serviceName}/region/{regionName}/storage/{name}/presign
                                  */
-                                $post(params?: { expire?: number, method?: cloud.storage.PresignedURLMethodEnum, object?: string }): Promise<cloud.storage.PresignedURL>;
+                                $post(params?: { expire?: number, method?: cloud.storage.PresignedURLMethodEnum, object?: string, storageClass?: cloud.storage.StorageClassEnum }): Promise<cloud.storage.PresignedURL>;
                             }
                         };
                     }
@@ -14399,7 +15295,7 @@ export interface Cloud {
             }
             retain: {
                 /**
-                 * Do not expire the project, and retain it. You will have to pay for the resources you will use after using this call
+                 * Do not expire the project, and retain it
                  * POST /cloud/project/{serviceName}/retain
                  */
                 $post(): Promise<void>;
@@ -14417,12 +15313,12 @@ export interface Cloud {
             }
             serviceInfos: {
                 /**
-                 * Get this object properties
+                 * Get service information
                  * GET /cloud/project/{serviceName}/serviceInfos
                  */
                 $get(): Promise<services.Service>;
                 /**
-                 * Alter this object properties
+                 * Update service information
                  * PUT /cloud/project/{serviceName}/serviceInfos
                  */
                 $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
@@ -14517,7 +15413,7 @@ export interface Cloud {
                  * Get SWIFT storage containers
                  * GET /cloud/project/{serviceName}/storage
                  */
-                $get(): Promise<cloud.storage.Container[]>;
+                $get(params?: { includeType?: boolean }): Promise<cloud.storage.Container[]>;
                 /**
                  * Create SWIFT container
                  * POST /cloud/project/{serviceName}/storage
@@ -14530,18 +15426,9 @@ export interface Cloud {
                 access: {
                     /**
                      * Access to SWIFT storage API
-                     * GET /cloud/project/{serviceName}/storage/access
-                     */
-                    $get(): Promise<cloud.storage.ContainerAccess>;
-                    /**
-                     * Access to SWIFT storage API
                      * POST /cloud/project/{serviceName}/storage/access
                      */
                     $post(): Promise<cloud.storage.ContainerAccess>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 quota: {
                     /**
@@ -14564,7 +15451,7 @@ export interface Cloud {
                      * Get SWIFT storage container
                      * GET /cloud/project/{serviceName}/storage/{containerId}
                      */
-                    $get(params?: { noObjects?: boolean }): Promise<cloud.storage.ContainerDetail>;
+                    $get(params?: { noObjects?: boolean, prefix?: string }): Promise<cloud.storage.ContainerDetail>;
                     /**
                      * Update SWIFT storage container
                      * PUT /cloud/project/{serviceName}/storage/{containerId}
@@ -14611,7 +15498,7 @@ export interface Cloud {
             }
             terminate: {
                 /**
-                 * Terminate your service
+                 * Ask for the termination of your service
                  * POST /cloud/project/{serviceName}/terminate
                  */
                 $post(): Promise<string>;
@@ -14797,7 +15684,7 @@ export interface Cloud {
                          * List your S3 credentials
                          * GET /cloud/project/{serviceName}/user/{userId}/s3Credentials
                          */
-                        $get(): Promise<cloud.user.S3CredentialsWithSecret[]>;
+                        $get(): Promise<cloud.user.S3Credentials[]>;
                         /**
                          * Create a new S3 credentials for an user
                          * POST /cloud/project/{serviceName}/user/{userId}/s3Credentials
@@ -14817,11 +15704,18 @@ export interface Cloud {
                              * Get details about an S3 credential
                              * GET /cloud/project/{serviceName}/user/{userId}/s3Credentials/{access}
                              */
-                            $get(): Promise<cloud.user.S3CredentialsWithSecret>;
+                            $get(): Promise<cloud.user.S3Credentials>;
                             /**
                              * Controle cache
                              */
                             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            secret: {
+                                /**
+                                 * Display secret from a S3 credential
+                                 * POST /cloud/project/{serviceName}/user/{userId}/s3Credentials/{access}/secret
+                                 */
+                                $post(): Promise<cloud.user.S3CredentialsSecretOnly>;
+                            }
                         };
                     }
                     token: {

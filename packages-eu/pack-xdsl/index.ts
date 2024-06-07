@@ -24,8 +24,8 @@ export namespace connectivity {
             name: string;
             nro?: string;
             reference: string;
-            stairs: connectivity.eligibility.BuildingStair[];
-            type: connectivity.eligibility.BuildingTypeEnum;
+            stairs?: connectivity.eligibility.BuildingStair[];
+            type?: connectivity.eligibility.BuildingTypeEnum;
         }
         /**
          * Stair details of a Building
@@ -40,6 +40,40 @@ export namespace connectivity {
          * type fullname: connectivity.eligibility.BuildingTypeEnum
          */
         export type BuildingTypeEnum = "BUILDING" | "HOUSE"
+        /**
+         * Installation type, for fiber only
+         * type fullname: connectivity.eligibility.InstallationTypeEnum
+         */
+        export type InstallationTypeEnum = "activate" | "activate_undefined" | "create" | "multiOtp"
+    }
+}
+export namespace iam {
+    /**
+     * IAM resource metadata embedded in services models
+     * interface fullName: iam.ResourceMetadata.ResourceMetadata
+     */
+    export interface ResourceMetadata {
+        displayName?: string;
+        id: string;
+        tags?: { [key: string]: string };
+        urn: string;
+    }
+    export namespace resource {
+        /**
+         * Resource tag filter
+         * interface fullName: iam.resource.TagFilter.TagFilter
+         */
+        export interface TagFilter {
+            operator?: iam.resource.TagFilter.OperatorEnum;
+            value: string;
+        }
+        export namespace TagFilter {
+            /**
+             * Operator that can be used in order to filter resources tags
+             * type fullname: iam.resource.TagFilter.OperatorEnum
+             */
+            export type OperatorEnum = "EQ"
+        }
     }
 }
 export namespace nichandle {
@@ -188,6 +222,18 @@ export namespace pack {
         export interface PackAdsl {
             capabilities: pack.xdsl.PackCapabilities;
             description?: string;
+            offerDescription: string;
+            offerPrice: order.Price;
+            packName: string;
+        }
+        /**
+         * Pack of xDSL services
+         * interface fullName: pack.xdsl.PackAdslWithIAM.PackAdslWithIAM
+         */
+        export interface PackAdslWithIAM {
+            capabilities: pack.xdsl.PackCapabilities;
+            description?: string;
+            iam?: iam.ResourceMetadata;
             offerDescription: string;
             offerPrice: order.Price;
             packName: string;
@@ -353,6 +399,7 @@ export namespace pack {
              */
             export interface MoveOffer {
                 contracts: order.Contract[];
+                customOntAddress: boolean;
                 description: string;
                 engageMonths?: number;
                 engaged: boolean;
@@ -409,6 +456,7 @@ export namespace pack {
                 contractList: string[];
                 contracts: order.Contract[];
                 currentOfferPrice: order.Price;
+                customOntAddress: boolean;
                 description: string;
                 due?: order.Price;
                 engageMonths?: number;
@@ -420,6 +468,7 @@ export namespace pack {
                 modemMacToReturn?: string;
                 modemOptions?: pack.xdsl.migration.OfferModemOption[];
                 modemRental?: order.Price;
+                multiOtp: boolean;
                 needModem: boolean;
                 needNewModem: boolean;
                 offerName: string;
@@ -640,7 +689,7 @@ export interface Pack {
          * List available services
          * GET /pack/xdsl
          */
-        $get(): Promise<string[]>;
+        $get(params?: { iamTags?: any }): Promise<string[]>;
         /**
          * Controle cache
          */
@@ -666,7 +715,7 @@ export interface Pack {
                      * Move the access to another address
                      * POST /pack/xdsl/{packName}/addressMove/moveOffer
                      */
-                    $post(params: { acceptContracts: boolean, building?: string, buildingReference?: string, contactPhone?: string, door?: string, eligibilityReference: string, engageMonths?: number, floor?: string, keepCurrentNumber: boolean, meeting?: xdsl.eligibility.BookMeetingSlot, modem: pack.xdsl.ModemOptionEnum, mondialRelayId?: number, moveOutDate?: string, nicShipping?: string, offerName: string, options?: pack.xdsl.migration.OfferOption[], otp: boolean, otpReference?: string, productCode: string, residence?: string, stair?: string, subServicesToDelete?: pack.xdsl.migration.OfferServiceToDelete[], subServicesToKeep?: pack.xdsl.migration.OfferServiceToKeep[] }): Promise<pack.xdsl.AsyncTask<number>>;
+                    $post(params: { acceptContracts: boolean, building?: string, buildingReference?: string, contactPhone?: string, door?: string, eligibilityReference: string, engageMonths?: number, floor?: string, installationType?: connectivity.eligibility.InstallationTypeEnum, keepCurrentNumber: boolean, meeting?: xdsl.eligibility.BookMeetingSlot, modem: pack.xdsl.ModemOptionEnum, mondialRelayId?: number, moveOutDate?: string, nicShipping?: string, offerName: string, ontShippingContact?: string, options?: pack.xdsl.migration.OfferOption[], otp: boolean, otpReference?: string, productCode: string, residence?: string, stair?: string, subServicesToDelete?: pack.xdsl.migration.OfferServiceToDelete[], subServicesToKeep?: pack.xdsl.migration.OfferServiceToKeep[] }): Promise<pack.xdsl.AsyncTask<number>>;
                 }
                 offers: {
                     /**
@@ -937,7 +986,7 @@ export interface Pack {
                      * Migrate to the selected offer
                      * POST /pack/xdsl/{packName}/migration/migrate
                      */
-                    $post(params: { acceptContracts: boolean, buildingReference?: string, contactPhone?: string, engageMonths?: number, floor?: string, meeting?: xdsl.eligibility.BookMeetingSlot, modem: pack.xdsl.ModemOptionEnum, mondialRelayId?: number, nicShipping?: string, offerName: string, options?: pack.xdsl.migration.OfferOption[], otp?: boolean, otpReference?: string, productCode?: string, stair?: string, subServicesToDelete?: pack.xdsl.migration.OfferServiceToDelete[], subServicesToKeep?: pack.xdsl.migration.OfferServiceToKeep[] }): Promise<pack.xdsl.Task>;
+                    $post(params: { acceptContracts: boolean, buildingReference?: string, contactPhone?: string, engageMonths?: number, floor?: string, installationType?: connectivity.eligibility.InstallationTypeEnum, meeting?: xdsl.eligibility.BookMeetingSlot, modem: pack.xdsl.ModemOptionEnum, mondialRelayId?: number, nicShipping?: string, offerName: string, ontShippingContact?: string, options?: pack.xdsl.migration.OfferOption[], otp?: boolean, otpReference?: string, productCode?: string, stair?: string, subServicesToDelete?: pack.xdsl.migration.OfferServiceToDelete[], subServicesToKeep?: pack.xdsl.migration.OfferServiceToKeep[] }): Promise<pack.xdsl.Task>;
                 }
                 offers: {
                     /**
@@ -1005,12 +1054,12 @@ export interface Pack {
             }
             serviceInfos: {
                 /**
-                 * Get this object properties
+                 * Get service information
                  * GET /pack/xdsl/{packName}/serviceInfos
                  */
                 $get(): Promise<services.Service>;
                 /**
-                 * Alter this object properties
+                 * Update service information
                  * PUT /pack/xdsl/{packName}/serviceInfos
                  */
                 $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;

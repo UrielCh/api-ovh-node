@@ -77,44 +77,6 @@ export namespace service {
         url?: string;
         vars: complexType.SafeKeyValue<string>[];
     }
-    export namespace consumption {
-        /**
-         * List of consumptions recorded in a range
-         * interface fullName: service.consumption.Transaction.Transaction
-         */
-        export interface Transaction {
-            beginDate: string;
-            creationDate?: string;
-            elements: service.consumption.transaction.Element[];
-            endDate?: string;
-            id?: number;
-            lastUpdate?: string;
-            price: order.Price;
-            serviceId: number;
-        }
-        export namespace transaction {
-            /**
-             * Element of consumption for resource
-             * interface fullName: service.consumption.transaction.Element.Element
-             */
-            export interface Element {
-                details: service.consumption.transaction.Element.Detail[];
-                planCode: string;
-                price: order.Price;
-                quantity: number;
-            }
-            export namespace Element {
-                /**
-                 * Element of consumption for resource
-                 * interface fullName: service.consumption.transaction.Element.Detail.Detail
-                 */
-                export interface Detail {
-                    quantity: number;
-                    unique_id?: string;
-                }
-            }
-        }
-    }
     export namespace plan {
         /**
          * Product plan information
@@ -240,7 +202,7 @@ export default proxyService;
  */
 export interface Service {
     /**
-     * List available services
+     * Services
      * GET /service
      */
     $get(): Promise<number[]>;

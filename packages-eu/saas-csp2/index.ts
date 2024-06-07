@@ -4,6 +4,35 @@ import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-
  * START API /saas/csp2 Models
  * Source: https://eu.api.ovh.com/1.0/saas/csp2.json
  */
+export namespace iam {
+    /**
+     * IAM resource metadata embedded in services models
+     * interface fullName: iam.ResourceMetadata.ResourceMetadata
+     */
+    export interface ResourceMetadata {
+        displayName?: string;
+        id: string;
+        tags?: { [key: string]: string };
+        urn: string;
+    }
+    export namespace resource {
+        /**
+         * Resource tag filter
+         * interface fullName: iam.resource.TagFilter.TagFilter
+         */
+        export interface TagFilter {
+            operator?: iam.resource.TagFilter.OperatorEnum;
+            value: string;
+        }
+        export namespace TagFilter {
+            /**
+             * Operator that can be used in order to filter resources tags
+             * type fullname: iam.resource.TagFilter.OperatorEnum
+             */
+            export type OperatorEnum = "EQ"
+        }
+    }
+}
 export namespace msServices {
     /**
      * Period of time used to determine license statistics
@@ -83,6 +112,26 @@ export namespace saas {
             displayName: string;
             email: string;
             firstName: string;
+            lastName: string;
+            mpnId?: string;
+            mpnIssueFlag?: string;
+            phone: string;
+            serviceName: string;
+            status: saas.csp2.ServiceStateEnum;
+            zipCode: string;
+        }
+        /**
+         * Office tenant
+         * interface fullName: saas.csp2.OfficeTenantWithIAM.OfficeTenantWithIAM
+         */
+        export interface OfficeTenantWithIAM {
+            address: string;
+            city: string;
+            creationDate: string;
+            displayName: string;
+            email: string;
+            firstName: string;
+            iam?: iam.ResourceMetadata;
             lastName: string;
             mpnId?: string;
             mpnIssueFlag?: string;
@@ -204,7 +253,7 @@ export interface Saas {
          * List available services
          * GET /saas/csp2
          */
-        $get(): Promise<string[]>;
+        $get(params?: { iamTags?: any }): Promise<string[]>;
         /**
          * Controle cache
          */
@@ -259,12 +308,12 @@ export interface Saas {
             }
             serviceInfos: {
                 /**
-                 * Get this object properties
+                 * Get service information
                  * GET /saas/csp2/{serviceName}/serviceInfos
                  */
                 $get(): Promise<services.Service>;
                 /**
-                 * Alter this object properties
+                 * Update service information
                  * PUT /saas/csp2/{serviceName}/serviceInfos
                  */
                 $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;

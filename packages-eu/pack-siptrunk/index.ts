@@ -4,6 +4,35 @@ import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-
  * START API /pack/siptrunk Models
  * Source: https://eu.api.ovh.com/1.0/pack/siptrunk.json
  */
+export namespace iam {
+    /**
+     * IAM resource metadata embedded in services models
+     * interface fullName: iam.ResourceMetadata.ResourceMetadata
+     */
+    export interface ResourceMetadata {
+        displayName?: string;
+        id: string;
+        tags?: { [key: string]: string };
+        urn: string;
+    }
+    export namespace resource {
+        /**
+         * Resource tag filter
+         * interface fullName: iam.resource.TagFilter.TagFilter
+         */
+        export interface TagFilter {
+            operator?: iam.resource.TagFilter.OperatorEnum;
+            value: string;
+        }
+        export namespace TagFilter {
+            /**
+             * Operator that can be used in order to filter resources tags
+             * type fullname: iam.resource.TagFilter.OperatorEnum
+             */
+            export type OperatorEnum = "EQ"
+        }
+    }
+}
 export namespace pack {
     export namespace siptrunk {
         /**
@@ -11,6 +40,14 @@ export namespace pack {
          * interface fullName: pack.siptrunk.PackSipTrunk.PackSipTrunk
          */
         export interface PackSipTrunk {
+            packName: string;
+        }
+        /**
+         * Pack of SIP trunk services
+         * interface fullName: pack.siptrunk.PackSipTrunkWithIAM.PackSipTrunkWithIAM
+         */
+        export interface PackSipTrunkWithIAM {
+            iam?: iam.ResourceMetadata;
             packName: string;
         }
     }
@@ -75,7 +112,7 @@ export interface Pack {
          * List available services
          * GET /pack/siptrunk
          */
-        $get(): Promise<string[]>;
+        $get(params?: { iamTags?: any }): Promise<string[]>;
         /**
          * Controle cache
          */
@@ -99,12 +136,12 @@ export interface Pack {
             }
             serviceInfos: {
                 /**
-                 * Get this object properties
+                 * Get service information
                  * GET /pack/siptrunk/{packName}/serviceInfos
                  */
                 $get(): Promise<services.Service>;
                 /**
-                 * Alter this object properties
+                 * Update service information
                  * PUT /pack/siptrunk/{packName}/serviceInfos
                  */
                 $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;

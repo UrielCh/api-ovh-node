@@ -4,6 +4,35 @@ import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-
  * START API /sms Models
  * Source: https://eu.api.ovh.com/1.0/sms.json
  */
+export namespace iam {
+    /**
+     * IAM resource metadata embedded in services models
+     * interface fullName: iam.ResourceMetadata.ResourceMetadata
+     */
+    export interface ResourceMetadata {
+        displayName?: string;
+        id: string;
+        tags?: { [key: string]: string };
+        urn: string;
+    }
+    export namespace resource {
+        /**
+         * Resource tag filter
+         * interface fullName: iam.resource.TagFilter.TagFilter
+         */
+        export interface TagFilter {
+            operator?: iam.resource.TagFilter.OperatorEnum;
+            value: string;
+        }
+        export namespace TagFilter {
+            /**
+             * Operator that can be used in order to filter resources tags
+             * type fullname: iam.resource.TagFilter.OperatorEnum
+             */
+            export type OperatorEnum = "EQ"
+        }
+    }
+}
 export namespace order {
     /**
      * type fullname: order.CurrencyCodeEnum
@@ -82,6 +111,27 @@ export namespace sms {
         creditsHoldByQuota: number;
         creditsLeft: number;
         description: string;
+        name: string;
+        smpp: boolean;
+        smsResponse: sms.Response;
+        status: sms.StatusAccountEnum;
+        stopCallBack?: string;
+        templates: sms.Templates;
+        userQuantityWithQuota: number;
+    }
+    /**
+     * SMS details
+     * interface fullName: sms.AccountWithIAM.AccountWithIAM
+     */
+    export interface AccountWithIAM {
+        automaticRecreditAmount?: sms.PackQuantityAutomaticRecreditEnum;
+        callBack?: string;
+        channel: sms.ChannelEnum;
+        creditThresholdForAutomaticRecredit: number;
+        creditsHoldByQuota: number;
+        creditsLeft: number;
+        description: string;
+        iam?: iam.ResourceMetadata;
         name: string;
         smpp: boolean;
         smsResponse: sms.Response;
@@ -226,7 +276,7 @@ export namespace sms {
         url: string;
     }
     /**
-     * The sms class of sms sending job
+     * Deprecated: The sms class of sms sending job
      * type fullname: sms.ClassEnum
      */
     export type ClassEnum = "flash" | "phoneDisplay" | "sim" | "toolkit"
@@ -401,12 +451,12 @@ export namespace sms {
      * Pack quantity automatic recredit possibilities
      * type fullname: sms.PackQuantityAutomaticRecreditEnum
      */
-    export type PackQuantityAutomaticRecreditEnum = 100 | 1000 | 10000 | 200 | 250 | 500 | 5000
+    export type PackQuantityAutomaticRecreditEnum = 100 | 200 | 250 | 500 | 1000 | 5000 | 10000
     /**
      * Pack quantity levels
      * type fullname: sms.PackQuantityEnum
      */
-    export type PackQuantityEnum = 100 | 1000 | 10000 | 100000 | 1000000 | 200 | 250 | 2500 | 25000 | 500 | 5000 | 50000
+    export type PackQuantityEnum = 100 | 200 | 250 | 500 | 1000 | 2500 | 5000 | 10000 | 25000 | 50000 | 100000 | 1000000
     /**
      * Phone book
      * interface fullName: sms.Phonebook.Phonebook
@@ -568,6 +618,7 @@ export namespace sms {
     export interface Settings {
         endpoints: sms.SettingsEndpoints[];
         status: sms.SettingsStatusEnum;
+        systemID: string;
         throughput: number;
         windowing: number;
     }
@@ -591,6 +642,7 @@ export namespace sms {
     export interface SmsSendingReport {
         ids: number[];
         invalidReceivers: string[];
+        tag: string;
         totalCreditsRemoved: number;
         validReceivers: string[];
     }
@@ -694,6 +746,15 @@ export namespace sms {
         number: string;
     }
     /**
+     * Virtual numbers
+     * interface fullName: sms.VirtualNumberGenericServiceWithIAM.VirtualNumberGenericServiceWithIAM
+     */
+    export interface VirtualNumberGenericServiceWithIAM {
+        countryCode: sms.VirtualNumberIsoCountryCodeEnum;
+        iam?: iam.ResourceMetadata;
+        number: string;
+    }
+    /**
      * The ISO formated country code of the number
      * type fullname: sms.VirtualNumberIsoCountryCodeEnum
      */
@@ -770,7 +831,7 @@ export interface Sms {
      * List available services
      * GET /sms
      */
-    $get(): Promise<string[]>;
+    $get(params?: { iamTags?: any }): Promise<string[]>;
     /**
      * Controle cache
      */
@@ -819,10 +880,10 @@ export interface Sms {
     }
     virtualNumbers: {
         /**
-         * List available services
+         * Your virtual numbers
          * GET /sms/virtualNumbers
          */
-        $get(): Promise<string[]>;
+        $get(params?: { iamTags?: any }): Promise<string[]>;
         /**
          * Controle cache
          */
@@ -839,12 +900,12 @@ export interface Sms {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             serviceInfos: {
                 /**
-                 * Get this object properties
+                 * Get service information
                  * GET /sms/virtualNumbers/{number}/serviceInfos
                  */
                 $get(): Promise<services.Service>;
                 /**
-                 * Alter this object properties
+                 * Update service information
                  * PUT /sms/virtualNumbers/{number}/serviceInfos
                  */
                 $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
@@ -886,6 +947,11 @@ export interface Sms {
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(id: string): {
+                /**
+                 * Remove a batch
+                 * DELETE /sms/{serviceName}/batches/{id}
+                 */
+                $delete(): Promise<void>;
                 /**
                  * Get a batch
                  * GET /sms/{serviceName}/batches/{id}
@@ -1233,7 +1299,7 @@ export interface Sms {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 clean: {
                     /**
-                     * Clean the invalid and inactive receivers in the document by requesting HLR on each receiver. A report is sent by e-mail at the end of the operation.
+                     * Clean the invalid and inactive receivers in the document by requesting HLR on each receiver
                      * POST /sms/{serviceName}/receivers/{slotId}/clean
                      */
                     $post(params: { freemium: boolean, priceOnly: boolean }): Promise<sms.ReceiversAsynchronousCleanReport>;
@@ -1351,12 +1417,12 @@ export interface Sms {
         }
         serviceInfos: {
             /**
-             * Get this object properties
+             * Get service information
              * GET /sms/{serviceName}/serviceInfos
              */
             $get(): Promise<services.Service>;
             /**
-             * Alter this object properties
+             * Update service information
              * PUT /sms/{serviceName}/serviceInfos
              */
             $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
@@ -1654,7 +1720,7 @@ export interface Sms {
                         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         clean: {
                             /**
-                             * Clean the invalid and inactive receivers in the document by requesting HLR on each receiver. A report is sent by e-mail at the end of the operation.
+                             * Clean the invalid and inactive receivers in the document by requesting HLR on each receiver
                              * POST /sms/{serviceName}/users/{login}/receivers/{slotId}/clean
                              */
                             $post(params: { freemium: boolean, priceOnly: boolean }): Promise<sms.ReceiversAsynchronousCleanReport>;
