@@ -1,14 +1,15 @@
 {
   "name": "@ovh-api/common",
-  "description": "common class used to enable Ovh Api new calls Syntax",
-  "version": "4.0.2",
-  "main": "./lib/cjs/index.js",
-  "typings": "./lib/esm/index.d.ts",
+  "description": "Common class used to enable Ovh Api new calls Syntax",
+  "version": "4.0.4",
+  "main": "./cjs/index.js",
+  "module": "./esm/index.js",
+  "types": "./types/index.d.ts",
   "exports": {
     ".": {
-      "require": "./lib/cjs/index.js",
-      "import": "./lib/esm/index.js",
-      "types": "./lib/esm/index.d.ts"
+      "require": "./cjs/index.js",
+      "import": "./esm/index.js",
+      "types": "./types/index.d.ts"
     }
   },
   "funding": "https://github.com/sponsors/urielch",
@@ -24,12 +25,13 @@
     "url": "git+https://github.com/UrielCh/api-ovh-node.git"
   },
   "scripts": {
-    "build": "tsc --pretty --project . && tsc --pretty --project tsconfig-cjs.json",
+    "build": "tsc --pretty --project . && tsc --pretty --project tsconfig-cjs.json && tsc --pretty --project tsconfig-dt.json",
     "prepare": "npm run build",
+    "checkExports": "npx @arethetypeswrong/cli $(npm pack)",
     "build:watch": "tsc -p . --watch"
   },
-  "files": ["lib", "src"],
+  "files": ["cjs", "esm", "types", "src"],
   "devDependencies": {
-    "typescript": "^5.0.4"
+    "typescript": "^5.4.5"
   }
 }

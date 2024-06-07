@@ -1,13 +1,14 @@
 {
     "compilerOptions": {
         "target": "ESNext",
-        "module": "commonjs",
-        "declaration": false,
+        "module": "ES2020",
+        "declaration": true,
         "strict": true,
         "moduleResolution": "node",
         "esModuleInterop": true,
-        "outDir": "cjs",
-        "skipLibCheck": true
+        "outDir": "types",
+        "skipLibCheck": true,
+        "emitDeclarationOnly": true
     },
     "include": ["./src"]
 }

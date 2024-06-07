@@ -1,13 +1,15 @@
 {
     "compilerOptions": {
         "target": "ESNext",
-        "module": "ES2020",
-        "declaration": true,
+        "declaration": false,
         "strict": true,
-        "moduleResolution": "node",
+        "noUncheckedIndexedAccess": true,
+        "moduleResolution": "NodeNext",
+        "module": "NodeNext",
         "esModuleInterop": true,
-        "outDir": "lib/esm",
-        "skipLibCheck": true
+        "outDir": "esm",
+        "skipLibCheck": true,
+        "moduleDetection": "force"
     },
-    "exclude": ["./lib/**/*"]
+    "include": ["./src"]
 }
