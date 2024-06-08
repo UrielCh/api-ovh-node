@@ -1,5 +1,5 @@
 import { buildOvhProxy } from '@ovh-api/common';
-import { CacheAction, ICacheOptions, OvhRequestable } from '@ovh-api/common';
+import type { CacheAction, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /license/officePrepaid Models
