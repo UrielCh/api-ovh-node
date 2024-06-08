@@ -7,7 +7,7 @@
         "moduleResolution": "node",
         "esModuleInterop": true,
         "sourceMap": true,
-        "outDir": "dist/cjs",
+        "outDir": "cjs",
         "rootDirs": ["src"]
     },
     "exclude": [

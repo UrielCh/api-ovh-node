@@ -1,15 +1,20 @@
 {
   "name": "@ovh-api/common",
   "description": "Common class used to enable Ovh Api new calls Syntax",
-  "version": "4.0.4",
+  "version": "4.0.3",
   "main": "./cjs/index.js",
   "module": "./esm/index.js",
   "types": "./types/index.d.ts",
   "exports": {
     ".": {
-      "types": "./types/index.d.ts",
-      "require": "./cjs/index.js",
-      "import": "./esm/index.js"
+      "import": {
+        "types": "./types/index.d.ts",
+        "default": "./esm/index.js"
+      },
+      "require": {
+        "types": "./types/index.d.ts",
+        "default": "./cjs/index.js"
+      }
     }
   },
   "funding": "https://github.com/sponsors/urielch",

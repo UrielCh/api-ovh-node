@@ -45,8 +45,14 @@ code/common/lib/
 code/test-cert.json
 code/gen/package-lock.json
 code/common/package-lock.json
-code/api/package-lock.json
 code/common/cjs/*.js
 code/common/esm/*.js
 code/common/types/*.d.ts
 code/common/*.tgz
+code/api/cjs/*.js
+code/api/cjs/*.map
+code/api/esm/*.js
+code/api/esm/*.map
+code/api/types/*.d.ts
+code/api/*.tgz
+code/api/package-lock.json

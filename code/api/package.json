@@ -12,32 +12,33 @@
     "REST",
     "api.ovh.com"
   ],
-  "main": "dist/cjs/index.js",
-  "module": "./dist/esm/index.js",
-  "typings": "dist/esm/index.d.ts",
+  "types": "./types/index.d.ts",
+  "main": "./cjs/index.js",
+  "module": "./esm/index.js",
   "exports": {
     ".": {
-      "require": "./dist/cjs/index.js",
-      "import": "./dist/esm/index.js",
-      "types": "./dist/esm/index.d.ts"
+      "types": "./types/index.d.ts",
+      "require": "./cjs/index.js",
+      "import": "./esm/index.js",
+      "default": "./cjs/index.js"
     }
   },
   "license": "MIT",
   "author": "Uriel Chemouni <uchemouni@gmail.com> (https://uriel.ovh/)",
   "dependencies": {
     "@ovh-api/common": "^4.0.2",
-    "open": "^8.4.0"
+    "open": "^10.1.0"
   },
   "devDependencies": {
-    "@types/chai": "^4.3.5",
-    "@types/mocha": "^10.0.1",
-    "@types/node": "^20.2.3",
-    "ava": "^5.2.0",
-    "chai": "^4.3.7",
-    "mocha": "^10.2.0",
-    "rimraf": "^4.4.1",
-    "ts-node": "^10.9.1",
-    "typescript": "^5.0.4"
+    "@types/chai": "^4.3.16",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20.14.2",
+    "ava": "^6.1.3",
+    "chai": "^5.1.1",
+    "mocha": "^10.4.0",
+    "rimraf": "^5.0.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
   },
   "publishConfig": {
     "access": "public"
@@ -48,15 +49,18 @@
     "url": "git+https://github.com/UrielCh/api-ovh-node.git"
   },
   "files": [
-    "dist",
-    "src"
+    "esm",
+    "cjs",
+    "src",
+    "types"
   ],
   "scripts": {
     "ncu": "npx npm-check-updates -i",
     "clean": "rimraf dist",
-    "build": "tsc --pretty --project . && tsc --pretty --project tsconfig-cjs.json",
+    "build": "tsc --pretty --project . && tsc --pretty --project tsconfig-cjs.json && tsc --pretty --project tsconfig-dt.json",
     "prepare": "npm run build",
     "build:watch": "tsc --pretty --project . --watch",
+    "checkExports": "npx @arethetypeswrong/cli $(npm pack)",
     "test": "ava"
   },
   "ava": {

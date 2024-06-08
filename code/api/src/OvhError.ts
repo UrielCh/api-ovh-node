@@ -1,5 +1,5 @@
 import OvhApi from ".";
-import { HttpMethod } from "./OVHInterfaces.js";
+import type { HttpMethod } from "./OVHInterfaces.js";
 
 
 export type OvhErrorCode = 'INVALID_CREDENTIAL' | 'NOT_CREDENTIAL' | 'QUERY_TIME_OUT' | 'NOT_GRANTED_CALL' | 'HTTP_ERROR' | 'NETWORK_ERROR';

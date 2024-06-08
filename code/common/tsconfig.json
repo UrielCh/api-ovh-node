@@ -1,15 +1,16 @@
 {
     "compilerOptions": {
-        "target": "ESNext",
+        "target": "es2022",
         "declaration": false,
         "strict": true,
         "noUncheckedIndexedAccess": true,
-        "moduleResolution": "NodeNext",
-        "module": "NodeNext",
-        "esModuleInterop": true,
+        "moduleResolution": "Node16",
+        "module": "Node16",
+        "esModuleInterop": false,
         "outDir": "esm",
-        "skipLibCheck": true,
-        "moduleDetection": "force"
+        "skipLibCheck": false,
+        "moduleDetection": "force",
+        "verbatimModuleSyntax": true,
     },
     "include": ["./src"]
 }

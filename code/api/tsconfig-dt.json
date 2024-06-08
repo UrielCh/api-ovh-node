@@ -2,15 +2,16 @@
     "compilerOptions": {
         "target": "ESNext",
         "module": "ES2020",
-        "declaration": false,
+        "declaration": true,
         "strict": true,
         "moduleResolution": "node",
         "esModuleInterop": true,
         "alwaysStrict": true,
         "sourceMap": true,
-        "outDir": "esm",
+        "outDir": "types",
         "rootDirs": ["src"],
         "verbatimModuleSyntax": true,
+        "emitDeclarationOnly": true,
     },
     "include": [
         "src"

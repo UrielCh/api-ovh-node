@@ -1,8 +1,8 @@
 import OvhApi from ".";
-import { ApiRequestOptions, HttpMethod, OvhCertSave, OvhCredential, OvhCredentialNew } from "./OVHInterfaces.js";
+import type { ApiRequestOptions, HttpMethod, OvhCertSave, OvhCredential, OvhCredentialNew } from "./OVHInterfaces.js";
 import * as fs from 'node:fs';
 import { EOL } from 'node:os';
-import { ICacheSilot } from "@ovh-api/common";
+import type { ICacheSilot } from "@ovh-api/common";
 import { OvhError } from "./OvhError.js";
 // import open from 'open';
 

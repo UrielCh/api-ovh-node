@@ -1,7 +1,7 @@
-export { CertMonitorProvider, CertMonitor } from './certMonitor.js';
-export { OvhCredentialNew } from './OVHInterfaces.js'
+export type { CertMonitorProvider, CertMonitor } from './certMonitor.js';
+export type { OvhCredentialNew } from './OVHInterfaces.js'
 import { RequestContext } from './helper.js';
-import { IOvhError, OvhError } from './OvhError.js';
+import { type IOvhError, OvhError } from './OvhError.js';
 
 export const makeRequest = async (ctxt: RequestContext): Promise<any> => {
     const { api, timeout, method, options, reqBody, cacheSilot } = ctxt;

@@ -1,4 +1,4 @@
-import { ICacheOptions, ICacheSilot, SlotConstructor } from "@ovh-api/common";
+import type { ICacheOptions, ICacheSilot, SlotConstructor } from "@ovh-api/common";
 
 export interface ICacheEntry {
     /**

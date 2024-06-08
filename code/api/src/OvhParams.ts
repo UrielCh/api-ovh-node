@@ -1,5 +1,5 @@
-import { SlotConstructor } from "@ovh-api/common";
-import { CertMonitorProvider } from ".";
+import type { SlotConstructor } from "@ovh-api/common";
+import type { CertMonitorProvider } from ".";
 
 export type OvhEntryPointEnum = 'ovh-eu' | 'ovh-us' | 'ovh-ca' | 'runabove-ca' | 'sys-eu' | 'sys-ca' | 'soyoustart-eu' | 'soyoustart-ca' | 'ks-eu' | 'ks-ca' | 'kimsufi-eu' | 'kimsufi-ca';
 

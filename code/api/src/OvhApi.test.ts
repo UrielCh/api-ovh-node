@@ -1,7 +1,7 @@
 import test from 'ava';
 import OvhApi from './OvhApi.js';
 import { OvhError } from './OvhError.js';
-import { OvhParamsFull } from './OvhParams.js';
+import type { OvhParamsFull } from './OvhParams.js';
 
 const accessRules = ['GET /*', 'POST /me/agreements/0/accept', 'GET /domain', 'GET /domain/*', 'POST /domain/zone/*/record', 'DELETE /domain/zone/*/record/*'];
 const apiOptions: Partial<OvhParamsFull> = { certCacheFile: '../test-cert.json', accessRules };

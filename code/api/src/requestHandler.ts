@@ -1,10 +1,10 @@
 import { IncomingMessage } from 'node:http';
 import * as https from 'node:https';
 import { Socket } from 'node:net';
-export { CertMonitorProvider, CertMonitor } from './certMonitor.js';
-export { OvhCredentialNew } from './OVHInterfaces.js'
+export type { CertMonitorProvider, CertMonitor } from './certMonitor.js';
+export type { OvhCredentialNew } from './OVHInterfaces.js'
 import { RequestContext } from './helper.js';
-import { IOvhError, OvhError } from './OvhError.js';
+import { type IOvhError, OvhError } from './OvhError.js';
 
 // Promisify https.request
 const handleResponse = async (ctxt: RequestContext, response: IncomingMessage, body: string) => {
