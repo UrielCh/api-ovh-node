@@ -2,9 +2,9 @@
     "compilerOptions": {
         "target": "es2017",
         "strict": true,
-        "moduleResolution": "node",
+        "moduleResolution": "NodeNext",
         "esModuleInterop": true,
-        "module": "ES2020",
+        "module": "NodeNext",
         "declaration": true,
         "verbatimModuleSyntax": true,
     },

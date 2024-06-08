@@ -1,5 +1,9 @@
 node_modules
 **/.vscode/launch.json
+**/*.tgz
+*/*/.cache/
+**/*pnpm-lock.yaml
+**/token.json
 *.log
 package/*/dist/
 code/api/dist/
@@ -26,7 +30,6 @@ samples/*/*.d.ts
 samples/*/*.map
 samples/*/*.js
 samples/*/dist/
-**/token.json
 code/common/*.d.ts
 code/common/*.js
 *Token*.json
@@ -35,8 +38,6 @@ samples/ovh-delete-service/*.txt
 samples/ovh-delete-service/src/*.map
 samples/ovh-delete-service/src/*.d.ts
 samples/ovh-delete-service/src/*.js
-*/*/.cache/
-**/*pnpm-lock.yaml
 code/gen/models/**/*.js
 code/gen/models/**/*.map
 code/gen/models/**/*.d.ts
@@ -48,11 +49,9 @@ code/common/package-lock.json
 code/common/cjs/*.js
 code/common/esm/*.js
 code/common/types/*.d.ts
-code/common/*.tgz
 code/api/cjs/*.js
 code/api/cjs/*.map
 code/api/esm/*.js
 code/api/esm/*.map
 code/api/types/*.d.ts
-code/api/*.tgz
 code/api/package-lock.json
