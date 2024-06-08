@@ -1,7 +1,7 @@
 {
     "name": "@ovh-api/xdsl",
     "description": "Add typing to to ovh api xdsl",
-    "version": "5.0.1",
+    "version": "5.0.2",
     "keywords": [
         "ovh",
         "ovhCloud",

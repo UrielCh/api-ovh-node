@@ -1,7 +1,7 @@
 {
     "name": "@ovh-kimsufi-ca/auth",
     "description": "Add typing to to ovh api auth",
-    "version": "5.0.1",
+    "version": "5.0.2",
     "type": "module",
     "keywords": [
         "ovh",

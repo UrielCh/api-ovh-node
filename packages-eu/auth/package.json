@@ -1,7 +1,7 @@
 {
     "name": "@ovh-api/auth",
     "description": "Add typing to to ovh api auth",
-    "version": "5.0.1",
+    "version": "5.0.2",
     "keywords": [
         "ovh",
         "ovhCloud",

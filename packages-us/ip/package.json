@@ -1,7 +1,7 @@
 {
     "name": "@ovh-api-us/ip",
     "description": "Add typing to to ovh api ip",
-    "version": "5.0.1",
+    "version": "5.0.2",
     "keywords": [
         "ovh",
         "ovhCloud",

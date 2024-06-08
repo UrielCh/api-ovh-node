@@ -1,7 +1,7 @@
 {
     "name": "@ovh-soyoustart/new-account",
     "description": "Add typing to to ovh api new-account",
-    "version": "5.0.1",
+    "version": "5.0.2",
     "keywords": [
         "ovh",
         "ovhCloud",

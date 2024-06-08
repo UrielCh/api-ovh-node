@@ -1,7 +1,7 @@
 {
     "name": "@ovh-api-ca/products",
     "description": "Add typing to to ovh api products",
-    "version": "5.0.1",
+    "version": "5.0.2",
     "keywords": [
         "ovh",
         "ovhCloud",
