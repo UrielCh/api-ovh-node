@@ -1,4 +1,5 @@
-import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-api/common';
+import { buildOvhProxy } from '@ovh-api/common';
+import { CacheAction, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /msServices Models

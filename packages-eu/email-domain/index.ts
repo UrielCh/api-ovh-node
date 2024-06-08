@@ -1,4 +1,5 @@
-import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-api/common';
+import { buildOvhProxy } from '@ovh-api/common';
+import { CacheAction, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /email/domain Models
@@ -179,6 +180,14 @@ export namespace email {
          * type fullname: email.domain.DomainDiagnoseResultEnum
          */
         export type DomainDiagnoseResultEnum = "CUSTOM" | "DEPRECATED" | "KO" | "OK"
+        /**
+         * Test and result, with proper test strings
+         * interface fullName: email.domain.DomainDiagnoseResultEnum>.DomainDiagnoseResultEnum>
+         */
+        export interface DomainDiagnoseResultEnum><T> {
+            result: T;
+            test: string;
+        }
         /**
          * Test and result, with proper test strings
          * interface fullName: email.domain.DomainDiagnoseTraceStruct.DomainDiagnoseTraceStruct

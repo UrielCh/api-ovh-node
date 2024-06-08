@@ -2,9 +2,9 @@
     "compilerOptions": {
         "target": "es2017",
         "strict": true,
-        "moduleResolution": "node",
         "esModuleInterop": true,
-        "module": "ES2020",
+        "moduleResolution": "NodeNext",
+        "module": "NodeNext",
         "declaration": true
     },
     "include": [

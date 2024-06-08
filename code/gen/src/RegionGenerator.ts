@@ -140,7 +140,7 @@ export class RegionGenerator {
         let cjsDir = path.join(dir, "cjs");
         let subpackage = path.join(cjsDir, "package.json");
 
-        await fse.mkdir(cjsDir);
+        await fse.mkdir(cjsDir).catch((_e) => {});
         let code = await cg.generate({ dest: fn });
         await writeIfDiff(fn, code);
         await writeIfDiff(
@@ -317,7 +317,7 @@ export class RegionGenerator {
       {
         compilerOptions: {
           ...compilerOptions,
-          moduleResolution: "node",
+          moduleResolution: "NodeNext",
           module: "NodeNext",
           declaration: true,
         },
@@ -330,7 +330,7 @@ export class RegionGenerator {
       {
         compilerOptions: {
           ...compilerOptions,
-          moduleResolution: "NodeNext",
+          moduleResolution: "Node10",
           module: "commonjs",
           declaration: false,
           outDir: "cjs",

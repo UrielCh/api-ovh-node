@@ -2,11 +2,10 @@
     "compilerOptions": {
         "target": "es2017",
         "strict": true,
-        "moduleResolution": "NodeNext",
         "esModuleInterop": true,
+        "moduleResolution": "NodeNext",
         "module": "NodeNext",
-        "declaration": true,
-        "verbatimModuleSyntax": true,
+        "declaration": true
     },
     "include": [
         "index.ts"

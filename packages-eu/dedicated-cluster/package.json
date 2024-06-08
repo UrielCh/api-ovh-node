@@ -42,5 +42,6 @@
         "index.ts",
         "index.js",
         "index.d.ts"
-    ]
+    ],
+    "type": "module"
 }
