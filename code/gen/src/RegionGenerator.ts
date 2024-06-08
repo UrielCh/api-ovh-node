@@ -136,20 +136,29 @@ export class RegionGenerator {
         // index.ts
         //
 
-        let fn = path.join(dir, "index.ts");
-        let cjsDir = path.join(dir, "cjs");
-        let subpackage = path.join(cjsDir, "package.json");
-
-        await fse.mkdir(cjsDir).catch((_e) => {});
-        let code = await cg.generate({ dest: fn });
-        await writeIfDiff(fn, code);
-        await writeIfDiff(
-          subpackage,
-          `{
-  "type": "commonjs"
-}
-`
-        );
+        let fnTs = path.join(dir, "index.ts");
+        let fnDt = path.join(dir, "index.d.ts");
+        let fnESM = path.join(dir, "index.mjs");
+        //let cjsDir = path.join(dir, "cjs");
+        // let subpackage = path.join(cjsDir, "package.json");
+        let fnCJS = path.join(dir, "index.cjs");
+        await fse.remove(fnTs).catch((_e) => {});
+        await fse.remove(path.join(dir, "index.js")).catch((_e) => {});
+        rimraf(path.join(dir, "cjs"));
+        // await fse.mkdir(cjsDir).catch((_e) => {});
+        let codeDt = await cg.generate({ dest: fnTs }, {typing: true});
+        await writeIfDiff(fnDt, codeDt);
+        let codeCJS = await cg.generate({ dest: fnTs }, {cjs: true});
+        await writeIfDiff(fnCJS, codeCJS);
+        let codeESM = await cg.generate({ dest: fnTs }, {esm: true});
+        await writeIfDiff(fnESM, codeESM);
+//         await writeIfDiff(
+//           subpackage,
+//           `{
+//   "type": "commonjs"
+// }
+// `
+//        );
         await this.genPackageReadme(dir, cg);
         await this.genPackageJson(dir, flat);
         await this.genTsConfig(dir);
@@ -248,6 +257,10 @@ export class RegionGenerator {
     const fn = path.join(dir, "package.json");
     let changes = 0;
 
+    const FILE_TYPES = "./index.d.ts";
+    const FILE_CJS = "./index.cjs";
+    const FILE_ESM = "./index.mjs";
+    const files = [FILE_TYPES, FILE_CJS, FILE_ESM];
     let current = {
       name: `@${namespace}/${flat}`,
       description: `Add typing to to ovh api ${flat}`,
@@ -256,14 +269,14 @@ export class RegionGenerator {
       keywords: ["ovh", "ovhCloud", "api", "typing", "typescript"],
       exports: {
         ".": {
-          types: "./index.d.ts",
-          require: "./cjs/index.js",
-          import: "./index.js",
-          default: "./cjs/index.js",
+          types: FILE_TYPES,
+          require: FILE_CJS,
+          import: FILE_ESM,
+          default: FILE_CJS,
         },
       },
-      typings: "index.d.ts",
-      main: "./cjs/index.js",
+      typings: FILE_TYPES,
+      main: FILE_CJS,
       license: "MIT",
       funding: "https://github.com/sponsors/urielch",
       author: "Uriel Chemouni <uchemouni@gmail.com>",
@@ -278,12 +291,13 @@ export class RegionGenerator {
         type: "git",
         url: "git+https://github.com/UrielCh/api-ovh-node.git",
       },
-      scripts: {
-        build:
-          "tsc --pretty --project . && tsc --pretty --project tsconfig-cjs.json",
-        prepare: "npm run build",
-      },
-      files: ["cjs", "index.ts", "index.js", "index.d.ts"],
+      // scripts: {
+        //build:
+        //  "tsc --pretty --project . && tsc --pretty --project tsconfig-cjs.json",
+        // prepare: "npm run build",
+      //},
+      // files: ["cjs", "index.ts", "index.js", "index.d.ts"],
+      files,
     };
     try {
       current = await fse.readJSONSync(fn);
@@ -292,6 +306,14 @@ export class RegionGenerator {
     }
     if (current.type !== "module") {
       current.type = "module";
+      changes++;
+    }
+    if ((current as any).scripts) {
+      delete (current as any).scripts;
+      changes++;
+    }
+    if (current.files.join(",") !== files.join(",")) {
+      current.files = files;
       changes++;
     }
     if (changes) {
@@ -306,7 +328,9 @@ export class RegionGenerator {
   private async genTsConfig(dir: string) {
     const fnEsm = path.join(dir, "tsconfig.json");
     const fnCjs = path.join(dir, "tsconfig-cjs.json");
-
+    await fse.remove(fnEsm).catch((_e) => {});
+    await fse.remove(fnCjs).catch((_e) => {});
+    /* 
     const compilerOptions = {
       target: "es2017",
       strict: true,
@@ -343,5 +367,6 @@ export class RegionGenerator {
 
     await writeIfDiff(fnEsm, expectedEsm);
     await writeIfDiff(fnCjs, expectedCjs);
+    */
   }
 }

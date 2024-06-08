@@ -32,15 +32,10 @@
         "type": "git",
         "url": "git+https://github.com/UrielCh/api-ovh-node.git"
     },
-    "scripts": {
-        "build": "tsc --pretty --project . && tsc --pretty --project tsconfig-cjs.json",
-        "prepare": "npm run build"
-    },
     "files": [
-        "cjs",
-        "index.ts",
-        "index.js",
-        "index.d.ts"
+        "./index.d.ts",
+        "./index.cjs",
+        "./index.mjs"
     ],
     "type": "module"
 }

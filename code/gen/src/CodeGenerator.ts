@@ -27,40 +27,61 @@ export class CodeGenerator {
         this.schema = await this.gen.loadSchema(`${this.apiPath}.json`)
     }
 
-    async generate(ctxt: Context): Promise<string> {
+    async generate(ctxt: Context, option: {typing?: boolean, esm?: boolean, cjs?: boolean}): Promise<string> {
         if (!this.schema)
             await this.loadSchema();
+
+        let proxyCall = 'proxy' + formatUpperCamlCase(this.apiPath.replace(/\//g, '_')); // proxy+ApiName
+
         // start generation
         let code = "";
-        code += `import { buildOvhProxy } from '@ovh-api/common';${eol}`;
-        code += `import type { CacheAction, ICacheOptions, OvhRequestable } from '@ovh-api/common';${eol}`;
-        code += `${eol}/**${eol}`;
-        code += ` * START API ${this.apiPath} Models${eol}`;
-        code += ` * Source: ${this.gen.getFullPath(this.apiPath)}${eol} */${eol}`;
-
-        code = this.dumpModel(ctxt, 0, this.gen.models, code, '');
-        code += `${eol}/**${eol} * END API ${this.apiPath} Models${eol} */${eol}`;
-
-        let proxyCall = 'proxy' + formatUpperCamlCase(this.apiPath.replace(/\//g, '_'));
-
-        let c1 = this.apiPath.split('/')[1];
-        let mainClass = className(c1) // formatUpperCamlCase("Api_" + this.api.replace(/\//g, '_'));
-
-        //        code += `export function ${proxyCall}(ovhEngine: OvhRequestable): ${mainClass} {${eol}    return buildOvhProxy(ovhEngine, '${this.api}');${eol}}${eol}`
-        code += `export function ${proxyCall}(ovhEngine: OvhRequestable): ${mainClass} {${eol}    return buildOvhProxy(ovhEngine, '/${c1}');${eol}}${eol}`
-        code += `export default ${proxyCall};${eol}`
-
-        code += `/**${eol} * Api model for ${this.apiPath}${eol} */${eol}`
-        // //code += `${ident0} * path ${api._path}${eol}`;
-        code += this.dumpApiHarmony(ctxt, 0, this.gen.apis, ''); // `// Apis harmony${eol}`
-        // extra alias fo bypass namespace colision errors
-        const collisions = Object.keys(this.NSCollision);
-        if (collisions.length) {
-            code += `/**${eol} * Extra Alias to bypass relativer namespace colitions${eol} */${eol}`
+        if (option.esm) {
+            code += `import { buildOvhProxy } from '@ovh-api/common';${eol}`;
         }
-        for (let type of collisions) {
-            // this.NSColision[rawType];
-            code += `type ${this.NSCollision[type]} = ${type};${eol}`
+        if (option.cjs) {
+            code += `const buildOvhProxy = require("@ovh-api/common").buildOvhProxy;${eol}`;
+        }
+        if (option.typing) {
+            code += `import type { CacheAction, ICacheOptions, OvhRequestable } from '@ovh-api/common';${eol}`;
+            code += `${eol}/**${eol}`;
+            code += ` * START API ${this.apiPath} Models${eol}`;
+            code += ` * Source: ${this.gen.getFullPath(this.apiPath)}${eol} */${eol}`;
+            code = this.dumpModel(ctxt, 0, this.gen.models, code, '');
+        }
+
+        if (option.esm) {
+            code += `${eol}/**${eol} * END API ${this.apiPath} Models${eol} */${eol}`;
+            let c1 = this.apiPath.split('/')[1];
+            code += `export function ${proxyCall}(ovhEngine) {${eol}    return buildOvhProxy(ovhEngine, '/${c1}');${eol}}${eol}`
+            code += `export default ${proxyCall};${eol}`
+        }
+
+        if (option.cjs) {
+            code += `${eol}/**${eol} * END API ${this.apiPath} Models${eol} */${eol}`;
+            let c1 = this.apiPath.split('/')[1];
+            code += `function ${proxyCall}(ovhEngine) {${eol}    return buildOvhProxy(ovhEngine, '/${c1}');${eol}}${eol}`
+            code += `exports.${proxyCall} = ${proxyCall};${eol}`
+            code += `exports.default = ${proxyCall};${eol}`
+        }
+
+        if (option.typing) {
+            code += `/**${eol} * Api model for ${this.apiPath}${eol} */${eol}`
+            // //code += `${ident0} * path ${api._path}${eol}`;
+            code += this.dumpApiHarmony(ctxt, 0, this.gen.apis, ''); // `// Apis harmony${eol}`
+            // extra alias fo bypass namespace colision errors
+            const collisions = Object.keys(this.NSCollision);
+            if (collisions.length) {
+                code += `/**${eol} * Extra Alias to bypass relativer namespace colitions${eol} */${eol}`
+            }
+            for (let type of collisions) {
+                // this.NSColision[rawType];
+                code += `type ${this.NSCollision[type]} = ${type};${eol}`
+            }
+            code += eol;
+            let c1 = this.apiPath.split('/')[1];
+            let mainClass = className(c1);
+            code += `export declare function ${proxyCall}(ovhEngine: OvhRequestable): ${mainClass};${eol}`
+            code += `export default ${proxyCall};${eol}`
         }
         return code;
     }
