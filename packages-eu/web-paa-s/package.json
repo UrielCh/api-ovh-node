@@ -1,7 +1,7 @@
 {
     "name": "@ovh-api/web-paa-s",
     "description": "Add typing to to ovh api web-paa-s",
-    "version": "4.0.4",
+    "version": "5.0.0",
     "keywords": [
         "ovh",
         "ovhCloud",

@@ -1,7 +1,7 @@
 {
     "name": "@ovh-api/license-cpanel",
     "description": "Add typing to to ovh api license-cpanel",
-    "version": "4.0.4",
+    "version": "5.0.0",
     "keywords": [
         "ovh",
         "ovhCloud",

@@ -1,7 +1,7 @@
 {
     "name": "@ovh-api-us/dedicated-nasha",
     "description": "Add typing to to ovh api dedicated-nasha",
-    "version": "4.0.4",
+    "version": "5.0.0",
     "keywords": [
         "ovh",
         "ovhCloud",

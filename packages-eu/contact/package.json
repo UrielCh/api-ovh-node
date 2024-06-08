@@ -1,7 +1,7 @@
 {
     "name": "@ovh-api/contact",
     "description": "Add typing to to ovh api contact",
-    "version": "4.0.4",
+    "version": "5.0.0",
     "keywords": [
         "ovh",
         "ovhCloud",

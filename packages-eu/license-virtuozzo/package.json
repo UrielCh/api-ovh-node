@@ -1,7 +1,7 @@
 {
     "name": "@ovh-api/license-virtuozzo",
     "description": "Add typing to to ovh api license-virtuozzo",
-    "version": "4.0.4",
+    "version": "5.0.0",
     "keywords": [
         "ovh",
         "ovhCloud",

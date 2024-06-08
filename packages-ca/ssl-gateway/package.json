@@ -1,7 +1,7 @@
 {
     "name": "@ovh-api-ca/ssl-gateway",
     "description": "Add typing to to ovh api ssl-gateway",
-    "version": "4.0.4",
+    "version": "5.0.0",
     "keywords": [
         "ovh",
         "ovhCloud",
