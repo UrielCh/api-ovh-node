@@ -1,0 +1,10 @@
+{
+  "packages": [
+        "packages-*/*",
+        "kimsufi-*/*",
+        "soyoustart-*/*",
+        "common",
+        "sample"
+    ],
+  "version": "0.0.0"
+}
