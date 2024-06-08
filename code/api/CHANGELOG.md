@@ -1,5 +1,9 @@
 # changelog
 
+## V4.2.0
+
+- clean ESM + CJS export model
+
 ## V4.1.1
 
 - add type OvhCredential, AccessRule, CredentialStateEnum export.
