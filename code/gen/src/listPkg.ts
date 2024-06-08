@@ -30,7 +30,7 @@ for (const { dir, name: nsName, country } of subs) {
                 data.files = ["index.js", "index.d.ts"]; // , "index.ts" 
                 data.scripts.prepare = "npm run build";
                 data.funding = "https://github.com/sponsors/urielch";
-                data.dependencies["@ovh-api/common"] = "^4.0.2";
+                data.dependencies["@ovh-api/common"] = "^4.0.3";
                 data.keywords = ["ovh", "ovhCloud", "api", "typing", "typescript"];
                 content = JSON.stringify(data, undefined, 4) + EOL;
                 // fs.writeFileSync(jsonFile, content, { encoding: 'utf8' });

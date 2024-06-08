@@ -35,7 +35,7 @@
   "dependencies": {
     "@ovh-api/api": "^3.2.7",
     "@ovh-api/cloud": "^3.1.26",
-    "@ovh-api/common": "^4.0.2",
+    "@ovh-api/common": "^4.0.3",
     "@ovh-api/ip": "^3.1.26",
     "@ovh-api/vps": "^3.1.26",
     "bluebird": "^3.7.2",

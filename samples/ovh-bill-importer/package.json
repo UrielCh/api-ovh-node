@@ -35,7 +35,7 @@
     "@ovh-api-ca/me": "^4.0.3",
     "@ovh-api-us/me": "^4.0.3",
     "@ovh-api/api": "^4.1.3",
-    "@ovh-api/common": "^4.0.2",
+    "@ovh-api/common": "^4.0.3",
     "@ovh-api/me": "^4.0.3",
     "commander": "^7.1.0",
     "fs-extra": "^10.0.1",

@@ -31,7 +31,10 @@ export class CodeGenerator {
         if (!this.schema)
             await this.loadSchema();
         // start generation
-        let code = `import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-api/common';${eol}${eol}/**${eol}`;
+        let code = "";
+        code += `import { buildOvhProxy } from '@ovh-api/common';${eol}`;
+        code += `import { CacheAction, ICacheOptions, OvhRequestable } from '@ovh-api/common';${eol}`;
+        code += `${eol}/**${eol}`;
         code += ` * START API ${this.apiPath} Models${eol}`;
         code += ` * Source: ${this.gen.getFullPath(this.apiPath)}${eol} */${eol}`;
 
