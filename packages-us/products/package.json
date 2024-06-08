@@ -12,16 +12,16 @@
     "exports": {
         ".": {
             "types": "./index.d.ts",
-            "require": "./cjs/index.js",
-            "import": "./index.js",
-            "default": "./cjs/index.js"
+            "require": "./index.cjs",
+            "import": "./index.mjs",
+            "default": "./index.cjs"
         }
     },
-    "typings": "index.d.ts",
-    "main": "./cjs/index.js",
+    "typings": "./index.d.ts",
+    "main": "./index.cjs",
     "license": "MIT",
     "funding": "https://github.com/sponsors/urielch",
-    "author": "Uriel Chemouni <uchemouni@gmail.com>",
+    "author": "Uriel Chemouni <uchemouni@gmail.com> (https://uriel.ovh/)",
     "dependencies": {
         "@ovh-api/common": "^4.0.4"
     },

@@ -257,29 +257,36 @@ export class RegionGenerator {
     const fn = path.join(dir, "package.json");
     let changes = 0;
 
+
+
     const FILE_TYPES = "./index.d.ts";
     const FILE_CJS = "./index.cjs";
     const FILE_ESM = "./index.mjs";
+
+    const rootExport = {
+      types: FILE_TYPES,
+      require: FILE_CJS,
+      import: FILE_ESM,
+      default: FILE_CJS,
+    } as const;
+
     const files = [FILE_TYPES, FILE_CJS, FILE_ESM];
+    const author = "Uriel Chemouni <uchemouni@gmail.com> (https://uriel.ovh/)";
+
     let current = {
       name: `@${namespace}/${flat}`,
       description: `Add typing to to ovh api ${flat}`,
-      version: "4.0.0",
+      version: "5.0.1",
       type: "module",
       keywords: ["ovh", "ovhCloud", "api", "typing", "typescript"],
       exports: {
-        ".": {
-          types: FILE_TYPES,
-          require: FILE_CJS,
-          import: FILE_ESM,
-          default: FILE_CJS,
-        },
+        ".": rootExport,
       },
       typings: FILE_TYPES,
       main: FILE_CJS,
       license: "MIT",
       funding: "https://github.com/sponsors/urielch",
-      author: "Uriel Chemouni <uchemouni@gmail.com>",
+      author,
       dependencies: {
         "@ovh-api/common": "^4.0.4",
       },
@@ -316,6 +323,27 @@ export class RegionGenerator {
       current.files = files;
       changes++;
     }
+
+    if (current.main !== FILE_CJS) {
+      current.main = FILE_CJS;
+      changes++;
+    }
+
+    if (current.typings !== FILE_TYPES) {
+      current.typings = FILE_TYPES;
+      changes++;
+    }
+    if (current.author !== author) {
+      current.author = author;
+      changes++;
+    }
+
+    const exp = current.exports['.'];
+    if (exp.default !== rootExport.default || exp.import !== rootExport.import || exp.require !== rootExport.require || exp.types !== rootExport.types) {
+      current.exports['.'] = rootExport;
+      changes++;
+    }
+
     if (changes) {
       await fse.writeJSON(fn, current, { spaces: 4 });
     }

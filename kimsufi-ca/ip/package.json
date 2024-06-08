@@ -17,10 +17,10 @@
             "default": "./index.cjs"
         }
     },
-    "typings": "index.d.ts",
+    "typings": "./index.d.ts",
     "main": "./index.cjs",
     "license": "MIT",
-    "author": "Uriel Chemouni <uchemouni@gmail.com>",
+    "author": "Uriel Chemouni <uchemouni@gmail.com> (https://uriel.ovh/)",
     "dependencies": {
         "@ovh-api/common": "^4.0.4"
     },
