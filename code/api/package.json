@@ -56,7 +56,7 @@
   ],
   "scripts": {
     "ncu": "npx npm-check-updates -i",
-    "clean": "rimraf dist",
+    "clean": "rimraf esm/*.js esm/*.js.map cjs/*.js cjs/*.js.map types/*.d.ts types/*.d.ts.map",
     "build": "tsc --pretty --project . && tsc --pretty --project tsconfig-cjs.json && tsc --pretty --project tsconfig-dt.json",
     "prepare": "npm run build",
     "build:watch": "tsc --pretty --project . --watch",

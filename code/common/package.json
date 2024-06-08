@@ -31,6 +31,7 @@
   },
   "scripts": {
     "build": "tsc --pretty --project . && tsc --pretty --project tsconfig-cjs.json && tsc --pretty --project tsconfig-dt.json",
+    "clean": "rimraf esm/*.js esm/*.js.map cjs/*.js cjs/*.js.map types/*.d.ts types/*.d.ts.map",
     "prepare": "npm run build",
     "checkExports": "npx @arethetypeswrong/cli $(npm pack)",
     "build:watch": "tsc -p . --watch"
