@@ -1,7 +1,7 @@
 {
     "name": "@ovh-api/pack-siptrunk",
     "description": "Add typing to to ovh api pack-siptrunk",
-    "version": "5.0.0",
+    "version": "5.0.1",
     "keywords": [
         "ovh",
         "ovhCloud",

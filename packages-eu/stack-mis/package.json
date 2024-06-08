@@ -1,7 +1,7 @@
 {
     "name": "@ovh-api/stack-mis",
     "description": "Add typing to to ovh api stack-mis",
-    "version": "5.0.0",
+    "version": "5.0.1",
     "keywords": [
         "ovh",
         "ovhCloud",

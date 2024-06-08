@@ -1,7 +1,7 @@
 {
     "name": "@ovh-api/hosting-web",
     "description": "Add typing to to ovh api hosting-web",
-    "version": "5.0.0",
+    "version": "5.0.1",
     "keywords": [
         "ovh",
         "ovhCloud",

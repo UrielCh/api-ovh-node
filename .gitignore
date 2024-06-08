@@ -46,3 +46,4 @@ code/api/esm/*.js
 code/api/esm/*.map
 code/api/types/*.d.ts
 code/api/package-lock.json
+samples/.nx/

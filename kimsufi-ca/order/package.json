@@ -1,7 +1,7 @@
 {
     "name": "@ovh-kimsufi-ca/order",
     "description": "Add typing to to ovh api order",
-    "version": "5.0.0",
+    "version": "5.0.1",
     "keywords": [
         "ovh",
         "ovhCloud",
