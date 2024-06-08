@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@ovh-api/api": "file:../../code/api",
-    "@ovh-api/me": "^5.0.0"
+    "@ovh-api/me": "^5.0.1"
   },
   "devDependencies": {
     "@types/node": "^20.14.2",

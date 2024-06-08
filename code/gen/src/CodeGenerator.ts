@@ -39,7 +39,12 @@ export class CodeGenerator {
             code += `import { buildOvhProxy } from '@ovh-api/common';${eol}`;
         }
         if (option.cjs) {
+            code += `"use strict";${eol}`;
+            code += `Object.defineProperty(exports, "__esModule", { value: true });${eol}`;
             code += `const buildOvhProxy = require("@ovh-api/common").buildOvhProxy;${eol}`;
+            // optional ?
+            // exports.${proxyCall} = void 0;
+
         }
         if (option.typing) {
             code += `import type { CacheAction, ICacheOptions, OvhRequestable } from '@ovh-api/common';${eol}`;
@@ -59,6 +64,7 @@ export class CodeGenerator {
         if (option.cjs) {
             code += `${eol}/**${eol} * END API ${this.apiPath} Models${eol} */${eol}`;
             let c1 = this.apiPath.split('/')[1];
+            // return (0, common_1.buildOvhProxy)(ovhEngine, '/${c1}');
             code += `function ${proxyCall}(ovhEngine) {${eol}    return buildOvhProxy(ovhEngine, '/${c1}');${eol}}${eol}`
             code += `exports.${proxyCall} = ${proxyCall};${eol}`
             code += `exports.default = ${proxyCall};${eol}`
