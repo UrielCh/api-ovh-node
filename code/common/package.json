@@ -1,7 +1,8 @@
 {
   "name": "@ovh-api/common",
   "description": "Common class used to enable Ovh Api new calls Syntax",
-  "version": "4.0.3",
+  "version": "4.0.4",
+  "type": "module",
   "main": "./cjs/index.js",
   "module": "./esm/index.js",
   "types": "./types/index.d.ts",

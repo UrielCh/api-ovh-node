@@ -221,6 +221,6 @@ class OvhProxyApi {
  * @param ovhEngine 
  * @param path 
  */
-exports.buildOvhProxy = function buildOvhProxy(ovhEngine: OvhRequestable, path: string): any {
+export function buildOvhProxy(ovhEngine: OvhRequestable, path: string): any {
     return new Proxy(new OvhProxyApi(ovhEngine, path), handlerRoot) as any;
 }
