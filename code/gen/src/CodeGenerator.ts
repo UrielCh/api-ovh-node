@@ -33,7 +33,7 @@ export class CodeGenerator {
         // start generation
         let code = "";
         code += `import { buildOvhProxy } from '@ovh-api/common';${eol}`;
-        code += `import { CacheAction, ICacheOptions, OvhRequestable } from '@ovh-api/common';${eol}`;
+        code += `import type { CacheAction, ICacheOptions, OvhRequestable } from '@ovh-api/common';${eol}`;
         code += `${eol}/**${eol}`;
         code += ` * START API ${this.apiPath} Models${eol}`;
         code += ` * Source: ${this.gen.getFullPath(this.apiPath)}${eol} */${eol}`;

@@ -268,7 +268,7 @@ export class RegionGenerator {
       funding: "https://github.com/sponsors/urielch",
       author: "Uriel Chemouni <uchemouni@gmail.com>",
       dependencies: {
-        "@ovh-api/common": "^4.0.3",
+        "@ovh-api/common": "^4.0.4",
       },
       publishConfig: {
         access: "public",

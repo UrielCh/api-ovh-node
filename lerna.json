@@ -1,7 +1,6 @@
 {
   "version": "4.0.3",
   "npmClient": "npm",
-  "useWorkspaces": false,
   "packages": [
     "kimsufi-*/*",
     "packages-*/*",
