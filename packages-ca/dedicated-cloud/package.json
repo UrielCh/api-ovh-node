@@ -1,7 +1,7 @@
 {
     "name": "@ovh-api-ca/dedicated-cloud",
     "description": "Add typing to to ovh api dedicated-cloud",
-    "version": "4.0.3",
+    "version": "4.0.4",
     "keywords": [
         "ovh",
         "ovhCloud",

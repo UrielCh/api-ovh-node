@@ -1,7 +1,7 @@
 {
     "name": "@ovh-api/dedicated-cluster",
     "description": "Add typing to to ovh api dedicated-cluster",
-    "version": "4.0.0",
+    "version": "4.0.4",
     "keywords": [
         "ovh",
         "ovhCloud",
