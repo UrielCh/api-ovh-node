@@ -37,5 +37,6 @@
         "./index.cjs",
         "./index.mjs"
     ],
-    "type": "module"
+    "type": "module",
+    "gitHead": "3df9d658979dc9dd7d367a78905f9c56bbd16779"
 }
