@@ -27,7 +27,7 @@ export class CodeGenerator {
         this.schema = await this.gen.loadSchema(`${this.apiPath}.json`)
     }
 
-    async generate(ctxt: Context, option: {typing?: boolean, esm?: boolean, cjs?: boolean}): Promise<string> {
+    async generate(ctxt: Context, option: {typing?: boolean, esm?: boolean, cjs?: boolean, ts?: boolean}): Promise<string> {
         if (!this.schema)
             await this.loadSchema();
 
@@ -35,7 +35,7 @@ export class CodeGenerator {
 
         // start generation
         let code = "";
-        if (option.esm) {
+        if (option.esm || option.ts) {
             code += `import { buildOvhProxy } from '@ovh-api/common';${eol}`;
         }
         if (option.cjs) {
@@ -46,19 +46,12 @@ export class CodeGenerator {
             // exports.${proxyCall} = void 0;
 
         }
-        if (option.typing) {
+        if (option.typing || option.ts) {
             code += `import type { CacheAction, ICacheOptions, OvhRequestable } from '@ovh-api/common';${eol}`;
             code += `${eol}/**${eol}`;
             code += ` * START API ${this.apiPath} Models${eol}`;
             code += ` * Source: ${this.gen.getFullPath(this.apiPath)}${eol} */${eol}`;
             code = this.dumpModel(ctxt, 0, this.gen.models, code, '');
-        }
-
-        if (option.esm) {
-            code += `${eol}/**${eol} * END API ${this.apiPath} Models${eol} */${eol}`;
-            let c1 = this.apiPath.split('/')[1];
-            code += `export function ${proxyCall}(ovhEngine) {${eol}    return buildOvhProxy(ovhEngine, '/${c1}');${eol}}${eol}`
-            code += `export default ${proxyCall};${eol}`
         }
 
         if (option.cjs) {
@@ -70,7 +63,7 @@ export class CodeGenerator {
             code += `exports.default = ${proxyCall};${eol}`
         }
 
-        if (option.typing) {
+        if (option.typing || option.ts) {
             code += `/**${eol} * Api model for ${this.apiPath}${eol} */${eol}`
             // //code += `${ident0} * path ${api._path}${eol}`;
             code += this.dumpApiHarmony(ctxt, 0, this.gen.apis, ''); // `// Apis harmony${eol}`
@@ -89,6 +82,14 @@ export class CodeGenerator {
             code += `export declare function ${proxyCall}(ovhEngine: OvhRequestable): ${mainClass};${eol}`
             code += `export default ${proxyCall};${eol}`
         }
+
+        if (option.esm || option.ts) {
+            code += `${eol}/**${eol} * END API ${this.apiPath} Models${eol} */${eol}`;
+            let c1 = this.apiPath.split('/')[1];
+            code += `export function ${proxyCall}(ovhEngine) {${eol}    return buildOvhProxy(ovhEngine, '/${c1}');${eol}}${eol}`
+            code += `export default ${proxyCall};${eol}`
+        }
+
         return code;
     }
 
