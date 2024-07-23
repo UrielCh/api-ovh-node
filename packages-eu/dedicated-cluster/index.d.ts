@@ -194,7 +194,7 @@ export interface Dedicated {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         availabilities: {
             /**
              * Fetch the availabilities for a given cluster configuration
@@ -204,7 +204,7 @@ export interface Dedicated {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             raw: {
                 /**
                  * List the raw availability for cluster
@@ -214,7 +214,7 @@ export interface Dedicated {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
         }
         $(serviceName: string): {
@@ -226,7 +226,7 @@ export interface Dedicated {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             changeContact: {
                 /**
                  * Launch a contact change procedure
@@ -255,7 +255,7 @@ export interface Dedicated {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             terminate: {
                 /**

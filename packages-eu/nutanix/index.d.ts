@@ -247,7 +247,7 @@ export interface Nutanix {
     /**
      * Controle cache
      */
-    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+    $cache(param?: ICacheOptions | CacheAction): void;
     availabilities: {
         /**
          * Fetch the availabilities for a given cluster configuration
@@ -257,7 +257,7 @@ export interface Nutanix {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         raw: {
             /**
              * List the raw availability for Nutanix cluster
@@ -267,7 +267,7 @@ export interface Nutanix {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
     }
     availableVersions: {
@@ -279,7 +279,7 @@ export interface Nutanix {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
     }
     requirements: {
         /**
@@ -290,7 +290,7 @@ export interface Nutanix {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
     }
     $(serviceName: string): {
         /**
@@ -306,7 +306,7 @@ export interface Nutanix {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         changeContact: {
             /**
              * Launch a contact change procedure
@@ -335,7 +335,7 @@ export interface Nutanix {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         terminate: {
             /**

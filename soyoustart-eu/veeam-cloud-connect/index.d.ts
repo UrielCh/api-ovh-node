@@ -139,7 +139,7 @@ export interface VeeamCloudConnect {
     /**
      * Controle cache
      */
-    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+    $cache(param?: ICacheOptions | CacheAction): void;
     $(serviceName: string): {
         /**
          * Get Veeam Cloud Connect
@@ -149,7 +149,7 @@ export interface VeeamCloudConnect {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         backupRepository: {
             /**
              * List Veeam backup repositories
@@ -164,7 +164,7 @@ export interface VeeamCloudConnect {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(inventoryName: string): {
                 /**
                  * Delete backup repository
@@ -179,7 +179,7 @@ export interface VeeamCloudConnect {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 upgradeQuota: {
                     /**
                      * Change quota
@@ -198,7 +198,7 @@ export interface VeeamCloudConnect {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         orderableUpgrade: {
             /**
@@ -209,7 +209,7 @@ export interface VeeamCloudConnect {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         resetPassword: {
             /**
@@ -232,7 +232,7 @@ export interface VeeamCloudConnect {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         task: {
             /**
@@ -243,7 +243,7 @@ export interface VeeamCloudConnect {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(taskId: number): {
                 /**
                  * Get operation
@@ -253,7 +253,7 @@ export interface VeeamCloudConnect {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             };
         }
     };

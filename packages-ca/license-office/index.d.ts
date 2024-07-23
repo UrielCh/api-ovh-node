@@ -239,7 +239,7 @@ export interface License {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         $(serviceName: string): {
             /**
              * Get this object properties
@@ -254,7 +254,7 @@ export interface License {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             domain: {
                 /**
                  * Domain associated to this office tenant
@@ -264,7 +264,7 @@ export interface License {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(domainName: string): {
                     /**
                      * Get this object properties
@@ -274,7 +274,7 @@ export interface License {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
             pendingTask: {
@@ -286,7 +286,7 @@ export interface License {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(id: number): {
                     /**
                      * Get this object properties
@@ -296,7 +296,7 @@ export interface License {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
             serviceInfos: {
@@ -313,7 +313,7 @@ export interface License {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             usageStatistics: {
                 /**
@@ -324,7 +324,7 @@ export interface License {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             user: {
                 /**
@@ -340,7 +340,7 @@ export interface License {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(activationEmail: string): {
                     /**
                      * Delete existing office user
@@ -360,7 +360,7 @@ export interface License {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     changePassword: {
                         /**
                          * Change or reset  user's password

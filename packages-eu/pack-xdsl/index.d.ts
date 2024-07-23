@@ -685,7 +685,7 @@ export interface Pack {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         $(packName: string): {
             /**
              * Get this object properties
@@ -700,7 +700,7 @@ export interface Pack {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             addressMove: {
                 moveOffer: {
                     /**
@@ -733,7 +733,7 @@ export interface Pack {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             cancelResiliation: {
                 /**
@@ -758,7 +758,7 @@ export interface Pack {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             domain: {
                 options: {
@@ -771,7 +771,7 @@ export interface Pack {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                 }
                 services: {
@@ -788,7 +788,7 @@ export interface Pack {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
             }
             emailPro: {
@@ -802,7 +802,7 @@ export interface Pack {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                     isEmailAvailable: {
                         /**
@@ -813,7 +813,7 @@ export interface Pack {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                 }
                 services: {
@@ -830,7 +830,7 @@ export interface Pack {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
             }
             exchangeAccount: {
@@ -843,7 +843,7 @@ export interface Pack {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(domain: string): {
                         /**
                          * Get this object properties
@@ -853,7 +853,7 @@ export interface Pack {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
             }
@@ -868,7 +868,7 @@ export interface Pack {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                     isEmailAvailable: {
                         /**
@@ -879,7 +879,7 @@ export interface Pack {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                 }
             }
@@ -893,7 +893,7 @@ export interface Pack {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
             }
             hostedEmail: {
@@ -907,7 +907,7 @@ export interface Pack {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                 }
                 services: {
@@ -924,7 +924,7 @@ export interface Pack {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(domain: string): {
                         /**
                          * Delete hosted email account
@@ -939,7 +939,7 @@ export interface Pack {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         account: {
                             /**
                              * Get hosted email account informations
@@ -949,7 +949,7 @@ export interface Pack {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         changePassword: {
                             /**
@@ -967,7 +967,7 @@ export interface Pack {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                     };
                 }
@@ -1005,7 +1005,7 @@ export interface Pack {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 generate: {
                     /**
@@ -1031,7 +1031,7 @@ export interface Pack {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             resiliationTerms: {
                 /**
@@ -1042,7 +1042,7 @@ export interface Pack {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             serviceInfos: {
                 /**
@@ -1058,7 +1058,7 @@ export interface Pack {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             services: {
                 /**
@@ -1069,7 +1069,7 @@ export interface Pack {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             shippingAddresses: {
                 /**
@@ -1080,7 +1080,7 @@ export interface Pack {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             subServices: {
                 /**
@@ -1091,7 +1091,7 @@ export interface Pack {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(domain: string): {
                     /**
                      * Get this object properties
@@ -1101,7 +1101,7 @@ export interface Pack {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     keepServiceTerms: {
                         /**
                          * Give the condition to unpack service from pack
@@ -1111,7 +1111,7 @@ export interface Pack {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                 };
             }
@@ -1124,7 +1124,7 @@ export interface Pack {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(id: number): {
                     /**
                      * Get this object properties
@@ -1134,7 +1134,7 @@ export interface Pack {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
             voipBillingAccount: {
@@ -1147,7 +1147,7 @@ export interface Pack {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
             }
             voipEcofax: {
@@ -1165,7 +1165,7 @@ export interface Pack {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
             }
             voipLine: {
@@ -1186,7 +1186,7 @@ export interface Pack {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                     shippingAddresses: {
                         /**
@@ -1197,7 +1197,7 @@ export interface Pack {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                 }
                 services: {
@@ -1214,7 +1214,7 @@ export interface Pack {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(domain: string): {
                         /**
                          * Get this object properties
@@ -1224,7 +1224,7 @@ export interface Pack {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
             }
@@ -1238,7 +1238,7 @@ export interface Pack {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
             }
         };

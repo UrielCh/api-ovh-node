@@ -665,7 +665,7 @@ export interface Connectivity {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             address: {
                 /**
                  * Do an eligibility for an address, if no line exist
@@ -721,7 +721,7 @@ export interface Connectivity {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             public: {
                 /**
@@ -732,7 +732,7 @@ export interface Connectivity {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
         }
     }
@@ -747,7 +747,7 @@ export interface Connectivity {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             public: {
                 /**
@@ -758,7 +758,7 @@ export interface Connectivity {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
         }
     }

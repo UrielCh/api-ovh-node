@@ -737,7 +737,7 @@ export interface IpLoadbalancing {
     /**
      * Controle cache
      */
-    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+    $cache(param?: ICacheOptions | CacheAction): void;
     availableZones: {
         /**
          * List of zone available for an IP load balancing
@@ -747,7 +747,7 @@ export interface IpLoadbalancing {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
     }
     $(serviceName: string): {
         /**
@@ -763,7 +763,7 @@ export interface IpLoadbalancing {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         availableFarmProbes: {
             /**
              * Available farm probes for health checks
@@ -773,7 +773,7 @@ export interface IpLoadbalancing {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         availableFarmType: {
             /**
@@ -784,7 +784,7 @@ export interface IpLoadbalancing {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         availableFrontendType: {
             /**
@@ -795,7 +795,7 @@ export interface IpLoadbalancing {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         availableRouteActions: {
             /**
@@ -806,7 +806,7 @@ export interface IpLoadbalancing {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         availableRouteRules: {
             /**
@@ -817,7 +817,7 @@ export interface IpLoadbalancing {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         confirmTermination: {
             /**
@@ -835,7 +835,7 @@ export interface IpLoadbalancing {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         definedFrontends: {
             /**
@@ -846,7 +846,7 @@ export interface IpLoadbalancing {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         definedRoutes: {
             /**
@@ -857,7 +857,7 @@ export interface IpLoadbalancing {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         failover: {
             /**
@@ -868,7 +868,7 @@ export interface IpLoadbalancing {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         freeCertificate: {
             /**
@@ -892,7 +892,7 @@ export interface IpLoadbalancing {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(farmId: number): {
                     /**
                      * Delete an HTTP Farm
@@ -912,7 +912,7 @@ export interface IpLoadbalancing {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     server: {
                         /**
                          * HTTP Farm's Servers
@@ -927,7 +927,7 @@ export interface IpLoadbalancing {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(serverId: number): {
                             /**
                              * Delete a server from an HTTP Farm
@@ -947,7 +947,7 @@ export interface IpLoadbalancing {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         };
                     }
                 };
@@ -966,7 +966,7 @@ export interface IpLoadbalancing {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(frontendId: number): {
                     /**
                      * Delete an HTTP frontend
@@ -986,7 +986,7 @@ export interface IpLoadbalancing {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
             route: {
@@ -1003,7 +1003,7 @@ export interface IpLoadbalancing {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(routeId: number): {
                     /**
                      * Delete this HTTP route
@@ -1023,7 +1023,7 @@ export interface IpLoadbalancing {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     rule: {
                         /**
                          * HTTP routes for this iplb
@@ -1038,7 +1038,7 @@ export interface IpLoadbalancing {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(ruleId: number): {
                             /**
                              * Delete this rule from the route
@@ -1058,7 +1058,7 @@ export interface IpLoadbalancing {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         };
                     }
                 };
@@ -1073,7 +1073,7 @@ export interface IpLoadbalancing {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         natIp: {
             /**
@@ -1084,7 +1084,7 @@ export interface IpLoadbalancing {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         pendingChanges: {
             /**
@@ -1095,7 +1095,7 @@ export interface IpLoadbalancing {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         quota: {
             /**
@@ -1106,7 +1106,7 @@ export interface IpLoadbalancing {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(zone: string): {
                 /**
                  * Get this object properties
@@ -1121,7 +1121,7 @@ export interface IpLoadbalancing {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             };
         }
         quotaHistory: {
@@ -1133,7 +1133,7 @@ export interface IpLoadbalancing {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(id: number): {
                 /**
                  * Get this object properties
@@ -1143,7 +1143,7 @@ export interface IpLoadbalancing {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             };
         }
         refresh: {
@@ -1167,7 +1167,7 @@ export interface IpLoadbalancing {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         ssl: {
             /**
@@ -1183,7 +1183,7 @@ export interface IpLoadbalancing {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(id: number): {
                 /**
                  * Delete a custom SSL certificate
@@ -1203,7 +1203,7 @@ export interface IpLoadbalancing {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             };
         }
         status: {
@@ -1215,7 +1215,7 @@ export interface IpLoadbalancing {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         task: {
             /**
@@ -1226,7 +1226,7 @@ export interface IpLoadbalancing {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(id: number): {
                 /**
                  * Get this object properties
@@ -1236,7 +1236,7 @@ export interface IpLoadbalancing {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             };
         }
         tcp: {
@@ -1254,7 +1254,7 @@ export interface IpLoadbalancing {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(farmId: number): {
                     /**
                      * Delete a TCP Farm
@@ -1274,7 +1274,7 @@ export interface IpLoadbalancing {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     server: {
                         /**
                          * TCP Farm's Servers
@@ -1289,7 +1289,7 @@ export interface IpLoadbalancing {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(serverId: number): {
                             /**
                              * Delete a server from a TCP Farm
@@ -1309,7 +1309,7 @@ export interface IpLoadbalancing {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         };
                     }
                 };
@@ -1328,7 +1328,7 @@ export interface IpLoadbalancing {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(frontendId: number): {
                     /**
                      * Delete an TCP frontend
@@ -1348,7 +1348,7 @@ export interface IpLoadbalancing {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
             route: {
@@ -1365,7 +1365,7 @@ export interface IpLoadbalancing {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(routeId: number): {
                     /**
                      * Delete this TCP route
@@ -1385,7 +1385,7 @@ export interface IpLoadbalancing {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     rule: {
                         /**
                          * HTTP routes for this iplb
@@ -1400,7 +1400,7 @@ export interface IpLoadbalancing {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(ruleId: number): {
                             /**
                              * Delete this rule from the route
@@ -1420,7 +1420,7 @@ export interface IpLoadbalancing {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         };
                     }
                 };
@@ -1448,7 +1448,7 @@ export interface IpLoadbalancing {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(vrackNetworkId: number): {
                     /**
                      * Delete this description of a private network in the vRack. It must not be used by any farm server
@@ -1468,7 +1468,7 @@ export interface IpLoadbalancing {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     updateFarmId: {
                         /**
                          * Update farm attached to that vrack network id
@@ -1487,7 +1487,7 @@ export interface IpLoadbalancing {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             status: {
                 /**
@@ -1498,7 +1498,7 @@ export interface IpLoadbalancing {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
         }
         zone: {
@@ -1510,7 +1510,7 @@ export interface IpLoadbalancing {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(name: string): {
                 /**
                  * Get this object properties
@@ -1520,7 +1520,7 @@ export interface IpLoadbalancing {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 cancelTermination: {
                     /**
                      * Cancel the termination request of your service zone option

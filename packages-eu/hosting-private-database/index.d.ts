@@ -846,7 +846,7 @@ export interface Hosting {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         availableOrderCapacities: {
             /**
              * Get available order capacities
@@ -856,7 +856,7 @@ export interface Hosting {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         $(serviceName: string): {
             /**
@@ -872,7 +872,7 @@ export interface Hosting {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             availableVersions: {
                 /**
                  * Get the availables versions for this private database
@@ -882,7 +882,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             changeContact: {
                 /**
@@ -914,7 +914,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 update: {
                     /**
                      * Update the configuration
@@ -939,7 +939,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             database: {
                 /**
@@ -955,7 +955,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(databaseName: string): {
                     /**
                      * Delete a database from a Web Cloud Database
@@ -970,7 +970,7 @@ export interface Hosting {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     copy: {
                         /**
                          * Copies available for your databases
@@ -985,7 +985,7 @@ export interface Hosting {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(id: string): {
                             /**
                              * Delete the database copy
@@ -1000,7 +1000,7 @@ export interface Hosting {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         };
                     }
                     copyRestore: {
@@ -1024,7 +1024,7 @@ export interface Hosting {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(id: number): {
                             /**
                              * Delete dump before expiration date
@@ -1039,7 +1039,7 @@ export interface Hosting {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             restore: {
                                 /**
                                  * Request the restore from this dump
@@ -1058,7 +1058,7 @@ export interface Hosting {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(extensionName: string): {
                             /**
                              * Get this object properties
@@ -1068,7 +1068,7 @@ export interface Hosting {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             disable: {
                                 /**
                                  * Disable an extension from a database
@@ -1110,7 +1110,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(dumpId: number): {
                     /**
                      * Delete a database dump from a Web Cloud Database
@@ -1125,7 +1125,7 @@ export interface Hosting {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     restore: {
                         /**
                          * Restore a database dump into a Web Cloud Database
@@ -1151,7 +1151,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             quotaRefresh: {
                 /**
@@ -1181,7 +1181,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             start: {
                 /**
@@ -1206,7 +1206,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(id: number): {
                     /**
                      * Get task details
@@ -1216,7 +1216,7 @@ export interface Hosting {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
             terminate: {
@@ -1240,7 +1240,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(userName: string): {
                     /**
                      * Delete a user on a Web Cloud Database
@@ -1255,7 +1255,7 @@ export interface Hosting {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     changePassword: {
                         /**
                          * Change the password of a user on a Web Cloud Database
@@ -1277,7 +1277,7 @@ export interface Hosting {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(databaseName: string): {
                             /**
                              * Delete a grant from a Web Cloud Database
@@ -1292,7 +1292,7 @@ export interface Hosting {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             update: {
                                 /**
                                  * Update the permissions of a grant for a user on a Web Cloud Database
@@ -1323,7 +1323,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             webs: {
                 /**
@@ -1334,7 +1334,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             whitelist: {
                 /**
@@ -1350,7 +1350,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(ip: string): {
                     /**
                      * Delete an IP whitelist from a Web Cloud Database
@@ -1370,7 +1370,7 @@ export interface Hosting {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
         };

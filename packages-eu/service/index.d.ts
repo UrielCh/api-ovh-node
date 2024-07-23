@@ -201,7 +201,7 @@ export interface Service {
     /**
      * Controle cache
      */
-    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+    $cache(param?: ICacheOptions | CacheAction): void;
     $(serviceId: number): {
         /**
          * Get this object properties
@@ -216,7 +216,7 @@ export interface Service {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         renew: {
             /**
              * List possible renews for this service
@@ -231,7 +231,7 @@ export interface Service {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         reopen: {
             /**

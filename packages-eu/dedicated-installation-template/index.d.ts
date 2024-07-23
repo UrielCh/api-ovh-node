@@ -208,7 +208,7 @@ export interface Dedicated {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         templateInfos: {
             /**
              * Get details about available distributions for dedicated servers
@@ -218,7 +218,7 @@ export interface Dedicated {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         $(templateName: string): {
             /**
@@ -229,7 +229,7 @@ export interface Dedicated {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             partitionScheme: {
                 /**
                  * Partitioning schemes available on this template
@@ -239,7 +239,7 @@ export interface Dedicated {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(schemeName: string): {
                     /**
                      * Get this object properties
@@ -249,7 +249,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     hardwareRaid: {
                         /**
                          * Hardware RAIDs defined in this partitioning scheme
@@ -259,7 +259,7 @@ export interface Dedicated {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(name: string): {
                             /**
                              * Get this object properties
@@ -269,7 +269,7 @@ export interface Dedicated {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         };
                     }
                     partition: {
@@ -281,7 +281,7 @@ export interface Dedicated {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(mountpoint: string): {
                             /**
                              * Get this object properties
@@ -291,7 +291,7 @@ export interface Dedicated {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         };
                     }
                 };

@@ -4083,7 +4083,7 @@ export interface Price {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
         }
@@ -4098,7 +4098,7 @@ export interface Price {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
             backupStorage: {
@@ -4111,7 +4111,7 @@ export interface Price {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
             firewall: {
@@ -4124,7 +4124,7 @@ export interface Price {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
             ip: {
@@ -4137,7 +4137,7 @@ export interface Price {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
         }
@@ -4156,7 +4156,7 @@ export interface Price {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         };
                     }
                     monthly: {
@@ -4169,7 +4169,7 @@ export interface Price {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         };
                     }
                 }
@@ -4184,7 +4184,7 @@ export interface Price {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         };
                     }
                     monthly: {
@@ -4197,7 +4197,7 @@ export interface Price {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         };
                     }
                 }
@@ -4214,7 +4214,7 @@ export interface Price {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         };
                     }
                     monthly: {
@@ -4227,7 +4227,7 @@ export interface Price {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         };
                     }
                 }
@@ -4242,7 +4242,7 @@ export interface Price {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         };
                     }
                     monthly: {
@@ -4255,7 +4255,7 @@ export interface Price {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         };
                     }
                 }
@@ -4272,7 +4272,7 @@ export interface Price {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         };
                     }
                     monthly: {
@@ -4285,7 +4285,7 @@ export interface Price {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         };
                     }
                 }
@@ -4300,7 +4300,7 @@ export interface Price {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         };
                     }
                     monthly: {
@@ -4313,7 +4313,7 @@ export interface Price {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         };
                     }
                 }
@@ -4333,7 +4333,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -4346,7 +4346,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -4361,7 +4361,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -4374,7 +4374,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -4391,7 +4391,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -4404,7 +4404,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -4419,7 +4419,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -4432,7 +4432,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -4451,7 +4451,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -4464,7 +4464,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -4479,7 +4479,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -4492,7 +4492,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -4509,7 +4509,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -4522,7 +4522,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -4537,7 +4537,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -4550,7 +4550,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -4569,7 +4569,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -4582,7 +4582,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -4597,7 +4597,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -4610,7 +4610,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -4627,7 +4627,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -4640,7 +4640,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -4655,7 +4655,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -4668,7 +4668,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -4687,7 +4687,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -4700,7 +4700,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -4715,7 +4715,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -4728,7 +4728,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -4745,7 +4745,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -4758,7 +4758,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -4773,7 +4773,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -4786,7 +4786,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -4807,7 +4807,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -4820,7 +4820,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -4835,7 +4835,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -4848,7 +4848,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -4865,7 +4865,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -4878,7 +4878,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -4893,7 +4893,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -4906,7 +4906,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -4925,7 +4925,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -4938,7 +4938,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -4953,7 +4953,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -4966,7 +4966,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -4983,7 +4983,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -4996,7 +4996,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -5011,7 +5011,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -5024,7 +5024,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -5043,7 +5043,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -5056,7 +5056,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -5071,7 +5071,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -5084,7 +5084,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -5101,7 +5101,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -5114,7 +5114,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -5129,7 +5129,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -5142,7 +5142,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -5161,7 +5161,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -5174,7 +5174,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -5189,7 +5189,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -5202,7 +5202,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -5219,7 +5219,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -5232,7 +5232,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -5247,7 +5247,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -5260,7 +5260,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -5281,7 +5281,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -5294,7 +5294,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -5309,7 +5309,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -5322,7 +5322,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -5339,7 +5339,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -5352,7 +5352,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -5367,7 +5367,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -5380,7 +5380,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -5399,7 +5399,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -5412,7 +5412,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -5427,7 +5427,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -5440,7 +5440,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -5457,7 +5457,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -5470,7 +5470,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -5485,7 +5485,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -5498,7 +5498,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -5517,7 +5517,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -5530,7 +5530,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -5545,7 +5545,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -5558,7 +5558,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -5575,7 +5575,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -5588,7 +5588,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -5603,7 +5603,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -5616,7 +5616,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -5635,7 +5635,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -5648,7 +5648,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -5663,7 +5663,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -5676,7 +5676,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -5693,7 +5693,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -5706,7 +5706,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -5721,7 +5721,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -5734,7 +5734,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -5755,7 +5755,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -5768,7 +5768,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -5783,7 +5783,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -5796,7 +5796,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -5813,7 +5813,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -5826,7 +5826,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -5841,7 +5841,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -5854,7 +5854,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -5873,7 +5873,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -5886,7 +5886,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -5901,7 +5901,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -5914,7 +5914,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -5931,7 +5931,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -5944,7 +5944,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -5959,7 +5959,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -5972,7 +5972,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -5991,7 +5991,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -6004,7 +6004,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -6019,7 +6019,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -6032,7 +6032,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -6049,7 +6049,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -6062,7 +6062,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -6077,7 +6077,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -6090,7 +6090,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -6109,7 +6109,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -6122,7 +6122,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -6137,7 +6137,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -6150,7 +6150,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -6167,7 +6167,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -6180,7 +6180,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -6195,7 +6195,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -6208,7 +6208,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -6229,7 +6229,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -6242,7 +6242,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -6257,7 +6257,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -6270,7 +6270,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -6287,7 +6287,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -6300,7 +6300,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -6315,7 +6315,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -6328,7 +6328,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -6347,7 +6347,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -6360,7 +6360,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -6375,7 +6375,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -6388,7 +6388,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -6405,7 +6405,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -6418,7 +6418,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -6433,7 +6433,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -6446,7 +6446,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -6465,7 +6465,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -6478,7 +6478,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -6493,7 +6493,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -6506,7 +6506,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -6523,7 +6523,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -6536,7 +6536,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -6551,7 +6551,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -6564,7 +6564,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -6583,7 +6583,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -6596,7 +6596,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -6611,7 +6611,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -6624,7 +6624,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -6641,7 +6641,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -6654,7 +6654,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -6669,7 +6669,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -6682,7 +6682,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -6703,7 +6703,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -6716,7 +6716,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -6731,7 +6731,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -6744,7 +6744,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -6761,7 +6761,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -6774,7 +6774,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -6789,7 +6789,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -6802,7 +6802,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -6821,7 +6821,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -6834,7 +6834,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -6849,7 +6849,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -6862,7 +6862,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -6879,7 +6879,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -6892,7 +6892,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -6907,7 +6907,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -6920,7 +6920,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -6939,7 +6939,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -6952,7 +6952,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -6967,7 +6967,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -6980,7 +6980,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -6997,7 +6997,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -7010,7 +7010,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -7025,7 +7025,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -7038,7 +7038,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -7057,7 +7057,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -7070,7 +7070,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -7085,7 +7085,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -7098,7 +7098,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -7115,7 +7115,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -7128,7 +7128,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -7143,7 +7143,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -7156,7 +7156,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -7177,7 +7177,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -7190,7 +7190,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -7205,7 +7205,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -7218,7 +7218,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -7235,7 +7235,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -7248,7 +7248,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -7263,7 +7263,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -7276,7 +7276,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -7295,7 +7295,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -7308,7 +7308,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -7323,7 +7323,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -7336,7 +7336,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -7353,7 +7353,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -7366,7 +7366,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -7381,7 +7381,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -7394,7 +7394,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -7413,7 +7413,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -7426,7 +7426,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -7441,7 +7441,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -7454,7 +7454,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -7471,7 +7471,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -7484,7 +7484,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -7499,7 +7499,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -7512,7 +7512,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -7531,7 +7531,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -7544,7 +7544,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -7559,7 +7559,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -7572,7 +7572,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -7589,7 +7589,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -7602,7 +7602,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -7617,7 +7617,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -7630,7 +7630,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -7651,7 +7651,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -7664,7 +7664,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -7679,7 +7679,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -7692,7 +7692,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -7709,7 +7709,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -7722,7 +7722,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -7737,7 +7737,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -7750,7 +7750,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -7769,7 +7769,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -7782,7 +7782,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -7797,7 +7797,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -7810,7 +7810,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -7827,7 +7827,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -7840,7 +7840,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -7855,7 +7855,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -7868,7 +7868,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -7887,7 +7887,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -7900,7 +7900,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -7915,7 +7915,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -7928,7 +7928,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -7945,7 +7945,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -7958,7 +7958,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -7973,7 +7973,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -7986,7 +7986,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -8005,7 +8005,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -8018,7 +8018,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -8033,7 +8033,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -8046,7 +8046,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -8063,7 +8063,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -8076,7 +8076,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -8091,7 +8091,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -8104,7 +8104,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -8125,7 +8125,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -8138,7 +8138,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -8153,7 +8153,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -8166,7 +8166,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -8183,7 +8183,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -8196,7 +8196,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -8211,7 +8211,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -8224,7 +8224,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -8243,7 +8243,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -8256,7 +8256,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -8271,7 +8271,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -8284,7 +8284,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -8301,7 +8301,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -8314,7 +8314,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -8329,7 +8329,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -8342,7 +8342,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -8361,7 +8361,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -8374,7 +8374,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -8389,7 +8389,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -8402,7 +8402,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -8419,7 +8419,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -8432,7 +8432,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -8447,7 +8447,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -8460,7 +8460,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -8479,7 +8479,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -8492,7 +8492,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -8507,7 +8507,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -8520,7 +8520,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -8537,7 +8537,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -8550,7 +8550,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -8565,7 +8565,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -8578,7 +8578,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -8599,7 +8599,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -8612,7 +8612,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -8627,7 +8627,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -8640,7 +8640,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -8659,7 +8659,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -8672,7 +8672,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -8687,7 +8687,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -8700,7 +8700,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -8719,7 +8719,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -8732,7 +8732,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -8747,7 +8747,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -8760,7 +8760,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -8779,7 +8779,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -8792,7 +8792,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -8807,7 +8807,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -8820,7 +8820,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -8839,7 +8839,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -8852,7 +8852,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -8867,7 +8867,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -8880,7 +8880,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -8899,7 +8899,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -8912,7 +8912,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -8927,7 +8927,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -8940,7 +8940,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -8959,7 +8959,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -8972,7 +8972,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -8987,7 +8987,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -9000,7 +9000,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -9019,7 +9019,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -9032,7 +9032,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -9047,7 +9047,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -9060,7 +9060,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -9081,7 +9081,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -9094,7 +9094,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -9109,7 +9109,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -9122,7 +9122,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -9141,7 +9141,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -9154,7 +9154,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -9169,7 +9169,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -9182,7 +9182,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -9201,7 +9201,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -9214,7 +9214,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -9229,7 +9229,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -9242,7 +9242,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -9261,7 +9261,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -9274,7 +9274,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -9289,7 +9289,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -9302,7 +9302,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -9321,7 +9321,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -9334,7 +9334,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -9349,7 +9349,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -9362,7 +9362,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -9381,7 +9381,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -9394,7 +9394,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -9409,7 +9409,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -9422,7 +9422,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -9441,7 +9441,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -9454,7 +9454,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -9469,7 +9469,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -9482,7 +9482,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -9501,7 +9501,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -9514,7 +9514,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -9529,7 +9529,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -9542,7 +9542,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -9563,7 +9563,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -9576,7 +9576,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -9591,7 +9591,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -9604,7 +9604,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -9623,7 +9623,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -9636,7 +9636,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -9651,7 +9651,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -9664,7 +9664,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -9683,7 +9683,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -9696,7 +9696,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -9711,7 +9711,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -9724,7 +9724,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -9743,7 +9743,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -9756,7 +9756,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -9771,7 +9771,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -9784,7 +9784,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -9803,7 +9803,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -9816,7 +9816,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -9831,7 +9831,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -9844,7 +9844,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -9863,7 +9863,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -9876,7 +9876,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -9891,7 +9891,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -9904,7 +9904,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -9923,7 +9923,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -9936,7 +9936,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -9951,7 +9951,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -9964,7 +9964,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -9983,7 +9983,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -9996,7 +9996,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -10011,7 +10011,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -10024,7 +10024,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -10045,7 +10045,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -10058,7 +10058,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -10073,7 +10073,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -10086,7 +10086,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -10105,7 +10105,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -10118,7 +10118,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -10133,7 +10133,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -10146,7 +10146,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -10165,7 +10165,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -10178,7 +10178,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -10193,7 +10193,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -10206,7 +10206,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -10225,7 +10225,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -10238,7 +10238,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -10253,7 +10253,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -10266,7 +10266,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -10285,7 +10285,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -10298,7 +10298,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -10313,7 +10313,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -10326,7 +10326,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -10345,7 +10345,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -10358,7 +10358,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -10373,7 +10373,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -10386,7 +10386,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -10405,7 +10405,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -10418,7 +10418,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -10433,7 +10433,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -10446,7 +10446,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -10465,7 +10465,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -10478,7 +10478,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -10493,7 +10493,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -10506,7 +10506,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -10527,7 +10527,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -10540,7 +10540,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -10555,7 +10555,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -10568,7 +10568,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -10587,7 +10587,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -10600,7 +10600,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -10615,7 +10615,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -10628,7 +10628,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -10647,7 +10647,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -10660,7 +10660,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -10675,7 +10675,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -10688,7 +10688,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -10707,7 +10707,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -10720,7 +10720,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -10735,7 +10735,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -10748,7 +10748,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -10767,7 +10767,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -10780,7 +10780,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -10795,7 +10795,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -10808,7 +10808,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -10827,7 +10827,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -10840,7 +10840,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -10855,7 +10855,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -10868,7 +10868,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -10887,7 +10887,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -10900,7 +10900,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -10915,7 +10915,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -10928,7 +10928,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -10947,7 +10947,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -10960,7 +10960,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -10975,7 +10975,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -10988,7 +10988,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -11009,7 +11009,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -11022,7 +11022,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -11037,7 +11037,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -11050,7 +11050,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -11069,7 +11069,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -11082,7 +11082,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -11097,7 +11097,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -11110,7 +11110,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -11129,7 +11129,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -11142,7 +11142,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -11157,7 +11157,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -11170,7 +11170,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -11189,7 +11189,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -11202,7 +11202,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -11217,7 +11217,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -11230,7 +11230,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -11249,7 +11249,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -11262,7 +11262,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -11277,7 +11277,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -11290,7 +11290,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -11309,7 +11309,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -11322,7 +11322,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -11337,7 +11337,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -11350,7 +11350,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -11369,7 +11369,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -11382,7 +11382,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -11397,7 +11397,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -11410,7 +11410,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -11429,7 +11429,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -11442,7 +11442,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -11457,7 +11457,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -11470,7 +11470,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -11491,7 +11491,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -11504,7 +11504,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -11519,7 +11519,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -11532,7 +11532,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -11551,7 +11551,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -11564,7 +11564,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -11579,7 +11579,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -11592,7 +11592,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -11611,7 +11611,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -11624,7 +11624,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -11639,7 +11639,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -11652,7 +11652,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -11671,7 +11671,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -11684,7 +11684,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -11699,7 +11699,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -11712,7 +11712,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -11731,7 +11731,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -11744,7 +11744,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -11759,7 +11759,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -11772,7 +11772,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -11791,7 +11791,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -11804,7 +11804,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -11819,7 +11819,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -11832,7 +11832,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -11851,7 +11851,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -11864,7 +11864,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -11879,7 +11879,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -11892,7 +11892,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -11911,7 +11911,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -11924,7 +11924,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -11939,7 +11939,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         monthly: {
@@ -11952,7 +11952,7 @@ export interface Price {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -11972,7 +11972,7 @@ export interface Price {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
         }
@@ -11988,7 +11988,7 @@ export interface Price {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             };
         }
         web: {
@@ -12002,7 +12002,7 @@ export interface Price {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
             extraSqlPerso: {
@@ -12015,7 +12015,7 @@ export interface Price {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
             ssl: {
@@ -12028,7 +12028,7 @@ export interface Price {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
         }
@@ -12044,7 +12044,7 @@ export interface Price {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             };
         }
     }
@@ -12059,7 +12059,7 @@ export interface Price {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             };
         }
     }
@@ -12075,7 +12075,7 @@ export interface Price {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
         }
@@ -12093,7 +12093,7 @@ export interface Price {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
             }
@@ -12108,7 +12108,7 @@ export interface Price {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 option: {
@@ -12121,7 +12121,7 @@ export interface Price {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
             }
@@ -12136,7 +12136,7 @@ export interface Price {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
             }
@@ -12153,7 +12153,7 @@ export interface Price {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
             }
@@ -12168,7 +12168,7 @@ export interface Price {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 option: {
@@ -12181,7 +12181,7 @@ export interface Price {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
             }
@@ -12198,7 +12198,7 @@ export interface Price {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 option: {
@@ -12211,7 +12211,7 @@ export interface Price {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
             }
@@ -12226,7 +12226,7 @@ export interface Price {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 option: {
@@ -12239,7 +12239,7 @@ export interface Price {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
             }
@@ -12254,7 +12254,7 @@ export interface Price {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 option: {
@@ -12267,7 +12267,7 @@ export interface Price {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
             }
@@ -12284,7 +12284,7 @@ export interface Price {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 option: {
@@ -12297,7 +12297,7 @@ export interface Price {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
             }
@@ -12314,7 +12314,7 @@ export interface Price {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 option: {
@@ -12327,7 +12327,7 @@ export interface Price {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
             }
@@ -12342,7 +12342,7 @@ export interface Price {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 option: {
@@ -12355,7 +12355,7 @@ export interface Price {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
             }
@@ -12370,7 +12370,7 @@ export interface Price {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 option: {
@@ -12383,7 +12383,7 @@ export interface Price {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
             }
@@ -12400,7 +12400,7 @@ export interface Price {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 option: {
@@ -12413,7 +12413,7 @@ export interface Price {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
             }
@@ -12428,7 +12428,7 @@ export interface Price {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 option: {
@@ -12441,7 +12441,7 @@ export interface Price {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
             }
@@ -12456,7 +12456,7 @@ export interface Price {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 option: {
@@ -12469,7 +12469,7 @@ export interface Price {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
             }
@@ -12486,7 +12486,7 @@ export interface Price {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 option: {
@@ -12499,7 +12499,7 @@ export interface Price {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
             }
@@ -12514,7 +12514,7 @@ export interface Price {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 option: {
@@ -12527,7 +12527,7 @@ export interface Price {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
             }
@@ -12542,7 +12542,7 @@ export interface Price {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 option: {
@@ -12555,7 +12555,7 @@ export interface Price {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
             }
@@ -12572,7 +12572,7 @@ export interface Price {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 option: {
@@ -12585,7 +12585,7 @@ export interface Price {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
             }
@@ -12601,7 +12601,7 @@ export interface Price {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
         }
@@ -12616,7 +12616,7 @@ export interface Price {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
             option: {
@@ -12629,7 +12629,7 @@ export interface Price {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
         }
@@ -12644,7 +12644,7 @@ export interface Price {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
         }
@@ -12661,7 +12661,7 @@ export interface Price {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
         }
@@ -12675,7 +12675,7 @@ export interface Price {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             };
         }
         offers: {
@@ -12688,7 +12688,7 @@ export interface Price {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             };
         }
         options: {
@@ -12702,7 +12702,7 @@ export interface Price {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
             ipv4: {
@@ -12715,7 +12715,7 @@ export interface Price {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
             line: {
@@ -12728,7 +12728,7 @@ export interface Price {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
         }

@@ -162,7 +162,7 @@ export interface Ssl {
     /**
      * Controle cache
      */
-    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+    $cache(param?: ICacheOptions | CacheAction): void;
     $(serviceName: string): {
         /**
          * Get SSL details
@@ -172,7 +172,7 @@ export interface Ssl {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         serviceInfos: {
             /**
              * Get service information
@@ -187,7 +187,7 @@ export interface Ssl {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         tasks: {
             /**
@@ -198,7 +198,7 @@ export interface Ssl {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(taskId: number): {
                 /**
                  * Get a task of an SSL
@@ -208,7 +208,7 @@ export interface Ssl {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             };
         }
     };

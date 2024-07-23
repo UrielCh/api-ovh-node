@@ -1192,7 +1192,7 @@ export interface Products {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         $(catalogId: number): {
             /**
              * Get unified catalog
@@ -1202,7 +1202,7 @@ export interface Products {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             addons: {
                 /**
                  * Get a list of addons from a specific unified catalog
@@ -1212,7 +1212,7 @@ export interface Products {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             fullPlans: {
                 /**
@@ -1223,7 +1223,7 @@ export interface Products {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             plans: {
                 /**
@@ -1234,7 +1234,7 @@ export interface Products {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             products: {
                 /**
@@ -1245,7 +1245,7 @@ export interface Products {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
         };
     }

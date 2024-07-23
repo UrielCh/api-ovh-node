@@ -105,7 +105,7 @@ export interface Partner {
     /**
      * Controle cache
      */
-    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+    $cache(param?: ICacheOptions | CacheAction): void;
 }
 
 export declare function proxyPartner(ovhEngine: OvhRequestable): Partner;

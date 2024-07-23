@@ -7678,7 +7678,7 @@ export interface Cloud {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
     }
     eligibility: {
         /**
@@ -7689,7 +7689,7 @@ export interface Cloud {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
     }
     order: {
         /**
@@ -7700,7 +7700,7 @@ export interface Cloud {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         rule: {
             availability: {
                 /**
@@ -7711,7 +7711,7 @@ export interface Cloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             instanceCategory: {
                 /**
@@ -7722,7 +7722,7 @@ export interface Cloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
         }
     }
@@ -7735,7 +7735,7 @@ export interface Cloud {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         $(serviceName: string): {
             /**
              * Get this object properties
@@ -7750,7 +7750,7 @@ export interface Cloud {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             acl: {
                 /**
                  * Get ACL on your cloud project
@@ -7765,7 +7765,7 @@ export interface Cloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(accountId: string): {
                     /**
                      * Delete ACL
@@ -7780,7 +7780,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
             activateMonthlyBilling: {
@@ -7805,7 +7805,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     command: {
                         /**
                          * Generate an app spec corresponding CLI command
@@ -7832,7 +7832,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         datasync: {
                             /**
                              * Starts a manual data synchronization on an app
@@ -7863,7 +7863,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         scalingstrategy: {
                             /**
@@ -7902,7 +7902,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 capabilities: {
                     feature: {
@@ -7914,7 +7914,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                     quota: {
                         /**
@@ -7925,7 +7925,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                     region: {
                         /**
@@ -7936,7 +7936,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(region: string): {
                             /**
                              * Get Region Information
@@ -7946,7 +7946,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             app: {
                                 image: {
                                     /**
@@ -7957,7 +7957,7 @@ export interface Cloud {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                 }
                             }
                             data: {
@@ -7970,7 +7970,7 @@ export interface Cloud {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                 }
                             }
                             flavor: {
@@ -7982,7 +7982,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(flavorId: string): {
                                     /**
                                      * Get Flavor Information
@@ -7992,7 +7992,7 @@ export interface Cloud {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                 };
                             }
                             preset: {
@@ -8004,7 +8004,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(presetId: string): {
                                     /**
                                      * Get Preset Information
@@ -8014,7 +8014,7 @@ export interface Cloud {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                 };
                             }
                         };
@@ -8030,7 +8030,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(region: string): {
                             /**
                              * Get Region Information
@@ -8040,7 +8040,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             alias: {
                                 /**
                                  * List datastores
@@ -8055,7 +8055,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(alias: string): {
                                     /**
                                      * Permanently delete a datastore
@@ -8075,7 +8075,7 @@ export interface Cloud {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                     auth: {
                                         /**
                                          * Get an AI datastore auth in a given region by its alias
@@ -8085,7 +8085,7 @@ export interface Cloud {
                                         /**
                                          * Controle cache
                                          */
-                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                        $cache(param?: ICacheOptions | CacheAction): void;
                                     }
                                 };
                             }
@@ -8106,7 +8106,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     capabilities: {
                         presetImage: {
                             /**
@@ -8117,7 +8117,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                     }
                     command: {
@@ -8141,7 +8141,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         datasync: {
                             /**
                              * Starts a manual data synchronization on an AI Solutions job
@@ -8172,7 +8172,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                     };
                 }
@@ -8190,7 +8190,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     capabilities: {
                         editor: {
                             /**
@@ -8201,7 +8201,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         framework: {
                             /**
@@ -8212,7 +8212,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                     }
                     command: {
@@ -8241,7 +8241,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         backup: {
                             /**
                              * List all backups of an AI Solutions notebook
@@ -8251,7 +8251,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(backupId: string): {
                                 /**
                                  * Get details for a single AI Solutions notebook backup
@@ -8261,7 +8261,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 fork: {
                                     /**
                                      * Starts a new AI Solutions notebook from a backup
@@ -8294,7 +8294,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         start: {
                             /**
@@ -8322,7 +8322,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(region: string): {
                             /**
                              * Get Region Information
@@ -8332,7 +8332,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             partner: {
                                 /**
                                  * List partners and contracts
@@ -8342,7 +8342,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(partnerId: string): {
                                     /**
                                      * Get partner and contract
@@ -8352,7 +8352,7 @@ export interface Cloud {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                 };
                             }
                         };
@@ -8372,7 +8372,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(registryId: string): {
                         /**
                          * Delete a Docker registry
@@ -8392,7 +8392,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 token: {
@@ -8409,7 +8409,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(id: string): {
                         /**
                          * Delete this application token
@@ -8424,7 +8424,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         renew: {
                             /**
                              * Renew an application token
@@ -8449,7 +8449,7 @@ export interface Cloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(id: string): {
                     /**
                      * Delete alerting
@@ -8469,7 +8469,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     alert: {
                         /**
                          * See alerts
@@ -8479,7 +8479,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(alertId: number): {
                             /**
                              * Get this object properties
@@ -8489,7 +8489,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         };
                     }
                 };
@@ -8503,7 +8503,7 @@ export interface Cloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             cancel: {
                 /**
@@ -8522,7 +8522,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 kube: {
                     admissionplugins: {
@@ -8534,7 +8534,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                     flavors: {
                         /**
@@ -8545,7 +8545,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                     log: {
                         kind: {
@@ -8557,7 +8557,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(name: string): {
                                 /**
                                  * Get a log kind
@@ -8567,7 +8567,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -8580,7 +8580,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                 }
                 loadbalancer: {
@@ -8593,7 +8593,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(regionName: string): {
                             /**
                              * Get specific information of a region
@@ -8603,7 +8603,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         };
                     }
                 }
@@ -8616,7 +8616,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
             }
             changeContact: {
@@ -8642,7 +8642,7 @@ export interface Cloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             containerRegistry: {
                 /**
@@ -8658,7 +8658,7 @@ export interface Cloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(registryID: string): {
                     /**
                      * Delete a registry
@@ -8678,7 +8678,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     capabilities: {
                         plan: {
                             /**
@@ -8689,7 +8689,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                     }
                     ipRestrictions: {
@@ -8707,7 +8707,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         registry: {
                             /**
@@ -8723,7 +8723,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                     }
                     openIdConnect: {
@@ -8750,7 +8750,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                     plan: {
                         /**
@@ -8766,7 +8766,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                     users: {
                         /**
@@ -8782,7 +8782,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(userID: string): {
                             /**
                              * Delete a registry user
@@ -8797,7 +8797,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             setAsAdmin: {
                                 /**
                                  * Set the user as Admin
@@ -8823,7 +8823,7 @@ export interface Cloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(id: number): {
                     /**
                      * Get this object properties
@@ -8833,7 +8833,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
             dataProcessing: {
@@ -8851,7 +8851,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 capabilities: {
                     /**
@@ -8862,7 +8862,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 jobs: {
                     /**
@@ -8878,7 +8878,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(jobId: string): {
                         /**
                          * Kill job with given id
@@ -8893,7 +8893,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         logs: {
                             /**
                              * Get the logs of a job
@@ -8903,7 +8903,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                     };
                 }
@@ -8921,7 +8921,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     capabilities: {
                         /**
                          * Get notebooks capabilities
@@ -8931,7 +8931,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                     $(notebookId: string): {
                         /**
@@ -8947,7 +8947,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         start: {
                             /**
                              * Start a Data Processing notebook
@@ -8975,7 +8975,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 capabilities: {
                     /**
@@ -8986,7 +8986,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 cassandra: {
                     /**
@@ -9002,7 +9002,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(clusterId: string): {
                         /**
                          * Delete a cassandra cluster
@@ -9022,7 +9022,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         advancedConfiguration: {
                             /**
                              * Get cassandra advanced configuration
@@ -9037,7 +9037,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         backup: {
                             /**
@@ -9048,7 +9048,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(backupId: string): {
                                 /**
                                  * Get cassandra backups
@@ -9058,7 +9058,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         capabilities: {
@@ -9071,7 +9071,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             }
                             integration: {
                                 /**
@@ -9082,7 +9082,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             }
                         }
                         certificates: {
@@ -9094,7 +9094,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         integration: {
                             /**
@@ -9110,7 +9110,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(integrationId: string): {
                                 /**
                                  * Delete an integration
@@ -9125,7 +9125,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         ipRestriction: {
@@ -9142,7 +9142,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(ipBlock: string): {
                                 /**
                                  * Deletes the given IP from the restricted IPs of the cassandra
@@ -9162,7 +9162,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         log: {
@@ -9180,7 +9180,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(subscriptionId: string): {
                                     /**
                                      * Delete a subscription
@@ -9195,7 +9195,7 @@ export interface Cloud {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                 };
                             }
                         }
@@ -9208,7 +9208,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         maintenance: {
                             /**
@@ -9219,7 +9219,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(maintenanceId: string): {
                                 /**
                                  * Get the maintenance for the cassandra cluster
@@ -9229,7 +9229,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 apply: {
                                     /**
                                      * Apply the maintenance
@@ -9248,7 +9248,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(metricName: string): {
                                 /**
                                  * Get the metric values for the cassandra cluster
@@ -9258,7 +9258,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         node: {
@@ -9270,7 +9270,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(nodeId: string): {
                                 /**
                                  * Get cassandra nodes
@@ -9280,7 +9280,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         user: {
@@ -9297,7 +9297,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(userId: string): {
                                 /**
                                  * Delete a cassandra user
@@ -9312,7 +9312,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 credentials: {
                                     reset: {
                                         /**
@@ -9340,7 +9340,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(clusterId: string): {
                         /**
                          * Delete a grafana cluster
@@ -9360,7 +9360,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         advancedConfiguration: {
                             /**
                              * Get grafana advanced configuration
@@ -9375,7 +9375,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         backup: {
                             /**
@@ -9386,7 +9386,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(backupId: string): {
                                 /**
                                  * Get grafana backups
@@ -9396,7 +9396,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         capabilities: {
@@ -9409,7 +9409,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             }
                             integration: {
                                 /**
@@ -9420,7 +9420,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             }
                         }
                         integration: {
@@ -9437,7 +9437,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(integrationId: string): {
                                 /**
                                  * Delete an integration
@@ -9452,7 +9452,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         ipRestriction: {
@@ -9469,7 +9469,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(ipBlock: string): {
                                 /**
                                  * Deletes the given IP from the restricted IPs of the grafana
@@ -9489,7 +9489,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         log: {
@@ -9507,7 +9507,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(subscriptionId: string): {
                                     /**
                                      * Delete a subscription
@@ -9522,7 +9522,7 @@ export interface Cloud {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                 };
                             }
                         }
@@ -9535,7 +9535,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         maintenance: {
                             /**
@@ -9546,7 +9546,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(maintenanceId: string): {
                                 /**
                                  * Get the maintenance for the grafana cluster
@@ -9556,7 +9556,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 apply: {
                                     /**
                                      * Apply the maintenance
@@ -9575,7 +9575,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(metricName: string): {
                                 /**
                                  * Get the metric values for the grafana cluster
@@ -9585,7 +9585,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         node: {
@@ -9597,7 +9597,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(nodeId: string): {
                                 /**
                                  * Get grafana nodes
@@ -9607,7 +9607,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         user: {
@@ -9619,7 +9619,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(userId: string): {
                                 /**
                                  * Get grafana users
@@ -9629,7 +9629,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 credentials: {
                                     reset: {
                                         /**
@@ -9657,7 +9657,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(clusterId: string): {
                         /**
                          * Delete a kafka cluster
@@ -9677,7 +9677,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         acl: {
                             /**
                              * List acls of the kafka
@@ -9692,7 +9692,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(aclId: string): {
                                 /**
                                  * Delete a kafka acl
@@ -9707,7 +9707,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         advancedConfiguration: {
@@ -9724,7 +9724,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         capabilities: {
                             advancedConfiguration: {
@@ -9736,7 +9736,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             }
                             integration: {
                                 /**
@@ -9747,7 +9747,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             }
                         }
                         certificates: {
@@ -9759,7 +9759,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         integration: {
                             /**
@@ -9775,7 +9775,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(integrationId: string): {
                                 /**
                                  * Delete an integration
@@ -9790,7 +9790,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         ipRestriction: {
@@ -9807,7 +9807,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(ipBlock: string): {
                                 /**
                                  * Deletes the given IP from the restricted IPs of the kafka
@@ -9827,7 +9827,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         log: {
@@ -9845,7 +9845,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(subscriptionId: string): {
                                     /**
                                      * Delete a subscription
@@ -9860,7 +9860,7 @@ export interface Cloud {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                 };
                             }
                         }
@@ -9873,7 +9873,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         maintenance: {
                             /**
@@ -9884,7 +9884,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(maintenanceId: string): {
                                 /**
                                  * Get the maintenance for the kafka cluster
@@ -9894,7 +9894,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 apply: {
                                     /**
                                      * Apply the maintenance
@@ -9913,7 +9913,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(metricName: string): {
                                 /**
                                  * Get the metric values for the kafka cluster
@@ -9923,7 +9923,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         node: {
@@ -9935,7 +9935,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(nodeId: string): {
                                 /**
                                  * Get kafka nodes
@@ -9945,7 +9945,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         permissions: {
@@ -9957,7 +9957,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         schemaRegistryAcl: {
                             /**
@@ -9973,7 +9973,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(aclId: string): {
                                 /**
                                  * Delete a kafka schema registry acl
@@ -9988,7 +9988,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         topic: {
@@ -10005,7 +10005,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(topicId: string): {
                                 /**
                                  * Delete a kafka topic
@@ -10025,7 +10025,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         topicAcl: {
@@ -10042,7 +10042,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(aclId: string): {
                                 /**
                                  * Delete a kafka topic acl
@@ -10057,7 +10057,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         user: {
@@ -10074,7 +10074,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(userId: string): {
                                 /**
                                  * Delete a kafka user
@@ -10089,7 +10089,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 access: {
                                     /**
                                      * Retrieve the user acces for the cluster
@@ -10099,7 +10099,7 @@ export interface Cloud {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                 }
                                 credentials: {
                                     reset: {
@@ -10128,7 +10128,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(clusterId: string): {
                         /**
                          * Delete a kafkaConnect cluster
@@ -10148,7 +10148,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         advancedConfiguration: {
                             /**
                              * Get kafkaConnect advanced configuration
@@ -10163,7 +10163,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         capabilities: {
                             advancedConfiguration: {
@@ -10175,7 +10175,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             }
                             connector: {
                                 /**
@@ -10186,7 +10186,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(connectorId: string): {
                                     /**
                                      * Get Kafka Connect connector capability
@@ -10196,7 +10196,7 @@ export interface Cloud {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                     configuration: {
                                         /**
                                          * Get Kafka Connect connector configuration
@@ -10206,7 +10206,7 @@ export interface Cloud {
                                         /**
                                          * Controle cache
                                          */
-                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                        $cache(param?: ICacheOptions | CacheAction): void;
                                     }
                                     transforms: {
                                         /**
@@ -10217,7 +10217,7 @@ export interface Cloud {
                                         /**
                                          * Controle cache
                                          */
-                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                        $cache(param?: ICacheOptions | CacheAction): void;
                                     }
                                 };
                             }
@@ -10230,7 +10230,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             }
                         }
                         connector: {
@@ -10247,7 +10247,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(connectorId: string): {
                                 /**
                                  * Delete a connector
@@ -10267,7 +10267,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 pause: {
                                     /**
                                      * Pause the kafka connector execution
@@ -10298,7 +10298,7 @@ export interface Cloud {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                     $(taskId: number): {
                                         /**
                                          * Get connector task
@@ -10308,7 +10308,7 @@ export interface Cloud {
                                         /**
                                          * Controle cache
                                          */
-                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                        $cache(param?: ICacheOptions | CacheAction): void;
                                         restart: {
                                             /**
                                              * Restart the kafka connector task execution
@@ -10334,7 +10334,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(integrationId: string): {
                                 /**
                                  * Delete an integration
@@ -10349,7 +10349,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         ipRestriction: {
@@ -10366,7 +10366,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(ipBlock: string): {
                                 /**
                                  * Deletes the given IP from the restricted IPs of the kafkaConnect
@@ -10386,7 +10386,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         log: {
@@ -10404,7 +10404,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(subscriptionId: string): {
                                     /**
                                      * Delete a subscription
@@ -10419,7 +10419,7 @@ export interface Cloud {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                 };
                             }
                         }
@@ -10432,7 +10432,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         maintenance: {
                             /**
@@ -10443,7 +10443,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(maintenanceId: string): {
                                 /**
                                  * Get the maintenance for the kafka connect cluster
@@ -10453,7 +10453,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 apply: {
                                     /**
                                      * Apply the maintenance
@@ -10472,7 +10472,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(metricName: string): {
                                 /**
                                  * Get the metric values for the kafkaConnect cluster
@@ -10482,7 +10482,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         node: {
@@ -10494,7 +10494,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(nodeId: string): {
                                 /**
                                  * Get kafkaConnect nodes
@@ -10504,7 +10504,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         user: {
@@ -10521,7 +10521,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(userId: string): {
                                 /**
                                  * Delete a kafkaConnect user
@@ -10536,7 +10536,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 credentials: {
                                     reset: {
                                         /**
@@ -10564,7 +10564,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(clusterId: string): {
                         /**
                          * Delete a kafkaMirrorMaker
@@ -10584,7 +10584,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         capabilities: {
                             integration: {
                                 /**
@@ -10595,7 +10595,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             }
                         }
                         integration: {
@@ -10612,7 +10612,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(integrationId: string): {
                                 /**
                                  * Delete an integration
@@ -10627,7 +10627,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         log: {
@@ -10645,7 +10645,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(subscriptionId: string): {
                                     /**
                                      * Delete a subscription
@@ -10660,7 +10660,7 @@ export interface Cloud {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                 };
                             }
                         }
@@ -10673,7 +10673,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         maintenance: {
                             /**
@@ -10684,7 +10684,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(maintenanceId: string): {
                                 /**
                                  * Get the maintenance for the kafka mirror maker cluster
@@ -10694,7 +10694,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 apply: {
                                     /**
                                      * Apply the maintenance
@@ -10713,7 +10713,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(metricName: string): {
                                 /**
                                  * Get the metric values for the kafkaMirrorMaker
@@ -10723,7 +10723,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         node: {
@@ -10735,7 +10735,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(nodeId: string): {
                                 /**
                                  * Get kafkaMirrorMaker nodes
@@ -10745,7 +10745,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         replication: {
@@ -10762,7 +10762,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(replicationId: string): {
                                 /**
                                  * Delete an replication
@@ -10782,7 +10782,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     };
@@ -10801,7 +10801,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(clusterId: string): {
                         /**
                          * Delete a m3aggregator
@@ -10821,7 +10821,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         capabilities: {
                             integration: {
                                 /**
@@ -10832,7 +10832,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             }
                         }
                         integration: {
@@ -10849,7 +10849,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(integrationId: string): {
                                 /**
                                  * Delete an integration
@@ -10864,7 +10864,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         log: {
@@ -10882,7 +10882,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(subscriptionId: string): {
                                     /**
                                      * Delete a subscription
@@ -10897,7 +10897,7 @@ export interface Cloud {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                 };
                             }
                         }
@@ -10910,7 +10910,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         maintenance: {
                             /**
@@ -10921,7 +10921,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(maintenanceId: string): {
                                 /**
                                  * Get the maintenance for the m3aggregator cluster
@@ -10931,7 +10931,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 apply: {
                                     /**
                                      * Apply the maintenance
@@ -10950,7 +10950,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(metricName: string): {
                                 /**
                                  * Get the metric values for the m3aggregator
@@ -10960,7 +10960,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         node: {
@@ -10972,7 +10972,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(nodeId: string): {
                                 /**
                                  * Get m3aggregator nodes
@@ -10982,7 +10982,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     };
@@ -11001,7 +11001,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(clusterId: string): {
                         /**
                          * Delete a m3db cluster
@@ -11021,7 +11021,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         advancedConfiguration: {
                             /**
                              * Get m3db advanced configuration
@@ -11036,7 +11036,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         backup: {
                             /**
@@ -11047,7 +11047,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(backupId: string): {
                                 /**
                                  * Get m3db backups
@@ -11057,7 +11057,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         capabilities: {
@@ -11070,7 +11070,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             }
                             integration: {
                                 /**
@@ -11081,7 +11081,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             }
                         }
                         integration: {
@@ -11098,7 +11098,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(integrationId: string): {
                                 /**
                                  * Delete an integration
@@ -11113,7 +11113,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         ipRestriction: {
@@ -11130,7 +11130,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(ipBlock: string): {
                                 /**
                                  * Deletes the given IP from the restricted IPs of the m3db
@@ -11150,7 +11150,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         log: {
@@ -11168,7 +11168,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(subscriptionId: string): {
                                     /**
                                      * Delete a subscription
@@ -11183,7 +11183,7 @@ export interface Cloud {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                 };
                             }
                         }
@@ -11196,7 +11196,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         maintenance: {
                             /**
@@ -11207,7 +11207,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(maintenanceId: string): {
                                 /**
                                  * Get the maintenance for the m3db cluster
@@ -11217,7 +11217,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 apply: {
                                     /**
                                      * Apply the maintenance
@@ -11236,7 +11236,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(metricName: string): {
                                 /**
                                  * Get the metric values for the m3db cluster
@@ -11246,7 +11246,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         namespace: {
@@ -11263,7 +11263,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(namespaceId: string): {
                                 /**
                                  * Delete m3db namespace
@@ -11283,7 +11283,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         node: {
@@ -11295,7 +11295,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(nodeId: string): {
                                 /**
                                  * Get m3db nodes
@@ -11305,7 +11305,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         user: {
@@ -11322,7 +11322,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(userId: string): {
                                 /**
                                  * Delete m3db user
@@ -11342,7 +11342,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 credentials: {
                                     reset: {
                                         /**
@@ -11370,7 +11370,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(clusterId: string): {
                         /**
                          * Delete a mongodb cluster
@@ -11390,7 +11390,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         backup: {
                             /**
                              * List backups of the mongodb
@@ -11400,7 +11400,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(backupId: string): {
                                 /**
                                  * Get mongodb backups
@@ -11410,7 +11410,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 restore: {
                                     /**
                                      * Restore the backup
@@ -11434,7 +11434,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(ipBlock: string): {
                                 /**
                                  * Deletes the given IP from the restricted IPs of the mongodb
@@ -11454,7 +11454,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         log: {
@@ -11472,7 +11472,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(subscriptionId: string): {
                                     /**
                                      * Delete a subscription
@@ -11487,7 +11487,7 @@ export interface Cloud {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                 };
                             }
                         }
@@ -11500,7 +11500,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         maintenance: {
                             /**
@@ -11511,7 +11511,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(maintenanceId: string): {
                                 /**
                                  * Get the maintenance for the mongodb cluster
@@ -11521,7 +11521,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 apply: {
                                     /**
                                      * Apply the maintenance
@@ -11540,7 +11540,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(metricName: string): {
                                 /**
                                  * Get the metric values for the mongodb cluster
@@ -11550,7 +11550,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         node: {
@@ -11567,7 +11567,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(nodeId: string): {
                                 /**
                                  * Delete a mongodb cluster's node
@@ -11587,7 +11587,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         restore: {
@@ -11606,7 +11606,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         user: {
                             /**
@@ -11622,7 +11622,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(userId: string): {
                                 /**
                                  * Delete a mongodb user
@@ -11642,7 +11642,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 credentials: {
                                     reset: {
                                         /**
@@ -11670,7 +11670,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(clusterId: string): {
                         /**
                          * Delete a mysql cluster
@@ -11690,7 +11690,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         advancedConfiguration: {
                             /**
                              * Get mysql advanced configuration
@@ -11705,7 +11705,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         backup: {
                             /**
@@ -11716,7 +11716,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(backupId: string): {
                                 /**
                                  * Get mysql backups
@@ -11726,7 +11726,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         capabilities: {
@@ -11739,7 +11739,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             }
                             integration: {
                                 /**
@@ -11750,7 +11750,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             }
                         }
                         certificates: {
@@ -11762,7 +11762,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         currentQueries: {
                             /**
@@ -11773,7 +11773,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             cancel: {
                                 /**
                                  * Cancel the given current query of the cluster
@@ -11795,7 +11795,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(databaseId: string): {
                                 /**
                                  * Delete a mysql database
@@ -11810,7 +11810,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         enableWrites: {
@@ -11834,7 +11834,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(integrationId: string): {
                                 /**
                                  * Delete an integration
@@ -11849,7 +11849,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         ipRestriction: {
@@ -11866,7 +11866,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(ipBlock: string): {
                                 /**
                                  * Deletes the given IP from the restricted IPs of the mysql
@@ -11886,7 +11886,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         log: {
@@ -11904,7 +11904,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(subscriptionId: string): {
                                     /**
                                      * Delete a subscription
@@ -11919,7 +11919,7 @@ export interface Cloud {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                 };
                             }
                         }
@@ -11932,7 +11932,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         maintenance: {
                             /**
@@ -11943,7 +11943,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(maintenanceId: string): {
                                 /**
                                  * Get the maintenance for the mysql cluster
@@ -11953,7 +11953,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 apply: {
                                     /**
                                      * Apply the maintenance
@@ -11972,7 +11972,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(metricName: string): {
                                 /**
                                  * Get the metric values for the mysql cluster
@@ -11982,7 +11982,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         node: {
@@ -11994,7 +11994,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(nodeId: string): {
                                 /**
                                  * Get mysql nodes
@@ -12004,7 +12004,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         queryStatistics: {
@@ -12016,7 +12016,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             reset: {
                                 /**
                                  * Reset the query statistics of the cluster
@@ -12039,7 +12039,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(userId: string): {
                                 /**
                                  * Delete a mysql user
@@ -12054,7 +12054,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 credentials: {
                                     reset: {
                                         /**
@@ -12082,7 +12082,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(clusterId: string): {
                         /**
                          * Delete a opensearch cluster
@@ -12102,7 +12102,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         advancedConfiguration: {
                             /**
                              * Get opensearch advanced configuration
@@ -12117,7 +12117,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         backup: {
                             /**
@@ -12128,7 +12128,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(backupId: string): {
                                 /**
                                  * Get opensearch backups
@@ -12138,7 +12138,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         capabilities: {
@@ -12151,7 +12151,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             }
                             integration: {
                                 /**
@@ -12162,7 +12162,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             }
                         }
                         index: {
@@ -12174,7 +12174,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(indexId: string): {
                                 /**
                                  * Delete an opensearch index
@@ -12189,7 +12189,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         integration: {
@@ -12206,7 +12206,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(integrationId: string): {
                                 /**
                                  * Delete an integration
@@ -12221,7 +12221,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         ipRestriction: {
@@ -12238,7 +12238,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(ipBlock: string): {
                                 /**
                                  * Deletes the given IP from the restricted IPs of the opensearch
@@ -12258,7 +12258,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         log: {
@@ -12276,7 +12276,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(subscriptionId: string): {
                                     /**
                                      * Delete a subscription
@@ -12291,7 +12291,7 @@ export interface Cloud {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                 };
                             }
                         }
@@ -12304,7 +12304,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         maintenance: {
                             /**
@@ -12315,7 +12315,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(maintenanceId: string): {
                                 /**
                                  * Get the maintenance for the opensearch cluster
@@ -12325,7 +12325,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 apply: {
                                     /**
                                      * Apply the maintenance
@@ -12344,7 +12344,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(metricName: string): {
                                 /**
                                  * Get the metric values for the opensearch cluster
@@ -12354,7 +12354,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         node: {
@@ -12366,7 +12366,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(nodeId: string): {
                                 /**
                                  * Get opensearch nodes
@@ -12376,7 +12376,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         pattern: {
@@ -12393,7 +12393,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(patternId: string): {
                                 /**
                                  * Delete an opensearch pattern
@@ -12408,7 +12408,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         permissions: {
@@ -12420,7 +12420,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         user: {
                             /**
@@ -12436,7 +12436,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(userId: string): {
                                 /**
                                  * Delete a opensearch user
@@ -12456,7 +12456,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 credentials: {
                                     reset: {
                                         /**
@@ -12484,7 +12484,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(clusterId: string): {
                         /**
                          * Delete a postgresql cluster
@@ -12504,7 +12504,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         advancedConfiguration: {
                             /**
                              * Get postgresql advanced configuration
@@ -12519,7 +12519,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         backup: {
                             /**
@@ -12530,7 +12530,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(backupId: string): {
                                 /**
                                  * Get postgresql backups
@@ -12540,7 +12540,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         capabilities: {
@@ -12553,7 +12553,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             }
                             integration: {
                                 /**
@@ -12564,7 +12564,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             }
                         }
                         certificates: {
@@ -12576,7 +12576,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         connectionPool: {
                             /**
@@ -12591,7 +12591,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(connectionPoolId: string): {
                                 /**
                                  * Delete a postgresql connectionPool
@@ -12611,7 +12611,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         currentQueries: {
@@ -12623,7 +12623,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             cancel: {
                                 /**
                                  * Cancel the given current query of the cluster
@@ -12645,7 +12645,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(databaseId: string): {
                                 /**
                                  * Delete a postgresql database
@@ -12660,7 +12660,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         enableWrites: {
@@ -12684,7 +12684,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(integrationId: string): {
                                 /**
                                  * Delete an integration
@@ -12699,7 +12699,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         ipRestriction: {
@@ -12716,7 +12716,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(ipBlock: string): {
                                 /**
                                  * Deletes the given IP from the restricted IPs of the postgresql
@@ -12736,7 +12736,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         log: {
@@ -12754,7 +12754,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(subscriptionId: string): {
                                     /**
                                      * Delete a subscription
@@ -12769,7 +12769,7 @@ export interface Cloud {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                 };
                             }
                         }
@@ -12782,7 +12782,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         maintenance: {
                             /**
@@ -12793,7 +12793,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(maintenanceId: string): {
                                 /**
                                  * Get the maintenance for the postgresql cluster
@@ -12803,7 +12803,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 apply: {
                                     /**
                                      * Apply the maintenance
@@ -12822,7 +12822,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(metricName: string): {
                                 /**
                                  * Get the metric values for the postgresql cluster
@@ -12832,7 +12832,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         node: {
@@ -12844,7 +12844,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(nodeId: string): {
                                 /**
                                  * Get postgresql nodes
@@ -12854,7 +12854,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         queryStatistics: {
@@ -12866,7 +12866,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             reset: {
                                 /**
                                  * Reset the query statistics of the cluster
@@ -12884,7 +12884,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         user: {
                             /**
@@ -12900,7 +12900,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(userId: string): {
                                 /**
                                  * Delete a postgresql user
@@ -12920,7 +12920,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 credentials: {
                                     reset: {
                                         /**
@@ -12948,7 +12948,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(clusterId: string): {
                         /**
                          * Delete a redis cluster
@@ -12968,7 +12968,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         advancedConfiguration: {
                             /**
                              * Get redis advanced configuration
@@ -12983,7 +12983,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         backup: {
                             /**
@@ -12994,7 +12994,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(backupId: string): {
                                 /**
                                  * Get redis backups
@@ -13004,7 +13004,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         capabilities: {
@@ -13017,7 +13017,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             }
                             categories: {
                                 /**
@@ -13028,7 +13028,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             }
                             commands: {
                                 /**
@@ -13039,7 +13039,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             }
                             integration: {
                                 /**
@@ -13050,7 +13050,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             }
                         }
                         integration: {
@@ -13067,7 +13067,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(integrationId: string): {
                                 /**
                                  * Delete an integration
@@ -13082,7 +13082,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         ipRestriction: {
@@ -13099,7 +13099,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(ipBlock: string): {
                                 /**
                                  * Deletes the given IP from the restricted IPs of the redis
@@ -13119,7 +13119,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         log: {
@@ -13137,7 +13137,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(subscriptionId: string): {
                                     /**
                                      * Delete a subscription
@@ -13152,7 +13152,7 @@ export interface Cloud {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                 };
                             }
                         }
@@ -13165,7 +13165,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         maintenance: {
                             /**
@@ -13176,7 +13176,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(maintenanceId: string): {
                                 /**
                                  * Get the maintenance for the redis cluster
@@ -13186,7 +13186,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 apply: {
                                     /**
                                      * Apply the maintenance
@@ -13205,7 +13205,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(metricName: string): {
                                 /**
                                  * Get the metric values for the redis cluster
@@ -13215,7 +13215,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         node: {
@@ -13227,7 +13227,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(nodeId: string): {
                                 /**
                                  * Get redis nodes
@@ -13237,7 +13237,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         user: {
@@ -13254,7 +13254,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(userId: string): {
                                 /**
                                  * Delete a redis user
@@ -13274,7 +13274,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 credentials: {
                                     reset: {
                                         /**
@@ -13297,7 +13297,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(clusterId: string): {
                         /**
                          * Get service cluster properties
@@ -13307,7 +13307,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
             }
@@ -13320,7 +13320,7 @@ export interface Cloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(flavorId: string): {
                     /**
                      * Get flavor
@@ -13330,7 +13330,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
             image: {
@@ -13342,7 +13342,7 @@ export interface Cloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(imageId: string): {
                     /**
                      * Get image
@@ -13352,7 +13352,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
             instance: {
@@ -13369,7 +13369,7 @@ export interface Cloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 bulk: {
                     /**
                      * Create multiple instances
@@ -13391,7 +13391,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(groupId: string): {
                         /**
                          * Delete a group
@@ -13406,7 +13406,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 $(instanceId: string): {
@@ -13428,7 +13428,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     activeMonthlyBilling: {
                         /**
                          * Activate monthly billing on instance
@@ -13457,7 +13457,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(interfaceId: string): {
                             /**
                              * Delete an interface
@@ -13472,7 +13472,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         };
                     }
                     monitoring: {
@@ -13484,7 +13484,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                     reboot: {
                         /**
@@ -13577,7 +13577,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(regionName: string): {
                                 /**
                                  * Get connection information from a region
@@ -13587,7 +13587,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -13606,7 +13606,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(streamId: string): {
                         /**
                          * Delete a stream
@@ -13626,7 +13626,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         stats: {
                             /**
                              * Retrieve statistics of the stream
@@ -13636,7 +13636,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         subscription: {
                             /**
@@ -13652,7 +13652,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(subscriptionId: string): {
                                 /**
                                  * Delete a subscription
@@ -13667,7 +13667,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 resetCursor: {
                                     /**
                                      * Reset a cursor
@@ -13684,7 +13684,7 @@ export interface Cloud {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                 }
                             };
                         }
@@ -13702,7 +13702,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(tokenId: string): {
                                 /**
                                  * Delete a token
@@ -13717,7 +13717,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     };
@@ -13732,7 +13732,7 @@ export interface Cloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 failover: {
                     /**
                      * Get failover ips
@@ -13742,7 +13742,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(id: string): {
                         /**
                          * Get failover ip
@@ -13752,7 +13752,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         attach: {
                             /**
                              * Attach failover ip to an instance
@@ -13777,7 +13777,7 @@ export interface Cloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 regions: {
                     /**
                      * List Kubernetes available regions
@@ -13787,7 +13787,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 $(kubeId: string): {
                     /**
@@ -13808,7 +13808,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     auditLogs: {
                         /**
                          * Generate a temporary URL to retrieve audit logs
@@ -13837,7 +13837,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                     flavors: {
                         /**
@@ -13848,7 +13848,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                     ipRestrictions: {
                         /**
@@ -13869,7 +13869,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(ip: string): {
                             /**
                              * Delete an ip restriction from your cluster
@@ -13907,7 +13907,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(subscriptionId: string): {
                                 /**
                                  * Delete a subscription
@@ -13922,7 +13922,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         url: {
@@ -13943,7 +13943,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                     }
                     node: {
@@ -13955,7 +13955,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(nodeId: string): {
                             /**
                              * Delete a specific node on your cluster
@@ -13970,7 +13970,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         };
                     }
                     nodepool: {
@@ -13987,7 +13987,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(nodePoolId: string): {
                             /**
                              * Delete a nodepool from your cluster
@@ -14007,7 +14007,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             nodes: {
                                 /**
                                  * List all nodes contained in a nodepool
@@ -14017,7 +14017,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             }
                         };
                     }
@@ -14045,7 +14045,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                     privateNetworkConfiguration: {
                         /**
@@ -14061,7 +14061,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                     reset: {
                         /**
@@ -14109,7 +14109,7 @@ export interface Cloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(labId: string): {
                     /**
                      * Get details of a public cloud lab
@@ -14124,7 +14124,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     agreement: {
                         /**
                          * List required agreements to active this lab
@@ -14134,7 +14134,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                 };
             }
@@ -14152,7 +14152,7 @@ export interface Cloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(loadBalancerId: string): {
                     /**
                      * Delete a load balancer
@@ -14172,7 +14172,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     configuration: {
                         /**
                          * List all versions of the configuration
@@ -14187,7 +14187,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(version: number): {
                             /**
                              * Delete a configuration
@@ -14202,7 +14202,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             apply: {
                                 /**
                                  * Apply a configuration
@@ -14223,7 +14223,7 @@ export interface Cloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(migrationId: string): {
                     /**
                      * Get planned migration
@@ -14238,7 +14238,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
             network: {
@@ -14256,7 +14256,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(networkId: string): {
                         /**
                          * Delete private network
@@ -14276,7 +14276,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         region: {
                             /**
                              * Activate private network in a new region
@@ -14298,7 +14298,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(subnetId: string): {
                                 /**
                                  * Delete a network subnet
@@ -14318,7 +14318,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
             }
             operation: {
@@ -14330,7 +14330,7 @@ export interface Cloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(operationId: string): {
                     /**
                      * Get information about one operation
@@ -14340,7 +14340,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
             quota: {
@@ -14352,7 +14352,7 @@ export interface Cloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             region: {
                 /**
@@ -14368,7 +14368,7 @@ export interface Cloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(regionName: string): {
                     /**
                      * Get information about your region
@@ -14378,7 +14378,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     coldArchive: {
                         /**
                          * Get cold archive containers
@@ -14393,7 +14393,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(name: string): {
                             /**
                              * Delete S3 cold archive container
@@ -14408,7 +14408,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             archive: {
                                 /**
                                  * Start archiving of container
@@ -14466,7 +14466,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(floatingIpId: string): {
                             /**
                              * Delete a floating ip
@@ -14481,7 +14481,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             detach: {
                                 /**
                                  * Detach your floating ip
@@ -14505,7 +14505,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(id: string): {
                             /**
                              * Delete gateway
@@ -14525,7 +14525,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             expose: {
                                 /**
                                  * Expose gateway to public network by adding a public port on it.
@@ -14547,7 +14547,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(interfaceId: string): {
                                     /**
                                      * Delete gateway interface
@@ -14562,7 +14562,7 @@ export interface Cloud {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                 };
                             }
                         };
@@ -14607,7 +14607,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(certificateId: string): {
                                 /**
                                  * Delete a certificate
@@ -14622,7 +14622,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         secret: {
@@ -14634,7 +14634,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(secretId: string): {
                                 /**
                                  * Delete a secret
@@ -14649,7 +14649,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -14663,7 +14663,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(flavorId: string): {
                                 /**
                                  * Get details about a load balancing flavor
@@ -14673,7 +14673,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         healthMonitor: {
@@ -14690,7 +14690,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(healthMonitorId: string): {
                                 /**
                                  * Delete health monitor
@@ -14710,7 +14710,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         l7Policy: {
@@ -14725,7 +14725,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(l7PolicyId: string): {
                                 /**
                                  * DELETE /cloud/project/{serviceName}/region/{regionName}/loadbalancing/l7Policy/{l7PolicyId}
@@ -14742,7 +14742,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 l7Rule: {
                                     /**
                                      * GET /cloud/project/{serviceName}/region/{regionName}/loadbalancing/l7Policy/{l7PolicyId}/l7Rule
@@ -14755,7 +14755,7 @@ export interface Cloud {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                     $(l7RuleId: string): {
                                         /**
                                          * DELETE /cloud/project/{serviceName}/region/{regionName}/loadbalancing/l7Policy/{l7PolicyId}/l7Rule/{l7RuleId}
@@ -14772,7 +14772,7 @@ export interface Cloud {
                                         /**
                                          * Controle cache
                                          */
-                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                        $cache(param?: ICacheOptions | CacheAction): void;
                                     };
                                 }
                             };
@@ -14791,7 +14791,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(listenerId: string): {
                                 /**
                                  * Delete loadbalancer listener
@@ -14811,7 +14811,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         loadbalancer: {
@@ -14828,7 +14828,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(loadBalancerId: string): {
                                 /**
                                  * Delete loadbalancer
@@ -14848,7 +14848,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 associateFloatingIp: {
                                     /**
                                      * Associate an existing floating IP to a loadbalancer
@@ -14878,7 +14878,7 @@ export interface Cloud {
                                         /**
                                          * Controle cache
                                          */
-                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                        $cache(param?: ICacheOptions | CacheAction): void;
                                         $(subscriptionId: string): {
                                             /**
                                              * Delete a subscription
@@ -14893,7 +14893,7 @@ export interface Cloud {
                                             /**
                                              * Controle cache
                                              */
-                                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                            $cache(param?: ICacheOptions | CacheAction): void;
                                         };
                                     }
                                     url: {
@@ -14913,7 +14913,7 @@ export interface Cloud {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                 }
                             };
                         }
@@ -14927,7 +14927,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(name: string): {
                                     /**
                                      * Get a log kind
@@ -14937,7 +14937,7 @@ export interface Cloud {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                 };
                             }
                         }
@@ -14955,7 +14955,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(poolId: string): {
                                 /**
                                  * Delete a loadbalancer pool
@@ -14975,7 +14975,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 member: {
                                     /**
                                      * List your pool members
@@ -14990,7 +14990,7 @@ export interface Cloud {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                     $(memberId: string): {
                                         /**
                                          * Delete a pool member
@@ -15010,7 +15010,7 @@ export interface Cloud {
                                         /**
                                          * Controle cache
                                          */
-                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                        $cache(param?: ICacheOptions | CacheAction): void;
                                     };
                                 }
                             };
@@ -15030,7 +15030,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(networkId: string): {
                             /**
                              * Delete network
@@ -15045,7 +15045,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             subnet: {
                                 /**
                                  * List subnets
@@ -15055,7 +15055,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(subnetId: string): {
                                     /**
                                      * Delete subnet
@@ -15070,7 +15070,7 @@ export interface Cloud {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                     gateway: {
                                         /**
                                          * Create Gateway for existing subnet
@@ -15096,7 +15096,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         allowed: {
                             /**
                              * Get allowed quotas on region
@@ -15106,7 +15106,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         storage: {
                             /**
@@ -15127,7 +15127,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                     }
                     storage: {
@@ -15144,7 +15144,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(name: string): {
                             /**
                              * Delete S3 storage container
@@ -15164,7 +15164,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             object: {
                                 $(objectKey: string): {
                                     /**
@@ -15206,7 +15206,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(volumeBackupId: string): {
                             /**
                              * Delete volume backup
@@ -15221,7 +15221,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             restore: {
                                 /**
                                  * Restore a volume backup on a volume
@@ -15253,7 +15253,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(backupWorkflowId: string): {
                                 /**
                                  * Delete a backup workflow process
@@ -15268,7 +15268,7 @@ export interface Cloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -15283,7 +15283,7 @@ export interface Cloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             retain: {
                 /**
@@ -15301,7 +15301,7 @@ export interface Cloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             serviceInfos: {
                 /**
@@ -15317,7 +15317,7 @@ export interface Cloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             snapshot: {
                 /**
@@ -15328,7 +15328,7 @@ export interface Cloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(imageId: string): {
                     /**
                      * Delete a snapshot
@@ -15343,7 +15343,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
             sshkey: {
@@ -15360,7 +15360,7 @@ export interface Cloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(keyId: string): {
                     /**
                      * Delete SSH key
@@ -15375,7 +15375,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
             stack: {
@@ -15387,7 +15387,7 @@ export interface Cloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(stackId: string): {
                     /**
                      * Get stack
@@ -15397,7 +15397,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
             storage: {
@@ -15414,7 +15414,7 @@ export interface Cloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 access: {
                     /**
                      * Access to SWIFT storage API
@@ -15431,7 +15431,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 $(containerId: string): {
                     /**
@@ -15452,7 +15452,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     cors: {
                         /**
                          * Delete CORS support on SWIFT container
@@ -15512,7 +15512,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 forecast: {
                     /**
@@ -15523,7 +15523,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 history: {
                     /**
@@ -15534,7 +15534,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(usageId: string): {
                         /**
                          * Usage information details
@@ -15544,7 +15544,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
             }
@@ -15562,7 +15562,7 @@ export interface Cloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(userId: number): {
                     /**
                      * Delete user
@@ -15577,7 +15577,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     configuration: {
                         /**
                          * Get your client configuration
@@ -15587,7 +15587,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                     openrc: {
                         /**
@@ -15598,7 +15598,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                     policy: {
                         /**
@@ -15614,7 +15614,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                     rclone: {
                         /**
@@ -15625,7 +15625,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                     regeneratePassword: {
                         /**
@@ -15653,7 +15653,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(roleId: string): {
                             /**
                              * Remove role for a user
@@ -15668,7 +15668,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         };
                     }
                     s3Credentials: {
@@ -15685,7 +15685,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(access: string): {
                             /**
                              * Delete an S3 credential
@@ -15700,7 +15700,7 @@ export interface Cloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             secret: {
                                 /**
                                  * Display secret from a S3 credential
@@ -15733,7 +15733,7 @@ export interface Cloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 snapshot: {
                     /**
                      * Get volume snapshots
@@ -15743,7 +15743,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(snapshotId: string): {
                         /**
                          * Delete a volume snapshot
@@ -15758,7 +15758,7 @@ export interface Cloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 $(volumeId: string): {
@@ -15780,7 +15780,7 @@ export interface Cloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     attach: {
                         /**
                          * Attach a volume on an instance
@@ -15825,7 +15825,7 @@ export interface Cloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
         };
     }

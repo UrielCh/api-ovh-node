@@ -249,7 +249,7 @@ export interface Saas {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         $(serviceName: string): {
             /**
              * Get this object properties
@@ -264,7 +264,7 @@ export interface Saas {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             billingPeriodPeaks: {
                 /**
                  * Get the current billing period's usage peak for each subscription
@@ -274,7 +274,7 @@ export interface Saas {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             orderableLicenses: {
                 /**
@@ -285,7 +285,7 @@ export interface Saas {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(id: number): {
                     /**
                      * Get this object properties
@@ -295,7 +295,7 @@ export interface Saas {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
             serviceInfos: {
@@ -312,7 +312,7 @@ export interface Saas {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             subscription: {
                 /**
@@ -328,7 +328,7 @@ export interface Saas {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(id: number): {
                     /**
                      * Delete a subscription from this tenant
@@ -343,7 +343,7 @@ export interface Saas {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     addonsSubscriptionIds: {
                         /**
                          * Addon subscriptions associated to this office subscription
@@ -353,7 +353,7 @@ export interface Saas {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                     availableAddonLicenses: {
                         /**
@@ -364,7 +364,7 @@ export interface Saas {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                     changeQuantity: {
                         /**
@@ -391,7 +391,7 @@ export interface Saas {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(id: number): {
                     /**
                      * Get this object properties
@@ -401,7 +401,7 @@ export interface Saas {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
             usageStatistics: {
@@ -413,7 +413,7 @@ export interface Saas {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
         };
     }

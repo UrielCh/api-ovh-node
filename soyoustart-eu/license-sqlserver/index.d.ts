@@ -139,7 +139,7 @@ export interface License {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         orderableVersions: {
             /**
              * Get the orderable Sql Server versions
@@ -149,7 +149,7 @@ export interface License {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         $(serviceName: string): {
             /**
@@ -160,7 +160,7 @@ export interface License {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             confirmTermination: {
                 /**
                  * Confirm service termination
@@ -182,7 +182,7 @@ export interface License {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             tasks: {
                 /**
@@ -193,7 +193,7 @@ export interface License {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(taskId: number): {
                     /**
                      * Get this object properties
@@ -203,7 +203,7 @@ export interface License {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
             terminate: {

@@ -317,7 +317,7 @@ export interface Order {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(serviceName: string): {
                 /**
                  * Get allowed options
@@ -327,7 +327,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             };
         }
     }

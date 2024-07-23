@@ -827,7 +827,7 @@ export interface Sms {
     /**
      * Controle cache
      */
-    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+    $cache(param?: ICacheOptions | CacheAction): void;
     estimate: {
         /**
          * Get the encoding, length and number of SMS parts of a text message
@@ -844,7 +844,7 @@ export interface Sms {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
     }
     rates: {
         destinations: {
@@ -856,7 +856,7 @@ export interface Sms {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         packs: {
             /**
@@ -867,7 +867,7 @@ export interface Sms {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
     }
     virtualNumbers: {
@@ -879,7 +879,7 @@ export interface Sms {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         $(number: string): {
             /**
              * Get this object properties
@@ -889,7 +889,7 @@ export interface Sms {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             serviceInfos: {
                 /**
                  * Get service information
@@ -904,7 +904,7 @@ export interface Sms {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
         };
     }
@@ -922,7 +922,7 @@ export interface Sms {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         batches: {
             /**
              * Get batches list
@@ -937,7 +937,7 @@ export interface Sms {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(id: string): {
                 /**
                  * Remove a batch
@@ -957,7 +957,7 @@ export interface Sms {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 cancel: {
                     /**
                      * Cancel a deferred batch (no SMS must have been sent)
@@ -974,7 +974,7 @@ export interface Sms {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
             };
         }
@@ -987,7 +987,7 @@ export interface Sms {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(number: string): {
                 /**
                  * Delete the blacklisted sms number given
@@ -1002,7 +1002,7 @@ export interface Sms {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             };
         }
         document: {
@@ -1014,7 +1014,7 @@ export interface Sms {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         exceptions: {
             /**
@@ -1025,7 +1025,7 @@ export interface Sms {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         hlr: {
             /**
@@ -1041,7 +1041,7 @@ export interface Sms {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(id: number): {
                 /**
                  * Get this object properties
@@ -1051,7 +1051,7 @@ export interface Sms {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 operator: {
                     /**
                      * Get this object properties
@@ -1061,7 +1061,7 @@ export interface Sms {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
             };
         }
@@ -1074,7 +1074,7 @@ export interface Sms {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(id: number): {
                 /**
                  * Delete the sms incoming history given
@@ -1089,7 +1089,7 @@ export interface Sms {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             };
         }
         jobs: {
@@ -1106,7 +1106,7 @@ export interface Sms {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(id: number): {
                 /**
                  * Delete the sms job given (stop sending)
@@ -1121,7 +1121,7 @@ export interface Sms {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             };
         }
         outgoing: {
@@ -1133,7 +1133,7 @@ export interface Sms {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(id: number): {
                 /**
                  * Delete outgoing SMS from history
@@ -1148,7 +1148,7 @@ export interface Sms {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 hlr: {
                     /**
                      * Get this object properties
@@ -1158,7 +1158,7 @@ export interface Sms {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
             };
         }
@@ -1176,7 +1176,7 @@ export interface Sms {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(bookKey: string): {
                 /**
                  * Delete a phonebook
@@ -1196,7 +1196,7 @@ export interface Sms {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 export: {
                     /**
                      * Export the phonebook's contacts
@@ -1206,7 +1206,7 @@ export interface Sms {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 import: {
                     /**
@@ -1229,7 +1229,7 @@ export interface Sms {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(id: number): {
                         /**
                          * Delete a phonebook contact
@@ -1249,7 +1249,7 @@ export interface Sms {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
             };
@@ -1268,7 +1268,7 @@ export interface Sms {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(slotId: number): {
                 /**
                  * Delete the document from the slot
@@ -1288,7 +1288,7 @@ export interface Sms {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 clean: {
                     /**
                      * Clean the invalid and inactive receivers in the document by requesting HLR on each receiver
@@ -1305,7 +1305,7 @@ export interface Sms {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
             };
         }
@@ -1318,7 +1318,7 @@ export interface Sms {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         senders: {
             /**
@@ -1334,7 +1334,7 @@ export interface Sms {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(sender: string): {
                 /**
                  * Delete the sms sender given
@@ -1354,7 +1354,7 @@ export interface Sms {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 documents: {
                     /**
                      * Documents linked to SMS sender for validation purpose
@@ -1369,7 +1369,7 @@ export interface Sms {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(documentID: string): {
                         /**
                          * Get this object properties
@@ -1384,7 +1384,7 @@ export interface Sms {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 validate: {
@@ -1405,7 +1405,7 @@ export interface Sms {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         serviceInfos: {
             /**
@@ -1421,7 +1421,7 @@ export interface Sms {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         smpp: {
             allowedIPs: {
@@ -1438,7 +1438,7 @@ export interface Sms {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             password: {
                 /**
@@ -1456,7 +1456,7 @@ export interface Sms {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
         }
         task: {
@@ -1468,7 +1468,7 @@ export interface Sms {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(taskId: number): {
                 /**
                  * Get this object properties
@@ -1478,7 +1478,7 @@ export interface Sms {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             };
         }
         templatesControl: {
@@ -1495,7 +1495,7 @@ export interface Sms {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(name: string): {
                 /**
                  * Delete the sms template control
@@ -1515,7 +1515,7 @@ export interface Sms {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 relaunchValidation: {
                     /**
                      * Attempt a new validation after moderation refusal
@@ -1546,7 +1546,7 @@ export interface Sms {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(login: string): {
                 /**
                  * Delete the sms user given
@@ -1566,7 +1566,7 @@ export interface Sms {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 document: {
                     /**
                      * Get the /me/document id generated
@@ -1576,7 +1576,7 @@ export interface Sms {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 incoming: {
                     /**
@@ -1587,7 +1587,7 @@ export interface Sms {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(id: number): {
                         /**
                          * Delete the sms incoming history given
@@ -1602,7 +1602,7 @@ export interface Sms {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 jobs: {
@@ -1619,7 +1619,7 @@ export interface Sms {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(id: number): {
                         /**
                          * Delete the sms job given (stop sending)
@@ -1634,7 +1634,7 @@ export interface Sms {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 outgoing: {
@@ -1646,7 +1646,7 @@ export interface Sms {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(id: number): {
                         /**
                          * Delete the sms outgoing history given
@@ -1661,7 +1661,7 @@ export interface Sms {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         hlr: {
                             /**
                              * Get this object properties
@@ -1671,7 +1671,7 @@ export interface Sms {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                     };
                 }
@@ -1689,7 +1689,7 @@ export interface Sms {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(slotId: number): {
                         /**
                          * Delete the document from the slot
@@ -1709,7 +1709,7 @@ export interface Sms {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         clean: {
                             /**
                              * Clean the invalid and inactive receivers in the document by requesting HLR on each receiver
@@ -1726,7 +1726,7 @@ export interface Sms {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                     };
                 }
@@ -1741,7 +1741,7 @@ export interface Sms {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(number: string): {
                 /**
                  * Get this object properties
@@ -1751,7 +1751,7 @@ export interface Sms {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 chatAccess: {
                     /**
                      * Delete the given web access
@@ -1771,7 +1771,7 @@ export interface Sms {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 incoming: {
                     /**
@@ -1782,7 +1782,7 @@ export interface Sms {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(id: number): {
                         /**
                          * Delete the sms incoming history given
@@ -1797,7 +1797,7 @@ export interface Sms {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 jobs: {
@@ -1814,7 +1814,7 @@ export interface Sms {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(id: number): {
                         /**
                          * Delete the sms job given (stop sending)
@@ -1829,7 +1829,7 @@ export interface Sms {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 outgoing: {
@@ -1841,7 +1841,7 @@ export interface Sms {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(id: number): {
                         /**
                          * Delete the sms outgoing history given
@@ -1856,7 +1856,7 @@ export interface Sms {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         hlr: {
                             /**
                              * Get this object properties
@@ -1866,7 +1866,7 @@ export interface Sms {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                     };
                 }

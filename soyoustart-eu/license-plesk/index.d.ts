@@ -211,7 +211,7 @@ export interface License {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         orderableVersions: {
             /**
              * Get the orderable Plesk versions and their associated compatibilities
@@ -221,7 +221,7 @@ export interface License {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         $(serviceName: string): {
             /**
@@ -237,7 +237,7 @@ export interface License {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             allowedDestinationIp: {
                 /**
                  * Returns an array of ips where the license can be moved to
@@ -247,7 +247,7 @@ export interface License {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             canLicenseBeMovedTo: {
                 /**
@@ -258,7 +258,7 @@ export interface License {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             changeIp: {
                 /**
@@ -283,7 +283,7 @@ export interface License {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(label: license.OptionLabel): {
                     /**
                      * release this Option
@@ -298,7 +298,7 @@ export interface License {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
             serviceInfos: {
@@ -315,7 +315,7 @@ export interface License {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             tasks: {
                 /**
@@ -326,7 +326,7 @@ export interface License {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(taskId: number): {
                     /**
                      * Get this object properties
@@ -336,7 +336,7 @@ export interface License {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
             terminate: {

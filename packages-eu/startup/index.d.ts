@@ -157,7 +157,7 @@ export interface Startup {
     /**
      * Controle cache
      */
-    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+    $cache(param?: ICacheOptions | CacheAction): void;
 }
 /**
  * Extra Alias to bypass relativer namespace colitions

@@ -319,7 +319,7 @@ export interface Freefax {
     /**
      * Controle cache
      */
-    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+    $cache(param?: ICacheOptions | CacheAction): void;
     credits: {
         /**
          * Get the credit balance and the remaining pages available for all our freefax
@@ -329,7 +329,7 @@ export interface Freefax {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
     }
     $(serviceName: string): {
         /**
@@ -345,7 +345,7 @@ export interface Freefax {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         changePassword: {
             /**
              * Generates a new password for your fax account
@@ -367,7 +367,7 @@ export interface Freefax {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             fetchEntrepriseInformations: {
                 /**
                  * Get enterprise information by providing enterprise number
@@ -384,7 +384,7 @@ export interface Freefax {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             getWayTypes: {
                 /**
@@ -395,7 +395,7 @@ export interface Freefax {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
         }
         mainService: {
@@ -407,7 +407,7 @@ export interface Freefax {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         serviceInfos: {
             /**
@@ -423,7 +423,7 @@ export interface Freefax {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         voicemail: {
             /**
@@ -439,7 +439,7 @@ export interface Freefax {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             changePassword: {
                 /**
                  * Change the voicemail password. It must be 4 digit
@@ -463,7 +463,7 @@ export interface Freefax {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             voicemailNumbers: {
                 /**
@@ -474,7 +474,7 @@ export interface Freefax {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
         }
     };

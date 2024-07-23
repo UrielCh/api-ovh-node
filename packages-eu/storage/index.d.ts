@@ -364,7 +364,7 @@ export interface Storage {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         $(serviceName: string): {
             /**
              * Get service details
@@ -379,7 +379,7 @@ export interface Storage {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             changeContact: {
                 /**
                  * Launch a contact change procedure
@@ -403,7 +403,7 @@ export interface Storage {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(networkId: string): {
                     /**
                      * Get network details
@@ -413,7 +413,7 @@ export interface Storage {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
             serviceInfos: {
@@ -430,7 +430,7 @@ export interface Storage {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             share: {
                 /**
@@ -446,7 +446,7 @@ export interface Storage {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(shareId: string): {
                     /**
                      * Delete a share
@@ -466,7 +466,7 @@ export interface Storage {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     accessPath: {
                         /**
                          * List available access paths
@@ -476,7 +476,7 @@ export interface Storage {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(accessPathId: string): {
                             /**
                              * Get access path details
@@ -486,7 +486,7 @@ export interface Storage {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         };
                     }
                     acl: {
@@ -503,7 +503,7 @@ export interface Storage {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(aclRuleId: string): {
                             /**
                              * Delete an ACL
@@ -518,7 +518,7 @@ export interface Storage {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         };
                     }
                     extend: {
@@ -556,7 +556,7 @@ export interface Storage {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(snapshotId: string): {
                             /**
                              * Delete a snapshot
@@ -576,7 +576,7 @@ export interface Storage {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             hold: {
                                 /**
                                  * Hold an automatic share snapshot
@@ -600,7 +600,7 @@ export interface Storage {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                     snapshotReserve: {
                         /**
@@ -616,7 +616,7 @@ export interface Storage {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                 };
             }
@@ -634,7 +634,7 @@ export interface Storage {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(snapshotPolicyId: string): {
                     /**
                      * Delete a snapshot policy
@@ -654,7 +654,7 @@ export interface Storage {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
             terminate: {

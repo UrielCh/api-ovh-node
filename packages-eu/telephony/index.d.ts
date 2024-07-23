@@ -2575,7 +2575,7 @@ export interface Telephony {
     /**
      * Controle cache
      */
-    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+    $cache(param?: ICacheOptions | CacheAction): void;
     accessories: {
         /**
          * Get all available accessories
@@ -2585,7 +2585,7 @@ export interface Telephony {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
     }
     aliases: {
         /**
@@ -2596,7 +2596,7 @@ export interface Telephony {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         $(serviceName: string): {
             /**
              * Get this object properties
@@ -2606,7 +2606,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             changeContact: {
                 /**
                  * Launch a contact change procedure
@@ -2628,7 +2628,7 @@ export interface Telephony {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
         };
     }
@@ -2641,7 +2641,7 @@ export interface Telephony {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
     }
     currentOrderIds: {
         /**
@@ -2652,7 +2652,7 @@ export interface Telephony {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
     }
     directories: {
         availableZipCodes: {
@@ -2664,7 +2664,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         cities: {
             /**
@@ -2675,7 +2675,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
     }
     fax: {
@@ -2688,7 +2688,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
     }
     line: {
@@ -2702,7 +2702,7 @@ export interface Telephony {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
         }
         offers: {
@@ -2714,7 +2714,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
     }
     lines: {
@@ -2726,7 +2726,7 @@ export interface Telephony {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         $(serviceName: string): {
             /**
              * Get this object properties
@@ -2736,7 +2736,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             changeContact: {
                 /**
                  * Launch a contact change procedure
@@ -2758,7 +2758,7 @@ export interface Telephony {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
         };
     }
@@ -2772,7 +2772,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         ranges: {
             /**
@@ -2783,7 +2783,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         specificNumbers: {
             /**
@@ -2794,7 +2794,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         zones: {
             /**
@@ -2805,7 +2805,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
     }
     procedure: {
@@ -2822,7 +2822,7 @@ export interface Telephony {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         required: {
             /**
              * Tells whether the procedure is necessary to order telephony products or not
@@ -2832,7 +2832,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         $(id: number): {
             /**
@@ -2843,7 +2843,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             cancel: {
                 /**
                  * Cancel the given procedure.
@@ -2870,7 +2870,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
     }
     searchServices: {
@@ -2882,7 +2882,7 @@ export interface Telephony {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
     }
     setDefaultSipDomain: {
         /**
@@ -2900,7 +2900,7 @@ export interface Telephony {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
     }
     sounds: {
         /**
@@ -2916,7 +2916,7 @@ export interface Telephony {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         $(id: number): {
             /**
              * Delete the sound
@@ -2936,7 +2936,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         };
     }
     spare: {
@@ -2948,7 +2948,7 @@ export interface Telephony {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         brands: {
             /**
              * Get all available spare brands
@@ -2958,7 +2958,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         $(spare: string): {
             /**
@@ -2974,7 +2974,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             compatibleReplacement: {
                 /**
                  * Return the list of phone domains compatible to be replaced
@@ -2984,7 +2984,7 @@ export interface Telephony {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             replace: {
                 /**
@@ -3007,7 +3007,7 @@ export interface Telephony {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
         };
     }
@@ -3020,7 +3020,7 @@ export interface Telephony {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         $(serviceName: string): {
             /**
              * Get this object properties
@@ -3030,7 +3030,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             changeContact: {
                 /**
                  * Launch a contact change procedure
@@ -3052,7 +3052,7 @@ export interface Telephony {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
         };
     }
@@ -3075,7 +3075,7 @@ export interface Telephony {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         abbreviatedNumber: {
             /**
              * Abbreviated numbers for the billing account
@@ -3090,7 +3090,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(abbreviatedNumber: number): {
                 /**
                  * Delete the given abbreviated number
@@ -3110,7 +3110,7 @@ export interface Telephony {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             };
         }
         allowedCreditThreshold: {
@@ -3122,7 +3122,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         amountSecurityDeposit: {
             /**
@@ -3133,7 +3133,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         billingAccountSite: {
             /**
@@ -3149,7 +3149,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         canTransferSecurityDeposit: {
             /**
@@ -3174,7 +3174,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(serviceName: string): {
                 /**
                  * Get this object properties
@@ -3184,7 +3184,7 @@ export interface Telephony {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 cdrs: {
                     /**
                      * Get the Call Detail Records of your Carrier SIP service
@@ -3194,7 +3194,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 clusterDetails: {
                     /**
@@ -3205,7 +3205,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 endpoints: {
                     /**
@@ -3216,7 +3216,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(id: number): {
                         /**
                          * Get this object properties
@@ -3226,7 +3226,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 settings: {
@@ -3243,7 +3243,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 vno: {
                     /**
@@ -3254,7 +3254,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(contractReference: string): {
                         /**
                          * Get this object properties
@@ -3264,7 +3264,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         ranges: {
                             /**
                              * Number ranges associated with you mandate.
@@ -3274,7 +3274,7 @@ export interface Telephony {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(prefix: string): {
                                 /**
                                  * Get this object properties
@@ -3289,7 +3289,7 @@ export interface Telephony {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     };
@@ -3312,7 +3312,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(serviceName: string): {
                 /**
                  * Get this object properties
@@ -3322,7 +3322,7 @@ export interface Telephony {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 announceUpload: {
                     /**
                      * Change the sound played at the beginning of the conference
@@ -3339,7 +3339,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(id: number): {
                         /**
                          * Get this object properties
@@ -3349,7 +3349,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 informations: {
@@ -3361,7 +3361,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 lock: {
                     /**
@@ -3379,7 +3379,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(id: number): {
                         /**
                          * Get this object properties
@@ -3389,7 +3389,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         deaf: {
                             /**
                              * Make a participant deaf in your conference room
@@ -3448,7 +3448,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(roomNumber: number): {
                         /**
                          * Get this object properties
@@ -3463,7 +3463,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         histories: {
                             /**
                              * List your past conferences for this room
@@ -3473,7 +3473,7 @@ export interface Telephony {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(id: number): {
                                 /**
                                  * Get this object properties
@@ -3483,7 +3483,7 @@ export interface Telephony {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         lock: {
@@ -3502,7 +3502,7 @@ export interface Telephony {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(id: number): {
                                 /**
                                  * Get this object properties
@@ -3512,7 +3512,7 @@ export interface Telephony {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 deaf: {
                                     /**
                                      * Make a participant deaf in your conference room
@@ -3578,7 +3578,7 @@ export interface Telephony {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(id: number): {
                                 /**
                                  * Delete a public web access to your conference
@@ -3593,7 +3593,7 @@ export interface Telephony {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     };
@@ -3607,7 +3607,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 settings: {
                     /**
@@ -3623,7 +3623,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 unlock: {
                     /**
@@ -3646,7 +3646,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(id: number): {
                         /**
                          * Delete a public web access to your conference
@@ -3661,7 +3661,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
             };
@@ -3675,7 +3675,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(serviceName: string): {
                 /**
                  * Get this object properties
@@ -3690,7 +3690,7 @@ export interface Telephony {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 changeDestination: {
                     /**
                      * Change the destination of the DDI
@@ -3709,7 +3709,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(serviceName: string): {
                 /**
                  * Get this object properties
@@ -3724,7 +3724,7 @@ export interface Telephony {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 hunting: {
                     /**
                      * Get this object properties
@@ -3739,7 +3739,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     agent: {
                         /**
                          * Calls agents
@@ -3754,7 +3754,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(agentId: number): {
                             /**
                              * Delete the given agent
@@ -3774,7 +3774,7 @@ export interface Telephony {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             bannerAccess: {
                                 /**
                                  * Delete the given web access
@@ -3794,7 +3794,7 @@ export interface Telephony {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             }
                             calls: {
                                 /**
@@ -3805,7 +3805,7 @@ export interface Telephony {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(id: number): {
                                     /**
                                      * Get this object properties
@@ -3815,7 +3815,7 @@ export interface Telephony {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                     eavesdrop: {
                                         /**
                                          * Eavesdrop on a call
@@ -3879,7 +3879,7 @@ export interface Telephony {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             }
                             liveStatus: {
                                 /**
@@ -3890,7 +3890,7 @@ export interface Telephony {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             }
                             queue: {
                                 /**
@@ -3906,7 +3906,7 @@ export interface Telephony {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(queueId: number): {
                                     /**
                                      * Delete the given skill
@@ -3926,7 +3926,7 @@ export interface Telephony {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                     liveStatus: {
                                         /**
                                          * Get this object properties
@@ -3936,7 +3936,7 @@ export interface Telephony {
                                         /**
                                          * Controle cache
                                          */
-                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                        $cache(param?: ICacheOptions | CacheAction): void;
                                     }
                                 };
                             }
@@ -3956,7 +3956,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(id: number): {
                             /**
                              * Delete the given custom status
@@ -3971,7 +3971,7 @@ export interface Telephony {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         };
                     }
                     eventToken: {
@@ -3993,7 +3993,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                     queue: {
                         /**
@@ -4009,7 +4009,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(queueId: number): {
                             /**
                              * Delete the given queue
@@ -4029,7 +4029,7 @@ export interface Telephony {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             agent: {
                                 /**
                                  * Agent assigned to the queue
@@ -4044,7 +4044,7 @@ export interface Telephony {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(agentId: number): {
                                     /**
                                      * Delete the given skill
@@ -4064,7 +4064,7 @@ export interface Telephony {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                     liveStatus: {
                                         /**
                                          * Get this object properties
@@ -4074,7 +4074,7 @@ export interface Telephony {
                                         /**
                                          * Controle cache
                                          */
-                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                        $cache(param?: ICacheOptions | CacheAction): void;
                                     }
                                 };
                             }
@@ -4087,7 +4087,7 @@ export interface Telephony {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(id: number): {
                                     /**
                                      * Get this object properties
@@ -4097,7 +4097,7 @@ export interface Telephony {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                     eavesdrop: {
                                         /**
                                          * Eavesdrop on a call
@@ -4151,7 +4151,7 @@ export interface Telephony {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             }
                         };
                     }
@@ -4165,7 +4165,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(id: number): {
                         /**
                          * Delete the given record
@@ -4180,7 +4180,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 screenListConditions: {
@@ -4197,7 +4197,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     conditions: {
                         /**
                          * Screen lists conditions checked when a call is received
@@ -4212,7 +4212,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(conditionId: number): {
                             /**
                              * Delete the given condition
@@ -4232,7 +4232,7 @@ export interface Telephony {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         };
                     }
                 }
@@ -4245,7 +4245,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(soundId: number): {
                         /**
                          * Delete the given sound
@@ -4260,7 +4260,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 soundUpload: {
@@ -4284,7 +4284,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     conditions: {
                         /**
                          * Time conditions checked when a call is received
@@ -4299,7 +4299,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(conditionId: number): {
                             /**
                              * Delete the given condition
@@ -4319,7 +4319,7 @@ export interface Telephony {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         };
                     }
                 }
@@ -4334,7 +4334,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(serviceName: string): {
                 /**
                  * Get this object properties
@@ -4349,7 +4349,7 @@ export interface Telephony {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 hunting: {
                     /**
                      * Get this object properties
@@ -4364,7 +4364,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     agent: {
                         /**
                          * Hunting agents
@@ -4379,7 +4379,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(agentNumber: string): {
                             /**
                              * Delete the agent
@@ -4399,7 +4399,7 @@ export interface Telephony {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         };
                     }
                     tones: {
@@ -4416,7 +4416,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         toneUpload: {
                             /**
                              * Upload new tone file
@@ -4447,7 +4447,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         fax: {
             /**
@@ -4458,7 +4458,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(serviceName: string): {
                 /**
                  * Get this object properties
@@ -4473,7 +4473,7 @@ export interface Telephony {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 campaigns: {
                     /**
                      * Fax campaigns of the associate fax
@@ -4488,7 +4488,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(id: number): {
                         /**
                          * Delete a fax campaign
@@ -4503,7 +4503,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         detail: {
                             /**
                              * Detail of the fax recipients by status
@@ -4513,7 +4513,7 @@ export interface Telephony {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         start: {
                             /**
@@ -4555,7 +4555,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     reset: {
                         /**
                          * Reset a specifical fax screenList
@@ -4578,7 +4578,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     changePassword: {
                         /**
                          * Generates a new password for your fax account
@@ -4605,7 +4605,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         historyConsumption: {
             /**
@@ -4616,7 +4616,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(date: string): {
                 /**
                  * Get this object properties
@@ -4626,7 +4626,7 @@ export interface Telephony {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 file: {
                     /**
                      * Previous billed consumption files
@@ -4636,7 +4636,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
             };
         }
@@ -4654,7 +4654,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(date: string): {
                 /**
                  * Get this object properties
@@ -4664,7 +4664,7 @@ export interface Telephony {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 document: {
                     /**
                      * Get the csv document
@@ -4674,7 +4674,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
             };
         }
@@ -4687,7 +4687,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(date: string): {
                 /**
                  * Get this object properties
@@ -4697,7 +4697,7 @@ export interface Telephony {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 document: {
                     /**
                      * Get the csv document
@@ -4707,7 +4707,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
             };
         }
@@ -4720,7 +4720,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(serviceName: string): {
                 /**
                  * Get this object properties
@@ -4735,7 +4735,7 @@ export interface Telephony {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 abbreviatedNumber: {
                     /**
                      * Abbreviated numbers for the line
@@ -4750,7 +4750,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(abbreviatedNumber: number): {
                         /**
                          * Delete the given abbreviated number
@@ -4770,7 +4770,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 activateNewPhone: {
@@ -4787,7 +4787,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 antihack: {
                     /**
@@ -4803,7 +4803,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 associateDevice: {
                     /**
@@ -4826,7 +4826,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(identifier: string): {
                         /**
                          * Get this object properties
@@ -4836,7 +4836,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 availableSipDomains: {
@@ -4848,7 +4848,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 block: {
                     /**
@@ -4866,7 +4866,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(id: number): {
                         /**
                          * Get this object properties
@@ -4876,7 +4876,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         eavesdrop: {
                             /**
                              * Eavesdrop on a call
@@ -4930,7 +4930,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 cancelConvertToNumber: {
                     /**
@@ -4967,7 +4967,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(id: number): {
                         /**
                          * Delete a click 2 call user
@@ -4982,7 +4982,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         changePassword: {
                             /**
                              * Change the password of the click2call user
@@ -5022,7 +5022,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 lastRegistrations: {
                     /**
@@ -5033,7 +5033,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 listAssociablePhones: {
                     /**
@@ -5044,7 +5044,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 maximumAvailableSimultaneousLines: {
                     /**
@@ -5055,7 +5055,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 offer: {
                     /**
@@ -5066,7 +5066,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 options: {
                     /**
@@ -5082,7 +5082,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     availableCodecs: {
                         /**
                          * List of codecs combinaisons available for this line
@@ -5092,7 +5092,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                     defaultCodecs: {
                         /**
@@ -5103,7 +5103,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                 }
                 phone: {
@@ -5120,7 +5120,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     adminCredentials: {
                         /**
                          * Returns the administration user and password of the phone if you are a VIP
@@ -5130,7 +5130,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                     changePhoneConfiguration: {
                         /**
@@ -5148,7 +5148,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(keyNum: number): {
                             /**
                              * Get this object properties
@@ -5163,7 +5163,7 @@ export interface Telephony {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             availableFunction: {
                                 /**
                                  * List the available functions for the key
@@ -5173,7 +5173,7 @@ export interface Telephony {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             }
                         };
                     }
@@ -5186,7 +5186,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                     phonebook: {
                         /**
@@ -5202,7 +5202,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(bookKey: string): {
                             /**
                              * Delete a phonebook
@@ -5222,7 +5222,7 @@ export interface Telephony {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             export: {
                                 /**
                                  * Export the phonebook's contacts
@@ -5232,7 +5232,7 @@ export interface Telephony {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             }
                             import: {
                                 /**
@@ -5255,7 +5255,7 @@ export interface Telephony {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(id: number): {
                                     /**
                                      * Delete a phonebook contact
@@ -5275,7 +5275,7 @@ export interface Telephony {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                 };
                             }
                         };
@@ -5315,7 +5315,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(id: string): {
                             /**
                              * Cancel the rma
@@ -5335,7 +5335,7 @@ export interface Telephony {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             changeType: {
                                 /**
                                  * Change RMA type
@@ -5354,7 +5354,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                 }
                 phoneCanBeAssociable: {
@@ -5366,7 +5366,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 records: {
                     /**
@@ -5377,7 +5377,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(id: number): {
                         /**
                          * Delete the given record
@@ -5392,7 +5392,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 removeSimultaneousLines: {
@@ -5411,7 +5411,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 softphone: {
                     beta: {
@@ -5428,7 +5428,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         regenerateToken: {
                             /**
                              * Regenerate softphone token for registration
@@ -5447,7 +5447,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 tones: {
                     /**
@@ -5463,7 +5463,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     toneUpload: {
                         /**
                          * Upload new tone file
@@ -5486,7 +5486,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(id: number): {
                         /**
                          * Delete a traffic extract
@@ -5501,7 +5501,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 unblock: {
@@ -5522,7 +5522,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(serviceName: string): {
                 /**
                  * Get this object properties
@@ -5537,7 +5537,7 @@ export interface Telephony {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 hunting: {
                     /**
                      * Get this object properties
@@ -5552,7 +5552,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     agent: {
                         /**
                          * Hunting agents
@@ -5567,7 +5567,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(agentNumber: string): {
                             /**
                              * Delete the agent
@@ -5587,7 +5587,7 @@ export interface Telephony {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         };
                     }
                 }
@@ -5605,7 +5605,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     toneUpload: {
                         /**
                          * Upload new tone file
@@ -5625,7 +5625,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(serviceName: string): {
                 /**
                  * Get this object properties
@@ -5640,7 +5640,7 @@ export interface Telephony {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 cancelConvertToLine: {
                     /**
                      * Cancel a scheduled conversion to line
@@ -5671,7 +5671,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
             };
         }
@@ -5684,7 +5684,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(taskId: number): {
                 /**
                  * Get this object properties
@@ -5699,7 +5699,7 @@ export interface Telephony {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             };
         }
         oldPhone: {
@@ -5711,7 +5711,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         outplanNotification: {
             /**
@@ -5727,7 +5727,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(id: number): {
                 /**
                  * Delete an outplan notification
@@ -5742,7 +5742,7 @@ export interface Telephony {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             };
         }
         ovhPabx: {
@@ -5754,7 +5754,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(serviceName: string): {
                 /**
                  * Get this object properties
@@ -5769,7 +5769,7 @@ export interface Telephony {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 dialplan: {
                     /**
                      * Dialplans associated with this PABX
@@ -5784,7 +5784,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(dialplanId: number): {
                         /**
                          * Delete the given dialplan
@@ -5804,7 +5804,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         extension: {
                             /**
                              * Extensions contained in the dialplan
@@ -5819,7 +5819,7 @@ export interface Telephony {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(extensionId: number): {
                                 /**
                                  * Delete the given extension
@@ -5839,7 +5839,7 @@ export interface Telephony {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 conditionScreenList: {
                                     /**
                                      * Screenlist conditions checked when executing the extension
@@ -5854,7 +5854,7 @@ export interface Telephony {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                     $(conditionId: number): {
                                         /**
                                          * Delete the given condition
@@ -5869,7 +5869,7 @@ export interface Telephony {
                                         /**
                                          * Controle cache
                                          */
-                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                        $cache(param?: ICacheOptions | CacheAction): void;
                                     };
                                 }
                                 conditionTime: {
@@ -5886,7 +5886,7 @@ export interface Telephony {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                     $(conditionId: number): {
                                         /**
                                          * Delete the given condition
@@ -5906,7 +5906,7 @@ export interface Telephony {
                                         /**
                                          * Controle cache
                                          */
-                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                        $cache(param?: ICacheOptions | CacheAction): void;
                                     };
                                 }
                                 rule: {
@@ -5923,7 +5923,7 @@ export interface Telephony {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                     $(ruleId: number): {
                                         /**
                                          * Delete the given rule
@@ -5943,7 +5943,7 @@ export interface Telephony {
                                         /**
                                          * Controle cache
                                          */
-                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                        $cache(param?: ICacheOptions | CacheAction): void;
                                     };
                                 }
                             };
@@ -5964,7 +5964,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     agent: {
                         /**
                          * Calls agents
@@ -5979,7 +5979,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(agentId: number): {
                             /**
                              * Delete the given agent
@@ -5999,7 +5999,7 @@ export interface Telephony {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             bannerAccess: {
                                 /**
                                  * Delete the given web access
@@ -6019,7 +6019,7 @@ export interface Telephony {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             }
                             calls: {
                                 /**
@@ -6030,7 +6030,7 @@ export interface Telephony {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(id: number): {
                                     /**
                                      * Get this object properties
@@ -6040,7 +6040,7 @@ export interface Telephony {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                     eavesdrop: {
                                         /**
                                          * Eavesdrop on a call
@@ -6104,7 +6104,7 @@ export interface Telephony {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             }
                             liveStatus: {
                                 /**
@@ -6115,7 +6115,7 @@ export interface Telephony {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             }
                             queue: {
                                 /**
@@ -6131,7 +6131,7 @@ export interface Telephony {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(queueId: number): {
                                     /**
                                      * Delete the given skill
@@ -6151,7 +6151,7 @@ export interface Telephony {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                     liveStatus: {
                                         /**
                                          * Get this object properties
@@ -6161,7 +6161,7 @@ export interface Telephony {
                                         /**
                                          * Controle cache
                                          */
-                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                        $cache(param?: ICacheOptions | CacheAction): void;
                                     }
                                 };
                             }
@@ -6181,7 +6181,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(id: number): {
                             /**
                              * Delete the given custom status
@@ -6196,7 +6196,7 @@ export interface Telephony {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         };
                     }
                     eventToken: {
@@ -6218,7 +6218,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                     queue: {
                         /**
@@ -6234,7 +6234,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(queueId: number): {
                             /**
                              * Delete the given queue
@@ -6254,7 +6254,7 @@ export interface Telephony {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             agent: {
                                 /**
                                  * Agent assigned to the queue
@@ -6269,7 +6269,7 @@ export interface Telephony {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(agentId: number): {
                                     /**
                                      * Delete the given skill
@@ -6289,7 +6289,7 @@ export interface Telephony {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                     liveStatus: {
                                         /**
                                          * Get this object properties
@@ -6299,7 +6299,7 @@ export interface Telephony {
                                         /**
                                          * Controle cache
                                          */
-                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                        $cache(param?: ICacheOptions | CacheAction): void;
                                     }
                                 };
                             }
@@ -6312,7 +6312,7 @@ export interface Telephony {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(id: number): {
                                     /**
                                      * Get this object properties
@@ -6322,7 +6322,7 @@ export interface Telephony {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                     eavesdrop: {
                                         /**
                                          * Eavesdrop on a call
@@ -6376,7 +6376,7 @@ export interface Telephony {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             }
                         };
                     }
@@ -6395,7 +6395,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(menuId: number): {
                         /**
                          * Delete the given menu
@@ -6415,7 +6415,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         entry: {
                             /**
                              * Menu entry
@@ -6430,7 +6430,7 @@ export interface Telephony {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(entryId: number): {
                                 /**
                                  * Delete the given menu entry
@@ -6450,7 +6450,7 @@ export interface Telephony {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     };
@@ -6464,7 +6464,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(id: number): {
                         /**
                          * Delete the given record
@@ -6479,7 +6479,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 sound: {
@@ -6491,7 +6491,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(soundId: number): {
                         /**
                          * Delete the given sound
@@ -6506,7 +6506,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 soundUpload: {
@@ -6530,7 +6530,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(id: number): {
                         /**
                          * Delete the given text to speech
@@ -6550,7 +6550,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
             };
@@ -6569,7 +6569,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(bookKey: string): {
                 /**
                  * Delete a phonebook
@@ -6589,7 +6589,7 @@ export interface Telephony {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 export: {
                     /**
                      * Export the phonebook's contacts
@@ -6599,7 +6599,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 import: {
                     /**
@@ -6622,7 +6622,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(id: number): {
                         /**
                          * Delete a phonebook contact
@@ -6642,7 +6642,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
             };
@@ -6656,7 +6656,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(id: number): {
                 /**
                  * Get this object properties
@@ -6666,7 +6666,7 @@ export interface Telephony {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 canBeCancelled: {
                     /**
                      * Indicates whether or not the portability can be cancelled
@@ -6676,7 +6676,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 canBeExecuted: {
                     /**
@@ -6687,7 +6687,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 cancel: {
                     /**
@@ -6712,7 +6712,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 document: {
                     /**
@@ -6728,7 +6728,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(documentId: number): {
                         /**
                          * Delete the document
@@ -6748,7 +6748,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 execute: {
@@ -6772,7 +6772,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 status: {
                     /**
@@ -6783,7 +6783,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
             };
         }
@@ -6796,7 +6796,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(serviceName: string): {
                 /**
                  * Get this object properties
@@ -6811,7 +6811,7 @@ export interface Telephony {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 changeDestination: {
                     /**
                      * Change the destination of the redirect
@@ -6830,7 +6830,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(serviceName: string): {
                 /**
                  * Get this object properties
@@ -6845,7 +6845,7 @@ export interface Telephony {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 allowedRateCodes: {
                     /**
                      * Compatible rate codes related to this value added service
@@ -6855,7 +6855,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 cancelScheduledRateCode: {
                     /**
@@ -6873,7 +6873,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 scheduleRateCode: {
                     /**
@@ -6891,7 +6891,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
             };
         }
@@ -6904,7 +6904,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(serviceName: string): {
                 /**
                  * Get this object properties
@@ -6919,7 +6919,7 @@ export interface Telephony {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 events: {
                     /**
                      * Custom events scheduled
@@ -6934,7 +6934,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(uid: string): {
                         /**
                          * Delete the given scheduler event
@@ -6954,7 +6954,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 importIcsCalendar: {
@@ -6975,7 +6975,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(serviceName: string): {
                 /**
                  * Get this object properties
@@ -6990,7 +6990,7 @@ export interface Telephony {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 screenLists: {
                     /**
                      * Rules for call filtering for this service
@@ -7005,7 +7005,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(id: number): {
                         /**
                          * Delete the given screen list
@@ -7020,7 +7020,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
             };
@@ -7034,7 +7034,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(serviceName: string): {
                 /**
                  * Ask for a service termination.
@@ -7054,7 +7054,7 @@ export interface Telephony {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 cancelTermination: {
                     /**
                      * Cancel the service termination
@@ -7078,7 +7078,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 directory: {
                     /**
@@ -7094,7 +7094,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     fetchEntrepriseInformations: {
                         /**
                          * Get company entreprise informations by providing entreprise number
@@ -7111,7 +7111,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                     getWayTypes: {
                         /**
@@ -7122,7 +7122,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                 }
                 eventToken: {
@@ -7144,7 +7144,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 faxConsumption: {
                     /**
@@ -7155,7 +7155,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(consumptionId: number): {
                         /**
                          * Get this object properties
@@ -7165,7 +7165,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 offerChange: {
@@ -7187,7 +7187,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 offerChanges: {
                     /**
@@ -7198,7 +7198,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 offerTask: {
                     /**
@@ -7209,7 +7209,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(taskId: number): {
                         /**
                          * Get this object properties
@@ -7224,7 +7224,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 previousVoiceConsumption: {
@@ -7236,7 +7236,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(consumptionId: number): {
                         /**
                          * Get this object properties
@@ -7246,7 +7246,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 repaymentConsumption: {
@@ -7258,7 +7258,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(consumptionId: number): {
                         /**
                          * Get this object properties
@@ -7268,7 +7268,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 task: {
@@ -7280,7 +7280,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(taskId: number): {
                         /**
                          * Get this object properties
@@ -7290,7 +7290,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 voiceConsumption: {
@@ -7302,7 +7302,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(consumptionId: number): {
                         /**
                          * Get this object properties
@@ -7312,7 +7312,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
             };
@@ -7331,7 +7331,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         task: {
             /**
@@ -7342,7 +7342,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(taskId: number): {
                 /**
                  * Get this object properties
@@ -7352,7 +7352,7 @@ export interface Telephony {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             };
         }
         timeCondition: {
@@ -7364,7 +7364,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(serviceName: string): {
                 /**
                  * Get this object properties
@@ -7374,7 +7374,7 @@ export interface Telephony {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 condition: {
                     /**
                      * Rules for time conditions for this service
@@ -7389,7 +7389,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(id: number): {
                         /**
                          * Delete the given screen list
@@ -7409,7 +7409,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 options: {
@@ -7426,7 +7426,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
             };
         }
@@ -7446,7 +7446,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(serviceName: string): {
                 /**
                  * Get this object properties
@@ -7456,7 +7456,7 @@ export interface Telephony {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 channelsPacksRepartition: {
                     /**
                      * Determine the best channels packs combination for a given channel quantity
@@ -7466,7 +7466,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 externalDisplayedNumber: {
                     /**
@@ -7482,7 +7482,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(number: string): {
                         /**
                          * Delete an external displayed number for a given trunk
@@ -7497,7 +7497,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         validate: {
                             /**
                              * Generate a phone call for validation. Returned validation code should be typed when asked.
@@ -7518,7 +7518,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(serviceName: string): {
                 /**
                  * Get this object properties
@@ -7533,7 +7533,7 @@ export interface Telephony {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 directories: {
                     /**
                      * Voicemail directory messages
@@ -7543,7 +7543,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(id: number): {
                         /**
                          * Delete the given voicemail message
@@ -7558,7 +7558,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         download: {
                             /**
                              * Get a url to download the sound file
@@ -7568,7 +7568,7 @@ export interface Telephony {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         move: {
                             /**
@@ -7593,7 +7593,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(id: number): {
                         /**
                          * Delete the customized greeting
@@ -7608,7 +7608,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         download: {
                             /**
                              * Get a url to download the sound file
@@ -7618,7 +7618,7 @@ export interface Telephony {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         move: {
                             /**
@@ -7650,7 +7650,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     changePassword: {
                         /**
                          * Change the voicemail password. It must be 4 digit
@@ -7674,7 +7674,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                     voicemailNumbers: {
                         /**
@@ -7685,7 +7685,7 @@ export interface Telephony {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                 }
             };
@@ -7699,7 +7699,7 @@ export interface Telephony {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(serviceName: string): {
                 /**
                  * Get this object properties
@@ -7709,7 +7709,7 @@ export interface Telephony {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 settings: {
                     /**
                      * Get this object properties
@@ -7724,7 +7724,7 @@ export interface Telephony {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     logs: {
                         /**
                          * Generate a temporary url to retrieve device logs

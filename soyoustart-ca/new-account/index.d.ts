@@ -131,7 +131,7 @@ export interface NewAccount {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
     }
     contracts: {
         /**
@@ -142,7 +142,7 @@ export interface NewAccount {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
     }
     corporationType: {
         /**
@@ -153,7 +153,7 @@ export interface NewAccount {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
     }
     countries: {
         /**
@@ -164,7 +164,7 @@ export interface NewAccount {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
     }
     creationRules: {
         /**
@@ -175,7 +175,7 @@ export interface NewAccount {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
     }
     legalform: {
         /**
@@ -186,7 +186,7 @@ export interface NewAccount {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
     }
     rules: {
         /**

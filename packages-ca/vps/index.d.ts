@@ -896,7 +896,7 @@ export interface Vps {
     /**
      * Controle cache
      */
-    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+    $cache(param?: ICacheOptions | CacheAction): void;
     datacenter: {
         /**
          * List all the datacenters for a specific country
@@ -906,7 +906,7 @@ export interface Vps {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
     }
     order: {
         rule: {
@@ -919,7 +919,7 @@ export interface Vps {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             osChoices: {
                 /**
@@ -930,7 +930,7 @@ export interface Vps {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
         }
     }
@@ -948,7 +948,7 @@ export interface Vps {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         abortSnapshot: {
             /**
              * Abort ongoing snapshot or autobackup
@@ -965,7 +965,7 @@ export interface Vps {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         automatedBackup: {
             /**
@@ -976,7 +976,7 @@ export interface Vps {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             attachedBackup: {
                 /**
                  * Backup attached to your VPS
@@ -986,7 +986,7 @@ export interface Vps {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             detachBackup: {
                 /**
@@ -1018,7 +1018,7 @@ export interface Vps {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
         }
         availableUpgrade: {
@@ -1030,7 +1030,7 @@ export interface Vps {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         backupftp: {
             /**
@@ -1041,7 +1041,7 @@ export interface Vps {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             access: {
                 /**
                  * List of IP blocks (and protocols to allow on these blocks) authorized on your backup FTP
@@ -1056,7 +1056,7 @@ export interface Vps {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(ipBlock: string): {
                     /**
                      * Revoke this ACL
@@ -1076,7 +1076,7 @@ export interface Vps {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
             authorizableBlocks: {
@@ -1088,7 +1088,7 @@ export interface Vps {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             password: {
                 /**
@@ -1128,7 +1128,7 @@ export interface Vps {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         disks: {
             /**
@@ -1139,7 +1139,7 @@ export interface Vps {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(id: number): {
                 /**
                  * Get this object properties
@@ -1154,7 +1154,7 @@ export interface Vps {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 monitoring: {
                     /**
                      * Return many statistics about the disk for a given period
@@ -1164,7 +1164,7 @@ export interface Vps {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 use: {
                     /**
@@ -1175,7 +1175,7 @@ export interface Vps {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
             };
         }
@@ -1188,7 +1188,7 @@ export interface Vps {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             software: {
                 /**
                  * List available softwares for this template Id
@@ -1198,7 +1198,7 @@ export interface Vps {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(softwareId: number): {
                     /**
                      * Get this object properties
@@ -1208,7 +1208,7 @@ export interface Vps {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
         }
@@ -1229,7 +1229,7 @@ export interface Vps {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(id: string): {
                     /**
                      * Get this object properties
@@ -1239,7 +1239,7 @@ export interface Vps {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
             current: {
@@ -1251,7 +1251,7 @@ export interface Vps {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
         }
         ipCountryAvailable: {
@@ -1263,7 +1263,7 @@ export interface Vps {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         ips: {
             /**
@@ -1274,7 +1274,7 @@ export interface Vps {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(ipAddress: string): {
                 /**
                  * Release a given Ip (Additional Ip)
@@ -1294,7 +1294,7 @@ export interface Vps {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             };
         }
         migration2016: {
@@ -1311,7 +1311,7 @@ export interface Vps {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         migration2018: {
             /**
@@ -1327,7 +1327,7 @@ export interface Vps {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         models: {
             /**
@@ -1338,7 +1338,7 @@ export interface Vps {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         monitoring: {
             /**
@@ -1349,7 +1349,7 @@ export interface Vps {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         openConsoleAccess: {
             /**
@@ -1367,7 +1367,7 @@ export interface Vps {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(option: vps.VpsOptionEnum): {
                 /**
                  * Release a given option
@@ -1382,7 +1382,7 @@ export interface Vps {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             };
         }
         reboot: {
@@ -1420,7 +1420,7 @@ export interface Vps {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(domain: string): {
                 /**
                  * remove this domain
@@ -1440,7 +1440,7 @@ export interface Vps {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 dnsServer: {
                     /**
                      * domain name server informations
@@ -1450,7 +1450,7 @@ export interface Vps {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
             };
         }
@@ -1463,7 +1463,7 @@ export interface Vps {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         serviceInfos: {
             /**
@@ -1479,7 +1479,7 @@ export interface Vps {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         setPassword: {
             /**
@@ -1507,7 +1507,7 @@ export interface Vps {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             download: {
                 /**
                  * Download the snapshot
@@ -1517,7 +1517,7 @@ export interface Vps {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             revert: {
                 /**
@@ -1543,7 +1543,7 @@ export interface Vps {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         status: {
             /**
@@ -1554,7 +1554,7 @@ export interface Vps {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         stop: {
             /**
@@ -1572,7 +1572,7 @@ export interface Vps {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(id: number): {
                 /**
                  * Get this object properties
@@ -1582,7 +1582,7 @@ export interface Vps {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             };
         }
         templates: {
@@ -1594,7 +1594,7 @@ export interface Vps {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(id: number): {
                 /**
                  * Get this object properties
@@ -1604,7 +1604,7 @@ export interface Vps {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 software: {
                     /**
                      * List available softwares for this template Id
@@ -1614,7 +1614,7 @@ export interface Vps {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(softwareId: number): {
                         /**
                          * Get this object properties
@@ -1624,7 +1624,7 @@ export interface Vps {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
             };
@@ -1645,7 +1645,7 @@ export interface Vps {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         veeam: {
             /**
@@ -1656,7 +1656,7 @@ export interface Vps {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             restorePoints: {
                 /**
                  * Veeam restore points for the VPS
@@ -1666,7 +1666,7 @@ export interface Vps {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(id: number): {
                     /**
                      * Get this object properties
@@ -1676,7 +1676,7 @@ export interface Vps {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     restore: {
                         /**
                          * Creates a VPS.Task that will restore the given restorePoint
@@ -1700,7 +1700,7 @@ export interface Vps {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
         }
     };

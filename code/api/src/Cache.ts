@@ -108,7 +108,7 @@ export class Cache {
      * @param template
      * @param options
      */
-    cache(template: string, options: ICacheOptions) {
+    cache(template: string, options: ICacheOptions): void {
         const silot = this.index[template];
         if (silot)
             silot.options = options;

@@ -528,7 +528,7 @@ export class CodeGenerator {
                 code += `${ident}/**${eol}`;
                 code += `${ident} * Controle cache${eol}`;
                 code += `${ident} */${eol}`;
-                code += `${ident}$cache(param?: ICacheOptions | CacheAction): Promise<any>;${eol}`;
+                code += `${ident}$cache(param?: ICacheOptions | CacheAction): void;${eol}`;
             }
         }
 

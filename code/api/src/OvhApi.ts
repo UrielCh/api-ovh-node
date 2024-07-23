@@ -609,7 +609,7 @@ export default class OvhApi extends EventEmitter implements OvhRequestable {
         return super.emit(ev, ...args);
     }
 
-    async cache(template: string, param?: ICacheOptions | CacheAction): Promise<any> {
+    cache(template: string, param?: ICacheOptions | CacheAction): void {
         if (!this.queryCache) {
             this.queryCache = new Cache({ slotClass: this.data.slotClass });
         }

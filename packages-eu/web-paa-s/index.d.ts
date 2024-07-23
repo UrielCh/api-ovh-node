@@ -251,7 +251,7 @@ export interface WebPaaS {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
     }
     subscription: {
         /**
@@ -262,7 +262,7 @@ export interface WebPaaS {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         $(serviceName: string): {
             /**
              * Get information about your subscription
@@ -272,7 +272,7 @@ export interface WebPaaS {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             confirmTermination: {
                 /**
                  * Confirm service termination
@@ -294,7 +294,7 @@ export interface WebPaaS {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(customerId: string): {
                     /**
                      * Remove customer from the project
@@ -309,7 +309,7 @@ export interface WebPaaS {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
             serviceInfos: {
@@ -326,7 +326,7 @@ export interface WebPaaS {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             terminate: {
                 /**

@@ -1011,7 +1011,7 @@ export interface Services {
     /**
      * Controle cache
      */
-    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+    $cache(param?: ICacheOptions | CacheAction): void;
     $(serviceId: number): {
         /**
          * Get details about a service
@@ -1026,7 +1026,7 @@ export interface Services {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         billing: {
             engagement: {
                 /**
@@ -1037,7 +1037,7 @@ export interface Services {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 available: {
                     /**
                      * List all available engagements a given service can subscribe to
@@ -1047,7 +1047,7 @@ export interface Services {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 endRule: {
                     /**
@@ -1082,7 +1082,7 @@ export interface Services {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
             }
         }
@@ -1095,7 +1095,7 @@ export interface Services {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             element: {
                 /**
                  * Get each resource consumed by your service
@@ -1105,7 +1105,7 @@ export interface Services {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             forecast: {
                 /**
@@ -1116,7 +1116,7 @@ export interface Services {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 element: {
                     /**
                      * Get each resource forecasted consumption of your service
@@ -1126,7 +1126,7 @@ export interface Services {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
             }
             history: {
@@ -1138,7 +1138,7 @@ export interface Services {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(id: number): {
                     /**
                      * Get a summary of the past consumption of your service
@@ -1148,7 +1148,7 @@ export interface Services {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     element: {
                         /**
                          * Get each resource consumed for the given history
@@ -1158,7 +1158,7 @@ export interface Services {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                 };
             }
@@ -1172,7 +1172,7 @@ export interface Services {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(planCode: string): {
                 /**
                  * View an offer this option can be converted to
@@ -1182,7 +1182,7 @@ export interface Services {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 execute: {
                     /**
                      * Perform the migration to a standalone offer. May require you to pay an Order
@@ -1199,7 +1199,7 @@ export interface Services {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 simulate: {
                     /**
@@ -1219,7 +1219,7 @@ export interface Services {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(formName: string): {
                 /**
                  * Get specified form description for service
@@ -1229,7 +1229,7 @@ export interface Services {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 answer: {
                     /**
                      * Post answers to the form for your service
@@ -1248,7 +1248,7 @@ export interface Services {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         renewPeriodCapacities: {
             /**
@@ -1259,7 +1259,7 @@ export interface Services {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         technicalDetails: {
             /**
@@ -1270,7 +1270,7 @@ export interface Services {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         terminate: {
             /**
@@ -1295,7 +1295,7 @@ export interface Services {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(planCode: string): {
                 /**
                  * View an offer this option can be converted to
@@ -1305,7 +1305,7 @@ export interface Services {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 execute: {
                     /**
                      * Perform the migration to another offer. May require you to pay an Order

@@ -128,7 +128,7 @@ export interface AllDom {
     /**
      * Controle cache
      */
-    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+    $cache(param?: ICacheOptions | CacheAction): void;
     $(serviceName: string): {
         /**
          * Get this object properties
@@ -138,7 +138,7 @@ export interface AllDom {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         domain: {
             /**
              * Domains attached to this allDom
@@ -148,7 +148,7 @@ export interface AllDom {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(domain: string): {
                 /**
                  * Get this object properties
@@ -158,7 +158,7 @@ export interface AllDom {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             };
         }
         serviceInfos: {
@@ -175,7 +175,7 @@ export interface AllDom {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
     };
 }

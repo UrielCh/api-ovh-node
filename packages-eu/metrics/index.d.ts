@@ -230,7 +230,7 @@ export interface Metrics {
     /**
      * Controle cache
      */
-    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+    $cache(param?: ICacheOptions | CacheAction): void;
     $(serviceName: string): {
         /**
          * Get service
@@ -245,7 +245,7 @@ export interface Metrics {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         changeContact: {
             /**
              * Launch a contact change procedure
@@ -269,7 +269,7 @@ export interface Metrics {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         lookup: {
             token: {
@@ -301,7 +301,7 @@ export interface Metrics {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         terminate: {
             /**
@@ -324,7 +324,7 @@ export interface Metrics {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(tokenId: string): {
                 /**
                  * Revoke a token
@@ -344,7 +344,7 @@ export interface Metrics {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             };
         }
     };

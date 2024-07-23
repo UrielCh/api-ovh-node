@@ -96,7 +96,7 @@ export interface Support {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         create: {
             /**
              * Create a new ticket
@@ -113,7 +113,7 @@ export interface Support {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             canBeScored: {
                 /**
                  * Checks whether ticket can be scored
@@ -123,7 +123,7 @@ export interface Support {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             close: {
                 /**
@@ -141,7 +141,7 @@ export interface Support {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             reopen: {
                 /**

@@ -457,7 +457,7 @@ export interface MsServices {
     /**
      * Controle cache
      */
-    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+    $cache(param?: ICacheOptions | CacheAction): void;
     sharepoint: {
         /**
          * List available services
@@ -467,7 +467,7 @@ export interface MsServices {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         $(domain: string): {
             /**
              * Get this object properties
@@ -477,7 +477,7 @@ export interface MsServices {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             serviceInfos: {
                 /**
                  * Get service information
@@ -492,7 +492,7 @@ export interface MsServices {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
         };
     }
@@ -510,7 +510,7 @@ export interface MsServices {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         account: {
             /**
              * Accounts associated to this Active Directory service
@@ -520,7 +520,7 @@ export interface MsServices {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(userPrincipalName: string): {
                 /**
                  * Get this object properties
@@ -535,7 +535,7 @@ export interface MsServices {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 changePassword: {
                     /**
                      * Change account password
@@ -557,7 +557,7 @@ export interface MsServices {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     configure: {
                         /**
                          * Configure mailbox to be operational
@@ -585,7 +585,7 @@ export interface MsServices {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     disable: {
                         /**
                          * Disable Multi Factor Authentication for a period of time
@@ -622,7 +622,7 @@ export interface MsServices {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     clearSpace: {
                         /**
                          * On-demand MySite clearance
@@ -657,7 +657,7 @@ export interface MsServices {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     configure: {
                         /**
                          * Configure sync account to be operational
@@ -696,7 +696,7 @@ export interface MsServices {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             billingMigrated: {
                 /**
                  * Detects billing transition status for the service
@@ -706,7 +706,7 @@ export interface MsServices {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             task: {
                 /**
@@ -717,7 +717,7 @@ export interface MsServices {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(id: number): {
                     /**
                      * Get this object properties
@@ -727,7 +727,7 @@ export interface MsServices {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
         }
@@ -752,7 +752,7 @@ export interface MsServices {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             billingMigrated: {
                 /**
                  * Detects billing transition status for the service
@@ -762,7 +762,7 @@ export interface MsServices {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             license: {
                 /**
@@ -773,7 +773,7 @@ export interface MsServices {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             restoreAdminRights: {
                 /**
@@ -791,7 +791,7 @@ export interface MsServices {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(id: number): {
                     /**
                      * Get this object properties
@@ -801,7 +801,7 @@ export interface MsServices {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
         }
@@ -819,7 +819,7 @@ export interface MsServices {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             changePassword: {
                 /**
                  * Change account password
@@ -841,7 +841,7 @@ export interface MsServices {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             license: {
                 /**
@@ -852,7 +852,7 @@ export interface MsServices {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
         }
         task: {
@@ -864,7 +864,7 @@ export interface MsServices {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(id: number): {
                 /**
                  * Get this object properties
@@ -874,7 +874,7 @@ export interface MsServices {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             };
         }
         upnSuffix: {
@@ -891,7 +891,7 @@ export interface MsServices {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(suffix: string): {
                 /**
                  * Delete existing UPN suffix
@@ -906,7 +906,7 @@ export interface MsServices {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             };
         }
     };

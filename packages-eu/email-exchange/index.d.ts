@@ -929,7 +929,7 @@ export interface Email {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         $(organizationName: string | number): {
             service: {
                 /**
@@ -940,7 +940,7 @@ export interface Email {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(exchangeService: string): {
                     /**
                      * Get this object properties
@@ -955,7 +955,7 @@ export interface Email {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     account: {
                         /**
                          * Accounts associated to this exchange service
@@ -970,7 +970,7 @@ export interface Email {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(primaryEmailAddress: string): {
                             /**
                              * Delete existing mailbox in exchange server
@@ -990,7 +990,7 @@ export interface Email {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             alias: {
                                 /**
                                  * Aliases associated to this mailbox
@@ -1005,7 +1005,7 @@ export interface Email {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(alias: string): {
                                     /**
                                      * Delete existing alias
@@ -1020,7 +1020,7 @@ export interface Email {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                 };
                             }
                             archive: {
@@ -1047,7 +1047,7 @@ export interface Email {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             }
                             changePassword: {
                                 /**
@@ -1070,7 +1070,7 @@ export interface Email {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             }
                             export: {
                                 /**
@@ -1091,7 +1091,7 @@ export interface Email {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             }
                             exportURL: {
                                 /**
@@ -1107,7 +1107,7 @@ export interface Email {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             }
                             fullAccess: {
                                 /**
@@ -1123,7 +1123,7 @@ export interface Email {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(allowedAccountId: number): {
                                     /**
                                      * Revoke full access
@@ -1138,7 +1138,7 @@ export interface Email {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                 };
                             }
                             outlookURL: {
@@ -1155,7 +1155,7 @@ export interface Email {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             }
                             protocol: {
                                 /**
@@ -1171,7 +1171,7 @@ export interface Email {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             }
                             sendAs: {
                                 /**
@@ -1187,7 +1187,7 @@ export interface Email {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(allowedAccountId: number): {
                                     /**
                                      * Delete allowed user for sendAs
@@ -1202,7 +1202,7 @@ export interface Email {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                 };
                             }
                             sendOnBehalfTo: {
@@ -1219,7 +1219,7 @@ export interface Email {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(allowedAccountId: number): {
                                     /**
                                      * Delete allowed user for SendOnBehalfTo
@@ -1234,7 +1234,7 @@ export interface Email {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                 };
                             }
                             tasks: {
@@ -1246,7 +1246,7 @@ export interface Email {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(id: number): {
                                     /**
                                      * Get this object properties
@@ -1256,7 +1256,7 @@ export interface Email {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                 };
                             }
                             terminate: {
@@ -1289,7 +1289,7 @@ export interface Email {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(ip: string): {
                             /**
                              * Delete authorized IP
@@ -1309,7 +1309,7 @@ export interface Email {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         };
                     }
                     changeHostname: {
@@ -1333,7 +1333,7 @@ export interface Email {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(name: string): {
                             /**
                              * Delete existing custom isolation for mailbox
@@ -1348,7 +1348,7 @@ export interface Email {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         };
                     }
                     dcvEmails: {
@@ -1360,7 +1360,7 @@ export interface Email {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                     device: {
                         /**
@@ -1371,7 +1371,7 @@ export interface Email {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(identity: string): {
                             /**
                              * Get this object properties
@@ -1386,7 +1386,7 @@ export interface Email {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             clearDevice: {
                                 /**
                                  * Executes a factory reset on the device
@@ -1410,7 +1410,7 @@ export interface Email {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(domainName: string): {
                             /**
                              * Delete existing domain in exchange services
@@ -1430,7 +1430,7 @@ export interface Email {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             changeDefaultSBR: {
                                 /**
                                  * Change default values of SBR used for all new created account on this domain
@@ -1462,7 +1462,7 @@ export interface Email {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             }
                             disclaimerAttribute: {
                                 /**
@@ -1473,7 +1473,7 @@ export interface Email {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             }
                             dkim: {
                                 /**
@@ -1489,7 +1489,7 @@ export interface Email {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(selectorName: string): {
                                     /**
                                      * Delete DKIM selector on this domain
@@ -1504,7 +1504,7 @@ export interface Email {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                     disable: {
                                         /**
                                          * disable dkim signing
@@ -1530,7 +1530,7 @@ export interface Email {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             }
                         };
                     }
@@ -1548,7 +1548,7 @@ export interface Email {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(externalEmailAddress: string): {
                             /**
                              * delete external contact
@@ -1568,7 +1568,7 @@ export interface Email {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         };
                     }
                     impersonatedUser: {
@@ -1590,7 +1590,7 @@ export interface Email {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         changePassword: {
                             /**
                              * Change user password
@@ -1608,7 +1608,7 @@ export interface Email {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                     license: {
                         /**
@@ -1619,7 +1619,7 @@ export interface Email {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                     mailingList: {
                         /**
@@ -1635,7 +1635,7 @@ export interface Email {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(mailingListAddress: string): {
                             /**
                              * Delete mailing list
@@ -1655,7 +1655,7 @@ export interface Email {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             alias: {
                                 /**
                                  * Aliases associated to this mailingList
@@ -1670,7 +1670,7 @@ export interface Email {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(alias: string): {
                                     /**
                                      * Delete existing alias
@@ -1685,7 +1685,7 @@ export interface Email {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                 };
                             }
                             manager: {
@@ -1703,7 +1703,7 @@ export interface Email {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                     $(managerAccountId: number): {
                                         /**
                                          * Delete mailing list manager
@@ -1718,7 +1718,7 @@ export interface Email {
                                         /**
                                          * Controle cache
                                          */
-                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                        $cache(param?: ICacheOptions | CacheAction): void;
                                     };
                                 }
                             }
@@ -1737,7 +1737,7 @@ export interface Email {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                     $(memberAccountId: number): {
                                         /**
                                          * Delete mailing list member
@@ -1752,7 +1752,7 @@ export interface Email {
                                         /**
                                          * Controle cache
                                          */
-                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                        $cache(param?: ICacheOptions | CacheAction): void;
                                     };
                                 }
                                 contact: {
@@ -1769,7 +1769,7 @@ export interface Email {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                     $(memberContactId: number): {
                                         /**
                                          * Delete mailing list member
@@ -1784,7 +1784,7 @@ export interface Email {
                                         /**
                                          * Controle cache
                                          */
-                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                        $cache(param?: ICacheOptions | CacheAction): void;
                                     };
                                 }
                             }
@@ -1802,7 +1802,7 @@ export interface Email {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(allowedAccountId: number): {
                                     /**
                                      * Delete allowed user for SendAs
@@ -1817,7 +1817,7 @@ export interface Email {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                 };
                             }
                             sendOnBehalfTo: {
@@ -1834,7 +1834,7 @@ export interface Email {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(allowedAccountId: number): {
                                     /**
                                      * Delete allowed user for SendOnBehalfTo
@@ -1849,7 +1849,7 @@ export interface Email {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                 };
                             }
                         };
@@ -1863,7 +1863,7 @@ export interface Email {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                     protocol: {
                         /**
@@ -1879,7 +1879,7 @@ export interface Email {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         activeSyncMailNotification: {
                             /**
                              * Exchange account id subscribed to ActiveSync quarantine notifications
@@ -1894,7 +1894,7 @@ export interface Email {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(notifiedAccountId: number): {
                                 /**
                                  * Unubscribe address from ActiveSync quarantine notifications
@@ -1909,7 +1909,7 @@ export interface Email {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                     }
@@ -1927,7 +1927,7 @@ export interface Email {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(path: string): {
                             /**
                              * Delete existing organization public folder
@@ -1947,7 +1947,7 @@ export interface Email {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             permission: {
                                 /**
                                  * Public folder permission
@@ -1962,7 +1962,7 @@ export interface Email {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(allowedAccountId: number): {
                                     /**
                                      * Delete existing permission from public folder
@@ -1982,7 +1982,7 @@ export interface Email {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                 };
                             }
                         };
@@ -1996,7 +1996,7 @@ export interface Email {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                     renewSSL: {
                         /**
@@ -2019,7 +2019,7 @@ export interface Email {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(resourceEmailAddress: string): {
                             /**
                              * delete existing resource account in exchange server
@@ -2039,7 +2039,7 @@ export interface Email {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             delegate: {
                                 /**
                                  * Resource account manager
@@ -2054,7 +2054,7 @@ export interface Email {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(allowedAccountId: number): {
                                     /**
                                      * delete existing resource account delegate in exchange server
@@ -2069,7 +2069,7 @@ export interface Email {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                 };
                             }
                         };
@@ -2088,7 +2088,7 @@ export interface Email {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(id: number): {
                             /**
                              * Delete existing send connector
@@ -2108,7 +2108,7 @@ export interface Email {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             changeAuthentication: {
                                 /**
                                  * Change authentication on send connector
@@ -2132,7 +2132,7 @@ export interface Email {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                     serviceInfos: {
                         /**
@@ -2148,7 +2148,7 @@ export interface Email {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                     sharedAccount: {
                         /**
@@ -2164,7 +2164,7 @@ export interface Email {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(sharedEmailAddress: string): {
                             /**
                              * Delete existing shared mailbox in exchange server
@@ -2184,7 +2184,7 @@ export interface Email {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             alias: {
                                 /**
                                  * Aliases associated to this mailbox
@@ -2199,7 +2199,7 @@ export interface Email {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(alias: string): {
                                     /**
                                      * Delete existing alias
@@ -2214,7 +2214,7 @@ export interface Email {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                 };
                             }
                             fullAccess: {
@@ -2231,7 +2231,7 @@ export interface Email {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(allowedAccountId: number): {
                                     /**
                                      * Revoke full access
@@ -2246,7 +2246,7 @@ export interface Email {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                 };
                             }
                             sendAs: {
@@ -2263,7 +2263,7 @@ export interface Email {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(allowedAccountId: number): {
                                     /**
                                      * Delete allowed user for sendAs
@@ -2278,7 +2278,7 @@ export interface Email {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                 };
                             }
                             sendOnBehalfTo: {
@@ -2295,7 +2295,7 @@ export interface Email {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(allowedAccountId: number): {
                                     /**
                                      * Delete allowed user for SendOnBehalfTo
@@ -2310,7 +2310,7 @@ export interface Email {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                 };
                             }
                             tasks: {
@@ -2322,7 +2322,7 @@ export interface Email {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(id: number): {
                                     /**
                                      * Get this object properties
@@ -2332,7 +2332,7 @@ export interface Email {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                 };
                             }
                         };
@@ -2346,7 +2346,7 @@ export interface Email {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                     task: {
                         /**
@@ -2357,7 +2357,7 @@ export interface Email {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(id: number): {
                             /**
                              * Get this object properties
@@ -2367,7 +2367,7 @@ export interface Email {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         };
                     }
                     updateDeviceList: {

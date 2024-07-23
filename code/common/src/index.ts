@@ -63,7 +63,7 @@ export interface OvhRequestable {
     /**
      * cache controle
      */
-    cache(template: string, param: ICacheOptions | CacheAction): Promise<any>;
+    cache(template: string, param: ICacheOptions | CacheAction): void;
 }
 
 /**

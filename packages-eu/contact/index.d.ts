@@ -45,7 +45,7 @@ export interface Contact {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         send: {
             /**
              * Send form following characteristics of /contact/form

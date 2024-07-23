@@ -244,7 +244,7 @@ export interface HorizonView {
     /**
      * Controle cache
      */
-    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+    $cache(param?: ICacheOptions | CacheAction): void;
     $(serviceName: string): {
         /**
          * Get this object properties
@@ -254,7 +254,7 @@ export interface HorizonView {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         accessPoint: {
             /**
              * Pool associated with this Datacenter
@@ -269,7 +269,7 @@ export interface HorizonView {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(accessPointId: number): {
                 /**
                  * Delete this access point 
@@ -284,7 +284,7 @@ export interface HorizonView {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 changeSessionTimeout: {
                     /**
                      * Manage your session Timeout on Unified Access Gateway
@@ -306,7 +306,7 @@ export interface HorizonView {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(customerNetworkId: number): {
                         /**
                          * Delete this Customer Network
@@ -321,7 +321,7 @@ export interface HorizonView {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 disableTwoFA: {
@@ -375,7 +375,7 @@ export interface HorizonView {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(customerNetworkId: number): {
                 /**
                  * Delete this Customer Network
@@ -390,7 +390,7 @@ export interface HorizonView {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             };
         }
         dedicatedHorizon: {
@@ -402,7 +402,7 @@ export interface HorizonView {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             customerUser: {
                 /**
                  * Account to access to your pool
@@ -417,7 +417,7 @@ export interface HorizonView {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(username: string): {
                     /**
                      * Delete this Customer User
@@ -432,7 +432,7 @@ export interface HorizonView {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     changePassword: {
                         /**
                          * Change Horizon View Customer  user password
@@ -465,7 +465,7 @@ export interface HorizonView {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(taskId: number): {
                     /**
                      * Get this object properties
@@ -475,7 +475,7 @@ export interface HorizonView {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
             user: {
@@ -487,7 +487,7 @@ export interface HorizonView {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 changePassword: {
                     /**
                      * Change Horizon View user password
@@ -518,7 +518,7 @@ export interface HorizonView {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(domainTrustId: number): {
                 /**
                  * Get this object properties
@@ -528,7 +528,7 @@ export interface HorizonView {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 addChildDomain: {
                     /**
                      * Add a child domain for this domain.
@@ -573,7 +573,7 @@ export interface HorizonView {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         terminate: {
             /**

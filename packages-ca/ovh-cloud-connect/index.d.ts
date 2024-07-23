@@ -435,7 +435,7 @@ export interface OvhCloudConnect {
     /**
      * Controle cache
      */
-    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+    $cache(param?: ICacheOptions | CacheAction): void;
     $(serviceName: string): {
         /**
          * Get service
@@ -450,7 +450,7 @@ export interface OvhCloudConnect {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         changeContact: {
             /**
              * Launch a contact change procedure
@@ -473,7 +473,7 @@ export interface OvhCloudConnect {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(popId: number): {
                     /**
                      * Delete a Pop Configuration
@@ -488,7 +488,7 @@ export interface OvhCloudConnect {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     datacenter: {
                         /**
                          * Get Datacenter Configuration linked to of a OVHcloud Connect Service
@@ -503,7 +503,7 @@ export interface OvhCloudConnect {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(datacenterId: number): {
                             /**
                              * Delete a Datacenter Configuration
@@ -518,7 +518,7 @@ export interface OvhCloudConnect {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             extra: {
                                 /**
                                  * Get Datacenter Extra Configuration linked to of a OVHcloud Connect Service
@@ -533,7 +533,7 @@ export interface OvhCloudConnect {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(extraId: number): {
                                     /**
                                      * Delete a Datacenter Extra Configuration
@@ -548,7 +548,7 @@ export interface OvhCloudConnect {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                 };
                             }
                         };
@@ -572,7 +572,7 @@ export interface OvhCloudConnect {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(id: number): {
                 /**
                  * Get Datacenter
@@ -582,7 +582,7 @@ export interface OvhCloudConnect {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             };
         }
         diagnostic: {
@@ -599,7 +599,7 @@ export interface OvhCloudConnect {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(id: number): {
                 /**
                  * Get Diagnostic linked to a OVHcloud Connect Service
@@ -609,7 +609,7 @@ export interface OvhCloudConnect {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             };
         }
         incident: {
@@ -621,7 +621,7 @@ export interface OvhCloudConnect {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(id: number): {
                 /**
                  * Get the incident information
@@ -631,7 +631,7 @@ export interface OvhCloudConnect {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             };
         }
         interface: {
@@ -643,7 +643,7 @@ export interface OvhCloudConnect {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(id: number): {
                 /**
                  * Get the Interface information
@@ -653,7 +653,7 @@ export interface OvhCloudConnect {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 lock: {
                     /**
                      * Lock the port
@@ -670,7 +670,7 @@ export interface OvhCloudConnect {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 unlock: {
                     /**
@@ -707,7 +707,7 @@ export interface OvhCloudConnect {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         serviceInfos: {
             /**
@@ -723,7 +723,7 @@ export interface OvhCloudConnect {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         serviceKey: {
             /**
@@ -734,7 +734,7 @@ export interface OvhCloudConnect {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(serviceKeyId: number): {
                 /**
                  * Get Key linked to a OVHcloud Connect Service
@@ -744,7 +744,7 @@ export interface OvhCloudConnect {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 regenerate: {
                     /**
                      * Regenerate Service Key linked to a OVHcloud Connect Service
@@ -770,7 +770,7 @@ export interface OvhCloudConnect {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(id: number): {
                 /**
                  * Get Tasks linked to a OVHcloud Connect Service
@@ -780,7 +780,7 @@ export interface OvhCloudConnect {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             };
         }
         terminate: {

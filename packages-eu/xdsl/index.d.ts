@@ -1829,7 +1829,7 @@ export interface Xdsl {
     /**
      * Controle cache
      */
-    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+    $cache(param?: ICacheOptions | CacheAction): void;
     email: {
         pro: {
             /**
@@ -1840,7 +1840,7 @@ export interface Xdsl {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(email: string): {
                 /**
                  * Delete the email
@@ -1860,7 +1860,7 @@ export interface Xdsl {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 changePassword: {
                     /**
                      * Change the email password
@@ -1880,7 +1880,7 @@ export interface Xdsl {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         $(id: number): {
             /**
              * Get this object properties
@@ -1890,7 +1890,7 @@ export interface Xdsl {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         };
     }
     spare: {
@@ -1902,7 +1902,7 @@ export interface Xdsl {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         brands: {
             /**
              * Get all available spare brands
@@ -1912,7 +1912,7 @@ export interface Xdsl {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         $(spare: string): {
             /**
@@ -1928,7 +1928,7 @@ export interface Xdsl {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             compatibleReplacement: {
                 /**
                  * Return the list of brand compatible to be replaced
@@ -1938,7 +1938,7 @@ export interface Xdsl {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             replace: {
                 /**
@@ -1968,7 +1968,7 @@ export interface Xdsl {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
         };
     }
@@ -1986,7 +1986,7 @@ export interface Xdsl {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         $(name: string): {
             /**
              * Delete this Modem Template
@@ -2006,7 +2006,7 @@ export interface Xdsl {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         };
     }
     $(serviceName: string): {
@@ -2023,7 +2023,7 @@ export interface Xdsl {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         addressMove: {
             extraIpRange: {
                 /**
@@ -2034,7 +2034,7 @@ export interface Xdsl {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             extraIpRangeMove: {
                 /**
@@ -2053,7 +2053,7 @@ export interface Xdsl {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(ip: string): {
                 /**
                  * Get this object properties
@@ -2063,7 +2063,7 @@ export interface Xdsl {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 evidences: {
                     /**
                      * List of evidences stored on PCS for this ip
@@ -2073,7 +2073,7 @@ export interface Xdsl {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
             };
         }
@@ -2093,7 +2093,7 @@ export interface Xdsl {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         cancelResiliation: {
             /**
@@ -2123,7 +2123,7 @@ export interface Xdsl {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         fiberEligibilities: {
             /**
@@ -2134,7 +2134,7 @@ export interface Xdsl {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(id: number): {
                 /**
                  * Get this object properties
@@ -2144,7 +2144,7 @@ export interface Xdsl {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             };
         }
         incident: {
@@ -2156,7 +2156,7 @@ export interface Xdsl {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         ips: {
             /**
@@ -2172,7 +2172,7 @@ export interface Xdsl {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(ip: string): {
                 /**
                  * Stop renewing this extra IPv4 option
@@ -2187,7 +2187,7 @@ export interface Xdsl {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             };
         }
         ipv6: {
@@ -2206,7 +2206,7 @@ export interface Xdsl {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(number: string): {
                 /**
                  * Get this object properties
@@ -2216,7 +2216,7 @@ export interface Xdsl {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 diagnostic: {
                     cancel: {
                         /**
@@ -2242,7 +2242,7 @@ export interface Xdsl {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     availableProfiles: {
                         /**
                          * List all availables profiles for this port
@@ -2252,7 +2252,7 @@ export interface Xdsl {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                     changeProfile: {
                         /**
@@ -2270,7 +2270,7 @@ export interface Xdsl {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                     reset: {
                         /**
@@ -2289,7 +2289,7 @@ export interface Xdsl {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
             };
         }
@@ -2307,7 +2307,7 @@ export interface Xdsl {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             availableACSBackend: {
                 /**
                  * List available ACS backend for this modem
@@ -2317,7 +2317,7 @@ export interface Xdsl {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             availableWLANChannel: {
                 /**
@@ -2328,7 +2328,7 @@ export interface Xdsl {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             blocIp: {
                 /**
@@ -2344,7 +2344,7 @@ export interface Xdsl {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             callWaiting: {
                 /**
@@ -2360,7 +2360,7 @@ export interface Xdsl {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             comfortExchange: {
                 /**
@@ -2376,7 +2376,7 @@ export interface Xdsl {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             connectedDevices: {
                 /**
@@ -2387,7 +2387,7 @@ export interface Xdsl {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(macAddress: string): {
                     /**
                      * Get this object properties
@@ -2397,7 +2397,7 @@ export interface Xdsl {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
             contentSharing: {
@@ -2414,7 +2414,7 @@ export interface Xdsl {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             firmware: {
                 /**
@@ -2430,7 +2430,7 @@ export interface Xdsl {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             firmwareAvailable: {
                 /**
@@ -2441,7 +2441,7 @@ export interface Xdsl {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             ftp: {
                 /**
@@ -2457,7 +2457,7 @@ export interface Xdsl {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             ipsecAlg: {
                 /**
@@ -2473,7 +2473,7 @@ export interface Xdsl {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             lan: {
                 /**
@@ -2484,7 +2484,7 @@ export interface Xdsl {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(lanName: string): {
                     /**
                      * Get this object properties
@@ -2499,7 +2499,7 @@ export interface Xdsl {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     dhcp: {
                         /**
                          * List of DHCP on this modem
@@ -2509,7 +2509,7 @@ export interface Xdsl {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(dhcpName: string): {
                             /**
                              * Get this object properties
@@ -2524,7 +2524,7 @@ export interface Xdsl {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             DHCPStaticAddresses: {
                                 /**
                                  * List of DHCP Static Address of this modem
@@ -2539,7 +2539,7 @@ export interface Xdsl {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(MACAddress: string): {
                                     /**
                                      * Delete this port mapping
@@ -2559,7 +2559,7 @@ export interface Xdsl {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                 };
                             }
                         };
@@ -2580,7 +2580,7 @@ export interface Xdsl {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(name: string): {
                     /**
                      * Delete this port mapping
@@ -2600,7 +2600,7 @@ export interface Xdsl {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
             reboot: {
@@ -2659,7 +2659,7 @@ export interface Xdsl {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             upnp: {
                 /**
@@ -2675,7 +2675,7 @@ export interface Xdsl {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             wifi: {
                 /**
@@ -2686,7 +2686,7 @@ export interface Xdsl {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(wifiName: string): {
                     /**
                      * Get this object properties
@@ -2701,7 +2701,7 @@ export interface Xdsl {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     qrCode: {
                         /**
                          * Get the WiFi configuration QR code as base64, if applicable
@@ -2711,7 +2711,7 @@ export interface Xdsl {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                 };
             }
@@ -2730,7 +2730,7 @@ export interface Xdsl {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(id: number): {
                 /**
                  * Delete this notification
@@ -2750,7 +2750,7 @@ export interface Xdsl {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             };
         }
         ont: {
@@ -2762,7 +2762,7 @@ export interface Xdsl {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         orderFollowup: {
             /**
@@ -2773,7 +2773,7 @@ export interface Xdsl {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         orderMeeting: {
             /**
@@ -2791,7 +2791,7 @@ export interface Xdsl {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         radiusConnectionLogs: {
             /**
@@ -2802,7 +2802,7 @@ export interface Xdsl {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         requestPPPLoginMail: {
             /**
@@ -2834,7 +2834,7 @@ export interface Xdsl {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         resiliationTerms: {
             /**
@@ -2845,7 +2845,7 @@ export interface Xdsl {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         rma: {
             /**
@@ -2856,7 +2856,7 @@ export interface Xdsl {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(id: string): {
                 /**
                  * Cancel the rma
@@ -2876,7 +2876,7 @@ export interface Xdsl {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 changeType: {
                     /**
                      * Change RMA type
@@ -2914,7 +2914,7 @@ export interface Xdsl {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         statistics: {
             /**
@@ -2925,7 +2925,7 @@ export interface Xdsl {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         tasks: {
             /**
@@ -2936,7 +2936,7 @@ export interface Xdsl {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(id: number): {
                 /**
                  * Get this object properties
@@ -2946,7 +2946,7 @@ export interface Xdsl {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 archive: {
                     /**
                      * Delete the task in problem from the results
@@ -2965,7 +2965,7 @@ export interface Xdsl {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         updateInvalidOrMissingRio: {
             /**

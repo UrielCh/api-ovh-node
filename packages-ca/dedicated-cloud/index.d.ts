@@ -1725,7 +1725,7 @@ export interface DedicatedCloud {
     /**
      * Controle cache
      */
-    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+    $cache(param?: ICacheOptions | CacheAction): void;
     commercialRange: {
         /**
          * List commercial ranges
@@ -1735,7 +1735,7 @@ export interface DedicatedCloud {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         $(commercialRangeName: string): {
             /**
              * Get commercial range
@@ -1745,7 +1745,7 @@ export interface DedicatedCloud {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         };
     }
     location: {
@@ -1757,7 +1757,7 @@ export interface DedicatedCloud {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         $(pccZone: string): {
             /**
              * Get hosting location
@@ -1767,7 +1767,7 @@ export interface DedicatedCloud {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             hostProfile: {
                 /**
                  * List host profiles on hosting location
@@ -1777,7 +1777,7 @@ export interface DedicatedCloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(id: number): {
                     /**
                      * Get host profile
@@ -1787,7 +1787,7 @@ export interface DedicatedCloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
             hypervisor: {
@@ -1799,7 +1799,7 @@ export interface DedicatedCloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(shortName: string): {
                     /**
                      * Get hypervisor
@@ -1809,7 +1809,7 @@ export interface DedicatedCloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
             stock: {
@@ -1822,7 +1822,7 @@ export interface DedicatedCloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 pcc: {
                     /**
@@ -1833,7 +1833,7 @@ export interface DedicatedCloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 zpool: {
                     /**
@@ -1844,7 +1844,7 @@ export interface DedicatedCloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
             }
         };
@@ -1863,7 +1863,7 @@ export interface DedicatedCloud {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         allowedNetwork: {
             /**
              * List networks allowed on infrastructure firewall
@@ -1878,7 +1878,7 @@ export interface DedicatedCloud {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(networkAccessId: number): {
                 /**
                  * Remove network allowed on infrastructure firewall
@@ -1898,7 +1898,7 @@ export interface DedicatedCloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 task: {
                     /**
                      * List operations associated to a network allowed on infrastructure firewall
@@ -1908,7 +1908,7 @@ export interface DedicatedCloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(taskId: number): {
                         /**
                          * Get operation
@@ -1918,7 +1918,7 @@ export interface DedicatedCloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         changeMaintenanceExecutionDate: {
                             /**
                              * Change the execution date of a maintenance operation
@@ -1946,7 +1946,7 @@ export interface DedicatedCloud {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(repositoryId: number): {
                 /**
                  * Get backup repository
@@ -1956,7 +1956,7 @@ export interface DedicatedCloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             };
         }
         canDeployNsxtEdgesOnGlobalDatastores: {
@@ -1968,7 +1968,7 @@ export interface DedicatedCloud {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         capabilities: {
             /**
@@ -1979,7 +1979,7 @@ export interface DedicatedCloud {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         changeContact: {
             /**
@@ -2005,7 +2005,7 @@ export interface DedicatedCloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             orderable: {
                 /**
@@ -2016,7 +2016,7 @@ export interface DedicatedCloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
         }
         confirmTermination: {
@@ -2040,7 +2040,7 @@ export interface DedicatedCloud {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(datacenterId: number): {
                 /**
                  * Remove virtual datacenter
@@ -2060,7 +2060,7 @@ export interface DedicatedCloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 backup: {
                     /**
                      * Get backup option
@@ -2070,7 +2070,7 @@ export interface DedicatedCloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     batchRestore: {
                         /**
                          * Restore from last point for each backup job
@@ -2087,7 +2087,7 @@ export interface DedicatedCloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                     changeProperties: {
                         /**
@@ -2126,7 +2126,7 @@ export interface DedicatedCloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                     optimizeProxies: {
                         /**
@@ -2145,7 +2145,7 @@ export interface DedicatedCloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(repositoryId: number): {
                         /**
                          * Get backup repository
@@ -2155,7 +2155,7 @@ export interface DedicatedCloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 checkBackupJobs: {
@@ -2174,7 +2174,7 @@ export interface DedicatedCloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(clusterId: number): {
                         /**
                          * Get cluster
@@ -2184,7 +2184,7 @@ export interface DedicatedCloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         nsxt: {
                             /**
                              * Unconfigure NSX-T on cluster
@@ -2253,7 +2253,7 @@ export interface DedicatedCloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         startMigration: {
                             /**
@@ -2271,7 +2271,7 @@ export interface DedicatedCloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         usageReport: {
                             /**
@@ -2282,7 +2282,7 @@ export interface DedicatedCloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                     }
                     zertoSingle: {
@@ -2302,7 +2302,7 @@ export interface DedicatedCloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         disable: {
                             /**
@@ -2344,7 +2344,7 @@ export interface DedicatedCloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         requestPairingToken: {
                             /**
@@ -2364,7 +2364,7 @@ export interface DedicatedCloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(filerId: number): {
                         /**
                          * Get datastore
@@ -2374,7 +2374,7 @@ export interface DedicatedCloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         checkGlobalCompatible: {
                             /**
                              * Check ability to convert datastore to global datastore
@@ -2384,7 +2384,7 @@ export interface DedicatedCloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         convertToGlobal: {
                             /**
@@ -2402,7 +2402,7 @@ export interface DedicatedCloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         location: {
                             /**
@@ -2413,7 +2413,7 @@ export interface DedicatedCloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         remove: {
                             /**
@@ -2431,7 +2431,7 @@ export interface DedicatedCloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(taskId: number): {
                                 /**
                                  * Get operation
@@ -2441,7 +2441,7 @@ export interface DedicatedCloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 changeMaintenanceExecutionDate: {
                                     /**
                                      * Change the execution date of a maintenance operation
@@ -2469,7 +2469,7 @@ export interface DedicatedCloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(hostId: number): {
                         /**
                          * Get host
@@ -2479,7 +2479,7 @@ export interface DedicatedCloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         addHostSpare: {
                             /**
                              * Request host replacement
@@ -2496,7 +2496,7 @@ export interface DedicatedCloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         location: {
                             /**
@@ -2507,7 +2507,7 @@ export interface DedicatedCloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         remove: {
                             /**
@@ -2525,7 +2525,7 @@ export interface DedicatedCloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             canBeEnabled: {
                                 /**
                                  * Check if resilience test can be performed
@@ -2535,7 +2535,7 @@ export interface DedicatedCloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             }
                             disable: {
                                 /**
@@ -2561,7 +2561,7 @@ export interface DedicatedCloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(taskId: number): {
                                 /**
                                  * Get operation
@@ -2571,7 +2571,7 @@ export interface DedicatedCloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 changeMaintenanceExecutionDate: {
                                     /**
                                      * Change the execution date of a maintenance operation
@@ -2604,7 +2604,7 @@ export interface DedicatedCloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(nsxtEdgeId: number): {
                         /**
                          * Remove NSX-T Edge from the virtual datacenter
@@ -2619,7 +2619,7 @@ export interface DedicatedCloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         relocateEdge: {
                             /**
                              * Relocate NSX Edge disks
@@ -2636,7 +2636,7 @@ export interface DedicatedCloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             canBeEnabled: {
                                 /**
                                  * Check if resilience test can be performed
@@ -2646,7 +2646,7 @@ export interface DedicatedCloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             }
                             disable: {
                                 /**
@@ -2674,7 +2674,7 @@ export interface DedicatedCloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 nsxtEdgesScalingCapabilities: {
                     /**
@@ -2685,7 +2685,7 @@ export interface DedicatedCloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 orderNewFilerHourly: {
                     /**
@@ -2710,7 +2710,7 @@ export interface DedicatedCloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 orderableHostProfiles: {
                     /**
@@ -2721,7 +2721,7 @@ export interface DedicatedCloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 privateGateway: {
                     /**
@@ -2732,7 +2732,7 @@ export interface DedicatedCloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     disable: {
                         /**
                          * Remove the private management gateway
@@ -2771,7 +2771,7 @@ export interface DedicatedCloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(taskId: number): {
                         /**
                          * Get operation
@@ -2781,7 +2781,7 @@ export interface DedicatedCloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         changeMaintenanceExecutionDate: {
                             /**
                              * Change the execution date of a maintenance operation
@@ -2807,7 +2807,7 @@ export interface DedicatedCloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(vmId: number): {
                         /**
                          * Get virtual machines
@@ -2817,7 +2817,7 @@ export interface DedicatedCloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         backupJob: {
                             /**
                              * Get virtual machine backup job
@@ -2832,7 +2832,7 @@ export interface DedicatedCloud {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             disable: {
                                 /**
                                  * Disable backup job
@@ -2856,7 +2856,7 @@ export interface DedicatedCloud {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                                 $(restorePointId: number): {
                                     /**
                                      * Get restore point
@@ -2866,7 +2866,7 @@ export interface DedicatedCloud {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): void;
                                     restore: {
                                         /**
                                          * Restore from point
@@ -2944,7 +2944,7 @@ export interface DedicatedCloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
             };
         }
@@ -2957,7 +2957,7 @@ export interface DedicatedCloud {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             activeDirectory: {
                 /**
                  * List federated Active Directories
@@ -2972,7 +2972,7 @@ export interface DedicatedCloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(activeDirectoryId: number): {
                     /**
                      * Remove federated Active Directory
@@ -2987,7 +2987,7 @@ export interface DedicatedCloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     changeProperties: {
                         /**
                          * Update federated Active Directory
@@ -3021,7 +3021,7 @@ export interface DedicatedCloud {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(filerId: number): {
                 /**
                  * Get datastore
@@ -3031,7 +3031,7 @@ export interface DedicatedCloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 checkGlobalCompatible: {
                     /**
                      * Check ability to convert datastore to global datastore
@@ -3041,7 +3041,7 @@ export interface DedicatedCloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 convertToGlobal: {
                     /**
@@ -3059,7 +3059,7 @@ export interface DedicatedCloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 location: {
                     /**
@@ -3070,7 +3070,7 @@ export interface DedicatedCloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 remove: {
                     /**
@@ -3088,7 +3088,7 @@ export interface DedicatedCloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(taskId: number): {
                         /**
                          * Get operation
@@ -3098,7 +3098,7 @@ export interface DedicatedCloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         changeMaintenanceExecutionDate: {
                             /**
                              * Change the execution date of a maintenance operation
@@ -3140,7 +3140,7 @@ export interface DedicatedCloud {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         hcx: {
             /**
@@ -3151,7 +3151,7 @@ export interface DedicatedCloud {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             canBeDisabled: {
                 /**
                  * Check if VMware Hybrid Cloud Extension option can be disabled
@@ -3161,7 +3161,7 @@ export interface DedicatedCloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             canBeEnabled: {
                 /**
@@ -3172,7 +3172,7 @@ export interface DedicatedCloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             disable: {
                 /**
@@ -3198,7 +3198,7 @@ export interface DedicatedCloud {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             canBeDisabled: {
                 /**
                  * Check if HDS certification option can be disabled
@@ -3208,7 +3208,7 @@ export interface DedicatedCloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             canBeEnabled: {
                 /**
@@ -3219,7 +3219,7 @@ export interface DedicatedCloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             disable: {
                 /**
@@ -3245,7 +3245,7 @@ export interface DedicatedCloud {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             canBeDisabled: {
                 /**
                  * Check if HIPAA certification option can be disabled
@@ -3255,7 +3255,7 @@ export interface DedicatedCloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             canBeEnabled: {
                 /**
@@ -3266,7 +3266,7 @@ export interface DedicatedCloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             disable: {
                 /**
@@ -3292,7 +3292,7 @@ export interface DedicatedCloud {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             addRole: {
                 /**
                  * Create IAM role
@@ -3309,7 +3309,7 @@ export interface DedicatedCloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             canBeEnabled: {
                 /**
@@ -3320,7 +3320,7 @@ export interface DedicatedCloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             disable: {
                 /**
@@ -3346,7 +3346,7 @@ export interface DedicatedCloud {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(network: string): {
                 /**
                  * Get IP block
@@ -3356,7 +3356,7 @@ export interface DedicatedCloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 details: {
                     /**
                      * Get details about this IP Block
@@ -3366,7 +3366,7 @@ export interface DedicatedCloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 task: {
                     /**
@@ -3377,7 +3377,7 @@ export interface DedicatedCloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(taskId: number): {
                         /**
                          * Get operation
@@ -3387,7 +3387,7 @@ export interface DedicatedCloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         changeMaintenanceExecutionDate: {
                             /**
                              * Change the execution date of a maintenance operation
@@ -3415,7 +3415,7 @@ export interface DedicatedCloud {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         nsx: {
             /**
@@ -3426,7 +3426,7 @@ export interface DedicatedCloud {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             canBeDisabled: {
                 /**
                  * Check if VMware NSX-V option can be disabled
@@ -3436,7 +3436,7 @@ export interface DedicatedCloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             canBeEnabled: {
                 /**
@@ -3447,7 +3447,7 @@ export interface DedicatedCloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             disable: {
                 /**
@@ -3473,7 +3473,7 @@ export interface DedicatedCloud {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         orderNewFilerHourly: {
             /**
@@ -3491,7 +3491,7 @@ export interface DedicatedCloud {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         passwordPolicy: {
             /**
@@ -3502,7 +3502,7 @@ export interface DedicatedCloud {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         pcidss: {
             /**
@@ -3513,7 +3513,7 @@ export interface DedicatedCloud {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             canBeDisabled: {
                 /**
                  * Check if PCI-DSS certification option can be disabled
@@ -3523,7 +3523,7 @@ export interface DedicatedCloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             canBeEnabled: {
                 /**
@@ -3534,7 +3534,7 @@ export interface DedicatedCloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             disable: {
                 /**
@@ -3567,7 +3567,7 @@ export interface DedicatedCloud {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(name: string): {
                 /**
                  * Get robot
@@ -3577,7 +3577,7 @@ export interface DedicatedCloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             };
         }
         securityOptions: {
@@ -3589,7 +3589,7 @@ export interface DedicatedCloud {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             compatibilityMatrix: {
                 /**
                  * Get security options compatibility matrix
@@ -3599,7 +3599,7 @@ export interface DedicatedCloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             dependenciesTree: {
                 /**
@@ -3610,7 +3610,7 @@ export interface DedicatedCloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             pendingOptions: {
                 /**
@@ -3621,7 +3621,7 @@ export interface DedicatedCloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             resumePendingEnabling: {
                 /**
@@ -3645,7 +3645,7 @@ export interface DedicatedCloud {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         servicePack: {
             /**
@@ -3656,7 +3656,7 @@ export interface DedicatedCloud {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         servicePacks: {
             /**
@@ -3667,7 +3667,7 @@ export interface DedicatedCloud {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(name: string): {
                 /**
                  * Get service pack
@@ -3677,7 +3677,7 @@ export interface DedicatedCloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             };
         }
         task: {
@@ -3689,7 +3689,7 @@ export interface DedicatedCloud {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(taskId: number): {
                 /**
                  * Get operation
@@ -3699,7 +3699,7 @@ export interface DedicatedCloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 changeMaintenanceExecutionDate: {
                     /**
                      * Change the execution date of a maintenance operation
@@ -3737,7 +3737,7 @@ export interface DedicatedCloud {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(id: number): {
                 /**
                  * Remove two factor authentication whitelisted network
@@ -3752,7 +3752,7 @@ export interface DedicatedCloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 changeProperties: {
                     /**
                      * Update two factor authentication whitelisted network
@@ -3790,7 +3790,7 @@ export interface DedicatedCloud {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(userId: number): {
                 /**
                  * Remove user
@@ -3805,7 +3805,7 @@ export interface DedicatedCloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 changePassword: {
                     /**
                      * Change user password
@@ -3855,7 +3855,7 @@ export interface DedicatedCloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(objectRightId: number): {
                         /**
                          * Remove user object right
@@ -3870,7 +3870,7 @@ export interface DedicatedCloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 right: {
@@ -3882,7 +3882,7 @@ export interface DedicatedCloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(rightId: number): {
                         /**
                          * Get user datacenter right
@@ -3897,7 +3897,7 @@ export interface DedicatedCloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 task: {
@@ -3909,7 +3909,7 @@ export interface DedicatedCloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(taskId: number): {
                         /**
                          * Get operation
@@ -3919,7 +3919,7 @@ export interface DedicatedCloud {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         changeMaintenanceExecutionDate: {
                             /**
                              * Change the execution date of a maintenance operation
@@ -3947,7 +3947,7 @@ export interface DedicatedCloud {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         vendor: {
             /**
@@ -3958,7 +3958,7 @@ export interface DedicatedCloud {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             objectType: {
                 /**
                  * Get vendor object types
@@ -3983,7 +3983,7 @@ export interface DedicatedCloud {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(vlanId: number): {
                 /**
                  * Get vLAN
@@ -3993,7 +3993,7 @@ export interface DedicatedCloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             };
         }
         vmEncryption: {
@@ -4005,7 +4005,7 @@ export interface DedicatedCloud {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             kms: {
                 /**
                  * List virtual machine encryption KMS servers
@@ -4020,7 +4020,7 @@ export interface DedicatedCloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(kmsId: number): {
                     /**
                      * Remove virtual machine encryption KMS server
@@ -4035,7 +4035,7 @@ export interface DedicatedCloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     changeProperties: {
                         /**
                          * Update virtual machine encryption KMS server
@@ -4055,7 +4055,7 @@ export interface DedicatedCloud {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(vrack: string): {
                 /**
                  * Remove VMware on OVHcloud from vRack
@@ -4070,7 +4070,7 @@ export interface DedicatedCloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             };
         }
         vrops: {
@@ -4082,7 +4082,7 @@ export interface DedicatedCloud {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             canBeDisabled: {
                 /**
                  * Check if VMware Aria Operations option can be disabled
@@ -4092,7 +4092,7 @@ export interface DedicatedCloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             canBeEnabled: {
                 /**
@@ -4103,7 +4103,7 @@ export interface DedicatedCloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             disable: {
                 /**
@@ -4133,7 +4133,7 @@ export interface DedicatedCloud {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(outgoingFlowId: number): {
                     /**
                      * Remove VMware Aria Operations outgoing flow
@@ -4148,7 +4148,7 @@ export interface DedicatedCloud {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     changeProperties: {
                         /**
                          * Update VMware Aria Operations outgoing flow

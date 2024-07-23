@@ -1846,7 +1846,7 @@ export interface Hosting {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         attachedDomain: {
             /**
              * Find hosting service linked to a domain
@@ -1856,7 +1856,7 @@ export interface Hosting {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         availableOffer: {
             /**
@@ -1867,7 +1867,7 @@ export interface Hosting {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         incident: {
             /**
@@ -1878,7 +1878,7 @@ export interface Hosting {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         localSeo: {
             directoriesList: {
@@ -1890,7 +1890,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             emailAvailability: {
                 /**
@@ -1901,7 +1901,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             visibilityCheck: {
                 /**
@@ -1919,7 +1919,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
         }
         moduleList: {
@@ -1931,7 +1931,7 @@ export interface Hosting {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             $(id: number): {
                 /**
                  * Get this object properties
@@ -1941,7 +1941,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             };
         }
         offerCapabilities: {
@@ -1953,7 +1953,7 @@ export interface Hosting {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
         }
         $(serviceName: string): {
             /**
@@ -1969,7 +1969,7 @@ export interface Hosting {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): void;
             attachedDomain: {
                 /**
                  * Get list of attached domains or subdomains attached to your hosting
@@ -1984,7 +1984,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(domain: string): {
                     /**
                      * Unlink attached domain from hosting
@@ -2004,7 +2004,7 @@ export interface Hosting {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     digStatus: {
                         /**
                          * Get attachedDomain DNS status
@@ -2014,7 +2014,7 @@ export interface Hosting {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                     purgeCache: {
                         /**
@@ -2041,7 +2041,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             boostHistory: {
                 /**
@@ -2052,7 +2052,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(date: string): {
                     /**
                      * Get this object properties
@@ -2062,7 +2062,7 @@ export interface Hosting {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
             cdn: {
@@ -2074,7 +2074,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 availableOptions: {
                     /**
                      * List available options for a Shared CDN service
@@ -2084,7 +2084,7 @@ export interface Hosting {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 domain: {
                     /**
@@ -2095,7 +2095,7 @@ export interface Hosting {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(domainName: string): {
                         /**
                          * Get details for a domain on a Shared CDN service
@@ -2105,7 +2105,7 @@ export interface Hosting {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         logs: {
                             /**
                              * Generate URL to logs archive
@@ -2115,7 +2115,7 @@ export interface Hosting {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         option: {
                             /**
@@ -2131,7 +2131,7 @@ export interface Hosting {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             $(optionName: string): {
                                 /**
                                  * Remove or Reset an option to his default value
@@ -2151,7 +2151,7 @@ export interface Hosting {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): void;
                             };
                         }
                         purge: {
@@ -2177,7 +2177,7 @@ export interface Hosting {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                     };
                 }
@@ -2190,7 +2190,7 @@ export interface Hosting {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(id: number): {
                         /**
                          * Get details for a Shared CDN operation
@@ -2200,7 +2200,7 @@ export interface Hosting {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     };
                 }
                 serviceInfos: {
@@ -2212,7 +2212,7 @@ export interface Hosting {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 serviceInfosUpdate: {
                     /**
@@ -2250,7 +2250,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             confirmTermination: {
                 /**
@@ -2273,7 +2273,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(id: number): {
                     /**
                      * Delete cron
@@ -2293,7 +2293,7 @@ export interface Hosting {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
             cronAvailableLanguage: {
@@ -2305,7 +2305,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             database: {
                 /**
@@ -2321,7 +2321,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(name: string): {
                     /**
                      * Delete database
@@ -2336,7 +2336,7 @@ export interface Hosting {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     capabilities: {
                         /**
                          * Get available capabilities for this database
@@ -2346,7 +2346,7 @@ export interface Hosting {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                     changePassword: {
                         /**
@@ -2369,7 +2369,7 @@ export interface Hosting {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(id: string): {
                             /**
                              * Delete the database copy
@@ -2384,7 +2384,7 @@ export interface Hosting {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         };
                     }
                     copyRestore: {
@@ -2408,7 +2408,7 @@ export interface Hosting {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(id: number): {
                             /**
                              * Delete dump before expiration date
@@ -2423,7 +2423,7 @@ export interface Hosting {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             restore: {
                                 /**
                                  * Request the restore from this dump
@@ -2463,7 +2463,7 @@ export interface Hosting {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                 };
             }
@@ -2476,7 +2476,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             databaseAvailableVersion: {
                 /**
@@ -2487,7 +2487,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             databaseCreationCapabilities: {
                 /**
@@ -2498,7 +2498,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             dump: {
                 /**
@@ -2509,7 +2509,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(id: number): {
                     /**
                      * Delete dump before expiration date
@@ -2524,7 +2524,7 @@ export interface Hosting {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
             email: {
@@ -2541,7 +2541,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 bounces: {
                     /**
                      * Request the last bounces
@@ -2551,7 +2551,7 @@ export interface Hosting {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 request: {
                     /**
@@ -2569,7 +2569,7 @@ export interface Hosting {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
             }
             emailOption: {
@@ -2581,7 +2581,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(id: number): {
                     /**
                      * Get this object properties
@@ -2591,7 +2591,7 @@ export interface Hosting {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     serviceInfos: {
                         /**
                          * Get the service properties
@@ -2601,7 +2601,7 @@ export interface Hosting {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                     terminate: {
                         /**
@@ -2624,7 +2624,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(key: string): {
                     /**
                      * DELETE /hosting/web/{serviceName}/envVar/{key}
@@ -2641,7 +2641,7 @@ export interface Hosting {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
             extraSqlPerso: {
@@ -2653,7 +2653,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(name: string): {
                     /**
                      * Get this object properties
@@ -2663,7 +2663,7 @@ export interface Hosting {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     databases: {
                         /**
                          * Get databases linked with this option
@@ -2673,7 +2673,7 @@ export interface Hosting {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                     serviceInfos: {
                         /**
@@ -2684,7 +2684,7 @@ export interface Hosting {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                     serviceInfosUpdate: {
                         /**
@@ -2711,7 +2711,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(domain: string): {
                     /**
                      * Delete the freedom
@@ -2726,7 +2726,7 @@ export interface Hosting {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
             indy: {
@@ -2738,7 +2738,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(login: string): {
                     /**
                      * Get this object properties
@@ -2748,7 +2748,7 @@ export interface Hosting {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
             localSeo: {
@@ -2761,7 +2761,7 @@ export interface Hosting {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(id: number): {
                         /**
                          * Get this object properties
@@ -2771,7 +2771,7 @@ export interface Hosting {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         login: {
                             /**
                              * Login this location for SSO
@@ -2790,7 +2790,7 @@ export interface Hosting {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 location: {
                     /**
@@ -2801,7 +2801,7 @@ export interface Hosting {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     $(id: number): {
                         /**
                          * Get this object properties
@@ -2811,7 +2811,7 @@ export interface Hosting {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         serviceInfos: {
                             /**
                              * Get this object properties
@@ -2821,7 +2821,7 @@ export interface Hosting {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                         }
                         serviceInfosUpdate: {
                             /**
@@ -2854,7 +2854,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(id: number): {
                     /**
                      * Delete a module installed
@@ -2869,7 +2869,7 @@ export interface Hosting {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     changePassword: {
                         /**
                          * Generate a new admin password for your module
@@ -2888,7 +2888,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(id: number): {
                     /**
                      * Get this object properties
@@ -2898,7 +2898,7 @@ export interface Hosting {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     changeConfiguration: {
                         /**
                          * Apply a new configuration on this path
@@ -2924,7 +2924,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             ovhConfigRecommendedValues: {
                 /**
@@ -2935,7 +2935,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             ovhConfigRefresh: {
                 /**
@@ -2953,7 +2953,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(id: number): {
                     /**
                      * Get this object properties
@@ -2963,7 +2963,7 @@ export interface Hosting {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     userLogs: {
                         /**
                          * User allowed to connect into your logs interface
@@ -2978,7 +2978,7 @@ export interface Hosting {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                         $(login: string): {
                             /**
                              * Delete the userLogs
@@ -2998,7 +2998,7 @@ export interface Hosting {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): void;
                             changePassword: {
                                 /**
                                  * Request a password change
@@ -3019,7 +3019,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             privateDatabases: {
                 /**
@@ -3030,7 +3030,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             request: {
                 /**
@@ -3067,7 +3067,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(id: number): {
                     /**
                      * Delete a runtime configuration of an hosting
@@ -3087,7 +3087,7 @@ export interface Hosting {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     attachedDomains: {
                         /**
                          * Get the attached domains linked to this runtime configuration
@@ -3097,7 +3097,7 @@ export interface Hosting {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): void;
                     }
                 };
             }
@@ -3110,7 +3110,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             serviceInfos: {
                 /**
@@ -3126,7 +3126,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             ssl: {
                 /**
@@ -3147,7 +3147,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 domains: {
                     /**
                      * Get list of domains linked to the hosted SSL
@@ -3157,7 +3157,7 @@ export interface Hosting {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
                 regenerate: {
                     /**
@@ -3175,7 +3175,7 @@ export interface Hosting {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 }
             }
             statistics: {
@@ -3187,7 +3187,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             tasks: {
                 /**
@@ -3198,7 +3198,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(id: number): {
                     /**
                      * Get this task properties
@@ -3208,7 +3208,7 @@ export interface Hosting {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                 };
             }
             terminate: {
@@ -3227,7 +3227,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
             user: {
                 /**
@@ -3243,7 +3243,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(login: string): {
                     /**
                      * Delete ftp/ssh user
@@ -3263,7 +3263,7 @@ export interface Hosting {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     changePassword: {
                         /**
                          * Request a password change
@@ -3287,7 +3287,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
                 $(login: string): {
                     /**
                      * Delete the userLogs
@@ -3307,7 +3307,7 @@ export interface Hosting {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): void;
                     changePassword: {
                         /**
                          * Request a password change
@@ -3326,7 +3326,7 @@ export interface Hosting {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): void;
             }
         };
     }

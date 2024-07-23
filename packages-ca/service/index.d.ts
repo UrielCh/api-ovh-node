@@ -115,7 +115,7 @@ export interface Service {
     /**
      * Controle cache
      */
-    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+    $cache(param?: ICacheOptions | CacheAction): void;
     $(serviceId: number): {
         /**
          * Get this object properties
@@ -130,7 +130,7 @@ export interface Service {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): void;
         reopen: {
             /**
              * Reopen a suspended service
