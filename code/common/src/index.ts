@@ -61,16 +61,6 @@ export interface OvhRequestable {
     doRequest(httpMethod: string, path: string, pathTemplate: string, params?: any): Promise<any>;
 
     /**
-     * Execute a request on the API with promise
-     *
-     * @param httpMethod: The HTTP method GET POST PUT DELETE
-     * @param path: The request path with {pathParams}
-     * @param params: The request parameters (passed as query string or body params)
-     * @deprecated
-     */
-    //request(httpMethod: string, path: string, params?: OvhParamType): Promise<any>;
-
-    /**
      * cache controle
      */
     cache(template: string, param: ICacheOptions | CacheAction): Promise<any>;
