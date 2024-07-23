@@ -93,7 +93,7 @@ export class CacheSilot implements ICacheSilot {
     }
 }
 
-export class Cache {
+export class APICache {
     private slotClass: SlotConstructor;
     private index: { [key: string]: ICacheSilot } = {};
 

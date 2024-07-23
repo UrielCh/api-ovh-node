@@ -32,7 +32,7 @@ import { EventEmitter } from 'node:events';
 import type { OvhRequestable, OvhParamType, ICacheOptions, ICacheSilot, CacheAction } from '@ovh-api/common';
 import type { HttpMethod, AccessRule, OvhCredentialNew, ApiRequestOptions, OvhCertSave } from './OVHInterfaces.js';
 import { type CertMonitorProvider, stdOutCertMonitorProvider } from './certMonitor.js';
-import { Cache } from './Cache.js';
+import { APICache } from './APICache.js';
 import type { OvhParams, OvhParamsFull } from './OvhParams.js';
 import { RequestContext } from './helper.js';
 // import { makeRequest } from './requestFetch.js';
@@ -354,7 +354,7 @@ export default class OvhApi extends EventEmitter implements OvhRequestable {
     /**
      * caching object
      */
-    queryCache: Cache | null = null;
+    queryCache: APICache | null = null;
 
     public get host(): string {
         return this.data.host;
@@ -611,7 +611,7 @@ export default class OvhApi extends EventEmitter implements OvhRequestable {
 
     cache(template: string, param?: ICacheOptions | CacheAction): void {
         if (!this.queryCache) {
-            this.queryCache = new Cache({ slotClass: this.data.slotClass });
+            this.queryCache = new APICache({ slotClass: this.data.slotClass });
         }
         param = param || { ttl: 3600 };
         if (typeof (param) === 'string') {
